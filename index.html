@@ -891,10 +891,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
    AI RESULT CARD
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 #ai-result {
-  display: none;
   animation: aiSlideIn .7s cubic-bezier(.16,1,.3,1) both;
 }
-#ai-result.show { display: block; }
 
 .result-header {
   display: flex;
@@ -945,6 +943,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   overflow: hidden;
   margin-bottom: 1.4rem;
   box-shadow: 0 20px 60px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.05);
+  max-height: 320px;
+  overflow-y: auto;
 }
 .result-top-bar {
   background: linear-gradient(90deg, rgba(13,79,46,.8), rgba(8,38,24,.6));
@@ -1023,29 +1023,40 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .result-note-ico { font-size: 1rem; flex-shrink: 0; }
 .result-note p { font-size: .78rem; color: rgba(255,255,255,.55); line-height: 1.5; margin: 0; }
 
-/* WhatsApp CTA */
+/* WhatsApp dual CTA */
+.ai-wa-row {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: .9rem;
+}
 .ai-wa-btn {
-  width: 100%;
+  flex: 1;
   background: linear-gradient(135deg, #1DB954, #16a34a);
   border: none;
   color: #fff;
   font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
+  font-size: .82rem;
   font-weight: 600;
-  padding: 1.05rem 2rem;
+  padding: .95rem 1rem;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .65rem;
-  letter-spacing: .02em;
+  gap: .5rem;
+  letter-spacing: .01em;
   box-shadow: 0 4px 24px rgba(29,185,84,.35);
   transition: all .4s cubic-bezier(.16,1,.3,1);
   text-decoration: none;
-  margin-bottom: .9rem;
+  white-space: nowrap;
 }
-.ai-wa-btn:hover { background: linear-gradient(135deg, #22d862, #1DB954); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(29,185,84,.45); }
+.ai-wa-vietnam {
+  background: linear-gradient(135deg, #128C7E, #075E54);
+  box-shadow: 0 4px 24px rgba(18,140,126,.35);
+}
+.ai-wa-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(29,185,84,.45); }
+.ai-wa-vietnam:hover { box-shadow: 0 14px 40px rgba(18,140,126,.45); }
+.wa-num { font-size: .7rem; font-weight: 400; opacity: .8; }
 .ai-restart {
   width: 100%;
   background: transparent;
@@ -1060,12 +1071,37 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 }
 .ai-restart:hover { border-color: rgba(255,255,255,.28); color: rgba(255,255,255,.7); background: rgba(255,255,255,.05); }
 
+/* Edit & Regenerate row */
+.ai-result-actions {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: .9rem;
+}
+.ai-edit-btn, .ai-regen-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,.3);
+  color: rgba(201,168,76,.8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  font-weight: 500;
+  padding: .75rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all .3s;
+  letter-spacing: .02em;
+}
+.ai-edit-btn:hover { background: rgba(201,168,76,.08); border-color: rgba(201,168,76,.6); color: #e8cc6a; }
+.ai-regen-btn:hover { background: rgba(201,168,76,.08); border-color: rgba(201,168,76,.6); color: #e8cc6a; }
+
 @media(max-width:600px) {
   .ai-card { padding: 2rem 1.5rem 1.8rem; border-radius: 22px; }
   .ai-opts { grid-template-columns: 1fr 1fr; gap: .6rem; }
   .ai-opts.ai-opts-3 { grid-template-columns: 1fr 1fr; }
   .ai-opt { padding: .9rem .7rem; font-size: .8rem; }
   .ai-opt .opt-ico { font-size: 1.3rem; }
+  .ai-wa-row { flex-direction: column; }
+  .ai-result-actions { flex-direction: column; }
 }
 </style>
 </head>
@@ -1667,9 +1703,18 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <span class="result-note-ico">&#128172;</span>
         <p>This is your personalised starting point. Our local team in HCMC will refine every detail to make it truly yours.</p>
       </div>
-      <a id="ai-wa-link" href="#" target="_blank" class="ai-wa-btn">
-        <span>&#128172;</span> Continue on WhatsApp
-      </a>
+      <div class="ai-wa-row">
+        <a id="ai-wa-india" href="#" target="_blank" class="ai-wa-btn ai-wa-india">
+          <span>&#128172;</span> WhatsApp India <span class="wa-num">+91</span>
+        </a>
+        <a id="ai-wa-vietnam" href="#" target="_blank" class="ai-wa-btn ai-wa-vietnam">
+          <span>&#128172;</span> WhatsApp Vietnam <span class="wa-num">+84</span>
+        </a>
+      </div>
+      <div class="ai-result-actions">
+        <button class="ai-edit-btn" onclick="goBack(7)">&#9998; Edit Trip</button>
+        <button class="ai-regen-btn" onclick="regenPlan()">&#8635; Regenerate Plan</button>
+      </div>
       <button class="ai-restart" onclick="restartAI()">&#8635; Start Over &mdash; Plan Another Trip</button>
     </div>
 
@@ -2207,13 +2252,20 @@ function selectMulti(el, q) {
 }
 
 function goNext(step) {
+  if (step === 6) {
+    generateItinerary();
+    return;
+  }
   aiCurrentStep = step + 1;
   updateProgress(aiCurrentStep);
   showScreen('ai-q' + aiCurrentStep);
 }
 function goBack(step) {
-  aiCurrentStep = step - 1;
+  // If called from result (step 7), go back to q6
+  const prevStep = step > 6 ? 6 : step - 1;
+  aiCurrentStep = prevStep;
   updateProgress(aiCurrentStep);
+  document.getElementById('ai-prog-wrap').style.display = 'flex';
   showScreen('ai-q' + aiCurrentStep);
 }
 
@@ -2264,6 +2316,13 @@ function generateItinerary() {
   setTimeout(() => {
     buildResult();
   }, 2400);
+}
+
+function regenPlan() {
+  showScreen('ai-generating');
+  setTimeout(() => {
+    buildResult();
+  }, 1800);
 }
 
 function buildResult() {
@@ -2326,19 +2385,24 @@ function buildResult() {
     days.map((d, i) => (i + 1) + '. ' + d.lbl + ': ' + d.txt).join('\n') + '\n\n' +
     'Please help me plan this! 🇻🇳'
   );
-  document.getElementById('ai-wa-link').href = 'https://wa.me/84000000000?text=' + waMsg;
+  document.getElementById('ai-wa-india').href   = 'https://wa.me/919953294543?text=' + waMsg;
+  document.getElementById('ai-wa-vietnam').href = 'https://wa.me/84902434006?text='  + waMsg;
 
   showScreen('ai-result');
 }
 
 function restartAI() {
   // Reset answers
-  for (let k in aiAnswers) aiAnswers[k] = k === '4' ? [] : null;
+  aiAnswers[1] = null; aiAnswers[2] = null; aiAnswers[3] = null;
+  aiAnswers[4] = []; aiAnswers[5] = null; aiAnswers[6] = null;
   aiCurrentStep = 1;
 
   // Clear UI selections
   document.querySelectorAll('.ai-opt').forEach(o => o.classList.remove('selected'));
-  document.querySelectorAll('.ai-next').forEach(b => b.disabled = true);
+  for (let i = 1; i <= 6; i++) {
+    const btn = document.getElementById('ai-next' + i);
+    if (btn) btn.disabled = true;
+  }
   document.getElementById('ai-custom-days').classList.remove('show');
   document.getElementById('custom-days-val').value = '';
   document.getElementById('ai-prog-wrap').style.display = 'flex';
