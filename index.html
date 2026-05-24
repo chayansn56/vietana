@@ -305,8 +305,8 @@ section{padding:8rem 7%}
 .pc-examples { font-size: 0.9rem; color: rgba(255,255,255,0.4); }
 .pc-examples span { color: var(--gold3); transition: opacity 0.4s; }
 
-.pc-input-wrap { position: relative; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 0.5rem; transition: background 0.3s, border-color 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
-.pc-input-wrap:focus-within { background: rgba(255,255,255,0.06); border-color: rgba(201,168,76,0.4); }
+.pc-input-wrap { position: relative; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 0.5rem; transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.03); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); }
+.pc-input-wrap:focus-within { background: rgba(255,255,255,0.08); border-color: rgba(201,168,76,0.5); box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(201,168,76,0.05); }
 .pc-input-inner { display: flex; align-items: center; gap: 0.8rem; }
 .pc-mic { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 1.2rem; padding: 0.5rem 1rem; cursor: pointer; transition: color 0.3s; }
 .pc-mic:hover { color: var(--gold); }
@@ -317,14 +317,15 @@ section{padding:8rem 7%}
 .pc-send:hover { background: var(--gold); transform: scale(1.05); }
 
 .pc-options { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; justify-content: center; }
-.pc-chip { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); padding: 0.6rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 300; cursor: pointer; transition: all 0.3s var(--e2); user-select: none; }
-.pc-chip:hover, .pc-chip.sel { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.3); color: var(--gold3); transform: translateY(-2px); }
+.pc-chip { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); padding: 0.6rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 300; cursor: pointer; transition: all 0.3s var(--e2); user-select: none; opacity: 0; transform: translateY(10px); animation: chipFadeIn 0.5s ease forwards; }
+@keyframes chipFadeIn { to { opacity: 1; transform: translateY(0); } }
+.pc-chip:hover, .pc-chip.sel { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.3); color: var(--gold3); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(201,168,76,0.2); }
 
 .pc-typing { display: flex; align-items: center; gap: 0.5rem; padding: 1rem 0; }
-.pc-typing span { width: 8px; height: 8px; border-radius: 50%; background: rgba(201,168,76,0.6); animation: tdot 1.4s infinite ease-in-out both; }
+.pc-typing span { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: tdot 1.2s infinite ease-in-out both; box-shadow: 0 0 10px rgba(201,168,76,0.5); }
 .pc-typing span:nth-child(1) { animation-delay: -0.32s; }
 .pc-typing span:nth-child(2) { animation-delay: -0.16s; }
-@keyframes tdot { 0%,80%,100%{transform:scale(0);opacity:0.3} 40%{transform:scale(1);opacity:1} }
+@keyframes tdot { 0%,80%,100%{transform:translateY(0) scale(0.8);opacity:0.4} 40%{transform:translateY(-6px) scale(1.1);opacity:1; box-shadow: 0 5px 15px rgba(201,168,76,0.8);} }
 
 .live-dream-panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 2.5rem; box-shadow: inset 0 0 20px rgba(255,255,255,0.02); }
 .live-dream-panel h4 { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); margin-bottom: 2.5rem; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; gap: 0.8rem; }
@@ -344,11 +345,19 @@ section{padding:8rem 7%}
 .ldp-btn.email { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; }
 .ldp-btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
+.live-dream-panel.celebrate { animation: celebrateGlow 1.5s ease-out; }
+@keyframes celebrateGlow { 0% { box-shadow: inset 0 0 20px rgba(201,168,76,0.8), 0 0 50px rgba(201,168,76,0.4); } 100% { box-shadow: inset 0 0 20px rgba(255,255,255,0.02); } }
+.ldp-btn.wa-in { animation: pulseGreen 2s infinite; }
+@keyframes pulseGreen { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+
 @media(max-width: 900px) {
   .ai-modal-container { flex-direction: column; height: 100vh; max-height: 100vh; border-radius: 0; border: none; transform: none; }
   .planner-left { flex: 1; border-right: none; }
-  .planner-right { display: none; }
-  .planner-right.mob-show { display: flex; flex: none; height: auto; border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; }
+  .planner-right { display: flex; flex: none; height: 200px; padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); background: rgba(5, 10, 8, 0.9); }
+  .live-dream-panel { padding: 0; box-shadow: none; border: none; background: transparent; overflow-y: auto; height: 100%; }
+  .ldp-items { flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+  .ldp-item { flex: 0 0 calc(50% - 0.5rem); }
+  .ldp-actions { margin-top: 1.5rem; }
   .ai-modal-header { padding: 2rem 2rem 1rem 2rem; }
   .planner-chat { padding: 1rem 2rem; }
   .pc-input-area { padding: 1rem 2rem 2rem 2rem; }
@@ -439,6 +448,11 @@ section{padding:8rem 7%}
 .btn-final-wa:hover{background:#16a34a;transform:translateY(-4px);box-shadow:0 16px 46px rgba(34,197,94,.48)}
 .btn-final-ai{display:inline-flex;align-items:center;gap:.7rem;background:rgba(255,255,255,.08);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.28);padding:1.05rem 2.4rem;border-radius:50px;font-weight:400;font-size:.92rem;backdrop-filter:blur(14px);transition:all .45s var(--e2); cursor:pointer;}
 .btn-final-ai:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.55);transform:translateY(-4px)}
+
+.itin-result { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 18px; padding: 1.5rem; margin-top: 1rem; opacity: 0; transform: translateY(15px); transition: all 0.6s ease; }
+.itin-result.show { opacity: 1; transform: translateY(0); }
+.itin-wa-btn { padding: 0.8rem; border-radius: 50px; text-align: center; text-decoration: none; font-weight: 500; font-size: 0.85rem; transition: 0.3s; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; display: block; margin-bottom: 0.5rem; }
+.itin-wa-btn:hover { background: rgba(34,197,94,0.2); transform: translateY(-2px); }
 
 /* MAP EXPERIENCE REMOVED */
 
@@ -1017,16 +1031,34 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 <div id="planner-modal" class="ai-modal-overlay" onclick="closePlannerModalBg(event)">
   <div class="ai-modal-container">
     <div class="ai-close" onclick="closePlannerModal()">×</div>
-    <div class="planner-full" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; height: 100%;">
-      <div class="ai-modal-header" style="text-align: center; border-bottom: none; padding-bottom: 0;">
-        <h3 style="font-size: 1.6rem;">🌿 VIETANA Smart Concierge</h3>
-        <p style="font-size: 1rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem;">Travel Gets Better with VIETANA</p>
+    <div class="planner-left">
+      <div class="ai-modal-header">
+        <h3>🌿 VIETANA Smart Concierge</h3>
+        <p>Travel Gets Better with VIETANA</p>
       </div>
       <div class="planner-chat" id="pcMsgs"></div>
-      <div class="pc-input-area" style="padding: 1.5rem 2rem 3rem 2rem;">
+      <div class="pc-input-area">
         <div class="pc-greeting-area" id="pcGreetingArea">
-</div>l" id="ldpEmail">✉ Email VIETANA™</a>
+          <div class="pc-greeting">Hello, how can I help you plan your trip?</div>
+          <div class="pc-examples">For example: <span id="pcExampleText">"Suggest a 5-day itinerary in Hanoi"</span></div>
         </div>
+        <div class="pc-input-wrap">
+          <div class="pc-input-inner">
+            <button class="pc-mic">🎤</button>
+            <input type="text" class="pc-input" id="pcInput" placeholder="Where would you like to go?" onkeypress="if(event.key === 'Enter') plannerSend()">
+            <button class="pc-send" onclick="plannerSend()"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></button>
+          </div>
+        </div>
+        <div class="pc-options" id="pcOptions"></div>
+      </div>
+    </div>
+    <div class="planner-right">
+      <div class="live-dream-panel">
+         <h4>Live Itinerary</h4>
+         <div class="ldp-items"></div>
+         <div class="ldp-actions" id="ldpActions">
+            <a href="mailto:info@vietana.com" class="ldp-btn email" id="ldpEmail">✉ Email VIETANA™</a>
+         </div>
       </div>
     </div>
   </div>
@@ -1519,16 +1551,120 @@ function setLang(lang){
 const plannerModal = document.getElementById('planner-modal');
 const pcMsgs = document.getElementById('pcMsgs'), pcInput = document.getElementById('pcInput');
 
-let pStep = 0, pAnswers = [];
-const STEPS = [
-  {q:"Beaches and relaxation, or hidden places and adventure?",opts:['🏖️ Beautiful Beaches','🗺️ Hidden & Adventure','⚖️ A mix of both']},
-  {q:"What is your travel style — Luxury stays or Backpacking/Budget?",opts:['✨ Premium & Luxury','🎒 Backpacking & Budget','🏨 Smart Comfortable Stays']},
-  {q:"Is food comfort important to you? (Indian vs Vietnamese)",opts:['🍛 Need Indian food mostly','🍜 Excited for local food','⚖️ Balance of both']},
-  {q:"Who are you traveling with? Honeymoon, family or solo?",opts:['💑 Honeymoon/Couples','👨‍👩‍👧 Family Trip','🎒 Solo Traveler']},
-  {q:"Are you looking for vibrant nightlife or peaceful escapes?",opts:['🌙 Vibrant Nightlife','🧘 Peaceful & Quiet','⚖️ A bit of both']},
-  {q:"Hidden Vietnam or iconic attractions (like Halong Bay, Bana Hills)?",opts:['⛩️ Hidden & Authentic','📸 Iconic Attractions','⚖️ Mixed approach']},
-  {q:"Final question: What would make this trip truly unforgettable for you?",opts:['Knowing everything is organized','Discovering secret spots','Amazing food experiences']}
+let pAnswers = [];
+let TravelMemory = { travelType: "", budget: "", duration: "", foodPreference: "", nightlife: "", beaches: "", luxury: "", family: "", kids: "", elderly: "", walkingLevel: "", shopping: "", cityInterest: "", specialOccasion: "", travelPace: "", weatherPreference: "", hiddenPlaces: "" };
+let refinementMode = false;
+
+const CORE_QUESTIONS = [
+  { field: 'travelType', q: "First, what's your ultimate Vietnam dream?", opts: ['🏖️ Beautiful Beaches','🗺️ Hidden & Adventure','⚖️ A mix of both'] },
+  { field: 'budget', q: "What is your travel style and budget?", opts: ['✨ Premium & Luxury','🎒 Backpacking & Budget','🏨 Smart Comfortable Stays'] },
+  { field: 'foodPreference', q: "Is food comfort important to you?", opts: ['🍛 Need Indian food mostly','🍜 Excited for local food','⚖️ Balance of both'] },
+  { field: 'travelPace', q: "How do you like your travel pace?", opts: ['Chill & slow','Packed with adventure','Balanced'] },
+  { field: 'nightlife', q: "Are you looking for vibrant nightlife or peaceful escapes?", opts: ['🌙 Vibrant Nightlife','🧘 Peaceful & Quiet','⚖️ A bit of both'] }
 ];
+
+function checkConfidence() {
+  let hasType = TravelMemory.travelType !== "";
+  let hasBudgetOrDur = TravelMemory.budget !== "" || TravelMemory.duration !== "";
+  let otherPrefs = 0;
+  for (let key in TravelMemory) {
+    if (key !== "travelType" && key !== "budget" && key !== "duration" && TravelMemory[key] !== "") {
+      otherPrefs++;
+    }
+  }
+  return hasType && hasBudgetOrDur && (otherPrefs >= 2);
+}
+
+function getNextMissingQuestion() {
+  for (let q of CORE_QUESTIONS) {
+    if (!TravelMemory[q.field]) return q;
+  }
+  return null;
+}
+
+function syncMemoryToPanel() {
+  pAnswers[0] = TravelMemory.travelType || "Not set";
+  pAnswers[1] = TravelMemory.budget || TravelMemory.luxury || "Not set";
+  pAnswers[2] = TravelMemory.foodPreference || "Not set";
+  pAnswers[3] = (TravelMemory.family==="true"?"Family ":"") + (TravelMemory.kids==="true"?"Kids ":"") + (TravelMemory.elderly==="true"?"Elderly":"") || "Not set";
+  pAnswers[4] = TravelMemory.nightlife || "Not set";
+  pAnswers[5] = TravelMemory.cityInterest || "Not set";
+  pAnswers[6] = TravelMemory.walkingLevel || TravelMemory.travelPace || "Not set";
+  updateLdp();
+}
+
+function handleAiResponse(userInput) {
+  let text = userInput.toLowerCase();
+  
+  if (text.includes("generate") || text === "no, that's it") {
+    return { text: "[GENERATE_ITINERARY]", opts: [] };
+  }
+  
+  let negations = ["no", "wrong", "not this", "don't like", "change", "something else", "nope", "not good", "hmm", "maybe not"];
+  if (negations.some(n => text === n || text.startsWith(n + " "))) {
+    refinementMode = true;
+    let rText = "😊 No worries.<br><br>I may have missed something.<br><br>Tell me what feels wrong and I’ll improve it.";
+    return { text: rText, opts: ['🍛 Food','🌊 Beaches','🌃 Nightlife','💰 Budget','💕 Romance','👨‍👩‍👧 Family','🌴 Hidden places'] };
+  }
+
+  if (text.includes("tell me about hanoi") || (text.includes("hanoi") && text.includes("tell"))) {
+    TravelMemory.cityInterest = "Hanoi";
+    syncMemoryToPanel();
+    let rText = `🌿 Hanoi feels very different.<br><br>Top things:<br>1. Train Street Coffee<br>2. Old Quarter<br>3. Hoan Kiem Lake<br>4. Temple of Literature<br>5. Night food tours<br><br>Best months:<br>October–April<br><br>Food:<br>Excellent street food<br><br>Then:<br><br>Would Hanoi fit your travel style?`;
+    return { text: rText, opts: ['Yes, add Hanoi', 'No, skip it'] };
+  }
+
+  if (text.includes("indian food only") || text.includes("indian")) {
+    TravelMemory.foodPreference = "Indian";
+    syncMemoryToPanel();
+    let rText = `🍛 Got it.<br><br>Updated your journey:<br><br>Indian food priority: HIGH<br><br>Refining recommendations...<br><br>What should I improve next?`;
+    return { text: rText, opts: ['No, generate itinerary', 'Change pace', 'Add luxury'] };
+  }
+  
+  if (text.includes("parent") || text.includes("elderly") || text.includes("no walking") || text.includes("family")) {
+    TravelMemory.family = "true";
+    TravelMemory.elderly = "true";
+    TravelMemory.walkingLevel = "low";
+    syncMemoryToPanel();
+    let rText = `🍛 Got it.<br><br>Updated your journey:<br><br>Walking: LOW<br><br>Family comfort mode: ON<br><br>Refining recommendations...<br><br>What should I improve next?`;
+    return { text: rText, opts: ['No, generate itinerary', 'Change food', 'Add luxury'] };
+  }
+
+  let nextQ = getNextMissingQuestion();
+  if (nextQ && !refinementMode) {
+    TravelMemory[nextQ.field] = userInput;
+    syncMemoryToPanel();
+  } else {
+    TravelMemory.specialOccasion = userInput;
+    syncMemoryToPanel();
+    refinementMode = false;
+  }
+
+  if (checkConfidence()) {
+    return { text: "YOUR VIETANA™ MATCH is ready! I have high confidence in these recommendations based on your profile.<br><br>Does everything look good?", opts: ['Generate Itinerary', 'Change something'] };
+  }
+
+  let followUp = getNextMissingQuestion();
+  if (followUp) {
+    return { text: followUp.q, opts: followUp.opts };
+  } else {
+    return { text: "YOUR VIETANA™ MATCH is ready!", opts: ['Generate Itinerary'] };
+  }
+}
+
+function processAiResponse(response) {
+  if (response.text.includes('[GENERATE_ITINERARY]')) {
+    const inpWrap = document.querySelector('.pc-input-wrap');
+    if(inpWrap) inpWrap.style.display = 'none';
+    generateItinerary();
+    return;
+  }
+  
+  addMsg(response.text);
+  if (response.opts && response.opts.length > 0) {
+    setOpts(response.opts);
+  }
+}
 
 function openPlannerModal() {
   plannerModal.classList.add('open');
@@ -1565,6 +1701,48 @@ const PHRASES = [
 ];
 let phraseIdx = 0;
 const pcEx = document.getElementById('pcExampleText');
+function generateItinerary() {
+  addMsg("Beautiful! 🌿 Crafting your personalized Vietnam story based on your preferences...");
+  setTimeout(() => {
+    const ldpPanel = document.querySelector('.live-dream-panel');
+    if(ldpPanel) ldpPanel.classList.add('celebrate');
+    const actions = document.getElementById('ldpActions');
+    if(actions) actions.classList.add('show');
+    
+    let memStr = "";
+    for(let k in TravelMemory) {
+       if(TravelMemory[k]) memStr += `${k}: ${TravelMemory[k]}\n`;
+    }
+    
+    const waMsg = encodeURIComponent(`Hi VIETANA! I used the AI planner.\n\nMEMORY OBJECT:\n${memStr}\nI'd love to discuss my trip!`);
+    
+    const div = document.createElement('div');
+    div.className = 'msg msg-bot';
+    div.innerHTML = `
+      <div class="msg-avatar"></div>
+      <div class="msg-bubble" style="max-width: 90%;">
+        <h3>YOUR VIETANA™ MATCH is ready! 🇻🇳</h3>
+        <p>I have built the perfect framework for your journey. A dedicated Vietana expert will now finalize the bookings.</p>
+        <div style="margin-top:15px; display:flex; flex-direction:column; gap:10px;">
+          <a href="https://wa.me/919810156456?text=${waMsg}" target="_blank" class="pc-chip" style="text-align:center; background: #25D366; color:#fff; border:none; display:flex; justify-content:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp India
+          </a>
+          <a href="https://wa.me/84904123456?text=${waMsg}" target="_blank" class="pc-chip" style="text-align:center; background: #25D366; color:#fff; border:none; display:flex; justify-content:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp Vietnam
+          </a>
+          <a href="mailto:support@vietana.com?subject=Vietnam Itinerary Inquiry&body=${waMsg}" target="_blank" class="pc-chip" style="text-align:center;">
+            ✉️ Email Support
+          </a>
+        </div>
+      </div>
+    `;
+    pcMsgs.appendChild(div);
+    pcMsgs.scrollTop = pcMsgs.scrollHeight;
+  }, 1500);
+}
+
 setInterval(() => {
   if(pcInput && pcEx) {
     phraseIdx = (phraseIdx + 1) % PHRASES.length;
@@ -1577,55 +1755,62 @@ setInterval(() => {
   }
 }, 3000);
 
-function parseKeywords(text) {
-  let textL = text.toLowerCase();
+function updateLdp() {
+  const ldpItems = document.querySelector('.ldp-items');
+  if(!ldpItems) return;
   
-  // Fill as much of pAnswers as possible based on keywords
-  // 0: Beaches vs Adventure
-  if(textL.includes('beach') || textL.includes('relax')) pAnswers[0] = '🏖️ Beautiful Beaches';
-  else if(textL.includes('hidden') || textL.includes('adventure')) pAnswers[0] = '🗺️ Hidden & Adventure';
-  else pAnswers[0] = '⚖️ A mix of both';
+  let progress = document.getElementById('ldpProgress');
+  if(!progress) {
+    progress = document.createElement('div');
+    progress.id = 'ldpProgress';
+    progress.style.height = '3px';
+    progress.style.background = 'var(--gold)';
+    progress.style.width = '0%';
+    progress.style.transition = 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    progress.style.marginBottom = '1.5rem';
+    progress.style.borderRadius = '3px';
+    ldpItems.parentNode.insertBefore(progress, ldpItems);
+  }
+
+  ldpItems.innerHTML = '';
+  const labels = [
+    { name: 'Vibe', icon: '✨' },
+    { name: 'Style', icon: '🏨' },
+    { name: 'Food', icon: '🍜' },
+    { name: 'Group', icon: '👨‍👩‍👧' },
+    { name: 'Nightlife', icon: '🌙' },
+    { name: 'Focus', icon: '🎯' },
+    { name: 'Extras', icon: '💡' }
+  ];
+  labels.forEach((lbl, i) => {
+    if(pAnswers[i]) {
+      const d = document.createElement('div');
+      d.className = 'ldp-item';
+      d.style.animation = `chipFadeIn 0.5s ease forwards`;
+      d.innerHTML = `<span class="ldp-lbl">${lbl.icon} ${lbl.name}</span><span class="ldp-val highlight">${pAnswers[i]}</span>`;
+      ldpItems.appendChild(d);
+    }
+  });
   
-  // 1: Style
-  if(textL.includes('luxury') || textL.includes('premium')) pAnswers[1] = '✨ Premium & Luxury';
-  else if(textL.includes('budget') || textL.includes('backpack')) pAnswers[1] = '🎒 Backpacking & Budget';
-  else pAnswers[1] = '🏨 Smart Comfortable Stays';
-  
-  // 2: Food
-  if(textL.includes('indian') || textL.includes('veg')) pAnswers[2] = '🍛 Need Indian food mostly';
-  else if(textL.includes('local') || textL.includes('street food')) pAnswers[2] = '🍜 Excited for local food';
-  else pAnswers[2] = '⚖️ Balance of both';
-  
-  // 3: Group
-  if(textL.includes('honeymoon') || textL.includes('couple') || textL.includes('romantic')) pAnswers[3] = '💑 Honeymoon/Couples';
-  else if(textL.includes('family') || textL.includes('kid')) pAnswers[3] = '👨‍👩‍👧 Family Trip';
-  else pAnswers[3] = '🎒 Solo Traveler';
-  
-  // 4: Nightlife
-  if(textL.includes('nightlife') || textL.includes('party')) pAnswers[4] = '🌙 Vibrant Nightlife';
-  else if(textL.includes('peace') || textL.includes('quiet')) pAnswers[4] = '🧘 Peaceful & Quiet';
-  else pAnswers[4] = '⚖️ A bit of both';
-  
-  // 5: Iconic vs Hidden
-  if(textL.includes('hidden') || textL.includes('secret')) pAnswers[5] = '⛩️ Hidden & Authentic';
-  else pAnswers[5] = '📸 Iconic Attractions';
-  
-  // 6: Focus
-  pAnswers[6] = 'Knowing everything is organized';
+  if(progress) {
+    const answered = pAnswers.filter(a => a).length;
+    progress.style.width = `${(answered / 7) * 100}%`;
+  }
 }
 
 function setOpts(opts) {
   const pcOpts = document.getElementById('pcOptions') || document.createElement('div');
   if(!document.getElementById('pcOptions')) {
     pcOpts.id = 'pcOptions';
-    pcOpts.className = 'pc-opts';
+    pcOpts.className = 'pc-options';
     pcMsgs.appendChild(pcOpts);
   }
   pcOpts.innerHTML = '';
-  opts.forEach(o => {
+  opts.forEach((o, i) => {
     const d = document.createElement('div');
-    d.className = 'pc-opt';
+    d.className = 'pc-chip';
     d.textContent = o;
+    d.style.animationDelay = (i * 0.1) + 's';
     d.onclick = () => plannerSelect(d, o);
     pcOpts.appendChild(d);
   });
@@ -1633,55 +1818,54 @@ function setOpts(opts) {
 }
 
 function plannerSelect(el, val) {
-  document.querySelectorAll('.pc-opt').forEach(o => o.classList.remove('sel'));
+  document.querySelectorAll('.pc-chip').forEach(o => o.classList.remove('sel'));
   el.classList.add('sel');
-  pAnswers[pStep] = val;
+  
   addMsg(val, 'user');
   const pcOpts = document.getElementById('pcOptions');
   if(pcOpts) pcOpts.remove();
-  pStep++;
   showTyping();
   
   setTimeout(() => {
     removeTyping();
-    if(pStep < STEPS.length) {
-      addMsg(STEPS[pStep].q);
-      setOpts(STEPS[pStep].opts);
-    } else {
-      generateItinerary();
-    }
-  }, 1000);
+    let res = handleAiResponse(val);
+    processAiResponse(res);
+  }, 800);
 }
 
 function plannerSend() {
   const v = pcInput.value.trim();
   if(!v) return;
+  pcInput.value = '';
   
-  // Hide initial greeting area
-  const greetArea = document.getElementById('pcGreetingArea');
-  if(greetArea) greetArea.style.display = 'none';
-  const inpWrap = document.querySelector('.pc-input-wrap');
-  if(inpWrap) inpWrap.style.display = 'none'; // Hide text input once flow starts
+  let isEmpty = true;
+  for(let key in TravelMemory) { if(TravelMemory[key]) { isEmpty = false; break; } }
+  if (isEmpty) {
+    const greetArea = document.getElementById('pcGreetingArea');
+    if(greetArea) greetArea.style.display = 'none';
+    pcInput.placeholder = "Type your own answer...";
+  }
+  
+  const pcOpts = document.getElementById('pcOptions');
+  if(pcOpts) pcOpts.remove();
   
   addMsg(v, 'user');
-  pcInput.value = '';
   showTyping();
   
   setTimeout(() => {
     removeTyping();
-    parseKeywords(v);
-    
-    // Skip to a question that wasn't obviously filled, or just show summary if we want to "continue old flow"
-    // Let's just start the flow from step 1, but we already have keywords. Actually, the prompt says "continue old planner flow"
-    pStep = 1; // start from question 1 since keywords might not cover everything perfectly
-    addMsg("🌿 I picked up some vibes! Let's refine it. " + STEPS[1].q);
-    setOpts(STEPS[1].opts);
+    let res = handleAiResponse(v);
+    processAiResponse(res);
   }, 1000);
 }
 
 function generateItinerary() {
   addMsg("Beautiful! 🌿 Crafting your personalized Vietnam story based on your preferences...");
   setTimeout(() => {
+    const ldpPanel = document.querySelector('.live-dream-panel');
+    if(ldpPanel) ldpPanel.classList.add('celebrate');
+    const actions = document.getElementById('ldpActions');
+    if(actions) actions.classList.add('show');
     const waMsg = encodeURIComponent(`Hi VIETANA! I used the AI planner.\n\nDream: ${pAnswers[0]}\nVibe: ${pAnswers[1]}\nStyle: ${pAnswers[2]}\nFood: ${pAnswers[3]}\nGroup: ${pAnswers[4]}\nNightlife: ${pAnswers[5]}\nFocus: ${pAnswers[6]}\n\nI'd love to discuss my trip!`);
     
     const div = document.createElement('div');
@@ -2259,12 +2443,12 @@ function closeSrvModalBg(e) {
 }
 .srv-modal-overlay.show { opacity: 1; }
 .srv-modal {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
   padding: 2.5rem;
   width: 100%;
   max-width: 450px;
