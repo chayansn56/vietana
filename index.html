@@ -1491,7 +1491,7 @@ function showFoodModal(foodName) {
   
   // Use a reliable placeholder service with keywords based on the food name
   let keyword = foodName.split('(')[0].trim().replace(/\s+/g, ',');
-  img.src = `https://loremflickr.com/600/400/${keyword},vietnam,food`;
+  img.src = `https://image.pollinations.ai/prompt/delicious%20authentic%20Vietnamese%20food%20${keyword}?width=600&height=400&nologo=true`;
   
   modal.style.display = 'flex';
   setTimeout(() => {
