@@ -513,47 +513,44 @@ section{padding:8rem 7%}
 }
 
 /* BUDGET CALCULATOR */
-.bc-section { background: var(--gx); padding: 6rem 7%; position: relative; font-family: 'Inter', sans-serif; }
-.bc-container { max-width: 1000px; margin: 0 auto; background: rgba(255,255,255,0.02); backdrop-filter: blur(20px); border: 1px solid rgba(201,168,76,0.2); border-radius: 24px; padding: 3rem; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-.bc-header { text-align: center; margin-bottom: 3rem; }
-.bc-header h2 { color: var(--gold3); font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-.bc-header p { color: rgba(255,255,255,0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.bc-section { background: var(--gx); padding: 4rem 7%; position: relative; font-family: 'Inter', sans-serif; }
+.bc-container { max-width: 850px; margin: 0 auto; background: rgba(255,255,255,0.02); backdrop-filter: blur(20px); border: 1px solid rgba(201,168,76,0.2); border-radius: 16px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+.bc-header { text-align: center; margin-bottom: 2rem; }
+.bc-header h2 { color: var(--gold3); font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.3rem; }
+.bc-header p { color: rgba(255,255,255,0.7); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
-.bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-@media(max-width: 768px) { .bc-grid { grid-template-columns: 1fr; gap: 3rem; } .bc-container { padding: 2rem; } }
+.bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media(max-width: 768px) { .bc-grid { grid-template-columns: 1fr; gap: 2rem; } .bc-container { padding: 1.5rem; } }
 
-.bc-input-group { margin-bottom: 2.5rem; }
-.bc-input-group label { display: block; color: rgba(255,255,255,0.9); font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.05em; }
-.bc-val { color: var(--gold); float: right; font-size: 1.1rem; }
+.bc-input-group { margin-bottom: 1.5rem; }
+.bc-input-group label { display: block; color: rgba(255,255,255,0.9); font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.bc-val { color: var(--gold); float: right; font-size: 0.9rem; }
 
-.bc-toggle-group { display: flex; background: rgba(0,0,0,0.5); border-radius: 12px; padding: 4px; border: 1px solid rgba(255,255,255,0.1); }
-.bc-toggle { flex: 1; background: transparent; border: none; color: rgba(255,255,255,0.5); padding: 0.8rem; font-size: 0.85rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+.bc-toggle-group { display: flex; background: rgba(0,0,0,0.5); border-radius: 8px; padding: 3px; border: 1px solid rgba(255,255,255,0.1); }
+.bc-toggle { flex: 1; background: transparent; border: none; color: rgba(255,255,255,0.5); padding: 0.6rem; font-size: 0.75rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
 .bc-toggle:hover { color: rgba(255,255,255,0.9); }
-.bc-toggle.active { background: var(--gold); color: #000; box-shadow: 0 4px 10px rgba(201,168,76,0.3); }
+.bc-toggle.active { background: var(--gold); color: #000; box-shadow: 0 2px 5px rgba(201,168,76,0.3); }
 
-.bc-slider { -webkit-appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 5px; outline: none; margin-top: 10px; }
-.bc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.5); transition: transform 0.1s; }
+.bc-slider { -webkit-appearance: none; width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; outline: none; margin-top: 5px; }
+.bc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.5); transition: transform 0.1s; }
 .bc-slider::-webkit-slider-thumb:active { transform: scale(1.2); }
 
-.bc-output { background: rgba(0,0,0,0.3); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: space-between; }
-.bc-total-wrap { text-align: center; margin-bottom: 2rem; position: relative; }
-.bc-currency-toggle { position: absolute; top: -10px; right: 0; display: flex; gap: 5px; }
-.bcc-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); border-radius: 20px; padding: 4px 12px; font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-.bcc-btn:hover { border-color: rgba(255,255,255,0.5); }
-.bcc-btn.active { background: rgba(255,255,255,0.15); color: #fff; border-color: #fff; }
+.bc-output { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: space-between; }
+.bc-total-wrap { text-align: center; margin-bottom: 1.5rem; }
+.bc-total-wrap h3 { color: rgba(255,255,255,0.6); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+.bc-price { color: #fff; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 700; margin-bottom: 0.2rem; text-shadow: 0 2px 10px rgba(201,168,76,0.2); }
+.bc-note { color: rgba(255,255,255,0.4); font-size: 0.65rem; }
 
-.bc-total-wrap h3 { color: rgba(255,255,255,0.6); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-.bc-price { color: #fff; font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 700; margin-bottom: 0.5rem; text-shadow: 0 4px 20px rgba(201,168,76,0.2); }
-.bc-note { color: rgba(255,255,255,0.4); font-size: 0.7rem; }
+.bc-breakdown { margin-bottom: 1.5rem; }
+.bcb-item { margin-bottom: 0.8rem; }
+.bcb-row { display: flex; justify-content: space-between; margin-bottom: 0.3rem; }
+.bcb-label { color: rgba(255,255,255,0.8); font-size: 0.75rem; font-weight: 600; }
+.bcb-val { color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 700; }
+.bcb-bar-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+.bcb-bar { height: 100%; border-radius: 2px; transition: width 0.3s; }
 
-.bc-breakdown { margin-bottom: 2.5rem; }
-.bcb-item { margin-bottom: 1.2rem; }
-.bcb-label { display: block; color: rgba(255,255,255,0.8); font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; }
-.bcb-bar-bg { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-.bcb-bar { height: 100%; border-radius: 3px; }
-
-.bc-cta { display: block; width: 100%; padding: 1.2rem; background: linear-gradient(135deg, var(--gold2), var(--gold3)); color: #000; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 10px 20px rgba(201,168,76,0.3); }
-.bc-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(201,168,76,0.5); }
+.bc-cta { display: block; width: 100%; padding: 0.8rem; background: linear-gradient(135deg, var(--gold2), var(--gold3)); color: #000; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.bc-cta:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(201,168,76,0.3); }
 
 /* CONTACT */
 #contact{background:var(--gx);text-align:center;position:relative;overflow:hidden;padding:8rem 7%}
@@ -1123,7 +1120,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <p class="hero-support" data-translate="heroSupport">We handle everything from your visa until you\'re back home.</p>
     <div class="hbtns">
       <a href="https://wa.me/919953294543?text=Hi%20VIETANA%2C%20I%27d%20like%20to%20plan%20my%20Vietnam%20trip!" class="bwa" target="_blank" data-translate="btnPlan">💬 Plan My Trip — India</a>
-      <a href="#feeling" class="bgh" data-translate="btnDiscover">✦ Discover Vietnam</a>
+      <a href="#" class="bgh" onclick="openMagicMode(event)" data-translate="btnDiscover">✦ Discover Vietnam</a>
     </div>
   </div>
   <div class="hero-loc show" id="heroLoc">
@@ -1270,7 +1267,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="bc-container">
     <div class="bc-header">
       <h2 data-translate="bcTitle">Trip Calculator</h2>
-      <p data-translate="bcSub">Estimate your perfect Vietnam journey.</p>
+      <p data-translate="bcSub">Real travel estimates from India to Vietnam (2026 data)</p>
     </div>
     
     <div class="bc-grid">
@@ -1299,31 +1296,23 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <!-- Output -->
       <div class="bc-output">
         <div class="bc-total-wrap">
-          <div class="bc-currency-toggle">
-            <button class="bcc-btn active" data-curr="inr">₹ INR</button>
-            <button class="bcc-btn" data-curr="usd">$ USD</button>
-          </div>
-          <h3>Estimated Total</h3>
-          <div class="bc-price" id="bcTotal">₹92,400</div>
-          <p class="bc-note">Excludes international flights</p>
+          <h3>Estimated Total (INR)</h3>
+          <div class="bc-price" id="bcTotal">₹0</div>
+          <p class="bc-note">Includes Flights, Visa, and Daily Expenses</p>
         </div>
         
         <div class="bc-breakdown">
           <div class="bcb-item">
-            <span class="bcb-label">🏨 Accommodation (~40%)</span>
-            <div class="bcb-bar-bg"><div class="bcb-bar" style="width:40%; background:var(--gold);"></div></div>
+            <div class="bcb-row"><span class="bcb-label">✈️ Flights (India ↔ Vietnam)</span><span class="bcb-val" id="bcFlt">₹0</span></div>
+            <div class="bcb-bar-bg"><div class="bcb-bar" id="bcFltBar" style="background:#2196F3;"></div></div>
           </div>
           <div class="bcb-item">
-            <span class="bcb-label">🍜 Food & Dining (~25%)</span>
-            <div class="bcb-bar-bg"><div class="bcb-bar" style="width:25%; background:#ff9800;"></div></div>
+            <div class="bcb-row"><span class="bcb-label">🛂 E-Visa (Single Entry)</span><span class="bcb-val" id="bcVisa">₹0</span></div>
+            <div class="bcb-bar-bg"><div class="bcb-bar" id="bcVisaBar" style="background:#4CAF50;"></div></div>
           </div>
           <div class="bcb-item">
-            <span class="bcb-label">🎫 Activities & Tours (~20%)</span>
-            <div class="bcb-bar-bg"><div class="bcb-bar" style="width:20%; background:#4caf50;"></div></div>
-          </div>
-          <div class="bcb-item">
-            <span class="bcb-label">🚕 Transport (~15%)</span>
-            <div class="bcb-bar-bg"><div class="bcb-bar" style="width:15%; background:#f44336;"></div></div>
+            <div class="bcb-row"><span class="bcb-label">🏨 Stay, Food, Transport</span><span class="bcb-val" id="bcDaily">₹0</span></div>
+            <div class="bcb-bar-bg"><div class="bcb-bar" id="bcDailyBar" style="background:var(--gold);"></div></div>
           </div>
         </div>
         
@@ -2049,14 +2038,17 @@ if(evSection) {
 }
 
 // BUDGET CALCULATOR LOGIC
+const bcConstants = {
+  flight: 25000,
+  visa: 2100
+};
 const bcRates = {
-  budget: { usd: 40, inr: 3300 },
-  comfort: { usd: 80, inr: 6600 },
-  luxury: { usd: 180, inr: 15000 }
+  budget: 3300,
+  comfort: 9600,
+  luxury: 25000
 };
 
 let bcStyle = 'budget';
-let bcCurr = 'inr';
 let bcDays = 7;
 let bcPax = 2;
 
@@ -2066,18 +2058,28 @@ const bcPaxEl = document.getElementById('bcPax');
 const bcDaysVal = document.getElementById('bcDaysVal');
 const bcPaxVal = document.getElementById('bcPaxVal');
 
+const bcFltEl = document.getElementById('bcFlt');
+const bcVisaEl = document.getElementById('bcVisa');
+const bcDailyEl = document.getElementById('bcDaily');
+const bcFltBar = document.getElementById('bcFltBar');
+const bcVisaBar = document.getElementById('bcVisaBar');
+const bcDailyBar = document.getElementById('bcDailyBar');
+
 function updateBcCalc() {
-  const dailyRate = bcRates[bcStyle][bcCurr];
-  const total = dailyRate * bcDays * bcPax;
+  const flightTot = bcConstants.flight * bcPax;
+  const visaTot = bcConstants.visa * bcPax;
+  const dailyTot = bcRates[bcStyle] * bcDays * bcPax;
+  const total = flightTot + visaTot + dailyTot;
   
-  let formatted = '';
-  if(bcCurr === 'inr') {
-    formatted = '₹' + total.toLocaleString('en-IN');
-  } else {
-    formatted = '$' + total.toLocaleString('en-US');
-  }
+  if(bcTotalEl) bcTotalEl.textContent = '₹' + total.toLocaleString('en-IN');
+  if(bcFltEl) bcFltEl.textContent = '₹' + flightTot.toLocaleString('en-IN');
+  if(bcVisaEl) bcVisaEl.textContent = '₹' + visaTot.toLocaleString('en-IN');
+  if(bcDailyEl) bcDailyEl.textContent = '₹' + dailyTot.toLocaleString('en-IN');
   
-  if(bcTotalEl) bcTotalEl.textContent = formatted;
+  if(bcFltBar) bcFltBar.style.width = Math.min((flightTot / total) * 100, 100) + '%';
+  if(bcVisaBar) bcVisaBar.style.width = Math.min((visaTot / total) * 100, 100) + '%';
+  if(bcDailyBar) bcDailyBar.style.width = Math.min((dailyTot / total) * 100, 100) + '%';
+  
   if(bcDaysVal) bcDaysVal.textContent = bcDays + (bcDays === 1 ? ' Day' : ' Days');
   if(bcPaxVal) bcPaxVal.textContent = bcPax + (bcPax === 1 ? ' Person' : ' People');
 }
@@ -2087,15 +2089,6 @@ document.querySelectorAll('.bc-toggle').forEach(btn => {
     document.querySelectorAll('.bc-toggle').forEach(b => b.classList.remove('active'));
     e.target.classList.add('active');
     bcStyle = e.target.getAttribute('data-style');
-    updateBcCalc();
-  });
-});
-
-document.querySelectorAll('.bcc-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    document.querySelectorAll('.bcc-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
-    bcCurr = e.target.getAttribute('data-curr');
     updateBcCalc();
   });
 });
@@ -2827,6 +2820,131 @@ function closeSrvModalBg(e) {
   .contact-gal-img { width: 100%; }
   .contact-heading { font-size: 2.5rem; }
 }
+/* MAGIC MODE CSS */
+#magicMode {
+  display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 9999999; background: #0b1d28;
+  opacity: 0; transition: opacity 0.8s ease-in-out; overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+  color: #fff;
+}
+.mm-slideshow {
+  position: absolute; inset: 0; z-index: 0;
+}
+.mm-slide {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 2s ease-in-out, transform 8s linear; transform: scale(1.05);
+}
+.mm-slide.active { opacity: 0.6; transform: scale(1); }
+.mm-slide::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+}
+#magicMode.active {
+  display: flex; opacity: 1; flex-direction: column; align-items: center; justify-content: center;
+}
+.mm-bg { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.mm-clouds {
+  position: absolute; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
+  animation: mmDrift 40s linear infinite alternate;
+}
+@keyframes mmDrift { from { transform: translate(-10%, -10%); } to { transform: translate(10%, 10%); } }
+
+.mm-orb-container {
+  position: relative; z-index: 10; cursor: pointer; pointer-events: auto;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s;
+}
+.mm-orb {
+  width: 280px; height: 280px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 20px; box-shadow: 0 0 50px rgba(255,255,255,0.1), inset 0 0 20px rgba(255,255,255,0.05);
+  animation: mmBreathe 4s ease-in-out infinite alternate;
+}
+.mm-orb h2 { font-size: 1.8rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 10px rgba(255,255,255,0.3); }
+.mm-orb p { font-size: 0.95rem; opacity: 0.8; line-height: 1.5; }
+@keyframes mmBreathe { from { transform: scale(0.95); box-shadow: 0 0 30px rgba(255,255,255,0.05); } to { transform: scale(1.05); box-shadow: 0 0 70px rgba(255,255,255,0.2); } }
+
+.mm-orb-container:hover .mm-orb { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+
+.mm-stars-container {
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+}
+.mm-star {
+  position: absolute; width: 40px; height: 40px;
+  background: radial-gradient(circle at center, #fff 0%, #fff 10%, transparent 12%);
+  border-radius: 50%;
+  pointer-events: auto; cursor: pointer;
+  transition: transform 0.3s;
+  animation: mmFloat 6s ease-in-out infinite alternate;
+  margin-top: -17px; margin-left: -17px;
+}
+.mm-star::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.7) 0%, transparent 60%);
+  border-radius: 50%; z-index: -1; pointer-events: none;
+  animation: mmGlow 3s ease-in-out infinite alternate;
+}
+@keyframes mmGlow { 0% { opacity: 0.2; transform: scale(0.6); } 100% { opacity: 1; transform: scale(1.1); } }
+@keyframes mmFloat { from { transform: translateY(-15px); } to { transform: translateY(15px); } }
+.mm-star:hover { transform: scale(1.5); }
+.mm-star:hover::before { background: radial-gradient(circle at center, rgba(255,215,0,0.8) 0%, transparent 60%); }
+.mm-star::after {
+  content: attr(data-label); position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem;
+  white-space: nowrap; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(5px);
+  pointer-events: none; z-index: 10;
+}
+.mm-star:hover::after { opacity: 1; }
+
+.mm-flash {
+  position: fixed; inset: 0; background: #fff; z-index: 999;
+  opacity: 0; pointer-events: none; transition: opacity 0.8s;
+}
+.mm-flash.active { opacity: 1; }
+
+.mm-story-card {
+  position: absolute; z-index: 20; background: rgba(20, 30, 25, 0.7);
+  backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 30px;
+  padding: 40px; width: 90%; max-width: 500px;
+  text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none; transform: scale(0.9);
+  transition: opacity 0.5s, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.mm-story-card.active { opacity: 1; pointer-events: auto; transform: scale(1); }
+.mm-story-card h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--gold3); }
+.mm-story-card p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; white-space: pre-line; }
+#mmStoryBtn {
+  display: inline-block; padding: 12px 25px; background: #fff; color: #111;
+  border-radius: 50px; text-decoration: none; font-weight: 700; transition: transform 0.3s;
+}
+#mmStoryBtn:hover { transform: translateY(-3px); }
+.mm-close-story {
+  position: absolute; top: 15px; right: 20px; background: none; border: none;
+  color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.6; transition: opacity 0.3s;
+}
+.mm-close-story:hover { opacity: 1; }
+
+.mm-bottom-controls {
+  position: absolute; bottom: 30px; width: 100%; display: flex;
+  flex-direction: column; align-items: center; gap: 15px; z-index: 30;
+  opacity: 0; transition: opacity 1s 1s; pointer-events: none;
+}
+#magicMode.active .mm-bottom-controls { opacity: 1; pointer-events: auto; }
+.mm-cta { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; opacity: 0.8; }
+.mm-cta button {
+  background: var(--gold); border: none; padding: 8px 15px; border-radius: 20px;
+  color: #111; font-weight: 700; cursor: pointer; transition: transform 0.2s;
+}
+.mm-cta button:hover { transform: translateY(-2px); }
+.mm-exit {
+  background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff;
+  padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; cursor: pointer;
+  transition: background 0.3s;
+}
+.mm-exit:hover { background: rgba(255,255,255,0.1); }
 </style>
 
 <div id="aboutPanel">
@@ -2943,5 +3061,223 @@ function closeSrvModalBg(e) {
     </div>
   </div>
 </div>
+<!-- MAGIC MODE HTML -->
+<div id="magicMode">
+  <div class="mm-slideshow" id="mmSlideshow">
+    <div class="mm-slide active" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80')"></div>
+    <div class="mm-slide" style="background-image: url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1600&q=80')"></div>
+    <div class="mm-slide" style="background-image: url('https://images.unsplash.com/photo-1542012843-0570b7787fc5?w=1600&q=80')"></div>
+    <div class="mm-slide" style="background-image: url('https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1600&q=80')"></div>
+  </div>
+  <div class="mm-bg">
+    <div class="mm-clouds"></div>
+    <div class="mm-particles" id="mmParticles"></div>
+    <div class="mm-lanterns" id="mmLanterns"></div>
+  </div>
+  
+  <div class="mm-orb-container" id="mmOrb" onclick="clickMagicOrb()">
+    <div class="mm-orb">
+      <h2>✨ Touch Vietnam</h2>
+      <p>Not all journeys begin with a destination.<br>Some begin with a feeling.</p>
+    </div>
+  </div>
+
+  <div class="mm-stars-container" id="mmStars"></div>
+
+  <div class="mm-story-card" id="mmStoryCard">
+    <h2 id="mmStoryTitle">Title</h2>
+    <p id="mmStoryDesc">Description...</p>
+    <a href="#" id="mmStoryBtn" onclick="mmExploreFeeling(event)">Explore this destination &rarr;</a>
+    <button class="mm-close-story" onclick="closeStoryCard()">×</button>
+  </div>
+
+  <div class="mm-bottom-controls" id="mmControls">
+    <div class="mm-cta">
+      <span>Not sure?</span>
+      <button onclick="mmOpenAI()">✨ Let VIETANA™ understand you</button>
+    </div>
+    <button class="mm-exit" onclick="closeMagicMode()">Return to reality ↩</button>
+  </div>
+</div>
+
+<script>
+// MAGIC MODE JS
+const MAGIC_DESTINATIONS = [
+  { label: "Ha Noi", desc: "The capital of Vietnam, known for its centuries-old architecture and a rich culture with Southeast Asian, Chinese and French influences." },
+  { label: "Ha Long Bay", desc: "Emerald waters and thousands of towering limestone islands topped by rainforests. A UNESCO World Heritage site." },
+  { label: "Sapa", desc: "A colorful and charming town overlooking the terraced rice fields of the Muong Hoa Valley." },
+  { label: "Ninh Binh", desc: "Nicknamed 'Ha Long Bay on land', featuring winding rivers through striking limestone karsts." },
+  { label: "Ha Giang", desc: "Stunning mountainous landscapes, deep valleys, winding roads, and authentic local minority cultures." },
+  { label: "Mai Chau", desc: "A relaxed, rural valley with stilt houses and lush green paddy fields." },
+  { label: "Cao Bang", desc: "Home to the magnificent Ban Gioc Waterfall and vast unspoiled nature." },
+  { label: "Moc Chau", desc: "A plateau famous for its rolling tea hills and beautiful flower seasons." },
+  { label: "Ba Be Lake", desc: "Vietnam's largest natural lake surrounded by dramatic limestone peaks and thick evergreen forests." },
+  { label: "Da Nang", desc: "A modern coastal city known for its sandy beaches, Ba Na Hills, and the iconic Golden Bridge." },
+  { label: "Hoi An", desc: "An exceptionally well-preserved Ancient Town, famous for its glowing lanterns and custom tailors." },
+  { label: "Hue", desc: "The former imperial capital of Vietnam, lined with ancient tombs, pagodas, and the grand Citadel." },
+  { label: "Phong Nha", desc: "The adventure capital of Vietnam, boasting the world's most spectacular cave systems." },
+  { label: "Nha Trang", desc: "A high-energy beach resort city with beautiful bays, diving spots, and offshore islands." },
+  { label: "Da Lat", desc: "The 'City of Eternal Spring', featuring pine forests, waterfalls, and French colonial heritage." },
+  { label: "Quy Nhon", desc: "A peaceful coastal city offering beautiful, uncrowded beaches and rich Cham history." },
+  { label: "Phu Yen", desc: "Famous for its stunning coastal roads and the unique basalt rock columns of Ganh Da Dia." },
+  { label: "Ly Son Island", desc: "A pristine volcanic island known as the 'garlic kingdom' with crystal clear waters." },
+  { label: "Ho Chi Minh City", desc: "The bustling, energetic economic heart of Vietnam. A vibrant mix of old and new." },
+  { label: "Phu Quoc", desc: "A tropical paradise island offering white-sand beaches, luxury resorts, and dense jungles." },
+  { label: "Can Tho", desc: "The largest city in the Mekong Delta, famous for its lively Cai Rang Floating Market." },
+  { label: "Con Dao", desc: "A remote archipelago with spectacular marine life, untouched beaches, and a deep history." },
+  { label: "Mui Ne", desc: "A coastal resort town famous for its expansive red and white sand dunes and kite surfing." },
+  { label: "Ben Tre", desc: "The 'Coconut Capital' of the Mekong Delta, offering peaceful boat rides through shady canals." },
+  { label: "Chau Doc", desc: "A culturally diverse border town featuring floating villages and the beautiful Tra Su Mangrove Forest." },
+  { label: "Vung Tau", desc: "A popular coastal city and weekend getaway, known for its beaches and the giant Christ of Vung Tau." },
+  { label: "Tay Ninh", desc: "Home to the striking Ba Den Mountain and the colorful Cao Dai Holy See." },
+  { label: "Dong Thap", desc: "Famous for its beautiful lotus fields and the rich biodiversity of Tram Chim National Park." },
+  { label: "An Giang", desc: "A peaceful province characterized by endless rice fields, sugar palms, and vibrant Khmer culture." },
+  { label: "Vinh Long", desc: "A lush island setting in the Mekong Delta, famous for fruit orchards and traditional homestays." }
+];
+
+let mmSlideInterval;
+
+function startSlideshow() {
+  const slides = document.querySelectorAll('.mm-slide');
+  let currentSlide = 0;
+  if(mmSlideInterval) clearInterval(mmSlideInterval);
+  mmSlideInterval = setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }, 5000);
+}
+
+function stopSlideshow() {
+  if(mmSlideInterval) clearInterval(mmSlideInterval);
+}
+
+function openMagicMode(e) {
+  if (e) e.preventDefault();
+  const mm = document.getElementById('magicMode');
+  mm.style.display = 'flex';
+  const pCont = document.getElementById('mmParticles');
+  pCont.innerHTML = '';
+  for(let i=0; i<30; i++) {
+    const p = document.createElement('div');
+    p.style.position = 'absolute';
+    p.style.width = Math.random()*3 + 'px';
+    p.style.height = p.style.width;
+    p.style.background = '#fff';
+    p.style.borderRadius = '50%';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.top = Math.random()*100 + 'vh';
+    p.style.opacity = Math.random()*0.5 + 0.1;
+    p.style.animation = `mmFloat ${4 + Math.random()*4}s ease-in-out infinite alternate`;
+    p.style.animationDelay = `-${Math.random()*4}s`;
+    pCont.appendChild(p);
+  }
+  
+  setTimeout(() => { mm.classList.add('active'); }, 50);
+  startSlideshow();
+  
+  document.getElementById('mmOrb').style.display = 'flex';
+  document.getElementById('mmOrb').style.opacity = 1;
+  document.getElementById('mmOrb').style.transform = 'scale(1)';
+  document.getElementById('mmStars').innerHTML = '';
+  document.getElementById('mmStoryCard').classList.remove('active');
+  
+  if(!document.getElementById('mmFlash')) {
+    const f = document.createElement('div');
+    f.id = 'mmFlash';
+    f.className = 'mm-flash';
+    mm.appendChild(f);
+  }
+}
+
+function clickMagicOrb() {
+  const f = document.getElementById('mmFlash');
+  f.classList.add('active');
+  
+  const orb = document.getElementById('mmOrb');
+  
+  setTimeout(() => {
+    orb.style.display = 'none';
+    spawnStars();
+    setTimeout(() => { f.classList.remove('active'); }, 200);
+  }, 400);
+}
+
+function spawnStars() {
+  const cont = document.getElementById('mmStars');
+  cont.innerHTML = '';
+  MAGIC_DESTINATIONS.forEach((dest, i) => {
+    const star = document.createElement('div');
+    star.className = 'mm-star';
+    star.setAttribute('data-label', dest.label);
+    
+    // Grid-based random distribution to prevent 30 stars from clumping
+    const cols = 6;
+    const rows = 5;
+    const cellW = 80 / cols;
+    const cellH = 70 / rows;
+    
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    
+    const rx = 10 + (col * cellW) + (Math.random() * (cellW * 0.8));
+    const ry = 10 + (row * cellH) + (Math.random() * (cellH * 0.8));
+    
+    star.style.left = `calc(${rx}vw)`;
+    star.style.top = `calc(${ry}vh)`;
+    star.style.animationDelay = `-${Math.random() * 5}s`;
+    
+    // Randomize glow start delay for organic effect
+    const starBeforeStyle = document.createElement('style');
+    starBeforeStyle.innerHTML = `.mm-star:nth-child(${i+1})::before { animation-delay: -${Math.random()*3}s; }`;
+    document.head.appendChild(starBeforeStyle);
+    
+    star.onclick = () => openStoryCard(dest);
+    cont.appendChild(star);
+  });
+}
+
+function openStoryCard(emo) {
+  currentFeeling = emo.label;
+  document.getElementById('mmStoryTitle').innerText = emo.label;
+  document.getElementById('mmStoryDesc').innerText = emo.desc;
+  
+  const stars = document.querySelectorAll('.mm-star');
+  stars.forEach(s => { s.style.opacity = '0.2'; s.style.pointerEvents = 'none'; });
+  
+  document.getElementById('mmStoryCard').classList.add('active');
+}
+
+function closeStoryCard() {
+  document.getElementById('mmStoryCard').classList.remove('active');
+  const stars = document.querySelectorAll('.mm-star');
+  stars.forEach(s => { s.style.opacity = '1'; s.style.pointerEvents = 'auto'; });
+}
+
+function closeMagicMode() {
+  const mm = document.getElementById('magicMode');
+  mm.classList.remove('active');
+  stopSlideshow();
+  setTimeout(() => { mm.style.display = 'none'; }, 1500);
+}
+
+function mmExploreFeeling(e) {
+  e.preventDefault();
+  closeMagicMode();
+  setTimeout(() => {
+    openPlannerModal();
+    if (typeof TravelMemory !== 'undefined') {
+      TravelMemory.cityInterest = currentFeeling;
+      syncMemoryToPanel();
+      addMsg(`I see you are interested in exploring ${currentFeeling}. Let's build your trip around this beautiful destination!`, 'bot');
+    }
+  }, 1000);
+}
+
+function mmOpenAI() {
+  closeMagicMode();
+  setTimeout(() => { openPlannerModal(); }, 1000);
+}
+</script>
 </body>
 </html>
