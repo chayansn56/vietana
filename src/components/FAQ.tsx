@@ -2,32 +2,77 @@ import React, { useState } from 'react';
 import './FAQ.css';
 
 const FAQS = [
-  { q: 'Is a visa required for Indian citizens?', a: 'Yes, but it is easy! Most Indian travelers can get an e-visa online within 3-4 working days. We provide full assistance for this.' },
-  { q: 'Are there many vegetarian food options in Vietnam?', a: 'Absolutely! Vietnam has a rich Buddhist tradition, which means "Quán Chay" (vegetarian restaurants) are everywhere. We also curate a list of Indian restaurants across all major cities.' },
-  { q: 'What is the best time to visit Vietnam?', a: 'Vietnam is a long country, so there is always somewhere with good weather. Generally, Spring (Feb-Apr) and Autumn (Aug-Oct) are great for the whole country.' },
-  { q: 'Can I use Indian currency in Vietnam?', a: 'No, you should use Vietnamese Dong (VND) or US Dollars (USD). We recommend carrying some USD and withdrawing VND from local ATMs upon arrival.' },
-  { q: 'Do people speak English in Vietnam?', a: 'In major tourist areas, yes. However, having a local support team like VIETANA makes things much smoother, especially in hidden gems.' }
+  { 
+    q: 'Do Indian travelers need a visa for Vietnam?', 
+    a: 'Yes. Most Indian travelers require a Vietnam visa. VIETANA helps simplify the process and provides fast support, often within 24 hours depending on requirements.' 
+  },
+  { 
+    q: 'Can VIETANA customize my entire trip?', 
+    a: 'Absolutely. We do not believe in rigid fixed tours. Every trip can be tailored around your budget, travel style, food preferences and interests.' 
+  },
+  { 
+    q: 'Is Indian food available in Vietnam?', 
+    a: 'Yes. From North Indian and South Indian meals to vegetarian, Jain and vegan options, we help travelers feel comfortable while still experiencing authentic Vietnam. Your food comfort matters to us.' 
+  },
+  { 
+    q: 'Will someone help us while we are in Vietnam?', 
+    a: 'Yes. Our support team is available in India and Vietnam. We provide local assistance and help when needed before and during your journey.' 
+  },
+  { 
+    q: 'Do you only offer luxury travel?', 
+    a: 'No. We create experiences ranging from budget-friendly adventures to premium luxury journeys.' 
+  },
+  { 
+    q: 'Can you arrange airport pickup and local transport?', 
+    a: 'Yes. Airport pickup, local transport, private cars and travel coordination can all be arranged for a smoother experience.' 
+  },
+  { 
+    q: 'What if I want hidden places and not tourist spots?', 
+    a: 'That is one of our strengths. We focus on experiences discovered through local knowledge — hidden cafés, food streets, lesser-known destinations and unique experiences.' 
+  },
+  { 
+    q: 'Can I talk in Hindi or English?', 
+    a: 'Yes. We support travelers in Hindi and English so communication always feels easy and familiar.' 
+  }
 ];
 
 const FAQ: React.FC = () => {
-  const [openIdx, setOpenExp] = useState<number | null>(0);
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="faq-section">
+    <section id="faq">
       <div className="sh r">
-        <span className="lbl">Common Queries</span>
+        <span className="lbl">Common Questions</span>
         <h2>Frequently Asked Questions</h2>
       </div>
 
-      <div className="faq-container r">
+      <div className="faq-wrap">
         {FAQS.map((faq, i) => (
-          <div key={i} className={`faq-item ${openIdx === i ? 'o' : ''}`} onClick={() => setOpenExp(openIdx === i ? null : i)}>
+          <div key={i} className={`faq-item ${openIdx === i ? 'o' : ''}`} onClick={() => setOpenIdx(openIdx === i ? null : i)}>
             <div className="faq-q">
-              <span>{faq.q}</span>
-              <div className="faq-icon"></div>
+              <h4>
+                {faq.q.includes('VIETANA') ? (
+                  <>
+                    {faq.q.split('VIETANA')[0]}
+                    <img src="/vietana_logo.png" className="inline-logo" alt="" style={{ height: '1.2em', verticalAlign: 'middle', margin: '0 4px' }} />
+                    VIETANA
+                    {faq.q.split('VIETANA')[1]}
+                  </>
+                ) : faq.q}
+              </h4>
+              <div className="faq-icon">{openIdx === i ? '−' : '+'}</div>
             </div>
             <div className="faq-a">
-              <p>{faq.a}</p>
+              <p>
+                {faq.a.includes('VIETANA') ? (
+                  <>
+                    {faq.a.split('VIETANA')[0]}
+                    <img src="/vietana_logo.png" className="inline-logo" alt="" style={{ height: '1.2em', verticalAlign: 'middle', margin: '0 4px' }} />
+                    VIETANA
+                    {faq.a.split('VIETANA')[1]}
+                  </>
+                ) : faq.a}
+              </p>
             </div>
           </div>
         ))}

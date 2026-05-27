@@ -6,10 +6,11 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Packages from './components/Packages';
 import Food from './components/Food';
-import Experiences from './components/Experiences';
-import Map from './components/Map';
+import ComboSection from './components/ComboSection';
 import FAQ from './components/FAQ';
 import About from './components/About';
+import Contact from './components/Contact';
+import CustomTripBuilder from './components/CustomTripBuilder';
 import Footer from './components/Footer';
 import MagicMode from './components/MagicMode';
 import { useTranslation } from './contexts/LanguageContext';
@@ -17,6 +18,7 @@ import { useTranslation } from './contexts/LanguageContext';
 export default function App() {
   const { t } = useTranslation();
   const [isPlannerOpen, setIsPlannerOpen] = useState(false);
+  const [isBuilderOpen, setIsBuilderOpen] = useState(false);
   const [initialDestination, setInitialDestination] = useState<string | undefined>(undefined);
   const [isMagicModeOpen, setIsMagicModeOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -112,13 +114,13 @@ export default function App() {
         <Hero onOpenMagic={() => setIsMagicModeOpen(true)} />
         <Services onOpenPlanner={(dest) => openPlanner(dest)} />
         <div className="divl"></div>
-        <Packages />
+        <Packages onOpenBuilder={() => setIsBuilderOpen(true)} />
         <div className="divl"></div>
         <Food />
-        <Experiences />
-        <Map />
+        <ComboSection onOpenPlanner={(dest) => openPlanner(dest)} />
         <FAQ />
         <About />
+        <Contact />
       </main>
 
       <AnimatePresence>
@@ -140,6 +142,11 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+
+      <CustomTripBuilder 
+        isOpen={isBuilderOpen} 
+        onClose={() => setIsBuilderOpen(false)} 
+      />
 
       <Footer />
     </div>

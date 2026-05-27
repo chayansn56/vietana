@@ -1,16 +1,50 @@
-#food { padding: 8rem 6%; background: var(--cr); position: relative; }
-.food-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 4rem; }
-.food-filters button { background: #fff; border: 1px solid rgba(13,79,46,.1); padding: .7rem 1.8rem; border-radius: 50px; font-size: .85rem; font-weight: 500; cursor: pointer; transition: all .4s var(--e2); color: var(--tm); }
-.food-filters button.active { background: var(--g); color: #fff; border-color: var(--g); box-shadow: var(--sh1); }
+#food { background: var(--wm); padding: 10rem 7%; position: relative; overflow: hidden; }
+.food-content-wrapper { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6rem; align-items: flex-start; }
 
-.food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-.food-card { background: #fff; border-radius: var(--r); overflow: hidden; border: 1px solid rgba(13,79,46,.06); box-shadow: var(--sh0); transition: all .5s var(--e2); }
-.food-card:hover { transform: translateY(-10px); box-shadow: var(--sh3); }
-.fc-img { height: 220px; background-size: cover; background-position: center; }
-.fc-body { padding: 1.8rem; }
-.fc-type { display: inline-block; font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: .3rem .8rem; border-radius: 50px; margin-bottom: 1rem; }
-.fc-type.veg { background: #e8f5e9; color: #2e7d32; }
-.fc-type.non-veg { background: #ffebee; color: #c62828; }
-.fc-type.mix { background: #f3e5f5; color: #7b1fa2; }
-.fc-body h3 { font-size: 1.35rem; margin-bottom: .6rem; color: var(--g); }
-.fc-body p { font-size: .88rem; color: var(--ts); line-height: 1.7; }
+.food-lists { flex: 1.2; min-width: 320px; }
+.food-main-title { margin-bottom: 3rem; font-size: 3.5rem; color: #111; line-height: 1.1; }
+
+.food-category { margin-bottom: 3.5rem; }
+.food-category h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 1.2rem; border-bottom: 1px solid rgba(201,168,76,0.2); padding-bottom: 0.6rem; }
+.food-category ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.food-category li { font-size: 0.92rem; color: var(--tm); font-weight: 500; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; }
+.food-category li:hover { color: var(--gold2); transform: translateX(5px); }
+.food-category li span { color: var(--gold); font-size: 1.1rem; }
+
+.cafe-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.cafe-tag { background: rgba(201,168,76,0.08); padding: 0.6rem 1.2rem; border-radius: 50px; border: 1px solid rgba(201,168,76,0.15); font-size: 0.88rem; font-weight: 600; color: var(--tm); }
+
+.food-brands-card { flex: 0.8; min-width: 320px; background: #fff; padding: 4rem 3rem; border-radius: 32px; box-shadow: var(--sh2); border: 1px solid rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: center; }
+.brands-inner { display: flex; flex-direction: column; gap: 4rem; width: 100%; align-items: center; }
+.brand-item { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+.brand-img { max-width: 220px; height: auto; margin-bottom: 1.5rem; mix-blend-mode: multiply; }
+
+.coming-soon { display: inline-block; padding: 0.7rem 1.8rem; background: linear-gradient(135deg, var(--gold), var(--gold3)); color: #000; border-radius: 50px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; box-shadow: 0 8px 20px rgba(201,168,76,0.3); }
+.map-btn { display: inline-block; padding: 0.7rem 1.8rem; background: #fff; border: 2px solid var(--gold); color: var(--gold); border-radius: 50px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); cursor: pointer; }
+.map-btn:hover { background: var(--gold); color: #fff; transform: translateY(-3px); }
+
+.food-footer { margin-top: 6rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 3rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 4rem; }
+.ff-left { flex: 1; min-width: 300px; color: var(--g); font-size: 1.3rem; font-weight: 600; line-height: 1.6; font-family: 'Cormorant Garamond', serif; }
+
+.ff-right { flex: 1; min-width: 300px; display: flex; justify-content: flex-end; }
+.food-pref-box { width: 100%; max-width: 400px; background: rgba(255,255,255,0.9); padding: 2rem; border-radius: 20px; border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--sh1); }
+.food-pref-box p { font-size: 0.95rem; color: var(--td); margin-bottom: 1rem; font-weight: 700; }
+.food-pref-box textarea { width: 100%; height: 100px; padding: 1rem; border: 1px solid #eee; border-radius: 12px; margin-bottom: 1.5rem; font-family: inherit; font-size: 0.9rem; resize: none; background: #fafafa; }
+.food-pref-box button { width: 100%; padding: 1rem; background: #25D366; color: #fff; border: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem; cursor: pointer; box-shadow: 0 6px 20px rgba(37,211,102,0.25); transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+.food-pref-box button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37,211,102,0.4); }
+
+/* FOOD MODAL */
+.food-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 100000; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s; pointer-events: none; backdrop-filter: blur(10px); }
+.food-modal-overlay.show { opacity: 1; pointer-events: all; }
+.food-modal { background: #fff; padding: 2.5rem; border-radius: 30px; text-align: center; position: relative; max-width: 500px; width: 90%; transform: scale(0.9); transition: transform 0.5s var(--e2); }
+.food-modal-overlay.show .food-modal { transform: scale(1); }
+.food-modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #333; line-height: 1; }
+.fm-img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; margin-bottom: 2rem; box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+.food-modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--g); margin-bottom: 0.6rem; }
+.food-modal p { color: var(--ts); font-size: 1rem; }
+
+@media (max-width: 768px) {
+  .food-category ul { grid-template-columns: 1fr; }
+  .food-main-title { font-size: 2.5rem; }
+  .ff-right { justify-content: flex-start; }
+}

@@ -24,15 +24,15 @@ export const TRANSLATIONS = {
       title: 'Our Services',
       subtitle: 'From Visa to Your Last Dinner',
       ghost: 'WE HANDLE IT',
-      visa: { t: 'Visa Assistance', d: 'Fast Vietnam e-visa processing. Step-by-step guidance.' },
-      planning: { t: 'Custom Planning', d: 'Your itinerary, your pace. Fully personalized.' },
-      pickup: { t: 'Airport Pickup', d: 'Comfortable AC vehicle ready when you land.' },
-      hotel: { t: 'Hotel Booking', d: 'Budget gems to luxury stays vetted for Indians.' },
-      sim: { t: 'SIM & Essentials', d: 'eSIM, local SIM, Grab setup, and maps help.' },
-      tickets: { t: 'Tickets & Guides', d: 'Book Ba Na Hills, Ha Long Cruise before landing.' },
-      food: { t: 'Food Support', d: 'Indian & Vietnamese dining recommendations.' },
-      tailored: { t: 'Tailored Experiences', d: 'Honeymoon, nightlife, and family journeys.' },
-      support: { t: 'Local Support', d: 'Hindi & English support available anytime.' }
+      visa: { t: 'Visa Assistance', d: 'Fast Vietnam e-visa processing. Step-by-step guidance — zero confusion, zero stress.' },
+      planning: { t: 'Custom Planning', d: 'Your itinerary, your pace. Fully personalized around your interests, style and budget.' },
+      pickup: { t: 'Airport Pickup', d: 'Comfortable AC vehicle ready when you land. Start relaxed from minute one.' },
+      hotel: { t: 'Hotel Booking', d: 'Budget gems to luxury stays — all vetted with Indian travelers in mind.' },
+      sim: { t: 'SIM & Travel Essentials', d: 'Stay connected from arrival with eSIM, local SIM, Grab setup, and maps help.' },
+      tickets: { t: 'Tickets & Guides', d: 'Book Ba Na Hills, Ha Long Cruise, VinWonders, and local guides before landing.' },
+      food: { t: 'Food Support', d: 'Indian & Vietnamese dining recommendations. We know where comfort meets adventure.' },
+      tailored: { t: 'Tailored Experiences', d: 'Honeymoon, nightlife, hidden gems, and family journeys built around you.' },
+      support: { t: 'Local Support', d: 'Hindi & English support available anytime. Real people on the ground in India & Vietnam.' }
     },
     food: {
       title: 'Gastronomy',
@@ -64,6 +64,12 @@ export const TRANSLATIONS = {
         extras: 'Extras'
       },
       email: 'Email VIETANA™'
+    },
+    contact: {
+      title: 'Talk to Us',
+      heading: 'Talk to Someone Who\nUnderstands Your Travel Style',
+      sub: 'Message us on WhatsApp — we reply fast in Hindi & English.',
+      cta: 'CONTACT US'
     }
   },
   HI: {
@@ -129,6 +135,12 @@ export const TRANSLATIONS = {
         extras: 'अतिरिक्त'
       },
       email: 'ईमेल VIETANA™'
+    },
+    contact: {
+      title: 'हमसे बात करें',
+      heading: 'उस व्यक्ति से बात करें जो\nआपकी यात्रा शैली को समझता हो',
+      sub: 'हमें व्हाट्सएप पर संदेश भेजें - हम हिंदी और अंग्रेजी में तेजी से जवाब देते हैं।',
+      cta: 'संपर्क करें'
     }
   },
   VI: {
@@ -194,6 +206,12 @@ export const TRANSLATIONS = {
         extras: 'Thêm'
       },
       email: 'Email VIETANA™'
+    },
+    contact: {
+      title: 'Liên hệ',
+      heading: 'Trò chuyện với người\nhiểu phong cách du lịch của bạn',
+      sub: 'Nhắn tin cho chúng tôi qua WhatsApp — chúng tôi phản hồi nhanh bằng tiếng Hindi và tiếng Anh.',
+      cta: 'LIÊN HỆ'
     }
   }
 };

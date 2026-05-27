@@ -1,0 +1,78 @@
+#contact {
+    position: relative;
+    padding: 10rem 6%;
+    background: var(--gx);
+    text-align: center;
+    overflow: hidden;
+    color: #fff;
+}
+
+.contact-inner {
+    position: relative;
+    z-index: 5;
+}
+
+#contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+#contact .lead {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+}
+
+.con-orb1, .con-orb2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.con-orb1 {
+    width: 400px;
+    height: 400px;
+    background: var(--blue);
+    top: -100px;
+    left: -100px;
+}
+
+.con-orb2 {
+    width: 350px;
+    height: 350px;
+    background: var(--gold);
+    bottom: -100px;
+    right: -100px;
+}
+
+.bwa2 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 3.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s var(--e2);
+    box-shadow: 0 10px 30px rgba(126, 200, 227, 0.3);
+}
+
+.bwa2:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.1);
+    box-shadow: 0 15px 45px rgba(126, 200, 227, 0.4);
+}
+
+@media (max-width: 768px) {
+    #contact h2 { font-size: 2.5rem; }
+    #contact { padding: 6rem 6%; }
+}

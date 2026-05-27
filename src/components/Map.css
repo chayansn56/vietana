@@ -1,5 +1,0 @@
-.map-section { padding: 8rem 6%; background: var(--wm); }
-.map-container { max-width: 1200px; margin: 0 auto; box-shadow: var(--sh3); border-radius: 22px; overflow: hidden; border: 1px solid rgba(13,79,46,.1); }
-.map-popup { color: var(--gd); font-family: 'DM Sans', sans-serif; }
-.leaflet-popup-content-wrapper { background: rgba(255,255,255,.9); backdrop-filter: blur(10px); border-radius: 12px; }
-.leaflet-container { background: #0b110e !important; }

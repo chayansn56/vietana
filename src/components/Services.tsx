@@ -97,8 +97,9 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
         {SERVICES.map((s, i) => {
           const serviceData = t.services[s.key as keyof typeof t.services];
           if (typeof serviceData === 'string') return null;
+          const delayClass = `d${(i % 3) + 1}`;
           return (
-            <div key={i} className="sc r" onClick={() => openSrvModal(s.key)}>
+            <div key={i} className={`sc r ${delayClass}`} onClick={() => openSrvModal(s.key)}>
               <div className="sc-ico">{s.ico}</div>
               <h3>{serviceData.t}</h3>
               <p>{serviceData.d}</p>
