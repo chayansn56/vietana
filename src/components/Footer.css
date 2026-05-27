@@ -1,0 +1,10 @@
+footer{background:var(--gx);color:rgba(255,255,255,.45);padding:4rem 7%;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.22) 50%,transparent)}
+.fi{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:3rem}
+.fb .flo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:500;color:var(--blue);letter-spacing:.08em;display:block;margin-bottom:.3rem}
+.fb .ft{font-size:.8rem;color:var(--gold);display:block;margin-bottom:.2rem}
+.fb .fs{font-size:.72rem;color:rgba(255,255,255,.28)}
+.fnav{display:flex;flex-wrap:wrap;gap:1.6rem 2rem;list-style:none;padding-top:.3rem}
+.fnav a{color:rgba(255,255,255,.42);font-size:.82rem;transition:color .3s;text-decoration:none;}
+.fnav a:hover{color:var(--gold)}
+.fbot{max-width:1200px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);font-size:.72rem;color:rgba(255,255,255,.22);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}

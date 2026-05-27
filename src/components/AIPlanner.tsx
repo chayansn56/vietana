@@ -1,18 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './AIPlanner.css';
 
 interface AIPlannerProps {
   isOpen: boolean;
   onClose: () => void;
+  initialDestination?: string;
 }
 
-const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose }) => {
-  const [messages, setMessages] = useState<{ text: string; type: 'bot' | 'user' }[]>([
-    { text: "Hello, how can I help you plan your trip?", type: 'bot' }
-  ]);
+const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestination }) => {
+  const [messages, setMessages] = useState<{ text: string; type: 'bot' | 'user' }[]>([]);
   const [chatHistory, setChatHistory] = useState<{ role: 'user' | 'model'; parts: { text: string }[] }[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const pcMsgsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (initialDestination) {
+        const welcomeText = `I see you are interested in exploring ${initialDestination}. Let's build your trip around this beautiful destination!`;
+        setMessages([{ text: welcomeText, type: 'bot' }]);
+        setChatHistory([{ role: 'model', parts: [{ text: welcomeText }] }]);
+      } else {
+        const defaultText = "Hello, how can I help you plan your trip?";
+        setMessages([{ text: defaultText, type: 'bot' }]);
+        setChatHistory([{ role: 'model', parts: [{ text: defaultText }] }]);
+      }
+    }
+  }, [isOpen, initialDestination]);
 
   useEffect(() => {
     if (pcMsgsRef.current) {
@@ -60,7 +74,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="ai-modal-overlay open" onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <div className={`ai-modal-overlay ${isOpen ? 'open' : ''}`} onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="ai-modal-container">
         <div className="ai-close" onClick={onClose}>×</div>
         <div className="planner-left">

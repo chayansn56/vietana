@@ -1,0 +1,18 @@
+#packages{background:var(--cr)}
+.pkg-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.pc{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:2rem;backdrop-filter:blur(14px);transition:all .5s var(--e2);position:relative;overflow:hidden; height: 500px; cursor: pointer;}
+.pc-img{position:absolute;inset:-4%;background-size:cover;background-position:center;transition:transform .9s var(--e2);will-change:transform}
+.pc:hover .pc-img{transform:scale(1.09) translateY(-2%)}
+.pc-fog{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,15,8,.97) 0%,rgba(6,26,14,.65) 40%,rgba(0,0,0,.1) 100%);transition:all .6s var(--e1)}
+.pc:hover .pc-fog{background:linear-gradient(to top,rgba(4,15,8,1) 0%,rgba(6,26,14,.75) 48%,rgba(0,0,0,.15) 100%)}
+.pc-flare{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.09),transparent 65%);transition:opacity .7s}
+.pc:hover .pc-flare{opacity:1}
+.pc-body{position:absolute;bottom:0;left:0;right:0;padding:2.2rem 2rem}
+.pc-badge{display:inline-block;background:var(--gold);color:var(--gd);font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem;box-shadow:0 2px 18px rgba(201,168,76,.5)}
+.pc-body h3{color:#fff;font-size:1.55rem;margin-bottom:.3rem}
+.pc-price{color:var(--gold3);font-size:.92rem;font-weight:300;margin-bottom:.2rem}
+.pc-note{color:rgba(255,255,255,.35);font-size:.68rem;margin-bottom:1.2rem}
+.pc-cta{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff;padding:.55rem 1.3rem;border-radius:50px;font-size:.77rem;letter-spacing:.04em;opacity:0;transform:translateY(14px);transition:opacity .45s .05s,transform .45s .05s var(--e2),background .3s}
+.pc:hover .pc-cta{opacity:1;transform:none}
+.pc-cta:hover{background:rgba(255,255,255,.2)}
+.pc-cta:hover .pca-arr{transform:translateX(4px)}
