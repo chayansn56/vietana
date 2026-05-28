@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import './Services.css';
+import Modal from './ui/Modal';
+import Button from './ui/Button';
+import SectionHeader from './ui/SectionHeader';
 
 const SERVICE_MODAL_DATA = [
   {
@@ -87,51 +89,80 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
   const closeSrvModal = () => setSelectedSrv(null);
 
   return (
-    <section id="services">
-      <div className="sg-ghost">{t.services.ghost}</div>
-      <div className="sh r">
-        <span className="lbl">{t.services.title}</span>
-        <h2>{t.services.subtitle}</h2>
+    <section id="services" className="bg-[var(--wm)] relative overflow-hidden py-40 pb-48">
+      <div className="absolute top-8 -right-4 font-serif text-clamp-5-14vw-13rem font-light text-[var(--g)]/5 tracking-wider pointer-events-none select-none z-0">
+        {t.services.ghost}
       </div>
-      <div className="srvg">
-        {SERVICES.map((s, i) => {
-          const serviceData = t.services[s.key as keyof typeof t.services];
-          if (typeof serviceData === 'string') return null;
-          const delayClass = `d${(i % 3) + 1}`;
-          return (
-            <div key={i} className={`sc r ${delayClass}`} onClick={() => openSrvModal(s.key)}>
-              <div className="sc-ico">{s.ico}</div>
-              <h3>{serviceData.t}</h3>
-              <p>{serviceData.d}</p>
-            </div>
-          );
-        })}
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <SectionHeader 
+          label={t.services.title}
+          title={t.services.subtitle}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {SERVICES.map((s, i) => {
+            const serviceData = t.services[s.key as keyof typeof t.services];
+            if (typeof serviceData === 'string') return null;
+            
+            return (
+              <div 
+                key={i} 
+                className="group bg-white rounded-[var(--r)] p-9 border border-[var(--g)]/10 shadow-[var(--sh0)] relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--sh3)] cursor-pointer r"
+                onClick={() => openSrvModal(s.key)}
+              >
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[var(--g)] to-[var(--gold)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[var(--e2)]" />
+                
+                <div className="w-14 h-14 rounded-2xl mb-6 flex items-center justify-center text-3xl bg-gradient-to-br from-[var(--g)]/5 to-[var(--gold)]/10 group-hover:scale-110 group-hover:-rotate-6 group-hover:bg-gradient-to-br group-hover:from-[var(--g)]/15 group-hover:to-[var(--gold)]/20 transition-all duration-500 ease-[var(--e3)]">
+                  {s.ico}
+                </div>
+                
+                <h3 className="text-lg font-medium mb-2 text-[var(--g)]">
+                  {serviceData.t}
+                </h3>
+                <p className="text-[0.83rem] text-[var(--ts)] leading-relaxed">
+                  {serviceData.d}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      {/* SERVICE MODAL */}
-      {selectedSrv && (
-        <div className={`m-overlay ${selectedSrv ? 'open' : ''}`} onClick={(e) => e.target === e.currentTarget && closeSrvModal()}>
-          <div className="srv-modal m-container">
-            <button className="m-close" onClick={closeSrvModal}>×</button>
-            <div className="srv-title" dangerouslySetInnerHTML={{ __html: selectedSrv.title }}></div>
-            <div className="srv-content" dangerouslySetInnerHTML={{ __html: selectedSrv.content }}></div>
-            <button 
-                className="btn-p srv-cta-btn"
-                onClick={() => {
-                    if (selectedSrv.cta.includes('✨🤖')) {
-                        closeSrvModal();
-                        onOpenPlanner();
-                    } else {
-                        window.open('https://wa.me/919953294543', '_blank');
-                    }
-                }}
+      <Modal 
+        isOpen={!!selectedSrv} 
+        onClose={closeSrvModal}
+        maxWidth="max-w-md"
+        className="p-12"
+      >
+        {selectedSrv && (
+          <div className="flex flex-col gap-6">
+            <div 
+              className="text-xl font-bold text-white flex items-center gap-2 [&_strong]:text-[var(--gold3)]" 
+              dangerouslySetInnerHTML={{ __html: selectedSrv.title }} 
+            />
+            <div 
+              className="text-[0.95rem] leading-relaxed text-white/80 [&_strong]:text-[var(--gold3)] [&_strong]:font-semibold [&_a]:text-[var(--blue)] [&_a]:font-semibold [&_a:hover]:underline" 
+              dangerouslySetInnerHTML={{ __html: selectedSrv.content }} 
+            />
+            <Button 
+              className="w-full"
+              variant="primary"
+              onClick={() => {
+                if (selectedSrv.cta.includes('✨🤖')) {
+                  closeSrvModal();
+                  onOpenPlanner();
+                } else {
+                  window.open('https://wa.me/919953294543', '_blank');
+                }
+              }}
             >
-                {selectedSrv.cta.includes('✨🤖') ? '✨🤖 ' : '💬 '}
-                {selectedSrv.cta.replace('✨🤖 ', '').replace('💬 ', '')}
-            </button>
+              {selectedSrv.cta.includes('✨🤖') ? '✨🤖 ' : '💬 '}
+              {selectedSrv.cta.replace('✨🤖 ', '').replace('💬 ', '')}
+            </Button>
           </div>
-        </div>
-      )}
+        )}
+      </Modal>
     </section>
   );
 };
