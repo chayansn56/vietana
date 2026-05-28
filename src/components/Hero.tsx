@@ -110,7 +110,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
           <Badge 
             icon={true} 
             variant="gold" 
-            className="mb-10 reveal-up [animation-delay:0.35s]"
+            className="mb-10 animate-reveal-up [animation-delay:0.35s]"
           >
             India–Vietnam Travel Experts · Ho Chi Minh City
           </Badge>
@@ -119,7 +119,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             as="h1" 
             size="3xl"
             variant="none" 
-            className="!text-white mb-2 reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_40px_rgba(0,0,0,0.6)]"
+            className="!text-white mb-2 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_40px_rgba(0,0,0,0.6)]"
           >
             Feel <em className="text-brand-blue italic">Vietnam</em>,
             <span className="block mt-[-0.06em] text-brand-gold">Your Way 🇻🇳</span>
@@ -129,7 +129,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             size="lg"
             variant="none" 
             weight="medium"
-            className="italic mb-6 text-brand-gold-light reveal-up [animation-delay:0.72s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] block"
+            className="italic mb-6 text-brand-gold-light animate-reveal-up [animation-delay:0.72s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] block"
           >
             Travel Gets Better with VIETANA
           </Text>
@@ -138,16 +138,16 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             variant="white" 
             size="lg"
             weight="medium"
-            className="max-w-[580px] reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.4)]"
+            className="max-w-[580px] animate-reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.4)]"
           >
             {t.hero.sub}
           </Text>
           
-          <Text variant="white" size="md" className="!text-white/80 max-w-[460px] mb-12 reveal-up [animation-delay:0.95s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
+          <Text variant="white" size="md" className="!text-white/80 max-w-[460px] mb-12 animate-reveal-up [animation-delay:0.95s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
             {t.hero.support}
           </Text>
           
-          <div className="flex gap-5 flex-wrap reveal-up [animation-delay:1.08s]">
+          <div className="flex gap-5 flex-wrap animate-reveal-up [animation-delay:1.08s]">
             <Button 
               className="group relative overflow-hidden text-brand-green-extra-dark font-bold" 
               onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
@@ -190,13 +190,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* BOTTOM FOOTER */}
-      <div className="absolute bottom-0 left-0 right-0 z-[3] flex justify-between items-end px-[var(--spacing-layout)] pb-11 opacity-0 reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards]">
+      <div className="absolute bottom-0 left-0 right-0 z-[3] flex justify-between items-end px-[var(--spacing-layout)] pb-11 opacity-0 animate-reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards]">
         <Text as="div" size="xs" variant="none" className="flex items-center gap-4 text-white/40 tracking-[0.22em] uppercase">
           <div className="relative w-12 h-px bg-gradient-to-r from-brand-gold to-transparent animate-sla" />
           <span>Scroll to explore</span>
         </Text>
 
-        <div className="flex gap-3 opacity-0 reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
+        <div className="flex gap-3 opacity-0 animate-reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
           <Clock flag="🇻🇳" city="Ho Chi Minh City" time={clocks.vn.time} date={clocks.vn.date} />
           <Clock flag="🇮🇳" city="New Delhi" time={clocks.in.time} date={clocks.in.date} />
         </div>

@@ -56,6 +56,24 @@
   --spacing-layout: 7%;
 
   /* Animations */
+  --animate-slide: slide 40s linear infinite;
+  --animate-sla: sla 2.6s ease-in-out infinite;
+  --animate-orb-glow: orb-glow 3s ease-in-out infinite alternate;
+  --animate-orb-spin: orb-spin 12s linear infinite;
+  --animate-blob-float: blob-float 20s infinite alternate;
+  --animate-nfloat: nfloat var(--float-dur, 3s) var(--float-del, 0s) infinite ease-in-out;
+  --animate-pulse-dot: pulse-dot 1.2s ease-in-out infinite;
+  --animate-ken-burns: ken-burns 20s ease-out infinite alternate;
+  --animate-pfloat: pfloat var(--float-dur, 10s) var(--float-del, 0s) infinite ease-in;
+  --animate-msg-fade-in: msg-fade-in 0.6s var(--ease-smooth) forwards;
+  --animate-ai-pulse: ai-pulse 2.5s infinite ease-in-out;
+  --animate-reveal-up: reveal-up 1.2s var(--ease-smooth) forwards;
+  --animate-mm-drift: mm-drift 40s linear infinite alternate;
+  --animate-mm-breathe: mm-breathe 4s ease-in-out infinite alternate;
+  --animate-mm-float: mm-float 6s ease-in-out infinite alternate;
+  --animate-mm-glow: mm-glow 3s ease-in-out infinite alternate;
+  --animate-fade-in: fade-in 1s forwards;
+
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: .4; transform: scale(1.5); }
@@ -98,7 +116,6 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
   }
-
   @keyframes msg-fade-in {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
@@ -127,76 +144,6 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-}
-
-@utility animate-slide {
-  animation: slide 40s linear infinite;
-}
-
-@utility animate-sla {
-  animation: sla 2.6s ease-in-out infinite;
-}
-
-@utility animate-orb-glow {
-  animation: orb-glow 3s ease-in-out infinite alternate;
-}
-
-@utility animate-orb-spin {
-  animation: orb-spin 12s linear infinite;
-}
-
-@utility animate-blob-float {
-  animation: blob-float 20s infinite alternate;
-}
-
-@utility animate-nfloat {
-  animation: nfloat var(--float-dur, 3s) var(--float-del, 0s) infinite ease-in-out;
-}
-
-@utility animate-pulse-dot {
-  animation: pulse-dot 1.2s ease-in-out infinite;
-}
-
-@utility animate-ken-burns {
-  animation: ken-burns 20s ease-out infinite alternate;
-}
-
-@utility animate-pfloat {
-  animation: pfloat var(--float-dur, 10s) var(--float-del, 0s) infinite ease-in;
-}
-
-@utility animate-msg-fade-in {
-  animation: msg-fade-in 0.6s var(--ease-smooth) forwards;
-}
-
-@utility animate-ai-pulse {
-  animation: ai-pulse 2.5s infinite ease-in-out;
-}
-
-@utility reveal-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: reveal-up 1.2s var(--ease-smooth) forwards;
-}
-
-@utility animate-mm-drift {
-  animation: mm-drift 40s linear infinite alternate;
-}
-
-@utility animate-mm-breathe {
-  animation: mm-breathe 4s ease-in-out infinite alternate;
-}
-
-@utility animate-mm-float {
-  animation: mm-float 6s ease-in-out infinite alternate;
-}
-
-@utility animate-mm-glow {
-  animation: mm-glow 3s ease-in-out infinite alternate;
-}
-
-@utility animate-fade-in {
-  animation: fade-in 1s forwards;
 }
 
 @utility vertical-rl {
@@ -287,9 +234,4 @@ html {
   transform: none;
 }
 
-/* Delay modifiers for stagger effects */
-.reveal-d1 { transition-delay: 0.1s; }
-.reveal-d2 { transition-delay: 0.2s; }
-.reveal-d3 { transition-delay: 0.3s; }
-.reveal-d4 { transition-delay: 0.4s; }
-.reveal-d5 { transition-delay: 0.5s; }
+

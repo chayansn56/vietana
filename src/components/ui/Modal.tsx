@@ -7,6 +7,7 @@ interface ModalProps {
   children: React.ReactNode;
   className?: string;
   maxWidth?: string;
+  variant?: 'dark' | 'light';
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -14,7 +15,8 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   children,
   className = '',
-  maxWidth = 'max-w-md'
+  maxWidth = 'max-w-md',
+  variant = 'dark'
 }) => {
   useEffect(() => {
     if (isOpen) {
@@ -27,6 +29,21 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen]);
 
+  const overlays = {
+    dark: 'fixed inset-0 bg-brand-green-extra-dark/80 backdrop-blur-xl',
+    light: 'fixed inset-0 bg-brand-green-extra-dark/45 backdrop-blur-md',
+  };
+
+  const wrappers = {
+    dark: 'bg-brand-green-extra-dark border border-white/10 text-white',
+    light: 'bg-surface-cream border border-brand-green/8 text-text-dark',
+  };
+
+  const closeBtns = {
+    dark: 'bg-white/5 text-white/60 hover:bg-white/15 hover:text-white',
+    light: 'bg-brand-green/5 text-brand-green/60 hover:bg-brand-green/10 hover:text-brand-green',
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -36,7 +53,7 @@ const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="fixed inset-0 bg-brand-green-extra-dark/80 backdrop-blur-xl"
+            className={overlays[variant]}
             onClick={onClose}
           />
           <motion.div
@@ -44,11 +61,11 @@ const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className={`relative w-full ${maxWidth} bg-brand-green-extra-dark border border-white/10 rounded-[28px] overflow-hidden shadow-deep ${className}`}
+            className={`relative w-full ${maxWidth} ${wrappers[variant]} rounded-[28px] overflow-hidden shadow-deep ${className}`}
           >
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 text-white/60 hover:bg-white/15 hover:text-white transition-all duration-300 z-10 text-2xl cursor-pointer"
+              className={`absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 z-10 text-2xl cursor-pointer ${closeBtns[variant]}`}
               aria-label="Close modal"
             >
               ×

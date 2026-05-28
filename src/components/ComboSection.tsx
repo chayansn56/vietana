@@ -164,7 +164,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
           </Heading>
         </div>
         
-        <div className="relative w-full max-w-[600px] flex flex-col lg:flex-row justify-center items-center reveal reveal-d1">
+        <div className="relative w-full max-w-[600px] flex flex-col lg:flex-row justify-center items-center reveal delay-100">
           <div className="w-full aspect-square rounded-3xl overflow-hidden border-8 border-white shadow-heavy relative z-[2] h-[500px]">
             <Suspense fallback={<div className="w-full h-full bg-brand-green-extra-dark/10 animate-pulse flex items-center justify-center">Loading Map...</div>}>
                 <LeafletMap 

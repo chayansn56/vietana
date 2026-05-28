@@ -115,7 +115,7 @@ const Food: React.FC = () => {
           </div>
 
           {/* RIGHT SIDE: Brands */}
-          <div className="flex-[0.8] min-w-[320px] w-full reveal reveal-d2">
+          <div className="flex-[0.8] min-w-[320px] w-full reveal delay-200">
             <Card variant="white" padding="lg" className="flex flex-col items-center justify-center gap-16">
               <div className="flex flex-col items-center text-center w-full">
                 <img src="/spicy_spoon_new.png" alt="The Spicy Spoon" className="max-w-[220px] h-auto mb-6 mix-multiply" />
@@ -170,14 +170,15 @@ const Food: React.FC = () => {
         onClose={closeFoodModal}
         maxWidth="max-w-md"
         className="p-10 text-center"
+        variant="light"
       >
         {selectedFood && (
           <>
-            <img src={getFoodImg(selectedFood)} alt={selectedFood} className="w-full h-72 object-cover rounded-2xl mb-8 shadow-lg" />
-            <Heading as="h3" size="xl" className="!text-brand-green mb-2.5">
+            <img src={getFoodImg(selectedFood)} alt={selectedFood} className="w-full h-72 object-cover rounded-2xl mb-8 shadow-medium" />
+            <Heading as="h3" size="xl" font="serif" className="!text-brand-green mb-2.5">
               {selectedFood}
             </Heading>
-            <Text variant="subtle" size="md">
+            <Text variant="muted" size="md">
               A classic Vietnamese delicacy you must try.
             </Text>
           </>

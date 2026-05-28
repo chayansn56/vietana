@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
           {t.contact.sub}
         </Text>
         
-        <div className="mt-12 flex justify-center reveal reveal-d1">
+        <div className="mt-12 flex justify-center reveal delay-100">
           <Button 
             onClick={openContactPanel} 
             variant="glass"
