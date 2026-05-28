@@ -1,5 +1,16 @@
-export const WHATSAPP_INDIA = "https://wa.me/919953294543?text=Hi%20VIETANA%2C%20I%27d%20like%20to%20plan%20my%20Vietnam%20trip!";
-export const WHATSAPP_VIETNAM = "https://wa.me/84904123456?text=Hi%20VIETANA%2C%20I%27d%20like%20to%20plan%20my%20Vietnam%20trip!";
+export const WHATSAPP_NUMBERS = {
+  INDIA: "919953294543",
+  VIETNAM: "84904123456",
+  DEFAULT: "919953294543"
+};
+
+export const buildWhatsAppLink = (phone: string, text?: string): string => {
+  const base = `https://wa.me/${phone}`;
+  return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+};
+
+export const WHATSAPP_INDIA = buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, "Hi VIETANA, I'd like to plan my Vietnam trip!");
+export const WHATSAPP_VIETNAM = buildWhatsAppLink(WHATSAPP_NUMBERS.VIETNAM, "Hi VIETANA, I'd like to plan my Vietnam trip!");
 export const WHATSAPP_DEFAULT = WHATSAPP_INDIA;
 
 export const TRIP_BUILDER_CONSTANTS = {
@@ -39,16 +50,14 @@ export const MAP_DEFAULT_ROUTE: [number, number][] = [
   [10.8231, 106.6297]  // Ho Chi Minh City
 ];
 
-
-
 export const NAV_LINKS = [
-  { name: 'Services', href: '#services' },
-  { name: 'Packages', href: '#packages' },
-  { name: 'AI Planner', href: '#', isPlanner: true },
-  { name: 'Food', href: '#food' },
-  { name: 'Experiences', href: '#hidden' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' },
+  { key: 'services', href: '#services' },
+  { key: 'packages', href: '#packages' },
+  { key: 'aiPlanner', href: '#', isPlanner: true },
+  { key: 'food', href: '#food' },
+  { key: 'experiences', href: '#hidden' },
+  { key: 'about', href: '#about' },
+  { key: 'contact', href: '#contact' },
 ];
 
 export const SERVICES = [
@@ -109,4 +118,38 @@ export const MAGIC_DESTINATIONS = [
   { label: "Dong Thap", desc: "Famous for its beautiful lotus fields and the rich biodiversity of Tram Chim National Park." },
   { label: "An Giang", desc: "A peaceful province characterized by endless rice fields, sugar palms, and vibrant Khmer culture." },
   { label: "Vinh Long", desc: "A lush island setting in the Mekong Delta, famous for fruit orchards and traditional homestays." }
+];
+
+export const EXPERIENCES = [
+  { id: 1, t: 'Hidden Temple of Hue', d: 'A 12th-century pagoda hidden in the pine forests.', lat: 16.4677, lng: 107.5905, img: 'https://images.unsplash.com/photo-1583569704200-8b43bd1265fa?w=600&q=80' },
+  { id: 2, t: 'Midnight Food Train', d: 'Dine on a moving train through Hanoi\'s narrow streets.', lat: 21.0285, lng: 105.8542, img: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80' },
+  { id: 3, t: 'Secret Lagoon of Ninh Binh', d: 'A crystal clear lagoon accessible only by a small cave.', lat: 20.2178, lng: 105.9382, img: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80' },
+  { id: 4, t: 'The Last Weaver of Sapa', d: 'Meet the only remaining practitioner of an ancient indigo technique.', lat: 22.3364, lng: 103.8438, img: 'https://images.unsplash.com/photo-1504457047772-27faf1c005b7?w=600&q=80' },
+  { id: 5, t: 'Lantern Maker\'s Garden', d: 'Create your own lantern in a private 200-year-old courtyard.', lat: 15.8801, lng: 108.3384, img: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80' },
+  { id: 6, t: 'Coffee in the Clouds', d: 'A floating cafe at the edge of Da Lat\'s highest peak.', lat: 11.9404, lng: 108.4583, img: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=600&q=80' },
+  { id: 7, t: 'Jazz in the Alleyway', d: 'Speakeasy jazz club hidden behind a noodle shop in HCMC.', lat: 10.7769, lng: 106.7009, img: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=600&q=80' },
+  { id: 8, t: 'Waterfall Meditation', d: 'Private sunrise meditation at the base of Ban Gioc.', lat: 22.8550, lng: 106.7228, img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80' },
+  { id: 9, t: 'The Salt Fields of Mui Ne', d: 'Watch the sunrise reflect off the pristine salt crystals.', lat: 10.9333, lng: 108.2833, img: 'https://images.unsplash.com/photo-1504457047772-27faf1c005b7?w=800&q=80' },
+  { id: 10, t: 'Fisherman\'s Secret Cove', d: 'A hidden beach in Quy Nhon only known to locals.', lat: 13.7767, lng: 109.2242, img: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80' }
+];
+
+export const VEG_ITEMS = [
+  'Phở Chay (Veg Pho)', 'Bánh Mì Chay', 'Gỏi Cuốn Chay', 'Cơm Tấm Chay', 'Bún Chay',
+  'Đậu Hũ Sốt Cà Chua', 'Nộm Hoa Chuối', 'Chè & Xôi (Desserts)', 'Rau Muống Xào Tỏi', 'North & South Indian Veg'
+];
+
+export const NON_VEG_ITEMS = [
+  'Phở Gà (Chicken Pho)', 'Bún Chả (Grilled Pork)', 'Bánh Xèo (Crispy Pancake)', 'Cao Lầu (Hoi An Noodles)', 'Bún Gà (Chicken Noodle Soup)',
+  'Cơm Tấm Sườn Nướng', 'Bánh Mì Thịt Nướng', 'Nem Rán (Spring Rolls)', 'Chả Cá Lã Vọng', 'Gà Nướng Mật Ong'
+];
+
+export const CAFES = [
+  '☕ The Note Coffee', '☕ Cộng Cà Phê', '☕ Cafe Giảng (Egg Coffee)', '☕ Ru Nam Bistro', '☕ L\'Usine'
+];
+
+export const MAGIC_MODE_SLIDES = [
+  'https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80',
+  'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1600&q=80',
+  'https://images.unsplash.com/photo-1542012843-0570b7787fc5?w=1600&q=80',
+  'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1600&q=80'
 ];

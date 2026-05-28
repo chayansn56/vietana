@@ -43,16 +43,15 @@ const FAQS = [
 const FAQ: React.FC = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const formatText = (text: string) => {
+  const formatText = (text: string): React.ReactNode => {
     if (!text.includes('VIETANA')) return text;
-    const parts = text.split('VIETANA');
-    return (
-      <>
-        {parts[0]}
-        <img src="/vietana_logo.png" className="h-[1.2em] inline-block align-middle mx-1 brightness-110" alt="" />
-        VIETANA
-        {parts[1]}
-      </>
+    return text.split(/(VIETANA)/g).map((part, i) =>
+      part === 'VIETANA' ? (
+        <React.Fragment key={i}>
+          <img src="/vietana_logo.png" className="h-[1.2em] inline-block align-middle mx-1 brightness-110" alt="" />
+          VIETANA
+        </React.Fragment>
+      ) : part
     );
   };
 

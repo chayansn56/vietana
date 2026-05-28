@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';
 import { useAIPlanner } from '../hooks/useAIPlanner';
-import { WHATSAPP_INDIA, WHATSAPP_VIETNAM } from '../config';
 
 interface AIPlannerProps {
   isOpen: boolean;
@@ -56,11 +56,10 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
         <div ref={pcMsgsRef} className="flex-1 overflow-y-auto px-12 flex flex-col gap-7 scroll-smooth scrollbar-thin scrollbar-thumb-white/10">
           {messages.map((msg, i) => {
             if (msg.type === 'blueprint') {
-              const whatsappIndiaText = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${preferences.focus}\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\n\nI'd like to discuss this further!`;
-              const whatsappVietnamText = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${preferences.focus}\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\n\nI'd like to discuss this further!`;
-              
-              const whatsappIndiaLink = `https://wa.me/919953294543?text=${encodeURIComponent(whatsappIndiaText)}`;
-              const whatsappVietnamLink = `https://wa.me/84904123456?text=${encodeURIComponent(whatsappVietnamText)}`;
+              const whatsappText = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${preferences.focus}\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\n\nI'd like to discuss this further!`;
+
+              const whatsappIndiaLink = buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, whatsappText);
+              const whatsappVietnamLink = buildWhatsAppLink(WHATSAPP_NUMBERS.VIETNAM, whatsappText);
               
               return (
                 <div key={i} className="animate-msg-fade-in w-full my-4 px-2">
@@ -85,12 +84,12 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                         href={whatsappVietnamLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
+                      className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
                       >
                         💬 WhatsApp Vietnam
                       </a>
                       <a 
-                        href={`mailto:support@vietana.com?subject=My%20Vietnam%20Journey%20Blueprint&body=${encodeURIComponent(whatsappIndiaText)}`}
+                        href={`mailto:support@vietana.com?subject=My%20Vietnam%20Journey%20Blueprint&body=${encodeURIComponent(whatsappText)}`}
                         className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
                       >
                         ✉ support@vietana.com
@@ -210,7 +209,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             <Button 
               variant="glass"
               className="w-full text-sm font-medium border-white/10"
-              onClick={() => window.open(`https://wa.me/919953294543?text=${encodeURIComponent(`Hi VIETANA! I just finished my planning session:\n\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\nFocus: ${preferences.focus}\n\nI'd like to discuss this further!`)}`, '_blank')}
+              onClick={() => window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, `Hi VIETANA! I just finished my planning session:\n\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\nFocus: ${preferences.focus}\n\nI'd like to discuss this further!`), '_blank')}
             >
               💬 WhatsApp VIETANA™
             </Button>

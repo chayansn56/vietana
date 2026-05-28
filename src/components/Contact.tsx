@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
@@ -8,7 +9,7 @@ import { Heading, Text } from './ui/Typography';
 const Contact: React.FC = () => {
   const { t } = useTranslation();
   const openContactPanel = () => {
-    window.open('https://wa.me/919953294543', '_blank');
+    window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT), '_blank');
   };
 
   return (

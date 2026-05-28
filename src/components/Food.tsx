@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { WHATSAPP_INDIA } from '../config';
+import { WHATSAPP_INDIA, VEG_ITEMS, NON_VEG_ITEMS, CAFES } from '../config';
 import SectionHeader from './ui/SectionHeader';
 import Button from './ui/Button';
 import Modal from './ui/Modal';
@@ -9,20 +9,6 @@ import Container from './ui/layout/Container';
 import Card from './ui/Card';
 import { Heading, Text } from './ui/Typography';
 import Badge from './ui/Badge';
-
-const VEG_ITEMS = [
-  'Phở Chay (Veg Pho)', 'Bánh Mì Chay', 'Gỏi Cuốn Chay', 'Cơm Tấm Chay', 'Bún Chay',
-  'Đậu Hũ Sốt Cà Chua', 'Nộm Hoa Chuối', 'Chè & Xôi (Desserts)', 'Rau Muống Xào Tỏi', 'North & South Indian Veg'
-];
-
-const NON_VEG_ITEMS = [
-  'Phở Gà (Chicken Pho)', 'Bún Chả (Grilled Pork)', 'Bánh Xèo (Crispy Pancake)', 'Cao Lầu (Hoi An Noodles)', 'Bún Gà (Chicken Noodle Soup)',
-  'Cơm Tấm Sườn Nướng', 'Bánh Mì Thịt Nướng', 'Nem Rán (Spring Rolls)', 'Chả Cá Lã Vọng', 'Gà Nướng Mật Ong'
-];
-
-const CAFES = [
-  '☕ The Note Coffee', '☕ Cộng Cà Phê', '☕ Cafe Giảng (Egg Coffee)', '☕ Ru Nam Bistro', '☕ L\'Usine'
-];
 
 const Food: React.FC = () => {
   const { t } = useTranslation();

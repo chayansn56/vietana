@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { SERVICES, buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import SectionHeader from './ui/SectionHeader';
@@ -14,6 +15,7 @@ interface ServiceModalItem {
   title: string;
   content: string;
   cta: string;
+  action: 'planner' | 'whatsapp';
 }
 
 const SERVICE_MODAL_DATA: ServiceModalItem[] = [
@@ -21,68 +23,65 @@ const SERVICE_MODAL_DATA: ServiceModalItem[] = [
     key: 'visa',
     title: "📋 Visa Assistance — VIETANA™",
     content: "<strong>Documents</strong><br>✓ Passport (6+ months)<br>✓ Passport photo<br>✓ Passport scan<br>✓ Travel dates<br><br><strong>Time</strong><br>⏱ 3–5 working days<br>⚡ Urgent: 24–48 hrs<br><br><strong>Official:</strong><br><a href='https://evisa.gov.vn' target='_blank'>https://evisa.gov.vn</a>",
-    cta: "💬 VIETANA™ can guide you"
+    cta: "💬 VIETANA™ can guide you",
+    action: 'whatsapp'
   },
   {
     key: 'planning',
     title: "🗺️ Custom Planning — VIETANA™",
     content: "<strong>Perfect for</strong><br>💕 Honeymoon<br>👨‍👩‍👧 Family<br>✨ Luxury<br>🌴 Hidden experiences<br><br><strong>Built around</strong><br>💰 Budget<br>🍛 Food<br>🎯 Travel style",
-    cta: "✨🤖 Plan with VIETANA™"
+    cta: "✨🤖 Plan with VIETANA™",
+    action: 'planner'
   },
   {
     key: 'pickup',
     title: "🚗 Airport Pickup — VIETANA™",
     content: "<strong>Included</strong><br>✓ AC vehicle<br>✓ Flight tracking<br>✓ Hotel drop-off<br>✓ Arrival assistance<br><br>🚘 Sedan • SUV • Van",
-    cta: "💬 Book with VIETANA™"
+    cta: "💬 Book with VIETANA™",
+    action: 'whatsapp'
   },
   {
     key: 'hotel',
     title: "🏨 Hotel Booking — VIETANA™",
     content: "<strong>Stay options</strong><br>✓ Budget<br>✓ Premium<br>✓ Family<br>✓ Honeymoon<br><br>🍛 Indian food nearby available",
-    cta: "✨🤖 Find my stay with VIETANA™"
+    cta: "✨🤖 Find my stay with VIETANA™",
+    action: 'planner'
   },
   {
     key: 'sim',
     title: "📶 SIM & Travel Essentials — VIETANA™",
     content: "<strong>Ready instantly</strong><br>✓ eSIM support<br>✓ Local SIM<br>✓ Grab setup<br>✓ Maps help<br><br>📱 Stay connected from arrival",
-    cta: "💬 Setup with VIETANA™"
+    cta: "💬 Setup with VIETANA™",
+    action: 'whatsapp'
   },
   {
     key: 'tickets',
     title: "🎫 Tickets & Guides — VIETANA™",
     content: "<strong>Popular bookings</strong><br>✓ Ba Na Hills<br>✓ Ha Long Cruise<br>✓ VinWonders<br>✓ Local guides<br><br>🎟 Book before landing",
-    cta: "💬 Reserve with VIETANA™"
+    cta: "💬 Reserve with VIETANA™",
+    action: 'whatsapp'
   },
   {
     key: 'food',
     title: "🍛 Food Support — VIETANA™",
     content: "<strong>Available</strong><br>✓ Vegetarian<br>✓ Jain<br>✓ North Indian<br>✓ South Indian<br><br>🍜 Hidden food recommendations included",
-    cta: "✨🤖 Eat better with VIETANA™"
+    cta: "✨🤖 Eat better with VIETANA™",
+    action: 'planner'
   },
   {
     key: 'tailored',
     title: "✨ Tailored Experiences — VIETANA™",
     content: "<strong>Choose your vibe</strong><br>💕 Honeymoon<br>🌃 Nightlife<br>📸 Hidden gems<br>👨‍👩‍👧 Family journeys<br><br>🌴 Built around you",
-    cta: "✨🤖 Travel your way with VIETANA™"
+    cta: "✨🤖 Travel your way with VIETANA™",
+    action: 'planner'
   },
   {
     key: 'support',
     title: "🛡️ Local Support — VIETANA™",
     content: "<strong>Always available</strong><br>✓ Hindi & English<br>✓ India + Vietnam support<br>✓ Local guidance<br><br>📍 Real people on the ground",
-    cta: "💬 Talk with VIETANA™"
+    cta: "💬 Talk with VIETANA™",
+    action: 'whatsapp'
   }
-];
-
-const SERVICES = [
-  { ico: '📋', key: 'visa' },
-  { ico: '🗺️', key: 'planning' },
-  { ico: '🚗', key: 'pickup' },
-  { ico: '🏨', key: 'hotel' },
-  { ico: '📶', key: 'sim' },
-  { ico: '🎫', key: 'tickets' },
-  { ico: '🍛', key: 'food' },
-  { ico: '✨', key: 'tailored' },
-  { ico: '🛡️', key: 'support' }
 ];
 
 interface ServicesProps {
@@ -167,16 +166,15 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
               className="w-full"
               variant="primary"
               onClick={() => {
-                if (selectedSrv.cta.includes('✨🤖')) {
-                  closeSrvModal();
+                closeSrvModal();
+                if (selectedSrv.action === 'planner') {
                   onOpenPlanner();
                 } else {
-                  window.open('https://wa.me/919953294543', '_blank');
+                  window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT), '_blank');
                 }
               }}
             >
-              {selectedSrv.cta.includes('✨🤖') ? '✨🤖 ' : '💬 '}
-              {selectedSrv.cta.replace('✨🤖 ', '').replace('💬 ', '')}
+              {selectedSrv.cta}
             </Button>
           </div>
         )}

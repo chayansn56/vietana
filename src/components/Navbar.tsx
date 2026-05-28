@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NAV_LINKS, WHATSAPP_DEFAULT } from '../config';
+import { NAV_LINKS, WHATSAPP_DEFAULT, buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
 import { useTranslation } from '../contexts/LanguageContext';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
@@ -16,18 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
 
-  const getNavLabel = (name: string) => {
-    switch(name) {
-      case 'Services': return t.nav.services;
-      case 'Packages': return t.nav.packages;
-      case 'AI Planner': return t.nav.aiPlanner;
-      case 'Food': return t.nav.food;
-      case 'Experiences': return t.nav.experiences;
-      case 'About': return t.nav.about;
-      case 'Contact': return t.nav.contact;
-      default: return name;
-    }
-  };
+  const isLight = navClass === 'light';
 
   const toggleLang = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -38,8 +27,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
     setLanguage(lang);
     setLangOpen(false);
   };
-
-  const isLight = navClass === 'light';
 
   return (
     <>
@@ -64,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
         
         <ul className="hidden lg:flex gap-8 list-none items-center flex-wrap">
           {NAV_LINKS.map((link) => (
-            <li key={link.name}>
+            <li key={link.key}>
               <a 
                 href={link.href} 
                 onClick={(e) => {
@@ -83,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                     ${isLight ? 'text-text-muted' : 'text-white/78'}
                     [&::after]:content-[''] [&::after]:absolute [&::after]:bottom-[-2px] [&::after]:left-0 [&::after]:right-[100%] [&::after]:h-px [&::after]:bg-brand-gold [&::after]:transition-[right] [&::after]:duration-400 [&::after]:ease-soft hover:[&::after]:right-0`}
                 >
-                  {getNavLabel(link.name)}
+                  {t.nav[link.key as keyof typeof t.nav]}
                 </Text>
               </a>
             </li>
@@ -158,7 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       >
         {NAV_LINKS.map((link) => (
           <a 
-            key={link.name}
+            key={link.key}
             href={link.href} 
             className="no-underline"
             onClick={() => {
@@ -175,7 +162,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
               className={`text-white/80 transition-all duration-500 ease-smooth hover:text-brand-gold block text-4xl
                 ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
-              {getNavLabel(link.name)}
+              {t.nav[link.key as keyof typeof t.nav]}
             </Heading>
           </a>
         ))}
@@ -191,7 +178,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
               </button>
             ))}
         </div>
-        <a href="https://wa.me/919953294543" className="text-brand-gold text-xl no-underline" target="_blank" rel="noreferrer">
+        <a href={buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT)} className="text-brand-gold text-xl no-underline" target="_blank" rel="noreferrer">
           💬 +91 9953294543
         </a>
       </div>

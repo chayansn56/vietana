@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MAGIC_DESTINATIONS } from '../config';
+import { MAGIC_DESTINATIONS, MAGIC_MODE_SLIDES } from '../config';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';
@@ -20,12 +20,6 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
 
   const particlesRef = useRef<HTMLDivElement>(null);
 
-  const mmSlides = [
-    'https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80',
-    'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1600&q=80',
-    'https://images.unsplash.com/photo-1542012843-0570b7787fc5?w=1600&q=80',
-    'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1600&q=80'
-  ];
 
   useEffect(() => {
     if (isOpen) {
@@ -52,7 +46,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
       }
 
       const slideInterval = setInterval(() => {
-        setCurrentSlide(prev => (prev + 1) % mmSlides.length);
+        setCurrentSlide(prev => (prev + 1) % MAGIC_MODE_SLIDES.length);
       }, 5000);
 
       return () => clearInterval(slideInterval);
@@ -93,7 +87,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
     <div id="magicMode" className={`fixed inset-0 z-[9999] bg-brand-green-extra-dark flex flex-col items-center justify-center transition-opacity duration-1500 ease-soft overflow-hidden text-white ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
       {/* BACKGROUND SLIDESHOW */}
       <div className="absolute inset-0 z-0">
-        {mmSlides.map((url, idx) => (
+        {MAGIC_MODE_SLIDES.map((url, idx) => (
           <div
             key={idx}
             className={`absolute inset-0 bg-cover bg-center transition-all duration-2000 ease-in-out after:content-[''] after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/20 after:to-black/60
