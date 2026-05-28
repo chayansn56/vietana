@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
-import AIPlanner from './components/AIPlanner';
+import { useTranslation } from './contexts/LanguageContext';
+
+// Standard Components (Top of the page)
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Services from './components/Services';
-import Packages from './components/Packages';
-import Food from './components/Food';
-import ComboSection from './components/ComboSection';
-import FAQ from './components/FAQ';
-import About from './components/About';
-import Contact from './components/Contact';
-import CustomTripBuilder from './components/CustomTripBuilder';
 import Footer from './components/Footer';
-import MagicMode from './components/MagicMode';
 
 // Layout Components
 import ProgressBar from './components/layout/ProgressBar';
@@ -22,10 +15,27 @@ import FloatingOrb from './components/layout/FloatingOrb';
 // Hooks
 import { useScroll } from './hooks/useScroll';
 import { useIntersectionObserver } from './hooks/useIntersectionObserver';
+import { useMetadata } from './hooks/useMetadata';
+
+// Lazy Loaded Components (Below the fold)
+const Services = lazy(() => import('./components/Services'));
+const Packages = lazy(() => import('./components/Packages'));
+const Food = lazy(() => import('./components/Food'));
+const ComboSection = lazy(() => import('./components/ComboSection'));
+const FAQ = lazy(() => import('./components/FAQ'));
+const About = lazy(() => import('./components/About'));
+const Contact = lazy(() => import('./components/Contact'));
+
+// Modals
+const AIPlanner = lazy(() => import('./components/AIPlanner'));
+const MagicMode = lazy(() => import('./components/MagicMode'));
+const CustomTripBuilder = lazy(() => import('./components/CustomTripBuilder'));
 
 export default function App() {
+  const { t } = useTranslation();
   const { scrollProgress, isScrolled, scrollY } = useScroll();
   useIntersectionObserver();
+  useMetadata('Feel Vietnam, Your Way', 'Premium bespoke travel for Indian travelers. Locally managed from Ho Chi Minh City.');
 
   const [isPlannerOpen, setIsPlannerOpen] = useState(false);
   const [isBuilderOpen, setIsBuilderOpen] = useState(false);
@@ -35,7 +45,6 @@ export default function App() {
   const [navClass, setNavClass] = useState('');
 
   useEffect(() => {
-    // Nav Classes (Glassy vs Light)
     const sections = ['services', 'packages', 'food', 'about', 'contact'];
     let currentNavClass = isScrolled ? 'glassy' : '';
     
@@ -74,43 +83,58 @@ export default function App() {
 
       <main>
         <Hero onOpenMagic={() => setIsMagicModeOpen(true)} />
-        <Services onOpenPlanner={(dest) => openPlanner(dest)} />
-        <div className="h-px mx-[var(--spacing-layout)] bg-gradient-to-r from-transparent via-brand-green/10 to-transparent" />
-        <Packages onOpenBuilder={() => setIsBuilderOpen(true)} />
-        <div className="h-px mx-[var(--spacing-layout)] bg-gradient-to-r from-transparent via-brand-gold/15 to-transparent" />
-        <Food />
-        <ComboSection onOpenPlanner={(dest) => openPlanner(dest)} />
-        <FAQ />
-        <About />
-        <Contact />
+        
+        <Suspense fallback={<SectionPlaceholder />}>
+          <Services onOpenPlanner={(dest) => openPlanner(dest)} />
+          <div className="h-px mx-[var(--spacing-layout)] bg-gradient-to-r from-transparent via-brand-green/10 to-transparent" />
+          <Packages onOpenBuilder={() => setIsBuilderOpen(true)} />
+          <div className="h-px mx-[var(--spacing-layout)] bg-gradient-to-r from-transparent via-brand-gold/15 to-transparent" />
+          <Food />
+          <ComboSection onOpenPlanner={(dest) => openPlanner(dest)} />
+          <FAQ />
+          <About />
+          <Contact />
+        </Suspense>
       </main>
 
       <AnimatePresence>
         {isPlannerOpen && (
-          <AIPlanner 
-            isOpen={isPlannerOpen} 
-            onClose={() => { setIsPlannerOpen(false); setInitialDestination(undefined); }} 
-            initialDestination={initialDestination}
-          />
+          <Suspense>
+            <AIPlanner 
+              isOpen={isPlannerOpen} 
+              onClose={() => { setIsPlannerOpen(false); setInitialDestination(undefined); }} 
+              initialDestination={initialDestination}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
 
       <AnimatePresence>
         {isMagicModeOpen && (
-          <MagicMode 
-            isOpen={isMagicModeOpen} 
-            onClose={() => setIsMagicModeOpen(false)} 
-            onOpenPlanner={(dest) => openPlanner(dest)}
-          />
+          <Suspense>
+            <MagicMode 
+              isOpen={isMagicModeOpen} 
+              onClose={() => setIsMagicModeOpen(false)} 
+              onOpenPlanner={(dest) => openPlanner(dest)}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
 
-      <CustomTripBuilder 
-        isOpen={isBuilderOpen} 
-        onClose={() => setIsBuilderOpen(false)} 
-      />
+      <Suspense>
+        <CustomTripBuilder 
+          isOpen={isBuilderOpen} 
+          onClose={() => setIsBuilderOpen(false)} 
+        />
+      </Suspense>
 
       <Footer />
     </div>
   );
 }
+
+const SectionPlaceholder = () => (
+  <div className="h-96 w-full bg-surface-warm animate-pulse flex items-center justify-center text-text-subtle">
+    Loading content...
+  </div>
+);

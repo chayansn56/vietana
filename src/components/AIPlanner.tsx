@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';
+import { useAIPlanner } from '../hooks/useAIPlanner';
 
 interface AIPlannerProps {
   isOpen: boolean;
@@ -11,153 +12,28 @@ interface AIPlannerProps {
   initialDestination?: string;
 }
 
-interface Preferences {
-  vibe: string;
-  style: string;
-  food: string;
-  group: string;
-  nightlife: string;
-  focus: string;
-  extras: string;
-}
-
-const CORE_QUESTIONS = [
-  { field: 'vibe', q: "First, what's your ultimate Vietnam dream?", opts: ['🏖️ Beautiful Beaches','🗺️ Hidden & Adventure','⚖️ A mix of both'] },
-  { field: 'style', q: "What is your travel style and budget?", opts: ['✨ Premium & Luxury','🎒 Backpacking & Budget','🏨 Smart Comfortable Stays'] },
-  { field: 'food', q: "Is food comfort important to you?", opts: ['🍛 Need Indian food mostly','🍜 Excited for local food','⚖️ Balance of both'] },
-  { field: 'extras', q: "How do you like your travel pace?", opts: ['Chill & slow','Packed with adventure','Balanced'] },
-  { field: 'nightlife', q: "Are you looking for vibrant nightlife or peaceful escapes?", opts: ['🌙 Vibrant Nightlife','🧘 Peaceful & Quiet','⚖️ A bit of both'] }
-];
-
 const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestination }) => {
   const { t } = useTranslation();
-  const [messages, setMessages] = useState<{ text: string; type: 'bot' | 'user' }[]>([]);
-  const [inputValue, setInputValue] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const [options, setOptions] = useState<string[]>([]);
-  const [isFinished, setIsFinished] = useState(false);
-  const [refinementMode, setRefinementMode] = useState(false);
-  
-  const [preferences, setPreferences] = useState<Preferences>({
-    vibe: 'Not set',
-    style: 'Not set',
-    food: 'Not set',
-    group: 'Not set',
-    nightlife: 'Not set',
-    focus: initialDestination || 'Not set',
-    extras: 'Not set'
-  });
+  const {
+    messages,
+    inputValue,
+    setInputValue,
+    isTyping,
+    options,
+    isFinished,
+    preferences,
+    handleSend
+  } = useAIPlanner(isOpen ? initialDestination : undefined);
   
   const pcMsgsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isOpen) {
-      if (initialDestination) {
-        const welcomeText = `I see you are interested in exploring <strong>${initialDestination}</strong>. Let's build your trip around this beautiful destination!`;
-        setMessages([{ text: welcomeText, type: 'bot' }]);
-        setPreferences(prev => ({ ...prev, focus: initialDestination }));
-        const firstQ = CORE_QUESTIONS[0];
-        addBotMsg(firstQ.q, firstQ.opts);
-      } else {
-        const firstQ = CORE_QUESTIONS[0];
-        setMessages([{ text: t.planner.greeting, type: 'bot' }]);
-        addBotMsg(firstQ.q, firstQ.opts);
-      }
-    } else {
-        resetPlanner();
-    }
-  }, [isOpen, initialDestination, t]);
-
-  const resetPlanner = () => {
-    setMessages([]);
-    setInputValue('');
-    setOptions([]);
-    setIsFinished(false);
-    setRefinementMode(false);
-    setPreferences({
-      vibe: 'Not set',
-      style: 'Not set',
-      food: 'Not set',
-      group: 'Not set',
-      nightlife: 'Not set',
-      focus: initialDestination || 'Not set',
-      extras: 'Not set'
-    });
-  };
-
-  const addBotMsg = (text: string, opts: string[] = [], delay = 500) => {
-    setIsTyping(true);
-    setTimeout(() => {
-      setIsTyping(false);
-      setMessages(prev => [...prev, { text, type: 'bot' }]);
-      setOptions(opts);
-    }, delay);
-  };
-
-  const handleSend = async (text: string = inputValue) => {
-    if (!text.trim() || isFinished) return;
-    
-    setMessages(prev => [...prev, { text, type: 'user' }]);
-    setInputValue('');
-    setOptions([]);
-
-    const lowerText = text.toLowerCase();
-
-    // 1. GENERATE ITINERARY
-    if (lowerText.includes("generate") || lowerText.includes("final")) {
-      setIsFinished(true);
-      addBotMsg("Beautiful! 🌿 Crafting your personalized Vietnam story based on your preferences...");
-      setTimeout(() => {
-        addBotMsg("Done! YOUR VIETANA™ MATCH is ready. You can now contact our team via WhatsApp or Email to finalize your bookings.");
-      }, 1500);
-      return;
-    }
-
-    // 2. NEGATIONS / REFINEMENT
-    let negations = ["no", "wrong", "not this", "don't like", "change", "something else", "nope", "not good", "hmm", "maybe not"];
-    if (negations.some(n => lowerText === n || lowerText.startsWith(n + " "))) {
-      setRefinementMode(true);
-      addBotMsg("😊 No worries. I may have missed something. Tell me what feels wrong and I’ll improve it.", ['🍛 Food','🌊 Beaches','🌃 Nightlife','💰 Budget','💕 Romance','👨‍👩‍👧 Family','🌴 Hidden places']);
-      return;
-    }
-
-    // 3. SPECIAL HEURISTICS
-    if (lowerText.includes("indian food") || lowerText.includes("indian")) {
-      setPreferences(prev => ({ ...prev, food: "Indian" }));
-      addBotMsg(`🍛 Got it. Updated your journey:<br><br>Indian food priority: HIGH<br><br>Refining recommendations... What should I improve next?`, ['No, generate itinerary', 'Change pace', 'Add luxury']);
-      return;
-    }
-    
-    if (lowerText.includes("parent") || lowerText.includes("elderly") || lowerText.includes("family")) {
-      setPreferences(prev => ({ ...prev, group: "Family/Elderly" }));
-      addBotMsg(`🏠 Got it. Updated your journey:<br><br>Family comfort mode: ON<br><br>Refining recommendations... What should I improve next?`, ['No, generate itinerary', 'Change food', 'Add luxury']);
-      return;
-    }
-
-    // 4. SEQUENTIAL QUESTIONS
-    const currentQ = CORE_QUESTIONS.find(q => preferences[q.field as keyof Preferences] === 'Not set');
-    
-    if (currentQ && !refinementMode) {
-      const nextPrefs = { ...preferences, [currentQ.field]: text };
-      setPreferences(nextPrefs);
-      
-      const nextQ = CORE_QUESTIONS.find(q => nextPrefs[q.field as keyof Preferences] === 'Not set');
-      if (nextQ) {
-        addBotMsg(nextQ.q, nextQ.opts);
-      } else {
-        addBotMsg("YOUR VIETANA™ MATCH is ready! I have high confidence in these recommendations based on your profile.<br><br>Does everything look good?", ['Generate Itinerary', 'Change something']);
-      }
-    } else {
-      setRefinementMode(false);
-      addBotMsg("Got it! I've updated your plan with those details. Should we generate your final match now?", ['Generate Itinerary', 'Wait, add one more thing']);
-    }
-  };
 
   useEffect(() => {
     if (pcMsgsRef.current) {
       pcMsgsRef.current.scrollTop = pcMsgsRef.current.scrollHeight;
     }
   }, [messages, isTyping]);
+
+  if (!isOpen) return null;
 
   return (
     <Modal 
@@ -227,7 +103,11 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               />
-              <button className="bg-white text-black border-none rounded-full w-11 h-11 flex shrink-0 items-center justify-center cursor-pointer transition-all duration-300 ease-smooth mr-1 hover:bg-brand-gold hover:scale-105 hover:-rotate-12" onClick={() => handleSend()}>
+              <button 
+                className="bg-white text-black border-none rounded-full w-11 h-11 flex shrink-0 items-center justify-center cursor-pointer transition-all duration-300 ease-smooth mr-1 hover:bg-brand-gold hover:scale-105 hover:-rotate-12" 
+                onClick={() => handleSend()}
+                disabled={isFinished}
+              >
                 <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-none stroke-current stroke-[2.5] stroke-linecap-round stroke-linejoin-round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
               </button>
             </div>

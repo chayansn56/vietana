@@ -1,19 +1,12 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, lazy, Suspense } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet';
-import L from 'leaflet';
 import { useTranslation } from '../contexts/LanguageContext';
 import Button from './ui/Button';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';
-import 'leaflet/dist/leaflet.css';
 
-// Fix for Leaflet markers
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-let DefaultIcon = L.icon({ iconUrl: icon, shadowUrl: iconShadow, iconSize: [25, 41], iconAnchor: [12, 41] });
-L.Marker.prototype.options.icon = DefaultIcon;
+const LeafletMap = lazy(() => import('./map/LeafletMap'));
 
 const EXPERIENCES = [
   { id: 1, t: 'Hidden Temple of Hue', d: 'A 12th-century pagoda hidden in the pine forests.', lat: 16.4677, lng: 107.5905, img: 'https://images.unsplash.com/photo-1583569704200-8b43bd1265fa?w=600&q=80' },
@@ -43,59 +36,6 @@ const EV_DESTINATIONS = [
   {name:'Phu Quoc', time:'Nov - Apr', desc:'Tropical island paradise with white sand beaches.', lat:10.2289, lng:103.9572, img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'}
 ];
 
-const HANOI: [number, number] = [21.0285, 105.8542];
-const DANANG: [number, number] = [16.0544, 108.2022];
-const HCMC: [number, number] = [10.8231, 106.6297];
-
-// Plane Animation Component
-const PlaneAnimation = () => {
-    const [planePos, setPlanePos] = useState<[number, number]>(HANOI);
-    const [planeAngle, setPlaneAngle] = useState(165);
-    const progressRef = useRef(0);
-
-    useEffect(() => {
-        let frame: number;
-        const animate = () => {
-            progressRef.current += 0.0015;
-            if (progressRef.current > 2) progressRef.current = 0;
-
-            let p1, p2, f, angle;
-            if (progressRef.current < 1) {
-                p1 = HANOI; p2 = DANANG; f = progressRef.current;
-                angle = 165;
-            } else {
-                p1 = DANANG; p2 = HCMC; f = progressRef.current - 1;
-                angle = 175;
-            }
-
-            const lat = p1[0] + (p2[0] - p1[0]) * f;
-            const lng = p1[1] + (p2[1] - p1[1]) * f;
-            setPlanePos([lat, lng]);
-            setPlaneAngle(angle);
-            frame = requestAnimationFrame(animate);
-        };
-        frame = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(frame);
-    }, []);
-
-    const planeIcon = L.divIcon({
-        html: `<div class="text-2xl drop-shadow-md" style="transform: rotate(${planeAngle}deg);">✈️</div>`,
-        className: '',
-        iconSize: [24, 24],
-        iconAnchor: [12, 12]
-    });
-
-    return <Marker position={planePos} icon={planeIcon} zIndexOffset={1000} />;
-};
-
-const MapController = ({ center }: { center: [number, number] }) => {
-    const map = useMap();
-    useEffect(() => {
-        map.panTo(center, { animate: true, duration: 1 });
-    }, [center, map]);
-    return null;
-};
-
 interface ComboSectionProps {
     onOpenPlanner: (destination?: string) => void;
 }
@@ -103,7 +43,7 @@ interface ComboSectionProps {
 const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
   const { t } = useTranslation();
   const [shattered, setShattered] = useState(false);
-  const [selectedExp, setSelectedExp] = useState<any>(null);
+  const [selectedExp, setSelectedExp] = useState<typeof EXPERIENCES[0] | null>(null);
   
   const [selectedCityIdx, setSelectedCityIdx] = useState<number | null>(null);
   const [mapCenter, setMapCenter] = useState<[number, number]>([16.0, 106.0]);
@@ -150,7 +90,10 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
                 style={{ top: node.top, left: node.left }}
                 onClick={() => setSelectedExp(node)}
               >
-                <div className="animate-[nfloat_var(--dur)_var(--del)_infinite_ease-in-out]" style={{ '--float-dur': node.dur, '--float-del': node.del } as any}>
+                <div 
+                    className="animate-[nfloat_var(--float-dur)_var(--float-del)_infinite_ease-in-out]" 
+                    style={{ '--float-dur': node.dur, '--float-del': node.del } as React.CSSProperties}
+                >
                   <div className="w-3.5 h-3.5 bg-brand-gold rounded-full shadow-[0_0_15px_var(--color-brand-gold)] relative group-hover:scale-[1.8] group-hover:bg-white group-hover:shadow-[0_0_25px_#fff] transition-all duration-300">
                     <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[0.8rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300">✨</span>
                     <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/85 text-white px-4 py-2 rounded-lg text-[0.7rem] whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 border border-white/10 backdrop-blur-md group-hover:opacity-100 group-hover:bottom-7.5">
@@ -217,41 +160,14 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
         
         <div className="relative w-full max-w-[600px] flex flex-col lg:flex-row justify-center items-center reveal reveal-d1">
           <div className="w-full aspect-square rounded-[30px] overflow-hidden border-8 border-white shadow-heavy relative z-[2] h-[500px]">
-            <MapContainer 
-              center={[16.0, 106.0]} 
-              zoom={5.5} 
-              zoomSnap={0.5}
-              zoomControl={false}
-              attributionControl={false}
-              scrollWheelZoom={false} 
-              style={{ height: '100%', width: '100%' }}
-            >
-              <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
-              
-              {EV_DESTINATIONS.map((d, i) => (
-                <Marker 
-                  key={i} 
-                  position={[d.lat, d.lng]} 
-                  icon={L.divIcon({
-                    className: 'custom-leaflet-pin',
-                    html: `
-                      <div class="relative w-3.5 h-3.5 bg-brand-gold rounded-full border-[3px] border-white shadow-[0_0_15px_rgba(201,168,76,0.5)] cursor-pointer transition-all duration-300 group ${selectedCityIdx === i ? 'bg-white scale-125 shadow-[0_0_20px_var(--color-brand-gold)]' : ''}">
-                        <span class="absolute -top-6.5 left-1/2 -translate-x-1/2 bg-black/80 text-white px-2 py-0.5 rounded text-[0.65rem] whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 ${selectedCityIdx === i ? 'opacity-100' : ''} transition-opacity duration-300">
-                          ${d.name}
-                        </span>
-                      </div>
-                    `,
-                    iconSize: [24, 24],
-                    iconAnchor: [12, 12]
-                  })}
-                  eventHandlers={{ click: () => handleCityClick(i) }}
+            <Suspense fallback={<div className="w-full h-full bg-brand-green-extra-dark/10 animate-pulse flex items-center justify-center">Loading Map...</div>}>
+                <LeafletMap 
+                    destinations={EV_DESTINATIONS}
+                    selectedCityIdx={selectedCityIdx}
+                    mapCenter={mapCenter}
+                    onCityClick={handleCityClick}
                 />
-              ))}
-
-              <Polyline positions={[HANOI, DANANG, HCMC]} color="#C9A84C" weight={2} className="glowing-route" />
-              <PlaneAnimation />
-              <MapController center={mapCenter} />
-            </MapContainer>
+            </Suspense>
           </div>
 
           <AnimatePresence>

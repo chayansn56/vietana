@@ -98,7 +98,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               '--dx': l.dx, 
               width: l.w, 
               height: l.h 
-            } as any}
+            } as React.CSSProperties}
           />
         ))}
       </div>

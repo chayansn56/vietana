@@ -9,7 +9,14 @@ import Grid from './ui/Grid';
 import Card from './ui/Card';
 import { Heading, Text } from './ui/Typography';
 
-const SERVICE_MODAL_DATA = [
+interface ServiceModalItem {
+  key: string;
+  title: string;
+  content: string;
+  cta: string;
+}
+
+const SERVICE_MODAL_DATA: ServiceModalItem[] = [
   {
     key: 'visa',
     title: "📋 Visa Assistance — VIETANA™",
@@ -84,11 +91,11 @@ interface ServicesProps {
 
 const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
   const { t } = useTranslation();
-  const [selectedSrv, setSelectedSrv] = useState<any>(null);
+  const [selectedSrv, setSelectedSrv] = useState<ServiceModalItem | null>(null);
 
   const openSrvModal = (key: string) => {
     const data = SERVICE_MODAL_DATA.find(d => d.key === key);
-    setSelectedSrv(data);
+    if (data) setSelectedSrv(data);
   };
 
   const closeSrvModal = () => setSelectedSrv(null);

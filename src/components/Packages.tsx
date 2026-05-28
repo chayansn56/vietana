@@ -8,7 +8,14 @@ import Grid from './ui/Grid';
 import { Heading, Text } from './ui/Typography';
 import Badge from './ui/Badge';
 
-const PackageCard: React.FC<{ p: any, onClick: () => void }> = ({ p, onClick }) => {
+interface PackageItem {
+  t: string;
+  img: string;
+  b: string;
+  d: string;
+}
+
+const PackageCard: React.FC<{ p: PackageItem, onClick: () => void }> = ({ p, onClick }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -79,7 +86,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
         />
         
         <Grid cols={3} gap={8} className="max-w-6xl mx-auto">
-          {PACKAGES.map((p, i) => (
+          {(PACKAGES as PackageItem[]).map((p, i) => (
             <PackageCard key={i} p={p} onClick={onOpenBuilder} />
           ))}
 

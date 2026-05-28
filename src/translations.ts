@@ -1,6 +1,78 @@
 export type Language = 'EN' | 'HI' | 'VI';
 
-export const TRANSLATIONS = {
+export interface TranslationSchema {
+  nav: {
+    services: string;
+    packages: string;
+    aiPlanner: string;
+    food: string;
+    experiences: string;
+    about: string;
+    contact: string;
+    cta: string;
+  };
+  hero: {
+    welcome: string;
+    tagline: string;
+    sub: string;
+    support: string;
+    discover: string;
+    plan: string;
+  };
+  services: {
+    title: string;
+    subtitle: string;
+    ghost: string;
+    visa: { t: string; d: string };
+    planning: { t: string; d: string };
+    pickup: { t: string; d: string };
+    hotel: { t: string; d: string };
+    sim: { t: string; d: string };
+    tickets: { t: string; d: string };
+    food: { t: string; d: string };
+    tailored: { t: string; d: string };
+    support: { t: string; d: string };
+  };
+  food: {
+    title: string;
+    heading: string;
+    sub: string;
+    filters: { all: string; veg: string; nonVeg: string };
+  };
+  exp: {
+    title: string;
+    heading: string;
+    sub: string;
+    orb: string;
+    reset: string;
+  };
+  planner: {
+    title: string;
+    tagline: string;
+    greeting: string;
+    where: string;
+    live: string;
+    status: string;
+    labels: {
+      vibe: string;
+      style: string;
+      food: string;
+      group: string;
+      nightlife: string;
+      focus: string;
+      extras: string;
+    };
+    email: string;
+  };
+  contact: {
+    title: string;
+    heading: string;
+    sub: string;
+    cta: string;
+  };
+}
+
+export const TRANSLATIONS: Record<Language, TranslationSchema> = {
   EN: {
     nav: {
       services: 'Services',
