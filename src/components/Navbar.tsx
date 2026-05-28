@@ -109,7 +109,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
               <Text size="xs" variant="none" weight="medium" className={`tracking-wide flex items-center gap-1.5 ${isLight ? 'text-text-muted' : 'text-white/88'}`}>
                 <span>🌐</span><span id="langLabel">{language}</span>
               </Text>
-              <span className={`text-[10px] opacity-60 transition-transform duration-300 ${isLight ? 'text-text-muted' : 'text-white/88'} ${langOpen ? 'rotate-180' : ''}`}>▾</span>
+              <span className={`text-xxs opacity-60 transition-transform duration-300 ${isLight ? 'text-text-muted' : 'text-white/88'} ${langOpen ? 'rotate-180' : ''}`}>▾</span>
             </div>
             
             <div className={`absolute top-[calc(100%+0.6rem)] right-0 bg-brand-green-extra-dark/95 backdrop-blur-3xl border border-brand-gold/18 rounded-lg overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600]

@@ -190,13 +190,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* BOTTOM FOOTER */}
-      <div className="absolute bottom-0 left-0 right-0 z-[3] flex justify-between items-end px-[var(--spacing-layout)] pb-11 opacity-0 animate-reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards]">
-        <Text size="xs" variant="none" className="flex items-center gap-4 text-white/40 tracking-[0.22em] uppercase">
+      <div className="absolute bottom-0 left-0 right-0 z-[3] flex justify-between items-end px-[var(--spacing-layout)] pb-11 opacity-0 reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards]">
+        <Text as="div" size="xs" variant="none" className="flex items-center gap-4 text-white/40 tracking-[0.22em] uppercase">
           <div className="relative w-12 h-px bg-gradient-to-r from-brand-gold to-transparent animate-sla" />
           <span>Scroll to explore</span>
         </Text>
 
-        <div className="flex gap-3 opacity-0 animate-reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
+        <div className="flex gap-3 opacity-0 reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
           <Clock flag="🇻🇳" city="Ho Chi Minh City" time={clocks.vn.time} date={clocks.vn.date} />
           <Clock flag="🇮🇳" city="New Delhi" time={clocks.in.time} date={clocks.in.date} />
         </div>

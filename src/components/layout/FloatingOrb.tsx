@@ -15,10 +15,10 @@ const FloatingOrb: React.FC<FloatingOrbProps> = ({ onClick }) => {
       onClick={onClick}
     >
       <Text 
-        size="xs" 
+        size="xxs" 
         variant="none" 
         weight="bold" 
-        className="absolute top-[-30px] text-[10px] text-brand-gold tracking-[0.15em] uppercase whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="absolute top-[-30px] text-brand-gold tracking-[0.15em] uppercase whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       >
         {t.nav.aiPlanner}
       </Text>

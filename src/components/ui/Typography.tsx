@@ -35,8 +35,8 @@ export const Heading: React.FC<HeadingProps> = ({
     md: 'text-xl md:text-2xl font-normal',
     lg: 'text-2xl md:text-3xl font-normal',
     xl: 'text-3xl md:text-4xl font-normal',
-    '2xl': 'text-[clamp(2.2rem,5vw,4rem)] font-light leading-tight',
-    '3xl': 'text-[clamp(3.2rem,8vw,6.5rem)] font-light leading-none',
+    '2xl': 'text-h2 font-light leading-tight',
+    '3xl': 'text-h1 font-light leading-none',
     none: '',
   };
 
@@ -74,7 +74,7 @@ export const Heading: React.FC<HeadingProps> = ({
 interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   children?: React.ReactNode;
   as?: 'p' | 'span' | 'div';
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   variant?: 'primary' | 'muted' | 'subtle' | 'white' | 'none';
   weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'none';
@@ -90,11 +90,12 @@ export const Text: React.FC<TextProps> = ({
   ...props
 }) => {
   const sizes: Record<string, string> = {
-    xs: 'text-[0.75rem] leading-relaxed',
-    sm: 'text-[0.875rem] leading-relaxed',
-    md: 'text-[1rem] leading-relaxed',
-    lg: 'text-[1.125rem] leading-relaxed',
-    xl: 'text-[1.25rem] md:text-[1.5rem] leading-relaxed',
+    xxs: 'text-xxs leading-relaxed',
+    xs: 'text-xs leading-relaxed',
+    sm: 'text-sm leading-relaxed',
+    md: 'text-base leading-relaxed',
+    lg: 'text-lg leading-relaxed',
+    xl: 'text-xl md:text-2xl leading-relaxed',
   };
 
   const variants: Record<string, string> = {

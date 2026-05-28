@@ -22,7 +22,7 @@ const Badge: React.FC<BadgeProps> = ({
   };
 
   return (
-    <div className={`inline-flex items-center gap-2 px-4 py-1.5 border rounded-full backdrop-blur-md text-[0.65rem] md:text-[0.7rem] font-bold tracking-[0.2em] uppercase ${variants[variant]} ${className}`}>
+    <div className={`inline-flex items-center gap-2 px-4 py-1.5 border rounded-full backdrop-blur-md text-xxs md:text-xs font-bold tracking-[0.2em] uppercase ${variants[variant]} ${className}`}>
       {icon && <span className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse flex-shrink-0" />}
       {children}
     </div>

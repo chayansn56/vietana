@@ -151,7 +151,7 @@ const Food: React.FC = () => {
                 value={foodPref} 
                 onChange={(e) => setFoodPref(e.target.value)}
                 placeholder="E.g., I need pure veg options, no garlic/onion..." 
-                className="w-full h-24 p-4 border border-gray-100 rounded-xl mb-6 font-inherit text-[0.875rem] resize-none bg-gray-50 focus:outline-none focus:border-brand-gold/30 transition-colors"
+                className="w-full h-24 p-4 border border-gray-100 rounded-xl mb-6 font-inherit text-sm resize-none bg-gray-50 focus:outline-none focus:border-brand-gold/30 transition-colors"
               />
               <Button 
                 className="w-full bg-brand-whatsapp text-white hover:bg-brand-whatsapp/90 border-none shadow-whatsapp hover:shadow-whatsapp-hover"

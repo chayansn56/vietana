@@ -97,7 +97,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
                 >
                   <div className="w-3.5 h-3.5 bg-brand-gold rounded-full shadow-[0_0_15px_var(--color-brand-gold)] relative group-hover:scale-[1.8] group-hover:bg-white group-hover:shadow-[0_0_25px_#fff] transition-all duration-300">
                     <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">✨</span>
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/85 text-white px-4 py-2 rounded-lg text-[10px] whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 border border-white/10 backdrop-blur-md group-hover:opacity-100 group-hover:bottom-8">
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/85 text-white px-4 py-2 rounded-lg text-xxs whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 border border-white/10 backdrop-blur-md group-hover:opacity-100 group-hover:bottom-8">
                       {node.t}
                     </div>
                   </div>

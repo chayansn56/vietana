@@ -69,7 +69,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                       ✨ Your Vietnam Journey Blueprint
                     </Heading>
                     <Text variant="white" size="sm" weight="light" className="leading-relaxed mb-6 text-white/80">
-                      I've gathered your preferences. Your trip will focus on <span className="text-brand-gold-light font-serif italic text-[1rem] mx-0.5">{preferences.focus}</span>, balancing <span className="text-brand-gold-light font-serif italic text-[1rem] mx-0.5">{preferences.food}</span> and <span className="text-brand-gold-light font-serif italic text-[1rem] mx-0.5">{preferences.style}</span>.
+                      I've gathered your preferences. Your trip will focus on <span className="text-brand-gold-light font-serif italic mx-0.5">{preferences.focus}</span>, balancing <span className="text-brand-gold-light font-serif italic mx-0.5">{preferences.food}</span> and <span className="text-brand-gold-light font-serif italic mx-0.5">{preferences.style}</span>.
                     </Text>
                     
                     <div className="flex flex-col gap-3">

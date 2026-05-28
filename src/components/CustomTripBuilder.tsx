@@ -186,7 +186,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Tell us about special requests, dietary restrictions, preferred flight cities, etc..." 
-              className="w-full h-24 bg-white/5 border border-white/10 rounded-lg p-4 text-white text-[0.875rem] font-light resize-none focus:border-brand-gold focus:outline-none transition-colors"
+              className="w-full h-24 bg-white/5 border border-white/10 rounded-lg p-4 text-white text-sm font-light resize-none focus:border-brand-gold focus:outline-none transition-colors"
           />
         </div>
       </div>
