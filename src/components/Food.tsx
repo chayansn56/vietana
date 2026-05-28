@@ -12,15 +12,22 @@ import Badge from './ui/Badge';
 
 const Food: React.FC = () => {
   const { t } = useTranslation();
-  const [selectedFood, setSelectedFood] = useState<string | null>(null);
+  const [selectedFood, setSelectedFood] = useState<any | null>(null);
   const [foodPref, setFoodPref] = useState('');
 
-  const openFoodModal = (name: string) => setSelectedFood(name);
+  const openFoodModal = (item: any) => setSelectedFood(item);
   const closeFoodModal = () => setSelectedFood(null);
 
-  const getFoodImg = (name: string) => {
-      let keyword = name.split('(')[0].trim().replace(/\s+/g, ',');
-      return `https://image.pollinations.ai/prompt/delicious%20authentic%20Vietnamese%20food%20${keyword}?width=600&height=400&nologo=true`;
+  const PREF_OPTIONS = [
+    { label: '🥦 Pure Veg', value: 'I need pure veg options.' },
+    { label: '🧄 No Garlic/Onion', value: 'No garlic or onion please.' },
+    { label: '🌶️ Non-Spicy', value: 'I prefer non-spicy food.' },
+    { label: '🍤 No Seafood', value: 'No seafood or fish sauce.' },
+    { label: '🥩 Halal', value: 'I prefer Halal meat.' },
+  ];
+
+  const addPref = (val: string) => {
+    setFoodPref(prev => prev.includes(val) ? prev : prev ? `${prev} ${val}` : val);
   };
 
   return (
@@ -55,7 +62,7 @@ const Food: React.FC = () => {
                       className="cursor-pointer transition-all duration-300 flex items-center gap-2 hover:text-brand-gold-muted hover:translate-x-1.5" 
                       onClick={() => openFoodModal(item)}
                     >
-                      <span className="text-brand-gold text-lg">⭐</span> {item}
+                      <span className="text-brand-gold text-lg">⭐</span> {item.name}
                     </Text>
                   </li>
                 ))}
@@ -77,7 +84,7 @@ const Food: React.FC = () => {
                       className="cursor-pointer transition-all duration-300 flex items-center gap-2 hover:text-brand-gold-muted hover:translate-x-1.5" 
                       onClick={() => openFoodModal(item)}
                     >
-                      <span className="text-brand-gold text-lg">⭐</span> {item}
+                      <span className="text-brand-gold text-lg">⭐</span> {item.name}
                     </Text>
                   </li>
                 ))}
@@ -129,15 +136,28 @@ const Food: React.FC = () => {
           </Heading>
           
           <div className="flex-1 min-w-[300px] w-full flex justify-end">
-            <Card variant="white" padding="md" className="w-full max-w-sm bg-white/90">
+            <Card variant="white" padding="md" className="w-full max-w-md bg-white/90">
               <Text variant="primary" weight="bold" className="mb-4">
                 Share your food preferences
               </Text>
+              
+              <div className="flex flex-wrap gap-2 mb-4">
+                {PREF_OPTIONS.map((opt, i) => (
+                  <button
+                    key={i}
+                    onClick={() => addPref(opt.value)}
+                    className="px-3 py-1.5 rounded-full border border-brand-green/10 bg-brand-green/5 text-brand-green text-xs font-medium hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-dark transition-all cursor-pointer"
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+
               <textarea 
                 value={foodPref} 
                 onChange={(e) => setFoodPref(e.target.value)}
                 placeholder="E.g., I need pure veg options, no garlic/onion..." 
-                className="w-full h-24 p-4 border border-gray-100 rounded-xl mb-6 font-inherit text-sm resize-none bg-gray-50 focus:outline-none focus:border-brand-gold/30 transition-colors"
+                className="w-full h-32 p-4 border border-gray-100 rounded-xl mb-6 font-inherit text-sm resize-none bg-gray-50 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all"
               />
               <Button 
                 className="w-full bg-brand-whatsapp text-white hover:bg-brand-whatsapp/90 border-none shadow-whatsapp hover:shadow-whatsapp-hover"
@@ -154,20 +174,66 @@ const Food: React.FC = () => {
       <Modal 
         isOpen={!!selectedFood} 
         onClose={closeFoodModal}
-        maxWidth="max-w-md"
-        className="p-10 text-center"
+        maxWidth="max-w-xl"
+        className="overflow-hidden"
         variant="light"
       >
         {selectedFood && (
-          <>
-            <img src={getFoodImg(selectedFood)} alt={selectedFood} className="w-full h-72 object-cover rounded-2xl mb-8 shadow-medium" />
-            <Heading as="h3" size="xl" font="serif" className="!text-brand-green mb-2.5">
-              {selectedFood}
-            </Heading>
-            <Text variant="muted" size="md">
-              A classic Vietnamese delicacy you must try.
-            </Text>
-          </>
+          <div className="flex flex-col">
+            <div className="relative h-80 w-full overflow-hidden">
+              <img 
+                src={selectedFood.img} 
+                alt={selectedFood.name} 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-6 left-8 right-8 text-white">
+                <Heading as="h3" size="xl" font="serif" variant="none" className="mb-2 drop-shadow-md">
+                  {selectedFood.name}
+                </Heading>
+                <div className="flex flex-wrap gap-2">
+                  {selectedFood.tags?.map((tag: string, i: number) => (
+                    <Badge key={i} variant="gold" className="!bg-brand-gold/20 !border-brand-gold/40 !text-white text-[10px] py-1">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="p-10 bg-surface-cream/50">
+              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-brand-green/5">
+                <div className="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center text-xl">
+                  🥣
+                </div>
+                <div>
+                  <Text size="xs" variant="muted" weight="bold" className="uppercase tracking-widest mb-1">
+                    Authentic Recipe
+                  </Text>
+                  <Text size="sm" weight="medium" className="text-brand-green-dark">
+                    Local Specialty
+                  </Text>
+                </div>
+              </div>
+              <Text variant="primary" size="lg" className="leading-relaxed text-text-dark/90">
+                {selectedFood.desc}
+              </Text>
+              
+              <div className="mt-10 flex gap-4">
+                <Button 
+                  className="flex-1"
+                  onClick={() => window.open(`${WHATSAPP_INDIA}&text=${encodeURIComponent(`Hi VIETANA, I'm interested in trying ${selectedFood.name} during my trip!`)}`, '_blank')}
+                >
+                  Plan with this Dish
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={closeFoodModal}
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          </div>
         )}
       </Modal>
     </Section>
