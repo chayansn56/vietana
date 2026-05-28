@@ -104,33 +104,33 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* CONTENT */}
-      <Container className="relative z-[3]">
+      <Container className="relative z-[10]">
         <div className="max-w-[900px]">
-          <div className="inline-flex items-center gap-3 bg-brand-gold/10 border border-brand-gold/28 text-brand-gold-light text-[0.7rem] font-medium tracking-[0.22em] uppercase px-5 py-2 rounded-full backdrop-blur-md mb-10 reveal-up [animation-delay:0.35s]">
+          <div className="inline-flex items-center gap-3 bg-brand-gold/15 border border-brand-gold/30 text-brand-gold-light text-[0.72rem] font-bold tracking-[0.22em] uppercase px-5 py-2.5 rounded-full backdrop-blur-md mb-10 reveal-up [animation-delay:0.35s]">
             <div className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse flex-shrink-0" />
             <span>India–Vietnam Travel Experts · Ho Chi Minh City</span>
           </div>
           
-          <Heading as="h1" variant="none" className="text-white mb-2 reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_70px_rgba(0,0,0,0.28)]">
+          <Heading as="h1" variant="none" className="!text-white mb-2 reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_40px_rgba(0,0,0,0.6)]">
             Feel <em className="text-brand-gold-light italic">Vietnam</em>,
             <span className="block mt-[-0.06em] text-brand-gold-light">Your Way 🇻🇳</span>
           </Heading>
           
-          <Text variant="none" className="font-serif text-[clamp(1rem,2vw,1.4rem)] italic font-light mb-5 text-brand-gold-light reveal-up [animation-delay:0.72s]">
-            Travel Gets Better with <img src="/vietana_logo.png" className="h-[1.2em] inline-block align-middle mr-1 -mt-0.5" alt="" />VIETANA
+          <Text variant="none" className="font-serif text-[clamp(1.2rem,2.5vw,1.6rem)] italic font-light mb-6 !text-brand-gold-light reveal-up [animation-delay:0.72s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
+            Travel Gets Better with <img src="/vietana_logo.png" className="h-[1.3em] inline-block align-middle mr-1 -mt-0.5" alt="" />VIETANA
           </Text>
           
-          <Text variant="none" className="text-[1.05rem] text-white/90 font-light max-w-[500px] reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-3">
+          <Text variant="white" className="text-[1.15rem] font-medium max-w-[580px] reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.4)]">
             {t.hero.sub}
           </Text>
           
-          <Text variant="none" size="xs" className="text-white/45 max-w-[440px] mb-12 reveal-up [animation-delay:0.95s]">
+          <Text variant="white" size="md" className="!text-white/80 max-w-[460px] mb-12 reveal-up [animation-delay:0.95s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
             We handle everything from your visa until you're back home.
           </Text>
           
           <div className="flex gap-5 flex-wrap reveal-up [animation-delay:1.08s]">
             <Button 
-              className="group relative overflow-hidden" 
+              className="group relative overflow-hidden text-brand-green-extra-dark font-bold" 
               onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
             >
               <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-350" />
@@ -139,6 +139,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             <Button 
               variant="glass" 
               onClick={onOpenMagic}
+              className="font-semibold"
             >
               ✦ {t.hero.discover}
             </Button>

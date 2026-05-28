@@ -5,6 +5,7 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';
 import { useAIPlanner } from '../hooks/useAIPlanner';
+import { WHATSAPP_INDIA, WHATSAPP_VIETNAM } from '../config';
 
 interface AIPlannerProps {
   isOpen: boolean;
@@ -44,30 +45,84 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
     >
       <div className="flex-1 md:flex-[0.65] flex flex-col border-r border-white/5 relative z-10 bg-brand-green-extra-dark/95">
         <div className="p-12 pb-6 text-left">
-          <Heading as="h3" className="text-white text-3xl mb-3 flex items-center gap-3 font-serif font-normal">
+          <Heading as="h3" variant="white" className="text-3xl mb-3 flex items-center gap-3 font-serif font-normal">
             🌿 {t.planner.title}
           </Heading>
-          <Text variant="white" size="sm" className="opacity-40 leading-relaxed font-light tracking-wide">
+          <Text variant="white" size="sm" className="opacity-60 leading-relaxed font-light tracking-wide">
             {t.planner.tagline}
           </Text>
         </div>
         
         <div ref={pcMsgsRef} className="flex-1 overflow-y-auto px-12 flex flex-col gap-7 scroll-smooth scrollbar-thin scrollbar-thumb-white/10">
-          {messages.map((msg, i) => (
-            <div key={i} className={`flex gap-5 items-start animate-msg-fade-in ${msg.type === 'user' ? 'flex-row-reverse' : ''}`}>
-              {msg.type === 'bot' && (
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-gold to-brand-gold-muted flex shrink-0 items-center justify-center relative shadow-strong after:content-[''] after:absolute after:inset-[-3px] after:rounded-full after:border after:border-brand-gold/20 after:animate-ai-pulse" />
-              )}
-              <div className={`max-w-[85%] ${msg.type === 'user' ? 'bg-white/5 border border-white/10 rounded-[18px_18px_4px_18px] p-4 backdrop-blur-md' : ''}`}>
-                <Text 
-                  variant="white" 
-                  size="md" 
-                  className={`leading-relaxed [&_strong]:text-brand-gold-light [&_strong]:font-medium ${msg.type === 'bot' ? 'opacity-90' : ''}`}
-                  dangerouslySetInnerHTML={{ __html: msg.text }}
-                />
+          {messages.map((msg, i) => {
+            if (msg.type === 'blueprint') {
+              const whatsappIndiaText = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${preferences.focus}\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\n\nI'd like to discuss this further!`;
+              const whatsappVietnamText = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${preferences.focus}\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\n\nI'd like to discuss this further!`;
+              
+              const whatsappIndiaLink = `https://wa.me/919953294543?text=${encodeURIComponent(whatsappIndiaText)}`;
+              const whatsappVietnamLink = `https://wa.me/84904123456?text=${encodeURIComponent(whatsappVietnamText)}`;
+              
+              return (
+                <div key={i} className="animate-msg-fade-in w-full my-4 px-2">
+                  <div className="bg-brand-green-dark/45 border border-brand-gold/25 rounded-2xl p-6.5 backdrop-blur-md shadow-heavy max-w-[580px] mx-auto text-left relative overflow-hidden">
+                    <div className="text-brand-gold-light font-serif text-[1.12rem] font-medium mb-3.5 flex items-center gap-2 tracking-wide">
+                      ✨ Your Vietnam Journey Blueprint
+                    </div>
+                    <Text variant="white" className="leading-relaxed mb-6 font-light text-white/80 text-[0.95rem]">
+                      I've gathered your preferences. Your trip will focus on <span className="text-brand-gold-light font-medium font-serif italic text-base mx-0.5">{preferences.focus}</span>, balancing <span className="text-brand-gold-light font-medium font-serif italic text-base mx-0.5">{preferences.food}</span> and <span className="text-brand-gold-light font-medium font-serif italic text-base mx-0.5">{preferences.style}</span>.
+                    </Text>
+                    
+                    <div className="flex flex-col gap-3">
+                      <a 
+                        href={whatsappIndiaLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-transparent border border-brand-green text-brand-green-light hover:bg-brand-green/10 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
+                      >
+                        💬 WhatsApp India
+                      </a>
+                      <a 
+                        href={whatsappVietnamLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
+                      >
+                        💬 WhatsApp Vietnam
+                      </a>
+                      <a 
+                        href={`mailto:support@vietana.com?subject=My%20Vietnam%20Journey%20Blueprint&body=${encodeURIComponent(whatsappIndiaText)}`}
+                        className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
+                      >
+                        ✉ support@vietana.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <div key={i} className={`flex gap-5 items-start animate-msg-fade-in ${msg.type === 'user' ? 'flex-row-reverse' : ''}`}>
+                {msg.type === 'bot' && (
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-gold to-brand-gold-muted flex shrink-0 items-center justify-center relative shadow-strong after:content-[''] after:absolute after:inset-[-3px] after:rounded-full after:border after:border-brand-gold/20 after:animate-ai-pulse">
+                    <span className="text-white text-base relative z-10">🌿</span>
+                  </div>
+                )}
+                <div className={`max-w-[85%] ${
+                  msg.type === 'user' 
+                    ? 'bg-brand-gold/10 border border-brand-gold/20 rounded-[18px_18px_4px_18px] p-4 backdrop-blur-md text-white shadow-soft ml-auto' 
+                    : 'bg-white/[0.03] border border-white/5 rounded-[18px_18px_18px_4px] p-4.5 backdrop-blur-sm shadow-sm text-white/95'
+                }`}>
+                  <Text 
+                    variant="white" 
+                    size="md" 
+                    className="leading-relaxed [&_strong]:text-brand-gold-light [&_strong]:font-medium"
+                    dangerouslySetInnerHTML={{ __html: msg.text }}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           {isTyping && (
             <div className="flex items-center gap-2 py-4">
               {[0, 1, 2].map(n => (
@@ -130,14 +185,22 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               { label: t.planner.labels.nightlife, value: preferences.nightlife, icon: '🌙' },
               { label: t.planner.labels.focus, value: preferences.focus, icon: '🎯' },
               { label: t.planner.labels.extras, value: preferences.extras, icon: '📍' }
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col gap-2.5">
-                <div className="text-[0.65rem] text-white/25 uppercase tracking-widest font-bold">{item.icon} {item.label}</div>
-                <Text variant="white" className="text-brand-gold-light font-light leading-tight min-h-[1.5rem]">
-                  {item.value}
-                </Text>
-              </div>
-            ))}
+            ].map((item, i) => {
+              const isSet = item.value && item.value !== 'Not set';
+              return (
+                <div key={i} className="flex flex-col gap-1.5">
+                  <div className="text-[0.65rem] text-white/35 uppercase tracking-widest font-bold">{item.icon} {item.label}</div>
+                  <Text 
+                    variant="none" 
+                    className={`font-light leading-tight min-h-[1.5rem] transition-all duration-300 ${
+                      isSet ? 'text-brand-gold-light font-medium' : 'text-white/20 italic'
+                    }`}
+                  >
+                    {item.value}
+                  </Text>
+                </div>
+              );
+            })}
           </div>
           
           <div className="mt-12 flex flex-col gap-4">

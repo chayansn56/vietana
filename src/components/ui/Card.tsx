@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface CardProps {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   hover?: boolean;
@@ -14,6 +14,7 @@ const Card: React.FC<CardProps> = ({
   hover = true,
   variant = 'white',
   padding = 'md',
+  ...props
 }) => {
   const baseStyles = 'rounded-xl overflow-hidden transition-all duration-500';
   
@@ -36,7 +37,10 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div className={`${baseStyles} ${variants[variant]} ${hoverStyles} ${paddings[padding]} ${className}`}>
+    <div 
+      className={`${baseStyles} ${variants[variant]} ${hoverStyles} ${paddings[padding]} ${className}`}
+      {...props}
+    >
       {children}
     </div>
   );

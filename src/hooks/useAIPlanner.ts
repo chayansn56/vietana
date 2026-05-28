@@ -3,7 +3,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 
 interface Message {
   text: string;
-  type: 'bot' | 'user';
+  type: 'bot' | 'user' | 'blueprint';
 }
 
 interface Preferences {
@@ -45,26 +45,49 @@ export const useAIPlanner = (initialDestination?: string) => {
 
   const addBotMsg = (text: string, opts: string[] = [], delay = 500) => {
     setIsTyping(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsTyping(false);
       setMessages(prev => [...prev, { text, type: 'bot' }]);
       setOptions(opts);
     }, delay);
+    return timer;
   };
 
   useEffect(() => {
+    if (messages.length > 0) return;
+
+    let active = true;
+    let timer: NodeJS.Timeout;
+
     if (initialDestination) {
       const welcomeText = `I see you are interested in exploring <strong>${initialDestination}</strong>. Let's build your trip around this beautiful destination!`;
       setMessages([{ text: welcomeText, type: 'bot' }]);
       setPreferences(prev => ({ ...prev, focus: initialDestination }));
       const firstQ = CORE_QUESTIONS[0];
-      addBotMsg(firstQ.q, firstQ.opts);
+      setIsTyping(true);
+      timer = setTimeout(() => {
+        if (!active) return;
+        setIsTyping(false);
+        setMessages(prev => [...prev, { text: firstQ.q, type: 'bot' }]);
+        setOptions(firstQ.opts);
+      }, 500);
     } else {
       const firstQ = CORE_QUESTIONS[0];
       setMessages([{ text: t.planner.greeting, type: 'bot' }]);
-      addBotMsg(firstQ.q, firstQ.opts);
+      setIsTyping(true);
+      timer = setTimeout(() => {
+        if (!active) return;
+        setIsTyping(false);
+        setMessages(prev => [...prev, { text: firstQ.q, type: 'bot' }]);
+        setOptions(firstQ.opts);
+      }, 500);
     }
-  }, [initialDestination, t]);
+
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [initialDestination]);
 
   const handleSend = async (text: string = inputValue) => {
     if (!text.trim() || isFinished) return;
@@ -79,7 +102,7 @@ export const useAIPlanner = (initialDestination?: string) => {
       setIsFinished(true);
       addBotMsg("Beautiful! 🌿 Crafting your personalized Vietnam story based on your preferences...");
       setTimeout(() => {
-        addBotMsg("Done! YOUR VIETANA™ MATCH is ready. You can now contact our team via WhatsApp or Email to finalize your bookings.");
+        setMessages(prev => [...prev, { text: '', type: 'blueprint' }]);
       }, 1500);
       return;
     }

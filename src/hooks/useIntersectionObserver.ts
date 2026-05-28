@@ -10,19 +10,33 @@ export const useIntersectionObserver = (
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          // Optionally unobserve after revealing
-          // observerRef.current?.unobserve(entry.target);
         }
       });
     }, options);
 
-    const elements = document.querySelectorAll('.reveal');
-    elements.forEach((el) => observerRef.current?.observe(el));
+    const scanAndObserve = () => {
+      const elements = document.querySelectorAll('.reveal:not(.is-visible)');
+      elements.forEach((el) => observerRef.current?.observe(el));
+    };
+
+    // Initial scan
+    scanAndObserve();
+
+    // Set up MutationObserver to detect new .reveal elements (e.g. from lazy loading)
+    const mutationObserver = new MutationObserver(() => {
+      scanAndObserve();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
 
     return () => {
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
+      mutationObserver.disconnect();
     };
   }, [options]);
 

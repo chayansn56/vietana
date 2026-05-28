@@ -201,59 +201,61 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: var(--color-surface-cream);
-  color: var(--color-text-dark);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+@layer base {
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--color-surface-cream);
+    color: var(--color-text-dark);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-::selection {
-  background-color: rgba(201, 168, 76, 0.22);
-  color: var(--color-brand-green-dark);
-}
+  ::selection {
+    background-color: rgba(201, 168, 76, 0.22);
+    color: var(--color-brand-green-dark);
+  }
 
-::-webkit-scrollbar {
-  width: 3px;
-}
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
 
-::-webkit-scrollbar-track {
-  background-color: var(--color-brand-green-extra-dark);
-}
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-brand-green-extra-dark);
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-brand-gold);
-  border-radius: 2px;
-}
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-brand-gold);
+    border-radius: 2px;
+  }
 
-/* Typography Defaults */
-h1, h2, h3, h4, h5 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  line-height: 1.06;
-}
+  /* Typography Defaults */
+  h1, h2, h3, h4, h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.06;
+  }
 
-h1 {
-  font-size: clamp(3.2rem, 8vw, 6.5rem);
-  font-weight: 300;
-  line-height: 1.0;
-}
+  h1 {
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+  }
 
-h2 {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-}
+  h2 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+  }
 
-h3 {
-  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-  font-weight: 500;
-}
+  h3 {
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-weight: 500;
+  }
 
-p {
-  font-size: 1rem;
-  line-height: 1.82;
-  color: var(--color-text-muted);
-  font-weight: 300;
+  p {
+    font-size: 1rem;
+    line-height: 1.82;
+    color: var(--color-text-muted);
+    font-weight: 300;
+  }
 }
 
 /* Utility Classes */

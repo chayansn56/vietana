@@ -73,7 +73,7 @@ const FAQ: React.FC = () => {
                 hover={false}
                 padding="none"
                 variant="white"
-                className={`cursor-pointer transition-all duration-400 ease-smooth reveal
+                className={`cursor-pointer transition-all duration-400 ease-smooth 
                   ${isOpen ? 'border-brand-gold/30 shadow-strong bg-brand-gold/[0.01]' : 'border-brand-green/8 shadow-none hover:border-brand-gold hover:-translate-y-0.5 hover:shadow-medium'}`} 
                 onClick={() => setOpenIdx(isOpen ? null : i)}
               >
