@@ -40,11 +40,11 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       isOpen={isOpen}
       onClose={onClose}
       maxWidth="max-w-6xl"
-      className="h-[85vh] max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden bg-brand-green-extra-dark/95 border border-white/10 rounded-[32px] shadow-deep backdrop-blur-2xl"
+      className="h-[85vh] max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden glass-dark rounded-[32px] shadow-heavy"
     >
       {/* Background Orbs for Organic Lush Vibe */}
-      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-green-light/20 rounded-full blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-brand-gold/10 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-[100px] pointer-events-none z-0 animate-blob-float" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] pointer-events-none z-0 animate-blob-float" style={{ animationDelay: '2s' }} />
 
       {/* LEFT: Chat Consultation (Lush Glassmorphism) */}
       <div className="flex-1 md:flex-[0.65] flex flex-col relative z-10 border-r border-white/5">
@@ -166,7 +166,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       </div>
 
       {/* RIGHT: Live Preferences (Glassmorphic Ticket) */}
-      <div className="hidden md:flex flex-[0.35] flex-col bg-black/20 p-10 relative z-10 border-l border-white/5 backdrop-blur-2xl shadow-inner">
+      <div className="hidden md:flex flex-[0.35] flex-col glass-dark bg-black/40 p-10 relative z-10 border-l border-white/5 shadow-inner border-t-0 border-b-0 border-r-0 rounded-none">
         <Heading as="h4" variant="none" className="text-white/40 tracking-[0.2em] text-xs uppercase mb-10 flex items-center gap-4 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-brand-gold/50 after:to-transparent">
           {t.planner.live}
         </Heading>

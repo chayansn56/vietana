@@ -47,11 +47,11 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
       isOpen={isOpen} 
       onClose={onClose}
       maxWidth="max-w-5xl"
-      className="h-[90vh] max-h-[850px] flex flex-col p-0 overflow-hidden bg-brand-green-extra-dark/95 border border-white/10 rounded-[32px] shadow-deep backdrop-blur-2xl"
+      className="h-[90vh] max-h-[850px] flex flex-col p-0 overflow-hidden glass-dark rounded-[32px] shadow-heavy"
     >
       {/* Lush Background Orbs */}
-      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-brand-green-light/20 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-brand-gold/15 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none z-0 animate-blob-float" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] pointer-events-none z-0 animate-blob-float" style={{ animationDelay: '2s' }} />
 
       {/* HEADER */}
       <div className="p-10 pb-8 border-b border-white/5 relative z-10 flex flex-col items-center text-center">
@@ -101,7 +101,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
         </div>
 
         {/* RIGHT: Settings & Estimate */}
-        <div className="flex-1 md:flex-[0.45] p-10 bg-black/20 backdrop-blur-xl flex flex-col shadow-inner">
+        <div className="flex-1 md:flex-[0.45] p-10 glass-dark bg-black/40 flex flex-col shadow-inner border-l border-white/5 rounded-none border-t-0 border-r-0 border-b-0">
            <Heading as="h3" variant="none" className="text-white/40 uppercase tracking-[0.2em] text-xs font-semibold mb-8 flex items-center gap-3">
               <span>⚙️</span> Trip Parameters
            </Heading>

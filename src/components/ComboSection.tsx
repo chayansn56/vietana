@@ -29,7 +29,8 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
     <Section id="combo-section" variant="none" spacing="none" className="flex flex-col lg:flex-row w-full lg:h-screen lg:max-h-[1080px] min-h-[900px] lg:min-h-0 bg-surface-cream items-stretch overflow-hidden">
       
       {/* LEFT: EXPERIENCES (Editorial Showcase) */}
-      <div id="experiences" className="flex-1 lg:flex-[0.5] relative py-20 px-12 lg:px-20 border-r editorial-border flex flex-col z-10 bg-surface-cream">
+      <div id="experiences" className="flex-1 lg:flex-[0.5] relative py-20 px-12 lg:px-20 border-r border-black/5 flex flex-col z-10 bg-surface-cream">
+        <div className="absolute top-[-10%] left-[-20%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-[90px] animate-blob-float pointer-events-none z-0" />
         <div className="mb-10 reveal">
           <Text className="text-editorial-meta text-brand-gold mb-4 editorial-line-accent inline-block">
             {t.exp.title}
@@ -120,7 +121,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute bottom-12 lg:bottom-24 left-1/2 -translate-x-1/2 w-[90%] lg:w-[400px] bg-surface-cream p-8 shadow-deep z-[100] editorial-border"
+                className="absolute bottom-12 lg:bottom-24 left-1/2 -translate-x-1/2 w-[90%] lg:w-[400px] glass p-8 shadow-heavy z-[100] rounded-2xl"
               >
                 <div className="absolute top-6 right-6 cursor-pointer text-xl text-black/30 hover:text-black transition-colors" onClick={() => setSelectedCityIdx(null)}>×</div>
                 
@@ -164,7 +165,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
         isOpen={!!selectedExp} 
         onClose={() => setSelectedExp(null)}
         maxWidth="max-w-[700px]"
-        className="bg-surface-cream p-0 overflow-hidden editorial-border"
+        className="glass p-0 overflow-hidden rounded-2xl shadow-heavy"
       >
         {selectedExp && (
           <div className="flex flex-col md:flex-row h-full">

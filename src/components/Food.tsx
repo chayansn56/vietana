@@ -35,11 +35,15 @@ const Food: React.FC = () => {
 
   return (
     <Section id="food" variant="warm" spacing="lg">
+      {/* Morphing Liquid Background Elements */}
+      <div className="absolute top-[30%] left-[5%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] bg-brand-gold/5 rounded-full blur-[100px] animate-blob-float pointer-events-none z-0 mix-blend-multiply opacity-50" />
+      <div className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] max-w-[400px] max-h-[400px] bg-brand-green/5 rounded-full blur-[80px] animate-blob-float pointer-events-none z-0 mix-blend-multiply opacity-40" style={{ animationDelay: '4s' }} />
+
       <div className="absolute top-8 -right-4 font-serif text-[clamp(5rem,14vw,13rem)] font-light text-brand-green/5 tracking-wider pointer-events-none select-none z-0">
         {t.food.title}
       </div>
       
-      <Container>
+      <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row gap-20 items-start">
           {/* LEFT SIDE: Food Lists */}
           <div className="flex-[1.2] min-w-[320px] w-full reveal">
@@ -112,7 +116,7 @@ const Food: React.FC = () => {
 
           {/* RIGHT SIDE: Brands */}
           <div className="flex-[0.8] min-w-[320px] w-full reveal delay-200">
-            <Card variant="white" padding="lg" className="flex flex-col items-center justify-center gap-16">
+            <Card variant="white" padding="lg" className="flex flex-col items-center justify-center gap-16 shadow-medium">
               <div className="flex flex-col items-center text-center w-full">
                 <img src="/spicy_spoon_new.png" alt="The Spicy Spoon" className="max-w-[220px] h-auto mb-6 mix-multiply" />
                 <Badge variant="gold-filled">
@@ -139,7 +143,7 @@ const Food: React.FC = () => {
           </Heading>
           
           <div className="flex-1 min-w-[300px] w-full flex justify-end">
-            <Card variant="white" padding="md" className="w-full max-w-md bg-white/90">
+            <Card variant="white" padding="md" className="w-full max-w-md">
               <Text variant="primary" weight="bold" className="mb-4">
                 Share your food preferences
               </Text>

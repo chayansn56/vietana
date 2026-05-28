@@ -65,7 +65,7 @@ const PackageCard: React.FC<{ p: PackageItem, onClick: () => void }> = ({ p, onC
         className="absolute inset-[-4%] bg-cover bg-center transition-transform duration-900 ease-smooth group-hover:scale-[1.09] group-hover:-translate-y-[2%] will-change-transform" 
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-green-extra-dark/95 via-brand-green-dark/65 to-black/10 transition-all duration-600 ease-soft group-hover:from-brand-green-extra-dark group-hover:via-brand-green-dark/75 group-hover:to-black/15" />
-      <div className="absolute inset-0 opacity-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(201,168,76,0.09),transparent_65%)] transition-opacity duration-700 group-hover:opacity-100" />
+      <div className="absolute inset-0 opacity-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(202,138,4,0.15),transparent_65%)] transition-opacity duration-700 group-hover:opacity-100" />
       
       <div 
         className="absolute bottom-0 left-0 right-0 p-8 pt-9"
@@ -102,7 +102,10 @@ interface PackagesProps {
 const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
   return (
     <Section id="packages" variant="cream" spacing="lg">
-      <Container>
+      {/* Morphing Liquid Background Elements */}
+      <div className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-brand-gold/5 rounded-full blur-[90px] animate-blob-float pointer-events-none z-0 mix-blend-multiply opacity-60" />
+      <div className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] max-w-[400px] max-h-[400px] bg-brand-green/5 rounded-full blur-[70px] animate-blob-float pointer-events-none z-0 mix-blend-multiply opacity-50" style={{ animationDelay: '3s' }} />
+      <Container className="relative z-10">
         <SectionHeader 
           label="Our Packages"
           title="Inspiration, Not Fixed Products"
@@ -118,7 +121,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
           <Card 
             padding="none"
             hover={false}
-            className="col-span-full flex flex-col md:flex-row items-center gap-8 p-12 md:p-16 border-brand-gold bg-cover bg-center relative overflow-hidden group reveal" 
+            className="col-span-full flex flex-col md:flex-row items-center gap-8 p-12 md:p-16 border-white/10 bg-cover bg-center relative overflow-hidden group reveal shadow-medium" 
             style={{ backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }}
             onClick={onOpenBuilder}
           >

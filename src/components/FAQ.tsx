@@ -63,7 +63,7 @@ const FAQ: React.FC = () => {
           title="Frequently Asked Questions"
         />
 
-        <div className="max-w-4xl mx-auto flex flex-col gap-5">
+        <div className="max-w-4xl mx-auto flex flex-col gap-5 relative z-10">
           {FAQS.map((faq, i) => {
             const isOpen = openIdx === i;
             return (
@@ -72,23 +72,23 @@ const FAQ: React.FC = () => {
                 hover={false}
                 padding="none"
                 variant="white"
-                className={`cursor-pointer transition-all duration-400 ease-smooth 
-                  ${isOpen ? 'border-brand-gold/30 shadow-strong bg-brand-gold/[0.01]' : 'border-brand-green/8 shadow-none hover:border-brand-gold hover:-translate-y-0.5 hover:shadow-medium'}`} 
+                className={`cursor-pointer transition-all duration-500 ease-smooth border
+                  ${isOpen ? 'border-brand-gold/60 shadow-gold hover:shadow-gold-hover bg-gradient-to-br from-white to-surface-warm' : 'border-black/5 shadow-sm hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold-hover bg-white'}`} 
                 onClick={() => setOpenIdx(isOpen ? null : i)}
               >
                 <div className="p-8 md:p-10 flex items-center justify-between gap-6">
-                  <Heading as="h4" size="sm" font="sans" className="flex-1 leading-tight m-0">
+                  <Heading as="h4" size="sm" font="sans" className="flex-1 leading-tight m-0 tracking-wide text-brand-green-dark">
                     {formatText(faq.q)}
                   </Heading>
-                  <div className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-400 ease-soft shrink-0 text-2xl font-light 
-                    ${isOpen ? 'bg-brand-gold text-brand-green-extra-dark rotate-180' : 'bg-brand-gold/10 text-brand-gold'}`}>
+                  <div className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-500 ease-smooth shrink-0 text-2xl font-light border
+                    ${isOpen ? 'bg-brand-gold border-brand-gold text-white rotate-180 shadow-md scale-110' : 'bg-transparent border-brand-gold/20 text-brand-gold group-hover:bg-brand-gold/5'}`}>
                     {isOpen ? '−' : '+'}
                   </div>
                 </div>
                 <div 
-                  className={`transition-all duration-600 ease-smooth overflow-hidden ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}
+                  className={`transition-all duration-500 ease-smooth overflow-hidden ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <Text size="md" variant="subtle" weight="light" className="px-8 md:px-10 pb-9 m-0">
+                  <Text size="md" variant="subtle" weight="light" className="px-8 md:px-10 pb-10 m-0 leading-relaxed">
                     {formatText(faq.a)}
                   </Text>
                 </div>

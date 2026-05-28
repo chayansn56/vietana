@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       <nav 
         id="nav" 
         className={`fixed top-0 left-0 right-0 z-[1000] px-[var(--spacing-layout)] flex items-center justify-between transition-all duration-550 ease-soft gap-4
-          ${scrolled ? (isLight ? 'py-3.5 bg-white/92 backdrop-blur-3xl border-b border-brand-green/8 shadow-soft' : 'py-3.5 bg-brand-green-extra-dark/60 backdrop-blur-3xl border-b border-brand-gold/10 shadow-strong') : 'py-6'}`}
+          ${scrolled ? (isLight ? 'py-3.5 glass shadow-soft' : 'py-3.5 glass-dark shadow-strong') : 'py-6'}`}
       >
         <a href="#" className="flex shrink-0 items-center gap-2 no-underline">
           <img src="/vietana_logo.png" className="h-[45px]" alt="Vietana Logo" />
@@ -91,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
           <div className="relative flex items-center">
             <div 
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer backdrop-blur-md transition-all duration-350 ease-soft whitespace-nowrap select-none border
-                ${isLight ? 'bg-brand-green/8 border-brand-green/18 hover:bg-brand-green/14' : 'bg-white/10 border-white/22 hover:bg-white/18 hover:border-white/45'}`} 
+                ${isLight ? 'glass border-black/10 hover:bg-black/5' : 'glass-dark border-white/22 hover:bg-white/10 hover:border-white/45'}`} 
               onClick={toggleLang}
             >
               <Text size="xs" variant="none" weight="medium" className={`tracking-wide flex items-center gap-1.5 ${isLight ? 'text-text-muted' : 'text-white/88'}`}>
@@ -100,7 +100,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
               <span className={`text-xxs opacity-60 transition-transform duration-300 ${isLight ? 'text-text-muted' : 'text-white/88'} ${langOpen ? 'rotate-180' : ''}`}>▾</span>
             </div>
             
-            <div className={`absolute top-[calc(100%+0.6rem)] right-0 bg-brand-green-extra-dark/95 backdrop-blur-3xl border border-brand-gold/18 rounded-lg overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600]
+            <div className={`absolute top-[calc(100%+0.6rem)] right-0 glass-dark rounded-xl overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600]
               ${langOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
             >
               {[
@@ -141,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       {/* MOBILE MENU */}
       <div 
         id="mob" 
-        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark flex flex-col items-center justify-center gap-8 transition-opacity duration-500 ease-soft
+        className={`fixed inset-0 z-[390] glass-dark flex flex-col items-center justify-center gap-8 transition-opacity duration-500 ease-soft
           ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         {NAV_LINKS.map((link) => (
