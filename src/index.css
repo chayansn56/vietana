@@ -73,6 +73,7 @@
   --animate-mm-float: mm-float 6s ease-in-out infinite alternate;
   --animate-mm-glow: mm-glow 3s ease-in-out infinite alternate;
   --animate-fade-in: fade-in 1s forwards;
+  --animate-light-leak: light-leak var(--leak-dur, 15s) ease-in-out infinite alternate;
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -143,6 +144,11 @@
   @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+  @keyframes light-leak {
+    0% { opacity: 0; transform: scale(1) translate(0, 0); filter: blur(40px); }
+    50% { opacity: var(--leak-op, 0.15); transform: scale(1.5) translate(10%, -10%); filter: blur(60px); }
+    100% { opacity: 0; transform: scale(1) translate(-10%, 10%); filter: blur(40px); }
   }
 }
 

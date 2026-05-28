@@ -27,16 +27,16 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
     in: { time: '--:--', date: '---' }
   });
 
-  // Generate stable particles for lanterns
-  const lanterns = useMemo(() => {
-    return Array.from({ length: 20 }).map((_, i) => ({
+  // Generate stable particles for cinematic light leaks
+  const lightLeaks = useMemo(() => {
+    return Array.from({ length: 4 }).map((_, i) => ({
       id: i,
-      left: `${Math.random() * 100}%`,
-      dur: `${7 + Math.random() * 8}s`,
-      del: `${Math.random() * 10}s`,
-      dx: `${(Math.random() - 0.5) * 50}px`,
-      w: `${4 + Math.random() * 6}px`,
-      h: `${6 + Math.random() * 8}px`
+      left: `${Math.random() * 80}%`,
+      top: `${Math.random() * 80}%`,
+      dur: `${15 + Math.random() * 10}s`,
+      del: `${Math.random() * 5}s`,
+      op: `${0.1 + Math.random() * 0.15}`,
+      size: `${200 + Math.random() * 300}px`
     }));
   }, []);
 
@@ -87,19 +87,20 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_25%_55%,rgba(8,38,24,0.82)_0%,transparent_65%),linear-gradient(125deg,rgba(5,20,11,0.92)_0%,rgba(13,79,46,0.54)_42%,rgba(0,0,0,0.18)_100%),linear-gradient(180deg,rgba(4,15,8,0.32)_0%,transparent_28%,rgba(4,15,8,0.5)_100%)]" />
       <div className="absolute inset-0 z-[2] bg-[url('data:image/svg+xml,%3Csvg_viewBox=%220_0_256_256%22_xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter_id=%22n%22%3E%3CfeTurbulence_type=%22fractalNoise%22_baseFrequency=%22.85%22_numOctaves=%224%22_stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect_width=%22100%25%22_height=%22100%25%22_filter=%22url(%23n)%22/%3E%3C/svg%3E')] bg-[length:200px_200px] opacity-[0.022] pointer-events-none" />
       
-      {/* LANTERNS */}
-      <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-        {lanterns.map(l => (
+      {/* CINEMATIC LIGHT LEAKS */}
+      <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden mix-blend-screen">
+        {lightLeaks.map(l => (
           <span 
             key={l.id} 
-            className="absolute rounded-[3px_3px_2px_2px] bg-[rgba(255,150,50,0.8)] shadow-[0_0_15px_rgba(255,100,0,0.6),inset_0_0_5px_#fff] opacity-0 animate-pfloat"
+            className="absolute rounded-full bg-[radial-gradient(circle_at_center,rgba(255,220,150,0.8)_0%,transparent_70%)] opacity-0 animate-light-leak"
             style={{ 
               left: l.left, 
+              top: l.top,
               animationDuration: l.dur,
               animationDelay: l.del,
-              '--dx': l.dx, 
-              width: l.w, 
-              height: l.h 
+              '--leak-op': l.op,
+              width: l.size, 
+              height: l.size 
             } as React.CSSProperties}
           />
         ))}
@@ -108,22 +109,21 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       {/* CONTENT */}
       <Container className="relative z-[10]">
         <div className="max-w-4xl">
-          <Badge 
-            icon={true} 
-            variant="gold" 
-            className="mb-10 animate-reveal-up [animation-delay:0.35s]"
-          >
-            India–Vietnam Travel Experts · Ho Chi Minh City
-          </Badge>
+          <div className="flex items-center gap-4 mb-8 animate-reveal-up [animation-delay:0.35s]">
+            <div className="w-10 h-px bg-gradient-to-r from-brand-gold to-transparent"></div>
+            <Text as="span" size="xs" variant="none" className="uppercase tracking-[0.25em] text-brand-gold-light font-bold">
+              India–Vietnam Travel Experts
+            </Text>
+          </div>
           
           <Heading 
             as="h1" 
             size="3xl"
             variant="none" 
-            className="!text-white mb-2 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_40px_rgba(0,0,0,0.6)]"
+            className="!text-white mb-2 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_8px_60px_rgba(0,0,0,0.8)] tracking-tight leading-none"
           >
-            Feel <em className="text-brand-blue italic">Vietnam</em>,
-            <span className="block mt-[-0.06em] text-brand-gold">Your Way 🇻🇳</span>
+            Feel <em className="text-brand-blue italic pr-2">Vietnam</em>,
+            <span className="block mt-1 text-brand-gold">Your Way 🇻🇳</span>
           </Heading>
           
           <Text 
@@ -169,13 +169,12 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
       {/* LOCATION TAG */}
       <div className={`absolute bottom-24 left-[var(--spacing-layout)] z-[4] transition-all duration-800 ease-smooth ${currentSlide >= 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
-        <Badge 
-          icon={true} 
-          variant="outline" 
-          className="bg-black/55 border-brand-gold/20 text-white/70"
-        >
-          {LOCATIONS[currentSlide]}
-        </Badge>
+        <div className="flex items-center gap-3">
+          <div className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse-dot"></div>
+          <Text as="span" size="sm" variant="none" className="text-white/80 tracking-wide font-medium">
+            {LOCATIONS[currentSlide]}
+          </Text>
+        </div>
       </div>
 
 
