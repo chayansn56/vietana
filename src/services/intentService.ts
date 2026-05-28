@@ -13,7 +13,7 @@ export const IntentService = {
       return { type: 'generate' };
     }
 
-    const negations = ["no", "wrong", "not this", "don't like", "change", "something else", "nope", "not good", "hmm", "maybe not"];
+    const negations = ["no", "wrong", "not this", "don't like", "change", "something else", "nope", "not good", "hmm", "maybe not", "wait"];
     if (negations.some(n => lowerText === n || lowerText.startsWith(n + " "))) {
       return { type: 'refine' };
     }

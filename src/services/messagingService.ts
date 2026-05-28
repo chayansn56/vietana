@@ -1,7 +1,8 @@
 import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 
-export const WhatsAppService = {
-  generateCustomTripMessage: (
+export const MessagingService = {
+  // WhatsApp Generation
+  generateCustomTripWhatsApp: (
     selectedCities: string[],
     style: string,
     days: number,
@@ -27,24 +28,40 @@ export const WhatsAppService = {
     return buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, msg);
   },
 
-  generateAIPlannerBlueprintMessage: (
-    focus: string,
-    vibe: string,
-    style: string,
-    food: string,
+  generateBlueprintWhatsApp: (
+    focus: string | undefined,
+    vibe: string | undefined,
+    style: string | undefined,
+    food: string | undefined,
     country: 'INDIA' | 'VIETNAM' = 'INDIA'
   ): string => {
     const msg = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${focus}\nVibe: ${vibe}\nStyle: ${style}\nFood: ${food}\n\nI'd like to discuss this further!`;
     return buildWhatsAppLink(WHATSAPP_NUMBERS[country], msg);
   },
 
-  generateFoodInterestMessage: (foodName: string): string => {
+  generateFoodInterestWhatsApp: (foodName: string): string => {
     const msg = `Hi VIETANA, I'm interested in trying ${foodName} during my trip!`;
     return buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, msg);
   },
 
-  generateFoodPreferencesMessage: (preferences: string): string => {
+  generateFoodPreferencesWhatsApp: (preferences: string): string => {
     const msg = `Hi VIETANA, my food preferences: ${preferences}`;
     return buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, msg);
+  },
+
+  // Email Generation
+  generateBlueprintEmail: (
+    focus: string | undefined,
+    vibe: string | undefined,
+    style: string | undefined,
+    food: string | undefined,
+    email: string = 'support@vietana.com'
+  ): string => {
+    const body = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${focus}\nVibe: ${vibe}\nStyle: ${style}\nFood: ${food}\n\nI'd like to discuss this further!`;
+    return `mailto:${email}?subject=${encodeURIComponent('My Vietnam Journey Blueprint')}&body=${encodeURIComponent(body)}`;
+  },
+  
+  generateGeneralSupportEmail: (): string => {
+    return 'mailto:info@vietana.com';
   }
 };

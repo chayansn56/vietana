@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { WHATSAPP_INDIA } from '../utils/whatsapp';
 import { TRIP_BUILDER_CITIES } from '../data/tripBuilder';
 import { calculateTripEstimate } from '../services/pricingService';
-import { WhatsAppService } from '../services/whatsappService';
+import { MessagingService } from '../services/messagingService';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
@@ -40,7 +40,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
   };
 
   const sendToWhatsApp = () => {
-    const link = WhatsAppService.generateCustomTripMessage(selectedCities, style, days, pax, estimate.total, notes);
+    const link = MessagingService.generateCustomTripWhatsApp(selectedCities, style, days, pax, estimate.total, notes);
     window.open(link, '_blank');
   };
 

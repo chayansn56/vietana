@@ -3,7 +3,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { WHATSAPP_INDIA } from '../utils/whatsapp';
 import { FoodItem } from '../types';
 import { VEG_ITEMS, NON_VEG_ITEMS, CAFES } from '../data/food';
-import { WhatsAppService } from '../services/whatsappService';
+import { MessagingService } from '../services/messagingService';
 import SectionHeader from './ui/SectionHeader';
 import Button from './ui/Button';
 import Modal from './ui/Modal';
@@ -164,7 +164,7 @@ const Food: React.FC = () => {
               />
               <Button 
                 className="w-full bg-brand-whatsapp text-white hover:bg-brand-whatsapp/90 border-none shadow-whatsapp hover:shadow-whatsapp-hover"
-                onClick={() => window.open(WhatsAppService.generateFoodPreferencesMessage(foodPref), '_blank')}
+                onClick={() => window.open(MessagingService.generateFoodPreferencesWhatsApp(foodPref), '_blank')}
                 icon={<span>💬</span>}
               >
                 Send to WhatsApp
@@ -224,7 +224,7 @@ const Food: React.FC = () => {
               <div className="mt-10 flex gap-4">
                 <Button 
                   className="flex-1"
-                  onClick={() => window.open(WhatsAppService.generateFoodInterestMessage(selectedFood.name), '_blank')}
+                  onClick={() => window.open(MessagingService.generateFoodInterestWhatsApp(selectedFood.name), '_blank')}
                 >
                   Plan with this Dish
                 </Button>
