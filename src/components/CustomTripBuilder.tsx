@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { WHATSAPP_INDIA, TRIP_BUILDER_CONSTANTS, TRIP_BUILDER_RATES, TRIP_BUILDER_CITIES } from '../config';
+import { WHATSAPP_INDIA } from '../utils/whatsapp';
+import { TRIP_BUILDER_CITIES } from '../data/tripBuilder';
+import { calculateTripEstimate } from '../services/pricingService';
+import { WhatsAppService } from '../services/whatsappService';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
@@ -26,20 +29,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
   });
 
   useEffect(() => {
-    const flightTot = TRIP_BUILDER_CONSTANTS.flight * pax;
-    const visaTot = TRIP_BUILDER_CONSTANTS.visa * pax;
-    const hops = Math.max(0, selectedCities.length - 1);
-    const transitTot = hops * TRIP_BUILDER_CONSTANTS.transitPerHop * pax;
-    const dailyTot = TRIP_BUILDER_RATES[style] * days * pax;
-    const total = flightTot + visaTot + transitTot + dailyTot;
-
-    setEstimate({
-      flight: flightTot,
-      visa: visaTot,
-      transit: transitTot,
-      daily: dailyTot,
-      total: total
-    });
+    setEstimate(calculateTripEstimate(selectedCities, style, days, pax));
   }, [selectedCities, style, days, pax]);
 
 
@@ -50,22 +40,8 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
   };
 
   const sendToWhatsApp = () => {
-    const styleText = style === 'budget' ? 'Backpacker' : style === 'comfort' ? 'Comfort' : 'Luxury';
-    let msg = `Hi VIETANA! I just built a custom trip on your website.\n\n`;
-    msg += `*Details:*\n`;
-    msg += `- Destinations: ${selectedCities.length > 0 ? selectedCities.join(', ') : 'Not selected'}\n`;
-    msg += `- Style: ${styleText}\n`;
-    msg += `- Duration: ${days} Days\n`;
-    msg += `- Travelers: ${pax} ${pax === 1 ? 'Person' : 'People'}\n\n`;
-    msg += `*Estimated Budget:* ₹${estimate.total.toLocaleString('en-IN')}\n`;
-    
-    if(notes.trim()) {
-      msg += `\n*My Notes:*\n${notes}\n`;
-    }
-    
-    msg += `\nCould you send me a detailed itinerary?`;
-    
-    window.open(`${WHATSAPP_INDIA}&text=${encodeURIComponent(msg)}`, '_blank');
+    const link = WhatsAppService.generateCustomTripMessage(selectedCities, style, days, pax, estimate.total, notes);
+    window.open(link, '_blank');
   };
 
   return (

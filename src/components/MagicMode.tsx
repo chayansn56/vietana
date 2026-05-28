@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MAGIC_DESTINATIONS, MAGIC_MODE_SLIDES } from '../config';
+import { MAGIC_DESTINATIONS, MAGIC_MODE_SLIDES } from '../data/magicMode';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';

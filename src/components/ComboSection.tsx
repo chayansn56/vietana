@@ -1,7 +1,8 @@
 import React, { useState, useMemo, Suspense } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
-import { MAP_DESTINATIONS, EXPERIENCES } from '../config';
+import { MAP_DESTINATIONS } from '../data/destinations';
+import { EXPERIENCES } from '../data/experiences';
 import Button from './ui/Button';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';

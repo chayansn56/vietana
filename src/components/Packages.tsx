@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { PACKAGES } from '../config';
+import { PACKAGES } from '../data/siteContent';
 import SectionHeader from './ui/SectionHeader';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';

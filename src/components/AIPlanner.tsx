@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
+import { WhatsAppService } from '../services/whatsappService';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
@@ -25,7 +26,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
     preferences,
     handleSend
   } = useAIPlanner(isOpen ? initialDestination : undefined);
-  
+
   const pcMsgsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,8 +38,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
   if (!isOpen) return null;
 
   return (
-    <Modal 
-      isOpen={isOpen} 
+    <Modal
+      isOpen={isOpen}
       onClose={onClose}
       maxWidth="max-w-6xl"
       className="h-[85vh] max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden"
@@ -52,15 +53,14 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             {t.planner.tagline}
           </Text>
         </div>
-        
+
         <div ref={pcMsgsRef} className="flex-1 overflow-y-auto px-12 flex flex-col gap-7 scroll-smooth scrollbar-thin scrollbar-thumb-white/10">
           {messages.map((msg, i) => {
             if (msg.type === 'blueprint') {
-              const whatsappText = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${preferences.focus}\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\n\nI'd like to discuss this further!`;
+              const whatsappIndiaLink = WhatsAppService.generateAIPlannerBlueprintMessage(preferences.focus, preferences.vibe, preferences.style, preferences.food, 'INDIA');
+              const whatsappVietnamLink = WhatsAppService.generateAIPlannerBlueprintMessage(preferences.focus, preferences.vibe, preferences.style, preferences.food, 'VIETNAM');
 
-              const whatsappIndiaLink = buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, whatsappText);
-              const whatsappVietnamLink = buildWhatsAppLink(WHATSAPP_NUMBERS.VIETNAM, whatsappText);
-              
+              const whatsappText = `Hi VIETANA! I just finished my planning session:\n\nFocus: ${preferences.focus}\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\n\nI'd like to discuss this further!`;
               return (
                 <div key={i} className="animate-msg-fade-in w-full my-4 px-2">
                   <div className="bg-brand-green-dark/45 border border-brand-gold/25 rounded-2xl p-6 backdrop-blur-md shadow-heavy max-w-[580px] mx-auto text-left relative overflow-hidden">
@@ -70,25 +70,25 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                     <Text variant="white" size="sm" weight="light" className="leading-relaxed mb-6 text-white/80">
                       I've gathered your preferences. Your trip will focus on <span className="text-brand-gold-light font-serif italic mx-0.5">{preferences.focus}</span>, balancing <span className="text-brand-gold-light font-serif italic mx-0.5">{preferences.food}</span> and <span className="text-brand-gold-light font-serif italic mx-0.5">{preferences.style}</span>.
                     </Text>
-                    
+
                     <div className="flex flex-col gap-3">
-                      <a 
-                        href={whatsappIndiaLink} 
-                        target="_blank" 
+                      <a
+                        href={whatsappIndiaLink}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 bg-transparent border border-brand-green text-brand-green-light hover:bg-brand-green/10 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
                       >
                         💬 WhatsApp India
                       </a>
-                      <a 
-                        href={whatsappVietnamLink} 
-                        target="_blank" 
+                      <a
+                        href={whatsappVietnamLink}
+                        target="_blank"
                         rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
+                        className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
                       >
                         💬 WhatsApp Vietnam
                       </a>
-                      <a 
+                      <a
                         href={`mailto:support@vietana.com?subject=My%20Vietnam%20Journey%20Blueprint&body=${encodeURIComponent(whatsappText)}`}
                         className="flex items-center justify-center gap-2 bg-transparent border border-white/20 text-white/90 hover:border-white/40 hover:bg-white/5 font-semibold py-3 px-5 rounded-xl transition-all duration-300 text-sm tracking-wide text-center"
                       >
@@ -107,14 +107,13 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                     <span className="text-white text-base relative z-10">🌿</span>
                   </div>
                 )}
-                <div className={`max-w-[85%] ${
-                  msg.type === 'user' 
-                    ? 'bg-brand-gold/10 border border-brand-gold/20 rounded-2xl rounded-br-sm p-4 backdrop-blur-md text-white shadow-soft ml-auto' 
+                <div className={`max-w-[85%] ${msg.type === 'user'
+                    ? 'bg-brand-gold/10 border border-brand-gold/20 rounded-2xl rounded-br-sm p-4 backdrop-blur-md text-white shadow-soft ml-auto'
                     : 'bg-white/[0.03] border border-white/5 rounded-2xl rounded-bl-sm p-4 backdrop-blur-sm shadow-sm text-white/95'
-                }`}>
-                  <Text 
-                    variant="white" 
-                    size="md" 
+                  }`}>
+                  <Text
+                    variant="white"
+                    size="md"
                     className="leading-relaxed [&_strong]:text-brand-gold-light [&_strong]:font-medium"
                     dangerouslySetInnerHTML={{ __html: msg.text }}
                   />
@@ -135,9 +134,9 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           {options.length > 0 && (
             <div className="flex flex-wrap gap-3 mb-6 justify-center px-4">
               {options.map((opt, i) => (
-                <div 
-                  key={i} 
-                  className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 text-white/70 px-5 py-2.5 rounded-full text-xs transition-all duration-300 cursor-pointer hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light hover:-translate-y-0.5" 
+                <div
+                  key={i}
+                  className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 text-white/70 px-5 py-2.5 rounded-full text-xs transition-all duration-300 cursor-pointer hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light hover:-translate-y-0.5"
                   onClick={() => handleSend(opt)}
                 >
                   {opt}
@@ -145,20 +144,20 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               ))}
             </div>
           )}
-          
+
           <div className="relative bg-white/5 border border-white/15 rounded-2xl p-2 transition-all duration-300 shadow-deep focus-within:border-brand-gold/40">
             <div className="flex items-center gap-3">
               <button className="bg-transparent border-none text-white/30 text-xl px-4 cursor-pointer hover:text-brand-gold transition-colors">🎤</button>
-              <input 
-                type="text" 
-                className="flex-1 bg-transparent border-none py-4 text-white text-lg font-light outline-none placeholder:text-white/25" 
-                placeholder={t.planner.where} 
+              <input
+                type="text"
+                className="flex-1 bg-transparent border-none py-4 text-white text-lg font-light outline-none placeholder:text-white/25"
+                placeholder={t.planner.where}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               />
-              <button 
-                className="bg-white text-black border-none rounded-full w-11 h-11 flex shrink-0 items-center justify-center cursor-pointer transition-all duration-300 ease-smooth mr-1 hover:bg-brand-gold hover:scale-105 hover:-rotate-12" 
+              <button
+                className="bg-white text-black border-none rounded-full w-11 h-11 flex shrink-0 items-center justify-center cursor-pointer transition-all duration-300 ease-smooth mr-1 hover:bg-brand-gold hover:scale-105 hover:-rotate-12"
                 onClick={() => handleSend()}
                 disabled={isFinished}
               >
@@ -174,7 +173,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           <Heading as="h4" size="xs" font="sans" className="text-white/30 tracking-[0.2em] uppercase mb-8 flex items-center gap-4 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-brand-gold after:to-transparent">
             {t.planner.live}
           </Heading>
-          
+
           <div className="flex flex-col gap-9 flex-1 mt-4">
             {[
               { label: t.planner.labels.vibe, value: preferences.vibe, icon: '✨' },
@@ -191,12 +190,11 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   <Text size="xs" variant="none" weight="bold" className="text-white/35 uppercase tracking-widest">
                     {item.icon} {item.label}
                   </Text>
-                  <Text 
-                    variant="none" 
+                  <Text
+                    variant="none"
                     weight={isSet ? 'medium' : 'light'}
-                    className={`leading-tight min-h-6 transition-all duration-300 ${
-                      isSet ? 'text-brand-gold-light' : 'text-white/20 italic'
-                    }`}
+                    className={`leading-tight min-h-6 transition-all duration-300 ${isSet ? 'text-brand-gold-light' : 'text-white/20 italic'
+                      }`}
                   >
                     {item.value}
                   </Text>
@@ -204,16 +202,15 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               );
             })}
           </div>
-          
+
           <div className="mt-12 flex flex-col gap-4">
-            <Button 
+            <Button
               variant="glass"
-              className="w-full text-sm font-medium border-white/10"
-              onClick={() => window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, `Hi VIETANA! I just finished my planning session:\n\nVibe: ${preferences.vibe}\nStyle: ${preferences.style}\nFood: ${preferences.food}\nFocus: ${preferences.focus}\n\nI'd like to discuss this further!`), '_blank')}
+              onClick={() => window.open(WhatsAppService.generateAIPlannerBlueprintMessage(preferences.focus, preferences.vibe, preferences.style, preferences.food, 'INDIA'), '_blank')}
             >
               💬 WhatsApp VIETANA™
             </Button>
-            <Button 
+            <Button
               variant="ghost"
               className="w-full text-sm text-white/60 hover:text-white"
               onClick={() => window.open('mailto:info@vietana.com')}

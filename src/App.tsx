@@ -17,6 +17,7 @@ import Separator from './components/ui/layout/Separator';
 import { useScroll } from './hooks/useScroll';
 import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 import { useMetadata } from './hooks/useMetadata';
+import { useNavStyle } from './hooks/useNavStyle';
 
 // Lazy Loaded Components (Below the fold)
 const Services = lazy(() => import('./components/Services'));
@@ -43,25 +44,7 @@ export default function App() {
   const [initialDestination, setInitialDestination] = useState<string | undefined>(undefined);
   const [isMagicModeOpen, setIsMagicModeOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [navClass, setNavClass] = useState('');
-
-  useEffect(() => {
-    const sections = ['services', 'packages', 'food', 'about', 'contact'];
-    let currentNavClass = isScrolled ? 'glassy' : '';
-    
-    for (const id of sections) {
-      const el = document.getElementById(id);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 80 && rect.bottom >= 80) {
-          if (['services', 'packages', 'food', 'about'].includes(id)) {
-            currentNavClass = 'light';
-          }
-        }
-      }
-    }
-    setNavClass(currentNavClass);
-  }, [scrollY, isScrolled]);
+  const navClass = useNavStyle(scrollY, isScrolled);
 
   const openPlanner = (destination?: string) => {
     setInitialDestination(destination);

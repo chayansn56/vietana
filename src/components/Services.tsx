@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { SERVICES, buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
+import { SERVICES } from '../data/siteContent';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import SectionHeader from './ui/SectionHeader';

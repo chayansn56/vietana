@@ -1,0 +1,22 @@
+import { Destination } from '../types';
+
+export const MAP_DESTINATIONS: Destination[] = [
+  {name:'Sapa', time:'Sep - Nov, Mar - May', desc:'Misty mountains and terraced rice fields.', lat:22.3364, lng:103.8438, img:'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=400&q=80'},
+  {name:'Hanoi', time:'Oct - Apr', desc:'The cultural and historical heart of Vietnam.', lat:21.0285, lng:105.8542, img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80'},
+  {name:'Ha Long Bay', time:'Oct - Apr', desc:'Thousands of limestone karsts in emerald waters.', lat:20.9101, lng:107.1839, img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'},
+  {name:'Ninh Binh', time:'Jan - Mar, May - Aug', desc:'The Halong Bay on land with stunning rivers.', lat:20.2539, lng:105.9750, img:'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=400&q=80'},
+  {name:'Phong Nha', time:'Feb - Aug', desc:'World-class caves and jungle adventures.', lat:17.5947, lng:106.2842, img:'https://images.unsplash.com/photo-1541355416-64fae10f135b?w=400&q=80'},
+  {name:'Hue', time:'Jan - Aug', desc:'Ancient imperial city and royal tombs.', lat:16.4637, lng:107.5909, img:'https://images.unsplash.com/photo-1548023487-1cbb394f28ba?w=400&q=80'},
+  {name:'Da Nang', time:'Feb - May', desc:'Modern city with beautiful beaches and bridges.', lat:16.0544, lng:108.2022, img:'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=400&q=80'},
+  {name:'Hoi An', time:'Feb - Apr', desc:'Charming lantern-lit ancient trading port.', lat:15.8801, lng:108.3380, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'},
+  {name:'Mui Ne', time:'Nov - Apr', desc:'Red and white sand dunes with kitesurfing.', lat:10.9575, lng:108.2753, img:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&q=80'},
+  {name:'Ho Chi Minh City', time:'Dec - Apr', desc:'The vibrant, energetic southern metropolis.', lat:10.8231, lng:106.6297, img:'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80'},
+  {name:'Mekong Delta', time:'Sep - Nov', desc:'Lush waterways and floating markets.', lat:10.0452, lng:105.7469, img:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80'},
+  {name:'Phu Quoc', time:'Nov - Apr', desc:'Tropical island paradise with white sand beaches.', lat:10.2289, lng:103.9572, img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'}
+];
+
+export const MAP_DEFAULT_ROUTE: [number, number][] = [
+  [21.0285, 105.8542], // Hanoi
+  [16.0544, 108.2022], // Da Nang
+  [10.8231, 106.6297]  // Ho Chi Minh City
+];

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { IntentService } from '../services/intentService';
 
 interface Message {
   text: string;
@@ -96,51 +97,51 @@ export const useAIPlanner = (initialDestination?: string) => {
     setInputValue('');
     setOptions([]);
 
-    const lowerText = text.toLowerCase();
+    const intent = IntentService.parseIntent(text);
 
-    if (lowerText.includes("generate") || lowerText.includes("final")) {
-      setIsFinished(true);
-      addBotMsg("Beautiful! 🌿 Crafting your personalized Vietnam story based on your preferences...");
-      setTimeout(() => {
-        setMessages(prev => [...prev, { text: '', type: 'blueprint' }]);
-      }, 1500);
-      return;
-    }
-
-    let negations = ["no", "wrong", "not this", "don't like", "change", "something else", "nope", "not good", "hmm", "maybe not"];
-    if (negations.some(n => lowerText === n || lowerText.startsWith(n + " "))) {
-      setRefinementMode(true);
-      addBotMsg("😊 No worries. I may have missed something. Tell me what feels wrong and I’ll improve it.", ['🍛 Food','🌊 Beaches','🌃 Nightlife','💰 Budget','💕 Romance','👨‍👩‍👧 Family','🌴 Hidden places']);
-      return;
-    }
-
-    if (lowerText.includes("indian food") || lowerText.includes("indian")) {
-      setPreferences(prev => ({ ...prev, food: "Indian" }));
-      addBotMsg(`🍛 Got it. Updated your journey:<br><br>Indian food priority: HIGH<br><br>Refining recommendations... What should I improve next?`, ['No, generate itinerary', 'Change pace', 'Add luxury']);
-      return;
-    }
-    
-    if (lowerText.includes("parent") || lowerText.includes("elderly") || lowerText.includes("family")) {
-      setPreferences(prev => ({ ...prev, group: "Family/Elderly" }));
-      addBotMsg(`🏠 Got it. Updated your journey:<br><br>Family comfort mode: ON<br><br>Refining recommendations... What should I improve next?`, ['No, generate itinerary', 'Change food', 'Add luxury']);
-      return;
-    }
-
-    const currentQ = CORE_QUESTIONS.find(q => preferences[q.field as keyof Preferences] === 'Not set');
-    
-    if (currentQ && !refinementMode) {
-      const nextPrefs = { ...preferences, [currentQ.field]: text };
-      setPreferences(nextPrefs);
+    switch (intent.type) {
+      case 'generate':
+        setIsFinished(true);
+        addBotMsg("Beautiful! 🌿 Crafting your personalized Vietnam story based on your preferences...");
+        setTimeout(() => {
+          setMessages(prev => [...prev, { text: '', type: 'blueprint' }]);
+        }, 1500);
+        return;
       
-      const nextQ = CORE_QUESTIONS.find(q => nextPrefs[q.field as keyof Preferences] === 'Not set');
-      if (nextQ) {
-        addBotMsg(nextQ.q, nextQ.opts);
-      } else {
-        addBotMsg("YOUR VIETANA™ MATCH is ready! I have high confidence in these recommendations based on your profile.<br><br>Does everything look good?", ['Generate Itinerary', 'Change something']);
-      }
-    } else {
-      setRefinementMode(false);
-      addBotMsg("Got it! I've updated your plan with those details. Should we generate your final match now?", ['Generate Itinerary', 'Wait, add one more thing']);
+      case 'refine':
+        setRefinementMode(true);
+        addBotMsg("😊 No worries. I may have missed something. Tell me what feels wrong and I’ll improve it.", ['🍛 Food','🌊 Beaches','🌃 Nightlife','💰 Budget','💕 Romance','👨‍👩‍👧 Family','🌴 Hidden places']);
+        return;
+
+      case 'food_preference':
+        setPreferences(prev => ({ ...prev, food: intent.payload }));
+        addBotMsg(`🍛 Got it. Updated your journey:<br><br>Indian food priority: HIGH<br><br>Refining recommendations... What should I improve next?`, ['No, generate itinerary', 'Change pace', 'Add luxury']);
+        return;
+
+      case 'group_preference':
+        setPreferences(prev => ({ ...prev, group: intent.payload }));
+        addBotMsg(`🏠 Got it. Updated your journey:<br><br>Family comfort mode: ON<br><br>Refining recommendations... What should I improve next?`, ['No, generate itinerary', 'Change food', 'Add luxury']);
+        return;
+
+      case 'unknown':
+      default:
+        const currentQ = CORE_QUESTIONS.find(q => preferences[q.field as keyof Preferences] === 'Not set');
+        
+        if (currentQ && !refinementMode) {
+          const nextPrefs = { ...preferences, [currentQ.field]: text };
+          setPreferences(nextPrefs);
+          
+          const nextQ = CORE_QUESTIONS.find(q => nextPrefs[q.field as keyof Preferences] === 'Not set');
+          if (nextQ) {
+            addBotMsg(nextQ.q, nextQ.opts);
+          } else {
+            addBotMsg("YOUR VIETANA™ MATCH is ready! I have high confidence in these recommendations based on your profile.<br><br>Does everything look good?", ['Generate Itinerary', 'Change something']);
+          }
+        } else {
+          setRefinementMode(false);
+          addBotMsg("Got it! I've updated your plan with those details. Should we generate your final match now?", ['Generate Itinerary', 'Wait, add one more thing']);
+        }
+        break;
     }
   };
 

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { WHATSAPP_INDIA, VEG_ITEMS, NON_VEG_ITEMS, CAFES } from '../config';
+import { WHATSAPP_INDIA } from '../utils/whatsapp';
+import { FoodItem } from '../types';
+import { VEG_ITEMS, NON_VEG_ITEMS, CAFES } from '../data/food';
+import { WhatsAppService } from '../services/whatsappService';
 import SectionHeader from './ui/SectionHeader';
 import Button from './ui/Button';
 import Modal from './ui/Modal';
@@ -12,10 +15,10 @@ import Badge from './ui/Badge';
 
 const Food: React.FC = () => {
   const { t } = useTranslation();
-  const [selectedFood, setSelectedFood] = useState<any | null>(null);
+  const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
   const [foodPref, setFoodPref] = useState('');
 
-  const openFoodModal = (item: any) => setSelectedFood(item);
+  const openFoodModal = (item: FoodItem) => setSelectedFood(item);
   const closeFoodModal = () => setSelectedFood(null);
 
   const PREF_OPTIONS = [
@@ -161,7 +164,7 @@ const Food: React.FC = () => {
               />
               <Button 
                 className="w-full bg-brand-whatsapp text-white hover:bg-brand-whatsapp/90 border-none shadow-whatsapp hover:shadow-whatsapp-hover"
-                onClick={() => window.open(`${WHATSAPP_INDIA}&text=${encodeURIComponent(`Hi VIETANA, my food preferences: ${foodPref}`)}`, '_blank')}
+                onClick={() => window.open(WhatsAppService.generateFoodPreferencesMessage(foodPref), '_blank')}
                 icon={<span>💬</span>}
               >
                 Send to WhatsApp
@@ -221,7 +224,7 @@ const Food: React.FC = () => {
               <div className="mt-10 flex gap-4">
                 <Button 
                   className="flex-1"
-                  onClick={() => window.open(`${WHATSAPP_INDIA}&text=${encodeURIComponent(`Hi VIETANA, I'm interested in trying ${selectedFood.name} during my trip!`)}`, '_blank')}
+                  onClick={() => window.open(WhatsAppService.generateFoodInterestMessage(selectedFood.name), '_blank')}
                 >
                   Plan with this Dish
                 </Button>

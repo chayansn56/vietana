@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { MAP_DEFAULT_ROUTE } from '../../config';
+import { MAP_DEFAULT_ROUTE } from '../../data/destinations';
 
 // Fix for Leaflet markers
 import icon from 'leaflet/dist/images/marker-icon.png';

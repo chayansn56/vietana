@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { HERO_SLIDES, WHATSAPP_DEFAULT } from '../config';
+import { HERO_SLIDES } from '../data/siteContent';
+import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
 import { useTranslation } from '../contexts/LanguageContext';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';

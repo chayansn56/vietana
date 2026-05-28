@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NAV_LINKS, WHATSAPP_DEFAULT, buildWhatsAppLink, WHATSAPP_NUMBERS } from '../config';
+import { NAV_LINKS } from '../data/siteContent';
+import { WHATSAPP_DEFAULT, buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 import { useTranslation } from '../contexts/LanguageContext';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
