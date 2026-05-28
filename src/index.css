@@ -1,85 +1,150 @@
 @import "tailwindcss";
 
 @theme {
-  --color-g: #0D4F2E;
-  --color-g2: #1a7a4a;
-  --color-gd: #082618;
-  --color-gx: #040f08;
-  --color-gold: #C9A84C;
-  --color-gold2: #D4AF37;
-  --color-gold3: #e8cc6a;
-  --color-gold4: #f4e4a8;
-  --color-blue: #7EC8E3;
-  --color-blue2: #a8dff0;
-  --color-blue3: #5bb8d4;
-  --color-cr: #FAFAF7;
-  --color-wm: #F4F2ED;
-  --color-td: #16160e;
-  --color-tm: #454540;
-  --color-ts: #7a7a70;
+  /* Colors */
+  --color-brand-green: #0D4F2E;
+  --color-brand-green-light: #1a7a4a;
+  --color-brand-green-dark: #082618;
+  --color-brand-green-extra-dark: #040f08;
+  
+  --color-brand-gold: #C9A84C;
+  --color-brand-gold-muted: #D4AF37;
+  --color-brand-gold-light: #e8cc6a;
+  --color-brand-gold-extra-light: #f4e4a8;
+  
+  --color-brand-blue: #7EC8E3;
+  --color-brand-blue-light: #a8dff0;
+  --color-brand-blue-dark: #5bb8d4;
+  
+  --color-surface-cream: #FAFAF7;
+  --color-surface-warm: #F4F2ED;
+  
+  --color-text-dark: #16160e;
+  --color-text-muted: #454540;
+  --color-text-subtle: #7a7a70;
 
-  --ease-e1: cubic-bezier(.25,.46,.45,.94);
-  --ease-e2: cubic-bezier(.16,1,.3,1);
-  --ease-e3: cubic-bezier(.34,1.56,.64,1);
+  /* Easing */
+  --ease-soft: cubic-bezier(.25,.46,.45,.94);
+  --ease-smooth: cubic-bezier(.16,1,.3,1);
+  --ease-elastic: cubic-bezier(.34,1.56,.64,1);
 
-  --radius-r: 22px;
-  --radius-rs: 13px;
+  /* Radius */
+  --radius-xl: 22px;
+  --radius-lg: 13px;
 
-  --shadow-sh0: 0 2px 12px rgba(8,38,24,.06);
-  --shadow-sh1: 0 6px 32px rgba(8,38,24,.10);
-  --shadow-sh2: 0 16px 56px rgba(8,38,24,.16);
-  --shadow-sh3: 0 32px 80px rgba(8,38,24,.22);
-  --shadow-sh4: 0 48px 110px rgba(8,38,24,.30);
+  /* Shadows */
+  --shadow-soft: 0 2px 12px rgba(8,38,24,.06);
+  --shadow-medium: 0 6px 32px rgba(8,38,24,.10);
+  --shadow-strong: 0 16px 56px rgba(8,38,24,.16);
+  --shadow-heavy: 0 32px 80px rgba(8,38,24,.22);
+  --shadow-deep: 0 48px 110px rgba(8,38,24,.30);
 
-  @keyframes pd {
+  /* Spacing - Standardizing the 7% layout padding */
+  --spacing-layout: 7%;
+
+  /* Animations */
+  @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: .4; transform: scale(1.5); }
   }
-  @keyframes ru {
-    to { opacity: 1; transform: none; }
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes orbGlow {
+  @keyframes orb-glow {
     from { transform: scale(1); opacity: .5; }
     to { transform: scale(1.3); opacity: .8; }
   }
-  @keyframes orbSpin {
+  @keyframes orb-spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+  @keyframes ken-burns {
+    0% { transform: scale(1.1) translateX(0); }
+    100% { transform: scale(1.02) translateX(-15px); }
+  }
 }
 
-:root{
-  --g: var(--color-g); --g2: var(--color-g2); --gd: var(--color-gd); --gx: var(--color-gx);
-  --gold: var(--color-gold); --gold2: var(--color-gold2); --gold3: var(--color-gold3); --gold4: var(--color-gold4);
-  --blue: var(--color-blue); --blue2: var(--color-blue2); --blue3: var(--color-blue3);
-  --cr: var(--color-cr); --wm: var(--color-wm); --td: var(--color-td); --tm: var(--color-tm); --ts: var(--color-ts);
-  --e1: var(--ease-e1); --e2: var(--ease-e2); --e3: var(--ease-e3);
-  --r: var(--radius-r); --rs: var(--radius-rs);
-  --sh0: var(--shadow-sh0); --sh1: var(--shadow-sh1);
-  --sh2: var(--shadow-sh2); --sh3: var(--shadow-sh3); --sh4: var(--shadow-sh4);
+/* Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--td);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-::selection{background:rgba(201,168,76,.22);color:var(--gd)}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--gx)}
-::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+html {
+  scroll-behavior: smooth;
+}
 
-h1,h2,h3,h4,h5{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.06}
-h1{font-size:clamp(3.2rem,8vw,6.5rem);font-weight:300;line-height:1.0}
-h2{font-size:clamp(2.2rem,5vw,4rem)}
-h3{font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:500}
-p{font-size:1rem;line-height:1.82;color:var(--tm);font-weight:300}
-a{text-decoration:none}
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--color-surface-cream);
+  color: var(--color-text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-/* SCROLL REVEAL */
-.r { opacity: 0; transform: translateY(30px); transition: opacity .8s var(--e2), transform .8s var(--e2); will-change: opacity, transform; }
-.r.in { opacity: 1; transform: none; }
-.r.d1 { transition-delay: .1s; }
-.r.d2 { transition-delay: .2s; }
-.r.d3 { transition-delay: .3s; }
-.r.d4 { transition-delay: .4s; }
-.r.d5 { transition-delay: .5s; }
-.r.d6 { transition-delay: .6s; }
+::selection {
+  background-color: rgba(201, 168, 76, 0.22);
+  color: var(--color-brand-green-dark);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-brand-green-extra-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-brand-gold);
+  border-radius: 2px;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  line-height: 1.06;
+}
+
+h1 {
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.0;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 500;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.82;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+/* Utility Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Delay modifiers for stagger effects */
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+.reveal-d5 { transition-delay: 0.5s; }

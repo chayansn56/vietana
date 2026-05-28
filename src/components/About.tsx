@@ -1,5 +1,9 @@
 import React from 'react';
 import SectionHeader from './ui/SectionHeader';
+import Section from './ui/layout/Section';
+import Container from './ui/layout/Container';
+import { Heading, Text } from './ui/Typography';
+import Grid from './ui/Grid';
 
 const GALLERY = [
   { img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80', t: 'Indian family in Hoi An' },
@@ -11,46 +15,46 @@ const GALLERY = [
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-32 bg-[var(--cr)] overflow-hidden">
-      <div className="px-[6%]">
+    <Section id="about" variant="cream" spacing="lg">
+      <Container>
         <SectionHeader 
           label="The VIETANA Story"
           title="Created for Indian Travelers by Locals who Care"
         />
-      </div>
+      </Container>
 
-      <div className="my-16 w-full relative r">
+      <div className="my-16 w-full relative reveal">
         <div className="flex gap-8 animate-[slide_40s_linear_infinite] w-fit">
           {[...GALLERY, ...GALLERY].map((item, i) => (
-            <div key={i} className="group w-[280px] h-[380px] md:w-[350px] md:h-[450px] rounded-[var(--r)] overflow-hidden relative flex-shrink-0">
+            <div key={i} className="group w-[280px] h-[380px] md:w-[350px] md:h-[450px] rounded-xl overflow-hidden relative flex-shrink-0">
               <div 
-                className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-[var(--e2)] group-hover:scale-110" 
+                className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-smooth group-hover:scale-110" 
                 style={{ backgroundImage: `url(${item.img})` }}
-              ></div>
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                <span className="text-white font-medium text-[0.95rem]">{item.t}</span>
+                <Text variant="white" size="sm" className="font-medium">{item.t}</Text>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="px-[6%] max-w-6xl mx-auto r">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+      <Container>
+        <Grid cols={2} gap={16} className="reveal">
           <div>
-            <h3 className="text-2xl font-serif text-[var(--g)] mb-4">Our Mission</h3>
-            <p className="text-[var(--ts)] leading-relaxed font-light">
+            <Heading as="h3" className="text-2xl mb-4">Our Mission</Heading>
+            <Text variant="subtle" className="font-light">
               To make Vietnam the most accessible and loved destination for Indian travelers, bridge cultures, and create lifelong memories.
-            </p>
+            </Text>
           </div>
           <div>
-            <h3 className="text-2xl font-serif text-[var(--g)] mb-4">Local Expertise</h3>
-            <p className="text-[var(--ts)] leading-relaxed font-light">
+            <Heading as="h3" className="text-2xl mb-4">Local Expertise</Heading>
+            <Text variant="subtle" className="font-light">
               Based in Ho Chi Minh City, our team understands both Indian preferences and Vietnamese culture perfectly.
-            </p>
+            </Text>
           </div>
-        </div>
-      </div>
+        </Grid>
+      </Container>
 
       <style>{`
         @keyframes slide {
@@ -58,7 +62,7 @@ const About: React.FC = () => {
           to { transform: translateX(-50%); }
         }
       `}</style>
-    </section>
+    </Section>
   );
 };
 

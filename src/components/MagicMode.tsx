@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MAGIC_DESTINATIONS } from '../config';
 import Button from './ui/Button';
+import { Heading, Text } from './ui/Typography';
+import Card from './ui/Card';
 
 interface MagicModeProps {
   isOpen: boolean;
@@ -82,7 +84,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
   if (!isOpen) return null;
 
   return (
-    <div id="magicMode" className={`fixed inset-0 z-[9999] bg-[#040f0c] flex flex-col items-center justify-center transition-opacity duration-1500 ease-[var(--e1)] overflow-hidden text-white font-sans ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+    <div id="magicMode" className={`fixed inset-0 z-[9999] bg-brand-green-extra-dark flex flex-col items-center justify-center transition-opacity duration-1500 ease-soft overflow-hidden text-white ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
       {/* BACKGROUND SLIDESHOW */}
       <div className="absolute inset-0 z-0">
         {mmSlides.map((url, idx) => (
@@ -91,25 +93,25 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
             className={`absolute inset-0 bg-cover bg-center transition-all duration-2000 ease-in-out after:content-[''] after:absolute after:inset-0 after:bg-gradient-to-b after:from-black/20 after:to-black/60
               ${currentSlide === idx ? 'opacity-60 scale-100' : 'opacity-0 scale-105'}`} 
             style={{ backgroundImage: `url('${url}')` }}
-          ></div>
+          />
         ))}
       </div>
 
       {/* BACKGROUND EFFECTS */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        <div className="absolute w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(255,255,255,0.03)_0%,transparent_60%)] animate-[mmDrift_40s_linear_infinite_alternate]"></div>
-        <div className="absolute inset-0" ref={particlesRef}></div>
+        <div className="absolute w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(255,255,255,0.03)_0%,transparent_60%)] animate-[mmDrift_40s_linear_infinite_alternate]" />
+        <div className="absolute inset-0" ref={particlesRef} />
       </div>
       
       {/* ORB */}
       {orbState === 'visible' && (
         <div 
-          className="relative z-10 cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] flex items-center justify-center animate-[mmBreathe_4s_ease-in-out_infinite_alternate]" 
+          className="relative z-10 cursor-pointer transition-all duration-500 ease-elastic flex items-center justify-center animate-[mmBreathe_4s_ease-in-out_infinite_alternate]" 
           onClick={handleOrbClick}
         >
-          <div className="w-72 h-72 rounded-full bg-white/5 border border-white/20 backdrop-blur-3xl flex flex-col items-center justify-center text-center p-5 shadow-[0_0_50px_rgba(255,255,255,0.1),inset_0_0_20px_rgba(255,255,255,0.05)] hover:bg-white/10 hover:border-white/40">
-            <h2 className="text-3xl font-bold mb-2.5 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]">✨ Touch Vietnam</h2>
-            <p className="text-[0.95rem] opacity-80 leading-relaxed">Not all journeys begin with a destination.<br/>Some begin with a feeling.</p>
+          <div className="w-72 h-72 rounded-full bg-white/5 border border-white/20 backdrop-blur-3xl flex flex-col items-center justify-center text-center p-5 shadow-deep hover:bg-white/10 hover:border-white/40">
+            <Heading as="h2" className="text-3xl font-bold mb-2.5 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)] text-white">✨ Touch Vietnam</Heading>
+            <Text variant="white" className="opacity-80 leading-relaxed">Not all journeys begin with a destination.<br/>Some begin with a feeling.</Text>
           </div>
         </div>
       )}
@@ -133,7 +135,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
               style={{ left: `${rx}vw`, top: `${ry}vh`, animationDelay: `-${Math.random() * 5}s` }}
               onClick={() => setSelectedDest(dest)}
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_60%)] rounded-full -z-10 pointer-events-none animate-[mmGlow_3s_ease-in-out_infinite_alternate] group-hover:bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.8)_0%,transparent_60%)]" style={{ animationDelay: `-${Math.random() * 3}s` }}></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_60%)] rounded-full -z-10 pointer-events-none animate-[mmGlow_3s_ease-in-out_infinite_alternate] group-hover:bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.8)_0%,transparent_60%)]" style={{ animationDelay: `-${Math.random() * 3}s` }} />
               <span className="absolute top-[30px] left-1/2 -translate-x-1/2 bg-black/60 px-2.5 py-1 rounded-xl text-[0.85rem] whitespace-nowrap opacity-0 transition-opacity duration-300 backdrop-blur-md group-hover:opacity-100 pointer-events-none z-10">
                 {dest.label}
               </span>
@@ -143,14 +145,21 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
       </div>
 
       {/* STORY CARD */}
-      <div className={`absolute z-20 bg-[rgba(20,30,25,0.7)] backdrop-blur-3xl border border-white/20 rounded-[30px] p-10 w-[90%] max-w-[500px] text-center shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] ${selectedDest ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}>
-        <h2 className="text-[2.2rem] mb-5 text-[var(--gold3)]">{selectedDest?.label}</h2>
-        <p className="text-[1.1rem] leading-relaxed mb-7.5 whitespace-pre-line">{selectedDest?.desc}</p>
+      <Card 
+        variant="glass" 
+        padding="lg" 
+        hover={false}
+        className={`absolute z-20 bg-brand-green-dark/70 rounded-[30px] w-[90%] max-w-[500px] text-center shadow-deep transition-all duration-500 ease-elastic ${selectedDest ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+      >
+        <Heading as="h2" className="text-[2.2rem] mb-5 text-brand-gold-light">{selectedDest?.label}</Heading>
+        <Text variant="white" size="lg" className="leading-relaxed mb-7.5 whitespace-pre-line">
+          {selectedDest?.desc}
+        </Text>
         <Button variant="primary" className="w-full py-3" onClick={handleExploreFeeling}>
           Explore this destination →
         </Button>
         <button className="absolute top-4 right-5 bg-transparent border-none text-white text-3xl cursor-pointer opacity-60 hover:opacity-100 transition-opacity" onClick={() => setSelectedDest(null)}>×</button>
-      </div>
+      </Card>
 
       {/* FLASH EFFECT */}
       <div className={`fixed inset-0 bg-white z-[999] pointer-events-none transition-opacity duration-800 ${isFlashActive ? 'opacity-100' : 'opacity-0'}`} />
@@ -159,7 +168,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
       <div className="absolute bottom-8 w-full flex flex-col items-center gap-4 z-30 opacity-0 animate-[fadeIn_1s_1s_forwards] pointer-events-auto">
         <div className="flex items-center gap-3 text-[0.9rem] opacity-80">
           <span>Not sure?</span>
-          <button className="bg-[var(--gold)] border-none px-4 py-2 rounded-full text-black font-bold cursor-pointer hover:-translate-y-0.5 transition-transform" onClick={() => { onClose(); setTimeout(() => onOpenPlanner(), 1000); }}>✨ Let VIETANA™ understand you</button>
+          <button className="bg-brand-gold border-none px-4 py-2 rounded-full text-brand-green-extra-dark font-bold cursor-pointer hover:-translate-y-0.5 transition-transform" onClick={() => { onClose(); setTimeout(() => onOpenPlanner(), 1000); }}>✨ Let VIETANA™ understand you</button>
         </div>
         <button className="bg-transparent border border-white/30 text-white px-4 py-1.5 rounded-full text-[0.8rem] cursor-pointer hover:bg-white/10 transition-colors" onClick={onClose}>Return to reality ↩</button>
       </div>

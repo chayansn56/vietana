@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { WHATSAPP_INDIA } from '../config';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
+import { Heading, Text } from './ui/Typography';
+import Card from './ui/Card';
 
 interface CustomTripBuilderProps {
   isOpen: boolean;
@@ -77,23 +79,23 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
       isOpen={isOpen} 
       onClose={onClose}
       maxWidth="max-w-2xl"
-      className="h-[90vh] max-h-[800px] flex flex-col p-0 border-[var(--gold)]/20 shadow-[0_30px_100px_rgba(0,0,0,0.8)]"
+      className="h-[90vh] max-h-[800px] flex flex-col p-0 border-brand-gold/20 shadow-deep"
     >
-      <div className="p-8 md:p-12 pb-6 border-b border-white/5">
-        <h2 className="font-serif text-4xl text-[var(--gold3)] mb-2">Build Your Trip</h2>
-        <p className="text-white/50 text-[0.95rem] font-light">Select your destinations and get a real-time estimate.</p>
+      <div className="p-8 md:p-12 pb-6 border-b border-white/5 bg-brand-green-extra-dark">
+        <Heading as="h2" className="text-4xl text-brand-gold-light mb-2">Build Your Trip</Heading>
+        <Text variant="white" size="sm" className="opacity-50">Select your destinations and get a real-time estimate.</Text>
       </div>
       
-      <div className="flex-1 overflow-y-auto p-8 md:p-12 flex flex-col gap-10 scrollbar-thin scrollbar-thumb-white/10">
+      <div className="flex-1 overflow-y-auto p-8 md:p-12 flex flex-col gap-10 bg-brand-green-extra-dark/95 scrollbar-thin scrollbar-thumb-white/10">
         {/* Destinations Section */}
         <div>
-          <h3 className="text-[0.9rem] tracking-[0.1em] text-white/40 uppercase mb-6 flex items-center gap-3">📍 Select Destinations</h3>
+          <Heading as="h3" className="text-[0.9rem] tracking-[0.1em] text-white/40 uppercase mb-6 flex items-center gap-3">📍 Select Destinations</Heading>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {CITIES.map(city => (
               <label 
                 key={city} 
-                className={`flex items-center gap-2.5 p-3 rounded-xl border cursor-pointer transition-all duration-300 text-[0.85rem]
-                  ${selectedCities.includes(city) ? 'bg-[var(--gold)]/15 border-[var(--gold)] text-[var(--gold3)]' : 'bg-white/5 border-white/10 text-white/70 hover:border-[var(--gold)]/40 hover:bg-[var(--gold)]/5'}`}
+                className={`flex items-center justify-center p-3 rounded-xl border cursor-pointer transition-all duration-300 text-[0.85rem]
+                  ${selectedCities.includes(city) ? 'bg-brand-gold/15 border-brand-gold text-brand-gold-light' : 'bg-white/5 border-white/10 text-white/70 hover:border-brand-gold/40 hover:bg-brand-gold/5'}`}
               >
                 <input 
                   type="checkbox" 
@@ -108,8 +110,8 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
         </div>
         
         {/* Settings Section */}
-        <div className="bg-white/[0.02] p-6 rounded-xl border border-[var(--gold)]/20">
-          <h3 className="text-[0.9rem] tracking-[0.1em] text-white/40 uppercase mb-8 flex items-center gap-3">💰 Trip Settings & Estimate</h3>
+        <Card variant="glass" padding="md" hover={false} className="border-brand-gold/20 bg-white/[0.02]">
+          <Heading as="h3" className="text-[0.9rem] tracking-[0.1em] text-white/40 uppercase mb-8">💰 Trip Settings & Estimate</Heading>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div className="flex flex-col">
@@ -119,7 +121,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
                    <button 
                     key={s}
                     className={`flex-1 py-2.5 rounded-lg text-[0.8rem] font-medium transition-all duration-300 cursor-pointer
-                      ${style === s ? 'bg-[var(--gold)] text-black shadow-lg' : 'bg-transparent text-white/50 hover:text-white'}`} 
+                      ${style === s ? 'bg-brand-gold text-brand-green-dark shadow-medium' : 'bg-transparent text-white/50 hover:text-white'}`} 
                     onClick={() => setStyle(s)}
                    >
                      {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -130,60 +132,60 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
             <div className="flex flex-col gap-6">
                <div className="flex flex-col gap-3">
                  <label className="text-[0.75rem] text-white/40 uppercase tracking-widest font-bold flex justify-between">
-                   Duration <span className="text-[var(--gold)]">{days} Days</span>
+                   Duration <span className="text-brand-gold">{days} Days</span>
                  </label>
-                 <input type="range" min="3" max="30" value={days} onChange={(e) => setDays(parseInt(e.target.value))} className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4.5 [&::-webkit-slider-thumb]:h-4.5 [&::-webkit-slider-thumb]:bg-[var(--gold)] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-[3px] [&::-webkit-slider-thumb]:border-[var(--gd)]" />
+                 <input type="range" min="3" max="30" value={days} onChange={(e) => setDays(parseInt(e.target.value))} className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4.5 [&::-webkit-slider-thumb]:h-4.5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-[3px] [&::-webkit-slider-thumb]:border-brand-green-dark" />
                </div>
                
                <div className="flex flex-col gap-3">
                  <label className="text-[0.75rem] text-white/40 uppercase tracking-widest font-bold flex justify-between">
-                   Travelers <span className="text-[var(--gold)]">{pax} {pax === 1 ? 'Person' : 'People'}</span>
+                   Travelers <span className="text-brand-gold">{pax} {pax === 1 ? 'Person' : 'People'}</span>
                  </label>
-                 <input type="range" min="1" max="10" value={pax} onChange={(e) => setPax(parseInt(e.target.value))} className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4.5 [&::-webkit-slider-thumb]:h-4.5 [&::-webkit-slider-thumb]:bg-[var(--gold)] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-[3px] [&::-webkit-slider-thumb]:border-[var(--gd)]" />
+                 <input type="range" min="1" max="10" value={pax} onChange={(e) => setPax(parseInt(e.target.value))} className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4.5 [&::-webkit-slider-thumb]:h-4.5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-[3px] [&::-webkit-slider-thumb]:border-brand-green-dark" />
                </div>
             </div>
           </div>
           
           <div className="bg-black/40 rounded-lg p-6 flex flex-col gap-3.5">
-             <div className="flex justify-between text-[0.85rem] text-gray-400">
+             <div className="flex justify-between text-[0.85rem] text-text-subtle">
                <span>✈️ Flights (India ↔ VN)</span>
                <span className="font-semibold text-white">₹{estimate.flight.toLocaleString('en-IN')}</span>
              </div>
-             <div className="flex justify-between text-[0.85rem] text-gray-400">
+             <div className="flex justify-between text-[0.85rem] text-text-subtle">
                <span>🛂 E-Visa</span>
                <span className="font-semibold text-white">₹{estimate.visa.toLocaleString('en-IN')}</span>
              </div>
-             <div className="flex justify-between text-[0.85rem] text-gray-400">
+             <div className="flex justify-between text-[0.85rem] text-text-subtle">
                <span className="flex items-center gap-1.5">
                  🚄 Inter-city Transit 
-                 <small className="text-[0.6rem] text-[var(--gold)] opacity-70">(₹3k/hop)</small>
+                 <small className="text-[0.6rem] text-brand-gold opacity-70">(₹3k/hop)</small>
                </span>
                <span className="font-semibold text-white">₹{estimate.transit.toLocaleString('en-IN')}</span>
              </div>
-             <div className="flex justify-between text-[0.85rem] text-gray-400">
+             <div className="flex justify-between text-[0.85rem] text-text-subtle">
                <span>🏨 Daily Expenses</span>
                <span className="font-semibold text-white">₹{estimate.daily.toLocaleString('en-IN')}</span>
              </div>
              <div className="mt-2.5 pt-5 border-t border-white/10 flex justify-between items-center">
-               <span className="text-[var(--gold)] font-medium text-base">Total Estimate</span>
-               <span className="text-[var(--gold)] text-3xl font-serif font-bold">₹{estimate.total.toLocaleString('en-IN')}</span>
+               <Text variant="white" className="text-brand-gold font-medium">Total Estimate</Text>
+               <span className="text-brand-gold text-3xl font-serif font-bold">₹{estimate.total.toLocaleString('en-IN')}</span>
              </div>
           </div>
-        </div>
+        </Card>
         
         {/* Notes Section */}
         <div>
-          <h3 className="text-[0.9rem] tracking-[0.1em] text-white/40 uppercase mb-5 flex items-center gap-3">📝 Additional Notes</h3>
+          <Heading as="h3" className="text-[0.9rem] tracking-[0.1em] text-white/40 uppercase mb-5">📝 Additional Notes</Heading>
           <textarea 
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Tell us about special requests, dietary restrictions, preferred flight cities, etc..." 
-              className="w-full h-24 bg-white/5 border border-white/10 rounded-lg p-4 text-white text-[0.9rem] font-light resize-none focus:border-[var(--gold)] focus:outline-none transition-colors"
+              className="w-full h-24 bg-white/5 border border-white/10 rounded-lg p-4 text-white text-[0.9rem] font-light resize-none focus:border-brand-gold focus:outline-none transition-colors"
           />
         </div>
       </div>
       
-      <div className="p-8 md:p-10 bg-[var(--gd)] border-t border-white/5">
+      <div className="p-8 md:p-10 bg-brand-green-extra-dark border-t border-white/5">
         <Button 
           className="w-full py-4.5 font-bold" 
           onClick={sendToWhatsApp}

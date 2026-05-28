@@ -1,6 +1,9 @@
 import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import Button from './ui/Button';
+import Section from './ui/layout/Section';
+import Container from './ui/layout/Container';
+import { Heading, Text } from './ui/Typography';
 
 const Contact: React.FC = () => {
   const { t } = useTranslation();
@@ -9,36 +12,37 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="relative py-40 px-[6%] bg-[var(--gx)] text-center overflow-hidden text-white">
-      <div className="absolute w-[400px] h-[400px] rounded-full blur-[80px] opacity-20 z-0 bg-[var(--blue)] -top-24 -left-24"></div>
-      <div className="absolute w-[350px] h-[350px] rounded-full blur-[80px] opacity-20 z-0 bg-[var(--gold)] -bottom-24 -right-24"></div>
+    <Section id="contact" variant="dark" spacing="lg" className="text-center">
+      <div className="absolute w-[400px] h-[400px] rounded-full blur-[80px] opacity-20 z-0 bg-brand-blue -top-24 -left-24" />
+      <div className="absolute w-[350px] h-[350px] rounded-full blur-[80px] opacity-20 z-0 bg-brand-gold -bottom-24 -right-24" />
       
-      <div className="relative z-10">
-        <span className="inline-block text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-[var(--gold)] mb-5 r">
+      <Container className="relative z-10">
+        <span className="inline-block text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-brand-gold mb-5 reveal">
           {t.contact.title}
         </span>
-        <h2 className="font-serif text-[2.5rem] md:text-[3.5rem] leading-tight mb-6 text-white r">
+        <Heading as="h2" className="text-[2.5rem] md:text-[3.5rem] leading-tight mb-6 text-white reveal">
           {t.contact.heading.split('\n').map((line, i) => (
             <React.Fragment key={i}>
               {line}
               <br />
             </React.Fragment>
           ))}
-        </h2>
-        <p className="text-lg md:text-xl text-white/70 font-light r">
+        </Heading>
+        <Text variant="white" size="lg" className="opacity-70 font-light reveal">
           {t.contact.sub}
-        </p>
+        </Text>
         
-        <div className="mt-12 flex justify-center r d1">
+        <div className="mt-12 flex justify-center reveal reveal-d1">
           <Button 
             onClick={openContactPanel} 
-            className="bg-[var(--blue)] text-white hover:brightness-110 shadow-[0_10px_30px_rgba(126,200,227,0.3)] hover:shadow-[0_15px_45px_rgba(126,200,227,0.4)] px-14 py-5 font-bold tracking-[2px] border-none"
+            variant="glass"
+            className="px-14 py-5 font-bold tracking-[2px] border-brand-blue text-brand-blue-light hover:bg-brand-blue/10"
           >
             {t.contact.cta}
           </Button>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

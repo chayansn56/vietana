@@ -1,4 +1,5 @@
 import React from 'react';
+import { Heading, Text } from './Typography';
 
 interface SectionHeaderProps {
   label?: string;
@@ -6,6 +7,7 @@ interface SectionHeaderProps {
   description?: string;
   centered?: boolean;
   className?: string;
+  variant?: 'dark' | 'light';
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -13,22 +15,31 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   description,
   centered = true,
-  className = ''
+  className = '',
+  variant = 'light',
 }) => {
+  const isDark = variant === 'dark';
+
   return (
-    <div className={`mb-20 ${centered ? 'text-center' : ''} ${className}`}>
+    <div className={`mb-20 reveal ${centered ? 'text-center' : ''} ${className}`}>
       {label && (
-        <span className="inline-block text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-[var(--gold)] mb-5">
+        <span className={`inline-block text-[0.68rem] font-semibold tracking-[0.28em] uppercase mb-5 ${isDark ? 'text-brand-gold-light' : 'text-brand-gold'}`}>
           {label}
         </span>
       )}
-      <h2 className={`text-clamp-2.2-4vw-4rem leading-tight mb-4 text-[var(--td)]`}>
+      <Heading 
+        as="h2" 
+        className={`leading-tight mb-4 ${isDark ? 'text-white' : 'text-text-dark'}`}
+      >
         {title}
-      </h2>
+      </Heading>
       {description && (
-        <p className={`max-w-[500px] text-[1.05rem] leading-[1.82] text-[var(--tm)] ${centered ? 'mx-auto' : ''}`}>
+        <Text 
+          variant={isDark ? 'white' : 'muted'} 
+          className={`max-w-[500px] ${centered ? 'mx-auto' : ''}`}
+        >
           {description}
-        </p>
+        </Text>
       )}
     </div>
   );

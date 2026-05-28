@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import SectionHeader from './ui/SectionHeader';
+import Section from './ui/layout/Section';
+import Container from './ui/layout/Container';
+import { Heading, Text } from './ui/Typography';
+import Card from './ui/Card';
 
 const FAQS = [
   { 
@@ -53,43 +57,48 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-32 px-[6%] bg-[var(--cr)]">
-      <SectionHeader 
-        label="Common Questions"
-        title="Frequently Asked Questions"
-      />
+    <Section id="faq" variant="cream" spacing="lg">
+      <Container>
+        <SectionHeader 
+          label="Common Questions"
+          title="Frequently Asked Questions"
+        />
 
-      <div className="max-w-[900px] mx-auto flex flex-col gap-5">
-        {FAQS.map((faq, i) => {
-          const isOpen = openIdx === i;
-          return (
-            <div 
-              key={i} 
-              className={`bg-white border rounded-[22px] overflow-hidden cursor-pointer transition-all duration-400 ease-[var(--e2)] relative 
-                ${isOpen ? 'border-[var(--gold)]/30 shadow-[var(--sh2)] bg-[var(--gold)]/[0.01]' : 'border-[var(--g)]/8 shadow-none hover:border-[var(--gold)] hover:-translate-y-0.5 hover:shadow-[var(--sh1)]'}`} 
-              onClick={() => setOpenIdx(isOpen ? null : i)}
-            >
-              <div className="p-8 md:p-10 flex items-center justify-between gap-6">
-                <h4 className="flex-1 font-sans text-lg md:text-xl font-medium text-[var(--gd)] leading-tight m-0">
-                  {formatText(faq.q)}
-                </h4>
-                <div className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-400 ease-[var(--e1)] shrink-0 text-2xl font-light 
-                  ${isOpen ? 'bg-[var(--gold)] text-white rotate-180' : 'bg-[var(--gold)]/10 text-[var(--gold)]'}`}>
-                  {isOpen ? '−' : '+'}
-                </div>
-              </div>
-              <div 
-                className={`transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}
+        <div className="max-w-[900px] mx-auto flex flex-col gap-5">
+          {FAQS.map((faq, i) => {
+            const isOpen = openIdx === i;
+            return (
+              <Card 
+                key={i} 
+                hover={false}
+                padding="none"
+                variant="white"
+                className={`cursor-pointer transition-all duration-400 ease-smooth reveal
+                  ${isOpen ? 'border-brand-gold/30 shadow-strong bg-brand-gold/[0.01]' : 'border-brand-green/8 shadow-none hover:border-brand-gold hover:-translate-y-0.5 hover:shadow-medium'}`} 
+                onClick={() => setOpenIdx(isOpen ? null : i)}
               >
-                <p className="px-8 md:px-10 pb-9 text-[var(--ts)] text-[0.95rem] md:text-[1.02rem] leading-relaxed m-0 font-light">
-                  {formatText(faq.a)}
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+                <div className="p-8 md:p-10 flex items-center justify-between gap-6">
+                  <Heading as="h4" className="flex-1 font-sans text-lg md:text-xl font-medium leading-tight m-0">
+                    {formatText(faq.q)}
+                  </Heading>
+                  <div className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-400 ease-soft shrink-0 text-2xl font-light 
+                    ${isOpen ? 'bg-brand-gold text-brand-green-extra-dark rotate-180' : 'bg-brand-gold/10 text-brand-gold'}`}>
+                    {isOpen ? '−' : '+'}
+                  </div>
+                </div>
+                <div 
+                  className={`transition-all duration-600 ease-smooth overflow-hidden ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}
+                >
+                  <Text size="md" variant="subtle" className="px-8 md:px-10 pb-9 m-0 font-light">
+                    {formatText(faq.a)}
+                  </Text>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+      </Container>
+    </Section>
   );
 };
 
