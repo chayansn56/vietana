@@ -24,7 +24,7 @@ const About: React.FC = () => {
       </Container>
 
       <div className="my-16 w-full relative reveal">
-        <div className="flex gap-8 animate-[slide_40s_linear_infinite] w-fit">
+        <div className="flex gap-8 animate-slide w-fit">
           {[...GALLERY, ...GALLERY].map((item, i) => (
             <div key={i} className="group w-[280px] h-[380px] md:w-[350px] md:h-[450px] rounded-xl overflow-hidden relative flex-shrink-0">
               <div 
@@ -55,13 +55,6 @@ const About: React.FC = () => {
           </div>
         </Grid>
       </Container>
-
-      <style>{`
-        @keyframes slide {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-      `}</style>
     </Section>
   );
 };

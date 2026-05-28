@@ -4,7 +4,7 @@ interface HeadingProps {
   children: React.ReactNode;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   className?: string;
-  variant?: 'primary' | 'secondary' | 'accent';
+  variant?: 'primary' | 'secondary' | 'accent' | 'none';
 }
 
 export const Heading: React.FC<HeadingProps> = ({
@@ -17,6 +17,7 @@ export const Heading: React.FC<HeadingProps> = ({
     primary: 'text-text-dark',
     secondary: 'text-text-muted',
     accent: 'text-brand-gold',
+    none: '',
   };
 
   return (
@@ -31,7 +32,7 @@ interface TextProps {
   as?: 'p' | 'span' | 'div';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;
-  variant?: 'primary' | 'muted' | 'subtle' | 'white';
+  variant?: 'primary' | 'muted' | 'subtle' | 'white' | 'none';
 }
 
 export const Text: React.FC<TextProps> = ({
@@ -53,6 +54,7 @@ export const Text: React.FC<TextProps> = ({
     muted: 'text-text-muted',
     subtle: 'text-text-subtle',
     white: 'text-white/80',
+    none: '',
   };
 
   return (

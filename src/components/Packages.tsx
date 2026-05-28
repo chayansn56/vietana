@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { PACKAGES } from '../config';
 import SectionHeader from './ui/SectionHeader';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import Grid from './ui/Grid';
+import Card from './ui/Card';
 import { Heading, Text } from './ui/Typography';
 import Badge from './ui/Badge';
 
@@ -16,37 +18,59 @@ interface PackageItem {
 }
 
 const PackageCard: React.FC<{ p: PackageItem, onClick: () => void }> = ({ p, onClick }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    
-    cardRef.current.style.transform = `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateY(-10px)`;
-    cardRef.current.style.boxShadow = '0 20px 50px rgba(0,0,0,0.3)';
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
   };
 
   const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-    cardRef.current.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
-    cardRef.current.style.boxShadow = '';
+    x.set(0);
+    y.set(0);
   };
 
   return (
-    <div 
-      ref={cardRef}
-      className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer border border-white/10 transition-all duration-500 ease-smooth reveal" 
+    <motion.div 
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
       onMouseMove={handleMouseMove} 
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
+      whileHover={{ y: -10 }}
+      className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer border border-white/10 shadow-medium hover:shadow-strong transition-shadow duration-500 reveal" 
     >
-      <div className="absolute inset-[-4%] bg-cover bg-center transition-transform duration-900 ease-smooth group-hover:scale-[1.09] group-hover:-translate-y-[2%] will-change-transform" style={{ backgroundImage: `url('${p.img}')` }} />
+      <div 
+        style={{ 
+          backgroundImage: `url('${p.img}')`,
+          transform: "translateZ(-20px)",
+        }} 
+        className="absolute inset-[-4%] bg-cover bg-center transition-transform duration-900 ease-smooth group-hover:scale-[1.09] group-hover:-translate-y-[2%] will-change-transform" 
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-green-extra-dark/95 via-brand-green-dark/65 to-black/10 transition-all duration-600 ease-soft group-hover:from-brand-green-extra-dark group-hover:via-brand-green-dark/75 group-hover:to-black/15" />
       <div className="absolute inset-0 opacity-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(201,168,76,0.09),transparent_65%)] transition-opacity duration-700 group-hover:opacity-100" />
       
-      <div className="absolute bottom-0 left-0 right-0 p-8 pt-9">
+      <div 
+        className="absolute bottom-0 left-0 right-0 p-8 pt-9"
+        style={{ transform: "translateZ(30px)" }}
+      >
         <Badge className="mb-4 bg-brand-gold text-brand-green-dark shadow-medium border-none">
           {p.b}
         </Badge>
@@ -67,7 +91,7 @@ const PackageCard: React.FC<{ p: PackageItem, onClick: () => void }> = ({ p, onC
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -91,12 +115,14 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
           ))}
 
           {/* CUSTOM BUILDER CARD */}
-          <div 
-            className="col-span-full flex flex-col md:flex-row items-center gap-8 p-12 md:p-16 rounded-[24px] border border-brand-gold cursor-pointer bg-cover bg-center relative overflow-hidden group reveal" 
+          <Card 
+            padding="none"
+            hover={false}
+            className="col-span-full flex flex-col md:flex-row items-center gap-8 p-12 md:p-16 border-brand-gold bg-cover bg-center relative overflow-hidden group reveal" 
             style={{ backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }}
             onClick={onOpenBuilder}
           >
-            <div className="flex-1 text-center md:text-left">
+            <div className="flex-1 text-center md:text-left relative z-10">
               <Badge className="mb-4 bg-brand-gold text-brand-green-dark shadow-medium border-none">
                 Fully Custom
               </Badge>
@@ -110,11 +136,11 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
             
             <Button 
               variant="glass"
-              className="w-full md:w-auto px-10 py-5 border-brand-gold text-white group/btn"
+              className="w-full md:w-auto px-10 py-5 border-brand-gold text-white group/btn relative z-10"
             >
               Open Trip Builder <span className="transition-transform duration-300 group-hover/btn:translate-x-1 ml-2">→</span>
             </Button>
-          </div>
+          </Card>
         </Grid>
       </Container>
     </Section>

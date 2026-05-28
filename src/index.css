@@ -16,6 +16,8 @@
   --color-brand-blue-light: #a8dff0;
   --color-brand-blue-dark: #5bb8d4;
   
+  --color-brand-whatsapp: #25D366;
+  
   --color-surface-cream: #FAFAF7;
   --color-surface-warm: #F4F2ED;
   
@@ -38,6 +40,12 @@
   --shadow-strong: 0 16px 56px rgba(8,38,24,.16);
   --shadow-heavy: 0 32px 80px rgba(8,38,24,.22);
   --shadow-deep: 0 48px 110px rgba(8,38,24,.30);
+  
+  --shadow-gold: 0 4px 20px rgba(201,168,76,0.3);
+  --shadow-gold-hover: 0 12px 32px rgba(201,168,76,0.45);
+
+  --shadow-whatsapp: 0 6px 20px rgba(37,211,102,0.25);
+  --shadow-whatsapp-hover: 0 10px 25px rgba(37,211,102,0.4);
 
   /* Spacing - Standardizing the 7% layout padding */
   --spacing-layout: 7%;
@@ -63,6 +71,125 @@
     0% { transform: scale(1.1) translateX(0); }
     100% { transform: scale(1.02) translateX(-15px); }
   }
+  @keyframes pfloat {
+    0% { opacity: 0; transform: translateY(100vh) translateX(0); }
+    10% { opacity: .5; }
+    90% { opacity: .2; }
+    100% { opacity: 0; transform: translateY(-5vh) translateX(var(--dx, 20px)); }
+  }
+  @keyframes sla {
+    0%, 100% { width: 36px; opacity: .3; }
+    50% { width: 62px; opacity: .8; }
+  }
+  @keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes blob-float {
+    from { transform: translate(0, 0); }
+    to { transform: translate(50px, 50px); }
+  }
+  @keyframes nfloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  @keyframes dash {
+    to { stroke-dashoffset: -100; }
+  }
+  @keyframes msg-fade-in {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ai-pulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+  @keyframes mm-drift {
+    from { transform: translate(-10%, -10%); }
+    to { transform: translate(10%, 10%); }
+  }
+  @keyframes mm-breathe {
+    from { transform: scale(0.95); box-shadow: 0 0 30px rgba(255, 255, 255, 0.05); }
+    to { transform: scale(1.05); box-shadow: 0 0 70px rgba(255, 255, 255, 0.2); }
+  }
+  @keyframes mm-float {
+    from { transform: translateY(-15px); }
+    to { transform: translateY(15px); }
+  }
+  @keyframes mm-glow {
+    0% { opacity: 0.2; transform: scale(0.6); }
+    100% { opacity: 1; transform: scale(1.1); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@utility animate-slide {
+  animation: slide 40s linear infinite;
+}
+
+@utility animate-sla {
+  animation: sla 2.6s ease-in-out infinite;
+}
+
+@utility animate-orb-glow {
+  animation: orb-glow 3s ease-in-out infinite alternate;
+}
+
+@utility animate-orb-spin {
+  animation: orb-spin 12s linear infinite;
+}
+
+@utility animate-blob-float {
+  animation: blob-float 20s infinite alternate;
+}
+
+@utility animate-nfloat {
+  animation: nfloat var(--float-dur, 3s) var(--float-del, 0s) infinite ease-in-out;
+}
+
+@utility animate-dash {
+  animation: dash 20s linear infinite;
+}
+
+@utility animate-msg-fade-in {
+  animation: msg-fade-in 0.6s var(--ease-smooth) forwards;
+}
+
+@utility animate-ai-pulse {
+  animation: ai-pulse 2.5s infinite ease-in-out;
+}
+
+@utility reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: reveal-up 1.2s var(--ease-smooth) forwards;
+}
+
+@utility animate-mm-drift {
+  animation: mm-drift 40s linear infinite alternate;
+}
+
+@utility animate-mm-breathe {
+  animation: mm-breathe 4s ease-in-out infinite alternate;
+}
+
+@utility animate-mm-float {
+  animation: mm-float 6s ease-in-out infinite alternate;
+}
+
+@utility animate-mm-glow {
+  animation: mm-glow 3s ease-in-out infinite alternate;
+}
+
+@utility animate-fade-in {
+  animation: fade-in 1s forwards;
+}
+
+@utility vertical-rl {
+  writing-mode: vertical-rl;
 }
 
 /* Base Styles */
@@ -130,6 +257,11 @@ p {
 }
 
 /* Utility Classes */
+.orb-style {
+  background: radial-gradient(circle at 30% 30%, var(--color-brand-gold), var(--color-brand-green));
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(30px);

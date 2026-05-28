@@ -17,7 +17,7 @@ const FloatingOrb: React.FC<FloatingOrbProps> = ({ onClick }) => {
         {t.nav.aiPlanner}
       </div>
       
-      <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,var(--color-brand-gold),var(--color-brand-green))] shadow-[0_0_30px_rgba(201,168,76,0.4),inset_0_0_15px_rgba(255,255,255,0.3)]" />
+      <div className="absolute inset-0 rounded-full orb-style" />
       
       <div className="absolute inset-[-10px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.15)_0%,transparent_70%)] animate-orb-glow" />
       

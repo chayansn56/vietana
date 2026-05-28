@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import ProgressBar from './components/layout/ProgressBar';
 import BackToTop from './components/layout/BackToTop';
 import FloatingOrb from './components/layout/FloatingOrb';
+import Separator from './components/ui/layout/Separator';
 
 // Hooks
 import { useScroll } from './hooks/useScroll';
@@ -86,9 +87,9 @@ export default function App() {
         
         <Suspense fallback={<SectionPlaceholder />}>
           <Services onOpenPlanner={(dest) => openPlanner(dest)} />
-          <div className="h-px mx-[var(--spacing-layout)] bg-gradient-to-r from-transparent via-brand-green/10 to-transparent" />
+          <Separator variant="green" />
           <Packages onOpenBuilder={() => setIsBuilderOpen(true)} />
-          <div className="h-px mx-[var(--spacing-layout)] bg-gradient-to-r from-transparent via-brand-gold/15 to-transparent" />
+          <Separator variant="gold" />
           <Food />
           <ComboSection onOpenPlanner={(dest) => openPlanner(dest)} />
           <FAQ />

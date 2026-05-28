@@ -69,17 +69,17 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
       {/* LEFT: EXPERIENCES */}
       <div id="experiences" className="flex-1 min-w-[320px] relative py-24 px-[2%] flex items-center justify-center overflow-hidden border-r border-black/5 bg-brand-green-extra-dark min-h-[800px]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(13,79,46,0.2)_0%,transparent_70%)] z-0" />
-        <div className="absolute w-[300px] h-[300px] rounded-full blur-[80px] opacity-15 animate-[blobFloat_20s_infinite_alternate] bg-brand-blue top-[10%] left-[10%]" />
-        <div className="absolute w-[300px] h-[300px] rounded-full blur-[80px] opacity-15 animate-[blobFloat_20s_infinite_alternate_delay-5s] bg-brand-green bottom-[10%] right-[10%]" />
+        <div className="absolute w-[300px] h-[300px] rounded-full blur-[80px] opacity-15 animate-blob-float bg-brand-blue top-[10%] left-[10%]" />
+        <div className="absolute w-[300px] h-[300px] rounded-full blur-[80px] opacity-15 animate-blob-float [animation-delay:-5s] bg-brand-green bottom-[10%] right-[10%]" />
         
         {!shattered ? (
           <div className="relative z-10 cursor-pointer transition-transform duration-600 ease-elastic text-center hover:scale-105" onClick={() => setShattered(true)}>
-            <div className="w-56 h-56 rounded-full bg-[radial-gradient(circle_at_30%_30%,var(--color-brand-gold),var(--color-brand-green))] flex flex-col items-center justify-center p-8 shadow-strong">
+            <div className="w-56 h-56 rounded-full orb-style flex flex-col items-center justify-center p-8 shadow-strong">
               <span className="text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-brand-gold mb-2">{t.exp.title}</span>
               <Heading as="h2" className="text-3xl text-white mb-2 leading-tight">Unlock<br />15 Hidden Experiences</Heading>
               <Text variant="white" size="xs" className="opacity-60 font-bold tracking-[0.1em] uppercase">Tap to Explore</Text>
             </div>
-            <div className="absolute inset-[-20px] rounded-full border border-dashed border-brand-gold/30 animate-[spin_15s_linear_infinite]" />
+            <div className="absolute inset-[-20px] rounded-full border border-dashed border-brand-gold/30 animate-spin" style={{ animationDuration: '15s' }} />
           </div>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center z-[5]">
@@ -91,7 +91,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
                 onClick={() => setSelectedExp(node)}
               >
                 <div 
-                    className="animate-[nfloat_var(--float-dur)_var(--float-del)_infinite_ease-in-out]" 
+                    className="animate-nfloat" 
                     style={{ '--float-dur': node.dur, '--float-del': node.del } as React.CSSProperties}
                 >
                   <div className="w-3.5 h-3.5 bg-brand-gold rounded-full shadow-[0_0_15px_var(--color-brand-gold)] relative group-hover:scale-[1.8] group-hover:bg-white group-hover:shadow-[0_0_25px_#fff] transition-all duration-300">
@@ -205,14 +205,6 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
           </AnimatePresence>
         </div>
       </div>
-
-      <style>{`
-        .vertical-rl { writing-mode: vertical-rl; }
-        @keyframes blobFloat { from { transform: translate(0,0); } to { transform: translate(50px, 50px); } }
-        @keyframes nfloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        .glowing-route { filter: drop-shadow(0 0 10px rgba(201,168,76,0.5)); stroke-dasharray: 5, 10; animation: dash 20s linear infinite; }
-        @keyframes dash { to { stroke-dashoffset: -100; } }
-      `}</style>
     </section>
   );
 };

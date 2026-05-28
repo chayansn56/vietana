@@ -141,7 +141,7 @@ const Food: React.FC = () => {
                 className="w-full h-24 p-4 border border-gray-100 rounded-xl mb-6 font-inherit text-[0.9rem] resize-none bg-gray-50 focus:outline-none focus:border-brand-gold/30 transition-colors"
               />
               <Button 
-                className="w-full bg-[#25D366] text-white hover:bg-[#25D366]/90 border-none shadow-[0_6px_20px_rgba(37,211,102,0.25)] hover:shadow-[0_10px_25px_rgba(37,211,102,0.4)]"
+                className="w-full bg-brand-whatsapp text-white hover:bg-brand-whatsapp/90 border-none shadow-whatsapp hover:shadow-whatsapp-hover"
                 onClick={() => window.open(`${WHATSAPP_INDIA}&text=${encodeURIComponent(`Hi VIETANA, my food preferences: ${foodPref}`)}`, '_blank')}
                 icon={<span>💬</span>}
               >

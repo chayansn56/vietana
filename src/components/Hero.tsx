@@ -90,11 +90,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         {lanterns.map(l => (
           <span 
             key={l.id} 
-            className="absolute rounded-[3px_3px_2px_2px] bg-[rgba(255,150,50,0.8)] shadow-[0_0_15px_rgba(255,100,0,0.6),inset_0_0_5px_#fff] opacity-0 animate-[pfloat_var(--dur)_var(--del)_infinite_ease-in-out]"
+            className="absolute rounded-[3px_3px_2px_2px] bg-[rgba(255,150,50,0.8)] shadow-[0_0_15px_rgba(255,100,0,0.6),inset_0_0_5px_#fff] opacity-0 animate-pfloat"
             style={{ 
               left: l.left, 
-              '--dur': l.dur, 
-              '--del': l.del, 
+              animationDuration: l.dur,
+              animationDelay: l.del,
               '--dx': l.dx, 
               width: l.w, 
               height: l.h 
@@ -106,29 +106,29 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       {/* CONTENT */}
       <Container className="relative z-[3]">
         <div className="max-w-[900px]">
-          <div className="inline-flex items-center gap-3 bg-brand-gold/10 border border-brand-gold/28 text-brand-gold-light text-[0.7rem] font-medium tracking-[0.22em] uppercase px-5 py-2 rounded-full backdrop-blur-md mb-10 opacity-0 translate-y-4 animate-[reveal-up_0.9s_0.35s_var(--ease-smooth)_forwards]">
+          <div className="inline-flex items-center gap-3 bg-brand-gold/10 border border-brand-gold/28 text-brand-gold-light text-[0.7rem] font-medium tracking-[0.22em] uppercase px-5 py-2 rounded-full backdrop-blur-md mb-10 reveal-up [animation-delay:0.35s]">
             <div className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse flex-shrink-0" />
             <span>India–Vietnam Travel Experts · Ho Chi Minh City</span>
           </div>
           
-          <Heading as="h1" className="text-white mb-2 opacity-0 translate-y-[38px] animate-[reveal-up_1.1s_0.58s_var(--ease-smooth)_forwards] drop-shadow-[0_4px_70px_rgba(0,0,0,0.28)]">
+          <Heading as="h1" variant="none" className="text-white mb-2 reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_70px_rgba(0,0,0,0.28)]">
             Feel <em className="text-brand-gold-light italic">Vietnam</em>,
             <span className="block mt-[-0.06em] text-brand-gold-light">Your Way 🇻🇳</span>
           </Heading>
           
-          <Text variant="white" className="font-serif text-[clamp(1rem,2vw,1.4rem)] italic font-light mb-5 text-brand-gold-light opacity-0 translate-y-5 animate-[reveal-up_0.9s_0.72s_var(--ease-smooth)_forwards]">
+          <Text variant="none" className="font-serif text-[clamp(1rem,2vw,1.4rem)] italic font-light mb-5 text-brand-gold-light reveal-up [animation-delay:0.72s]">
             Travel Gets Better with <img src="/vietana_logo.png" className="h-[1.2em] inline-block align-middle mr-1 -mt-0.5" alt="" />VIETANA
           </Text>
           
-          <Text variant="white" className="text-[1.05rem] font-light max-w-[500px] opacity-0 translate-y-[28px] animate-[reveal-up_1s_0.82s_var(--ease-smooth)_forwards] mb-3">
+          <Text variant="none" className="text-[1.05rem] text-white/90 font-light max-w-[500px] reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-3">
             {t.hero.sub}
           </Text>
           
-          <Text variant="white" size="xs" className="opacity-45 max-w-[440px] mb-12 opacity-0 translate-y-[18px] animate-[reveal-up_0.9s_0.95s_var(--ease-smooth)_forwards]">
+          <Text variant="none" size="xs" className="text-white/45 max-w-[440px] mb-12 reveal-up [animation-delay:0.95s]">
             We handle everything from your visa until you're back home.
           </Text>
           
-          <div className="flex gap-5 flex-wrap opacity-0 translate-y-[22px] animate-[reveal-up_0.9s_1.08s_var(--ease-smooth)_forwards]">
+          <div className="flex gap-5 flex-wrap reveal-up [animation-delay:1.08s]">
             <Button 
               className="group relative overflow-hidden" 
               onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
@@ -168,30 +168,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* BOTTOM FOOTER */}
-      <div className="absolute bottom-0 left-0 right-0 z-[3] flex justify-between items-end px-[var(--spacing-layout)] pb-11 opacity-0 animate-[reveal-up_0.9s_1.4s_var(--ease-smooth)_forwards]">
+      <div className="absolute bottom-0 left-0 right-0 z-[3] flex justify-between items-end px-[var(--spacing-layout)] pb-11 opacity-0 animate-reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards]">
         <div className="flex items-center gap-4 text-white/40 text-[0.67rem] tracking-[0.22em] uppercase">
-          <div className="relative w-13 h-px bg-gradient-to-r from-brand-gold to-transparent animate-[sla_2.6s_ease-in-out_infinite]" />
+          <div className="relative w-13 h-px bg-gradient-to-r from-brand-gold to-transparent animate-sla" />
           <span>Scroll to explore</span>
         </div>
 
-        <div className="flex gap-3 opacity-0 animate-[reveal-up_0.9s_1.55s_var(--ease-smooth)_forwards]">
+        <div className="flex gap-3 opacity-0 animate-reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
           <Clock flag="🇻🇳" city="Ho Chi Minh City" time={clocks.vn.time} date={clocks.vn.date} />
           <Clock flag="🇮🇳" city="New Delhi" time={clocks.in.time} date={clocks.in.date} />
         </div>
       </div>
-
-      <style>{`
-        @keyframes pfloat {
-          0% { opacity: 0; transform: translateY(100vh) translateX(0); }
-          10% { opacity: .5; }
-          90% { opacity: .2; }
-          100% { opacity: 0; transform: translateY(-5vh) translateX(var(--dx, 20px)); }
-        }
-        @keyframes sla {
-          0%, 100% { width: 36px; opacity: .3; }
-          50% { width: 62px; opacity: .8; }
-        }
-      `}</style>
     </Section>
   );
 };

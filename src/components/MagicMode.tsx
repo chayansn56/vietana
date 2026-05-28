@@ -44,7 +44,8 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
           p.style.left = Math.random()*100 + 'vw';
           p.style.top = Math.random()*100 + 'vh';
           p.style.opacity = (Math.random()*0.5 + 0.1).toString();
-          p.style.animation = `mmFloat ${4 + Math.random()*4}s ease-in-out infinite alternate`;
+          p.className = 'animate-mm-float';
+          p.style.animationDuration = `${4 + Math.random()*4}s`;
           p.style.animationDelay = `-${Math.random()*4}s`;
           particlesRef.current.appendChild(p);
         }
@@ -99,14 +100,14 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
 
       {/* BACKGROUND EFFECTS */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        <div className="absolute w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(255,255,255,0.03)_0%,transparent_60%)] animate-[mmDrift_40s_linear_infinite_alternate]" />
+        <div className="absolute w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(255,255,255,0.03)_0%,transparent_60%)] animate-mm-drift" />
         <div className="absolute inset-0" ref={particlesRef} />
       </div>
       
       {/* ORB */}
       {orbState === 'visible' && (
         <div 
-          className="relative z-10 cursor-pointer transition-all duration-500 ease-elastic flex items-center justify-center animate-[mmBreathe_4s_ease-in-out_infinite_alternate]" 
+          className="relative z-10 cursor-pointer transition-all duration-500 ease-elastic flex items-center justify-center animate-mm-breathe" 
           onClick={handleOrbClick}
         >
           <div className="w-72 h-72 rounded-full bg-white/5 border border-white/20 backdrop-blur-3xl flex flex-col items-center justify-center text-center p-5 shadow-deep hover:bg-white/10 hover:border-white/40">
@@ -131,11 +132,11 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
           return (
             <div 
               key={i}
-              className="absolute w-10 h-10 bg-[radial-gradient(circle_at_center,#fff_0%,#fff_10%,transparent_12%)] rounded-full pointer-events-auto cursor-pointer transition-transform duration-300 animate-[mmFloat_6s_ease-in-out_infinite_alternate] -mt-4 -ml-4 group"
+              className="absolute w-10 h-10 bg-[radial-gradient(circle_at_center,#fff_0%,#fff_10%,transparent_12%)] rounded-full pointer-events-auto cursor-pointer transition-transform duration-300 animate-mm-float -mt-4 -ml-4 group"
               style={{ left: `${rx}vw`, top: `${ry}vh`, animationDelay: `-${Math.random() * 5}s` }}
               onClick={() => setSelectedDest(dest)}
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_60%)] rounded-full -z-10 pointer-events-none animate-[mmGlow_3s_ease-in-out_infinite_alternate] group-hover:bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.8)_0%,transparent_60%)]" style={{ animationDelay: `-${Math.random() * 3}s` }} />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_60%)] rounded-full -z-10 pointer-events-none animate-mm-glow group-hover:bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.8)_0%,transparent_60%)]" style={{ animationDelay: `-${Math.random() * 3}s` }} />
               <span className="absolute top-[30px] left-1/2 -translate-x-1/2 bg-black/60 px-2.5 py-1 rounded-xl text-[0.85rem] whitespace-nowrap opacity-0 transition-opacity duration-300 backdrop-blur-md group-hover:opacity-100 pointer-events-none z-10">
                 {dest.label}
               </span>
@@ -165,21 +166,13 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
       <div className={`fixed inset-0 bg-white z-[999] pointer-events-none transition-opacity duration-800 ${isFlashActive ? 'opacity-100' : 'opacity-0'}`} />
 
       {/* CONTROLS */}
-      <div className="absolute bottom-8 w-full flex flex-col items-center gap-4 z-30 opacity-0 animate-[fadeIn_1s_1s_forwards] pointer-events-auto">
+      <div className="absolute bottom-8 w-full flex flex-col items-center gap-4 z-30 opacity-0 animate-fade-in [animation-delay:1s] pointer-events-auto">
         <div className="flex items-center gap-3 text-[0.9rem] opacity-80">
           <span>Not sure?</span>
           <button className="bg-brand-gold border-none px-4 py-2 rounded-full text-brand-green-extra-dark font-bold cursor-pointer hover:-translate-y-0.5 transition-transform" onClick={() => { onClose(); setTimeout(() => onOpenPlanner(), 1000); }}>✨ Let VIETANA™ understand you</button>
         </div>
         <button className="bg-transparent border border-white/30 text-white px-4 py-1.5 rounded-full text-[0.8rem] cursor-pointer hover:bg-white/10 transition-colors" onClick={onClose}>Return to reality ↩</button>
       </div>
-
-      <style>{`
-        @keyframes mmDrift { from { transform: translate(-10%, -10%); } to { transform: translate(10%, 10%); } }
-        @keyframes mmBreathe { from { transform: scale(0.95); box-shadow: 0 0 30px rgba(255,255,255,0.05); } to { transform: scale(1.05); box-shadow: 0 0 70px rgba(255,255,255,0.2); } }
-        @keyframes mmFloat { from { transform: translateY(-15px); } to { transform: translateY(15px); } }
-        @keyframes mmGlow { 0% { opacity: 0.2; transform: scale(0.6); } 100% { opacity: 1; transform: scale(1.1); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      `}</style>
     </div>
   );
 };

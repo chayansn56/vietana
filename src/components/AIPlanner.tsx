@@ -54,9 +54,9 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
         
         <div ref={pcMsgsRef} className="flex-1 overflow-y-auto px-12 flex flex-col gap-7 scroll-smooth scrollbar-thin scrollbar-thumb-white/10">
           {messages.map((msg, i) => (
-            <div key={i} className={`flex gap-5 items-start animate-[msgFadeIn_0.6s_var(--ease-smooth)_forwards] ${msg.type === 'user' ? 'flex-row-reverse' : ''}`}>
+            <div key={i} className={`flex gap-5 items-start animate-msg-fade-in ${msg.type === 'user' ? 'flex-row-reverse' : ''}`}>
               {msg.type === 'bot' && (
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-gold to-brand-gold-muted flex shrink-0 items-center justify-center relative shadow-strong after:content-[''] after:absolute after:inset-[-3px] after:rounded-full after:border after:border-brand-gold/20 after:animate-[aiPulse_2.5s_infinite_ease-in-out]" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-gold to-brand-gold-muted flex shrink-0 items-center justify-center relative shadow-strong after:content-[''] after:absolute after:inset-[-3px] after:rounded-full after:border after:border-brand-gold/20 after:animate-ai-pulse" />
               )}
               <div className={`max-w-[85%] ${msg.type === 'user' ? 'bg-white/5 border border-white/10 rounded-[18px_18px_4px_18px] p-4 backdrop-blur-md' : ''}`}>
                 <Text 
@@ -158,11 +158,6 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           </div>
         </Card>
       </div>
-
-      <style>{`
-        @keyframes msgFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes aiPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.4); opacity: 0; } }
-      `}</style>
     </Modal>
   );
 };

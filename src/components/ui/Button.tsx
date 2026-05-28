@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
   
   const variants = {
-    primary: 'bg-brand-gold text-brand-green-dark hover:bg-brand-gold-light hover:-translate-y-1 shadow-[0_4px_20px_rgba(201,168,76,0.3)] hover:shadow-[0_12px_32px_rgba(201,168,76,0.45)] border-none',
+    primary: 'bg-brand-gold text-brand-green-dark hover:bg-brand-gold-light hover:-translate-y-1 shadow-gold hover:shadow-gold-hover border-none',
     secondary: 'bg-brand-green text-white hover:bg-brand-green-light hover:-translate-y-1 shadow-soft',
     outline: 'bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-green-dark',
     ghost: 'bg-transparent text-brand-gold hover:bg-brand-gold/10',
