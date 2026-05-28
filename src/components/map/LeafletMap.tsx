@@ -96,7 +96,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ destinations, selectedCityIdx, 
                         className: 'custom-leaflet-pin',
                         html: `
                             <div class="relative w-3.5 h-3.5 bg-[var(--color-brand-gold)] rounded-full border-[3px] border-white shadow-[0_0_15px_rgba(201,168,76,0.5)] cursor-pointer transition-all duration-300 group ${selectedCityIdx === i ? 'bg-white scale-125 shadow-[0_0_20px_var(--color-brand-gold)]' : ''}">
-                                <span class="absolute -top-6.5 left-1/2 -translate-x-1/2 bg-black/80 text-white px-2 py-0.5 rounded text-[0.65rem] whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 ${selectedCityIdx === i ? 'opacity-100' : ''} transition-opacity duration-300">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-black/80 text-white px-2 py-0.5 rounded text-xs whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 ${selectedCityIdx === i ? 'opacity-100' : ''} transition-opacity duration-300">
                                     ${d.name}
                                 </span>
                             </div>

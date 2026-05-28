@@ -64,7 +64,7 @@ const FAQ: React.FC = () => {
           title="Frequently Asked Questions"
         />
 
-        <div className="max-w-[900px] mx-auto flex flex-col gap-5">
+        <div className="max-w-4xl mx-auto flex flex-col gap-5">
           {FAQS.map((faq, i) => {
             const isOpen = openIdx === i;
             return (
@@ -78,7 +78,7 @@ const FAQ: React.FC = () => {
                 onClick={() => setOpenIdx(isOpen ? null : i)}
               >
                 <div className="p-8 md:p-10 flex items-center justify-between gap-6">
-                  <Heading as="h4" className="flex-1 font-sans text-lg md:text-xl font-medium leading-tight m-0">
+                  <Heading as="h4" size="sm" font="sans" className="flex-1 leading-tight m-0">
                     {formatText(faq.q)}
                   </Heading>
                   <div className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-400 ease-soft shrink-0 text-2xl font-light 
@@ -89,7 +89,7 @@ const FAQ: React.FC = () => {
                 <div 
                   className={`transition-all duration-600 ease-smooth overflow-hidden ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}
                 >
-                  <Text size="md" variant="subtle" className="px-8 md:px-10 pb-9 m-0 font-light">
+                  <Text size="md" variant="subtle" weight="light" className="px-8 md:px-10 pb-9 m-0">
                     {formatText(faq.a)}
                   </Text>
                 </div>

@@ -17,10 +17,17 @@ const Contact: React.FC = () => {
       <div className="absolute w-[350px] h-[350px] rounded-full blur-[80px] opacity-20 z-0 bg-brand-gold -bottom-24 -right-24" />
       
       <Container className="relative z-10">
-        <span className="inline-block text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-brand-gold mb-5 reveal">
+        <Heading 
+          as="h4"
+          size="xs"
+          font="sans"
+          variant="accent"
+          className="inline-block mb-5 tracking-[0.28em] uppercase reveal"
+        >
           {t.contact.title}
-        </span>
-        <Heading as="h2" className="text-[2.5rem] md:text-[3.5rem] leading-tight mb-6 text-white reveal">
+        </Heading>
+
+        <Heading as="h2" variant="white" className="leading-tight mb-6 reveal">
           {t.contact.heading.split('\n').map((line, i) => (
             <React.Fragment key={i}>
               {line}
@@ -28,7 +35,7 @@ const Contact: React.FC = () => {
             </React.Fragment>
           ))}
         </Heading>
-        <Text variant="white" size="lg" className="opacity-70 font-light reveal">
+        <Text variant="white" size="lg" weight="light" className="opacity-70 reveal">
           {t.contact.sub}
         </Text>
         
@@ -36,7 +43,7 @@ const Contact: React.FC = () => {
           <Button 
             onClick={openContactPanel} 
             variant="glass"
-            className="px-14 py-5 font-bold tracking-[2px] border-brand-blue text-brand-blue-light hover:bg-brand-blue/10"
+            className="px-12 py-4 font-bold tracking-widest border-brand-blue text-brand-blue-light hover:bg-brand-blue/10"
           >
             {t.contact.cta}
           </Button>

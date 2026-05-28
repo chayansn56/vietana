@@ -23,16 +23,23 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={`mb-20 reveal ${centered ? 'text-center' : ''} ${className}`}>
       {label && (
-        <span className={`inline-block text-[0.68rem] font-semibold tracking-[0.28em] uppercase mb-5 ${isDark ? 'text-brand-gold-light' : 'text-brand-gold'}`}>
+        <Heading
+          as="h4"
+          size="xs"
+          font="sans"
+          className={`inline-block mb-5 tracking-[0.28em] uppercase ${isDark ? 'text-brand-gold-light' : 'text-brand-gold'}`}
+        >
           {label}
-        </span>
+        </Heading>
       )}
       <Heading 
         as="h2" 
-        className={`leading-tight mb-4 ${isDark ? 'text-white' : 'text-text-dark'}`}
+        size="2xl"
+        className={`mb-4 ${isDark ? 'text-white' : 'text-text-dark'}`}
       >
         {title}
       </Heading>
+
       {description && (
         <Text 
           variant={isDark ? 'white' : 'muted'} 

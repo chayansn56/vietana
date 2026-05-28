@@ -45,7 +45,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
     >
       <div className="flex-1 md:flex-[0.65] flex flex-col border-r border-white/5 relative z-10 bg-brand-green-extra-dark/95">
         <div className="p-12 pb-6 text-left">
-          <Heading as="h3" variant="white" className="text-3xl mb-3 flex items-center gap-3 font-serif font-normal">
+          <Heading as="h3" size="lg" variant="white" className="mb-3 flex items-center gap-3 font-normal">
             🌿 {t.planner.title}
           </Heading>
           <Text variant="white" size="sm" className="opacity-60 leading-relaxed font-light tracking-wide">
@@ -64,12 +64,12 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               
               return (
                 <div key={i} className="animate-msg-fade-in w-full my-4 px-2">
-                  <div className="bg-brand-green-dark/45 border border-brand-gold/25 rounded-2xl p-6.5 backdrop-blur-md shadow-heavy max-w-[580px] mx-auto text-left relative overflow-hidden">
-                    <div className="text-brand-gold-light font-serif text-[1.12rem] font-medium mb-3.5 flex items-center gap-2 tracking-wide">
+                  <div className="bg-brand-green-dark/45 border border-brand-gold/25 rounded-2xl p-6 backdrop-blur-md shadow-heavy max-w-[580px] mx-auto text-left relative overflow-hidden">
+                    <Heading as="h4" size="sm" font="serif" variant="accent" className="mb-4 flex items-center gap-2 tracking-wide">
                       ✨ Your Vietnam Journey Blueprint
-                    </div>
-                    <Text variant="white" className="leading-relaxed mb-6 font-light text-white/80 text-[0.95rem]">
-                      I've gathered your preferences. Your trip will focus on <span className="text-brand-gold-light font-medium font-serif italic text-base mx-0.5">{preferences.focus}</span>, balancing <span className="text-brand-gold-light font-medium font-serif italic text-base mx-0.5">{preferences.food}</span> and <span className="text-brand-gold-light font-medium font-serif italic text-base mx-0.5">{preferences.style}</span>.
+                    </Heading>
+                    <Text variant="white" size="sm" weight="light" className="leading-relaxed mb-6 text-white/80">
+                      I've gathered your preferences. Your trip will focus on <span className="text-brand-gold-light font-serif italic text-[1rem] mx-0.5">{preferences.focus}</span>, balancing <span className="text-brand-gold-light font-serif italic text-[1rem] mx-0.5">{preferences.food}</span> and <span className="text-brand-gold-light font-serif italic text-[1rem] mx-0.5">{preferences.style}</span>.
                     </Text>
                     
                     <div className="flex flex-col gap-3">
@@ -110,8 +110,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 )}
                 <div className={`max-w-[85%] ${
                   msg.type === 'user' 
-                    ? 'bg-brand-gold/10 border border-brand-gold/20 rounded-[18px_18px_4px_18px] p-4 backdrop-blur-md text-white shadow-soft ml-auto' 
-                    : 'bg-white/[0.03] border border-white/5 rounded-[18px_18px_18px_4px] p-4.5 backdrop-blur-sm shadow-sm text-white/95'
+                    ? 'bg-brand-gold/10 border border-brand-gold/20 rounded-2xl rounded-br-sm p-4 backdrop-blur-md text-white shadow-soft ml-auto' 
+                    : 'bg-white/[0.03] border border-white/5 rounded-2xl rounded-bl-sm p-4 backdrop-blur-sm shadow-sm text-white/95'
                 }`}>
                   <Text 
                     variant="white" 
@@ -134,11 +134,11 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
 
         <div className="p-12 pt-6 bg-gradient-to-t from-brand-green-extra-dark via-brand-green-extra-dark/40 to-transparent relative">
           {options.length > 0 && (
-            <div className="flex flex-wrap gap-3 mb-7 justify-center px-4">
+            <div className="flex flex-wrap gap-3 mb-6 justify-center px-4">
               {options.map((opt, i) => (
                 <div 
                   key={i} 
-                  className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 text-white/70 px-5 py-2.5 rounded-full text-[0.8rem] transition-all duration-300 cursor-pointer hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light hover:-translate-y-0.5" 
+                  className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 text-white/70 px-5 py-2.5 rounded-full text-xs transition-all duration-300 cursor-pointer hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light hover:-translate-y-0.5" 
                   onClick={() => handleSend(opt)}
                 >
                   {opt}
@@ -163,7 +163,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 onClick={() => handleSend()}
                 disabled={isFinished}
               >
-                <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-none stroke-current stroke-[2.5] stroke-linecap-round stroke-linejoin-round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-[2.5] stroke-linecap-round stroke-linejoin-round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
               </button>
             </div>
           </div>
@@ -172,7 +172,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
 
       <div className="hidden md:flex flex-[0.35] flex-col bg-black/25 p-12 relative z-10 backdrop-blur-xl border-l border-white/5">
         <Card variant="glass" padding="lg" hover={false} className="h-full border-white/5">
-          <Heading as="h4" className="text-[0.75rem] font-bold tracking-[0.2em] text-white/30 uppercase mb-8 flex items-center gap-4 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-brand-gold after:to-transparent">
+          <Heading as="h4" size="xs" font="sans" className="text-white/30 tracking-[0.2em] uppercase mb-8 flex items-center gap-4 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-brand-gold after:to-transparent">
             {t.planner.live}
           </Heading>
           
@@ -189,11 +189,14 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               const isSet = item.value && item.value !== 'Not set';
               return (
                 <div key={i} className="flex flex-col gap-1.5">
-                  <div className="text-[0.65rem] text-white/35 uppercase tracking-widest font-bold">{item.icon} {item.label}</div>
+                  <Text size="xs" variant="none" weight="bold" className="text-white/35 uppercase tracking-widest">
+                    {item.icon} {item.label}
+                  </Text>
                   <Text 
                     variant="none" 
-                    className={`font-light leading-tight min-h-[1.5rem] transition-all duration-300 ${
-                      isSet ? 'text-brand-gold-light font-medium' : 'text-white/20 italic'
+                    weight={isSet ? 'medium' : 'light'}
+                    className={`leading-tight min-h-6 transition-all duration-300 ${
+                      isSet ? 'text-brand-gold-light' : 'text-white/20 italic'
                     }`}
                   >
                     {item.value}

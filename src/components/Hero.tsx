@@ -6,6 +6,7 @@ import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import Clock from './Clock';
+import Badge from './ui/Badge';
 
 interface HeroProps {
   onOpenMagic: () => void;
@@ -105,27 +106,45 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
       {/* CONTENT */}
       <Container className="relative z-[10]">
-        <div className="max-w-[900px]">
-          <div className="inline-flex items-center gap-3 bg-brand-gold/15 border border-brand-gold/30 text-brand-gold-light text-[0.72rem] font-bold tracking-[0.22em] uppercase px-5 py-2.5 rounded-full backdrop-blur-md mb-10 reveal-up [animation-delay:0.35s]">
-            <div className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse flex-shrink-0" />
-            <span>India–Vietnam Travel Experts · Ho Chi Minh City</span>
-          </div>
+        <div className="max-w-4xl">
+          <Badge 
+            icon={true} 
+            variant="gold" 
+            className="mb-10 reveal-up [animation-delay:0.35s]"
+          >
+            India–Vietnam Travel Experts · Ho Chi Minh City
+          </Badge>
           
-          <Heading as="h1" variant="none" className="!text-white mb-2 reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_40px_rgba(0,0,0,0.6)]">
-            Feel <em className="text-brand-gold-light italic">Vietnam</em>,
-            <span className="block mt-[-0.06em] text-brand-gold-light">Your Way 🇻🇳</span>
+          <Heading 
+            as="h1" 
+            size="3xl"
+            variant="none" 
+            className="!text-white mb-2 reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_4px_40px_rgba(0,0,0,0.6)]"
+          >
+            Feel <em className="text-brand-blue italic">Vietnam</em>,
+            <span className="block mt-[-0.06em] text-brand-gold">Your Way 🇻🇳</span>
           </Heading>
           
-          <Text variant="none" className="font-serif text-[clamp(1.2rem,2.5vw,1.6rem)] italic font-light mb-6 !text-brand-gold-light reveal-up [animation-delay:0.72s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
-            Travel Gets Better with <img src="/vietana_logo.png" className="h-[1.3em] inline-block align-middle mr-1 -mt-0.5" alt="" />VIETANA
+          <Text 
+            size="lg"
+            variant="none" 
+            weight="medium"
+            className="italic mb-6 text-brand-gold-light reveal-up [animation-delay:0.72s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] block"
+          >
+            Travel Gets Better with VIETANA
           </Text>
           
-          <Text variant="white" className="text-[1.15rem] font-medium max-w-[580px] reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.4)]">
+          <Text 
+            variant="white" 
+            size="lg"
+            weight="medium"
+            className="max-w-[580px] reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.4)]"
+          >
             {t.hero.sub}
           </Text>
           
           <Text variant="white" size="md" className="!text-white/80 max-w-[460px] mb-12 reveal-up [animation-delay:0.95s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
-            We handle everything from your visa until you're back home.
+            {t.hero.support}
           </Text>
           
           <div className="flex gap-5 flex-wrap reveal-up [animation-delay:1.08s]">
@@ -134,7 +153,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
             >
               <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-350" />
-              💬 {t.nav.cta}
+              💬 {t.hero.plan}
             </Button>
             <Button 
               variant="glass" 
@@ -149,13 +168,15 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
       {/* LOCATION TAG */}
       <div className={`absolute bottom-24 left-[var(--spacing-layout)] z-[4] transition-all duration-800 ease-smooth ${currentSlide >= 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
-        <div className="inline-flex items-center gap-3 bg-black/55 backdrop-blur-2xl border border-brand-gold/20 rounded-full py-2 px-4.5 pl-2.5">
-          <div className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse flex-shrink-0" />
-          <Text variant="white" size="xs" className="opacity-70 tracking-[0.15em] uppercase">
-            {LOCATIONS[currentSlide]}
-          </Text>
-        </div>
+        <Badge 
+          icon={true} 
+          variant="outline" 
+          className="bg-black/55 border-brand-gold/20 text-white/70"
+        >
+          {LOCATIONS[currentSlide]}
+        </Badge>
       </div>
+
 
       {/* DOTS */}
       <div className="absolute bottom-11 right-[var(--spacing-layout)] z-[4] flex gap-2">
@@ -170,10 +191,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
       {/* BOTTOM FOOTER */}
       <div className="absolute bottom-0 left-0 right-0 z-[3] flex justify-between items-end px-[var(--spacing-layout)] pb-11 opacity-0 animate-reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards]">
-        <div className="flex items-center gap-4 text-white/40 text-[0.67rem] tracking-[0.22em] uppercase">
-          <div className="relative w-13 h-px bg-gradient-to-r from-brand-gold to-transparent animate-sla" />
+        <Text size="xs" variant="none" className="flex items-center gap-4 text-white/40 tracking-[0.22em] uppercase">
+          <div className="relative w-12 h-px bg-gradient-to-r from-brand-gold to-transparent animate-sla" />
           <span>Scroll to explore</span>
-        </div>
+        </Text>
 
         <div className="flex gap-3 opacity-0 animate-reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
           <Clock flag="🇻🇳" city="Ho Chi Minh City" time={clocks.vn.time} date={clocks.vn.date} />

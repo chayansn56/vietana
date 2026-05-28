@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         <Container>
           <div className="flex flex-wrap items-start justify-between gap-12">
             <div className="flex flex-col">
-              <Heading as="h2" className="text-[2.2rem] text-brand-blue tracking-wider mb-1">
+              <Heading as="h2" size="xl" variant="none" className="text-brand-blue tracking-wider mb-1">
                 VIETANA
               </Heading>
               <Text variant="white" size="sm" className="text-brand-gold mb-1">
@@ -30,9 +30,15 @@ const Footer: React.FC = () => {
                 <li key={link}>
                   <a 
                     href={`#${link.toLowerCase()}`} 
-                    className="text-[0.82rem] text-white/40 transition-colors duration-300 no-underline hover:text-brand-gold"
+                    className="no-underline"
                   >
-                    {link}
+                    <Text 
+                      size="sm" 
+                      variant="none"
+                      className="text-white/40 transition-colors duration-300 hover:text-brand-gold"
+                    >
+                      {link}
+                    </Text>
                   </a>
                 </li>
               ))}

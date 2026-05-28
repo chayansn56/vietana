@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NAV_LINKS, WHATSAPP_DEFAULT } from '../config';
 import { useTranslation } from '../contexts/LanguageContext';
 import Button from './ui/Button';
+import { Heading, Text } from './ui/Typography';
 
 interface NavbarProps {
   scrolled: boolean;
@@ -45,11 +46,20 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       <nav 
         id="nav" 
         className={`fixed top-0 left-0 right-0 z-[1000] px-[var(--spacing-layout)] flex items-center justify-between transition-all duration-550 ease-soft gap-4
-          ${scrolled ? (isLight ? 'py-3.5 bg-white/92 backdrop-blur-3xl border-b border-brand-green/8 shadow-soft' : 'py-3.5 bg-brand-green-extra-dark/60 backdrop-blur-3xl border-b border-brand-gold/10 shadow-strong') : 'py-6.5'}`}
+          ${scrolled ? (isLight ? 'py-3.5 bg-white/92 backdrop-blur-3xl border-b border-brand-green/8 shadow-soft' : 'py-3.5 bg-brand-green-extra-dark/60 backdrop-blur-3xl border-b border-brand-gold/10 shadow-strong') : 'py-6'}`}
       >
-        <a href="#" className={`font-serif text-3xl font-semibold tracking-wider transition-colors duration-400 flex shrink-0 items-center gap-2 no-underline ${isLight ? 'text-brand-blue-dark' : 'text-brand-blue'}`}>
+        <a href="#" className="flex shrink-0 items-center gap-2 no-underline">
           <img src="/vietana_logo.png" className="h-[45px]" alt="Vietana Logo" />
-          VIETANA
+          <Heading 
+            as="span" 
+            size="xl" 
+            font="serif" 
+            weight="semibold"
+            variant="none" 
+            className={`tracking-wider transition-colors duration-400 ${isLight ? 'text-brand-blue-dark' : 'text-brand-blue'}`}
+          >
+            VIETANA
+          </Heading>
         </a>
         
         <ul className="hidden lg:flex gap-8 list-none items-center flex-wrap">
@@ -63,11 +73,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                     onOpenPlanner();
                   }
                 }}
-                className={`text-[0.82rem] font-normal tracking-wide transition-colors duration-300 relative no-underline hover:text-brand-gold
-                  ${isLight ? 'text-text-muted' : 'text-white/78'}
-                  [&::after]:content-[''] [&::after]:absolute [&::after]:bottom-[-2px] [&::after]:left-0 [&::after]:right-[100%] [&::after]:h-px [&::after]:bg-brand-gold [&::after]:transition-[right] [&::after]:duration-400 [&::after]:ease-soft hover:[&::after]:right-0`}
+                className="relative no-underline group"
               >
-                {getNavLabel(link.name)}
+                <Text 
+                  size="sm" 
+                  variant="none"
+                  weight="normal"
+                  className={`tracking-wide transition-colors duration-300 hover:text-brand-gold
+                    ${isLight ? 'text-text-muted' : 'text-white/78'}
+                    [&::after]:content-[''] [&::after]:absolute [&::after]:bottom-[-2px] [&::after]:left-0 [&::after]:right-[100%] [&::after]:h-px [&::after]:bg-brand-gold [&::after]:transition-[right] [&::after]:duration-400 [&::after]:ease-soft hover:[&::after]:right-0`}
+                >
+                  {getNavLabel(link.name)}
+                </Text>
               </a>
             </li>
           ))}
@@ -75,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             <Button 
               onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
               size="sm"
-              className="px-5.5 py-2 font-semibold text-[0.79rem] tracking-wider"
+              className="px-5 py-2 font-semibold text-xs tracking-wider"
             >
               {t.nav.cta}
             </Button>
@@ -85,12 +102,14 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
         <div className="flex items-center gap-4 shrink-0">
           <div className="relative flex items-center">
             <div 
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[0.74rem] font-medium tracking-wide cursor-pointer backdrop-blur-md transition-all duration-350 ease-soft whitespace-nowrap select-none border
-                ${isLight ? 'bg-brand-green/8 border-brand-green/18 text-text-muted hover:bg-brand-green/14' : 'bg-white/10 border-white/22 text-white/88 hover:bg-white/18 hover:border-white/45'}`} 
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer backdrop-blur-md transition-all duration-350 ease-soft whitespace-nowrap select-none border
+                ${isLight ? 'bg-brand-green/8 border-brand-green/18 hover:bg-brand-green/14' : 'bg-white/10 border-white/22 hover:bg-white/18 hover:border-white/45'}`} 
               onClick={toggleLang}
             >
-              <span>🌐</span><span id="langLabel">{language}</span>
-              <span className={`text-[0.55rem] opacity-60 transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`}>▾</span>
+              <Text size="xs" variant="none" weight="medium" className={`tracking-wide flex items-center gap-1.5 ${isLight ? 'text-text-muted' : 'text-white/88'}`}>
+                <span>🌐</span><span id="langLabel">{language}</span>
+              </Text>
+              <span className={`text-[10px] opacity-60 transition-transform duration-300 ${isLight ? 'text-text-muted' : 'text-white/88'} ${langOpen ? 'rotate-180' : ''}`}>▾</span>
             </div>
             
             <div className={`absolute top-[calc(100%+0.6rem)] right-0 bg-brand-green-extra-dark/95 backdrop-blur-3xl border border-brand-gold/18 rounded-lg overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600]
@@ -103,14 +122,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
               ].map((lang) => (
                 <button 
                   key={lang.code}
-                  className={`flex items-center gap-3 w-full px-4 py-3 text-[0.81rem] text-left transition-colors duration-250 no-underline border-none bg-transparent cursor-pointer
-                    ${language === lang.code ? 'text-brand-gold bg-brand-gold/8' : 'text-white/78 hover:text-brand-gold-light hover:bg-brand-gold/12'}`} 
+                  className={`flex items-center gap-3 w-full px-4 py-3 text-left transition-colors duration-250 no-underline border-none bg-transparent cursor-pointer
+                    ${language === lang.code ? 'bg-brand-gold/8' : 'hover:bg-brand-gold/12'}`} 
                   onClick={() => handleLangChange(lang.code as any)}
                 >
                   <span className="text-base">{lang.flag}</span>
-                  <span className="flex-1">{lang.name}</span>
-                  <span className="text-[0.7rem] opacity-50">{lang.code}</span>
-                  {language === lang.code && <span className="ml-auto text-[0.7rem]">✓</span>}
+                  <Text size="sm" variant="none" className={`flex-1 ${language === lang.code ? 'text-brand-gold font-medium' : 'text-white/78'}`}>
+                    {lang.name}
+                  </Text>
+                  <Text size="xs" variant="none" className="opacity-50 text-white/78">
+                    {lang.code}
+                  </Text>
+                  {language === lang.code && <span className="ml-auto text-xs text-brand-gold">✓</span>}
                 </button>
               ))}
             </div>
@@ -120,9 +143,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             className={`flex lg:hidden flex-col gap-[5px] cursor-pointer p-1.25 z-[500] group`} 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <span className={`block w-5.5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? 'rotate-45 translate-x-[4.7px] translate-y-[4.7px]' : ''}`}></span>
-            <span className={`block w-5.5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`}></span>
-            <span className={`block w-5.5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? '-rotate-45 translate-x-[4.7px] -translate-y-[4.7px]' : ''}`}></span>
+            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? 'rotate-45 translate-x-[4.2px] translate-y-[4.2px]' : ''}`}></span>
+            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`}></span>
+            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? '-rotate-45 translate-x-[4.2px] -translate-y-[4.2px]' : ''}`}></span>
           </div>
         </div>
       </nav>
@@ -130,21 +153,30 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       {/* MOBILE MENU */}
       <div 
         id="mob" 
-        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark flex flex-col items-center justify-center gap-9 transition-opacity duration-500 ease-soft
+        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark flex flex-col items-center justify-center gap-8 transition-opacity duration-500 ease-soft
           ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         {NAV_LINKS.map((link) => (
           <a 
             key={link.name}
             href={link.href} 
-            className={`font-serif text-4xl font-light text-white/80 transition-all duration-500 ease-smooth no-underline hover:text-brand-gold
-              ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            className="no-underline"
             onClick={() => {
               setMobileMenuOpen(false);
               if (link.isPlanner) onOpenPlanner();
             }}
           >
-            {getNavLabel(link.name)}
+            <Heading 
+              as="span" 
+              size="xl" 
+              font="serif" 
+              weight="light"
+              variant="none"
+              className={`text-white/80 transition-all duration-500 ease-smooth hover:text-brand-gold block text-4xl
+                ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            >
+              {getNavLabel(link.name)}
+            </Heading>
           </a>
         ))}
         <div className="h-px w-2/3 bg-white/10 my-4"></div>

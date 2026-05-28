@@ -5,6 +5,7 @@ import Button from './ui/Button';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';
+import Section from './ui/layout/Section';
 
 const LeafletMap = lazy(() => import('./map/LeafletMap'));
 
@@ -64,7 +65,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
   };
 
   return (
-    <section id="combo-section" className="flex flex-wrap w-full min-h-[800px] bg-white items-stretch">
+    <Section id="combo-section" variant="none" spacing="none" className="flex flex-wrap w-full min-h-[800px] bg-white items-stretch">
       
       {/* LEFT: EXPERIENCES */}
       <div id="experiences" className="flex-1 min-w-[320px] relative py-24 px-[2%] flex items-center justify-center overflow-hidden border-r border-black/5 bg-brand-green-extra-dark min-h-[800px]">
@@ -75,8 +76,8 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
         {!shattered ? (
           <div className="relative z-10 cursor-pointer transition-transform duration-600 ease-elastic text-center hover:scale-105" onClick={() => setShattered(true)}>
             <div className="w-56 h-56 rounded-full orb-style flex flex-col items-center justify-center p-8 shadow-strong">
-              <span className="text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-brand-gold mb-2">{t.exp.title}</span>
-              <Heading as="h2" className="text-3xl text-white mb-2 leading-tight">Unlock<br />15 Hidden Experiences</Heading>
+              <Heading as="span" size="xs" font="sans" className="text-brand-gold tracking-[0.28em] uppercase mb-2">{t.exp.title}</Heading>
+              <Heading as="h2" size="lg" variant="white" className="mb-2">Unlock<br />15 Hidden Experiences</Heading>
               <Text variant="white" size="xs" className="opacity-60 font-bold tracking-[0.1em] uppercase">Tap to Explore</Text>
             </div>
             <div className="absolute inset-[-20px] rounded-full border border-dashed border-brand-gold/30 animate-spin" style={{ animationDuration: '15s' }} />
@@ -95,17 +96,22 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
                     style={{ '--float-dur': node.dur, '--float-del': node.del } as React.CSSProperties}
                 >
                   <div className="w-3.5 h-3.5 bg-brand-gold rounded-full shadow-[0_0_15px_var(--color-brand-gold)] relative group-hover:scale-[1.8] group-hover:bg-white group-hover:shadow-[0_0_25px_#fff] transition-all duration-300">
-                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[0.8rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300">✨</span>
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/85 text-white px-4 py-2 rounded-lg text-[0.7rem] whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 border border-white/10 backdrop-blur-md group-hover:opacity-100 group-hover:bottom-7.5">
+                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">✨</span>
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/85 text-white px-4 py-2 rounded-lg text-[10px] whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 border border-white/10 backdrop-blur-md group-hover:opacity-100 group-hover:bottom-8">
                       {node.t}
                     </div>
                   </div>
                 </div>
               </div>
             ))}
-            <button className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/5 border border-white/10 text-white px-6 py-2.5 rounded-full text-[0.8rem] cursor-pointer transition-all duration-300 z-20 hover:bg-white/15 hover:border-brand-gold" onClick={() => setShattered(false)}>
+            <Button 
+              variant="glass" 
+              size="sm" 
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20" 
+              onClick={() => setShattered(false)}
+            >
               ← Back
-            </button>
+            </Button>
           </div>
         )}
 
@@ -119,7 +125,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
             <>
               <img src={selectedExp.img} alt={selectedExp.t} className="w-full h-64 object-cover" />
               <div className="p-8">
-                <Heading as="h3" className="text-3xl text-brand-gold mb-4">
+                <Heading as="h3" size="lg" variant="accent" className="mb-4">
                   {selectedExp.t}
                 </Heading>
                 <Text variant="white" className="opacity-70 leading-relaxed mb-8">
@@ -149,17 +155,17 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
 
       {/* RIGHT: MAP */}
       <div id="explore-vietnam" className="flex-1 min-w-[320px] relative py-24 px-[2%] bg-surface-cream flex flex-col items-center justify-center min-h-[800px]">
-        <div className="absolute left-[3%] top-1/2 -translate-y-1/2 -rotate-180 vertical-rl text-center font-serif text-[3rem] text-brand-gold/10 font-bold italic tracking-[4px] whitespace-nowrap pointer-events-none z-0">
+        <div className="absolute left-[3%] top-1/2 -translate-y-1/2 -rotate-180 vertical-rl text-center font-serif text-[clamp(3.5rem,8vw,7rem)] font-light text-brand-green/5 tracking-[0.1em] whitespace-nowrap pointer-events-none select-none z-0">
           FEEL VIETNAM YOUR WAY
         </div>
         <div className="mb-8 text-center reveal">
-          <Heading as="h2" className="text-[2.8rem] text-text-dark font-serif font-normal">
+          <Heading as="h2" size="2xl" className="text-text-dark font-normal">
             Explore Vietnam
           </Heading>
         </div>
         
         <div className="relative w-full max-w-[600px] flex flex-col lg:flex-row justify-center items-center reveal reveal-d1">
-          <div className="w-full aspect-square rounded-[30px] overflow-hidden border-8 border-white shadow-heavy relative z-[2] h-[500px]">
+          <div className="w-full aspect-square rounded-3xl overflow-hidden border-8 border-white shadow-heavy relative z-[2] h-[500px]">
             <Suspense fallback={<div className="w-full h-full bg-brand-green-extra-dark/10 animate-pulse flex items-center justify-center">Loading Map...</div>}>
                 <LeafletMap 
                     destinations={EV_DESTINATIONS}
@@ -180,10 +186,10 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
               >
                 <div className="absolute top-4 right-4 cursor-pointer text-2xl text-text-subtle leading-none" onClick={() => setSelectedCityIdx(null)}>×</div>
                 <img src={EV_DESTINATIONS[selectedCityIdx].img} alt={EV_DESTINATIONS[selectedCityIdx].name} className="w-full h-32 object-cover rounded-xl mb-4" />
-                <Heading as="h3" className="text-xl text-text-dark mb-1.5 font-serif font-bold">
+                <Heading as="h3" size="md" weight="bold" className="text-text-dark mb-1.5">
                   {EV_DESTINATIONS[selectedCityIdx].name}
                 </Heading>
-                <Text size="xs" className="text-brand-gold font-bold uppercase mb-2.5 tracking-wider">
+                <Text size="xs" weight="bold" className="text-brand-gold uppercase mb-2.5 tracking-wider">
                   Best time: {EV_DESTINATIONS[selectedCityIdx].time}
                 </Text>
                 <Text size="sm" variant="muted" className="leading-relaxed mb-5">
@@ -205,7 +211,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
           </AnimatePresence>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

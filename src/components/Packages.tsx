@@ -71,10 +71,10 @@ const PackageCard: React.FC<{ p: PackageItem, onClick: () => void }> = ({ p, onC
         className="absolute bottom-0 left-0 right-0 p-8 pt-9"
         style={{ transform: "translateZ(30px)" }}
       >
-        <Badge className="mb-4 bg-brand-gold text-brand-green-dark shadow-medium border-none">
+        <Badge variant="gold-filled" className="mb-4">
           {p.b}
         </Badge>
-        <Heading as="h3" className="text-white text-2xl mb-1.5">
+        <Heading as="h3" size="md" variant="white" className="mb-1.5">
           {p.t}
         </Heading>
         <Text variant="white" size="sm" className="opacity-70 italic mb-1">
@@ -85,7 +85,7 @@ const PackageCard: React.FC<{ p: PackageItem, onClick: () => void }> = ({ p, onC
           <Button 
             variant="glass" 
             size="sm" 
-            className="group/btn px-5 py-2.5 text-[0.77rem] tracking-wider"
+            className="group/btn px-5 py-2.5 text-xs tracking-wider"
           >
             Customize Trip <span className="transition-transform duration-300 group-hover/btn:translate-x-1 ml-2">→</span>
           </Button>
@@ -123,16 +123,17 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
             onClick={onOpenBuilder}
           >
             <div className="flex-1 text-center md:text-left relative z-10">
-              <Badge className="mb-4 bg-brand-gold text-brand-green-dark shadow-medium border-none">
+              <Badge variant="gold-filled" className="mb-4">
                 Fully Custom
               </Badge>
-              <Heading as="h3" className="text-brand-gold text-3xl md:text-5xl font-serif font-normal mt-2 mb-4">
+              <Heading as="h3" size="2xl" variant="accent" className="mt-2 mb-4">
                 Build Your Own Story
               </Heading>
-              <Text variant="white" className="text-base md:text-xl font-light opacity-80">
+              <Text variant="white" size="xl" className="opacity-80">
                 Select your cities, travel style, and let us do the rest.
               </Text>
             </div>
+
             
             <Button 
               variant="glass"

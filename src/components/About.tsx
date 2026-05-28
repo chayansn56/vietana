@@ -32,7 +32,7 @@ const About: React.FC = () => {
                 style={{ backgroundImage: `url(${item.img})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                <Text variant="white" size="sm" className="font-medium">{item.t}</Text>
+                <Text variant="white" size="sm" weight="medium">{item.t}</Text>
               </div>
             </div>
           ))}
@@ -42,18 +42,19 @@ const About: React.FC = () => {
       <Container>
         <Grid cols={2} gap={16} className="reveal">
           <div>
-            <Heading as="h3" className="text-2xl mb-4">Our Mission</Heading>
-            <Text variant="subtle" className="font-light">
+            <Heading as="h3" size="md" className="mb-4">Our Mission</Heading>
+            <Text variant="subtle" weight="light">
               To make Vietnam the most accessible and loved destination for Indian travelers, bridge cultures, and create lifelong memories.
             </Text>
           </div>
           <div>
-            <Heading as="h3" className="text-2xl mb-4">Local Expertise</Heading>
-            <Text variant="subtle" className="font-light">
+            <Heading as="h3" size="md" className="mb-4">Local Expertise</Heading>
+            <Text variant="subtle" weight="light">
               Based in Ho Chi Minh City, our team understands both Indian preferences and Vietnamese culture perfectly.
             </Text>
           </div>
         </Grid>
+
       </Container>
     </Section>
   );

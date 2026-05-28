@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from '../../contexts/LanguageContext';
+import { Text } from '../ui/Typography';
 
 interface FloatingOrbProps {
   onClick: () => void;
@@ -10,12 +11,17 @@ const FloatingOrb: React.FC<FloatingOrbProps> = ({ onClick }) => {
 
   return (
     <div 
-      className="fixed bottom-8 right-8 z-[310] w-17 h-17 cursor-pointer flex items-center justify-center transition-transform duration-500 ease-elastic hover:scale-110 hover:rotate-5 md:bottom-8 md:right-8 sm:bottom-6 sm:right-6 group"
+      className="fixed bottom-8 right-8 z-[310] w-16 h-16 cursor-pointer flex items-center justify-center transition-transform duration-500 ease-elastic hover:scale-110 hover:rotate-5 md:bottom-8 md:right-8 sm:bottom-6 sm:right-6 group"
       onClick={onClick}
     >
-      <div className="absolute top-[-30px] text-[0.6rem] font-bold text-brand-gold tracking-[0.15em] uppercase whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <Text 
+        size="xs" 
+        variant="none" 
+        weight="bold" 
+        className="absolute top-[-30px] text-[10px] text-brand-gold tracking-[0.15em] uppercase whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      >
         {t.nav.aiPlanner}
-      </div>
+      </Text>
       
       <div className="absolute inset-0 rounded-full orb-style" />
       

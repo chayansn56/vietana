@@ -129,7 +129,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
                   {s.ico}
                 </div>
                 
-                <Heading as="h3" className="text-lg font-medium mb-2">
+                <Heading as="h3" size="sm" font="sans" className="mb-2">
                   {serviceData.t}
                 </Heading>
                 <Text size="sm" variant="subtle">
@@ -149,12 +149,18 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
       >
         {selectedSrv && (
           <div className="flex flex-col gap-6">
-            <div 
-              className="text-xl font-bold text-white flex items-center gap-2 [&_strong]:text-brand-gold-light" 
+            <Heading 
+              as="h3"
+              size="md"
+              font="sans"
+              className="text-white flex items-center gap-2 [&_strong]:text-brand-gold-light" 
               dangerouslySetInnerHTML={{ __html: selectedSrv.title }} 
             />
-            <div 
-              className="text-[0.95rem] leading-relaxed text-white/80 [&_strong]:text-brand-gold-light [&_strong]:font-semibold [&_a]:text-brand-blue [&_a]:font-semibold [&_a:hover]:underline" 
+
+            <Text 
+              variant="white"
+              size="sm"
+              className="leading-relaxed text-white/80 [&_strong]:text-brand-gold-light [&_strong]:font-semibold [&_a]:text-brand-blue [&_a]:font-semibold [&_a:hover]:underline" 
               dangerouslySetInnerHTML={{ __html: selectedSrv.content }} 
             />
             <Button 

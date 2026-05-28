@@ -8,6 +8,7 @@ import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import Card from './ui/Card';
 import { Heading, Text } from './ui/Typography';
+import Badge from './ui/Badge';
 
 const VEG_ITEMS = [
   'Phở Chay (Veg Pho)', 'Bánh Mì Chay', 'Gỏi Cuốn Chay', 'Cơm Tấm Chay', 'Bún Chay',
@@ -54,47 +55,59 @@ const Food: React.FC = () => {
             />
             
             <div className="mb-14">
-              <Heading as="h3" className="text-3xl text-brand-gold mb-5 border-b border-brand-gold/20 pb-2.5">
+              <Heading as="h3" size="lg" variant="accent" className="mb-5 border-b border-brand-gold/20 pb-2.5">
                 Vegetarian (Vietnamese & Indian)
               </Heading>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none">
                 {VEG_ITEMS.map((item, i) => (
-                  <li 
-                    key={i} 
-                    className="text-[0.92rem] text-text-muted font-medium cursor-pointer transition-all duration-300 flex items-center gap-2 hover:text-brand-gold-muted hover:translate-x-1.5" 
-                    onClick={() => openFoodModal(item)}
-                  >
-                    <span className="text-brand-gold text-[1.1rem]">⭐</span> {item}
+                  <li key={i} className="flex">
+                    <Text 
+                      as="span"
+                      size="sm"
+                      variant="muted"
+                      weight="medium"
+                      className="cursor-pointer transition-all duration-300 flex items-center gap-2 hover:text-brand-gold-muted hover:translate-x-1.5" 
+                      onClick={() => openFoodModal(item)}
+                    >
+                      <span className="text-brand-gold text-lg">⭐</span> {item}
+                    </Text>
                   </li>
                 ))}
               </ul>
             </div>
             
             <div className="mb-14">
-              <Heading as="h3" className="text-3xl text-brand-gold mb-5 border-b border-brand-gold/20 pb-2.5">
+              <Heading as="h3" size="lg" variant="accent" className="mb-5 border-b border-brand-gold/20 pb-2.5">
                 Non-Vegetarian Favorites
               </Heading>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none">
                 {NON_VEG_ITEMS.map((item, i) => (
-                  <li 
-                    key={i} 
-                    className="text-[0.92rem] text-text-muted font-medium cursor-pointer transition-all duration-300 flex items-center gap-2 hover:text-brand-gold-muted hover:translate-x-1.5" 
-                    onClick={() => openFoodModal(item)}
-                  >
-                    <span className="text-brand-gold text-[1.1rem]">⭐</span> {item}
+                  <li key={i} className="flex">
+                    <Text 
+                      as="span"
+                      size="sm"
+                      variant="muted"
+                      weight="medium"
+                      className="cursor-pointer transition-all duration-300 flex items-center gap-2 hover:text-brand-gold-muted hover:translate-x-1.5" 
+                      onClick={() => openFoodModal(item)}
+                    >
+                      <span className="text-brand-gold text-lg">⭐</span> {item}
+                    </Text>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <Heading as="h3" className="text-3xl text-brand-gold mb-5 border-b border-brand-gold/20 pb-2.5">
+              <Heading as="h3" size="lg" variant="accent" className="mb-5 border-b border-brand-gold/20 pb-2.5">
                 Famous Cafes
               </Heading>
               <div className="flex flex-wrap gap-3">
                 {CAFES.map((cafe, i) => (
-                  <div key={i} className="bg-brand-gold/8 px-5 py-2.5 rounded-full border border-brand-gold/15 text-[0.88rem] font-semibold text-text-muted">
-                    {cafe}
+                  <div key={i} className="bg-brand-gold/8 px-5 py-2.5 rounded-full border border-brand-gold/15 flex items-center">
+                    <Text size="sm" variant="muted" weight="semibold">
+                      {cafe}
+                    </Text>
                   </div>
                 ))}
               </div>
@@ -106,16 +119,16 @@ const Food: React.FC = () => {
             <Card variant="white" padding="lg" className="flex flex-col items-center justify-center gap-16">
               <div className="flex flex-col items-center text-center w-full">
                 <img src="/spicy_spoon_new.png" alt="The Spicy Spoon" className="max-w-[220px] h-auto mb-6 mix-multiply" />
-                <div className="inline-block px-7 py-2.5 bg-gradient-to-br from-brand-gold to-brand-gold-light text-brand-green-extra-dark rounded-full font-bold text-[0.8rem] tracking-[0.15em] uppercase shadow-medium">
+                <Badge variant="gold-filled">
                   Coming Soon
-                </div>
+                </Badge>
               </div>
               <div className="flex flex-col items-center text-center w-full">
-                <a href="https://www.google.com/maps/search/Mì+Quảng+Cô+Viên" target="_blank" rel="noreferrer" className="group no-underline">
+                <a href="https://www.google.com/maps/search/Mì+Quảng+Cô+Viên" target="_blank" rel="noreferrer" className="group no-underline flex flex-col items-center">
                   <img src="/mi_quang_new.png" alt="Mì Quảng Cô Viên" className="max-w-[220px] h-auto mb-6 mix-multiply" />
-                  <div className="inline-block px-7 py-2.5 bg-white border-2 border-brand-gold text-brand-gold rounded-full font-bold text-[0.8rem] tracking-[0.1em] uppercase shadow-soft transition-all duration-300 group-hover:bg-brand-gold group-hover:text-white group-hover:-translate-y-1">
+                  <Button variant="outline" size="sm" className="w-[160px] tracking-[0.1em]">
                     View on Map 📍
-                  </div>
+                  </Button>
                 </a>
               </div>
             </Card>
@@ -124,21 +137,21 @@ const Food: React.FC = () => {
 
         {/* BOTTOM SECTION */}
         <div className="mt-24 flex flex-col md:flex-row justify-between items-end gap-12 border-t border-black/5 pt-16 reveal">
-          <Heading as="h3" className="flex-1 min-w-[300px] text-brand-green text-2xl font-semibold leading-relaxed">
+          <Heading as="h3" size="lg" weight="semibold" className="flex-1 min-w-[300px] !text-brand-green leading-relaxed">
             We own, partner, and connect with restaurants across Vietnam.<br />
             So you never have to worry about where to eat.
           </Heading>
           
           <div className="flex-1 min-w-[300px] w-full flex justify-end">
-            <Card variant="white" padding="md" className="w-full max-w-[400px] bg-white/90">
-              <Text variant="primary" className="font-bold mb-4">
+            <Card variant="white" padding="md" className="w-full max-w-sm bg-white/90">
+              <Text variant="primary" weight="bold" className="mb-4">
                 Share your food preferences
               </Text>
               <textarea 
                 value={foodPref} 
                 onChange={(e) => setFoodPref(e.target.value)}
                 placeholder="E.g., I need pure veg options, no garlic/onion..." 
-                className="w-full h-24 p-4 border border-gray-100 rounded-xl mb-6 font-inherit text-[0.9rem] resize-none bg-gray-50 focus:outline-none focus:border-brand-gold/30 transition-colors"
+                className="w-full h-24 p-4 border border-gray-100 rounded-xl mb-6 font-inherit text-[0.875rem] resize-none bg-gray-50 focus:outline-none focus:border-brand-gold/30 transition-colors"
               />
               <Button 
                 className="w-full bg-brand-whatsapp text-white hover:bg-brand-whatsapp/90 border-none shadow-whatsapp hover:shadow-whatsapp-hover"
@@ -155,13 +168,13 @@ const Food: React.FC = () => {
       <Modal 
         isOpen={!!selectedFood} 
         onClose={closeFoodModal}
-        maxWidth="max-w-[500px]"
+        maxWidth="max-w-md"
         className="p-10 text-center"
       >
         {selectedFood && (
           <>
             <img src={getFoodImg(selectedFood)} alt={selectedFood} className="w-full h-72 object-cover rounded-2xl mb-8 shadow-lg" />
-            <Heading as="h3" className="text-4xl text-brand-green mb-2.5">
+            <Heading as="h3" size="xl" className="!text-brand-green mb-2.5">
               {selectedFood}
             </Heading>
             <Text variant="subtle" size="md">
@@ -175,3 +188,4 @@ const Food: React.FC = () => {
 };
 
 export default Food;
+
