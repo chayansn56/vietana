@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { WHATSAPP_INDIA } from '../config';
+import { WHATSAPP_INDIA, TRIP_BUILDER_CONSTANTS, TRIP_BUILDER_RATES, TRIP_BUILDER_CITIES } from '../config';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
@@ -9,13 +9,6 @@ interface CustomTripBuilderProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-const CITIES = [
-  "Hanoi", "Sapa", "Halong Bay", "Ninh Binh", "Da Nang", "Hoi An", "Hue", "Nha Trang", "Da Lat", "Ho Chi Minh City", "Phu Quoc"
-];
-
-const CONSTANTS = { flight: 25000, visa: 2100 };
-const RATES = { budget: 3300, comfort: 6500, luxury: 12000 };
 
 const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }) => {
   const [selectedCities, setSelectedCities] = useState<string[]>([]);
@@ -33,11 +26,11 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
   });
 
   useEffect(() => {
-    const flightTot = CONSTANTS.flight * pax;
-    const visaTot = CONSTANTS.visa * pax;
+    const flightTot = TRIP_BUILDER_CONSTANTS.flight * pax;
+    const visaTot = TRIP_BUILDER_CONSTANTS.visa * pax;
     const hops = Math.max(0, selectedCities.length - 1);
-    const transitTot = hops * 3000 * pax;
-    const dailyTot = RATES[style] * days * pax;
+    const transitTot = hops * TRIP_BUILDER_CONSTANTS.transitPerHop * pax;
+    const dailyTot = TRIP_BUILDER_RATES[style] * days * pax;
     const total = flightTot + visaTot + transitTot + dailyTot;
 
     setEstimate({
@@ -48,6 +41,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
       total: total
     });
   }, [selectedCities, style, days, pax]);
+
 
   const toggleCity = (city: string) => {
     setSelectedCities(prev => 
@@ -91,7 +85,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose }
         <div>
           <Heading as="h3" size="xs" font="sans" className="text-white/40 uppercase mb-6 flex items-center gap-3">📍 Select Destinations</Heading>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {CITIES.map(city => (
+            {TRIP_BUILDER_CITIES.map(city => (
               <label 
                 key={city} 
                 className={`flex items-center justify-center p-3 rounded-xl border cursor-pointer transition-all duration-300

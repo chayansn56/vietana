@@ -1,6 +1,7 @@
 import React, { useState, useMemo, lazy, Suspense } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
+import { MAP_DESTINATIONS } from '../config';
 import Button from './ui/Button';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
@@ -17,24 +18,9 @@ const EXPERIENCES = [
   { id: 5, t: 'Lantern Maker\'s Garden', d: 'Create your own lantern in a private 200-year-old courtyard.', lat: 15.8801, lng: 108.3384, img: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80' },
   { id: 6, t: 'Coffee in the Clouds', d: 'A floating cafe at the edge of Da Lat\'s highest peak.', lat: 11.9404, lng: 108.4583, img: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=600&q=80' },
   { id: 7, t: 'Jazz in the Alleyway', d: 'Speakeasy jazz club hidden behind a noodle shop in HCMC.', lat: 10.7769, lng: 106.7009, img: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=600&q=80' },
-  { id: 8, t: 'Waterfall Meditation', d: 'Private sunrise meditation at the base of Ban Gioc.', lat: 22.8550, lng: 106.7228, img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=600&q=80' },
-  { id: 9, t: 'The Salt Fields of Mui Ne', d: 'Watch the sunrise reflect off the pristine salt crystals.', lat: 10.9333, lng: 108.2833, img: 'https://images.unsplash.com/photo-1504457047772-27faf1c005b7?w=600&q=80' },
+  { id: 8, t: 'Waterfall Meditation', d: 'Private sunrise meditation at the base of Ban Gioc.', lat: 22.8550, lng: 106.7228, img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80' },
+  { id: 9, t: 'The Salt Fields of Mui Ne', d: 'Watch the sunrise reflect off the pristine salt crystals.', lat: 10.9333, lng: 108.2833, img: 'https://images.unsplash.com/photo-1504457047772-27faf1c005b7?w=800&q=80' },
   { id: 10, t: 'Fisherman\'s Secret Cove', d: 'A hidden beach in Quy Nhon only known to locals.', lat: 13.7767, lng: 109.2242, img: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80' }
-];
-
-const EV_DESTINATIONS = [
-  {name:'Sapa', time:'Sep - Nov, Mar - May', desc:'Misty mountains and terraced rice fields.', lat:22.3364, lng:103.8438, img:'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=400&q=80'},
-  {name:'Hanoi', time:'Oct - Apr', desc:'The cultural and historical heart of Vietnam.', lat:21.0285, lng:105.8542, img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80'},
-  {name:'Ha Long Bay', time:'Oct - Apr', desc:'Thousands of limestone karsts in emerald waters.', lat:20.9101, lng:107.1839, img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80'},
-  {name:'Ninh Binh', time:'Jan - Mar, May - Aug', desc:'The Halong Bay on land with stunning rivers.', lat:20.2539, lng:105.9750, img:'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=400&q=80'},
-  {name:'Phong Nha', time:'Feb - Aug', desc:'World-class caves and jungle adventures.', lat:17.5947, lng:106.2842, img:'https://images.unsplash.com/photo-1541355416-64fae10f135b?w=400&q=80'},
-  {name:'Hue', time:'Jan - Aug', desc:'Ancient imperial city and royal tombs.', lat:16.4637, lng:107.5909, img:'https://images.unsplash.com/photo-1548023487-1cbb394f28ba?w=400&q=80'},
-  {name:'Da Nang', time:'Feb - May', desc:'Modern city with beautiful beaches and bridges.', lat:16.0544, lng:108.2022, img:'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=400&q=80'},
-  {name:'Hoi An', time:'Feb - Apr', desc:'Charming lantern-lit ancient trading port.', lat:15.8801, lng:108.3380, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'},
-  {name:'Mui Ne', time:'Nov - Apr', desc:'Red and white sand dunes with kitesurfing.', lat:10.9575, lng:108.2753, img:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&q=80'},
-  {name:'Ho Chi Minh City', time:'Dec - Apr', desc:'The vibrant, energetic southern metropolis.', lat:10.8231, lng:106.6297, img:'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80'},
-  {name:'Mekong Delta', time:'Sep - Nov', desc:'Lush waterways and floating markets.', lat:10.0452, lng:105.7469, img:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80'},
-  {name:'Phu Quoc', time:'Nov - Apr', desc:'Tropical island paradise with white sand beaches.', lat:10.2289, lng:103.9572, img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'}
 ];
 
 interface ComboSectionProps {
@@ -61,7 +47,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
 
   const handleCityClick = (idx: number) => {
     setSelectedCityIdx(idx);
-    setMapCenter([EV_DESTINATIONS[idx].lat, EV_DESTINATIONS[idx].lng]);
+    setMapCenter([MAP_DESTINATIONS[idx].lat, MAP_DESTINATIONS[idx].lng]);
   };
 
   return (
@@ -168,7 +154,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
           <div className="w-full aspect-square rounded-3xl overflow-hidden border-8 border-white shadow-heavy relative z-[2] h-[500px]">
             <Suspense fallback={<div className="w-full h-full bg-brand-green-extra-dark/10 animate-pulse flex items-center justify-center">Loading Map...</div>}>
                 <LeafletMap 
-                    destinations={EV_DESTINATIONS}
+                    destinations={MAP_DESTINATIONS}
                     selectedCityIdx={selectedCityIdx}
                     mapCenter={mapCenter}
                     onCityClick={handleCityClick}
@@ -185,23 +171,23 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
                 className="relative lg:absolute lg:top-1/2 lg:-right-15 lg:-translate-y-1/2 w-full lg:w-[260px] bg-white/98 backdrop-blur-2xl rounded-2xl p-6 shadow-deep z-[100] border border-black/5 mt-8 lg:mt-0"
               >
                 <div className="absolute top-4 right-4 cursor-pointer text-2xl text-text-subtle leading-none" onClick={() => setSelectedCityIdx(null)}>×</div>
-                <img src={EV_DESTINATIONS[selectedCityIdx].img} alt={EV_DESTINATIONS[selectedCityIdx].name} className="w-full h-32 object-cover rounded-xl mb-4" />
+                <img src={MAP_DESTINATIONS[selectedCityIdx].img} alt={MAP_DESTINATIONS[selectedCityIdx].name} className="w-full h-32 object-cover rounded-xl mb-4" />
                 <Heading as="h3" size="md" weight="bold" className="text-text-dark mb-1.5">
-                  {EV_DESTINATIONS[selectedCityIdx].name}
+                  {MAP_DESTINATIONS[selectedCityIdx].name}
                 </Heading>
                 <Text size="xs" weight="bold" className="text-brand-gold uppercase mb-2.5 tracking-wider">
-                  Best time: {EV_DESTINATIONS[selectedCityIdx].time}
+                  Best time: {MAP_DESTINATIONS[selectedCityIdx].time}
                 </Text>
                 <Text size="sm" variant="muted" className="leading-relaxed mb-5">
-                  {EV_DESTINATIONS[selectedCityIdx].desc}
+                  {MAP_DESTINATIONS[selectedCityIdx].desc}
                 </Text>
                 <div className="flex flex-col gap-2.5">
-                  <Button variant="primary" size="sm" className="w-full" onClick={() => onOpenPlanner(EV_DESTINATIONS[selectedCityIdx].name)}>Plan My Trip</Button>
+                  <Button variant="primary" size="sm" className="w-full" onClick={() => onOpenPlanner(MAP_DESTINATIONS[selectedCityIdx].name)}>Plan My Trip</Button>
                   <Button 
                     variant="outline" 
                     size="sm" 
                     className="w-full"
-                    onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(EV_DESTINATIONS[selectedCityIdx].name + ' Vietnam')}`, '_blank')}
+                    onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(MAP_DESTINATIONS[selectedCityIdx].name + ' Vietnam')}`, '_blank')}
                   >
                     View on Map
                   </Button>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { MAP_DEFAULT_ROUTE } from '../../config';
 
 // Fix for Leaflet markers
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -16,39 +17,45 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
-const HANOI: [number, number] = [21.0285, 105.8542];
-const DANANG: [number, number] = [16.0544, 108.2022];
-const HCMC: [number, number] = [10.8231, 106.6297];
+interface PlaneAnimationProps {
+    routeCoords: [number, number][];
+}
 
-const PlaneAnimation = () => {
-    const [planePos, setPlanePos] = useState<[number, number]>(HANOI);
+const PlaneAnimation: React.FC<PlaneAnimationProps> = ({ routeCoords }) => {
+    const [planePos, setPlanePos] = useState<[number, number]>(routeCoords[0] || [21.0285, 105.8542]);
     const [planeAngle, setPlaneAngle] = useState(165);
     const progressRef = useRef(0);
 
     useEffect(() => {
+        if (routeCoords.length < 2) return;
+
         let frame: number;
+        const numLegs = routeCoords.length - 1;
+
         const animate = () => {
             progressRef.current += 0.0015;
-            if (progressRef.current > 2) progressRef.current = 0;
+            if (progressRef.current > numLegs) progressRef.current = 0;
 
-            let p1, p2, f, angle;
-            if (progressRef.current < 1) {
-                p1 = HANOI; p2 = DANANG; f = progressRef.current;
-                angle = 165;
-            } else {
-                p1 = DANANG; p2 = HCMC; f = progressRef.current - 1;
-                angle = 175;
-            }
+            const legIndex = Math.min(Math.floor(progressRef.current), numLegs - 1);
+            const f = progressRef.current - legIndex;
+
+            const p1 = routeCoords[legIndex];
+            const p2 = routeCoords[legIndex + 1];
 
             const lat = p1[0] + (p2[0] - p1[0]) * f;
             const lng = p1[1] + (p2[1] - p1[1]) * f;
+            
+            const dLng = p2[1] - p1[1];
+            const dLat = p2[0] - p1[0];
+            const angle = (Math.atan2(dLng, dLat) * 180) / Math.PI + 10;
+
             setPlanePos([lat, lng]);
             setPlaneAngle(angle);
             frame = requestAnimationFrame(animate);
         };
         frame = requestAnimationFrame(animate);
         return () => cancelAnimationFrame(frame);
-    }, []);
+    }, [routeCoords]);
 
     const planeIcon = L.divIcon({
         html: `<div class="text-2xl drop-shadow-md" style="transform: rotate(${planeAngle}deg);">✈️</div>`,
@@ -73,9 +80,16 @@ interface LeafletMapProps {
     selectedCityIdx: number | null;
     mapCenter: [number, number];
     onCityClick: (idx: number) => void;
+    routeCoords?: [number, number][];
 }
 
-const LeafletMap: React.FC<LeafletMapProps> = ({ destinations, selectedCityIdx, mapCenter, onCityClick }) => {
+const LeafletMap: React.FC<LeafletMapProps> = ({ 
+    destinations, 
+    selectedCityIdx, 
+    mapCenter, 
+    onCityClick,
+    routeCoords = MAP_DEFAULT_ROUTE
+}) => {
     return (
         <MapContainer 
             center={[16.0, 106.0]} 
@@ -108,8 +122,10 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ destinations, selectedCityIdx, 
                 />
             ))}
 
-            <Polyline positions={[HANOI, DANANG, HCMC]} color="#C9A84C" weight={2} className="glowing-route" />
-            <PlaneAnimation />
+            {routeCoords.length >= 2 && (
+                <Polyline positions={routeCoords} color="#C9A84C" weight={2} className="glowing-route" />
+            )}
+            {routeCoords.length >= 2 && <PlaneAnimation routeCoords={routeCoords} />}
             <MapController center={mapCenter} />
         </MapContainer>
     );
