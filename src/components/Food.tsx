@@ -12,6 +12,7 @@ import Card from './ui/Card';
 import { Heading, Text } from './ui/Typography';
 import Badge from './ui/Badge';
 import Icon from './ui/Icon';
+import BrandName from './ui/BrandName';
 
 // Accordion Component for Food Categories
 const FoodAccordion: React.FC<{
@@ -262,7 +263,7 @@ const Food: React.FC = () => {
             We own, partner and work closely with restaurants across Vietnam — so you'll never have to worry about where to eat.
           </Heading>
           <Text variant="subtle" size="sm" weight="bold" className="uppercase tracking-widest text-brand-gold">
-            Travel Gets Better with VIETANA™
+            Travel Gets Better with <BrandName />
           </Text>
         </div>
       </Container>
@@ -313,7 +314,7 @@ const Food: React.FC = () => {
                 </div>
                 <div>
                   <Text size="sm" weight="bold" className="text-brand-green-dark mb-1">Where to try it in Vietnam</Text>
-                  <Text size="sm" variant="subtle">Available at our trusted partner restaurants and exclusive VIETANA curated food tours across the country.</Text>
+                  <Text size="sm" variant="subtle">Available at our trusted partner restaurants and exclusive <BrandName /> curated food tours across the country.</Text>
                 </div>
               </div>
 

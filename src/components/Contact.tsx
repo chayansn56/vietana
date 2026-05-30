@@ -4,6 +4,7 @@ import Button from './ui/Button';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
+import BrandName from './ui/BrandName';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -82,7 +83,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         <div className="text-center pt-8 border-t border-brand-green/10">
-          <Text variant="accent" className="italic mb-8 font-bold">Travel Gets Better with VIETANA™</Text>
+          <Text variant="accent" className="italic mb-8 font-bold">Travel Gets Better with <BrandName /></Text>
           <div className="flex flex-col md:flex-row justify-center gap-4">
             <a href="mailto:info@vietana.com" className="flex-1 bg-brand-blue/10 border border-brand-blue/30 text-brand-blue-dark py-4 px-4 rounded-xl font-bold tracking-widest hover:bg-brand-blue/20 transition-all hover:scale-105 flex items-center justify-center gap-2 text-xs">
               <Icon name="Mail" size={18} /> Send Email

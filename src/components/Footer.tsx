@@ -2,6 +2,7 @@ import React from 'react';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
+import BrandName from './ui/BrandName';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -21,7 +22,7 @@ const Footer: React.FC = () => {
                 Premium India-Vietnam Travel
               </Text>
               <Text variant="subtle" size="xs">
-                © {currentYear} Vietana Travel. Built for Indian Travelers.
+                © {currentYear} <BrandName /> Travel. Built for Indian Travelers.
               </Text>
             </div>
             

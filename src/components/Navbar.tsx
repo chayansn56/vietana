@@ -39,6 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
           ${scrolled ? (isLight ? 'py-3.5 glass shadow-soft' : 'py-3.5 glass-dark shadow-strong') : 'py-6'}`}
       >
         <a href="#" className="flex shrink-0 items-center gap-2 no-underline">
+          <img src="/vietana_logo.png" className="h-[45px]" alt="Vietana Logo" />
           <Heading 
             as="span" 
             size="xl" 

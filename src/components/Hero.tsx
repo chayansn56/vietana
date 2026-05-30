@@ -9,6 +9,7 @@ import { Heading, Text } from './ui/Typography';
 import Clock from './Clock';
 import Badge from './ui/Badge';
 import Icon from './ui/Icon';
+import BrandName from './ui/BrandName';
 
 interface HeroProps {
   onOpenMagic: () => void;
@@ -140,7 +141,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             weight="medium"
             className="italic mb-6 text-brand-gold-light animate-reveal-up [animation-delay:0.72s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] block"
           >
-            Travel Gets Better with VIETANA
+            Travel Gets Better with <BrandName />
           </Text>
           
           <Text 

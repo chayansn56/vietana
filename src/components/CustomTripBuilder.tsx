@@ -8,6 +8,7 @@ import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
+import BrandName from './ui/BrandName';
 
 interface CustomTripBuilderProps {
   isOpen: boolean;
@@ -100,7 +101,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose, 
            Craft Your <span className="text-brand-gold-light italic">Journey</span>
         </Heading>
         <Text variant="none" className="text-white/50 text-sm font-light tracking-widest uppercase">
-          VIETANA™ REAL-TIME ESTIMATE ENGINE V4
+          <BrandName /> REAL-TIME ESTIMATE ENGINE V4
         </Text>
       </div>
 
@@ -303,7 +304,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose, 
              
              <Text variant="none" className="text-white/30 text-[0.6rem] leading-relaxed mt-6 text-center italic">
                Actual pricing may vary based on season, hotel selection, flight availability and travel style.<br/>
-               Travel Gets Better with VIETANA™
+               Travel Gets Better with <BrandName />
              </Text>
            </div>
         </div>

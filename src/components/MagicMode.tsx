@@ -4,6 +4,7 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Card from './ui/Card';
 import Icon from './ui/Icon';
+import BrandName from './ui/BrandName';
 
 interface MagicModeProps {
   isOpen: boolean;
@@ -172,7 +173,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
         <div className="flex items-center gap-3 opacity-80">
           <Text size="sm" variant="white">Not sure?</Text>
           <Button size="sm" className="flex items-center justify-center gap-2" onClick={() => handleClose(() => onOpenPlanner())}>
-            <Icon name="Sparkles" size={16} /> Let VIETANA™ understand you
+            <Icon name="Sparkles" size={16} /> Let <BrandName /> understand you
           </Button>
         </div>
         <Button variant="glass" size="sm" className="px-4 py-1.5 flex items-center justify-center gap-2" onClick={() => handleClose()}>Return to reality</Button>

@@ -11,6 +11,7 @@ import Grid from './ui/Grid';
 import Card from './ui/Card';
 import { Heading, Text } from './ui/Typography';
 import Icon, { IconName } from './ui/Icon';
+import BrandName, { FormatBrand } from './ui/BrandName';
 
 interface ServiceModalItem {
   key: string;
@@ -183,7 +184,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
               className="text-white flex items-center gap-2 [&_strong]:text-brand-gold-light" 
             >
               <Icon name={selectedSrv.iconName} size={24} className="text-brand-gold" />
-              <span dangerouslySetInnerHTML={{ __html: selectedSrv.title }} />
+              <FormatBrand text={selectedSrv.title} />
             </Heading>
 
             <Text 
@@ -205,7 +206,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
               }}
             >
               <Icon name={selectedSrv.action === 'whatsapp' ? 'MessageCircle' : 'Sparkles'} size={18} />
-              {selectedSrv.cta}
+              <FormatBrand text={selectedSrv.cta} />
             </Button>
           </div>
         )}
