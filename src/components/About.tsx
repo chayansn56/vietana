@@ -3,70 +3,109 @@ import SectionHeader from './ui/SectionHeader';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
-import Grid from './ui/Grid';
 import BrandName from './ui/BrandName';
 
-const GALLERY = [
-  { img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80', t: 'Indian family in Hoi An' },
-  { img: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80', t: 'Exploring Ha Long Bay' },
-  { img: 'https://images.unsplash.com/photo-1504457047772-27faf1c005b7?w=800&q=80', t: 'Sunrise in Mu Cang Chai' },
-  { img: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800&q=80', t: 'Coffee culture in HCMC' },
-  { img: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&q=80', t: 'Rice fields of Sapa' }
+const TIMELINE = [
+  {
+    year: 'The Vision',
+    title: 'Bridging Two Worlds',
+    desc: 'VIETANA wasn\'t just born out of a business idea; it was born out of a genuine love for two incredible cultures. When our founder first arrived in Vietnam, it was love at first sight with the breathtaking landscapes and vibrant energy.',
+    img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80',
+    align: 'left'
+  },
+  {
+    year: 'The Challenge',
+    title: 'Navigating The Unknown',
+    desc: 'However, navigating local nuances as an Indian traveler came with its own set of unique challenges—from finding the right familiar flavors, understanding dietary restrictions, to communicating in the local language.',
+    img: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
+    align: 'right'
+  },
+  {
+    year: 'The Solution',
+    title: 'Boots on the Ground',
+    desc: 'We realized Indian travelers needed a bridge. Someone who deeply understands the craving for a warm cup of masala chai or a comforting dal, but also someone deeply rooted in Vietnam to unlock its absolute best-kept secrets.',
+    img: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800&q=80',
+    align: 'left'
+  },
+  {
+    year: 'The Promise',
+    title: 'Your Family in Vietnam',
+    desc: '"When you travel with us, you aren\'t just a tourist or a booking number. You become part of our extended family. From the moment you land to your very last dinner, we handle everything locally from Ho Chi Minh City."',
+    img: 'https://images.unsplash.com/photo-1504457047772-27faf1c005b7?w=800&q=80',
+    align: 'right'
+  }
 ];
 
 const About: React.FC = () => {
   return (
-    <Section id="about" variant="cream" spacing="lg">
+    <Section id="about" variant="cream" spacing="lg" className="overflow-hidden relative">
+      <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-brand-gold/5 to-transparent pointer-events-none" />
+      
       <Container>
-        <SectionHeader 
-          label="The <BrandName /> Story"
-          title="Created for Indian Travelers by Locals who Care"
-        />
-      </Container>
-
-      <div className="my-16 w-full relative reveal">
-        <div className="flex gap-8 animate-slide w-fit">
-          {[...GALLERY, ...GALLERY].map((item, i) => (
-            <div key={i} className="group w-[280px] h-[380px] md:w-[350px] md:h-[450px] rounded-xl overflow-hidden relative flex-shrink-0">
-              <div className="absolute inset-[-15%] z-0 scroll-parallax-slow">
-                <div 
-                  className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-smooth group-hover:scale-110" 
-                  style={{ backgroundImage: `url(${item.img})` }}
-                />
-              </div>
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none">
-                <Text variant="white" size="sm" weight="medium">{item.t}</Text>
-              </div>
-            </div>
-          ))}
+        <div className="text-center mb-24 reveal">
+          <Text size="xs" variant="accent" weight="bold" className="uppercase tracking-[0.3em] text-brand-gold mb-4">
+            The <BrandName /> Story
+          </Text>
+          <Heading as="h2" size="3xl" font="serif" className="text-brand-green-dark">
+            Created for Indian Travelers,<br />
+            <span className="italic text-brand-green-light font-light">by Locals who Care.</span>
+          </Heading>
         </div>
-      </div>
 
-      <Container>
-        <div className="reveal max-w-4xl mx-auto text-left bg-white/5 p-8 md:p-12 rounded-3xl border border-brand-gold/20 shadow-xl backdrop-blur-sm">
-          <Heading as="h3" size="xl" className="mb-8 text-brand-gold text-center font-serif">Our Story: Bridging Two Worlds</Heading>
+        {/* TIMELINE WRAPPER */}
+        <div className="relative max-w-5xl mx-auto py-10">
           
-          <Text variant="subtle" weight="light" className="mb-6 text-lg leading-relaxed">
-            <BrandName /> wasn't just born out of a business idea; it was born out of a genuine love for two incredible cultures. When our founder first arrived in Vietnam, it was love at first sight with the breathtaking landscapes, the warmth of the people, and the vibrant energy of the streets. However, navigating the local nuances as an Indian traveler came with its own set of unique challenges—from finding the right familiar flavors to understanding the local language.
-          </Text>
+          {/* VERTICAL LINE (Desktop) */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-gold/30 to-transparent -translate-x-1/2" />
           
-          <Text variant="subtle" weight="light" className="mb-6 text-lg leading-relaxed">
-            We realized that Indian travelers needed a bridge. Someone who deeply understands the craving for a warm cup of masala chai or a comforting dal after days of exploring, but also someone deeply rooted in Vietnam to unlock its absolute best-kept secrets. That's exactly how <BrandName /> was created: to be that trusted local friend waiting for you in Vietnam.
-          </Text>
-          
-          <Text variant="subtle" weight="light" className="text-lg leading-relaxed italic border-l-4 border-brand-gold pl-6 py-2">
-            "When you travel with us, you aren't just a tourist or a booking number. You become part of our extended family. From the moment you land to your very last dinner, we handle everything so you can focus on making lifelong memories."
-          </Text>
-          
-          <div className="mt-12 flex items-center gap-6 border-t border-white/10 pt-8">
-            <div className="w-16 h-16 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-xl border border-brand-gold/50">
-              V
-            </div>
-            <div>
-              <Text variant="white" weight="bold" size="lg">The <BrandName /> Team</Text>
-              <Text variant="subtle" size="sm">Your Family in Vietnam</Text>
-            </div>
+          {/* VERTICAL LINE (Mobile) */}
+          <div className="block md:hidden absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-gold/30 to-transparent" />
+
+          <div className="flex flex-col gap-20 md:gap-32 relative z-10">
+            {TIMELINE.map((item, idx) => (
+              <div key={idx} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 reveal ${item.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
+                
+                {/* Timeline Node (Center Dot) */}
+                <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(201,168,76,0.6)] z-20" />
+                
+                {/* Timeline Node (Mobile) */}
+                <div className="flex md:hidden absolute left-4 top-10 -translate-x-1/2 w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_rgba(201,168,76,0.6)] z-20" />
+
+                {/* IMAGE HALF */}
+                <div className="flex-1 w-full pl-10 md:pl-0">
+                  <div className={`relative h-[300px] md:h-[400px] w-full rounded-2xl overflow-hidden shadow-xl transform transition-transform duration-700 hover:scale-105 ${item.align === 'left' ? 'md:mr-auto' : 'md:ml-auto'}`}>
+                    <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-brand-green-dark/10 mix-blend-multiply" />
+                  </div>
+                </div>
+
+                {/* TEXT HALF */}
+                <div className={`flex-1 w-full pl-10 md:pl-0 ${item.align === 'left' ? 'md:text-right' : 'md:text-left'}`}>
+                  <Text size="xs" weight="bold" className="uppercase tracking-[0.2em] text-brand-gold mb-3 inline-block bg-brand-gold/10 px-3 py-1 rounded-full">
+                    {item.year}
+                  </Text>
+                  <Heading as="h3" size="xl" font="serif" className="text-brand-green-dark mb-4 leading-tight">
+                    {item.title}
+                  </Heading>
+                  <Text variant="muted" size="lg" className="leading-relaxed font-light text-text-dark/80">
+                    {item.desc}
+                  </Text>
+                </div>
+
+              </div>
+            ))}
           </div>
+        </div>
+
+        {/* BOTTOM CTA */}
+        <div className="mt-32 text-center reveal">
+          <div className="w-20 h-px bg-brand-gold/50 mx-auto mb-8" />
+          <Heading as="h4" size="lg" font="serif" className="text-brand-green-dark mb-4">
+            Ready to experience Vietnam like a local?
+          </Heading>
+          <Text variant="subtle" className="mb-8 font-light max-w-md mx-auto">
+            Travel Gets Better with <BrandName />. Join our extended family today.
+          </Text>
         </div>
       </Container>
     </Section>
@@ -74,3 +113,4 @@ const About: React.FC = () => {
 };
 
 export default About;
+
