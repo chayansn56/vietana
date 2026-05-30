@@ -80,16 +80,18 @@ const About: React.FC = () => {
                 </div>
 
                 {/* TEXT HALF */}
-                <div className={`flex-1 w-full pl-10 md:pl-0 ${item.align === 'left' ? 'md:text-right' : 'md:text-left'}`}>
-                  <Text size="xs" weight="bold" className="uppercase tracking-[0.2em] text-brand-gold mb-3 inline-block bg-brand-gold/10 px-3 py-1 rounded-full">
-                    {item.year}
-                  </Text>
-                  <Heading as="h3" size="xl" font="serif" className="text-brand-green-dark mb-4 leading-tight">
-                    {item.title}
-                  </Heading>
-                  <Text variant="muted" size="lg" className="leading-relaxed font-light text-text-dark/80">
-                    {item.desc}
-                  </Text>
+                <div className="flex-1 w-full pl-10 md:pl-0">
+                  <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-black/5 w-full relative z-10 hover:shadow-2xl transition-shadow duration-300">
+                    <Text size="xs" weight="bold" className="uppercase tracking-[0.2em] text-brand-gold mb-3 inline-block bg-brand-gold/10 px-3 py-1 rounded-full">
+                      {item.year}
+                    </Text>
+                    <Heading as="h3" size="xl" font="serif" className="text-brand-green-dark mb-4 leading-tight">
+                      {item.title}
+                    </Heading>
+                    <Text variant="muted" size="lg" className="leading-relaxed font-light text-text-dark">
+                      {item.desc}
+                    </Text>
+                  </div>
                 </div>
 
               </div>
