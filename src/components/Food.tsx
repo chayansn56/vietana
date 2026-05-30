@@ -45,7 +45,6 @@ const Food: React.FC = () => {
       
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row gap-20 items-start">
-        <div className="flex flex-col lg:flex-row gap-20 items-start">
           
           {/* LEFT SIDE: Brands */}
           <div className="flex-[0.8] min-w-[320px] w-full reveal">
