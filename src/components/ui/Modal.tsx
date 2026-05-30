@@ -19,15 +19,24 @@ const Modal: React.FC<ModalProps> = ({
   variant = 'dark'
 }) => {
   useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleEsc);
     } else {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleEsc);
     }
     return () => {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleEsc);
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   const overlays = {
     dark: 'fixed inset-0 bg-brand-green-extra-dark/80 backdrop-blur-xl',

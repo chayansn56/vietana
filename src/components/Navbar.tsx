@@ -11,9 +11,10 @@ interface NavbarProps {
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
   onOpenPlanner: () => void;
+  onOpenContact: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact }) => {
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
 
@@ -59,6 +60,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                   if (link.isPlanner) {
                     e.preventDefault();
                     onOpenPlanner();
+                  } else if (link.href === '#contact') {
+                    e.preventDefault();
+                    onOpenContact();
                   }
                 }}
                 className="relative no-underline group"
@@ -149,9 +153,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             key={link.key}
             href={link.href} 
             className="no-underline"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              if (link.isPlanner) onOpenPlanner();
+            onClick={(e) => {
+              if (link.isPlanner) {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                onOpenPlanner();
+              } else if (link.href === '#contact') {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                onOpenContact();
+              } else {
+                setMobileMenuOpen(false);
+              }
             }}
           >
             <Heading 

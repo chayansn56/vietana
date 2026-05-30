@@ -44,6 +44,7 @@ export default function App() {
   const [builderDestinations, setBuilderDestinations] = useState<string[]>([]);
   const [initialDestination, setInitialDestination] = useState<string | undefined>(undefined);
   const [isMagicModeOpen, setIsMagicModeOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navClass = useNavStyle(scrollY, isScrolled);
 
@@ -64,6 +65,7 @@ export default function App() {
         mobileMenuOpen={mobileMenuOpen} 
         setMobileMenuOpen={setMobileMenuOpen} 
         onOpenPlanner={() => openPlanner()} 
+        onOpenContact={() => setIsContactOpen(true)}
       />
 
       <main>
@@ -78,7 +80,6 @@ export default function App() {
           <ComboSection onOpenPlanner={(dest) => openPlanner(dest)} />
           <FAQ />
           <About />
-          <Contact />
         </Suspense>
       </main>
 
@@ -111,6 +112,10 @@ export default function App() {
           isOpen={isBuilderOpen} 
           onClose={() => setIsBuilderOpen(false)} 
           initialDestinations={builderDestinations}
+        />
+        <Contact 
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
         />
       </Suspense>
 
