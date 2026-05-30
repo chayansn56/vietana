@@ -14,36 +14,38 @@ import Badge from './ui/Badge';
 import Icon from './ui/Icon';
 
 // Accordion Component for Food Categories
-const FoodAccordion = ({ 
-  title, 
-  icon, 
-  items, 
-  onSelectFood, 
-  setHoveredImage 
-}: { 
-  title: string, 
-  icon: string, 
-  items: FoodItem[], 
-  onSelectFood: (item: FoodItem) => void,
-  setHoveredImage: (img: string | null) => void 
-}) => {
+const FoodAccordion: React.FC<{
+  title: string;
+  icon: string;
+  items: FoodItem[];
+  colorTheme?: 'green' | 'blue' | 'gold' | 'rose';
+  onSelectFood: (item: FoodItem) => void;
+  setHoveredImage: (img: string | null) => void;
+}> = ({ title, icon, items, colorTheme = 'green', onSelectFood, setHoveredImage }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const themeConfig = {
+    green: { bg: 'bg-brand-green/10', text: 'text-brand-green', border: 'border-brand-green/20', hoverFrom: 'hover:from-brand-green/5', activeBg: 'bg-brand-green' },
+    blue: { bg: 'bg-brand-blue/10', text: 'text-brand-blue', border: 'border-brand-blue/20', hoverFrom: 'hover:from-brand-blue/5', activeBg: 'bg-brand-blue' },
+    gold: { bg: 'bg-brand-gold/10', text: 'text-brand-gold', border: 'border-brand-gold/20', hoverFrom: 'hover:from-brand-gold/5', activeBg: 'bg-brand-gold' },
+    rose: { bg: 'bg-rose-500/10', text: 'text-rose-500', border: 'border-rose-500/20', hoverFrom: 'hover:from-rose-500/5', activeBg: 'bg-rose-500' },
+  }[colorTheme];
+
   return (
-    <div className="mb-3 bg-white/40 backdrop-blur-md rounded-2xl border border-brand-blue/10 shadow-sm overflow-hidden transition-all duration-500">
+    <div className={`mb-3 bg-white/60 backdrop-blur-md rounded-2xl border ${themeConfig.border} shadow-sm overflow-hidden transition-all duration-500`}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 lg:p-5 bg-gradient-to-r hover:from-brand-blue/5 hover:to-transparent transition-colors group"
+        className={`w-full flex items-center justify-between p-4 lg:p-5 bg-gradient-to-r ${themeConfig.hoverFrom} hover:to-transparent transition-colors group`}
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green group-hover:scale-110 group-hover:bg-brand-green group-hover:text-white transition-all duration-300">
+          <div className={`w-10 h-10 rounded-full ${themeConfig.bg} flex items-center justify-center ${themeConfig.text} group-hover:scale-110 group-hover:${themeConfig.activeBg} group-hover:text-white transition-all duration-300`}>
             <Icon name={icon as any} size={20} />
           </div>
           <Heading as="h4" size="sm" className="font-serif text-brand-green-dark m-0 text-left font-medium">
             {title}
           </Heading>
         </div>
-        <div className={`w-8 h-8 rounded-full border border-brand-green/20 flex items-center justify-center text-brand-green transition-transform duration-500 ${isOpen ? 'rotate-180 bg-brand-green text-white' : ''}`}>
+        <div className={`w-8 h-8 rounded-full border ${themeConfig.border} flex items-center justify-center ${themeConfig.text} transition-all duration-500 ${isOpen ? `rotate-180 ${themeConfig.activeBg} text-white` : ''}`}>
           <Icon name="ChevronDown" size={16} />
         </div>
       </button>
@@ -53,15 +55,15 @@ const FoodAccordion = ({
           {items.map((item, idx) => (
             <div 
               key={idx}
-              className="flex items-center justify-between p-3 lg:p-4 hover:bg-brand-blue/5 border-t border-brand-blue/5 cursor-pointer group transition-colors relative"
+              className={`flex items-center justify-between p-3 lg:p-4 hover:bg-black/5 border-t border-black/5 cursor-pointer group transition-colors relative`}
               onClick={() => onSelectFood(item)}
               onMouseEnter={() => setHoveredImage(item.img)}
               onMouseLeave={() => setHoveredImage(null)}
             >
               <div className="flex-1 pr-6">
                 <div className="flex items-center gap-2 mb-1">
-                  <Text size="xs" variant="muted" weight="semibold" className="w-5 text-brand-gold/60 text-[10px]">{idx + 1}.</Text>
-                  <Heading as="h6" size="xs" className="font-serif text-brand-green-dark group-hover:text-brand-blue transition-colors m-0 relative">
+                  <Text size="xs" variant="muted" weight="semibold" className={`w-5 ${themeConfig.text} text-[10px]`}>{idx + 1}.</Text>
+                  <Heading as="h6" size="xs" className={`font-serif text-brand-green-dark group-hover:${themeConfig.text} transition-colors m-0 relative`}>
                     {item.name}
                     
                     {/* Hover Image Reveal */}
@@ -129,13 +131,14 @@ const Food: React.FC = () => {
             <div className="mb-16 relative">
               {/* Indian Food Section */}
               <div className="mb-8">
-                <Heading as="h3" size="sm" className="font-serif text-brand-green-dark mb-4 border-b border-black/5 pb-2 uppercase tracking-wide">
+                <Heading as="h3" size="sm" className="font-serif mb-4 border-b border-black/5 pb-2 uppercase tracking-wide bg-gradient-to-r from-brand-gold to-brand-green text-transparent bg-clip-text">
                   INDIAN FOOD
                 </Heading>
                 <FoodAccordion 
                   title="Indian Vegetarian" 
                   icon="LeafyGreen" 
                   items={INDIAN_VEG_ITEMS} 
+                  colorTheme="green"
                   onSelectFood={setSelectedFood} 
                   setHoveredImage={setHoveredImage} 
                 />
@@ -143,6 +146,7 @@ const Food: React.FC = () => {
                   title="Indian Non-Vegetarian (No Beef)" 
                   icon="UtensilsCrossed" 
                   items={INDIAN_NON_VEG_ITEMS} 
+                  colorTheme="gold"
                   onSelectFood={setSelectedFood} 
                   setHoveredImage={setHoveredImage} 
                 />
@@ -150,13 +154,14 @@ const Food: React.FC = () => {
 
               {/* Vietnamese Food Section */}
               <div>
-                <Heading as="h3" size="sm" className="font-serif text-brand-green-dark mb-4 border-b border-black/5 pb-2 uppercase tracking-wide">
+                <Heading as="h3" size="sm" className="font-serif mb-4 border-b border-black/5 pb-2 uppercase tracking-wide bg-gradient-to-r from-brand-blue to-brand-green text-transparent bg-clip-text">
                   VIETNAMESE FOOD
                 </Heading>
                 <FoodAccordion 
                   title="Vietnamese Vegetarian" 
                   icon="Leaf" 
                   items={VIETNAMESE_VEG_ITEMS} 
+                  colorTheme="green"
                   onSelectFood={setSelectedFood} 
                   setHoveredImage={setHoveredImage} 
                 />
@@ -164,6 +169,7 @@ const Food: React.FC = () => {
                   title="Vietnamese Non-Vegetarian (No Beef)" 
                   icon="Drumstick" 
                   items={VIETNAMESE_NON_VEG_ITEMS} 
+                  colorTheme="blue"
                   onSelectFood={setSelectedFood} 
                   setHoveredImage={setHoveredImage} 
                 />
