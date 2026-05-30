@@ -349,12 +349,16 @@ const Food: React.FC = () => {
               <Text variant="subtle" size="sm" className="mb-8">
                 {selectedCafe.desc}
               </Text>
+              
               <Button 
-                variant="outline"
-                className="w-full flex items-center justify-center gap-2 border-brand-blue/30 text-brand-blue hover:bg-brand-blue/5"
-                onClick={() => window.open(`https://www.google.com/maps/search/${encodeURIComponent(selectedCafe.mapQuery || selectedCafe.name)}`, '_blank')}
+                variant="outline" 
+                className="w-full sm:w-auto px-8 mx-auto shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2 border-brand-blue/30 text-brand-blue hover:bg-brand-blue/5"
+                onClick={() => {
+                  window.open(`https://www.google.com/maps/search/${encodeURIComponent(selectedCafe.mapQuery)}`, '_blank');
+                }}
               >
-                View on Maps <Icon name="MapPin" size={16} />
+                View on Google Maps
+                <Icon name="MapPin" size={18} />
               </Button>
             </div>
           </div>
