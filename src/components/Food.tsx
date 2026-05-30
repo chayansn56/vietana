@@ -103,12 +103,15 @@ const Food: React.FC = () => {
   };
 
   return (
-    <Section id="food" variant="white" spacing="lg" className="relative overflow-hidden">
-      
-      {/* Bright Theme Soft Accents */}
-      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-brand-blue/5 rounded-full blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-brand-green/5 rounded-full blur-[100px] pointer-events-none z-0" />
-      
+    <Section id="food" className="bg-surface-cream relative overflow-hidden py-24">
+      {/* Colorful Background Blobs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-gold/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-green/10 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-brand-blue/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+      {/* Decorative Food Pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#1e3b29 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+
       <Container className="relative z-10">
         <div className="text-center mb-16 reveal flex flex-col items-center">
           <Heading as="h2" size="3xl" font="serif" className="text-brand-green-dark mb-2">
