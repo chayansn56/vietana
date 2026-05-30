@@ -122,7 +122,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             variant="none" 
             className="!text-white mb-2 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_8px_60px_rgba(0,0,0,0.8)] tracking-tight leading-none"
           >
-            Feel <em className="text-brand-gold italic pr-2">Vietnam</em>,
+            Feel <em className="text-brand-blue not-italic pr-2">Vietnam</em>,
             <span className="block mt-1 text-white">Your Way 🇻🇳</span>
           </Heading>
           
