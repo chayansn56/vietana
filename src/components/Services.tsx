@@ -102,7 +102,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
 
   return (
     <Section id="services" variant="warm" spacing="lg">
-      <div className="absolute top-8 -right-4 font-serif text-[clamp(5rem,14vw,13rem)] font-light text-black opacity-[0.03] tracking-wider pointer-events-none select-none z-0">
+      <div className="absolute top-8 -right-4 font-serif text-[clamp(5rem,14vw,13rem)] font-light text-black opacity-[0.03] tracking-wider pointer-events-none select-none z-0 whitespace-nowrap">
         {t.services.ghost}
       </div>
 

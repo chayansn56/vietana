@@ -39,7 +39,7 @@ const Food: React.FC = () => {
       <div className="absolute top-[30%] left-[5%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] bg-brand-gold/5 rounded-full blur-[100px] animate-blob-float pointer-events-none z-0 mix-blend-multiply opacity-50" />
       <div className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] max-w-[400px] max-h-[400px] bg-brand-green/5 rounded-full blur-[80px] animate-blob-float pointer-events-none z-0 mix-blend-multiply opacity-40" style={{ animationDelay: '4s' }} />
 
-      <div className="absolute top-8 -right-4 font-serif text-[clamp(5rem,14vw,13rem)] font-light text-black opacity-[0.03] tracking-wider pointer-events-none select-none z-0">
+      <div className="absolute top-8 -right-4 font-serif text-[clamp(5rem,14vw,13rem)] font-light text-black opacity-[0.03] tracking-wider pointer-events-none select-none z-0 whitespace-nowrap">
         {t.food.title}
       </div>
       
