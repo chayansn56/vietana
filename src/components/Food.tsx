@@ -185,14 +185,20 @@ const Food: React.FC = () => {
               <Heading as="h3" size="md" className="font-serif text-brand-green-dark mb-4 border-b border-black/5 pb-3">
                 FAMOUS CAFÉS
               </Heading>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {CAFES.map((cafe, i) => (
                   <button 
                     key={i} 
                     onClick={() => setSelectedCafe(cafe)}
-                    className="bg-white hover:bg-brand-blue/5 border border-brand-blue/10 px-4 py-2 rounded-full text-brand-green-dark text-xs font-medium transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    className="group relative h-24 rounded-xl overflow-hidden border border-brand-blue/20 hover:border-brand-blue/50 transition-all shadow-sm hover:shadow-md hover:-translate-y-1 bg-brand-green-dark"
                   >
-                    {cafe.name}
+                    <img src={cafe.img} alt={cafe.name} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-2 left-2 right-2 text-left pointer-events-none">
+                      <Text variant="white" size="xs" weight="bold" className="leading-tight text-white drop-shadow-md truncate">
+                        {cafe.name}
+                      </Text>
+                    </div>
                   </button>
                 ))}
               </div>
@@ -203,31 +209,26 @@ const Food: React.FC = () => {
           {/* RIGHT SIDE: Brands & Preferences */}
           <div className="w-full lg:w-[320px] xl:w-[380px] shrink-0 space-y-6 reveal delay-200">
             
-            {/* The Spicy Spoon Card */}
-            <Card variant="white" padding="md" className="flex flex-col items-center justify-center text-center shadow-medium border-brand-gold/10 relative overflow-hidden group min-h-[180px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <img src="/spicy_spoon_new.png" alt="The Spicy Spoon" className="mix-blend-multiply transition-transform duration-500 group-hover:scale-105 max-h-[140px] object-contain mb-3" />
-              <Text size="xs" variant="accent" className="uppercase tracking-widest text-brand-gold font-semibold relative z-10">
-                coming soon
-              </Text>
-            </Card>
+            {/* Restaurant Cards */}
+            <div className="grid grid-cols-2 gap-4">
+              {/* The Spicy Spoon Card */}
+              <Card variant="white" padding="md" className="flex flex-col items-center justify-center text-center shadow-medium border-brand-gold/10 relative overflow-hidden group h-[160px]">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <img src="/spicy_spoon_new.png" alt="The Spicy Spoon" className="mix-blend-multiply transition-transform duration-500 group-hover:scale-105 h-[60px] object-contain mb-3" />
+                <Text size="xs" variant="accent" className="uppercase tracking-widest text-brand-gold font-semibold relative z-10 text-[9px]">
+                  coming soon
+                </Text>
+              </Card>
 
-            {/* Mi Quang Co Vien Card */}
-            <Card variant="white" padding="md" className="flex flex-col items-center justify-center text-center shadow-medium border-brand-green/10 relative overflow-hidden group min-h-[180px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <img src="/mi_quang_new.png" alt="Mì Quảng Cô Viên" className="mb-4 mix-blend-multiply transition-transform duration-500 group-hover:scale-105 max-h-[100px] object-contain" />
-              <Text size="xs" variant="accent" className="uppercase tracking-widest text-brand-green-dark font-semibold relative z-10 mb-4">
-                CENTRAL VIETNAMESE FOOD
-              </Text>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="w-full flex items-center justify-center gap-2 border-brand-green/30 text-brand-green hover:bg-brand-green/5 text-xs py-1.5"
-                onClick={() => window.open("https://www.google.com/maps/search/Mì+Quảng+Cô+Viên", "_blank")}
-              >
-                View on Maps <Icon name="MapPin" size={14} />
-              </Button>
-            </Card>
+              {/* Mi Quang Co Vien Card */}
+              <Card variant="white" padding="md" className="flex flex-col items-center justify-center text-center shadow-medium border-brand-green/10 relative overflow-hidden group h-[160px] cursor-pointer" onClick={() => window.open("https://www.google.com/maps/search/Mì+Quảng+Cô+Viên", "_blank")}>
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <img src="/mi_quang_new.png" alt="Mì Quảng Cô Viên" className="mb-3 mix-blend-multiply transition-transform duration-500 group-hover:scale-105 h-[60px] object-contain" />
+                <Text size="xs" variant="accent" className="uppercase tracking-widest text-brand-green-dark font-semibold relative z-10 text-[9px]">
+                  VIEW ON MAPS
+                </Text>
+              </Card>
+            </div>
 
             {/* Food Preferences */}
             <Card variant="white" padding="md" className="shadow-medium border-brand-blue/10 bg-white/60 backdrop-blur-md">

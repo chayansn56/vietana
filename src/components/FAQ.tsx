@@ -88,7 +88,7 @@ ${customQuestion || 'I want to know more about travel in Vietnam.'}`;
                 onClick={() => setOpenIdx(isOpen ? null : i)}
               >
                 <div className="px-5 py-4 md:px-6 md:py-5 flex items-center justify-between gap-4">
-                  <h4 className="flex-1 m-0 text-[14px] md:text-[15px] font-semibold text-brand-green-dark leading-snug">
+                  <h4 className="flex-1 m-0 text-[16px] md:text-[17px] font-bold text-black drop-shadow-sm leading-snug">
                     {formatText(faq.q)}
                   </h4>
                   <div className={`w-6 h-6 md:w-8 md:h-8 flex items-center justify-center rounded-full transition-transform duration-300 shrink-0 text-xl font-light

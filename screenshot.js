@@ -10,21 +10,15 @@ const fs = require('fs');
   // 1. Screenshot Food section
   const foodElement = await page.$('#food');
   if (foodElement) {
-    await foodElement.screenshot({ path: '/Users/chayansoni/.gemini/antigravity/brain/cc9fcb16-f5e7-4da1-8050-652de549fdb8/food_ui_fixed.png' });
-  }
-
-  // 3. Screenshot FAQ section
-  const faqElement = await page.$('#faq');
-  if (faqElement) {
-    await faqElement.screenshot({ path: '/Users/chayansoni/.gemini/antigravity/brain/cc9fcb16-f5e7-4da1-8050-652de549fdb8/faq_ui_fixed.png' });
+    await foodElement.screenshot({ path: '/Users/chayansoni/.gemini/antigravity/brain/cc9fcb16-f5e7-4da1-8050-652de549fdb8/food_ui.png' });
   }
 
   // 2. Open Custom Trip Builder and Screenshot
   const plannerButton = await page.$('nav button'); // Assuming the planner button is in nav
   if (plannerButton) {
     await plannerButton.click();
-    await new Promise(r => setTimeout(r, 1500)); // Wait for modal to open and images to load
-    await page.screenshot({ path: '/Users/chayansoni/.gemini/antigravity/brain/cc9fcb16-f5e7-4da1-8050-652de549fdb8/custom_trip_ui_fixed.png' });
+    await page.waitForTimeout(1000); // Wait for modal to open
+    await page.screenshot({ path: '/Users/chayansoni/.gemini/antigravity/brain/cc9fcb16-f5e7-4da1-8050-652de549fdb8/custom_trip_ui.png' });
   }
 
   await browser.close();

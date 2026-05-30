@@ -226,7 +226,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose, 
         </div>
 
         {/* RIGHT: Estimate Receipt & Insights */}
-        <div className="flex-1 md:flex-[0.5] p-10 glass-dark bg-black/40 flex flex-col shadow-inner border-l border-white/5 rounded-none border-t-0 border-r-0 border-b-0 overflow-y-auto">
+        <div className="flex-1 md:flex-[0.5] p-10 bg-black/60 flex flex-col shadow-inner border-l border-white/5 rounded-none border-t-0 border-r-0 border-b-0 overflow-y-auto">
            
            {/* Smart Insights Panel */}
            <div className="mb-10 bg-brand-gold/5 border border-brand-gold/20 rounded-2xl p-6">

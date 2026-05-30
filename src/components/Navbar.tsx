@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       <nav 
         id="nav" 
         className={`fixed top-0 left-0 right-0 z-[1000] px-[var(--spacing-layout)] flex items-center justify-between transition-all duration-550 ease-soft gap-4
-          ${scrolled ? (isLight ? 'py-3.5 glass shadow-soft' : 'py-3.5 glass-dark shadow-strong') : 'py-6'}`}
+          ${scrolled ? (isLight ? 'py-3.5 glass shadow-soft' : 'py-3.5 glass-dark shadow-strong') : 'py-5 backdrop-blur-md bg-white/10 shadow-sm border-b border-white/10'}`}
       >
         <a href="#" className="flex shrink-0 items-center gap-2 no-underline">
           <img src="/vietana_logo.png" className="h-[45px]" alt="Vietana Logo" />
