@@ -15,11 +15,11 @@ interface HeroProps {
 }
 
 const LOCATIONS = [
-  "Ho Chi Minh City at Night",
-  "Golden Hour at Ha Long Bay",
-  "Northern Mountain Terraces",
-  "Mui Ne Sand Dunes",
-  "Coffee Culture in Da Lat"
+  "Misty Mornings in Ha Long Bay",
+  "Vibrant Ho Chi Minh City",
+  "Colorful Lanterns of Hoi An",
+  "Tranquil Ninh Binh Rivers",
+  "Golden Terraces of Sa Pa"
 ];
 
 const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
@@ -65,7 +65,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
     const slideTimer = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
-    }, 6000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);
@@ -82,12 +82,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             key={idx} 
             className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1.8s] ease-in-out will-change-transform will-change-opacity ${currentSlide === idx ? 'opacity-100 animate-ken-burns' : 'opacity-0'}`} 
             style={{ backgroundImage: `url('${url}')`, transform: 'translateZ(0)' }}
-          />
+          >
+            {/* If it's the first slide (white tone), add a dreamy glow overlay */}
+            {idx === 0 && (
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_80%)] mix-blend-overlay" />
+            )}
+          </div>
         ))}
       </div>
 
       {/* OVERLAYS */}
-      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_25%_55%,rgba(0,0,0,0.5)_0%,transparent_70%),linear-gradient(125deg,rgba(12,10,9,0.9)_0%,rgba(28,25,23,0.7)_42%,rgba(0,0,0,0.4)_100%),linear-gradient(180deg,rgba(0,0,0,0.3)_0%,transparent_30%,rgba(0,0,0,0.7)_100%)] backdrop-blur-[2px]" />
+      <div className={`absolute inset-0 z-[1] transition-all duration-[1.8s] ${currentSlide === 0 ? 'bg-[radial-gradient(ellipse_at_25%_55%,rgba(255,255,255,0.15)_0%,transparent_70%),linear-gradient(125deg,rgba(12,10,9,0.7)_0%,rgba(28,25,23,0.5)_42%,rgba(0,0,0,0.3)_100%),linear-gradient(180deg,rgba(0,0,0,0.2)_0%,transparent_30%,rgba(0,0,0,0.5)_100%)]' : 'bg-[radial-gradient(ellipse_at_25%_55%,rgba(0,0,0,0.5)_0%,transparent_70%),linear-gradient(125deg,rgba(12,10,9,0.9)_0%,rgba(28,25,23,0.7)_42%,rgba(0,0,0,0.4)_100%),linear-gradient(180deg,rgba(0,0,0,0.3)_0%,transparent_30%,rgba(0,0,0,0.7)_100%)]'} backdrop-blur-[2px]`} />
       <div className="absolute inset-0 z-[2] bg-[url('data:image/svg+xml,%3Csvg_viewBox=%220_0_256_256%22_xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter_id=%22n%22%3E%3CfeTurbulence_type=%22fractalNoise%22_baseFrequency=%22.85%22_numOctaves=%224%22_stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect_width=%22100%25%22_height=%22100%25%22_filter=%22url(%23n)%22/%3E%3C/svg%3E')] bg-[length:200px_200px] opacity-[0.022] pointer-events-none" />
       
       {/* CINEMATIC LIGHT LEAKS */}

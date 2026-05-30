@@ -36,9 +36,9 @@ export const PACKAGES: PackageData[] = [
 ];
 
 export const HERO_SLIDES = [
-  'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1920&q=90',
-  'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1920&q=90',
-  'https://images.unsplash.com/photo-1562602833-0f4ab2fc46e3?w=1920&q=90',
-  'https://images.unsplash.com/photo-1512813195386-6cf811ad3542?w=1920&q=90',
-  'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1920&q=90'
+  'https://images.unsplash.com/photo-1531737212413-667205e1cda7?auto=format&fit=crop&w=1920&q=80', // Misty/Light Halong Bay
+  'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1920&q=80', // HCMC River
+  'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1920&q=80', // Hoi An Lanterns
+  'https://images.unsplash.com/photo-1581026046187-5775cb56b3e7?auto=format&fit=crop&w=1920&q=80', // Ninh Binh landscape
+  'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=1920&q=80' // Mountain terraces
 ];
