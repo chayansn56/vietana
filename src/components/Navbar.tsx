@@ -13,9 +13,10 @@ interface NavbarProps {
   setMobileMenuOpen: (open: boolean) => void;
   onOpenPlanner: () => void;
   onOpenContact: () => void;
+  onOpenExperiences: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences }) => {
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
 
@@ -61,6 +62,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                   if (link.isPlanner) {
                     e.preventDefault();
                     onOpenPlanner();
+                  } else if ((link as any).isExperiences) {
+                    e.preventDefault();
+                    onOpenExperiences();
                   } else if (link.href === '#contact') {
                     e.preventDefault();
                     onOpenContact();
@@ -159,6 +163,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                 e.preventDefault();
                 setMobileMenuOpen(false);
                 onOpenPlanner();
+              } else if ((link as any).isExperiences) {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                onOpenExperiences();
               } else if (link.href === '#contact') {
                 e.preventDefault();
                 setMobileMenuOpen(false);
