@@ -81,21 +81,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
                 />
             ))}
 
-            {routeCoords.length >= 2 && (
-                <>
-                    {/* The Static Golden Thread (Background) */}
-                    <Polyline positions={routeCoords} color="#C9A84C" weight={3} opacity={0.25} className="glowing-route" />
-                    {/* The Marching Dashes (Animated Foreground) */}
-                    <Polyline 
-                        positions={routeCoords} 
-                        color="#C9A84C" 
-                        weight={2} 
-                        opacity={0.9} 
-                        dashArray="8, 12"
-                        className="marching-dashes drop-shadow-[0_0_8px_rgba(201,168,76,1)]" 
-                    />
-                </>
-            )}
             <MapController center={mapCenter} />
         </MapContainer>
     );
