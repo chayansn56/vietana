@@ -63,10 +63,14 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             zoomControl={false}
             attributionControl={false}
             scrollWheelZoom={false} 
-            style={{ height: '100%', width: '100%', backgroundColor: '#0A1210' }}
+            style={{ height: '100%', width: '100%', backgroundColor: '#f4f4f4' }}
         >
-            {/* Minimalist Dark Mode TileLayer (Fast & Mobile Friendly) */}
-            <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+            {/* Minimalist Light Mode TileLayer (Fast & Mobile Friendly) */}
+            <TileLayer
+                    url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                    className="map-tiles-light"
+                />
             
             {/* Highlight Vietnam in Green (Living Topography) */}
             <GeoJSON 
