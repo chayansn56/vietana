@@ -24,7 +24,6 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-leaflet": "^5.0.0",
-    "react-water-wave": "^2.0.1",
     "vite": "^6.2.3"
   },
   "devDependencies": {
