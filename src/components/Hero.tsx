@@ -155,20 +155,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             {t.hero.support}
           </Text>
           
-          <div className="flex gap-5 flex-wrap animate-reveal-up [animation-delay:1.08s]">
-            <Button 
-              className="group relative overflow-hidden text-brand-green-extra-dark font-bold flex items-center justify-center gap-2" 
-              onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
-            >
-              <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-350" />
-              <Icon name="MessageCircle" size={18} /> {t.hero.plan}
-            </Button>
+          <div className="flex gap-5 flex-wrap justify-center lg:justify-start animate-reveal-up [animation-delay:1.08s] mt-2">
             <Button 
               variant="glass" 
-              onClick={onOpenMagic}
-              className="font-semibold flex items-center justify-center gap-2"
+              className="group bg-white/5 border border-white/10 hover:bg-white/10 text-white shadow-soft transition-all duration-350 ease-soft px-8 py-3.5 w-full sm:w-auto"
+              onClick={() => {
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              <Icon name="Sparkles" size={18} /> {t.hero.discover}
+              <span className="flex items-center justify-center gap-2 text-sm tracking-widest uppercase font-medium">
+                <Icon name="Compass" size={18} className="text-brand-gold group-hover:rotate-45 transition-transform duration-500" /> Discover Vietnam
+              </span>
             </Button>
           </div>
         </div>
