@@ -129,7 +129,7 @@ const Food: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
           
           {/* LEFT SIDE: Food Guide & Cafes */}
-          <div className="flex-1 w-full reveal">
+          <div className="flex-1 min-w-0 w-full reveal">
             
             {/* Food Accordions */}
             <div className="mb-16 relative">
