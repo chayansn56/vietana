@@ -84,15 +84,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1.8s] ease-in-out will-change-transform will-change-opacity ${currentSlide === idx ? 'opacity-100 animate-ken-burns' : 'opacity-0'}`} 
             style={{ backgroundImage: `url('${url}')`, transform: 'translateZ(0)' }}
           >
-            {/* Dark tint on the image itself */}
-            <div className="absolute inset-0 bg-black/40" />
           </div>
         ))}
       </div>
-
-      {/* OVERLAYS */}
-      {/* Removed  to significantly improve frame rates */}
-      <div className={`absolute inset-0 z-[1] transition-all duration-[1.8s] bg-[radial-gradient(ellipse_at_25%_55%,rgba(0,0,0,0.6)_0%,transparent_70%),linear-gradient(125deg,rgba(12,10,9,0.95)_0%,rgba(28,25,23,0.85)_42%,rgba(0,0,0,0.6)_100%),linear-gradient(180deg,rgba(0,0,0,0.5)_0%,transparent_30%,rgba(0,0,0,0.8)_100%)]`} />
       
       {/* CINEMATIC LIGHT LEAKS */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden mix-blend-screen">
@@ -115,7 +109,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
       {/* CONTENT */}
       <Container className="relative z-[10]">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl p-8 sm:p-12 rounded-[2rem] bg-black/30 backdrop-blur-2xl border border-white/20 shadow-2xl">
           <div className="flex items-center gap-4 mb-8 animate-reveal-up [animation-delay:0.35s]">
             <div className="w-10 h-px bg-gradient-to-r from-brand-blue to-transparent"></div>
             <Text as="span" size="xs" variant="none" className="uppercase tracking-[0.25em] text-brand-blue font-bold">

@@ -36,7 +36,7 @@ export const PACKAGES: PackageData[] = [
 ];
 
 export const HERO_SLIDES = [
-  'https://images.unsplash.com/photo-1531737212413-667205e1cda7?auto=format&fit=crop&w=1920&q=80', // Misty/Light Halong Bay
+  'https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=1920&q=80', // Bright Golden Bridge Da Nang
   'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1920&q=80', // HCMC River
   'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1920&q=80', // Hoi An Lanterns
   'https://images.unsplash.com/photo-1581026046187-5775cb56b3e7?auto=format&fit=crop&w=1920&q=80', // Ninh Binh landscape
