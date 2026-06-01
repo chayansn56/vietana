@@ -5,6 +5,7 @@ export interface Destination {
   lat: number;
   lng: number;
   img: string;
+  images?: string[];
 }
 
 export interface Experience {

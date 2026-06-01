@@ -97,11 +97,26 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
                 >
                     <Popup className="glassmorphism-popup" closeButton={false} autoPanPadding={[20, 20]}>
                         <div className="w-[320px] bg-surface-cream/90 backdrop-blur-xl rounded-xl border border-black/10 overflow-hidden shadow-2xl flex flex-col">
-                            {d.img && (
-                                <div className="w-full h-32 relative">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-surface-cream/90 to-transparent z-10" />
-                                    <img src={d.img} alt={d.name} className="w-full h-full object-cover" />
+                            {(d.images && d.images.length > 0) ? (
+                                <div className="w-full h-40 relative flex overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                    {d.images.map((imgUrl, imgIdx) => (
+                                        <div key={imgIdx} className="min-w-full h-full relative snap-center shrink-0">
+                                            <div className="absolute inset-0 bg-gradient-to-t from-surface-cream/90 to-transparent z-10" />
+                                            <img src={imgUrl} alt={`${d.name} view ${imgIdx + 1}`} className="w-full h-full object-cover" />
+                                            {/* Indicators */}
+                                            <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-md text-white text-[10px] px-2 py-0.5 rounded-full z-20">
+                                                {imgIdx + 1} / {d.images!.length}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
+                            ) : (
+                                d.img && (
+                                    <div className="w-full h-40 relative">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-surface-cream/90 to-transparent z-10" />
+                                        <img src={d.img} alt={d.name} className="w-full h-full object-cover" />
+                                    </div>
+                                )
                             )}
                             <div className="p-6 relative z-20 -mt-6">
                                 <Text className="text-editorial-meta text-brand-gold mb-2 editorial-line-accent inline-block">
