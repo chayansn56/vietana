@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet';
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, useMap, GeoJSON } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import ReactDOMServer from 'react-dom/server';
 import { MAP_DEFAULT_ROUTE } from '../../data/destinations';
 import Icon from '../ui/Icon';
+import vietnamGeoJson from '../../data/vietnam.json';
 
 // Fix for Leaflet markers
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -60,6 +61,19 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         >
             {/* Minimalist Dark Mode TileLayer (Fast & Mobile Friendly) */}
             <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+            
+            {/* Highlight Vietnam in Green */}
+            <GeoJSON 
+                data={vietnamGeoJson as any} 
+                style={{ 
+                    fillColor: '#0A2518', // Deep forest green
+                    fillOpacity: 0.4, 
+                    color: '#C9A84C', // Gold border
+                    weight: 1.5, 
+                    opacity: 0.6,
+                    className: 'vietnam-polygon drop-shadow-[0_0_15px_rgba(10,37,24,0.5)]'
+                }} 
+            />
             
             {destinations.map((d, i) => (
                 <Marker 
