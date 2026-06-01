@@ -30,7 +30,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
       
       {/* LEFT: EXPERIENCES (Editorial Showcase) */}
       <div id="experiences" className="flex-1 lg:flex-[0.5] relative py-20 px-12 lg:px-20 border-r border-black/5 flex flex-col z-10 bg-surface-cream">
-        <div className="absolute top-[-10%] left-[-20%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-[90px] animate-blob-float pointer-events-none z-0" />
+        <div className="absolute top-[-10%] left-[-20%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full  hidden animate-blob-float pointer-events-none z-0" />
         <div className="mb-10 reveal">
           <Text className="text-editorial-meta text-brand-gold mb-4 editorial-line-accent inline-block">
             {t.exp.title}
@@ -76,7 +76,7 @@ const ComboSection: React.FC<ComboSectionProps> = ({ onOpenPlanner }) => {
         </div>
 
         {/* Scroll Indicator Fade */}
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface-cream via-surface-cream/90 to-transparent pointer-events-none z-20 flex flex-col items-center justify-end pb-10">
+        <div className="hidden absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface-cream via-surface-cream/90 to-transparent pointer-events-none z-20 flex flex-col items-center justify-end pb-10">
            <motion.div 
              animate={{ height: ["0px", "40px", "0px"], y: [0, 20, 40], opacity: [0, 1, 0] }}
              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

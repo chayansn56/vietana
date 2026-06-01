@@ -105,10 +105,10 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
       {/* Morphing Liquid Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="scroll-parallax absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px]">
-          <div className="w-full h-full bg-brand-gold/5 rounded-full blur-[90px] animate-blob-float mix-blend-multiply opacity-60" />
+          <div className="w-full h-full bg-brand-gold/5 rounded-full  hidden animate-blob-float mix-blend-multiply opacity-60" />
         </div>
         <div className="scroll-parallax-slow absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] max-w-[400px] max-h-[400px]">
-          <div className="w-full h-full bg-brand-green/5 rounded-full blur-[70px] animate-blob-float mix-blend-multiply opacity-50" style={{ animationDelay: '3s' }} />
+          <div className="w-full h-full bg-brand-green/5 rounded-full  hidden animate-blob-float mix-blend-multiply opacity-50" style={{ animationDelay: '3s' }} />
         </div>
       </div>
       <Container className="relative z-10">

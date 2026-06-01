@@ -45,8 +45,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       className="h-[85vh] max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden glass-dark rounded-[32px] shadow-heavy"
     >
       {/* Background Orbs for Organic Lush Vibe */}
-      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-[100px] pointer-events-none z-0 animate-blob-float" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] pointer-events-none z-0 animate-blob-float" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full  pointer-events-none z-0 hidden animate-blob-float" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full  pointer-events-none z-0 hidden animate-blob-float" style={{ animationDelay: '2s' }} />
 
       {/* LEFT: Chat Consultation (Lush Glassmorphism) */}
       <div className="flex-1 md:flex-[0.65] flex flex-col relative z-10 border-r border-white/5">

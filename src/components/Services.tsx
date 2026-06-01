@@ -116,9 +116,9 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
     <Section id="services" variant="warm" spacing="lg" className="relative overflow-hidden">
       {/* Colorful Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-brand-gold/15 rounded-full blur-[100px] animate-blob-float opacity-70" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-brand-blue/10 rounded-full blur-[80px] animate-blob-float opacity-60" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-[40%] left-[20%] w-[30vw] h-[30vw] bg-brand-green/10 rounded-full blur-[100px] animate-blob-float opacity-50" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-brand-gold/15 rounded-full  hidden animate-blob-float opacity-70" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-brand-blue/10 rounded-full  hidden animate-blob-float opacity-60" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[40%] left-[20%] w-[30vw] h-[30vw] bg-brand-green/10 rounded-full  hidden animate-blob-float opacity-50" style={{ animationDelay: '4s' }} />
       </div>
       
       <Container className="relative z-10">
