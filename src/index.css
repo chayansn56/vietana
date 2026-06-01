@@ -342,4 +342,15 @@ html {
   background-color: var(--color-brand-gold);
 }
 
+.marching-dashes path {
+  animation: march 4s linear infinite;
+}
 
+@keyframes march {
+  from {
+    stroke-dashoffset: 40;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

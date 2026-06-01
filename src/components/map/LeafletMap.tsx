@@ -23,45 +23,7 @@ interface PlaneAnimationProps {
     routeCoords: [number, number][];
 }
 
-const RoutePulse: React.FC<PlaneAnimationProps> = ({ routeCoords }) => {
-    const [pulsePos, setPulsePos] = useState<[number, number]>(routeCoords[0] || [21.0285, 105.8542]);
-    const progressRef = useRef(0);
-
-    useEffect(() => {
-        if (routeCoords.length < 2) return;
-
-        let frame: number;
-        const numLegs = routeCoords.length - 1;
-
-        const animate = () => {
-            progressRef.current += 0.0015;
-            if (progressRef.current > numLegs) progressRef.current = 0;
-
-            const legIndex = Math.min(Math.floor(progressRef.current), numLegs - 1);
-            const f = progressRef.current - legIndex;
-
-            const p1 = routeCoords[legIndex];
-            const p2 = routeCoords[legIndex + 1];
-
-            const lat = p1[0] + (p2[0] - p1[0]) * f;
-            const lng = p1[1] + (p2[1] - p1[1]) * f;
-
-            setPulsePos([lat, lng]);
-            frame = requestAnimationFrame(animate);
-        };
-        frame = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(frame);
-    }, [routeCoords]);
-
-    const pulseIcon = L.divIcon({
-        html: `<div class="w-2.5 h-2.5 bg-brand-gold rounded-full shadow-[0_0_10px_2px_rgba(201,168,76,0.8)] animate-pulse"></div>`,
-        className: 'flex items-center justify-center',
-        iconSize: [10, 10],
-        iconAnchor: [5, 5]
-    });
-
-    return <Marker position={pulsePos} icon={pulseIcon} zIndexOffset={1000} />;
-};
+// RoutePulse removed
 
 const MapController = ({ center }: { center: [number, number] }) => {
     const map = useMap();
@@ -120,9 +82,20 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             ))}
 
             {routeCoords.length >= 2 && (
-                <Polyline positions={routeCoords} color="#C9A84C" weight={2} opacity={0.7} className="glowing-route" />
+                <>
+                    {/* The Static Golden Thread (Background) */}
+                    <Polyline positions={routeCoords} color="#C9A84C" weight={3} opacity={0.25} className="glowing-route" />
+                    {/* The Marching Dashes (Animated Foreground) */}
+                    <Polyline 
+                        positions={routeCoords} 
+                        color="#C9A84C" 
+                        weight={2} 
+                        opacity={0.9} 
+                        dashArray="8, 12"
+                        className="marching-dashes drop-shadow-[0_0_8px_rgba(201,168,76,1)]" 
+                    />
+                </>
             )}
-            {routeCoords.length >= 2 && <RoutePulse routeCoords={routeCoords} />}
             <MapController center={mapCenter} />
         </MapContainer>
     );
