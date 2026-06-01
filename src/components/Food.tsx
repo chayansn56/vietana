@@ -181,21 +181,28 @@ const Food: React.FC = () => {
             </div>
 
             {/* Famous Cafes */}
-            <div className="bg-white/40  p-6 rounded-3xl border border-brand-blue/10 shadow-sm reveal">
-              <Heading as="h3" size="md" className="font-serif text-brand-green-dark mb-4 border-b border-black/5 pb-3">
-                FAMOUS CAFÉS
-              </Heading>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="bg-gradient-to-br from-brand-gold/20 via-rose-400/10 to-brand-blue/20 p-6 rounded-3xl border border-white/50 shadow-sm reveal">
+              <div className="flex items-center justify-between mb-4 border-b border-black/5 pb-3">
+                <Heading as="h3" size="md" className="font-serif text-brand-green-dark m-0">
+                  FAMOUS CAFÉS
+                </Heading>
+                <Text size="xs" variant="accent" className="text-brand-green/60 uppercase tracking-widest hidden sm:block">Scroll &rarr;</Text>
+              </div>
+              
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-2 px-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                <style>{`
+                  div::-webkit-scrollbar { display: none; }
+                `}</style>
                 {CAFES.map((cafe, i) => (
                   <button 
                     key={i} 
                     onClick={() => setSelectedCafe(cafe)}
-                    className="group relative h-24 rounded-xl overflow-hidden border border-brand-blue/20 hover:border-brand-blue/50 transition-all shadow-sm hover:shadow-md hover:-translate-y-1 bg-brand-green-dark"
+                    className="group relative h-28 w-48 shrink-0 snap-center rounded-2xl overflow-hidden border-2 border-white/60 hover:border-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 bg-brand-green-dark"
                   >
-                    <img src={cafe.img} alt={cafe.name} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
-                    <div className="absolute bottom-2 left-2 right-2 text-left pointer-events-none">
-                      <Text variant="white" size="xs" weight="bold" className="leading-tight text-white drop-shadow-md truncate">
+                    <img src={cafe.img} alt={cafe.name} className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-3 left-3 right-3 text-left pointer-events-none">
+                      <Text variant="white" size="xs" weight="bold" className="leading-tight text-white drop-shadow-md">
                         {cafe.name}
                       </Text>
                     </div>
