@@ -9,7 +9,7 @@ export const NAV_LINKS = [
   { key: 'packages', href: '#packages' },
   { key: 'aiPlanner', href: '#', isPlanner: true },
   { key: 'food', href: '#food' },
-  { key: 'experiences', href: '#hidden' },
+  { key: 'experiences', href: '#experiences' },
   { key: 'about', href: '#about' },
   { key: 'contact', href: '#contact' },
 ];
