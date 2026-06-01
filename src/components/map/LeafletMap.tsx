@@ -23,9 +23,8 @@ interface PlaneAnimationProps {
     routeCoords: [number, number][];
 }
 
-const PlaneAnimation: React.FC<PlaneAnimationProps> = ({ routeCoords }) => {
-    const [planePos, setPlanePos] = useState<[number, number]>(routeCoords[0] || [21.0285, 105.8542]);
-    const [planeAngle, setPlaneAngle] = useState(165);
+const RoutePulse: React.FC<PlaneAnimationProps> = ({ routeCoords }) => {
+    const [pulsePos, setPulsePos] = useState<[number, number]>(routeCoords[0] || [21.0285, 105.8542]);
     const progressRef = useRef(0);
 
     useEffect(() => {
@@ -46,27 +45,22 @@ const PlaneAnimation: React.FC<PlaneAnimationProps> = ({ routeCoords }) => {
 
             const lat = p1[0] + (p2[0] - p1[0]) * f;
             const lng = p1[1] + (p2[1] - p1[1]) * f;
-            
-            const dLng = p2[1] - p1[1];
-            const dLat = p2[0] - p1[0];
-            const angle = (Math.atan2(dLng, dLat) * 180) / Math.PI + 10;
 
-            setPlanePos([lat, lng]);
-            setPlaneAngle(angle);
+            setPulsePos([lat, lng]);
             frame = requestAnimationFrame(animate);
         };
         frame = requestAnimationFrame(animate);
         return () => cancelAnimationFrame(frame);
     }, [routeCoords]);
 
-    const planeIcon = L.divIcon({
-        html: `<div class="text-white drop-shadow-md" style="transform: rotate(${planeAngle}deg);">${ReactDOMServer.renderToString(<Icon name="Plane" size={24} className="fill-current" />)}</div>`,
-        className: '',
-        iconSize: [24, 24],
-        iconAnchor: [12, 12]
+    const pulseIcon = L.divIcon({
+        html: `<div class="w-2.5 h-2.5 bg-brand-gold rounded-full shadow-[0_0_10px_2px_rgba(201,168,76,0.8)] animate-pulse"></div>`,
+        className: 'flex items-center justify-center',
+        iconSize: [10, 10],
+        iconAnchor: [5, 5]
     });
 
-    return <Marker position={planePos} icon={planeIcon} zIndexOffset={1000} />;
+    return <Marker position={pulsePos} icon={pulseIcon} zIndexOffset={1000} />;
 };
 
 const MapController = ({ center }: { center: [number, number] }) => {
@@ -128,7 +122,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             {routeCoords.length >= 2 && (
                 <Polyline positions={routeCoords} color="#C9A84C" weight={2} opacity={0.7} className="glowing-route" />
             )}
-            {routeCoords.length >= 2 && <PlaneAnimation routeCoords={routeCoords} />}
+            {routeCoords.length >= 2 && <RoutePulse routeCoords={routeCoords} />}
             <MapController center={mapCenter} />
         </MapContainer>
     );
