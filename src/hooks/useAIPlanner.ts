@@ -1,63 +1,31 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { PlannerStateMachine, Preferences, PlannerMode } from '../logic/plannerStateMachine';
 
 export interface Message {
   text: string;
   type: 'bot' | 'user' | 'blueprint';
 }
 
+export interface Preferences {
+  focus?: string;
+  vibe?: string;
+  style?: string;
+  food?: string;
+  group?: string;
+  nightlife?: string;
+  extras?: string;
+}
+
 export const useAIPlanner = (initialDestination?: string, initialPrompt?: string) => {
   const { t } = useTranslation();
   const [messages, setMessages] = useState<Message[]>([]);
+  const [history, setHistory] = useState<{role: string, parts: {text: string}[]}[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [options, setOptions] = useState<string[]>([]);
-  const [plannerMode, setPlannerMode] = useState<PlannerMode>('GATHERING_PREFS');
-  const [questionIndex, setQuestionIndex] = useState(0);
-  
   const [preferences, setPreferences] = useState<Preferences>({
     focus: initialDestination || undefined
   });
-
-  const enqueueBotMessages = (msgs: { text: string; options?: string[]; type?: 'bot' | 'blueprint'; delay?: number }[]) => {
-    let delayAccumulator = 0;
-    msgs.forEach((msg, index) => {
-      const delay = msg.delay ?? 500;
-      delayAccumulator += delay;
-      
-      if (delay > 0) {
-        setTimeout(() => setIsTyping(true), delayAccumulator - delay);
-      }
-      
-      setTimeout(() => {
-        setIsTyping(false);
-        setMessages(prev => [...prev, { text: msg.text, type: msg.type || 'bot' }]);
-        if (index === msgs.length - 1) {
-          setOptions(msg.options || []);
-        }
-      }, delayAccumulator);
-    });
-  };
-
-  // We actually need a robust way to handle state if we are simulating an initial prompt.
-  // It's easier to just use the handleSend function after initialization.
-  const handleSendRef = useRef<((text?: string, cp?: Preferences, cm?: PlannerMode, cqi?: number) => Promise<void>) | null>(null);
-  handleSendRef.current = async (text: string = inputValue, currentPrefs = preferences, currentMode = plannerMode, currentQIdx = questionIndex) => {
-    if (!text.trim() || currentMode === 'FINISHED') return;
-    
-    setMessages(prev => [...prev, { text, type: 'user' }]);
-    setInputValue('');
-    setOptions([]);
-
-    const result = PlannerStateMachine.processInput(currentPrefs, currentMode, currentQIdx, text);
-    
-    setPreferences(result.updatedPreferences);
-    setPlannerMode(result.mode);
-    setQuestionIndex(result.questionIndex);
-    
-    enqueueBotMessages(result.nextBotMessages);
-  };
 
   const initialized = useRef(false);
 
@@ -66,20 +34,76 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
     if (messages.length > 0) return;
     initialized.current = true;
     
-    const initialState = PlannerStateMachine.getInitialState(t.planner.greeting, initialDestination);
-    setPreferences(initialState.updatedPreferences);
-    setPlannerMode(initialState.mode);
-    setQuestionIndex(initialState.questionIndex);
-    enqueueBotMessages(initialState.nextBotMessages);
+    // Initial greeting
+    const greeting = "Namaste! I'm your local Vietana expert. Ask me anything about Vietnam, from the best Indian restaurants in Hanoi to hidden gems in Da Nang! How can I help you plan your dream trip today?";
+    setMessages([{ text: greeting, type: 'bot' }]);
+    setHistory([{ role: 'model', parts: [{ text: greeting }] }]);
 
     if (initialPrompt) {
       setTimeout(() => {
-        handleSendRef.current(initialPrompt, initialState.updatedPreferences, initialState.mode, initialState.questionIndex);
-      }, 1500); // Send the prompt automatically after the bot's greeting
+        handleSend(initialPrompt);
+      }, 1500);
     }
-  }, [initialDestination, initialPrompt, t.planner.greeting]);
+  }, [initialDestination, initialPrompt]);
 
-  const stableHandleSend = (text?: string) => handleSendRef.current?.(text);
+  const handleSend = async (text: string = inputValue) => {
+    if (!text.trim()) return;
+    
+    setMessages(prev => [...prev, { text, type: 'user' }]);
+    setInputValue('');
+    setIsTyping(true);
+    setOptions([]);
+
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: history,
+          context: preferences
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('API Error');
+      }
+
+      const data = await response.json();
+      
+      const newBotMsg = data.text;
+      const extractedPrefs = data.extractedPreferences || {};
+
+      setMessages(prev => [...prev, { text: newBotMsg, type: 'bot' }]);
+      
+      setHistory(prev => [
+        ...prev, 
+        { role: 'user', parts: [{ text }] },
+        { role: 'model', parts: [{ text: newBotMsg }] }
+      ]);
+
+      // Update preferences safely
+      setPreferences(prev => {
+        const next = { ...prev };
+        if (extractedPrefs.focus && extractedPrefs.focus.toLowerCase() !== 'null') next.focus = extractedPrefs.focus;
+        if (extractedPrefs.vibe && extractedPrefs.vibe.toLowerCase() !== 'null') next.vibe = extractedPrefs.vibe;
+        if (extractedPrefs.style && extractedPrefs.style.toLowerCase() !== 'null') next.style = extractedPrefs.style;
+        if (extractedPrefs.food && extractedPrefs.food.toLowerCase() !== 'null') next.food = extractedPrefs.food;
+        return next;
+      });
+
+      // Show blueprint button if they seem ready
+      if (newBotMsg.toLowerCase().includes('generate itinerary') || newBotMsg.toLowerCase().includes('ready to plan')) {
+        setMessages(prev => [...prev, { text: '', type: 'blueprint' }]);
+      }
+
+    } catch (error) {
+      console.error(error);
+      setMessages(prev => [...prev, { text: "I'm sorry, I'm having trouble connecting to my brain right now. Please try again in a moment!", type: 'bot' }]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
 
   return {
     messages,
@@ -87,8 +111,8 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
     setInputValue,
     isTyping,
     options,
-    isFinished: plannerMode === 'FINISHED',
+    isFinished: false,
     preferences,
-    handleSend: stableHandleSend
+    handleSend
   };
 };

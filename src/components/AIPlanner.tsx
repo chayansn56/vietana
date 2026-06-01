@@ -150,15 +150,15 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               <input
                 type="text"
                 className="flex-1 bg-transparent border-none py-3 text-white text-lg font-light outline-none placeholder:text-white/30"
-                placeholder={t.planner.where}
+                placeholder={t.planner.where || "Ask anything about Vietnam..."}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               />
               <button
-                className="bg-brand-gold text-brand-green-extra-dark border-none rounded-xl px-6 py-3 font-semibold transition-all duration-300 mr-1 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-brand-gold-light hover:shadow-gold"
+                className="bg-brand-gold text-brand-green-extra-dark border-none rounded-xl px-6 py-3 font-semibold transition-all duration-300 mr-1 disabled:opacity-40 hover:bg-brand-gold-light hover:shadow-gold"
                 onClick={() => handleSend()}
-                disabled={isFinished || (!inputValue.trim() && options.length === 0)}
+                disabled={!inputValue.trim()}
               >
                 Send
               </button>
