@@ -55,7 +55,8 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
     // Initial greeting
     const greeting = "Namaste! I'm your local Vietana expert. Ask me anything about Vietnam, from the best Indian restaurants in Hanoi to hidden gems in Da Nang! How can I help you plan your dream trip today?";
     setMessages([{ text: greeting, type: 'bot' }]);
-    setHistory([{ role: 'model', parts: [{ text: greeting }] }]);
+    // DO NOT add the bot greeting to the history array. Gemini requires history to start with a 'user' message.
+    setHistory([]);
 
     if (initialPrompt) {
       setTimeout(() => {
