@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { HERO_SLIDES } from '../data/siteContent';
 import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
 import { useTranslation } from '../contexts/LanguageContext';
@@ -15,6 +15,13 @@ interface HeroProps {
   onOpenMagic: () => void;
 }
 
+import $ from 'jquery';
+// Make jQuery available globally so the plugin can attach to it.
+if (typeof window !== 'undefined') {
+  (window as any).$ = (window as any).jQuery = $;
+}
+import 'jquery.ripples';
+
 const LOCATIONS = [
   "Misty Mornings in Ha Long Bay",
   "Vibrant Ho Chi Minh City",
@@ -26,6 +33,8 @@ const LOCATIONS = [
 const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const rippleRef = useRef<HTMLDivElement>(null);
+  
   const [clocks, setClocks] = useState({
     vn: { time: '--:--', date: '---' },
     in: { time: '--:--', date: '---' }
@@ -66,7 +75,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
     const slideTimer = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
-    }, 3000);
+    }, 6000);
 
     return () => {
       clearInterval(interval);
@@ -74,18 +83,39 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
     };
   }, []);
 
+  // Initialize Water Ripples
+  useEffect(() => {
+    if (rippleRef.current && typeof window !== 'undefined') {
+      try {
+        $(rippleRef.current).ripples({
+          resolution: 512,
+          dropRadius: 20,
+          perturbance: 0.04,
+          interactive: true
+        });
+      } catch (e) {
+        console.error("Ripples failed", e);
+      }
+    }
+
+    return () => {
+      if (rippleRef.current) {
+        try {
+          $(rippleRef.current).ripples('destroy');
+        } catch (e) {}
+      }
+    };
+  }, [currentSlide]); // Re-initialize when slide changes to grab the new background image
+
   return (
     <Section id="hero" spacing="none" className="h-screen min-h-[700px] flex items-center">
-      {/* BACKGROUND SLIDES */}
-      <div className="absolute inset-[-10%] z-0">
-        {HERO_SLIDES.map((url, idx) => (
-          <div 
-            key={idx} 
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1.8s] ease-in-out will-change-transform will-change-opacity ${currentSlide === idx ? 'opacity-100 animate-ken-burns' : 'opacity-0'}`} 
-            style={{ backgroundImage: `url('${url}')`, transform: 'translateZ(0)' }}
-          >
-          </div>
-        ))}
+      {/* BACKGROUND SLIDES WITH RIPPLES */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div 
+          ref={rippleRef}
+          className="w-[110%] h-[110%] -left-[5%] -top-[5%] absolute bg-cover bg-center animate-ken-burns" 
+          style={{ backgroundImage: `url('${HERO_SLIDES[currentSlide]}')` }}
+        />
       </div>
       
       {/* CINEMATIC LIGHT LEAKS */}
