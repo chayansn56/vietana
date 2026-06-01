@@ -31,6 +31,6 @@ export const TRIP_BUILDER_CONSTANTS = {
   }
 };
 
-export const TRIP_BUILDER_CITIES = [
-  "Hanoi", "Sapa", "Halong Bay", "Ninh Binh", "Da Nang", "Hoi An", "Hue", "Nha Trang", "Da Lat", "Ho Chi Minh City", "Phu Quoc"
-];
+import { MAP_DESTINATIONS } from './destinations';
+
+export const TRIP_BUILDER_CITIES = MAP_DESTINATIONS.map(d => d.name);

@@ -14,9 +14,10 @@ interface NavbarProps {
   onOpenPlanner: () => void;
   onOpenContact: () => void;
   onOpenExperiences: () => void;
+  onOpenMapCurtain: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain }) => {
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
 
@@ -97,6 +98,14 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
         </ul>
 
         <div className="flex items-center gap-4 shrink-0">
+          <button 
+            onClick={() => onOpenMapCurtain()}
+            className={`hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full transition-colors border ${isLight ? 'glass border-brand-green/20 text-brand-green-extra-dark hover:bg-brand-green/10' : 'glass-dark border-white/20 text-surface-cream hover:bg-white/10'}`}
+          >
+            <Icon name="Map" size={14} />
+            <span className="text-xs tracking-[0.1em] font-medium uppercase">Map</span>
+          </button>
+          
           <div className="relative flex items-center">
             <div 
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer  transition-all duration-350 ease-soft whitespace-nowrap select-none border
@@ -190,7 +199,19 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
           </a>
         ))}
         <div className="h-px w-2/3 bg-white/10 my-4"></div>
-        <div className="flex gap-4">
+        
+        <button 
+          onClick={() => {
+            setMobileMenuOpen(false);
+            onOpenMapCurtain();
+          }}
+          className="flex items-center gap-3 px-6 py-3 rounded-full bg-brand-gold/20 border border-brand-gold/50 text-brand-gold transition-colors"
+        >
+          <Icon name="Map" size={20} />
+          <span className="text-lg font-medium tracking-wide">Explore Map</span>
+        </button>
+
+        <div className="flex gap-4 mt-2">
             {['EN', 'HI', 'VI'].map((l) => (
               <button 
                 key={l}

@@ -23,7 +23,6 @@ import { useNavStyle } from './hooks/useNavStyle';
 const Services = lazy(() => import('./components/Services'));
 const Packages = lazy(() => import('./components/Packages'));
 const Food = lazy(() => import('./components/Food'));
-const ComboSection = lazy(() => import('./components/ComboSection'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const About = lazy(() => import('./components/About'));
 const Contact = lazy(() => import('./components/Contact'));
@@ -33,6 +32,7 @@ const AIPlanner = lazy(() => import('./components/AIPlanner'));
 const MagicMode = lazy(() => import('./components/MagicMode'));
 const CustomTripBuilder = lazy(() => import('./components/CustomTripBuilder'));
 const ExperiencesDrawer = lazy(() => import('./components/ExperiencesDrawer'));
+const MapCurtain = lazy(() => import('./components/MapCurtain'));
 
 export default function App() {
   const { t } = useTranslation();
@@ -48,6 +48,7 @@ export default function App() {
   const [isMagicModeOpen, setIsMagicModeOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isExperiencesOpen, setIsExperiencesOpen] = useState(false);
+  const [isMapOpen, setIsMapOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navClass = useNavStyle(scrollY, isScrolled);
 
@@ -71,6 +72,7 @@ export default function App() {
         onOpenPlanner={() => openPlanner()} 
         onOpenContact={() => setIsContactOpen(true)}
         onOpenExperiences={() => setIsExperiencesOpen(true)}
+        onOpenMapCurtain={() => setIsMapOpen(true)}
       />
 
       <main>
@@ -82,7 +84,6 @@ export default function App() {
           <Packages onOpenBuilder={(dest) => { setBuilderDestinations(dest || []); setIsBuilderOpen(true); }} />
           <Separator variant="gold" />
           <Food />
-          <ComboSection onOpenPlanner={(dest) => openPlanner(dest)} />
           <FAQ onOpenPlanner={(dest, prompt) => openPlanner(dest, prompt)} />
           <About />
         </Suspense>
@@ -123,6 +124,11 @@ export default function App() {
         <ExperiencesDrawer 
           isOpen={isExperiencesOpen}
           onClose={() => setIsExperiencesOpen(false)}
+          onOpenPlanner={(dest) => openPlanner(dest)}
+        />
+        <MapCurtain 
+          isOpen={isMapOpen}
+          onClose={() => setIsMapOpen(false)}
           onOpenPlanner={(dest) => openPlanner(dest)}
         />
         <Contact 

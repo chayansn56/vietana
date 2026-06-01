@@ -12,7 +12,9 @@ export const MAP_DESTINATIONS: Destination[] = [
   {name:'Mui Ne', time:'Nov - Apr', desc:'Red and white sand dunes with kitesurfing.', lat:10.9575, lng:108.2753, img:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&q=80'},
   {name:'Ho Chi Minh City', time:'Dec - Apr', desc:'The vibrant, energetic southern metropolis.', lat:10.8231, lng:106.6297, img:'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80'},
   {name:'Mekong Delta', time:'Sep - Nov', desc:'Lush waterways and floating markets.', lat:10.0452, lng:105.7469, img:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80'},
-  {name:'Phu Quoc', time:'Nov - Apr', desc:'Tropical island paradise with white sand beaches.', lat:10.2289, lng:103.9572, img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'}
+  {name:'Phu Quoc', time:'Nov - Apr', desc:'Tropical island paradise with white sand beaches.', lat:10.2289, lng:103.9572, img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'},
+  {name:'Da Lat', time:'Dec - Mar', desc:'The city of eternal spring and romantic pine forests.', lat:11.9404, lng:108.4384, img:'https://images.unsplash.com/photo-1558582236-40763ea119d8?w=400&q=80'},
+  {name:'Nha Trang', time:'Feb - May', desc:'Coastal resort city with stunning bays and diving.', lat:12.2429, lng:109.1953, img:'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=400&q=80'}
 ];
 
 export const MAP_DEFAULT_ROUTE: [number, number][] = [
