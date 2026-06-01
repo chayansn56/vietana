@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { MAP_DESTINATIONS } from '../data/destinations';
+import { CAFES, INDIAN_VEG_ITEMS, INDIAN_NON_VEG_ITEMS, VIETNAMESE_VEG_ITEMS, VIETNAMESE_NON_VEG_ITEMS } from '../data/food';
+import { SERVICES, PACKAGES } from '../data/siteContent';
 
 export interface Message {
   text: string;
@@ -15,6 +18,21 @@ export interface Preferences {
   nightlife?: string;
   extras?: string;
 }
+
+const getSystemKnowledge = () => {
+  return JSON.stringify({
+    destinations: MAP_DESTINATIONS,
+    food: {
+      cafes: CAFES,
+      indian_veg: INDIAN_VEG_ITEMS,
+      indian_non_veg: INDIAN_NON_VEG_ITEMS,
+      vietnamese_veg: VIETNAMESE_VEG_ITEMS,
+      vietnamese_non_veg: VIETNAMESE_NON_VEG_ITEMS
+    },
+    services: SERVICES,
+    packages: PACKAGES
+  });
+};
 
 export const useAIPlanner = (initialDestination?: string, initialPrompt?: string) => {
   const { t } = useTranslation();
@@ -61,7 +79,8 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
         body: JSON.stringify({
           message: text,
           history: history,
-          context: preferences
+          context: preferences,
+          systemKnowledge: getSystemKnowledge()
         })
       });
 
