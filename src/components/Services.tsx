@@ -150,10 +150,10 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
             return (
               <Card 
                 key={i} 
-                className={`group relative cursor-pointer reveal bg-gradient-to-br backdrop-blur-sm border transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${colorClass.split(' ').slice(1).join(' ')}`}
+                className={`group relative cursor-pointer reveal bg-gradient-to-br  border transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${colorClass.split(' ').slice(1).join(' ')}`}
                 onClick={() => openSrvModal(s.key)}
               >
-                <div className={`w-14 h-14 rounded-2xl mb-6 flex items-center justify-center bg-white/50 backdrop-blur-md shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 ${colorClass.split(' ')[0]}`}>
+                <div className={`w-14 h-14 rounded-2xl mb-6 flex items-center justify-center bg-white/50  shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 ${colorClass.split(' ')[0]}`}>
                   <Icon name={s.ico as IconName} size={28} />
                 </div>
                 

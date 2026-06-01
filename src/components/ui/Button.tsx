@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     secondary: 'bg-brand-green text-white hover:bg-brand-green-light hover:-translate-y-1 shadow-soft',
     outline: 'bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-green-dark',
     ghost: 'bg-transparent text-brand-gold hover:bg-brand-gold/10',
-    glass: 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1 backdrop-blur-md',
+    glass: 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1 ',
   };
 
   const sizes = {

@@ -33,7 +33,7 @@ const FoodAccordion: React.FC<{
   }[colorTheme];
 
   return (
-    <div className={`mb-3 bg-white/60 backdrop-blur-md rounded-2xl border ${themeConfig.border} shadow-sm overflow-hidden transition-all duration-500`}>
+    <div className={`mb-3 bg-white/60  rounded-2xl border ${themeConfig.border} shadow-sm overflow-hidden transition-all duration-500`}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full flex items-center justify-between p-4 lg:p-5 bg-gradient-to-r ${themeConfig.hoverFrom} hover:to-transparent transition-colors group`}
@@ -181,7 +181,7 @@ const Food: React.FC = () => {
             </div>
 
             {/* Famous Cafes */}
-            <div className="bg-white/40 backdrop-blur-md p-6 rounded-3xl border border-brand-blue/10 shadow-sm reveal">
+            <div className="bg-white/40  p-6 rounded-3xl border border-brand-blue/10 shadow-sm reveal">
               <Heading as="h3" size="md" className="font-serif text-brand-green-dark mb-4 border-b border-black/5 pb-3">
                 FAMOUS CAFÉS
               </Heading>
@@ -231,7 +231,7 @@ const Food: React.FC = () => {
             </div>
 
             {/* Food Preferences */}
-            <Card variant="white" padding="md" className="shadow-medium border-brand-blue/10 bg-white/60 backdrop-blur-md">
+            <Card variant="white" padding="md" className="shadow-medium border-brand-blue/10 bg-white/60 ">
               <div className="flex items-center gap-2 mb-4">
                 <Icon name="MessageSquare" size={16} className="text-brand-blue" />
                 <Heading as="h4" size="sm" className="font-serif text-brand-green-dark m-0">
@@ -289,7 +289,7 @@ const Food: React.FC = () => {
               <div className="absolute bottom-6 left-8 right-8">
                 <div className="flex flex-wrap gap-2 mb-3">
                   {selectedFood.tags?.map((tag: string, i: number) => (
-                    <Badge key={i} variant="gold" className="!bg-white/20 backdrop-blur-md !border-white/30 !text-white text-[10px] py-1">
+                    <Badge key={i} variant="gold" className="!bg-white/20  !border-white/30 !text-white text-[10px] py-1">
                       {tag}
                     </Badge>
                   ))}

@@ -91,7 +91,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* OVERLAYS */}
-      {/* Removed backdrop-blur to significantly improve frame rates */}
+      {/* Removed  to significantly improve frame rates */}
       <div className={`absolute inset-0 z-[1] transition-all duration-[1.8s] bg-[radial-gradient(ellipse_at_25%_55%,rgba(0,0,0,0.6)_0%,transparent_70%),linear-gradient(125deg,rgba(12,10,9,0.95)_0%,rgba(28,25,23,0.85)_42%,rgba(0,0,0,0.6)_100%),linear-gradient(180deg,rgba(0,0,0,0.5)_0%,transparent_30%,rgba(0,0,0,0.8)_100%)]`} />
       
       {/* CINEMATIC LIGHT LEAKS */}

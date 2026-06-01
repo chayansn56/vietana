@@ -11,7 +11,7 @@ interface ClockProps {
 
 const Clock: React.FC<ClockProps> = ({ flag, city, time, date, className = '' }) => {
   return (
-    <div className={`bg-black/60 backdrop-blur-xl border border-brand-gold/14 rounded-lg p-3 px-4 text-left min-w-[110px] transition-colors duration-350 hover:bg-brand-green/70 ${className}`}>
+    <div className={`bg-black/60  border border-brand-gold/14 rounded-lg p-3 px-4 text-left min-w-[110px] transition-colors duration-350 hover:bg-brand-green/70 ${className}`}>
       <Text size="sm" variant="white" className="mb-1 block">
         {flag}
       </Text>

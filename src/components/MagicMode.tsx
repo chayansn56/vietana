@@ -111,7 +111,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
           className="relative z-10 cursor-pointer transition-all duration-500 ease-elastic flex items-center justify-center animate-mm-breathe rounded-full"
           onClick={handleOrbClick}
         >
-          <div className="w-72 h-72 rounded-full bg-white/5 border border-brand-gold/25 backdrop-blur-3xl flex flex-col items-center justify-center text-center p-6 shadow-deep hover:border-brand-gold/45 transition-all duration-300 overflow-hidden">
+          <div className="w-72 h-72 rounded-full bg-white/5 border border-brand-gold/25  flex flex-col items-center justify-center text-center p-6 shadow-deep hover:border-brand-gold/45 transition-all duration-300 overflow-hidden">
             <Heading as="h2" size="lg" variant="white" className="font-bold mb-2 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2"><Icon name="Sparkles" size={24} /> Touch Vietnam</Heading>
             <Text variant="white" className="opacity-80 leading-relaxed">Not all journeys begin with a destination.<br />Some begin with a feeling.</Text>
           </div>
@@ -138,7 +138,7 @@ const MagicMode: React.FC<MagicModeProps> = ({ isOpen, onClose, onOpenPlanner })
               onClick={() => setSelectedDest(dest)}
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_60%)] rounded-full -z-10 pointer-events-none animate-mm-glow group-hover:bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.8)_0%,transparent_60%)]" style={{ animationDelay: `-${Math.random() * 3}s` }} />
-              <span className="absolute top-[30px] left-1/2 -translate-x-1/2 bg-black/60 px-2.5 py-1 rounded-xl text-sm whitespace-nowrap opacity-0 transition-opacity duration-300 backdrop-blur-md group-hover:opacity-100 pointer-events-none z-10">
+              <span className="absolute top-[30px] left-1/2 -translate-x-1/2 bg-black/60 px-2.5 py-1 rounded-xl text-sm whitespace-nowrap opacity-0 transition-opacity duration-300  group-hover:opacity-100 pointer-events-none z-10">
                 {dest.label}
               </span>
             </div>

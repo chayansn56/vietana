@@ -39,8 +39,8 @@ const Modal: React.FC<ModalProps> = ({
   }, [isOpen, onClose]);
 
   const overlays = {
-    dark: 'fixed inset-0 bg-brand-green-extra-dark/80 backdrop-blur-xl',
-    light: 'fixed inset-0 bg-brand-green-extra-dark/45 backdrop-blur-md',
+    dark: 'fixed inset-0 bg-brand-green-extra-dark/80 ',
+    light: 'fixed inset-0 bg-brand-green-extra-dark/45 ',
   };
 
   const wrappers = {

@@ -119,7 +119,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose, 
             {/* Travel Style */}
             <div>
               <Text variant="none" className="text-white/50 text-[0.65rem] uppercase tracking-widest mb-4 font-semibold">Travel Style</Text>
-              <div className="grid grid-cols-2 lg:grid-cols-4 bg-white/5 border border-white/10 rounded-xl p-1.5 gap-1 relative backdrop-blur-sm">
+              <div className="grid grid-cols-2 lg:grid-cols-4 bg-white/5 border border-white/10 rounded-xl p-1.5 gap-1 relative ">
                 {(['budget', 'comfort', 'premium', 'luxury'] as const).map(s => (
                   <button 
                    key={s}
@@ -254,7 +254,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose, 
            </div>
 
            {/* Receipt */}
-           <div className="bg-white/5 border border-white/10 rounded-2xl p-8 relative overflow-hidden backdrop-blur-md shadow-inner before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-gradient-to-r before:from-transparent before:via-brand-gold/50 before:to-transparent">
+           <div className="bg-white/5 border border-white/10 rounded-2xl p-8 relative overflow-hidden  shadow-inner before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-gradient-to-r before:from-transparent before:via-brand-gold/50 before:to-transparent">
              <Heading as="h4" variant="none" className="text-brand-gold/80 uppercase tracking-widest text-[0.65rem] font-semibold mb-6 flex items-center gap-2">
                Real-time Estimate Receipt
              </Heading>
@@ -311,7 +311,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose, 
       </div>
 
       {/* FOOTER */}
-      <div className="p-6 border-t border-white/5 relative z-10 bg-black/50 backdrop-blur-3xl flex flex-col md:flex-row gap-4 items-center shrink-0">
+      <div className="p-6 border-t border-white/5 relative z-10 bg-black/50  flex flex-col md:flex-row gap-4 items-center shrink-0">
         <div className="flex-1 w-full relative group">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 transition-colors group-focus-within:text-brand-gold flex items-center justify-center">
               <Icon name="Edit3" size={16} />

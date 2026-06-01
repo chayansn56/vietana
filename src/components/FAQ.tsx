@@ -108,7 +108,7 @@ ${customQuestion || 'I want to know more about travel in Vietnam.'}`;
           })}
 
           {/* Ask Your Own Question Card */}
-          <div className="mt-8 bg-white/80 backdrop-blur-md border border-brand-green-dark/10 rounded-[24px] p-6 md:p-8 shadow-sm relative overflow-hidden">
+          <div className="mt-8 bg-white/80  border border-brand-green-dark/10 rounded-[24px] p-6 md:p-8 shadow-sm relative overflow-hidden">
             {/* Accents */}
             <div className="hidden absolute -top-12 -right-12 w-32 h-32 bg-blue-400/10 rounded-full blur-2xl pointer-events-none" />
             <div className="hidden absolute -bottom-12 -left-12 w-32 h-32 bg-green-400/10 rounded-full blur-2xl pointer-events-none" />

@@ -67,7 +67,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               const emailLink = MessagingService.generateBlueprintEmail(preferences.focus, preferences.vibe, preferences.style, preferences.food);
               return (
                 <div key={i} className="animate-msg-fade-in w-full my-6 flex justify-center">
-                  <div className="bg-brand-green-dark/40 border border-brand-gold/30 rounded-3xl p-8 backdrop-blur-md shadow-gold max-w-[500px] w-full text-center relative overflow-hidden">
+                  <div className="bg-brand-green-dark/40 border border-brand-gold/30 rounded-3xl p-8  shadow-gold max-w-[500px] w-full text-center relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50" />
                     <Heading as="h4" variant="none" className="text-xl font-serif text-brand-gold-light mb-4 flex justify-center items-center gap-2">
                       <Icon name="Sparkles" size={20} /> Your Vietnam Journey Blueprint
@@ -101,8 +101,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   </div>
                 )}
                 <div className={`max-w-[80%] ${msg.type === 'user'
-                    ? 'bg-brand-gold/15 border border-brand-gold/20 rounded-2xl rounded-br-sm p-5 backdrop-blur-md shadow-soft text-right'
-                    : 'bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 backdrop-blur-md shadow-soft text-left'
+                    ? 'bg-brand-gold/15 border border-brand-gold/20 rounded-2xl rounded-br-sm p-5  shadow-soft text-right'
+                    : 'bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm p-5  shadow-soft text-left'
                   }`}>
                   <Text
                     variant="none"
@@ -118,7 +118,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-gold to-brand-green-dark flex shrink-0 items-center justify-center shadow-strong border border-white/10 mb-2">
                   <span className="text-white flex items-center justify-center"><Icon name="Leaf" size={14} /></span>
                 </div>
-                <div className="bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 backdrop-blur-md">
+                <div className="bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 ">
                    <div className="flex items-center gap-1.5 h-6">
                     {[0, 1, 2].map(n => (
                       <span key={n} className="w-1.5 h-1.5 rounded-full bg-brand-gold/60 animate-pulse-dot" style={{ animationDelay: `${n * 0.2}s` }} />
@@ -144,7 +144,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             </div>
           )}
 
-          <div className="relative bg-white/5 border border-white/10 rounded-2xl p-2 transition-all duration-300 shadow-inner focus-within:border-brand-gold/40 focus-within:bg-white/10 backdrop-blur-sm">
+          <div className="relative bg-white/5 border border-white/10 rounded-2xl p-2 transition-all duration-300 shadow-inner focus-within:border-brand-gold/40 focus-within:bg-white/10 ">
             <div className="flex items-center gap-3">
               <span className="text-white/30 pl-4 flex items-center justify-center"><Icon name="Mic" size={20} /></span>
               <input

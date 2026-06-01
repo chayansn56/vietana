@@ -81,13 +81,13 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
       onClose={onClose} 
       maxWidth="max-w-6xl" 
       variant="light"
-      className="overflow-hidden !bg-white/95 backdrop-blur-[20px] !rounded-[24px] shadow-2xl border border-white/60 p-0"
+      className="overflow-hidden !bg-white/95 [20px] !rounded-[24px] shadow-2xl border border-white/60 p-0"
     >
       <div className="flex flex-col md:flex-row min-h-[600px] max-h-[85vh]">
         
         {/* LEFT MAP PANEL */}
         <div className="w-full md:w-1/2 h-[300px] md:h-auto relative bg-surface-dark border-r border-black/10">
-          <div className="absolute top-4 left-4 z-[500] bg-white/90 backdrop-blur px-4 py-2 rounded-xl shadow-md pointer-events-none">
+          <div className="absolute top-4 left-4 z-[500] bg-white/90  px-4 py-2 rounded-xl shadow-md pointer-events-none">
             <Text size="xs" weight="bold" className="tracking-widest uppercase text-brand-green-dark">Our Offices</Text>
           </div>
           
