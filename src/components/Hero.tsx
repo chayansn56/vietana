@@ -15,6 +15,8 @@ interface HeroProps {
   onOpenMagic: () => void;
 }
 
+import WaterWave from 'react-water-wave';
+
 const LOCATIONS = [
   "Misty Mornings in Ha Long Bay",
   "Vibrant Ho Chi Minh City",
@@ -66,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
     const slideTimer = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
@@ -76,16 +78,18 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
   return (
     <Section id="hero" spacing="none" className="h-screen min-h-[700px] flex items-center">
-      {/* BACKGROUND SLIDES */}
-      <div className="absolute inset-[-10%] z-0">
-        {HERO_SLIDES.map((url, idx) => (
-          <div 
-            key={idx} 
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1.8s] ease-in-out will-change-transform will-change-opacity ${currentSlide === idx ? 'opacity-100 animate-ken-burns' : 'opacity-0'}`} 
-            style={{ backgroundImage: `url('${url}')`, transform: 'translateZ(0)' }}
-          >
-          </div>
-        ))}
+      {/* WATER RIPPLE BACKGROUND SLIDE */}
+      <div className="absolute inset-0 z-0">
+        <WaterWave
+          key={currentSlide} /* force remount to update image */
+          imageUrl={HERO_SLIDES[currentSlide]}
+          dropRadius={25}
+          perturbance={0.02}
+          resolution={512}
+          className="w-full h-full bg-cover bg-center animate-ken-burns"
+        >
+          {() => <div className="w-full h-full" />}
+        </WaterWave>
       </div>
       
       {/* CINEMATIC LIGHT LEAKS */}
