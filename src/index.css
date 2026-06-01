@@ -354,3 +354,34 @@ html {
     stroke-dashoffset: 0;
   }
 }
+
+/* Living Topography Map Style */
+.living-topography path {
+  fill: #0A2518;
+  fill-opacity: 0.4;
+  stroke: var(--color-brand-gold);
+  stroke-width: 1.5;
+  stroke-opacity: 0.6;
+  filter: drop-shadow(0 0 15px rgba(10,37,24,0.5));
+  transition: fill 0.6s var(--ease-smooth), filter 0.6s var(--ease-smooth), stroke-opacity 0.6s var(--ease-smooth);
+  animation: breathe-topography 6s ease-in-out infinite alternate;
+  cursor: crosshair;
+}
+
+.living-topography path:hover {
+  fill: #0F3B25;
+  fill-opacity: 0.6;
+  stroke-opacity: 1;
+  filter: drop-shadow(0 0 25px rgba(201,168,76,0.2));
+}
+
+@keyframes breathe-topography {
+  0% {
+    stroke-width: 1;
+    filter: drop-shadow(0 0 10px rgba(10,37,24,0.3));
+  }
+  100% {
+    stroke-width: 2;
+    filter: drop-shadow(0 0 25px rgba(201,168,76,0.3));
+  }
+}

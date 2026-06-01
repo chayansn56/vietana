@@ -51,6 +51,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
 }) => {
     return (
         <MapContainer 
+            className="bg-noise"
             center={[16.0, 106.0]} 
             zoom={5.5} 
             zoomSnap={0.5}
@@ -62,17 +63,10 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             {/* Minimalist Dark Mode TileLayer (Fast & Mobile Friendly) */}
             <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
             
-            {/* Highlight Vietnam in Green */}
+            {/* Highlight Vietnam in Green (Living Topography) */}
             <GeoJSON 
                 data={vietnamGeoJson as any} 
-                style={{ 
-                    fillColor: '#0A2518', // Deep forest green
-                    fillOpacity: 0.4, 
-                    color: '#C9A84C', // Gold border
-                    weight: 1.5, 
-                    opacity: 0.6,
-                    className: 'vietnam-polygon drop-shadow-[0_0_15px_rgba(10,37,24,0.5)]'
-                }} 
+                className="living-topography"
             />
             
             {destinations.map((d, i) => (
