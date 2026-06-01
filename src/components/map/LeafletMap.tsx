@@ -100,9 +100,10 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             zoomControl={false}
             attributionControl={false}
             scrollWheelZoom={false} 
-            style={{ height: '100%', width: '100%' }}
+            style={{ height: '100%', width: '100%', backgroundColor: '#0A1210' }}
         >
-            <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
+            {/* Minimalist Dark Mode TileLayer (Fast & Mobile Friendly) */}
+            <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
             
             {destinations.map((d, i) => (
                 <Marker 
@@ -111,8 +112,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
                     icon={L.divIcon({
                         className: 'custom-leaflet-pin',
                         html: `
-                            <div class="relative w-3.5 h-3.5 bg-[var(--color-brand-gold)] rounded-full border-[3px] border-white shadow-[0_0_15px_rgba(201,168,76,0.5)] cursor-pointer transition-all duration-300 group ${selectedCityIdx === i ? 'bg-white scale-125 shadow-[0_0_20px_var(--color-brand-gold)]' : ''}">
-                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-black/80 text-white px-2 py-0.5 rounded text-xs whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 ${selectedCityIdx === i ? 'opacity-100' : ''} transition-opacity duration-300">
+                            <div class="relative w-3.5 h-3.5 bg-[var(--color-brand-gold)] rounded-full border-[3px] border-[#0A1210] shadow-[0_0_15px_rgba(201,168,76,0.8)] cursor-pointer transition-all duration-300 group ${selectedCityIdx === i ? 'bg-white scale-125 shadow-[0_0_25px_var(--color-brand-gold)]' : ''}">
+                                <span class="absolute -top-7 left-1/2 -translate-x-1/2 bg-black/90 text-brand-gold px-3 py-1 rounded text-xs font-semibold whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 ${selectedCityIdx === i ? 'opacity-100' : ''} transition-opacity duration-300 backdrop-blur-sm border border-brand-gold/30">
                                     ${d.name}
                                 </span>
                             </div>
@@ -125,7 +126,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             ))}
 
             {routeCoords.length >= 2 && (
-                <Polyline positions={routeCoords} color="#C9A84C" weight={2} className="glowing-route" />
+                <Polyline positions={routeCoords} color="#C9A84C" weight={2} opacity={0.7} className="glowing-route" />
             )}
             {routeCoords.length >= 2 && <PlaneAnimation routeCoords={routeCoords} />}
             <MapController center={mapCenter} />
