@@ -66,7 +66,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             />
             
             {/* Gradient Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent" />
             
             {/* Content */}
             <div className="relative z-10 p-8 md:p-12 flex flex-col h-full justify-between">
