@@ -49,17 +49,17 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full  pointer-events-none z-0 hidden animate-blob-float" style={{ animationDelay: '2s' }} />
 
       {/* LEFT: Chat Consultation (Lush Glassmorphism) */}
-      <div className="flex-1 md:flex-[0.65] flex flex-col relative z-10 border-r border-white/5">
-        <div className="p-10 pb-6 text-left relative">
-          <Heading as="h3" variant="white" className="text-3xl font-serif tracking-wide flex items-center gap-3">
-            <span className="text-brand-gold-light"><Icon name="Leaf" size={32} /></span> {t.planner.title}
+      <div className="flex-1 md:flex-[0.65] flex flex-col relative z-10 border-r border-white/5 w-full">
+        <div className="p-6 md:p-10 pb-4 md:pb-6 text-left relative">
+          <Heading as="h3" variant="white" className="text-2xl md:text-3xl font-serif tracking-wide flex items-center gap-3">
+            <span className="text-brand-gold-light"><Icon name="Leaf" size={24} className="md:w-8 md:h-8" /></span> {t.planner.title}
           </Heading>
-          <Text variant="none" className="text-white/50 text-sm mt-2 font-light tracking-wide">
+          <Text variant="none" className="text-white/50 text-xs md:text-sm mt-2 font-light tracking-wide">
             {t.planner.tagline}
           </Text>
         </div>
 
-        <div ref={pcMsgsRef} className="flex-1 overflow-y-auto px-10 py-4 flex flex-col gap-6 scroll-smooth scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+        <div ref={pcMsgsRef} className="flex-1 overflow-y-auto px-6 md:px-10 py-4 flex flex-col gap-4 md:gap-6 scroll-smooth scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
           {messages.map((msg, i) => {
             if (msg.type === 'blueprint') {
               const whatsappIndiaLink = MessagingService.generateBlueprintWhatsApp(preferences.focus, preferences.vibe, preferences.style, preferences.food, 'INDIA');
@@ -129,7 +129,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           )}
         </div>
 
-        <div className="p-8 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent">
+        <div className="p-4 md:p-8 pt-4 md:pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent">
           {options.length > 0 && (
             <div className="flex flex-wrap gap-3 mb-6 justify-center">
               {options.map((opt, i) => (

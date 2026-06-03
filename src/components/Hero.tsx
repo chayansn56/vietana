@@ -85,7 +85,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
   // Initialize Water Ripples
   useEffect(() => {
-    if (rippleRef.current && typeof window !== 'undefined') {
+    // Initialize ripples effect only on larger screens to prevent mobile lag
+    if (rippleRef.current && window.innerWidth > 768) {
       try {
         $(rippleRef.current).ripples({
           resolution: 512,
@@ -94,7 +95,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
           interactive: true
         });
       } catch (e) {
-        console.error("Ripples failed", e);
+        console.warn("Ripples effect failed to initialize", e);
       }
     }
 

@@ -152,6 +152,30 @@
   }
 }
 
+@media (max-width: 768px) {
+  .glass, .glass-dark {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--color-surface-cream) !important;
+  }
+  .glass-dark {
+    background: var(--color-brand-green-dark) !important;
+  }
+  * {
+    animation-play-state: paused !important;
+    will-change: auto !important;
+  }
+  .reveal {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .scroll-parallax, .scroll-parallax-slow {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 @utility vertical-rl {
   writing-mode: vertical-rl;
 }
