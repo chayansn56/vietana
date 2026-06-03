@@ -49,6 +49,7 @@ export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isExperiencesOpen, setIsExperiencesOpen] = useState(false);
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navClass = useNavStyle(scrollY, isScrolled);
 
@@ -73,6 +74,7 @@ export default function App() {
         onOpenContact={() => setIsContactOpen(true)}
         onOpenExperiences={() => setIsExperiencesOpen(true)}
         onOpenMapCurtain={() => setIsMapOpen(true)}
+        onOpenAbout={() => setIsAboutOpen(true)}
       />
 
       <main>
@@ -85,7 +87,6 @@ export default function App() {
           <Separator variant="gold" />
           <Food />
           <FAQ onOpenPlanner={(dest, prompt) => openPlanner(dest, prompt)} />
-          <About />
         </Suspense>
       </main>
 
@@ -134,6 +135,10 @@ export default function App() {
         <Contact 
           isOpen={isContactOpen}
           onClose={() => setIsContactOpen(false)}
+        />
+        <About 
+          isOpen={isAboutOpen}
+          onClose={() => setIsAboutOpen(false)}
         />
       </Suspense>
 

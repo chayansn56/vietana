@@ -15,9 +15,10 @@ interface NavbarProps {
   onOpenContact: () => void;
   onOpenExperiences: () => void;
   onOpenMapCurtain: () => void;
+  onOpenAbout: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain, onOpenAbout }) => {
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
 
@@ -69,6 +70,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                   } else if (link.href === '#contact') {
                     e.preventDefault();
                     onOpenContact();
+                  } else if (link.key === 'about') {
+                    e.preventDefault();
+                    onOpenAbout();
                   }
                 }}
                 className="relative no-underline group"
@@ -180,6 +184,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                 e.preventDefault();
                 setMobileMenuOpen(false);
                 onOpenContact();
+              } else if (link.key === 'about') {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                onOpenAbout();
               } else {
                 setMobileMenuOpen(false);
               }
