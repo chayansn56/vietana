@@ -23,11 +23,12 @@ if (typeof window !== 'undefined') {
 import 'jquery.ripples';
 
 const LOCATIONS = [
-  "Misty Mornings in Ha Long Bay",
-  "Vibrant Ho Chi Minh City",
-  "Colorful Lanterns of Hoi An",
-  "Tranquil Ninh Binh Rivers",
-  "Golden Terraces of Sa Pa"
+  "Morning Egg Coffee, Hanoi",
+  "Lantern Nights, Hoi An",
+  "Rainy Café, Saigon",
+  "Mì Quảng, Central Vietnam",
+  "Quiet Beach Sunset",
+  "Scooter Rides"
 ];
 
 const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
@@ -139,57 +140,47 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* CONTENT */}
-      <Container className="relative z-[10]">
-        <div className="max-w-4xl p-8 sm:p-12 rounded-[2rem] bg-black/30 backdrop-blur-2xl border border-white/20 shadow-2xl">
-          <div className="flex items-center gap-4 mb-8 animate-reveal-up [animation-delay:0.35s]">
-            <div className="w-10 h-px bg-gradient-to-r from-brand-blue to-transparent"></div>
-            <Text as="span" size="xs" variant="none" className="uppercase tracking-[0.25em] text-brand-blue font-bold">
-              India–Vietnam Travel Experts
-            </Text>
-          </div>
+      <Container className="relative z-[10] h-full flex items-center justify-center pt-20">
+        <div className="max-w-3xl w-full p-10 sm:p-14 rounded-[2.5rem] bg-black/30 backdrop-blur-[40px] border border-white/30 shadow-[0_30px_100px_rgba(0,0,0,0.5)] flex flex-col items-center text-center">
           
           <Heading 
             as="h1" 
-            size="3xl"
+            size="4xl"
             variant="none" 
-            className="!text-brand-gold-light mb-2 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.58s] drop-shadow-[0_8px_60px_rgba(0,0,0,0.8)] tracking-tight leading-none"
+            className="!text-white mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] tracking-tight leading-[1.1] uppercase font-bold"
           >
-            Feel <em className="not-italic pr-2">Vietnam</em>,
-            <span className="block mt-1 text-brand-gold-light">Your Way 🇻🇳</span>
+            FEEL VIETNAM,
+            <span className="block mt-2">YOUR WAY.</span>
           </Heading>
           
           <Text 
-            size="lg"
-            variant="none" 
-            weight="medium"
-            className="italic mb-6 text-brand-blue animate-reveal-up [animation-delay:0.72s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] block"
-          >
-            Travel Gets Better with <BrandName />
-          </Text>
-          
-          <Text 
             variant="white" 
-            size="lg"
+            size="xl"
             weight="medium"
-            className="max-w-[580px] animate-reveal-up [animation-duration:1s] [animation-delay:0.82s] mb-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.4)] text-white"
+            className="max-w-[600px] animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] mb-12 drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)] text-white/90"
           >
-            {t.hero.sub}
+            Thoughtful journeys inspired by moments, not itineraries.
           </Text>
           
-          <Text variant="white" size="md" className="!text-white/80 max-w-[460px] mb-12 animate-reveal-up [animation-delay:0.95s] drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
-            {t.hero.support}
-          </Text>
-          
-          <div className="flex gap-5 flex-wrap justify-center lg:justify-start animate-reveal-up [animation-delay:1.08s] mt-2">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto animate-reveal-up [animation-delay:0.7s]">
+            <Button 
+              variant="solid" 
+              className="group bg-[#B03A2E] hover:bg-[#943126] text-white shadow-soft transition-all duration-350 ease-soft px-8 py-4 w-full sm:w-auto rounded-full text-base tracking-wide uppercase font-semibold"
+              onClick={onOpenMagic}
+            >
+              <span className="flex items-center justify-center gap-2">
+                ✨ Begin Your Journey
+              </span>
+            </Button>
             <Button 
               variant="glass" 
-              className="group bg-white/5 border border-white/10 hover:bg-white/10 text-white shadow-soft transition-all duration-350 ease-soft px-8 py-3.5 w-full sm:w-auto"
+              className="group bg-white/10 border border-white/20 hover:bg-white/20 text-white shadow-soft transition-all duration-350 ease-soft px-8 py-4 w-full sm:w-auto rounded-full text-base tracking-wide uppercase font-semibold"
               onClick={() => {
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <span className="flex items-center justify-center gap-2 text-sm tracking-widest uppercase font-medium">
-                <Icon name="Compass" size={18} className="text-brand-gold group-hover:rotate-45 transition-transform duration-500" /> Discover Vietnam
+              <span className="flex items-center justify-center gap-2">
+                🌿 Discover Vietnam
               </span>
             </Button>
           </div>

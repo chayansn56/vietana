@@ -36,11 +36,12 @@ export const PACKAGES: PackageData[] = [
 ];
 
 export const HERO_SLIDES = [
-  '/images/premium_vietnam_hero.png', // Custom Generated AI Premium Image
-  'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1920&q=80', // HCMC River
-  'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1920&q=80', // Hoi An Lanterns
-  'https://images.unsplash.com/photo-1581026046187-5775cb56b3e7?auto=format&fit=crop&w=1920&q=80', // Ninh Binh landscape
-  'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=1920&q=80' // Mountain terraces
+  '/hero_1.png',
+  '/hero_2.png',
+  '/hero_3.png',
+  '/hero_4.png',
+  '/hero_5.png',
+  '/hero_6.png'
 ];
 
 export const VIETNAM_TOP_10 = [
