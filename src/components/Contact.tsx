@@ -99,19 +99,19 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
                       <Icon name="Phone" size={16} className={loc.accentColor} />
                     </span>
-                    <Text size="md" className="font-light tracking-wide">{loc.phone}</Text>
+                    <Text size="md" variant="none" className="font-light tracking-wide text-white">{loc.phone}</Text>
                   </div>
                   <div className="flex items-center gap-4 text-white/90">
                     <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
                       <Icon name="Mail" size={16} className={loc.accentColor} />
                     </span>
-                    <Text size="md" className="font-light tracking-wide">{loc.email}</Text>
+                    <Text size="md" variant="none" className="font-light tracking-wide text-white">{loc.email}</Text>
                   </div>
                   <div className="flex items-center gap-4 text-white/90">
                     <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
                       <Icon name="MapPin" size={16} className={loc.accentColor} />
                     </span>
-                    <Text size="sm" className="font-light tracking-wide whitespace-pre-line leading-relaxed">{loc.address}</Text>
+                    <Text size="sm" variant="none" className="font-light tracking-wide whitespace-pre-line leading-relaxed text-white">{loc.address}</Text>
                   </div>
                 </div>
 
