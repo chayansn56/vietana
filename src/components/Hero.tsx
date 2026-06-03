@@ -23,12 +23,21 @@ if (typeof window !== 'undefined') {
 import 'jquery.ripples';
 
 const LOCATIONS = [
+  "Scooter Rides",
   "Morning Egg Coffee, Hanoi",
   "Lantern Nights, Hoi An",
   "Rainy Café, Saigon",
   "Mì Quảng, Central Vietnam",
-  "Quiet Beach Sunset",
-  "Scooter Rides"
+  "Quiet Beach Sunset"
+];
+
+const SLIDE_COLORS = [
+  "text-[#A9DFBF]", // 6: Scooters (green)
+  "text-[#F8C471]", // 1: Egg coffee (warm brown)
+  "text-[#FAD7A1]", // 2: Lanterns (warm yellow)
+  "text-[#85C1E9]", // 3: Rainy cafe (cool blue)
+  "text-[#E59866]", // 4: Mi Quang (warm orange)
+  "text-[#F5B041]", // 5: Beach sunset (golden)
 ];
 
 const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
@@ -76,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
     const slideTimer = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
-    }, 6000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);
@@ -147,10 +156,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             as="h1" 
             size="4xl"
             variant="none" 
-            className="!text-white mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] tracking-tight leading-[1.1] uppercase font-bold"
+            className={`mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] tracking-tight leading-[1.1] uppercase font-bold transition-colors duration-1000 ${SLIDE_COLORS[currentSlide]}`}
           >
-            FEEL VIETNAM,
-            <span className="block mt-2">YOUR WAY.</span>
+            VIETANA
+            <span className="block mt-3 text-white text-3xl sm:text-4xl tracking-wide font-semibold">FEEL VIETNAM, YOUR WAY.</span>
           </Heading>
           
           <Text 

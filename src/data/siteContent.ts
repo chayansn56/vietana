@@ -36,12 +36,12 @@ export const PACKAGES: PackageData[] = [
 ];
 
 export const HERO_SLIDES = [
+  '/hero_6.png',
   '/hero_1.png',
   '/hero_2.png',
   '/hero_3.png',
   '/hero_4.png',
-  '/hero_5.png',
-  '/hero_6.png'
+  '/hero_5.png'
 ];
 
 export const VIETNAM_TOP_10 = [
