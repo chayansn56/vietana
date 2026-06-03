@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 interface AboutModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenBuilder: () => void;
 }
 
 const CARDS = [
@@ -59,7 +60,7 @@ const PILLARS = [
   { icon: '✨', text: 'Personalized Travel' },
 ];
 
-const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
+const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder }) => {
   return (
     <Modal 
       isOpen={isOpen} 
@@ -157,7 +158,10 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
           </p>
 
           <button 
-            onClick={onClose}
+            onClick={() => {
+              onClose();
+              onOpenBuilder();
+            }}
             className="group relative px-8 py-4 bg-white rounded-full text-[#3D8B7D] font-semibold tracking-wide text-[16px] transition-all duration-300 shadow-[0_8px_20px_rgba(61,139,125,0.15)] hover:shadow-[0_12px_25px_rgba(61,139,125,0.25)] hover:-translate-y-1 overflow-hidden"
           >
             <div className="absolute inset-0 bg-emerald-50/0 group-hover:bg-[#EAF7FF]/50 transition-colors duration-300"></div>

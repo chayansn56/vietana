@@ -139,6 +139,7 @@ export default function App() {
         <About 
           isOpen={isAboutOpen}
           onClose={() => setIsAboutOpen(false)}
+          onOpenBuilder={() => setIsBuilderOpen(true)}
         />
       </Suspense>
 
