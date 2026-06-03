@@ -23,19 +23,19 @@ if (typeof window !== 'undefined') {
 import 'jquery.ripples';
 
 const LOCATIONS = [
+  "Rainy Café, Saigon",
   "Scooter Rides",
   "Morning Egg Coffee, Hanoi",
   "Lantern Nights, Hoi An",
-  "Rainy Café, Saigon",
   "Mì Quảng, Central Vietnam",
   "Quiet Beach Sunset"
 ];
 
 const SLIDE_COLORS = [
+  "text-[#85C1E9]", // 3: Rainy cafe (cool blue)
   "text-[#A9DFBF]", // 6: Scooters (green)
   "text-[#F8C471]", // 1: Egg coffee (warm brown)
   "text-[#FAD7A1]", // 2: Lanterns (warm yellow)
-  "text-[#85C1E9]", // 3: Rainy cafe (cool blue)
   "text-[#E59866]", // 4: Mi Quang (warm orange)
   "text-[#F5B041]", // 5: Beach sunset (golden)
 ];
