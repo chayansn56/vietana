@@ -158,8 +158,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             variant="none" 
             className={`mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] tracking-tight leading-[1.1] uppercase font-bold transition-colors duration-1000 ${SLIDE_COLORS[currentSlide]}`}
           >
-            VIETANA
-            <span className="block mt-3 text-white text-3xl sm:text-4xl tracking-wide font-semibold">FEEL VIETNAM, YOUR WAY.</span>
+            {t.hero.welcome}
+            <span className="block mt-3 text-white text-3xl sm:text-4xl tracking-wide font-semibold">{t.hero.tagline}</span>
           </Heading>
           
           <Text 
@@ -168,7 +168,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             weight="medium"
             className="max-w-[600px] animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] mb-12 drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)] text-white/90"
           >
-            Thoughtful journeys inspired by moments, not itineraries.
+            {t.hero.sub}
           </Text>
           
           <div className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto animate-reveal-up [animation-delay:0.7s]">
@@ -178,18 +178,18 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               onClick={onOpenMagic}
             >
               <span className="flex items-center justify-center gap-2">
-                ✨ Begin Your Journey
+                ✨ {t.hero.plan}
               </span>
             </Button>
             <Button 
               variant="glass" 
               className="group bg-white/10 border border-white/20 hover:bg-white/20 text-white shadow-soft transition-all duration-350 ease-soft px-8 py-4 w-full sm:w-auto rounded-full text-base tracking-wide uppercase font-semibold"
               onClick={() => {
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               <span className="flex items-center justify-center gap-2">
-                🌿 Discover Vietnam
+                🌿 {t.hero.discover}
               </span>
             </Button>
           </div>

@@ -20,6 +20,9 @@ import { useMetadata } from './hooks/useMetadata';
 import { useNavStyle } from './hooks/useNavStyle';
 
 // Lazy Loaded Components (Below the fold)
+const Destinations = lazy(() => import('./components/Destinations'));
+const Team = lazy(() => import('./components/Team'));
+const Journal = lazy(() => import('./components/Journal'));
 const Services = lazy(() => import('./components/Services'));
 const Packages = lazy(() => import('./components/Packages'));
 const Food = lazy(() => import('./components/Food'));
@@ -81,11 +84,17 @@ export default function App() {
         <Hero onOpenMagic={() => setIsMagicModeOpen(true)} />
         
         <Suspense fallback={<SectionPlaceholder />}>
-          <Packages onOpenBuilder={(dest) => { setBuilderDestinations(dest || []); setIsBuilderOpen(true); }} />
+          <Destinations />
           <Separator variant="green" />
-          <Services onOpenPlanner={(dest) => openPlanner(dest)} />
+          <Packages onOpenBuilder={(dest) => { setBuilderDestinations(dest || []); setIsBuilderOpen(true); }} />
           <Separator variant="gold" />
+          <Services onOpenPlanner={(dest) => openPlanner(dest)} />
+          <Separator variant="green" />
           <Food />
+          <Separator variant="gold" />
+          <Team />
+          <Separator variant="green" />
+          <Journal />
           <FAQ onOpenPlanner={(dest, prompt) => openPlanner(dest, prompt)} />
         </Suspense>
       </main>

@@ -2,26 +2,23 @@ import { TranslationSchema } from '../translations';
 
 export const en: TranslationSchema = {
   nav: {
-    services: 'Services',
-    packages: 'Packages',
-    aiPlanner: 'AI Planner',
-    food: 'Food',
+    destinations: 'Destinations',
     experiences: 'Experiences',
-    about: 'Why Vietana?',
-    contact: 'Contact',
+    journal: 'Journal',
+    team: 'The Team',
     cta: 'Plan My Trip'
   },
   hero: {
     welcome: 'VIETANA EXCLUSIVE',
     tagline: 'Feel Vietnam, Your Way',
-    sub: 'Premium bespoke travel for Indian travelers. From e-visas to hidden gems, we handle everything locally from Ho Chi Minh City.',
+    sub: 'Personalized travel experiences for Indian travelers.',
     support: 'Local support in Hindi & English available 24/7.',
-    discover: 'Discover Vietnam',
+    discover: 'Explore Vietnam',
     plan: 'Plan with AI'
   },
   services: {
-    title: 'Our Services',
-    subtitle: 'FROM VISA TO YOUR LAST DINNER',
+    title: 'The Essentials',
+    subtitle: 'EVERYTHING YOU NEED',
     ghost: 'WE HANDLE IT',
     visa: { t: 'Visa Assistance', d: 'Fast Vietnam e-visa processing. Step-by-step guidance — zero confusion, zero stress.' },
     planning: { t: 'Custom Planning', d: 'Your itinerary, your pace. Fully personalized around your interests, style and budget.' },

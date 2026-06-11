@@ -101,26 +101,26 @@ interface PackagesProps {
 
 const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
   return (
-    <Section id="packages" variant="cream" spacing="lg">
-      {/* Morphing Liquid Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <Section id="experiences" spacing="lg" className="bg-[#111111] text-white relative overflow-hidden">
+      {/* Dynamic Background */}
+      <motion.div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="scroll-parallax absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px]">
           <div className="w-full h-full bg-brand-gold/5 rounded-full  hidden animate-blob-float mix-blend-multiply opacity-60" />
         </div>
         <div className="scroll-parallax-slow absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] max-w-[400px] max-h-[400px]">
           <div className="w-full h-full bg-brand-green/5 rounded-full  hidden animate-blob-float mix-blend-multiply opacity-50" style={{ animationDelay: '3s' }} />
         </div>
-      </div>
+      </motion.div>
       <Container className="relative z-10 w-full max-w-[1400px]">
         <div className="mb-20 reveal text-center flex flex-col items-center">
-          <Heading as="h2" size="4xl" font="sans" className="inline-block mb-4 tracking-[0.1em] font-extrabold bg-gradient-to-r from-brand-gold via-brand-green to-brand-blue text-transparent bg-clip-text drop-shadow-sm uppercase">
-            Our Packages
+          <Heading as="h2" size="4xl" font="serif" className="inline-block mb-4 tracking-tight text-white drop-shadow-sm">
+            Curated Experiences
           </Heading>
-          <Heading as="h3" size="xl" className="font-serif font-light text-text-dark/80 tracking-wide max-w-2xl">
-            Inspiration, Not Fixed Products
+          <Heading as="h3" size="xl" className="font-sans font-light text-white/80 tracking-wide max-w-2xl">
+            Inspiration for your journey.
           </Heading>
-          <Text size="md" className="text-text-dark/60 mt-4 max-w-xl">
-            Every package is a starting point. We customize everything around your travel style.
+          <Text size="md" className="text-white/60 mt-4 max-w-xl">
+            Choose a theme, and we will build the perfect itinerary around it.
           </Text>
         </div>
         

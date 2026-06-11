@@ -2,14 +2,11 @@ import { TranslationSchema } from '../translations';
 
 export const hi: TranslationSchema = {
   nav: {
-    services: 'सेवाएँ',
-    packages: 'पैकेज',
-    aiPlanner: 'एआई प्लानर',
-    food: 'भोजन',
+    destinations: 'मंज़िलें',
     experiences: 'अनुभव',
-    about: 'हमारे बारे में',
-    contact: 'संपर्क',
-    cta: 'मेरी यात्रा की योजना बनाएं'
+    journal: 'पत्रिका',
+    team: 'हमारी टीम',
+    cta: 'ट्रिप प्लान करें'
   },
   hero: {
     welcome: 'वियतनाम एक्सक्लूसिव',

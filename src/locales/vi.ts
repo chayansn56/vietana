@@ -2,22 +2,19 @@ import { TranslationSchema } from '../translations';
 
 export const vi: TranslationSchema = {
   nav: {
-    services: 'Dịch vụ',
-    packages: 'Gói tour',
-    aiPlanner: 'AI Planner',
-    food: 'Ẩm thực',
+    destinations: 'Điểm đến',
     experiences: 'Trải nghiệm',
-    about: 'Về chúng tôi',
-    contact: 'Liên hệ',
+    journal: 'Tạp chí',
+    team: 'Đội ngũ',
     cta: 'Lên kế hoạch'
   },
   hero: {
-    welcome: 'VIETANA ĐỘC QUYỀN',
-    tagline: 'Cảm nhận Việt Nam, theo cách của bạn',
-    sub: 'Du lịch cao cấp dành riêng cho khách Ấn Độ. Từ e-visa đến những viên ngọc ẩn giấu, chúng tôi xử lý mọi thứ tại TP.HCM.',
-    support: 'Hỗ trợ địa phương bằng tiếng Hindi và tiếng Anh 24/7.',
-    discover: 'Khám phá Việt Nam',
-    plan: 'Lên kế hoạch với AI'
+    welcome: 'VIETANA EXCLUSIVE',
+    tagline: 'Feel Vietnam, Your Way',
+    sub: 'Personalized travel experiences for Indian travelers.',
+    support: 'Local support in Hindi & English available 24/7.',
+    discover: 'Explore Vietnam',
+    plan: 'Plan with AI'
   },
   services: {
     title: 'Dịch vụ của chúng tôi',

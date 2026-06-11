@@ -6,13 +6,10 @@ export type Language = 'EN' | 'HI' | 'VI';
 
 export interface TranslationSchema {
   nav: {
-    services: string;
-    packages: string;
-    aiPlanner: string;
-    food: string;
+    destinations: string;
     experiences: string;
-    about: string;
-    contact: string;
+    journal: string;
+    team: string;
     cta: string;
   };
   hero: {
