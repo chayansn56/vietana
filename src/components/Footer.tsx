@@ -3,6 +3,7 @@ import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import BrandName from './ui/BrandName';
+import Button from './ui/Button';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
