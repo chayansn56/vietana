@@ -111,7 +111,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
           <div className="w-full h-full bg-brand-green/5 rounded-full  hidden animate-blob-float mix-blend-multiply opacity-50" style={{ animationDelay: '3s' }} />
         </div>
       </div>
-      <Container className="relative z-10">
+      <Container className="relative z-10 w-full max-w-[1400px]">
         <div className="mb-20 reveal text-center flex flex-col items-center">
           <Heading as="h2" size="4xl" font="sans" className="inline-block mb-4 tracking-[0.1em] font-extrabold bg-gradient-to-r from-brand-gold via-brand-green to-brand-blue text-transparent bg-clip-text drop-shadow-sm uppercase">
             Our Packages
@@ -124,40 +124,78 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
           </Text>
         </div>
         
-        <Grid cols={3} gap={8} className="max-w-6xl mx-auto">
+        {/* Expanding Gallery Layout */}
+        <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[600px] w-full mb-16">
           {(PACKAGES as PackageItem[]).map((p, i) => (
-            <PackageCard key={i} p={p} onClick={onOpenBuilder} />
-          ))}
-
-          {/* CUSTOM BUILDER CARD */}
-          <Card 
-            padding="none"
-            hover={false}
-            className="col-span-full flex flex-col md:flex-row items-center gap-8 p-12 md:p-16 border-white/10 relative overflow-hidden group reveal shadow-medium" 
-            onClick={() => onOpenBuilder([])}
-          >
-            <div className="absolute inset-[-10%] z-0 scroll-parallax-slow bg-cover bg-center" style={{ backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
-            <div className="flex-1 text-center md:text-left relative z-10">
-              <Badge variant="gold-filled" className="mb-4">
-                Fully Custom
-              </Badge>
-              <Heading as="h3" size="2xl" variant="accent" className="mt-2 mb-4">
-                Build Your Own Story
-              </Heading>
-              <Text variant="white" size="xl" className="opacity-80">
-                Select your cities, travel style, and let us do the rest.
-              </Text>
-            </div>
-
-            
-            <Button 
-              variant="glass"
-              className="w-full md:w-auto px-10 py-5 border-brand-gold text-white group/btn relative z-10"
+            <motion.div 
+              key={i}
+              onClick={() => onOpenBuilder(p.destinations)}
+              className="group relative flex-1 hover:flex-[3] cursor-pointer rounded-3xl overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] min-h-[150px] lg:min-h-full"
             >
-              Open Trip Builder <span className="transition-transform duration-300 group-hover/btn:translate-x-1 ml-2">→</span>
-            </Button>
-          </Card>
-        </Grid>
+              <div 
+                style={{ backgroundImage: `url('${p.img}')` }} 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-700 group-hover:from-black/90 group-hover:via-black/40" />
+              
+              {/* Vertical Text (unhovered state) */}
+              <div className="absolute inset-0 flex items-end lg:items-center justify-center p-6 opacity-100 lg:opacity-100 group-hover:lg:opacity-0 transition-opacity duration-300 delay-100">
+                <Heading as="h3" size="lg" variant="white" className="lg:-rotate-90 whitespace-nowrap tracking-widest font-extrabold drop-shadow-lg">
+                  {p.t}
+                </Heading>
+              </div>
+
+              {/* Expanded Content (hovered state) */}
+              <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                  <Badge variant="gold-filled" className="mb-4 shadow-lg backdrop-blur-md bg-brand-gold/90">
+                    {p.b}
+                  </Badge>
+                  <Heading as="h3" size="3xl" variant="white" className="mb-3 font-extrabold drop-shadow-xl">
+                    {p.t}
+                  </Heading>
+                  <Text variant="white" size="lg" className="opacity-90 italic mb-6 max-w-lg drop-shadow-md">
+                    {p.d}
+                  </Text>
+                  
+                  <Button 
+                    variant="glass" 
+                    className="group/btn px-8 py-4 backdrop-blur-xl bg-white/10 border-white/30 text-white shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:bg-white/20"
+                  >
+                    Customize Trip <span className="transition-transform duration-300 group-hover/btn:translate-x-2 ml-2">→</span>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CUSTOM BUILDER CARD */}
+        <div 
+          className="col-span-full flex flex-col md:flex-row items-center gap-8 p-12 md:p-16 rounded-[2.5rem] bg-black/40 backdrop-blur-[40px] border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-2" 
+          onClick={() => onOpenBuilder([])}
+        >
+          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-105" style={{ backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+          <div className="flex-1 text-center md:text-left relative z-10">
+            <Badge variant="gold-filled" className="mb-4">
+              Fully Custom
+            </Badge>
+            <Heading as="h3" size="2xl" className="mt-2 mb-4 text-white font-extrabold tracking-tight">
+              Build Your Own Story
+            </Heading>
+            <Text variant="white" size="xl" className="opacity-90">
+              Select your cities, travel style, and let us do the rest.
+            </Text>
+          </div>
+
+          
+          <Button 
+            variant="glass"
+            className="w-full md:w-auto px-10 py-5 bg-brand-gold text-white border-none shadow-[0_10px_30px_rgba(202,138,4,0.3)] hover:shadow-[0_15px_40px_rgba(202,138,4,0.5)] group/btn relative z-10 text-lg font-semibold"
+          >
+            Open Trip Builder <span className="transition-transform duration-300 group-hover/btn:translate-x-2 ml-2">→</span>
+          </Button>
+        </div>
       </Container>
     </Section>
   );

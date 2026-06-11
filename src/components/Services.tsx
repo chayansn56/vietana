@@ -131,42 +131,48 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
           </Text>
         </div>
 
-        <Grid cols={3} gap={6} className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {SERVICES.map((s, i) => {
             const serviceData = t.services[s.key as keyof typeof t.services];
             if (typeof serviceData === 'string') return null;
             
-            // Alternate colors for a colorful grid
-            const colors = [
-              'text-brand-blue from-brand-blue/10 to-brand-blue/5 border-brand-blue/20 hover:border-brand-blue/50',
-              'text-brand-green from-brand-green/10 to-brand-green/5 border-brand-green/20 hover:border-brand-green/50',
-              'text-brand-gold from-brand-gold/10 to-brand-gold/5 border-brand-gold/20 hover:border-brand-gold/50',
-              'text-rose-500 from-rose-500/10 to-rose-500/5 border-rose-500/20 hover:border-rose-500/50',
-              'text-purple-500 from-purple-500/10 to-purple-500/5 border-purple-500/20 hover:border-purple-500/50',
-              'text-orange-500 from-orange-500/10 to-orange-500/5 border-orange-500/20 hover:border-orange-500/50'
-            ];
-            const colorClass = colors[i % colors.length];
-            
+            // Bento Box layout spanning
+            let spanClass = 'md:col-span-1 md:row-span-1';
+            if (i === 0) spanClass = 'md:col-span-2 md:row-span-2';
+            else if (i === 3) spanClass = 'md:row-span-2';
+            else if (i === 4) spanClass = 'md:col-span-2 md:row-span-1';
+            else if (i === 7) spanClass = 'md:col-span-2 md:row-span-1';
+
             return (
-              <Card 
+              <div 
                 key={i} 
-                className={`group relative cursor-pointer reveal bg-gradient-to-br  border transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${colorClass.split(' ').slice(1).join(' ')}`}
+                className={`group relative cursor-pointer reveal transition-all duration-700 active:scale-95 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] rounded-[2rem] overflow-hidden ${spanClass}`}
                 onClick={() => openSrvModal(s.key)}
               >
-                <div className={`w-14 h-14 rounded-2xl mb-6 flex items-center justify-center bg-white/50  shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 ${colorClass.split(' ')[0]}`}>
-                  <Icon name={s.ico as IconName} size={28} />
-                </div>
+                {/* Liquid Glass Background */}
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-[40px] border border-white/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_10px_30px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:bg-white/60" />
                 
-                <Heading as="h3" size="sm" font="sans" className="mb-2 text-text-dark font-bold group-hover:text-brand-green-dark transition-colors">
-                  {serviceData.t}
-                </Heading>
-                <Text size="sm" variant="subtle" className="group-hover:text-text-dark/80 transition-colors">
-                  {serviceData.d}
-                </Text>
-              </Card>
+                {/* Glowing border effect on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[2rem] border border-brand-green/30 shadow-[inset_0_0_20px_rgba(61,139,125,0.1)]" />
+
+                <div className="relative z-10 p-8 sm:p-10 h-full flex flex-col justify-between">
+                  <div className="w-16 h-16 rounded-[1.5rem] mb-6 flex items-center justify-center bg-white/70 shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+                    <Icon name={s.ico as IconName} size={32} className="text-brand-green-dark" />
+                  </div>
+                  
+                  <div>
+                    <Heading as="h3" size="md" font="sans" className="mb-3 text-text-dark font-extrabold tracking-tight group-hover:text-brand-green-dark transition-colors">
+                      {serviceData.t}
+                    </Heading>
+                    <Text size="base" variant="subtle" className="font-medium group-hover:text-text-dark/90 transition-colors">
+                      {serviceData.d}
+                    </Text>
+                  </div>
+                </div>
+              </div>
             );
           })}
-        </Grid>
+        </div>
       </Container>
 
       <Modal 
