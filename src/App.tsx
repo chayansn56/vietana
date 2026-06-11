@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 // Layout Components
 import ProgressBar from './components/layout/ProgressBar';
 import BackToTop from './components/layout/BackToTop';
-import FloatingOrb from './components/layout/FloatingOrb';
+import FloatingWhatsApp from './components/layout/FloatingWhatsApp';
 import Separator from './components/ui/layout/Separator';
 
 // Hooks
@@ -66,7 +66,7 @@ export default function App() {
     <div className="min-h-screen bg-black text-white overflow-hidden selection:bg-brand-gold selection:text-black">
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />
-      <FloatingOrb onClick={() => openPlanner()} />
+      <FloatingWhatsApp />
 
       <Navbar 
         scrolled={isScrolled}

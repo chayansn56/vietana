@@ -61,11 +61,11 @@ const Destinations: React.FC = () => {
         </div>
 
         {/* CSS Grid Masonry-like layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
           {DESTINATIONS.map((dest, i) => (
             <div 
               key={i} 
-              className={`relative group rounded-3xl overflow-hidden cursor-pointer ${dest.colSpan} ${dest.rowSpan}`}
+              className={`relative group rounded-sm overflow-hidden shadow-lg cursor-pointer ${dest.colSpan} ${dest.rowSpan}`}
             >
               {/* Image */}
               <div 

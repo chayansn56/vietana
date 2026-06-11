@@ -63,12 +63,12 @@ const Team: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {TEAM_MEMBERS.map((member, idx) => (
             <div key={idx} className="flex flex-col items-center text-center group">
-              <div className="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-xl relative">
+              <div className="w-full max-w-[280px] aspect-[3/4] rounded-sm overflow-hidden mb-6 shadow-xl relative">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                 <img 
                   src={member.img} 
                   alt={member.name} 
-                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
                 />
               </div>
               <Heading as="h4" size="xl" className="mb-1 font-semibold">

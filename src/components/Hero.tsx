@@ -149,47 +149,37 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* CONTENT */}
-      <Container className="relative z-[10] h-full flex items-center justify-center pt-20">
-        <div className="max-w-3xl w-full p-10 sm:p-14 rounded-[2.5rem] bg-black/30 backdrop-blur-[40px] border border-white/30 shadow-[0_30px_100px_rgba(0,0,0,0.5)] flex flex-col items-center text-center">
+      <Container className="relative z-[10] h-full flex items-center pt-32 pb-20">
+        <div className="max-w-3xl flex flex-col items-start text-left">
           
           <Heading 
             as="h1" 
             size="4xl"
             variant="none" 
-            className={`mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] tracking-tight leading-[1.1] uppercase font-bold transition-colors duration-1000 ${SLIDE_COLORS[currentSlide]}`}
+            font="serif"
+            className="mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] tracking-tight leading-[1.1] text-white"
           >
             {t.hero.welcome}
-            <span className="block mt-3 text-white text-3xl sm:text-4xl tracking-wide font-semibold">{t.hero.tagline}</span>
+            <span className="block mt-4 text-white/90 text-4xl sm:text-6xl tracking-tight font-light">{t.hero.tagline}</span>
           </Heading>
           
           <Text 
-            variant="white" 
+            variant="none" 
             size="xl"
-            weight="medium"
-            className="max-w-[600px] animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] mb-12 drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)] text-white/90"
+            className="max-w-[500px] animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] mb-12 drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)] text-white/80 font-light"
           >
             {t.hero.sub}
           </Text>
           
-          <div className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto animate-reveal-up [animation-delay:0.7s]">
+          <div className="flex animate-reveal-up [animation-delay:0.7s]">
             <Button 
               variant="solid" 
-              className="group bg-[#B03A2E] hover:bg-[#943126] text-white shadow-soft transition-all duration-350 ease-soft px-8 py-4 w-full sm:w-auto rounded-full text-base tracking-wide uppercase font-semibold"
+              className="group bg-brand-gold hover:bg-brand-gold-muted text-white shadow-gold transition-all duration-500 px-10 py-5 rounded-full text-sm tracking-widest uppercase font-semibold hover:scale-105"
               onClick={onOpenMagic}
             >
-              <span className="flex items-center justify-center gap-2">
-                ✨ {t.hero.plan}
-              </span>
-            </Button>
-            <Button 
-              variant="glass" 
-              className="group bg-white/10 border border-white/20 hover:bg-white/20 text-white shadow-soft transition-all duration-350 ease-soft px-8 py-4 w-full sm:w-auto rounded-full text-base tracking-wide uppercase font-semibold"
-              onClick={() => {
-                document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <span className="flex items-center justify-center gap-2">
-                🌿 {t.hero.discover}
+              <span className="flex items-center justify-center gap-3">
+                Begin Your Journey
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </span>
             </Button>
           </div>

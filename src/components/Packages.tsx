@@ -130,7 +130,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
             <motion.div 
               key={i}
               onClick={() => onOpenBuilder(p.destinations)}
-              className="group relative flex-1 hover:flex-[3] cursor-pointer rounded-3xl overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] min-h-[150px] lg:min-h-full"
+              className="group relative flex-1 hover:flex-[3] cursor-pointer rounded-sm overflow-hidden shadow-lg transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] min-h-[150px] lg:min-h-full"
             >
               <div 
                 style={{ backgroundImage: `url('${p.img}')` }} 
