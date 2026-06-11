@@ -26,14 +26,14 @@ const FoodAccordion: React.FC<{
   const [isOpen, setIsOpen] = useState(false);
 
   const themeConfig = {
-    green: { bg: 'bg-brand-green/10', text: 'text-brand-green', border: 'border-brand-green/20', hoverFrom: 'hover:from-brand-green/5', activeBg: 'bg-brand-green' },
-    blue: { bg: 'bg-brand-blue/10', text: 'text-brand-blue', border: 'border-brand-blue/20', hoverFrom: 'hover:from-brand-blue/5', activeBg: 'bg-brand-blue' },
-    gold: { bg: 'bg-brand-gold/10', text: 'text-brand-gold', border: 'border-brand-gold/20', hoverFrom: 'hover:from-brand-gold/5', activeBg: 'bg-brand-gold' },
-    rose: { bg: 'bg-rose-500/10', text: 'text-rose-500', border: 'border-rose-500/20', hoverFrom: 'hover:from-rose-500/5', activeBg: 'bg-rose-500' },
+    green: { bg: 'bg-brand-green/20', text: 'text-brand-green', border: 'border-brand-green/30', hoverFrom: 'hover:from-brand-green/10', activeBg: 'bg-brand-green' },
+    blue: { bg: 'bg-brand-blue/20', text: 'text-brand-blue', border: 'border-brand-blue/30', hoverFrom: 'hover:from-brand-blue/10', activeBg: 'bg-brand-blue' },
+    gold: { bg: 'bg-brand-gold/20', text: 'text-brand-gold', border: 'border-brand-gold/30', hoverFrom: 'hover:from-brand-gold/10', activeBg: 'bg-brand-gold' },
+    rose: { bg: 'bg-rose-500/20', text: 'text-rose-500', border: 'border-rose-500/30', hoverFrom: 'hover:from-rose-500/10', activeBg: 'bg-rose-500' },
   }[colorTheme];
 
   return (
-    <div className={`mb-3 bg-white/60  rounded-2xl border ${themeConfig.border} shadow-sm overflow-hidden transition-all duration-500`}>
+    <div className={`mb-3 bg-black/40 backdrop-blur-xl rounded-2xl border ${themeConfig.border} shadow-lg overflow-hidden transition-all duration-500`}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full flex items-center justify-between p-4 lg:p-5 bg-gradient-to-r ${themeConfig.hoverFrom} hover:to-transparent transition-colors group`}
@@ -42,7 +42,7 @@ const FoodAccordion: React.FC<{
           <div className={`w-10 h-10 rounded-full ${themeConfig.bg} flex items-center justify-center ${themeConfig.text} group-hover:scale-110 group-hover:${themeConfig.activeBg} group-hover:text-white transition-all duration-300`}>
             <Icon name={icon as any} size={20} />
           </div>
-          <Heading as="h4" size="sm" className="font-serif text-brand-green-dark m-0 text-left font-medium">
+          <Heading as="h4" size="sm" className="font-serif text-white m-0 text-left font-medium drop-shadow-md">
             {title}
           </Heading>
         </div>
@@ -56,7 +56,7 @@ const FoodAccordion: React.FC<{
           {items.map((item, idx) => (
             <div 
               key={idx}
-              className={`flex items-center justify-between p-3 lg:p-4 hover:bg-black/5 border-t border-black/5 cursor-pointer group transition-colors relative`}
+              className={`flex items-center justify-between p-3 lg:p-4 hover:bg-white/10 border-t border-white/10 cursor-pointer group transition-colors relative`}
               onClick={() => onSelectFood(item)}
               onMouseEnter={() => setHoveredImage(item.img)}
               onMouseLeave={() => setHoveredImage(null)}
@@ -64,7 +64,7 @@ const FoodAccordion: React.FC<{
               <div className="flex-1 pr-6">
                 <div className="flex items-center gap-2 mb-1">
                   <Text size="xs" variant="muted" weight="semibold" className={`w-5 ${themeConfig.text} text-[10px]`}>{idx + 1}.</Text>
-                  <Heading as="h6" size="xs" className={`font-serif text-brand-green-dark group-hover:${themeConfig.text} transition-colors m-0 relative`}>
+                  <Heading as="h6" size="xs" className={`font-serif text-white/90 group-hover:text-white transition-colors m-0 relative`}>
                     {item.name}
                     
                     {/* Hover Image Reveal */}
@@ -104,29 +104,32 @@ const Food: React.FC = () => {
   };
 
   return (
-    <Section id="food" className="bg-surface-cream relative overflow-hidden py-24">
-      {/* Colorful Background Blobs */}
-      <div className="hidden absolute top-0 left-0 w-[500px] h-[500px] bg-brand-gold/10 rounded-full  -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="hidden absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-green/10 rounded-full  translate-x-1/3 translate-y-1/3 pointer-events-none" />
-      <div className="hidden absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-brand-blue/5 rounded-full  -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-
-      {/* Decorative Food Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#1e3b29 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+    <Section id="food" className="relative overflow-hidden py-32 text-white">
+      {/* Massive Cinematic Scrollytelling Background */}
+      <div className="absolute inset-0 z-0 bg-cover bg-fixed bg-center" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url("https://images.unsplash.com/photo-1582878826629-29b7ad1cb438?w=2000&q=80")` }} />
 
       <Container className="relative z-10">
-        <div className="text-center mb-16 reveal flex flex-col items-center">
-          <Heading as="h2" size="3xl" font="serif" className="text-brand-green-dark mb-2">
-            🍛 Food
-          </Heading>
-          <Text size="md" variant="accent" weight="medium" className="uppercase tracking-[0.2em] text-brand-gold mb-6">
-            Indian & Vietnamese
-          </Text>
-          <Text size="lg" variant="muted" className="max-w-2xl text-text-dark/80 font-light">
-            Explore Vietnam through food — from Indian comfort dishes to authentic Vietnamese flavours.
-          </Text>
+        {/* Kinetic Typography Header */}
+        <div className="text-center mb-24 flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+          >
+            <Text size="lg" variant="white" weight="medium" className="uppercase tracking-[0.4em] text-brand-gold mb-6 opacity-90 drop-shadow-md">
+              A Taste of Two Worlds
+            </Text>
+            <Heading as="h2" size="4xl" font="serif" className="mb-4 font-extrabold drop-shadow-2xl">
+              Culinary Magic
+            </Heading>
+            <Text size="xl" variant="white" className="max-w-3xl text-white/80 font-light drop-shadow-md mx-auto">
+              From the vibrant street food of Hanoi to the comforting spices of Indian cuisine. We curate dining experiences that tell a story.
+            </Text>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* LEFT SIDE: Food Guide & Cafes */}
           <div className="lg:col-span-7 xl:col-span-8 w-full min-w-0 reveal">

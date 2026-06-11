@@ -38,10 +38,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
     <>
       <nav 
         id="nav" 
-        className={`fixed top-0 left-0 right-0 z-[1000] px-[var(--spacing-layout)] flex items-center justify-between transition-all duration-550 ease-soft gap-2 md:gap-4
-          ${scrolled ? (isLight ? 'py-3.5 bg-surface-cream shadow-soft' : 'py-3.5 bg-brand-green-dark shadow-strong') : 'py-5 bg-brand-green-dark shadow-sm'}`}
+        className={`fixed left-1/2 -translate-x-1/2 z-[1000] px-6 md:px-10 flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] gap-2 md:gap-4 w-[95%] max-w-7xl rounded-full border shadow-[0_10px_30px_rgba(0,0,0,0.1)]
+          ${scrolled ? 'top-4 py-3 bg-white/30 backdrop-blur-[20px] border-white/40' : 'top-6 py-4 bg-black/20 backdrop-blur-[10px] border-white/20'}`}
       >
-        <a href="#" className="flex shrink-0 items-center gap-2 no-underline">
+        <a href="#" className="flex shrink-0 items-center gap-2 no-underline group/logo">
           <img src="/vietana_logo.png" className="h-[35px] md:h-[45px]" alt="Vietana Logo" />
           <Heading 
             as="span" 
@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             font="serif" 
             weight="semibold"
             variant="none" 
-            className={`hidden sm:block tracking-wider transition-colors duration-400 ${isLight ? 'text-brand-blue-dark' : 'text-brand-blue'}`}
+            className={`hidden sm:block tracking-wider transition-colors duration-400 ${scrolled ? 'text-brand-green-dark drop-shadow-sm' : 'text-white drop-shadow-md'}`}
           >
             VIETANA
           </Heading>
@@ -80,10 +80,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                 <Text 
                   size="sm" 
                   variant="none"
-                  weight="normal"
-                  className={`tracking-wide transition-colors duration-300 hover:text-brand-gold
-                    ${isLight ? 'text-text-muted' : 'text-white/78'}
-                    [&::after]:content-[''] [&::after]:absolute [&::after]:bottom-[-2px] [&::after]:left-0 [&::after]:right-[100%] [&::after]:h-px [&::after]:bg-brand-gold [&::after]:transition-[right] [&::after]:duration-400 [&::after]:ease-soft hover:[&::after]:right-0`}
+                  weight="bold"
+                  className={`tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm
+                    ${scrolled ? 'text-text-dark/90' : 'text-white/90'}
+                    [&::after]:content-[''] [&::after]:absolute [&::after]:bottom-[-4px] [&::after]:left-0 [&::after]:right-[100%] [&::after]:h-[2px] [&::after]:bg-brand-gold [&::after]:transition-[right] [&::after]:duration-400 [&::after]:ease-soft hover:[&::after]:right-0`}
                 >
                   {t.nav[link.key as keyof typeof t.nav]}
                 </Text>

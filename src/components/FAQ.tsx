@@ -69,39 +69,43 @@ ${customQuestion || 'I want to know more about travel in Vietnam.'}`;
   };
 
   return (
-    <Section id="faq" variant="cream" spacing="md" className="py-12 md:py-16">
-      <Container>
-        <SectionHeader 
-          label="Common Questions"
-          title="🌿 Frequently Asked Questions"
-          description="Everything Indian travelers usually ask before visiting Vietnam."
-        />
+    <Section id="faq" className="py-24 relative overflow-hidden text-white bg-black/40 backdrop-blur-3xl">
+      <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://images.unsplash.com/photo-1550686524-7e50eb956334?w=1600&q=80')] bg-cover bg-center" />
+      <Container className="relative z-10">
+        <div className="text-center mb-16 flex flex-col items-center">
+          <Text size="md" variant="accent" weight="medium" className="uppercase tracking-[0.2em] text-brand-gold mb-4 opacity-90 drop-shadow-md">
+            Clarity & Peace of Mind
+          </Text>
+          <Heading as="h2" size="4xl" font="serif" className="mb-4 font-extrabold drop-shadow-xl text-white">
+            Frequently Asked Questions
+          </Heading>
+        </div>
 
-        <div className="max-w-3xl mx-auto flex flex-col gap-3 relative z-10 w-full px-4 md:px-0">
+        <div className="max-w-4xl mx-auto flex flex-col gap-4 relative z-10 w-full px-4 md:px-0">
           {FAQS.map((faq, i) => {
             const isOpen = openIdx === i;
             return (
               <div 
                 key={i} 
-                className={`cursor-pointer transition-all duration-300 ease-in-out border rounded-2xl overflow-hidden
-                  ${isOpen ? 'border-brand-gold/40 shadow-sm bg-gradient-to-br from-white to-surface-warm' : 'border-black/5 bg-white hover:border-brand-gold/30'}`} 
+                className={`cursor-pointer transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] border rounded-[2rem] overflow-hidden
+                  ${isOpen ? 'border-brand-gold/40 shadow-[0_10px_40px_rgba(202,138,4,0.15)] bg-white/10 backdrop-blur-md' : 'border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-brand-gold/30'}`} 
                 onClick={() => setOpenIdx(isOpen ? null : i)}
               >
-                <div className="px-5 py-4 md:px-6 md:py-5 flex items-center justify-between gap-4">
-                  <h4 className="flex-1 m-0 text-[16px] md:text-[17px] font-bold text-black drop-shadow-sm leading-snug">
+                <div className="px-6 py-5 md:px-8 md:py-6 flex items-center justify-between gap-4">
+                  <h4 className="flex-1 m-0 text-lg md:text-xl font-medium text-white/90 drop-shadow-sm leading-snug tracking-wide">
                     {formatText(faq.q)}
                   </h4>
-                  <div className={`w-6 h-6 md:w-8 md:h-8 flex items-center justify-center rounded-full transition-transform duration-300 shrink-0 text-xl font-light
-                    ${isOpen ? 'text-brand-gold rotate-180' : 'text-brand-gold/60 group-hover:text-brand-gold'}`}>
+                  <div className={`w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full transition-transform duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 text-2xl font-light
+                    ${isOpen ? 'text-brand-gold rotate-180 bg-white/10' : 'text-brand-gold/60 bg-transparent group-hover:text-brand-gold'}`}>
                     {isOpen ? '−' : '+'}
                   </div>
                 </div>
                 <div 
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}
+                  className={`transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden ${isOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <p className="px-5 md:px-6 pb-5 m-0 text-[13px] text-[#5f6b7a] leading-[1.5]">
+                  <div className="px-6 pb-6 md:px-8 md:pb-8 pt-0 text-white/70 text-lg font-light leading-relaxed">
                     {formatText(faq.a)}
-                  </p>
+                  </div>
                 </div>
               </div>
             );

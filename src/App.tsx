@@ -60,7 +60,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-surface-cream">
+    <div className="min-h-screen bg-black text-white overflow-hidden selection:bg-brand-gold selection:text-black">
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />
       <FloatingOrb onClick={() => openPlanner()} />
