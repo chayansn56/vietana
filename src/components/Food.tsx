@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { FoodItem } from '../types';
 import { VIETNAMESE_VEG_ITEMS, VIETNAMESE_NON_VEG_ITEMS, INDIAN_VEG_ITEMS, INDIAN_NON_VEG_ITEMS, CAFES } from '../data/food';
