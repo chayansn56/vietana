@@ -119,7 +119,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
   }, [currentSlide]); // Re-initialize when slide changes to grab the new background image
 
   return (
-    <Section id="hero" spacing="none" className="h-screen min-h-[700px] flex items-center">
+    <Section id="hero" spacing="none" className="h-screen min-h-[700px] flex w-full items-center justify-start">
       {/* BACKGROUND SLIDES WITH RIPPLES */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div 
@@ -149,8 +149,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       </div>
 
       {/* CONTENT */}
-      <Container size="full" className="relative z-[10] h-full flex items-center pt-32 pb-20">
-        <div className="max-w-3xl flex flex-col items-start text-left">
+      <Container size="full" className="relative z-[10] w-full h-full flex items-center justify-start pt-32 pb-20">
+        <div className="max-w-3xl flex flex-col items-start text-left ml-0 pl-0">
           
           <Heading 
             as="h1" 
