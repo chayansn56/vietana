@@ -23,9 +23,9 @@ if (typeof window !== 'undefined') {
 import 'jquery.ripples';
 
 const LOCATIONS = [
-  "Rainy Café, Saigon",
-  "Scooter Rides",
-  "Morning Egg Coffee, Hanoi",
+  "Sapa Valley Retreat",
+  "Lantern Nights, Hoi An",
+  "Halong Bay Sunrise",
   "Lantern Nights, Hoi An",
   "Mì Quảng, Central Vietnam",
   "Quiet Beach Sunset"

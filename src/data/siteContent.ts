@@ -33,9 +33,9 @@ export const PACKAGES: PackageData[] = [
 ];
 
 export const HERO_SLIDES = [
-  '/hero_3.png',
-  '/hero_6.png',
-  '/hero_1.png',
+  '/hero_sapa.png',
+  '/hero_hoian.png',
+  '/hero_halong.png',
   '/hero_2.png',
   '/hero_4.png',
   '/hero_5.png'
