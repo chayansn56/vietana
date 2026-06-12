@@ -178,7 +178,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               onClick={onOpenMagic}
             >
               <span className="flex items-center justify-center gap-3">
-                Begin Your Journey
+                Design My Escape
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </span>
             </Button>

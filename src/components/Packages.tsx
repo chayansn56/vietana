@@ -112,7 +112,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
         </div>
       </motion.div>
       <Container className="relative z-10 w-full max-w-[1400px]">
-        <div className="mb-20 reveal text-center flex flex-col items-center">
+        <div className="mb-20 reveal flex flex-col items-start text-left">
           <Heading as="h2" size="4xl" font="serif" className="inline-block mb-4 tracking-tight text-white drop-shadow-sm">
             Curated Experiences
           </Heading>

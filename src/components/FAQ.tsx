@@ -72,7 +72,7 @@ ${customQuestion || 'I want to know more about travel in Vietnam.'}`;
     <Section id="faq" className="py-24 relative overflow-hidden text-white bg-black/40 backdrop-blur-3xl">
       <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://images.unsplash.com/photo-1550686524-7e50eb956334?w=1600&q=80')] bg-cover bg-center" />
       <Container className="relative z-10">
-        <div className="text-center mb-16 flex flex-col items-center">
+        <div className="mb-16 flex flex-col items-start text-left">
           <Text size="md" variant="accent" weight="medium" className="uppercase tracking-[0.2em] text-brand-gold mb-4 opacity-90 drop-shadow-md">
             Clarity & Peace of Mind
           </Text>

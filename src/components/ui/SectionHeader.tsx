@@ -21,7 +21,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   const isDark = variant === 'dark';
 
   return (
-    <div className={`mb-20 reveal ${centered ? 'text-center' : ''} ${className}`}>
+    <div className={`mb-20 reveal ${className}`}>
       {label && (
         <Heading
           as="div"

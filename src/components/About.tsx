@@ -84,7 +84,7 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
         />
       </div>
 
-      <div className="p-[30px] md:p-[50px] relative z-10 text-center flex flex-col items-center">
+      <div className="p-[30px] md:p-[50px] relative z-10 text-left flex flex-col items-start">
         
         {/* Header */}
         <p className="text-[14px] font-semibold tracking-[2px] text-[#3D8B7D] uppercase mb-4">

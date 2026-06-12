@@ -6,7 +6,7 @@ export const en: TranslationSchema = {
     experiences: 'Experiences',
     journal: 'Journal',
     team: 'The Team',
-    cta: 'Plan My Trip'
+    cta: 'Design My Escape'
   },
   hero: {
     welcome: 'VIETANA',

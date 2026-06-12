@@ -111,7 +111,7 @@ const Food: React.FC = () => {
 
       <Container className="relative z-10">
         {/* Kinetic Typography Header */}
-        <div className="text-center mb-24 flex flex-col items-center">
+        <div className="mb-24 flex flex-col items-start text-left">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
