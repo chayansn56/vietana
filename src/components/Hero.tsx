@@ -32,12 +32,12 @@ const LOCATIONS = [
 ];
 
 const SLIDE_COLORS = [
-  "text-[#85C1E9]", // 3: Rainy cafe (cool blue)
-  "text-[#A9DFBF]", // 6: Scooters (green)
-  "text-[#F8C471]", // 1: Egg coffee (warm brown)
-  "text-[#FAD7A1]", // 2: Lanterns (warm yellow)
-  "text-[#E59866]", // 4: Mi Quang (warm orange)
-  "text-[#F5B041]", // 5: Beach sunset (golden)
+  "text-[#73C6B6]", // Sapa (Green/Teal)
+  "text-[#F5B041]", // Hoi An (Warm Orange)
+  "text-[#85C1E9]", // Halong (Cool Blue)
+  "text-[#FAD7A1]", // Lanterns (Warm Yellow)
+  "text-[#E59866]", // Mi Quang (Warm Orange)
+  "text-[#F8C471]", // Beach (Golden)
 ];
 
 const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
@@ -157,7 +157,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             size="4xl"
             variant="none" 
             font="serif"
-            className="mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] tracking-tight leading-[1.1] text-white"
+            className={`mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] tracking-tight leading-[1.1] transition-colors duration-1000 ${SLIDE_COLORS[currentSlide]}`}
           >
             {t.hero.welcome}
             <span className="block mt-4 text-white/90 text-4xl sm:text-6xl tracking-tight font-light">{t.hero.tagline}</span>

@@ -9,7 +9,7 @@ export const en: TranslationSchema = {
     cta: 'Plan My Trip'
   },
   hero: {
-    welcome: 'VIETANA EXCLUSIVE',
+    welcome: 'VIETANA ONLY',
     tagline: 'Feel Vietnam, Your Way',
     sub: 'Personalized travel experiences for Indian travelers.',
     support: 'Local support in Hindi & English available 24/7.',
