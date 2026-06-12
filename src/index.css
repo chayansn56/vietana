@@ -2,10 +2,10 @@
 
 @theme {
   /* Premium Cinematic Luxury Theme */
-  --color-brand-green: #064E3B; /* Deep Emerald */
-  --color-brand-green-light: #047857;
-  --color-brand-green-dark: #022C22;
-  --color-brand-green-extra-dark: #060606; /* Cinematic Charcoal */
+  --color-brand-green: #1E3A8A; /* Deep Navy Blue (Replacing Emerald) */
+  --color-brand-green-light: #2563EB;
+  --color-brand-green-dark: #172554;
+  --color-brand-green-extra-dark: #0A0F1C; /* Deep Cinematic Navy */
   
   --color-brand-gold: #D4AF37; /* Soft Luxury Gold */
   --color-brand-gold-muted: #B8860B;
