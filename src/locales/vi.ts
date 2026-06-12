@@ -9,7 +9,7 @@ export const vi: TranslationSchema = {
     cta: 'Lên kế hoạch'
   },
   hero: {
-    welcome: 'VIETANA ONLY',
+    welcome: 'VIETANA',
     tagline: 'Feel Vietnam, Your Way',
     sub: 'Personalized travel experiences for Indian travelers.',
     support: 'Local support in Hindi & English available 24/7.',
