@@ -9,7 +9,7 @@ const JOURNAL_ARTICLES = [
     category: 'Video',
     title: 'Cinematic Vietnam: A Visual Journey',
     type: 'video',
-    src: 'https://www.youtube.com/embed/8-Wv2e3rY1Y?si=tXQ2Fk2_N-Q4hQ_o&amp;controls=1', // Reliable Cinematic Vietnam video
+    src: '/videos/journal.mp4',
     date: 'Jan 15'
   },
   {
@@ -53,14 +53,23 @@ const Journal: React.FC = () => {
             <div key={idx} className="group flex flex-col">
               <div className="w-full aspect-[4/5] overflow-hidden mb-6 rounded-lg bg-black">
                 {article.type === 'video' ? (
-                  <iframe
-                    className="w-full h-full object-cover"
-                    src={article.src}
-                    title={article.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
+                  <div className="relative w-full h-full cursor-pointer">
+                    <video
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      src={article.src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/10">
+                      <div className="w-14 h-14 bg-white/20 backdrop-blur-md border border-white/40 rounded-full flex items-center justify-center text-white transform transition-transform duration-300 group-hover:scale-110">
+                        <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <img 
                     src={article.img} 
