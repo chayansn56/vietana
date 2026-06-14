@@ -6,22 +6,25 @@ import { useTranslation } from '../contexts/LanguageContext';
 
 const JOURNAL_ARTICLES = [
   {
+    category: 'Video',
+    title: 'Cinematic Vietnam: A Visual Journey',
+    type: 'video',
+    src: 'https://www.youtube.com/embed/8-Wv2e3rY1Y?si=tXQ2Fk2_N-Q4hQ_o&amp;controls=1', // Reliable Cinematic Vietnam video
+    date: 'Jan 15'
+  },
+  {
     category: 'Guides',
     title: 'The Ultimate First-Timer’s Guide to Ho Chi Minh City',
+    type: 'image',
     img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80',
     date: 'Oct 12'
   },
   {
     category: 'Food',
     title: 'Navigating Vietnamese Street Food as a Vegetarian',
+    type: 'image',
     img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cb438?w=800&q=80',
     date: 'Nov 04'
-  },
-  {
-    category: 'Culture',
-    title: 'Understanding the Lantern Festival of Hoi An',
-    img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80',
-    date: 'Dec 22'
   }
 ];
 
@@ -47,19 +50,30 @@ const Journal: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {JOURNAL_ARTICLES.map((article, idx) => (
-            <div key={idx} className="group cursor-pointer flex flex-col">
-              <div className="w-full aspect-[4/5] overflow-hidden mb-6 rounded-lg">
-                <img 
-                  src={article.img} 
-                  alt={article.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+            <div key={idx} className="group flex flex-col">
+              <div className="w-full aspect-[4/5] overflow-hidden mb-6 rounded-lg bg-black">
+                {article.type === 'video' ? (
+                  <iframe
+                    className="w-full h-full object-cover"
+                    src={article.src}
+                    title={article.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <img 
+                    src={article.img} 
+                    alt={article.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 cursor-pointer group-hover:scale-105"
+                  />
+                )}
               </div>
-              <div className="flex items-center justify-between mb-3 text-xs uppercase tracking-widest text-black/50 font-semibold">
+              <div className="flex items-center justify-between mb-3 text-xs uppercase tracking-widest text-black/50 font-semibold cursor-pointer">
                 <span>{article.category}</span>
                 <span>{article.date}</span>
               </div>
-              <Heading as="h3" size="xl" font="serif" className="leading-snug group-hover:text-brand-gold transition-colors duration-300">
+              <Heading as="h3" size="xl" font="serif" className="leading-snug cursor-pointer group-hover:text-brand-gold transition-colors duration-300">
                 {article.title}
               </Heading>
             </div>
