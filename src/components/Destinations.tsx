@@ -1,100 +1,146 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import { useTranslation } from '../contexts/LanguageContext';
-
-const DESTINATIONS = [
-  {
-    name: 'Ha Long Bay',
-    img: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80',
-    colSpan: 'col-span-1 md:col-span-2',
-    rowSpan: 'row-span-2',
-    desc: 'Emerald waters and limestone islands.'
-  },
-  {
-    name: 'Ho Chi Minh City',
-    img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1600&q=80',
-    colSpan: 'col-span-1',
-    rowSpan: 'row-span-1',
-    desc: 'The vibrant heart of the south.'
-  },
-  {
-    name: 'Hoi An',
-    img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?w=1600&q=80',
-    colSpan: 'col-span-1',
-    rowSpan: 'row-span-1',
-    desc: 'Lantern-lit ancient streets.'
-  },
-  {
-    name: 'Da Nang',
-    img: 'https://images.unsplash.com/photo-1581026046187-5775cb56b3e7?w=1600&q=80',
-    colSpan: 'col-span-1 md:col-span-1',
-    rowSpan: 'row-span-1',
-    desc: 'Where city meets the sea.'
-  },
-  {
-    name: 'Phu Quoc',
-    img: 'https://images.unsplash.com/photo-1557053910-d7d8e6eb8b1e?w=1600&q=80',
-    colSpan: 'col-span-1 md:col-span-2',
-    rowSpan: 'row-span-1',
-    desc: 'White sands and pristine sunsets.'
-  }
-];
+import { CITIES, CityDestination } from '../data/destinations';
+import Modal from './ui/Modal';
+import Icon from './ui/Icon';
 
 const Destinations: React.FC = () => {
   const { t } = useTranslation();
+  const [selectedCity, setSelectedCity] = useState<CityDestination | null>(null);
+  const [expandedSight, setExpandedSight] = useState<string | null>(null);
 
   return (
     <Section id="destinations" spacing="lg" className="bg-black text-white relative">
       <Container>
-        <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="max-w-2xl">
-            <Heading as="h2" size="3xl" font="serif" className="text-white mb-6 tracking-tight">
-              {t.nav.destinations}
-            </Heading>
-            <Text variant="white" size="lg" className="opacity-70 font-light">
-              We don't just take you places. We take you to the feeling of Vietnam. 
-              Discover regions that match your deepest travel desires.
-            </Text>
-          </div>
+        <div className="mb-16 md:mb-20 flex flex-col justify-start gap-4">
+          <Heading as="h2" size="3xl" font="serif" className="text-white tracking-tight">
+            {t.nav.destinations}
+          </Heading>
+          <Text variant="white" size="lg" className="opacity-70 font-light max-w-2xl">
+            We don't just take you places. We take you to the feeling of Vietnam. 
+            Discover regions that match your deepest travel desires.
+          </Text>
         </div>
 
-        {/* CSS Grid Masonry-like layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
-          {DESTINATIONS.map((dest, i) => (
+        {/* 10 Cities Photo Gallery Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          {CITIES.map((city) => (
             <div 
-              key={i} 
-              className={`relative group rounded-sm overflow-hidden shadow-lg cursor-pointer ${dest.colSpan} ${dest.rowSpan}`}
+              key={city.id} 
+              className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-lg"
+              onClick={() => setSelectedCity(city)}
             >
-              {/* Image */}
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] ease-out group-hover:scale-110"
-                style={{ backgroundImage: `url(${dest.img})` }}
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+                style={{ backgroundImage: `url(${city.coverImage})` }}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500" />
-              
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col justify-end h-full">
-                <Heading as="h3" size="2xl" variant="none" className="text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">
-                  {dest.name}
+              <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col justify-end">
+                <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 group-hover:-translate-y-1">
+                  {city.name}
                 </Heading>
                 <div className="overflow-hidden">
                   <Text 
                     variant="none" 
-                    size="sm" 
-                    className="text-white/80 transform translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+                    size="xs" 
+                    className="text-white/70 transform translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 line-clamp-2"
                   >
-                    {dest.desc}
+                    {city.shortDesc}
                   </Text>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Click to see more */}
+        <div className="mt-12 text-center">
+          <button 
+            className="text-brand-gold hover:text-brand-gold-muted tracking-widest uppercase text-sm font-semibold transition-colors duration-300 bg-transparent border-none cursor-pointer flex items-center justify-center gap-2 mx-auto"
+            onClick={() => {/* could open planner or load more */}}
+          >
+            Click to see more cities like this <Icon name="ArrowRight" size={16} />
+          </button>
+        </div>
       </Container>
+
+      {/* City Detail Modal */}
+      <Modal isOpen={!!selectedCity} onClose={() => { setSelectedCity(null); setExpandedSight(null); }} size="xl">
+        {selectedCity && (
+          <div className="flex flex-col text-left">
+            {/* Modal Header Image */}
+            <div 
+              className="w-full h-64 md:h-80 bg-cover bg-center relative rounded-t-2xl"
+              style={{ backgroundImage: `url(${selectedCity.coverImage})` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+              <div className="absolute bottom-6 left-6 md:left-10 pr-6">
+                <Heading as="h2" size="3xl" font="serif" variant="none" className="text-white mb-2">
+                  {selectedCity.name}
+                </Heading>
+                <Text size="sm" variant="none" className="text-brand-gold font-medium tracking-wider uppercase">
+                  {selectedCity.shortDesc}
+                </Text>
+              </div>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 md:p-10 bg-surface-dark rounded-b-2xl max-h-[60vh] overflow-y-auto custom-scrollbar">
+              <Text size="md" variant="none" className="text-white/80 font-light leading-relaxed mb-10">
+                {selectedCity.fullDesc}
+              </Text>
+
+              <Heading as="h4" size="lg" font="serif" variant="none" className="text-white mb-6 border-b border-white/10 pb-4">
+                Top Sightseeing Spots
+              </Heading>
+
+              <div className="flex flex-col gap-4">
+                {selectedCity.sights.map((sight) => {
+                  const isExpanded = expandedSight === sight.id;
+                  return (
+                    <div 
+                      key={sight.id}
+                      className="bg-black/30 rounded-xl overflow-hidden border border-white/5 cursor-pointer hover:border-white/20 transition-colors duration-300"
+                      onClick={() => setExpandedSight(isExpanded ? null : sight.id)}
+                    >
+                      <div className="flex items-center gap-4 p-3 md:p-4">
+                        <div 
+                          className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-cover bg-center shrink-0"
+                          style={{ backgroundImage: `url(${sight.image})` }}
+                        />
+                        <div className="flex-1">
+                          <Heading as="h5" size="md" variant="none" className="text-white/90 group-hover:text-brand-gold transition-colors">
+                            {sight.name}
+                          </Heading>
+                          <Text size="xs" variant="none" className="text-white/50 mt-1 hidden md:block">
+                            Click to {isExpanded ? 'hide' : 'view'} details
+                          </Text>
+                        </div>
+                        <div className="pr-4 text-white/40">
+                          <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={20} />
+                        </div>
+                      </div>
+                      
+                      {/* Accordion Content */}
+                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="p-4 md:px-6 md:pb-6 pt-0 border-t border-white/5 mt-2">
+                          <Text size="sm" variant="none" className="text-brand-gold/90 font-light italic">
+                            {sight.description}
+                          </Text>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </Section>
   );
 };
