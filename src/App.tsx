@@ -81,7 +81,7 @@ export default function App() {
       />
 
       <main>
-        <Hero onOpenMagic={() => setIsMagicModeOpen(true)} />
+        <Hero onOpenMagic={() => { setBuilderDestinations([]); setIsBuilderOpen(true); }} />
         
         <Suspense fallback={<SectionPlaceholder />}>
           <Destinations />
