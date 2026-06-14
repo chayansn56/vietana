@@ -98,10 +98,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
                     size="4xl"
                     variant="none" 
                     font="serif"
-                    className="mb-4 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] tracking-tight leading-[1.1] text-[#F5B041]"
+                    className="mb-4 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] tracking-tight leading-[1.1] text-[#85C1E9]"
                   >
                     {t.hero.welcome}
-                    <span className="block mt-3 text-white/90 text-3xl sm:text-5xl tracking-tight font-light">{t.hero.tagline}</span>
+                    <span className="block mt-3 text-[#F5B041] text-3xl sm:text-5xl tracking-tight font-light">{t.hero.tagline}</span>
                   </Heading>
                   
                   <Text 
