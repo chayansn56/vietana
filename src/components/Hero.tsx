@@ -81,9 +81,53 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               style={{ backgroundImage: `url('${panel.img}')` }}
             />
             <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-700" />
-            <div className="absolute inset-x-0 bottom-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 hidden md:flex justify-center z-10">
+            <div className="absolute inset-x-0 bottom-12 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 hidden md:flex justify-center z-10">
                <span className="text-white/90 text-sm tracking-[0.3em] uppercase font-medium">{panel.label}</span>
             </div>
+            
+            {idx === 1 && (
+              <div className="absolute inset-0 z-[20] w-full h-full flex items-center justify-center pointer-events-none">
+                <div className="max-w-[90%] flex flex-col items-center text-center pointer-events-auto">
+                  <img 
+                    src="/vietana_logo.png" 
+                    alt="Vietana Logo" 
+                    className="h-[60px] md:h-[80px] mb-4 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.2s]" 
+                  />
+                  <Heading 
+                    as="h1" 
+                    size="4xl"
+                    variant="none" 
+                    font="serif"
+                    className="mb-4 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] tracking-tight leading-[1.1] text-[#F5B041]"
+                  >
+                    {t.hero.welcome}
+                    <span className="block mt-3 text-white/90 text-3xl sm:text-5xl tracking-tight font-light">{t.hero.tagline}</span>
+                  </Heading>
+                  
+                  <Text 
+                    variant="none" 
+                    size="lg"
+                    className="max-w-[400px] animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] mb-8 drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)] text-white/80 font-light"
+                  >
+                    {t.hero.sub}
+                  </Text>
+                  
+                  <div className="flex animate-reveal-up [animation-delay:0.7s]">
+                    <Button 
+                      variant="solid" 
+                      className="group bg-brand-gold hover:bg-brand-gold-muted text-white shadow-gold transition-all duration-500 px-8 py-4 rounded-full text-sm tracking-widest uppercase font-semibold hover:scale-105"
+                      onClick={onOpenMagic}
+                    >
+                      <span className="flex items-center justify-center gap-3">
+                        Design My Escape
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </span>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {idx < TRIPTYCH_PANELS.length - 1 && (
               <div className="absolute right-0 top-0 bottom-0 w-px bg-white/20 z-10" />
             )}
@@ -110,47 +154,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         ))}
       </div>
 
-      {/* CONTENT */}
-      <Container size="full" className="relative z-[10] w-full h-full flex items-center justify-start pt-32 pb-20">
-        <div className="max-w-3xl flex flex-col items-start text-left ml-0 pl-0">
-          <img 
-            src="/vietana_logo.png" 
-            alt="Vietana Logo" 
-            className="h-[60px] md:h-[80px] mb-4 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.2s]" 
-          />
-          <Heading 
-            as="h1" 
-            size="4xl"
-            variant="none" 
-            font="serif"
-            className="mb-6 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] tracking-tight leading-[1.1] text-[#F5B041]"
-          >
-            {t.hero.welcome}
-            <span className="block mt-4 text-white/90 text-4xl sm:text-6xl tracking-tight font-light">{t.hero.tagline}</span>
-          </Heading>
-          
-          <Text 
-            variant="none" 
-            size="xl"
-            className="max-w-[500px] animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] mb-12 drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)] text-white/80 font-light"
-          >
-            {t.hero.sub}
-          </Text>
-          
-          <div className="flex animate-reveal-up [animation-delay:0.7s]">
-            <Button 
-              variant="solid" 
-              className="group bg-brand-gold hover:bg-brand-gold-muted text-white shadow-gold transition-all duration-500 px-10 py-5 rounded-full text-sm tracking-widest uppercase font-semibold hover:scale-105"
-              onClick={onOpenMagic}
-            >
-              <span className="flex items-center justify-center gap-3">
-                Design My Escape
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </span>
-            </Button>
-          </div>
-        </div>
-      </Container>
+
 
 
 
