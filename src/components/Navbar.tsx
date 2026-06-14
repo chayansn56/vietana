@@ -38,6 +38,14 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
 
   return (
     <>
+      <button 
+        onClick={() => setEmergencyOpen(true)}
+        className="fixed top-6 right-6 z-[9999] flex items-center gap-2 px-4 py-2 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] animate-pulse hover:animate-none"
+      >
+        <Icon name="AlertCircle" size={16} />
+        <span className="text-xs font-bold tracking-widest uppercase">Emergency</span>
+      </button>
+
       <nav 
         id="nav" 
         className={`fixed left-1/2 -translate-x-1/2 z-[1000] px-6 md:px-10 flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] gap-2 md:gap-4 w-[95%] max-w-7xl rounded-full border shadow-[0_10px_30px_rgba(0,0,0,0.1)]
@@ -96,13 +104,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
         </ul>
 
         <div className="flex items-center gap-4 shrink-0">
-          <button 
-            onClick={() => setEmergencyOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-red-500/50 text-red-500 hover:bg-red-500/10 transition-colors no-underline cursor-pointer bg-transparent"
-          >
-            <Icon name="AlertCircle" size={14} />
-            <span className="text-xs font-bold tracking-widest uppercase">Emergency</span>
-          </button>
+
 
           <button 
             onClick={() => onOpenMapCurtain()}
