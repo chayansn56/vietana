@@ -15,8 +15,8 @@ const Destinations: React.FC = () => {
   const [isAllCitiesOpen, setIsAllCitiesOpen] = useState(false);
 
   return (
-    <Section id="destinations" spacing="lg" className="bg-gradient-to-br from-[#0f172a] to-[#020617] text-white relative overflow-hidden">
-      <Container className="relative z-10">
+    <Section id="destinations" spacing="lg" className="bg-black text-white relative">
+      <Container>
         <div className="mb-16 md:mb-20 flex flex-col justify-start gap-4">
           <Heading as="h2" size="3xl" font="serif" className="text-white tracking-tight">
             {t.nav.destinations}
@@ -32,7 +32,7 @@ const Destinations: React.FC = () => {
           {CITIES.slice(0, 10).map((city) => (
             <div 
               key={city.id} 
-              className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-lg"
+              className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_15px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500"
               onClick={() => setSelectedCity(city)}
             >
               <div 
@@ -161,7 +161,7 @@ const Destinations: React.FC = () => {
               {CITIES.map((city) => (
                 <div 
                   key={`all-${city.id}`} 
-                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-lg"
+                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_15px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500"
                   onClick={() => {
                     setIsAllCitiesOpen(false);
                     setTimeout(() => setSelectedCity(city), 300); // Wait for modal close transition
