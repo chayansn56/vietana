@@ -15,13 +15,7 @@ const Destinations: React.FC = () => {
   const [isAllCitiesOpen, setIsAllCitiesOpen] = useState(false);
 
   return (
-    <Section id="destinations" spacing="lg" className="bg-black text-white relative overflow-hidden">
-      {/* Animated Aurora Gradient Background */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#1a1a1a] via-black to-black animate-[spin_60s_linear_infinite]" />
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_80%_20%,_rgba(212,175,55,0.05),_transparent_40%)]" />
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_80%,_rgba(212,175,55,0.03),_transparent_40%)]" />
-      </div>
+    <Section id="destinations" spacing="lg" className="bg-gradient-to-b from-[#0a2016] to-[#05100b] text-white relative overflow-hidden">
       <Container className="relative z-10">
         <div className="mb-16 md:mb-20 flex flex-col justify-start gap-4">
           <Heading as="h2" size="3xl" font="serif" className="text-white tracking-tight">
