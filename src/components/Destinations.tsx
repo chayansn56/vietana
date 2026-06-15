@@ -11,6 +11,7 @@ const Destinations: React.FC = () => {
   const { t } = useTranslation();
   const [selectedCity, setSelectedCity] = useState<CityDestination | null>(null);
   const [expandedSight, setExpandedSight] = useState<string | null>(null);
+  const [isAllCitiesOpen, setIsAllCitiesOpen] = useState(false);
 
   return (
     <Section id="destinations" spacing="lg" className="bg-black text-white relative">
@@ -61,7 +62,7 @@ const Destinations: React.FC = () => {
         <div className="mt-12 text-center">
           <button 
             className="text-brand-gold hover:text-brand-gold-muted tracking-widest uppercase text-sm font-semibold transition-colors duration-300 bg-transparent border-none cursor-pointer flex items-center justify-center gap-2 mx-auto"
-            onClick={() => {/* could open planner or load more */}}
+            onClick={() => setIsAllCitiesOpen(true)}
           >
             Click to see more cities like this <Icon name="ArrowRight" size={16} />
           </button>
@@ -140,6 +141,56 @@ const Destinations: React.FC = () => {
             </div>
           </div>
         )}
+      </Modal>
+
+      {/* All Cities Modal */}
+      <Modal isOpen={isAllCitiesOpen} onClose={() => setIsAllCitiesOpen(false)} maxWidth="max-w-6xl">
+        <div className="p-6 md:p-10 flex flex-col max-h-[85vh] md:max-h-[90vh]">
+          <div className="mb-8 border-b border-white/10 pb-6 shrink-0">
+            <Heading as="h2" size="3xl" font="serif" className="text-white tracking-tight mb-2">
+              All Destinations
+            </Heading>
+            <Text variant="white" size="md" className="opacity-70 font-light">
+              Explore our complete collection of Vietnam's most beautiful tourist cities.
+            </Text>
+          </div>
+
+          <div className="overflow-y-auto custom-scrollbar flex-1 -mx-6 px-6 -mb-6 pb-6 md:-mx-10 md:px-10 md:-mb-10 md:pb-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {CITIES.map((city) => (
+                <div 
+                  key={`all-${city.id}`} 
+                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-lg"
+                  onClick={() => {
+                    setIsAllCitiesOpen(false);
+                    setTimeout(() => setSelectedCity(city), 300); // Wait for modal close transition
+                  }}
+                >
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+                    style={{ backgroundImage: `url(${city.coverImage})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 flex flex-col justify-end">
+                    <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 group-hover:-translate-y-1 text-lg md:text-2xl leading-tight">
+                      {city.name}
+                    </Heading>
+                    <div className="overflow-hidden">
+                      <Text 
+                        variant="none" 
+                        size="xs" 
+                        className="text-white/80 md:text-white/70 transform translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 line-clamp-2 text-[10px] md:text-xs leading-snug"
+                      >
+                        {city.shortDesc}
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </Modal>
     </Section>
   );
