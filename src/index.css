@@ -74,6 +74,8 @@
   --animate-mm-glow: mm-glow 3s ease-in-out infinite alternate;
   --animate-fade-in: fade-in 1s forwards;
   --animate-light-leak: light-leak var(--leak-dur, 15s) ease-in-out infinite alternate;
+  --animate-glow-pulse: glow-pulse 2.5s infinite alternate ease-in-out;
+  --animate-text-glow: text-glow 2.5s infinite alternate ease-in-out;
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -149,6 +151,14 @@
     0% { opacity: 0; transform: scale(1) translate(0, 0); filter: blur(40px); }
     50% { opacity: var(--leak-op, 0.15); transform: scale(1.5) translate(10%, -10%); filter: blur(60px); }
     100% { opacity: 0; transform: scale(1) translate(-10%, 10%); filter: blur(40px); }
+  }
+  @keyframes glow-pulse {
+    0% { box-shadow: 0 0 20px rgba(212,175,55,0.4); border-color: rgba(212,175,55,0.4); }
+    100% { box-shadow: 0 0 45px rgba(212,175,55,1); border-color: rgba(212,175,55,1); }
+  }
+  @keyframes text-glow {
+    0% { text-shadow: 0 0 10px rgba(212,175,55,0.3); color: #fff; }
+    100% { text-shadow: 0 0 30px rgba(212,175,55,0.9); color: #FFFDD0; }
   }
 }
 

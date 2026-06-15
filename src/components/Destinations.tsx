@@ -18,7 +18,7 @@ const Destinations: React.FC = () => {
     <Section id="destinations" spacing="lg" className="bg-black text-white relative">
       <Container>
         <div className="mb-16 md:mb-20 flex flex-col justify-start gap-4">
-          <Heading as="h2" size="3xl" font="serif" className="text-white tracking-tight">
+          <Heading as="h2" size="3xl" font="serif" className="text-white tracking-tight animate-text-glow">
             {t.nav.destinations}
           </Heading>
           <Text variant="white" size="lg" className="opacity-70 font-light max-w-2xl">
@@ -32,7 +32,7 @@ const Destinations: React.FC = () => {
           {CITIES.slice(0, 10).map((city) => (
             <div 
               key={city.id} 
-              className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_20px_rgba(212,175,55,0.5)] hover:shadow-[0_0_35px_rgba(212,175,55,0.8)] border border-brand-gold/50 hover:border-brand-gold transition-all duration-500"
+              className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer border border-brand-gold/50 hover:border-brand-gold animate-glow-pulse transition-all duration-500"
               onClick={() => setSelectedCity(city)}
             >
               <div 
@@ -161,7 +161,7 @@ const Destinations: React.FC = () => {
               {CITIES.map((city) => (
                 <div 
                   key={`all-${city.id}`} 
-                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_20px_rgba(212,175,55,0.5)] hover:shadow-[0_0_35px_rgba(212,175,55,0.8)] border border-brand-gold/50 hover:border-brand-gold transition-all duration-500"
+                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer border border-brand-gold/50 hover:border-brand-gold animate-glow-pulse transition-all duration-500"
                   onClick={() => {
                     setIsAllCitiesOpen(false);
                     setTimeout(() => setSelectedCity(city), 300); // Wait for modal close transition
