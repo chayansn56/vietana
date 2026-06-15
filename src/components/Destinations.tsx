@@ -39,15 +39,15 @@ const Destinations: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col justify-end">
-                <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 group-hover:-translate-y-1">
+              <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 flex flex-col justify-end">
+                <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 group-hover:-translate-y-1 text-lg md:text-2xl leading-tight">
                   {city.name}
                 </Heading>
                 <div className="overflow-hidden">
                   <Text 
                     variant="none" 
                     size="xs" 
-                    className="text-white/70 transform translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 line-clamp-2"
+                    className="text-white/80 md:text-white/70 transform translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 line-clamp-2 text-[10px] md:text-xs leading-snug"
                   >
                     {city.shortDesc}
                   </Text>
@@ -69,28 +69,28 @@ const Destinations: React.FC = () => {
       </Container>
 
       {/* City Detail Modal */}
-      <Modal isOpen={!!selectedCity} onClose={() => { setSelectedCity(null); setExpandedSight(null); }} size="xl">
+      <Modal isOpen={!!selectedCity} onClose={() => { setSelectedCity(null); setExpandedSight(null); }} maxWidth="max-w-4xl">
         {selectedCity && (
-          <div className="flex flex-col text-left">
+          <div className="flex flex-col text-left max-h-[85vh] md:max-h-[90vh]">
             {/* Modal Header Image */}
             <div 
-              className="w-full h-64 md:h-80 bg-cover bg-center relative rounded-t-2xl"
+              className="w-full h-48 md:h-80 bg-cover bg-center relative shrink-0"
               style={{ backgroundImage: `url(${selectedCity.coverImage})` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
-              <div className="absolute bottom-6 left-6 md:left-10 pr-6">
-                <Heading as="h2" size="3xl" font="serif" variant="none" className="text-white mb-2">
+              <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/100 via-surface-dark/40 to-transparent" />
+              <div className="absolute bottom-6 left-6 md:left-10 pr-6 z-10">
+                <Heading as="h2" size="3xl" font="serif" variant="none" className="text-white mb-1 md:mb-2 text-3xl md:text-4xl">
                   {selectedCity.name}
                 </Heading>
-                <Text size="sm" variant="none" className="text-brand-gold font-medium tracking-wider uppercase">
+                <Text size="sm" variant="none" className="text-brand-gold font-medium tracking-wider uppercase text-xs md:text-sm">
                   {selectedCity.shortDesc}
                 </Text>
               </div>
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 md:p-10 bg-surface-dark rounded-b-2xl max-h-[60vh] overflow-y-auto custom-scrollbar">
-              <Text size="md" variant="none" className="text-white/80 font-light leading-relaxed mb-10">
+            <div className="p-5 md:p-10 bg-surface-dark flex-1 overflow-y-auto custom-scrollbar">
+              <Text size="md" variant="none" className="text-white/80 font-light leading-relaxed mb-8 md:mb-10 text-sm md:text-base">
                 {selectedCity.fullDesc}
               </Text>
 
@@ -98,13 +98,13 @@ const Destinations: React.FC = () => {
                 Top Sightseeing Spots
               </Heading>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3 md:gap-4">
                 {selectedCity.sights.map((sight) => {
                   const isExpanded = expandedSight === sight.id;
                   return (
                     <div 
                       key={sight.id}
-                      className="bg-black/30 rounded-xl overflow-hidden border border-white/5 cursor-pointer hover:border-white/20 transition-colors duration-300"
+                      className="bg-black/40 rounded-xl overflow-hidden border border-white/5 cursor-pointer hover:border-white/20 transition-colors duration-300"
                       onClick={() => setExpandedSight(isExpanded ? null : sight.id)}
                     >
                       <div className="flex items-center gap-4 p-3 md:p-4">
@@ -112,15 +112,15 @@ const Destinations: React.FC = () => {
                           className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-cover bg-center shrink-0"
                           style={{ backgroundImage: `url(${sight.image})` }}
                         />
-                        <div className="flex-1">
-                          <Heading as="h5" size="md" variant="none" className="text-white/90 group-hover:text-brand-gold transition-colors">
+                        <div className="flex-1 min-w-0">
+                          <Heading as="h5" size="md" variant="none" className="text-white/90 group-hover:text-brand-gold transition-colors text-base md:text-lg truncate whitespace-normal line-clamp-2">
                             {sight.name}
                           </Heading>
                           <Text size="xs" variant="none" className="text-white/50 mt-1 hidden md:block">
                             Click to {isExpanded ? 'hide' : 'view'} details
                           </Text>
                         </div>
-                        <div className="pr-4 text-white/40">
+                        <div className="pr-2 md:pr-4 text-white/40 shrink-0">
                           <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={20} />
                         </div>
                       </div>
@@ -128,7 +128,7 @@ const Destinations: React.FC = () => {
                       {/* Accordion Content */}
                       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="p-4 md:px-6 md:pb-6 pt-0 border-t border-white/5 mt-2">
-                          <Text size="sm" variant="none" className="text-brand-gold/90 font-light italic">
+                          <Text size="sm" variant="none" className="text-brand-gold/90 font-light italic text-xs md:text-sm">
                             {sight.description}
                           </Text>
                         </div>
