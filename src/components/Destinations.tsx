@@ -28,7 +28,7 @@ const Destinations: React.FC = () => {
 
         {/* 10 Cities Photo Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {CITIES.map((city) => (
+          {CITIES.slice(0, 10).map((city) => (
             <div 
               key={city.id} 
               className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-lg"
