@@ -254,132 +254,179 @@ export const CITIES: CityDestination[] = [
   {
     id: "hcmc",
     name: "Ho Chi Minh City",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Phu_Quoc_Sao_Beach.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/R%C3%ADo_Saig%C3%B3n%2C_Ciudad_Ho_Chi_Minh%2C_Vietnam%2C_2013-08-14%2C_DD_29.JPG/960px-R%C3%ADo_Saig%C3%B3n%2C_Ciudad_Ho_Chi_Minh%2C_Vietnam%2C_2013-08-14%2C_DD_29.JPG",
     shortDesc: "The vibrant heart of the south.",
     fullDesc: "A high-octane city of commerce and culture that drives the country forward. Sleek skyscrapers stand shoulder-to-shoulder with ornate temples and colonial relics.",
     sights: [
-      { id: "hc1", name: "Ben Thanh Market", image: "https://upload.wikimedia.org/wikipedia/commons/7/79/Ha_Long_Bay_in_2019.jpg", description: "The bustling central market perfect for souvenirs and street food." },
-      { id: "hc2", name: "War Remnants Museum", image: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Cuu_Long.jpg", description: "A powerful, sobering look at the Vietnam War from the local perspective." },
-      { id: "hc3", name: "Notre Dame Cathedral", image: "https://upload.wikimedia.org/wikipedia/commons/a/af/Sunset_in_Phu_Quoc.jpg", description: "A striking 19th-century basilica built entirely with materials from France." },
-      { id: "hc4", name: "Cu Chi Tunnels", image: "https://upload.wikimedia.org/wikipedia/commons/8/87/CaiMonVillage-autolevel.jpg", description: "Crawl through the immense network of connecting underground tunnels." }
+      { id: "hcmc1", name: "Ben Thanh Market", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Ben_Thanh%2C_Ciudad_Ho_Chi_Minh%2C_Vietnam%2C_2013-08-14%2C_DD_01.JPG/960px-Ben_Thanh%2C_Ciudad_Ho_Chi_Minh%2C_Vietnam%2C_2013-08-14%2C_DD_01.JPG", description: "The bustling central market perfect for souvenirs and street food." },
+      { id: "hcmc2", name: "War Remnants Museum", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/War_Remnants_Museum%2C_HCMC%2C_front.JPG/960px-War_Remnants_Museum%2C_HCMC%2C_front.JPG", description: "A powerful, sobering look at the Vietnam War from the local perspective." },
+      { id: "hcmc3", name: "Independence Palace", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Palacio_de_la_Reunificaci%C3%B3n%2C_Ciudad_Ho_Chi_Minh%2C_Vietnam%2C_2013-08-14%2C_DD_03.JPG/960px-Palacio_de_la_Reunificaci%C3%B3n%2C_Ciudad_Ho_Chi_Minh%2C_Vietnam%2C_2013-08-14%2C_DD_03.JPG", description: "The historic former home of the president of South Vietnam." },
+      { id: "hcmc4", name: "Notre-Dame Cathedral Basilica of Saigon", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Basilica_of_Our_Lady_Immaculate.jpg/960px-Basilica_of_Our_Lady_Immaculate.jpg", description: "A striking 19th-century basilica built entirely with materials from France." },
+      { id: "hcmc5", name: "Saigon Central Post Office", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ho_Chi_Minh_City%2C_Central_Post_Office%2C_2020-01_CN-01.jpg/960px-Ho_Chi_Minh_City%2C_Central_Post_Office%2C_2020-01_CN-01.jpg", description: "A stunning colonial post office designed by Gustave Eiffel." },
+      { id: "hcmc6", name: "Cu Chi Tunnels", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cu_Chi_Tunnels_Vietnam_war.jpg/960px-Cu_Chi_Tunnels_Vietnam_war.jpg", description: "Crawl through the immense network of connecting underground tunnels." },
+      { id: "hcmc7", name: "Bui Vien Walking Street", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bui_Vien_Walking_Street_2.jpg/960px-Bui_Vien_Walking_Street_2.jpg", description: "The energetic, neon-lit epicenter of Saigon's nightlife." },
+      { id: "hcmc8", name: "Bitexco Financial Tower", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vista_de_Ciudad_Ho_Chi_Minh_desde_Bitexco_Financial_Tower%2C_Vietnam%2C_2013-08-14%2C_DD_13.JPG/960px-Vista_de_Ciudad_Ho_Chi_Minh_desde_Bitexco_Financial_Tower%2C_Vietnam%2C_2013-08-14%2C_DD_13.JPG", description: "A modern skyscraper offering panoramic views from its skydeck." },
+      { id: "hcmc9", name: "Jade Emperor Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Jade_Emperor_Pagoda_Saigon.jpg/960px-Jade_Emperor_Pagoda_Saigon.jpg", description: "An atmospheric, incense-filled Taoist and Buddhist temple." },
+      { id: "hcmc10", name: "Binh Tay Market", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The massive, bustling wholesale market in the heart of Cholon (Chinatown)." },
     ]
   },
   {
     id: "hanoi",
     name: "Hanoi",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/1/10/04052023_Ponagar_Hindu_temples_complex%2C_Nha_Trang_Vietnam_-_27.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "The 1000-year-old capital of culture.",
     fullDesc: "Hanoi blends Parisian grace with Asian pace. A city where ancient temples sit beside bustling street food stalls, and serene lakes offer refuge from the vibrant motorbike-filled streets.",
     sights: [
-      { id: "h1", name: "Hoan Kiem Lake", image: "https://upload.wikimedia.org/wikipedia/commons/a/a0/B%C3%A1n_qu%E1%BA%A7n_%C3%A1o_t%E1%BA%A1i_Sa_Pa.jpg", description: "The historical heart of Hanoi, featuring the iconic red Huc Bridge." },
-      { id: "h2", name: "Old Quarter", image: "https://upload.wikimedia.org/wikipedia/commons/7/79/Ha_Long_Bay_in_2019.jpg", description: "36 historic streets, each historically dedicated to a specific trade." },
-      { id: "h3", name: "Temple of Literature", image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/CanThoFloatingMarket.jpg", description: "Vietnam's first national university, dedicated to Confucius." },
-      { id: "h4", name: "Train Street", image: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Cuu_Long.jpg", description: "A narrow residential street where a massive train passes inches from homes." },
-      { id: "h5", name: "Ho Chi Minh Mausoleum", image: "https://upload.wikimedia.org/wikipedia/commons/a/af/Sunset_in_Phu_Quoc.jpg", description: "The monumental marble resting place of the revolutionary leader." }
+      { id: "hanoi1", name: "Hoan Kiem Lake", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The historical heart of Hanoi, featuring the iconic red Huc Bridge and Ngoc Son Temple." },
+      { id: "hanoi2", name: "Hanoi Old Quarter", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "36 historic streets, each traditionally dedicated to a specific trade." },
+      { id: "hanoi3", name: "Temple of Literature, Hanoi", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Vietnam's first national university, a tranquil temple dedicated to Confucius." },
+      { id: "hanoi4", name: "Ho Chi Minh Mausoleum", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The monumental marble resting place of the revolutionary leader." },
+      { id: "hanoi5", name: "Imperial Citadel of Thang Long", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A UNESCO World Heritage site showcasing centuries of Vietnamese history." },
+      { id: "hanoi6", name: "Hoa Lo Prison", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A thought-provoking museum revealing the history of the 'Hanoi Hilton'." },
+      { id: "hanoi7", name: "Hanoi Train Street", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A narrow residential street where a massive train passes inches from homes." },
+      { id: "hanoi8", name: "Tran Quoc Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The oldest Buddhist temple in Hanoi, beautifully situated on West Lake." },
+      { id: "hanoi9", name: "Dong Xuan Market", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The largest indoor market in Hanoi offering endless local goods." },
+      { id: "hanoi10", name: "Thang Long Water Puppet Theatre", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Experience the traditional art of Vietnamese water puppetry." },
     ]
   },
   {
     id: "sapa",
     name: "Sapa",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ninh_B%C3%ACnh.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "Misty mountains and terraced rice fields.",
     fullDesc: "Perched high in the Hoang Lien Son Mountains, Sapa is famous for its dramatic terraced rice fields, misty peaks, and the rich cultural tapestry of local hill tribes.",
     sights: [
-      { id: "s1", name: "Fansipan Peak", image: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Po_Klong_Garai.jpg", description: "The 'Roof of Indochina', accessible via a breathtaking cable car ride." },
-      { id: "s2", name: "Muong Hoa Valley", image: "https://upload.wikimedia.org/wikipedia/commons/8/87/CaiMonVillage-autolevel.jpg", description: "Home to the most spectacular rice terraces in all of Vietnam." },
-      { id: "s3", name: "Cat Cat Village", image: "https://upload.wikimedia.org/wikipedia/commons/a/ae/9343761968_c113c08f8d_o-768x575.jpg", description: "A traditional H'mong village featuring waterfalls and traditional crafts." },
-      { id: "s4", name: "Silver Waterfall", image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/CaiMonVillage.jpg", description: "A stunning 200m cascading waterfall surrounded by lush pine forests." }
+      { id: "sapa1", name: "Fansipan", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The 'Roof of Indochina', accessible via a breathtaking cable car ride or strenuous trek." },
+      { id: "sapa2", name: "Cat Cat Village", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A traditional H'mong village featuring waterfalls and traditional crafts." },
+      { id: "sapa3", name: "Muong Hoa Valley", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Home to the most spectacular sweeping rice terraces in all of Vietnam." },
+      { id: "sapa4", name: "Silver Waterfall", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A stunning 200m cascading waterfall surrounded by lush pine forests." },
+      { id: "sapa5", name: "Love Waterfall", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A romantic, secluded waterfall located deep within the forest." },
+      { id: "sapa6", name: "Ta Phin Village", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A peaceful village famous for the traditional red Dao herbal baths." },
+      { id: "sapa7", name: "Sapa Stone Church", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A beautiful French Gothic church located in the center of town." },
+      { id: "sapa8", name: "Ham Rong Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Climb through orchid gardens for a panoramic view over Sapa town." },
     ]
   },
   {
     id: "halong",
     name: "Ha Long Bay",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/4/48/Da_Nang_International_Airport%2C_Vietnam.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "Emerald waters and limestone islands.",
     fullDesc: "A UNESCO World Heritage site featuring thousands of towering limestone karsts emerging gracefully from emerald-green waters. Best experienced on an overnight luxury junk boat.",
     sights: [
-      { id: "hl1", name: "Sung Sot Cave", image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/CanThoFloatingMarket.jpg", description: "The 'Surprise Cave', the largest and most magnificent grotto in the bay." },
-      { id: "hl2", name: "Titov Island", image: "https://upload.wikimedia.org/wikipedia/commons/3/31/Overlooking_Da_Nang_Port_fixed.jpg", description: "Climb to the top for a panoramic 360-degree view of the entire bay." },
-      { id: "hl3", name: "Lan Ha Bay", image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/2024_H%E1%BB%99i_An_-_Japanese_Covered_Bridge_%28Ch%C3%B9a_C%E1%BA%A7u%29_after_renovation_-_img_11.jpg", description: "A quieter, equally stunning alternative to the main Ha Long area." },
-      { id: "hl4", name: "Luon Cave", image: "https://upload.wikimedia.org/wikipedia/commons/8/87/CaiMonVillage-autolevel.jpg", description: "A tranquil flooded cave accessible only by small bamboo boats or kayaks." }
+      { id: "halong1", name: "Sung Sot Cave", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Sung_Sot_Cave%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1608_3886.jpg/960px-Sung_Sot_Cave%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1608_3886.jpg", description: "The 'Surprise Cave', the largest and most magnificent grotto in the bay." },
+      { id: "halong2", name: "Ti Top Island", image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Ti_Top_Island_%283695252608%29.jpg", description: "Climb to the top for a spectacular 360-degree panoramic view of the bay." },
+      { id: "halong3", name: "Bai Tu Long Bay", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Bai_Tu_Long_Bay.jpeg/960px-Bai_Tu_Long_Bay.jpeg", description: "A quieter, more pristine alternative located just east of Ha Long Bay." },
+      { id: "halong4", name: "Lan Ha Bay", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Lan_Ha_bay_panorama_ter.jpg/960px-Lan_Ha_bay_panorama_ter.jpg", description: "Stunning karst formations south of Ha Long, offering kayaking and swimming." },
+      { id: "halong5", name: "Cat Ba Island", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/View_of_the_sea_from_Cannon_Fort_Park_on_Cat_Ba_Island%2C_Vietnam%2C_20240130_1601_4441.jpg/960px-View_of_the_sea_from_Cannon_Fort_Park_on_Cat_Ba_Island%2C_Vietnam%2C_20240130_1601_4441.jpg", description: "The largest island in the bay, featuring a massive national park and beaches." },
+      { id: "halong6", name: "Thien Cung Cave", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Thien_Cung_Cave_%2832765284031%29.jpg/960px-Thien_Cung_Cave_%2832765284031%29.jpg", description: "The 'Heavenly Palace Cave', renowned for its intricate stalactites." },
+      { id: "halong7", name: "Luon Cave", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Hang_Lu%E1%BB%93n_Cave%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1452_3806.jpg/960px-Hang_Lu%E1%BB%93n_Cave%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1452_3806.jpg", description: "A tranquil flooded cave accessible only by small bamboo boats or kayaks." },
+      { id: "halong8", name: "Cua Van Floating Village", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Cua_Van_Floating_Village.jpg/960px-Cua_Van_Floating_Village.jpg", description: "One of the largest traditional floating fishing villages in the area." },
     ]
   },
   {
     id: "ninhbinh",
     name: "Ninh Binh",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/a/a4/HangNgaCrazyHouse3.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "Ha Long Bay on land.",
     fullDesc: "A surreal landscape of river-carved limestone mountains rising from vibrant green rice paddies. A peaceful retreat into Vietnam's most cinematic natural scenery.",
     sights: [
-      { id: "nb1", name: "Trang An Complex", image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/2024_H%E1%BB%99i_An_-_Japanese_Covered_Bridge_%28Ch%C3%B9a_C%E1%BA%A7u%29_after_renovation_-_img_11.jpg", description: "A spectacular waterway network through caves and sheer cliffs." },
-      { id: "nb2", name: "Mua Cave Viewpoint", image: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Po_Klong_Garai.jpg", description: "Climb 500 stone steps for the famous dragon statue and valley view." },
-      { id: "nb3", name: "Tam Coc", image: "https://upload.wikimedia.org/wikipedia/commons/6/66/B%C3%A3i_%C4%91%C3%A1_c%E1%BB%95.jpg", description: "Drift down the Ngo Dong river through three magnificent caves." },
-      { id: "nb4", name: "Bai Dinh Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/CanThoFloatingMarket.jpg", description: "The largest complex of Buddhist temples in Vietnam." }
+      { id: "ninhbinh1", name: "Trang An Scenic Landscape Complex", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A spectacular waterway network through caves and sheer cliffs." },
+      { id: "ninhbinh2", name: "Tam Coc", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Drift down the Ngo Dong river through three magnificent caves." },
+      { id: "ninhbinh3", name: "Hang Mua", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Climb 500 stone steps to the famous dragon statue and a breathtaking valley view." },
+      { id: "ninhbinh4", name: "Bai Dinh Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The largest and most impressive complex of Buddhist temples in Vietnam." },
+      { id: "ninhbinh5", name: "Hoa Lu", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The ancient 10th-century capital of Vietnam, nestled between limestone mountains." },
+      { id: "ninhbinh6", name: "Bich Dong Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "An ancient, multi-tiered pagoda built directly into a limestone cave." },
+      { id: "ninhbinh7", name: "Thung Nham Bird Park", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A serene ecological park home to thousands of wild birds and storks." },
+      { id: "ninhbinh8", name: "Van Long Nature Reserve", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A tranquil, mirror-like wetland reserve perfect for peaceful boat rides." },
     ]
   },
   {
     id: "hue",
     name: "Hue",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Senator_Bob_Kerrey.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "The ancient imperial capital.",
     fullDesc: "Step back in time in Hue, the former seat of the Nguyen Dynasty. Famous for its sprawling Imperial Citadel, majestic royal tombs, and the poetic Perfume River.",
     sights: [
-      { id: "hu1", name: "Imperial Citadel", image: "https://upload.wikimedia.org/wikipedia/commons/7/79/Ha_Long_Bay_in_2019.jpg", description: "The vast 19th-century fortress and palace complex of the emperors." },
-      { id: "hu2", name: "Tomb of Khai Dinh", image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/CanThoFloatingMarket.jpg", description: "A dramatic fusion of traditional Vietnamese and European architecture." },
-      { id: "hu3", name: "Thien Mu Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/a/ae/9343761968_c113c08f8d_o-768x575.jpg", description: "An iconic seven-story pagoda sitting gracefully on the riverbank." },
-      { id: "hu4", name: "Perfume River", image: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Cuu_Long.jpg", description: "Take a dragon boat ride at sunset for a truly romantic experience." }
+      { id: "hue1", name: "Imperial City, Hue", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The vast, moat-surrounded fortress and palace complex of the former emperors." },
+      { id: "hue2", name: "Tomb of Khai Dinh", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A dramatic and intricate fusion of traditional Vietnamese and European architecture." },
+      { id: "hue3", name: "Tomb of Tu Duc", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A sprawling, poetic royal tomb set amidst a beautiful pine forest and lake." },
+      { id: "hue4", name: "Tomb of Minh Mang", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A majestic and highly symmetrical royal tomb complex." },
+      { id: "hue5", name: "Thien Mu Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "An iconic seven-story pagoda sitting gracefully on the bank of the river." },
+      { id: "hue6", name: "Perfume River", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Take a dragon boat ride at sunset for a truly romantic experience." },
+      { id: "hue7", name: "Dong Ba Market", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The oldest and largest commercial hub in Hue, perfect for local food." },
+      { id: "hue8", name: "Thanh Toan Bridge", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A beautiful, ancient tile-roofed wooden bridge located in a quiet village." },
     ]
   },
   {
     id: "danang",
     name: "Da Nang",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Lan_Ha_Bay.JPG",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "Where the city meets the sea.",
     fullDesc: "A modern, vibrant coastal city known for its sandy beaches, iconic bridges, and the majestic Marble Mountains. The perfect blend of urban energy and coastal relaxation.",
     sights: [
-      { id: "dn1", name: "Ba Na Hills & Golden Bridge", image: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Po_Klong_Garai.jpg", description: "The famous bridge held by giant stone hands above the clouds." },
-      { id: "dn2", name: "Marble Mountains", image: "https://upload.wikimedia.org/wikipedia/commons/8/87/CaiMonVillage-autolevel.jpg", description: "Five marble and limestone hills filled with caves and Buddhist sanctuaries." },
-      { id: "dn3", name: "Dragon Bridge", image: "https://upload.wikimedia.org/wikipedia/commons/3/30/Ch%E1%BB%A3_H%E1%BB%99i_An_-_Hoi_An_Market_%282024%29_-_img_02.jpg", description: "A spectacular bridge that literally breathes fire and water on weekends." },
-      { id: "dn4", name: "My Khe Beach", image: "https://upload.wikimedia.org/wikipedia/commons/3/31/Overlooking_Da_Nang_Port_fixed.jpg", description: "Miles of pristine white sand, perfect for surfing and sunbathing." }
+      { id: "danang1", name: "Ba Na Hills", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A massive mountaintop resort featuring the iconic Golden Bridge held by stone hands." },
+      { id: "danang2", name: "Marble Mountains", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Five marble and limestone hills filled with caves and Buddhist sanctuaries." },
+      { id: "danang3", name: "Dragon Bridge Da Nang", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A spectacular bridge that literally breathes fire and water on weekends." },
+      { id: "danang4", name: "My Khe Beach", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Miles of pristine white sand, perfect for surfing and sunbathing." },
+      { id: "danang5", name: "Son Tra Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Lush jungles offering sweeping ocean views and the towering Lady Buddha statue." },
+      { id: "danang6", name: "Museum of Cham Sculpture", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Houses the world's largest collection of ancient Cham artifacts." },
+      { id: "danang7", name: "Han Market", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A bustling multi-level market offering local food, spices, and clothing." },
+      { id: "danang8", name: "Hai Van Pass", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "One of the most scenic coastal mountain passes in the world." },
     ]
   },
   {
     id: "hoian",
     name: "Hoi An",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Dau_Tieng_Lake_-_50766650163.png",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "Lantern-lit ancient streets.",
     fullDesc: "The most charming town in Vietnam. A remarkably preserved trading port where yellow heritage buildings, silk lanterns, and world-class tailors create a magical atmosphere.",
     sights: [
-      { id: "ha1", name: "Japanese Covered Bridge", image: "https://upload.wikimedia.org/wikipedia/commons/a/af/Sunset_in_Phu_Quoc.jpg", description: "A beautifully ornate 18th-century bridge and temple." },
-      { id: "ha2", name: "Old Town Night Market", image: "https://upload.wikimedia.org/wikipedia/commons/7/79/Ha_Long_Bay_in_2019.jpg", description: "Wander through streets illuminated by thousands of colorful silk lanterns." },
-      { id: "ha3", name: "An Bang Beach", image: "https://upload.wikimedia.org/wikipedia/commons/3/31/Overlooking_Da_Nang_Port_fixed.jpg", description: "A laid-back beach just a quick bicycle ride from the ancient town." },
-      { id: "ha4", name: "Thu Bon River", image: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Cuu_Long.jpg", description: "Take a wooden rowboat at sunset and release a paper lantern for good luck." }
+      { id: "hoian1", name: "Japanese Covered Bridge Hoi An", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A beautifully ornate 18th-century bridge and temple, the symbol of the town." },
+      { id: "hoian2", name: "Hoi An Ancient Town", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Wander through exceptionally preserved streets illuminated by silk lanterns." },
+      { id: "hoian3", name: "An Bang Beach", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A laid-back, beautiful beach just a quick bicycle ride from the ancient town." },
+      { id: "hoian4", name: "Tra Que Vegetable Village", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A peaceful farming village where you can learn traditional Vietnamese agriculture." },
+      { id: "hoian5", name: "Thu Bon River", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Take a wooden rowboat at sunset and release a paper lantern for good luck." },
+      { id: "hoian6", name: "Phuc Kien Assembly Hall", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A stunning, highly decorated temple built by Chinese merchants." },
+      { id: "hoian7", name: "Hoi An Night Market", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A bustling market selling endless lanterns, souvenirs, and street food." },
+      { id: "hoian8", name: "Bay Mau Coconut Forest", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Spin through the water coconut groves in a traditional circular basket boat." },
     ]
   },
   {
     id: "dalat",
     name: "Da Lat",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/1/1d/2005-07-23_Mekong_-_Maisons.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "The city of eternal spring.",
     fullDesc: "Nestled in the Central Highlands, Da Lat offers a cool climate, French colonial architecture, pine forests, and sprawling flower gardens. A romantic mountain escape.",
     sights: [
-      { id: "dl1", name: "Crazy House", image: "https://upload.wikimedia.org/wikipedia/commons/a/a0/B%C3%A1n_qu%E1%BA%A7n_%C3%A1o_t%E1%BA%A1i_Sa_Pa.jpg", description: "A wildly surreal architectural masterpiece resembling a giant tree." },
-      { id: "dl2", name: "Xuan Huong Lake", image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/CaiMonVillage.jpg", description: "The crescent-moon shaped lake at the very center of the city." },
-      { id: "dl3", name: "Datanla Waterfall", image: "https://upload.wikimedia.org/wikipedia/commons/6/66/B%C3%A3i_%C4%91%C3%A1_c%E1%BB%95.jpg", description: "Ride an alpine coaster through the pine forest down to the falls." },
-      { id: "dl4", name: "Linh Phuoc Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/7/79/Ha_Long_Bay_in_2019.jpg", description: "An incredible temple intricately decorated with millions of broken glass pieces." }
+      { id: "dalat1", name: "Hang Nga guesthouse", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The 'Crazy House', a wildly surreal architectural masterpiece resembling a giant tree." },
+      { id: "dalat2", name: "Xuan Huong Lake", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "The picturesque crescent-moon shaped lake at the very center of the city." },
+      { id: "dalat3", name: "Datanla Waterfall", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Ride a thrilling alpine coaster through the pine forest down to the falls." },
+      { id: "dalat4", name: "Truc Lam Zen Monastery", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A peaceful monastery accessible via a scenic cable car ride over the pines." },
+      { id: "dalat5", name: "Pongour Waterfall", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A massive, magnificent terraced waterfall located just outside the city." },
+      { id: "dalat6", name: "Langbiang Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "Hike or take a jeep to the peak for spectacular views of the highlands." },
+      { id: "dalat7", name: "Valley of Love", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A highly manicured, romantic park featuring flower gardens and pedal boats." },
+      { id: "dalat8", name: "Da Lat Railway Station", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "A beautifully preserved Art Deco railway station from the French colonial era." },
+      { id: "dalat9", name: "Linh Phuoc Pagoda", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg", description: "An incredible temple intricately decorated with millions of broken glass pieces." },
     ]
   },
   {
     id: "phuquoc",
     name: "Phu Quoc",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/f/f7/Ho_Chi_Minh_-_1946_Portrait_%28cropped%29.jpg",
+    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
     shortDesc: "White sands and pristine sunsets.",
     fullDesc: "Vietnam's premier island getaway. Framed by white-sand beaches and dense tropical jungle, it is the ultimate destination for luxury resorts and spectacular seafood.",
     sights: [
-      { id: "pq1", name: "Sao Beach", image: "https://upload.wikimedia.org/wikipedia/commons/7/71/Ho_Chi_Minh_City_Television_Headquarters_2021.jpg", description: "Powder-white sand and crystalline waters on the island's southeast coast." },
-      { id: "pq2", name: "Hon Thom Cable Car", image: "https://upload.wikimedia.org/wikipedia/commons/a/a0/B%C3%A1n_qu%E1%BA%A7n_%C3%A1o_t%E1%BA%A1i_Sa_Pa.jpg", description: "The world's longest over-sea cable car offering breathtaking aerial views." },
-      { id: "pq3", name: "Phu Quoc Night Market", image: "https://upload.wikimedia.org/wikipedia/commons/3/30/Ch%E1%BB%A3_H%E1%BB%99i_An_-_Hoi_An_Market_%282024%29_-_img_02.jpg", description: "A paradise for seafood lovers with endless fresh catches grilled to order." },
-      { id: "pq4", name: "VinWonders", image: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Po_Klong_Garai.jpg", description: "Vietnam's largest theme park featuring thrilling rides and a massive aquarium." }
+      { id: "phuquoc1", name: "Bai Sao", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Bai_Sao_Beach.jpg/960px-Bai_Sao_Beach.jpg", description: "Famous for its stunning powder-white sand and crystalline turquoise waters." },
+      { id: "phuquoc2", name: "Phu Quoc Night Market", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Fish_for_sale_in_Phu_Quoc_night_market_Vietnam.jpg/960px-Fish_for_sale_in_Phu_Quoc_night_market_Vietnam.jpg", description: "A paradise for seafood lovers with endless fresh catches grilled to order." },
+      { id: "phuquoc3", name: "Hon Thom Cable Car", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/H%C3%B2n_Th%C6%A1m_cable_car_above_the_An_Th%E1%BB%9Bi_township.jpg/960px-H%C3%B2n_Th%C6%A1m_cable_car_above_the_An_Th%E1%BB%9Bi_township.jpg", description: "The world's longest over-sea cable car offering breathtaking aerial island views." },
+      { id: "phuquoc4", name: "VinWonders Phu Quoc", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/VinWonders_Phu_Quoc_from_ferris_wheel.jpg/960px-VinWonders_Phu_Quoc_from_ferris_wheel.jpg", description: "Vietnam's largest theme park featuring thrilling rides and a massive aquarium." },
+      { id: "phuquoc5", name: "Grand World Phu Quoc", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Simulation_of_a_parade_of_the_Nguyen_royal_soldiers_at_Grand_World_Phu_Quoc%2C_Vietnam.jpg/960px-Simulation_of_a_parade_of_the_Nguyen_royal_soldiers_at_Grand_World_Phu_Quoc%2C_Vietnam.jpg", description: "An entertainment complex dubbed 'The sleepless city' with Venetian canals." },
+      { id: "phuquoc6", name: "Phu Quoc Prison", image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gef%C3%A4ngnisanlage_auf_Phu_Quoc_%22Coconut_Tree_Prison%22.jpg", description: "A sobering historical site detailing the island's dark history during the war." },
+      { id: "phuquoc7", name: "Vinpearl Safari Phu Quoc", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Vinpearl_Safari_Ph%C3%BA_Qu%E1%BB%91c.jpg/960px-Vinpearl_Safari_Ph%C3%BA_Qu%E1%BB%91c.jpg", description: "Vietnam's largest semi-wildlife conservation park." },
+      { id: "phuquoc8", name: "Suoi Tranh Waterfall", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Phu_quoc_suoi_tranh.jpg/960px-Phu_quoc_suoi_tranh.jpg", description: "A gentle, picturesque waterfall surrounded by lush jungle and walking trails." },
     ]
-  }
+  },
 ];
+
+
+
