@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
     <>
       <button 
         onClick={() => setEmergencyOpen(true)}
-        className="fixed top-6 right-6 z-[9999] flex items-center gap-2 px-4 py-2 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] animate-pulse hover:animate-none"
+        className="fixed top-6 right-6 z-[9999] hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] animate-pulse hover:animate-none"
       >
         <Icon name="AlertCircle" size={16} />
         <span className="text-xs font-bold tracking-widest uppercase">Emergency</span>
@@ -251,7 +251,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       {langOpen && <div className="fixed inset-0 z-[999]" onClick={() => setLangOpen(false)}></div>}
 
       <Modal isOpen={emergencyOpen} onClose={() => setEmergencyOpen(false)} maxWidth="max-w-xl">
-        <div className="p-8 flex flex-col gap-6 relative">
+        <div className="p-6 sm:p-8 flex flex-col gap-6 relative">
           <button 
             onClick={() => setEmergencyOpen(false)}
             className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors cursor-pointer"
@@ -260,11 +260,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
           </button>
           
           <div className="flex flex-col items-center text-center mb-2">
-            <div className="w-16 h-16 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center mb-4 shrink-0">
               <Icon name="AlertTriangle" size={32} />
             </div>
             <Heading as="h3" size="2xl" font="serif" className="text-white">Emergency Support</Heading>
-            <Text variant="none" className="text-white/70 mt-2">Download essential guides and protocols for immediate assistance.</Text>
+            <Text variant="none" className="text-white/70 mt-2 text-sm sm:text-base">Download essential guides and protocols for immediate assistance.</Text>
           </div>
 
           <div className="flex flex-col gap-4">
