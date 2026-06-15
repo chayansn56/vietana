@@ -74,7 +74,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         {TRIPTYCH_PANELS.map((panel, idx) => (
           <div 
             key={idx}
-            className="relative h-full flex-1 transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-[1.5] group cursor-default"
+            className={`relative h-full flex-1 transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-[1.5] group cursor-default ${idx !== 1 ? 'hidden md:block' : ''}`}
           >
             <div 
               className="absolute inset-0 bg-cover bg-center transition-transform duration-[2s] ease-out group-hover:scale-105"

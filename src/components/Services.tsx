@@ -179,7 +179,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
         isOpen={!!selectedSrv} 
         onClose={closeSrvModal}
         maxWidth="max-w-md"
-        className="p-12"
+        className="p-6 sm:p-12"
       >
         {selectedSrv && (
           <div className="flex flex-col gap-6">

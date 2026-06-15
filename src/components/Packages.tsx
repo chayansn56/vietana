@@ -172,7 +172,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder }) => {
 
         {/* CUSTOM BUILDER CARD */}
         <div 
-          className="col-span-full flex flex-col md:flex-row items-center gap-8 p-12 md:p-16 rounded-[2.5rem] bg-black/40 backdrop-blur-[40px] border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-2" 
+          className="col-span-full flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-[2.5rem] bg-black/40 backdrop-blur-[40px] border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-2" 
           onClick={() => onOpenBuilder([])}
         >
           <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-105" style={{ backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
