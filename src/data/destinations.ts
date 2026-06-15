@@ -254,7 +254,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "hcmc",
     name: "Ho Chi Minh City",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/2/29/Ben_Thanh_Market_2012.jpg",
+    coverImage: "/images/cities/hcmc.jpg",
     shortDesc: "The vibrant heart of the south.",
     fullDesc: "A high-octane city of commerce and culture that drives the country forward. Sleek skyscrapers stand shoulder-to-shoulder with ornate temples and colonial relics.",
     sights: [
@@ -273,7 +273,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "hanoi",
     name: "Hanoi",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Hanoi_skyline_with_Ba_Vi_Mountain.jpg",
+    coverImage: "/images/cities/hanoi.jpg",
     shortDesc: "The 1000-year-old capital of culture.",
     fullDesc: "Hanoi blends Parisian grace with Asian pace. A city where ancient temples sit beside bustling street food stalls, and serene lakes offer refuge from the vibrant motorbike-filled streets.",
     sights: [
@@ -292,7 +292,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "sapa",
     name: "Sa Pa",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Tay_sa_pa.jpg",
+    coverImage: "/images/cities/sapa.jpg",
     shortDesc: "Misty mountains and terraced rice fields.",
     fullDesc: "Perched high in the Hoang Lien Son Mountains, Sapa is famous for its dramatic terraced rice fields, misty peaks, and the rich cultural tapestry of local hill tribes.",
     sights: [
@@ -309,7 +309,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "halong",
     name: "Ha Long Bay",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/7/79/Ha_Long_Bay_in_2019.jpg",
+    coverImage: "/images/cities/halong.jpg",
     shortDesc: "Emerald waters and limestone islands.",
     fullDesc: "A UNESCO World Heritage site featuring thousands of towering limestone karsts emerging gracefully from emerald-green waters. Best experienced on an overnight luxury junk boat.",
     sights: [
@@ -326,7 +326,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "ninhbinh",
     name: "Ninh Binh",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Tam_Coc_by_Tuan_Mai_%22007%22_%288888350545%29.jpg",
+    coverImage: "/images/cities/ninhbinh.jpg",
     shortDesc: "Ha Long Bay on land.",
     fullDesc: "A surreal landscape of river-carved limestone mountains rising from vibrant green rice paddies. A peaceful retreat into Vietnam's most cinematic natural scenery.",
     sights: [
@@ -343,7 +343,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "hue",
     name: "Hue",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/b/b9/%C4%90%E1%BA%A1i_n%E1%BB%99i.jpg",
+    coverImage: "/images/cities/hue.jpg",
     shortDesc: "The ancient imperial capital.",
     fullDesc: "Step back in time in Hue, the former seat of the Nguyen Dynasty. Famous for its sprawling Imperial Citadel, majestic royal tombs, and the poetic Perfume River.",
     sights: [
@@ -360,7 +360,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "danang",
     name: "Da Nang",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/5/50/Da_Nang_Skyline_2017.jpg",
+    coverImage: "/images/cities/danang.jpg",
     shortDesc: "Where the city meets the sea.",
     fullDesc: "A modern, vibrant coastal city known for its sandy beaches, iconic bridges, and the majestic Marble Mountains. The perfect blend of urban energy and coastal relaxation.",
     sights: [
@@ -377,7 +377,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "hoian",
     name: "Hoi An",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/2/27/10549-Hoi-An_%2837621348460%29.jpg",
+    coverImage: "/images/cities/hoian.jpg",
     shortDesc: "Lantern-lit ancient streets.",
     fullDesc: "The most charming town in Vietnam. A remarkably preserved trading port where yellow heritage buildings, silk lanterns, and world-class tailors create a magical atmosphere.",
     sights: [
@@ -394,7 +394,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "dalat",
     name: "Da Lat",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Tr%E1%BA%A1m_T%E1%BA%A5u%2C_Y%C3%AAn_B%C3%A1i_road.jpg",
+    coverImage: "/images/cities/dalat.jpg",
     shortDesc: "The city of eternal spring.",
     fullDesc: "Nestled in the Central Highlands, Da Lat offers a cool climate, French colonial architecture, pine forests, and sprawling flower gardens. A romantic mountain escape.",
     sights: [
@@ -412,7 +412,7 @@ export const CITIES: CityDestination[] = [
   {
     id: "phuquoc",
     name: "Phu Quoc",
-    coverImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Phu_Quoc_island_coast.jpg",
+    coverImage: "/images/cities/phuquoc.jpg",
     shortDesc: "White sands and pristine sunsets.",
     fullDesc: "Vietnam's premier island getaway. Framed by white-sand beaches and dense tropical jungle, it is the ultimate destination for luxury resorts and spectacular seafood.",
     sights: [
