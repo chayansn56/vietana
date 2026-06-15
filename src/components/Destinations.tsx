@@ -32,7 +32,7 @@ const Destinations: React.FC = () => {
           {CITIES.slice(0, 10).map((city) => (
             <div 
               key={city.id} 
-              className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_15px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500"
+              className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_20px_rgba(212,175,55,0.5)] hover:shadow-[0_0_35px_rgba(212,175,55,0.8)] border border-brand-gold/50 hover:border-brand-gold transition-all duration-500"
               onClick={() => setSelectedCity(city)}
             >
               <div 
@@ -161,7 +161,7 @@ const Destinations: React.FC = () => {
               {CITIES.map((city) => (
                 <div 
                   key={`all-${city.id}`} 
-                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_15px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500"
+                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer shadow-[0_0_20px_rgba(212,175,55,0.5)] hover:shadow-[0_0_35px_rgba(212,175,55,0.8)] border border-brand-gold/50 hover:border-brand-gold transition-all duration-500"
                   onClick={() => {
                     setIsAllCitiesOpen(false);
                     setTimeout(() => setSelectedCity(city), 300); // Wait for modal close transition
