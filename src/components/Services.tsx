@@ -34,7 +34,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     shortTitle: 'Airport Pickup',
     shortDesc: 'Start relaxed from minute one.',
     popupTitle: 'Start Relaxed From Minute One.',
-    image: 'https://images.unsplash.com/photo-1542837265-8b38ebbd79ad?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?auto=format&fit=crop&q=80',
     content: (
       <>
         <p>After a long flight, the last thing you need is confusion.</p>
@@ -63,7 +63,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     shortTitle: 'SIM & Essentials',
     shortDesc: 'Stay connected.',
     popupTitle: 'Stay Connected.',
-    image: 'https://images.unsplash.com/photo-1520697830682-898fc1e284b2?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&q=80',
     content: (
       <>
         <p>Need an eSIM or a local SIM card?</p>
