@@ -12,18 +12,16 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     shortTitle: 'Visa Assistance',
     shortDesc: 'Fast, simple and stress-free.',
     popupTitle: 'Fast, Simple and Stress-Free.',
-    image: 'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80',
     content: (
       <>
-        <p>Getting your Vietnam e-visa is simple.</p>
-        <p>Just send us:</p>
+        <p>Getting your Vietnam e-visa is simple. Just send us the following via WhatsApp, Zalo, or email, and we’ll guide you through the process:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Passport copy (valid for at least 6 months)</li>
-          <li>Passport photograph</li>
+          <li>Passport-style photograph</li>
         </ul>
-        <p>Via WhatsApp, Zalo or email, and we’ll guide you through the process.</p>
         <p>We also help with declarations and other travel requirements, so you don’t have to figure everything out yourself.</p>
-        <div className="mt-8 p-5 bg-[#FAF8F3] border border-[#E9DFC8] rounded-xl">
+        <div className="mt-8 p-5 bg-white border border-black/5 rounded-xl shadow-sm">
           <p className="text-sm font-semibold text-[#1E4D45] uppercase tracking-wider mb-2">Urgent Visa</p>
           <p className="text-sm">Need it urgently? Flight already booked? Traveling within the next 24 hours? Get in touch with us. Expedited options are available for urgent situations.</p>
         </div>
