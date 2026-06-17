@@ -76,6 +76,15 @@
   --animate-light-leak: light-leak var(--leak-dur, 15s) ease-in-out infinite alternate;
   --animate-glow-pulse: glow-pulse 2.5s infinite alternate ease-in-out;
   --animate-text-glow: text-glow 2.5s infinite alternate ease-in-out;
+  --animate-passport-float: passport-float 4s ease-in-out infinite;
+  --animate-headlights-move: headlights-move 3s infinite;
+  --animate-parallax-bg: parallax-bg 15s ease-in-out infinite alternate;
+  --animate-signal-pulse: signal-pulse 2s infinite;
+  --animate-slow-zoom: slow-zoom 10s ease-in-out infinite;
+  --animate-steam-rise: steam-rise 3s ease-out infinite;
+  --animate-heartbeat: heartbeat 1.5s ease-in-out infinite;
+  --animate-sparkle-twinkle: sparkle-twinkle 2s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 8s ease infinite;
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -159,6 +168,47 @@
   @keyframes text-glow {
     0% { text-shadow: 0 0 20px rgba(212,175,55,0.6), 0 0 40px rgba(212,175,55,0.4); color: #fff; }
     100% { text-shadow: 0 0 40px rgba(212,175,55,1), 0 0 80px rgba(212,175,55,0.8), 0 0 100px rgba(212,175,55,0.6); color: #FFFDD0; }
+  }
+  @keyframes passport-float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+  @keyframes headlights-move {
+    0% { transform: translateX(-100%) skewX(-45deg); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateX(200%) skewX(-45deg); opacity: 0; }
+  }
+  @keyframes parallax-bg {
+    0% { transform: scale(1.1) translateY(-2%); }
+    100% { transform: scale(1.1) translateY(2%); }
+  }
+  @keyframes signal-pulse {
+    0% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+    70% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 0 15px rgba(56, 189, 248, 0); }
+    100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+  }
+  @keyframes slow-zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+  @keyframes steam-rise {
+    0% { transform: translateY(0) scale(1); opacity: 0.5; }
+    100% { transform: translateY(-20px) scale(1.5); opacity: 0; }
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.1); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+  }
+  @keyframes sparkle-twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(180deg); filter: drop-shadow(0 0 5px #D4AF37); }
+  }
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
 
