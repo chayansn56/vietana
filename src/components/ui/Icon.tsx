@@ -47,7 +47,10 @@ import {
   HeartPulse,
   Flag,
   ShieldAlert,
-  Download
+  Download,
+  FileText,
+  Utensils,
+  Heart
 } from 'lucide-react';
 
 export type IconName = 
@@ -61,7 +64,8 @@ export type IconName =
   | 'Castle' | 'Users' | 'Moon' | 'Target' | 'Mic'
   | 'Ban' | 'Fish' | 'Drumstick' | 'LeafyGreen' | 'UtensilsCrossed'
   | 'MessageSquare' | 'ArrowRight'
-  | 'AlertTriangle' | 'AlertCircle' | 'HeartPulse' | 'Flag' | 'ShieldAlert' | 'Download';
+  | 'AlertTriangle' | 'AlertCircle' | 'HeartPulse' | 'Flag' | 'ShieldAlert' | 'Download'
+  | 'FileText' | 'Utensils' | 'Heart';
 
 const iconMap: Record<IconName, React.ElementType> = {
   Leaf, Plane, Soup, Sparkles, Star, MapPin, Phone, MessageCircle, Mail,
@@ -70,7 +74,8 @@ const iconMap: Record<IconName, React.ElementType> = {
   ClipboardList, Wifi, Ticket, Globe,
   Settings, Train, Edit3, Castle, Users, Moon, Target, Mic,
   Ban, Fish, Drumstick, LeafyGreen, UtensilsCrossed, MessageSquare, ArrowRight,
-  AlertTriangle, AlertCircle, HeartPulse, Flag, ShieldAlert, Download
+  AlertTriangle, AlertCircle, HeartPulse, Flag, ShieldAlert, Download,
+  FileText, Utensils, Heart
 };
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
