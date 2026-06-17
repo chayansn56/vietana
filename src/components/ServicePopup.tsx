@@ -51,22 +51,22 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
         onClick={onClose}
       />
 
-      {/* Modal Content - Fullscreen or near fullscreen */}
+      {/* Modal Content - Contained to fit one screen */}
       <div 
-        className={`relative w-full h-full md:w-[95vw] md:h-[95vh] lg:max-w-7xl overflow-hidden md:rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
+        className={`relative w-[95vw] max-w-5xl h-[85vh] max-h-[700px] overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}
       >
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/50 hover:bg-white text-charcoal shadow-sm transition-colors backdrop-blur-md border border-black/5"
+          className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 md:p-3 rounded-full bg-white/50 hover:bg-white text-charcoal shadow-sm transition-colors backdrop-blur-md border border-black/5"
         >
           <Icon name="X" size="sm" />
         </button>
 
         {/* Left Side: Cinematic Imagery */}
-        <div className="relative w-full h-1/3 md:h-full md:w-1/2 overflow-hidden shrink-0">
+        <div className="relative w-full h-2/5 md:h-full md:w-5/12 overflow-hidden shrink-0">
           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-[20s] animate-slow-parallax"
             style={{ backgroundImage: `url(${service.image})` }}
@@ -74,29 +74,40 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
         </div>
 
         {/* Right Side: Content */}
-        <div className="relative w-full h-2/3 md:h-full md:w-1/2 p-8 md:p-16 lg:p-24 overflow-y-auto custom-scrollbar flex flex-col bg-surface-ivory">
+        <div className="relative w-full h-3/5 md:h-full md:w-7/12 p-6 md:p-10 lg:p-16 overflow-y-auto custom-scrollbar flex flex-col bg-surface-ivory">
           
-          <div className="mb-8 md:mb-12">
-            <div className="w-12 h-1 bg-brand-green mb-8"></div>
-            <div className="flex items-center gap-3 mb-4">
+          <div className="mb-6 md:mb-10">
+            <div className="w-12 h-1 bg-brand-green mb-6"></div>
+            <div className="flex items-center gap-3 mb-3">
               <Icon name={service.icon} size="sm" className="text-brand-green" />
               <span className="text-xs font-semibold tracking-[0.2em] text-brand-sage uppercase">
                 {service.shortTitle}
               </span>
             </div>
-            <Heading as="h2" size="4xl" font="serif" className="text-text-charcoal mb-4 leading-tight">
+            <Heading as="h2" size="3xl" font="serif" className="text-text-charcoal mb-4 leading-tight">
               {service.popupTitle}
             </Heading>
           </div>
 
-          <div className="text-text-muted space-y-6 text-lg font-light leading-relaxed flex-1">
+          <div className="text-text-muted space-y-4 md:space-y-6 text-base md:text-lg font-light leading-relaxed flex-1">
             {service.content}
           </div>
 
-          <div className="mt-12 pt-8 border-t border-black/10 flex flex-col sm:flex-row gap-4">
-            <Button variant="primary" className="w-full sm:w-auto bg-brand-green hover:bg-brand-green-dark text-white border-transparent" onClick={() => window.open('https://wa.me/message/RWHIX4D7ZZYCP1', '_blank')}>
-              Speak with your concierge
-            </Button>
+          <div className="mt-8 pt-6 md:mt-12 md:pt-8 border-t border-black/10">
+            <p className="text-sm text-text-subtle mb-4 uppercase tracking-wider font-medium">Contact Your Concierge</p>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="primary" className="bg-[#25D366] hover:bg-[#20bd5a] text-white border-transparent px-4 py-2 flex items-center gap-2 text-sm" onClick={() => window.open('https://wa.me/message/RWHIX4D7ZZYCP1', '_blank')}>
+                <Icon name="MessageCircle" size="sm" />
+                WhatsApp
+              </Button>
+              <Button variant="outline" className="border-[#0068FF] text-[#0068FF] hover:bg-[#0068FF] hover:text-white px-4 py-2 flex items-center gap-2 text-sm" onClick={() => window.open('https://zalo.me/84834880993', '_blank')}>
+                <span className="font-bold tracking-tighter">Zalo</span>
+              </Button>
+              <Button variant="outline" className="border-brand-green text-brand-green hover:bg-brand-green hover:text-white px-4 py-2 flex items-center gap-2 text-sm" onClick={() => window.location.href = 'mailto:booking@vietana.com'}>
+                <Icon name="Mail" size="sm" />
+                Email
+              </Button>
+            </div>
           </div>
         </div>
       </div>
