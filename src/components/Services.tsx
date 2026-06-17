@@ -168,58 +168,50 @@ const Services: React.FC = () => {
       </div>
 
       <Container className="relative z-20 pt-16 md:pt-24">
-        <div className="mb-20 md:mb-24 flex flex-col items-center text-center">
-          <div className="inline-flex items-center space-x-3 mb-6">
-            <div className="h-[1px] w-8 bg-[#AAB7A1]"></div>
-            <span className="text-[#AAB7A1] text-xs md:text-sm tracking-[0.25em] font-bold uppercase">
-              The Essentials
-            </span>
-            <div className="h-[1px] w-8 bg-[#AAB7A1]"></div>
-          </div>
+        <div className="mb-20 md:mb-32 flex flex-col items-center text-center">
+          <span className="text-[#AAB7A1] text-[11px] tracking-[0.3em] font-semibold uppercase mb-6">
+            The Essentials
+          </span>
           
-          <Heading as="h2" size="4xl" font="serif" className="text-[#2E2E2E] mb-8 leading-tight">
-            Everything you need for a<br className="hidden md:block"/> 
-            <span className="relative inline-block mt-2">
-              <span className="relative z-10">smoother Vietnam journey.</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-[#E9DFC8]/60 -z-10 rounded-sm skew-x-[-12deg]"></span>
-            </span>
+          <Heading as="h2" size="4xl" font="serif" className="text-[#1D1D1F] mb-6 leading-[1.1] tracking-tight">
+            Everything you need.<br className="hidden md:block"/> 
+            <span className="text-[#86868B]">Nothing you don't.</span>
           </Heading>
-          <Text size="lg" className="text-[#5C5C5C] font-light max-w-2xl mx-auto space-y-4 relative">
-            <p>Planning a trip to Vietnam shouldn’t feel complicated.</p>
-            <p>Whether it’s getting your visa, finding the right hotel, arranging airport transfers, staying connected, or simply knowing who to call when you need help, we’re here to make things easier.</p>
-            <p className="font-medium text-[#1E4D45] pt-2">Because sometimes, it’s the little things that make the biggest difference.</p>
+          <Text size="lg" className="text-[#86868B] font-light max-w-2xl mx-auto space-y-2 relative text-[19px] leading-[1.4]">
+            <p>Whether it’s getting your visa, finding the right hotel, or staying connected, we handle the friction so you don't have to.</p>
           </Text>
         </div>
 
-        {/* Minimalist Grid */}
+        {/* Minimalist Grid - Apple Style */}
         <div 
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-24 max-w-6xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-32 max-w-7xl mx-auto px-4"
         >
           {PREMIUM_SERVICES.map((service, index) => (
             <div
               key={service.id}
               onClick={() => setSelectedService(service)}
               style={{ transitionDelay: `${index * 100}ms` }}
-              className={`group bg-white/90 backdrop-blur-sm rounded-2xl p-8 cursor-pointer shadow-[0_12px_40px_rgba(46,46,46,0.04)] border border-[#E9DFC8]/30 transition-all duration-700 hover:shadow-[0_20px_50px_rgba(46,46,46,0.08)] flex flex-col ${
-                isGridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              } hover:-translate-y-2`}
+              className={`group relative bg-white/70 backdrop-blur-2xl rounded-[32px] p-8 cursor-pointer border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] flex flex-col ${
+                isGridVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-16 scale-95'
+              } hover:scale-[1.02] hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)]`}
             >
-              <div className="mb-6 text-[#1E4D45] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                <Icon name={service.icon} size={32} />
+              {/* Apple-style Squircle Icon Container */}
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-white to-[#FAF8F3] border border-[#E9DFC8]/40 shadow-sm flex items-center justify-center mb-8 text-[#1E4D45] group-hover:scale-110 transition-transform duration-500 ease-out">
+                <Icon name={service.icon} size={24} strokeWidth={1.5} />
               </div>
               
-              <h3 className="text-xl text-[#2E2E2E] font-serif mb-3">
+              <h3 className="text-[22px] font-semibold text-[#1D1D1F] mb-3 tracking-tight">
                 {service.shortTitle}
               </h3>
               
-              <p className="text-[#5C5C5C] text-sm font-light leading-relaxed flex-1 mb-8">
+              <p className="text-[#86868B] text-[15px] font-normal leading-relaxed flex-1 mb-8">
                 {service.shortDesc}
               </p>
 
-              <div className="flex items-center text-xs font-semibold tracking-wider text-[#AAB7A1] uppercase group-hover:text-[#1E4D45] transition-colors duration-300">
-                Learn More 
-                <span className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <div className="flex items-center text-[15px] font-medium text-[#1E4D45] transition-opacity duration-300">
+                Learn more 
+                <span className="ml-1 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">›</span>
               </div>
             </div>
           ))}
