@@ -53,7 +53,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
 
       {/* Modal Content - Contained to fit one screen */}
       <div 
-        className={`relative w-[95vw] max-w-5xl h-[85vh] max-h-[700px] overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
+        className={`relative w-[95vw] max-w-5xl h-[85dvh] md:h-[70vh] max-h-[800px] md:max-h-[600px] overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}
       >
