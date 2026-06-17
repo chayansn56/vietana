@@ -12,7 +12,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     shortTitle: 'Visa Assistance',
     shortDesc: 'Fast, simple and stress-free.',
     popupTitle: 'Fast, Simple and Stress-Free.',
-    image: 'https://images.unsplash.com/photo-1559588556-9b34dbce2940?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?auto=format&fit=crop&q=80',
     content: (
       <>
         <p>Getting your Vietnam e-visa is simple.</p>
@@ -95,7 +95,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     shortTitle: 'Food Support',
     shortDesc: 'Because food matters.',
     popupTitle: 'Because Food Matters.',
-    image: 'https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80',
     content: (
       <>
         <p>Whether you’re looking for Indian food, vegetarian options, Jain meals, halal restaurants or authentic Vietnamese dishes, we’ll be happy to point you in the right direction.</p>
@@ -109,7 +109,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     shortTitle: 'Local Support',
     shortDesc: 'Real people. Real support.',
     popupTitle: 'Real People. Real Support.',
-    image: 'https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80',
     content: (
       <>
         <p>Traveling to a new country comes with questions.</p>

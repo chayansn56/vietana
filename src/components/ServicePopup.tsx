@@ -59,9 +59,9 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2.5 rounded-full bg-white/80 hover:bg-white text-text-charcoal shadow-sm transition-colors backdrop-blur-md border border-black/5"
+          className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 rounded-full bg-white/80 hover:bg-white text-text-charcoal shadow-sm transition-colors backdrop-blur-md border border-black/5"
         >
-          <Icon name="X" size="sm" />
+          <Icon name="X" size={20} />
         </button>
 
         {/* Left Side: Cinematic Imagery */}
@@ -75,35 +75,35 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
         {/* Right Side: Content Container */}
         <div className="relative w-full h-2/3 md:h-full md:w-7/12 flex flex-col bg-surface-ivory">
           
-          {/* Scrollable Content Area */}
-          <div className="flex-1 overflow-y-auto p-6 md:p-10 lg:p-16 custom-scrollbar">
-            <div className="mb-8 md:mb-10">
-              <div className="w-10 h-[2px] bg-brand-green mb-6"></div>
-              <div className="flex items-center gap-3 mb-3 text-brand-green">
-                <Icon name={service.icon} size="sm" />
-                <span className="text-xs font-semibold tracking-[0.2em] text-brand-sage uppercase">
+          {/* Tightly Packed Content Area */}
+          <div className="flex-1 flex flex-col justify-center p-5 md:p-8 lg:p-10">
+            <div className="mb-4">
+              <div className="w-10 h-[2px] bg-brand-green mb-4"></div>
+              <div className="flex items-center gap-2 mb-2 text-brand-green">
+                <Icon name={service.icon} size={16} />
+                <span className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-brand-sage uppercase">
                   {service.shortTitle}
                 </span>
               </div>
-              <Heading as="h2" size="3xl" font="serif" className="text-text-charcoal mb-4 leading-tight">
+              <Heading as="h2" size="2xl" font="serif" className="text-text-charcoal mb-3 leading-tight">
                 {service.popupTitle}
               </Heading>
             </div>
 
-            <div className="text-text-muted space-y-5 text-base md:text-lg font-light leading-relaxed">
+            <div className="text-text-muted space-y-3 text-sm md:text-base font-light leading-snug">
               {service.content}
             </div>
           </div>
 
-          {/* Fixed Footer for Contact Actions */}
-          <div className="shrink-0 p-6 md:p-8 lg:px-16 border-t border-black/5 bg-surface-ivory/80 backdrop-blur-md">
+          {/* Tight Footer for Contact Actions */}
+          <div className="shrink-0 p-5 md:p-6 lg:px-10 border-t border-black/5 bg-surface-ivory/80 backdrop-blur-md">
             <p className="text-xs text-text-subtle mb-4 uppercase tracking-widest font-semibold">Contact Concierge</p>
             <div className="flex flex-wrap gap-3">
               <button 
                 onClick={() => window.open('https://wa.me/message/RWHIX4D7ZZYCP1', '_blank')}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 hover:border-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-sm font-medium text-text-charcoal bg-white shadow-sm"
               >
-                <Icon name="MessageCircle" size="sm" />
+                <Icon name="MessageCircle" size={16} />
                 <span>WhatsApp</span>
               </button>
               <button 
@@ -116,7 +116,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
                 onClick={() => window.location.href = 'mailto:booking@vietana.com'}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 hover:border-brand-green hover:bg-brand-green hover:text-white transition-all text-sm font-medium text-text-charcoal bg-white shadow-sm"
               >
-                <Icon name="Mail" size="sm" />
+                <Icon name="Mail" size={16} />
                 <span>Email</span>
               </button>
             </div>
