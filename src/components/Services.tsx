@@ -154,12 +154,14 @@ const Services: React.FC = () => {
 
   return (
     <Section id="services" spacing="xl" className="bg-[#FAF8F3] relative overflow-hidden">
-      
-      {/* Background Ambience: Grain + Warmth */}
-      <div className="absolute inset-0 bg-grain mix-blend-multiply opacity-50 pointer-events-none"></div>
-      
-      {/* Curved Top Divider */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10" style={{ transform: 'rotate(180deg)' }}>
+      {/* Ambient Magic Background Glows */}
+      <div className="absolute top-20 -left-20 w-[40rem] h-[40rem] bg-[#AAB7A1]/10 rounded-full blur-[120px] pointer-events-none animate-pulse" />
+      <div className="absolute bottom-20 -right-20 w-[40rem] h-[40rem] bg-[#E9DFC8]/30 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Subtle Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.015] pointer-events-none" />
+
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 rotate-180">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[100px]">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C50,16.5,100,32.5,150,47.5A788.66,788.66,0,0,0,321.39,56.44Z" fill="#000000"></path>
         </svg>
@@ -167,16 +169,25 @@ const Services: React.FC = () => {
 
       <Container className="relative z-20 pt-16 md:pt-24">
         <div className="mb-20 md:mb-24 flex flex-col items-center text-center">
-          <span className="text-[#AAB7A1] text-xs md:text-sm tracking-[0.25em] font-bold uppercase mb-6">
-            The Essentials
-          </span>
+          <div className="inline-flex items-center space-x-3 mb-6">
+            <div className="h-[1px] w-8 bg-[#AAB7A1]"></div>
+            <span className="text-[#AAB7A1] text-xs md:text-sm tracking-[0.25em] font-bold uppercase">
+              The Essentials
+            </span>
+            <div className="h-[1px] w-8 bg-[#AAB7A1]"></div>
+          </div>
+          
           <Heading as="h2" size="4xl" font="serif" className="text-[#2E2E2E] mb-8 leading-tight">
-            Everything you need for a<br className="hidden md:block"/> smoother Vietnam journey.
+            Everything you need for a<br className="hidden md:block"/> 
+            <span className="relative inline-block mt-2">
+              <span className="relative z-10">smoother Vietnam journey.</span>
+              <span className="absolute bottom-2 left-0 w-full h-3 bg-[#E9DFC8]/60 -z-10 rounded-sm skew-x-[-12deg]"></span>
+            </span>
           </Heading>
-          <Text size="lg" className="text-[#5C5C5C] font-light max-w-2xl mx-auto space-y-4">
+          <Text size="lg" className="text-[#5C5C5C] font-light max-w-2xl mx-auto space-y-4 relative">
             <p>Planning a trip to Vietnam shouldn’t feel complicated.</p>
             <p>Whether it’s getting your visa, finding the right hotel, arranging airport transfers, staying connected, or simply knowing who to call when you need help, we’re here to make things easier.</p>
-            <p className="font-medium text-[#1E4D45]">Because sometimes, it’s the little things that make the biggest difference.</p>
+            <p className="font-medium text-[#1E4D45] pt-2">Because sometimes, it’s the little things that make the biggest difference.</p>
           </Text>
         </div>
 
