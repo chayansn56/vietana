@@ -136,8 +136,23 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
   }
 ];
 
-const Services = () => {
+const Services: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
+  const [isGridVisible, setIsGridVisible] = useState(false);
+  const gridRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsGridVisible(true);
+      }
+    }, { threshold: 0.1 });
+
+    if (gridRef.current) {
+      observer.observe(gridRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Section id="services" spacing="xl" className="bg-[#FAF8F3] relative overflow-hidden">
@@ -168,15 +183,21 @@ const Services = () => {
         </div>
 
         {/* Minimalist Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-24 max-w-6xl mx-auto">
-          {PREMIUM_SERVICES.map((service) => (
+        <div 
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-24 max-w-6xl mx-auto"
+        >
+          {PREMIUM_SERVICES.map((service, index) => (
             <div
               key={service.id}
               onClick={() => setSelectedService(service)}
-              className="group bg-white/90 backdrop-blur-sm rounded-2xl p-8 cursor-pointer shadow-[0_12px_40px_rgba(46,46,46,0.04)] border border-[#E9DFC8]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(46,46,46,0.08)] flex flex-col"
+              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`group bg-white/90 backdrop-blur-sm rounded-2xl p-8 cursor-pointer shadow-[0_12px_40px_rgba(46,46,46,0.04)] border border-[#E9DFC8]/30 transition-all duration-700 hover:shadow-[0_20px_50px_rgba(46,46,46,0.08)] flex flex-col ${
+                isGridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              } hover:-translate-y-2`}
             >
               <div className="mb-6 text-[#1E4D45] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                <Icon name={service.icon} size="md" />
+                <Icon name={service.icon} size={32} />
               </div>
               
               <h3 className="text-xl text-[#2E2E2E] font-serif mb-3">

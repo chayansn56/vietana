@@ -20,6 +20,7 @@ interface ServicePopupProps {
 
 const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (isOpen) {
@@ -34,6 +35,13 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
     };
   }, [isOpen]);
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isVisible) return;
+    const x = (e.clientX / window.innerWidth) * 2 - 1;
+    const y = (e.clientY / window.innerHeight) * 2 - 1;
+    setMousePos({ x, y });
+  };
+
   if (!service) return null;
 
   return (
@@ -41,6 +49,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 lg:p-12 transition-all duration-300 ${
         isOpen ? 'pointer-events-auto' : 'pointer-events-none'
       }`}
+      onMouseMove={handleMouseMove}
     >
       {/* Blurred Backdrop */}
       <div 
@@ -52,7 +61,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
 
       {/* Modal Content - Elegant Box */}
       <div 
-        className={`relative w-full h-full max-w-6xl max-h-[85vh] overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
+        className={`relative w-[95vw] max-w-5xl h-[85dvh] md:h-[70vh] max-h-[800px] md:max-h-[600px] overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}
       >
@@ -65,10 +74,13 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
         </button>
 
         {/* Left Side: Cinematic Imagery */}
-        <div className="relative w-full h-1/3 md:h-full md:w-5/12 overflow-hidden shrink-0">
+        <div className="relative w-full h-1/3 md:h-full md:w-5/12 overflow-hidden shrink-0 bg-black">
           <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-[20s] animate-slow-parallax"
-            style={{ backgroundImage: `url(${service.image})` }}
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out opacity-90"
+            style={{ 
+              backgroundImage: `url(${service.image})`,
+              transform: `scale(1.15) translate(${mousePos.x * -15}px, ${mousePos.y * -15}px)`
+            }}
           />
         </div>
 
