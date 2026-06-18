@@ -138,7 +138,7 @@ const Connection: React.FC = () => {
     <div id="team" className="font-sans text-[#1D1D1F] bg-[#FAF8F3]">
       
       {/* TOP AREA: Warm Ivory */}
-      <div className="bg-[#FAF8F3] pt-32 pb-20">
+      <div className="bg-[#FAF8F3] pt-20 pb-12">
         <Container>
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto">
@@ -157,7 +157,7 @@ const Connection: React.FC = () => {
           </div>
 
           {/* 3-Card Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             
             {/* India Card */}
             <div className="bg-[#FFFFFF] rounded-[28px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
@@ -165,7 +165,7 @@ const Connection: React.FC = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1544252890-48e025805d76?w=800&q=80" 
                   alt="Coffee and notebook" 
-                  className="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
                 />
               </div>
               <div className="p-10">
@@ -192,7 +192,7 @@ const Connection: React.FC = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80" 
                   alt="Airplane in sky" 
-                  className="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
                 />
               </div>
               <div className="p-10">
@@ -219,7 +219,7 @@ const Connection: React.FC = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80" 
                   alt="Lanterns and architecture" 
-                  className="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
                 />
               </div>
               <div className="p-10">
@@ -245,7 +245,7 @@ const Connection: React.FC = () => {
       </div>
 
       {/* MIDDLE AREA: Forest Green (Numbers) */}
-      <div className="bg-[#1E4D45] py-32">
+      <div className="bg-[#1E4D45] py-20">
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             <AnimatedCounter value={5} label="People" />
@@ -257,11 +257,11 @@ const Connection: React.FC = () => {
       </div>
 
       {/* BOTTOM AREA: Soft Sage (Offices, Contact & Quote) */}
-      <div className="bg-[#F3F6F1] py-32">
+      <div className="bg-[#F3F6F1] py-20">
         <Container>
           
           {/* Offices Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
             {/* India Office */}
             <div className="bg-[#FAF8F3] rounded-[28px] p-10 border border-[#1D1D1F]/5">
               <LiveClock timeZone="Asia/Kolkata" label="🇮🇳 Delhi" />
@@ -319,7 +319,7 @@ const Connection: React.FC = () => {
           </div>
 
           {/* Contact Pills */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-40">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-20">
             <a 
               href="mailto:vietana@vietana.com"
               className="group bg-[#FFFFFF] px-8 py-5 rounded-full flex items-center gap-4 shadow-sm border border-[#1D1D1F]/5 hover:shadow-md hover:px-10 transition-all duration-300"
@@ -362,7 +362,7 @@ const Connection: React.FC = () => {
               <Heading as="h2" size="4xl" font="serif" className="mb-6 font-normal tracking-tight text-[#1D1D1F]">
                 Great journeys are built on trust.
               </Heading>
-              <Text size="xl" className="text-[#1D1D1F]/60 font-light italic mb-40">
+              <Text size="xl" className="text-[#1D1D1F]/60 font-light italic mb-20">
                 Feel Vietnam, Your Way.
               </Text>
             </motion.div>
