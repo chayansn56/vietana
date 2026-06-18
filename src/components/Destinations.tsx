@@ -6,7 +6,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { CITIES, CityDestination } from '../data/destinations';
 import Modal from './ui/Modal';
 import Icon from './ui/Icon';
-import Particles from './ui/Particles';
+
 
 const Destinations: React.FC = () => {
   const { t } = useTranslation();

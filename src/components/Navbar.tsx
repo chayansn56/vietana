@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
               <a 
                 href={link.href} 
                 onClick={(e) => {
-                  if (link.isPlanner) {
+                  if ((link as any).isPlanner) {
                     e.preventDefault();
                     onOpenPlanner();
                   } else if ((link as any).isExperiences) {
@@ -176,7 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             href={link.href} 
             className="no-underline"
             onClick={(e) => {
-              if (link.isPlanner) {
+              if ((link as any).isPlanner) {
                 e.preventDefault();
                 setMobileMenuOpen(false);
                 onOpenPlanner();

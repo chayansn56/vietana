@@ -11,6 +11,8 @@ export interface TranslationSchema {
     journal: string;
     team: string;
     cta: string;
+    essentials?: string;
+    food?: string;
   };
   hero: {
     welcome: string;
