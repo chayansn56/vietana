@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'motion/react'; // Trigger Vercel build
 import { Heading, Text } from './ui/Typography';
 import Container from './ui/layout/Container';
 import BrandName from './ui/BrandName';
