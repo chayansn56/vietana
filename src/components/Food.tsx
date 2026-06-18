@@ -1,387 +1,184 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { useTranslation } from '../contexts/LanguageContext';
-import { FoodItem } from '../types';
-import { VIETNAMESE_VEG_ITEMS, VIETNAMESE_NON_VEG_ITEMS, INDIAN_VEG_ITEMS, INDIAN_NON_VEG_ITEMS, CAFES } from '../data/food';
-import { MessagingService } from '../services/messagingService';
-import SectionHeader from './ui/SectionHeader';
-import Button from './ui/Button';
-import Modal from './ui/Modal';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
-import Card from './ui/Card';
 import { Heading, Text } from './ui/Typography';
-import Badge from './ui/Badge';
-import Icon from './ui/Icon';
-import BrandName from './ui/BrandName';
-
-// Accordion Component for Food Categories
-const FoodAccordion: React.FC<{
-  title: string;
-  icon: string;
-  items: FoodItem[];
-  colorTheme?: 'green' | 'blue' | 'gold' | 'rose';
-  onSelectFood: (item: FoodItem) => void;
-  setHoveredImage: (img: string | null) => void;
-}> = ({ title, icon, items, colorTheme = 'green', onSelectFood, setHoveredImage }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const themeConfig = {
-    green: { bg: 'bg-brand-green/20', text: 'text-brand-green', border: 'border-brand-green/30', hoverFrom: 'hover:from-brand-green/10', activeBg: 'bg-brand-green' },
-    blue: { bg: 'bg-brand-blue/20', text: 'text-brand-blue', border: 'border-brand-blue/30', hoverFrom: 'hover:from-brand-blue/10', activeBg: 'bg-brand-blue' },
-    gold: { bg: 'bg-brand-gold/20', text: 'text-brand-gold', border: 'border-brand-gold/30', hoverFrom: 'hover:from-brand-gold/10', activeBg: 'bg-brand-gold' },
-    rose: { bg: 'bg-rose-500/20', text: 'text-rose-500', border: 'border-rose-500/30', hoverFrom: 'hover:from-rose-500/10', activeBg: 'bg-rose-500' },
-  }[colorTheme];
-
-  return (
-    <div className={`mb-3 bg-black/40 backdrop-blur-xl rounded-2xl border ${themeConfig.border} shadow-lg overflow-hidden transition-all duration-500`}>
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className={`w-full flex items-center justify-between p-4 lg:p-5 bg-gradient-to-r ${themeConfig.hoverFrom} hover:to-transparent transition-colors group`}
-      >
-        <div className="flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-full ${themeConfig.bg} flex items-center justify-center ${themeConfig.text} group-hover:scale-110 group-hover:${themeConfig.activeBg} group-hover:text-white transition-all duration-300`}>
-            <Icon name={icon as any} size={20} />
-          </div>
-          <Heading as="h4" size="sm" className="font-serif text-white m-0 text-left font-medium drop-shadow-md">
-            {title}
-          </Heading>
-        </div>
-        <div className={`w-8 h-8 rounded-full border ${themeConfig.border} flex items-center justify-center ${themeConfig.text} transition-all duration-500 ${isOpen ? `rotate-180 ${themeConfig.activeBg} text-white` : ''}`}>
-          <Icon name="ChevronDown" size={16} />
-        </div>
-      </button>
-
-      <div className={`grid transition-all duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
-        <div className="overflow-hidden">
-          {items.map((item, idx) => (
-            <div 
-              key={idx}
-              className={`flex items-center justify-between p-3 lg:p-4 hover:bg-white/10 border-t border-white/10 cursor-pointer group transition-colors relative`}
-              onClick={() => onSelectFood(item)}
-              onMouseEnter={() => setHoveredImage(item.img)}
-              onMouseLeave={() => setHoveredImage(null)}
-            >
-              <div className="flex-1 pr-6">
-                <div className="flex items-center gap-2 mb-1">
-                  <Text size="xs" variant="muted" weight="semibold" className={`w-5 ${themeConfig.text} text-[10px]`}>{idx + 1}.</Text>
-                  <Heading as="h6" size="xs" className={`font-serif text-white/90 group-hover:text-white transition-colors m-0 relative`}>
-                    {item.name}
-                    
-                    {/* Hover Image Reveal */}
-                    <div className="absolute top-1/2 -translate-y-1/2 left-[110%] w-[100px] h-[100px] pointer-events-none z-50 hidden sm:block opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100 shadow-xl rounded-full border-4 border-white overflow-hidden">
-                      <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
-                    </div>
-                  </Heading>
-                </div>
-              </div>
-              <div className="hidden sm:flex items-center gap-2 text-brand-blue/60 group-hover:text-brand-blue transition-colors">
-                <Text size="xs" variant="accent" weight="semibold" className="uppercase tracking-widest text-[10px]">
-                  View
-                </Text>
-                <Icon name="ArrowRight" size={12} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
+import { 
+  ALL_CATEGORIES, 
+  ConciergeCategory, 
+  CATEGORY_INDIAN_COMFORT,
+  CATEGORY_VEG_JAIN,
+  CATEGORY_VIETNAMESE,
+  CATEGORY_CAFES,
+  CATEGORY_LOCAL_KNOWLEDGE 
+} from '../data/foodConcierge';
+import FoodSideSheet from './food/FoodSideSheet';
 
 const Food: React.FC = () => {
-  const { t } = useTranslation();
-  const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
-  const [selectedCafe, setSelectedCafe] = useState<typeof CAFES[0] | null>(null);
-  const [foodPref, setFoodPref] = useState('');
-  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<ConciergeCategory | null>(null);
 
-  const INDIAN_WHATSAPP = '+919953294543';
+  const openCategory = (category: ConciergeCategory) => {
+    setSelectedCategory(category);
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+  };
 
-  const sendPreferences = () => {
-    const text = encodeURIComponent(`Hi VIETANA! Here are my food preferences for my upcoming trip:\n\n${foodPref}`);
-    window.open(`https://wa.me/${INDIAN_WHATSAPP}?text=${text}`, '_blank');
+  const closeSideSheet = () => {
+    setSelectedCategory(null);
+    document.body.style.overflow = 'unset';
   };
 
   return (
-    <Section id="food" className="relative overflow-hidden py-32 text-white">
-      {/* Massive Cinematic Scrollytelling Background */}
-      <div className="absolute inset-0 z-0 bg-cover bg-fixed bg-center" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url("https://images.unsplash.com/photo-1582878826629-29b7ad1cb438?w=2000&q=80")` }} />
+    <>
+      <Section id="food" className="relative py-32 bg-[#F5F5F7] text-[#1D1D1F] overflow-hidden">
+        <Container>
+          
+          {/* Main Hero Header */}
+          <div className="mb-20 text-center max-w-4xl mx-auto reveal">
+            <Text size="lg" weight="medium" className="uppercase tracking-[0.3em] text-brand-gold mb-6">
+              VIETANA Food Concierge™
+            </Text>
+            <Heading as="h2" size="4xl" font="serif" className="mb-6 font-extrabold text-[#1D1D1F]">
+              A Taste Of Home
+            </Heading>
+            <Text size="xl" className="text-[#86868B] font-light leading-relaxed">
+              Because great journeys shouldn't come with food worries. 
+              Discover our carefully curated ecosystem of comfort, flavor, and local secrets.
+            </Text>
+          </div>
 
-      <Container className="relative z-10">
-        {/* Kinetic Typography Header */}
-        <div className="mb-24 flex flex-col items-start text-left">
-          <motion.div
+          {/* Hero Image (Family Dining - No closeups) */}
+          <motion.div 
+            className="w-full h-[60vh] min-h-[400px] rounded-3xl overflow-hidden mb-24 shadow-2xl relative cursor-pointer group"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+            onClick={() => openCategory(CATEGORY_INDIAN_COMFORT)}
           >
-            <Text size="lg" variant="white" weight="medium" className="uppercase tracking-[0.4em] text-brand-gold mb-6 opacity-90 drop-shadow-md">
-              A Taste of Two Worlds
-            </Text>
-            <Heading as="h2" size="4xl" font="serif" className="mb-4 font-extrabold drop-shadow-2xl">
-              Culinary Magic
-            </Heading>
-            <Text size="xl" variant="white" className="max-w-3xl text-white/80 font-light drop-shadow-md mx-auto">
-              From the vibrant street food of Hanoi to the comforting spices of Indian cuisine. We curate dining experiences that tell a story.
-            </Text>
-          </motion.div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          
-          {/* LEFT SIDE: Food Guide & Cafes */}
-          <div className="lg:col-span-7 xl:col-span-8 w-full min-w-0 reveal">
-            
-            {/* Food Accordions */}
-            <div className="mb-16 relative">
-              {/* Indian Food Section */}
-              <div className="mb-8">
-                <Heading as="h3" size="sm" className="font-serif mb-4 border-b border-black/5 pb-2 uppercase tracking-wide bg-gradient-to-r from-brand-gold to-brand-green text-transparent bg-clip-text">
-                  INDIAN FOOD
-                </Heading>
-                <FoodAccordion 
-                  title="Indian Vegetarian" 
-                  icon="LeafyGreen" 
-                  items={INDIAN_VEG_ITEMS} 
-                  colorTheme="green"
-                  onSelectFood={setSelectedFood} 
-                  setHoveredImage={setHoveredImage} 
-                />
-                <FoodAccordion 
-                  title="Indian Non-Vegetarian (No Beef)" 
-                  icon="UtensilsCrossed" 
-                  items={INDIAN_NON_VEG_ITEMS} 
-                  colorTheme="gold"
-                  onSelectFood={setSelectedFood} 
-                  setHoveredImage={setHoveredImage} 
-                />
-              </div>
-
-              {/* Vietnamese Food Section */}
+            <img 
+              src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=2000&q=80" 
+              alt="Family dining" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between">
               <div>
-                <Heading as="h3" size="sm" className="font-serif mb-4 border-b border-black/5 pb-2 uppercase tracking-wide bg-gradient-to-r from-brand-blue to-brand-green text-transparent bg-clip-text">
-                  VIETNAMESE FOOD
+                <Text variant="white" weight="bold" size="sm" className="uppercase tracking-widest mb-2">Featured Collection</Text>
+                <Heading as="h3" size="3xl" font="serif" variant="white" className="m-0 drop-shadow-lg">
+                  Indian Comfort
                 </Heading>
-                <FoodAccordion 
-                  title="Vietnamese Vegetarian" 
-                  icon="Leaf" 
-                  items={VIETNAMESE_VEG_ITEMS} 
-                  colorTheme="green"
-                  onSelectFood={setSelectedFood} 
-                  setHoveredImage={setHoveredImage} 
-                />
-                <FoodAccordion 
-                  title="Vietnamese Non-Vegetarian (No Beef)" 
-                  icon="Drumstick" 
-                  items={VIETNAMESE_NON_VEG_ITEMS} 
-                  colorTheme="blue"
-                  onSelectFood={setSelectedFood} 
-                  setHoveredImage={setHoveredImage} 
-                />
+              </div>
+              <div className="bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-white font-medium hover:bg-white/30 transition-colors">
+                Explore Curation
               </div>
             </div>
+          </motion.div>
 
-            {/* Famous Cafes */}
-            <div className="bg-gradient-to-br from-brand-gold/20 via-rose-400/10 to-brand-blue/20 p-6 rounded-3xl border border-white/50 shadow-sm reveal relative z-10 w-full overflow-hidden">
-              <div className="flex items-center justify-between mb-4 border-b border-black/5 pb-3">
-                <Heading as="h3" size="md" className="font-serif text-brand-green-dark m-0">
-                  FAMOUS CAFÉS
-                </Heading>
-                <Text size="xs" variant="accent" className="text-brand-green/60 uppercase tracking-widest hidden sm:block">Scroll &rarr;</Text>
-              </div>
-              
-              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                <style>{`
-                  div::-webkit-scrollbar { display: none; }
-                `}</style>
-                {CAFES.map((cafe, i) => (
-                  <button 
-                    key={i} 
-                    onClick={() => setSelectedCafe(cafe)}
-                    className="group relative h-28 w-48 shrink-0 snap-center rounded-2xl overflow-hidden border-2 border-white/60 hover:border-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 bg-brand-green-dark"
-                  >
-                    <img src={cafe.img} alt={cafe.name} className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
-                    <div className="absolute bottom-3 left-3 right-3 text-left pointer-events-none">
-                      <Text variant="white" size="xs" weight="bold" className="leading-tight text-white drop-shadow-md">
-                        {cafe.name}
-                      </Text>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* RIGHT SIDE: Brands & Preferences */}
-          <div className="lg:col-span-5 xl:col-span-4 w-full space-y-6">
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             
-            {/* Restaurant Cards */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* The Spicy Spoon Card */}
-              <Card variant="white" padding="md" className="flex flex-col items-center justify-center text-center shadow-medium border-brand-gold/10 relative overflow-hidden group h-[160px]">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <img src="/spicy_spoon_new.png" alt="The Spicy Spoon" className="mix-blend-multiply transition-transform duration-500 group-hover:scale-105 h-[60px] object-contain mb-3" />
-                <Text size="xs" variant="accent" className="uppercase tracking-widest text-brand-gold font-semibold relative z-10 text-[9px]">
-                  coming soon
+            {/* Indian Comfort (Already featured above, but keeping for grid completeness or could omit) */}
+            
+            {/* Vegetarian & Jain */}
+            <div 
+              className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-black/5 flex flex-col justify-between group cursor-pointer hover:shadow-xl transition-all duration-500 overflow-hidden relative"
+              onClick={() => openCategory(CATEGORY_VEG_JAIN)}
+            >
+              <div className="absolute top-0 right-0 w-1/2 h-full">
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+                <img 
+                  src={CATEGORY_VEG_JAIN.heroImage} 
+                  alt={CATEGORY_VEG_JAIN.title}
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
+              <div className="relative z-20 max-w-[60%]">
+                <Text size="sm" weight="bold" className="uppercase tracking-widest text-brand-green mb-4">Plant Based</Text>
+                <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-4">
+                  {CATEGORY_VEG_JAIN.title}
+                </Heading>
+                <Text className="text-[#86868B] mb-8">
+                  {CATEGORY_VEG_JAIN.subtitle}
                 </Text>
-              </Card>
-
-              {/* Mi Quang Co Vien Card */}
-              <Card variant="white" padding="md" className="flex flex-col items-center justify-center text-center shadow-medium border-brand-green/10 relative overflow-hidden group h-[160px] cursor-pointer" onClick={() => window.open("https://www.google.com/maps/search/Mì+Quảng+Cô+Viên", "_blank")}>
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <img src="/mi_quang_new.png" alt="Mì Quảng Cô Viên" className="mb-3 mix-blend-multiply transition-transform duration-500 group-hover:scale-105 h-[60px] object-contain" />
-                <Text size="xs" variant="accent" className="uppercase tracking-widest text-brand-green-dark font-semibold relative z-10 text-[9px]">
-                  VIEW ON MAPS
-                </Text>
-              </Card>
+                <div className="inline-flex items-center gap-2 text-[#1D1D1F] font-medium group-hover:text-brand-green transition-colors">
+                  Explore <span className="text-xl leading-none">&rarr;</span>
+                </div>
+              </div>
             </div>
 
-            {/* Food Preferences */}
-            <Card variant="white" padding="md" className="shadow-medium border-brand-blue/10 bg-white/60 ">
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="MessageSquare" size={16} className="text-brand-blue" />
-                <Heading as="h4" size="sm" className="font-serif text-brand-green-dark m-0">
-                  Share Your Food Preferences
+            {/* Vietnamese Favorites */}
+            <div 
+              className="bg-brand-green rounded-3xl p-8 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden flex flex-col justify-between min-h-[300px]"
+              onClick={() => openCategory(CATEGORY_VIETNAMESE)}
+            >
+              <div className="absolute inset-0 opacity-20 mix-blend-overlay group-hover:opacity-40 transition-opacity duration-500">
+                <img src={CATEGORY_VIETNAMESE.heroImage} alt="Vietnamese" className="w-full h-full object-cover" />
+              </div>
+              <div className="relative z-10">
+                <Text size="sm" weight="bold" className="uppercase tracking-widest text-brand-gold mb-4">Local Soul</Text>
+                <Heading as="h3" size="xl" font="serif" variant="white" className="mb-2">
+                  {CATEGORY_VIETNAMESE.title}
                 </Heading>
               </div>
-              
-              <textarea 
-                value={foodPref} 
-                onChange={(e) => setFoodPref(e.target.value)}
-                placeholder="Vegetarian?&#10;Jain?&#10;Halal?&#10;Food allergies?&#10;Need Indian food daily?&#10;Want local food recommendations?&#10;&#10;Tell us anything." 
-                className="w-full h-48 p-4 border border-black/10 rounded-xl mb-6 font-inherit text-sm resize-none bg-white/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all placeholder:text-black/30 shadow-inner"
-              />
-              
-              <Button 
-                className="w-full bg-brand-whatsapp text-white hover:bg-brand-whatsapp/90 border-none shadow-whatsapp hover:shadow-whatsapp-hover"
-                onClick={sendPreferences}
-                icon={<Icon name="MessageCircle" size={18} />}
-              >
-                Send to WhatsApp India
-              </Button>
-            </Card>
+              <div className="relative z-10 mt-auto">
+                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-brand-green transition-colors">
+                    <span className="text-xl">&rarr;</span>
+                 </div>
+              </div>
+            </div>
 
-          </div>
-        </div>
-
-        {/* BOTTOM SECTION */}
-        <div className="mt-24 text-center border-t border-black/5 pt-16 max-w-3xl mx-auto reveal">
-          <Heading as="h3" size="lg" weight="medium" className="text-brand-green-dark leading-relaxed mb-4">
-            We own, partner and work closely with restaurants across Vietnam — so you'll never have to worry about where to eat.
-          </Heading>
-          <Text variant="subtle" size="sm" weight="bold" className="uppercase tracking-widest text-brand-gold">
-            Travel Gets Better with <BrandName />
-          </Text>
-        </div>
-      </Container>
-
-      {/* DISH MODAL */}
-      <Modal 
-        isOpen={!!selectedFood} 
-        onClose={() => setSelectedFood(null)}
-        maxWidth="max-w-xl"
-        className="overflow-hidden"
-        variant="light"
-      >
-        {selectedFood && (
-          <div className="flex flex-col bg-white">
-            <div className="relative h-64 sm:h-80 w-full overflow-hidden">
-              <img 
-                src={selectedFood.img} 
-                alt={selectedFood.name} 
-                className="w-full h-full object-cover" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              <div className="absolute bottom-6 left-8 right-8">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {selectedFood.tags?.map((tag: string, i: number) => (
-                    <Badge key={i} variant="gold" className="!bg-white/20  !border-white/30 !text-white text-[10px] py-1">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <Heading as="h3" size="xl" font="serif" variant="white" className="drop-shadow-md m-0 leading-tight">
-                  {selectedFood.name}
+            {/* Cafes */}
+            <div 
+              className="bg-white rounded-3xl p-8 shadow-sm border border-black/5 group cursor-pointer hover:shadow-xl transition-all duration-500 min-h-[300px] flex flex-col"
+              onClick={() => openCategory(CATEGORY_CAFES)}
+            >
+              <div className="flex-1 mb-6 rounded-2xl overflow-hidden relative">
+                 <img src={CATEGORY_CAFES.heroImage} alt="Cafes" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              </div>
+              <div>
+                <Heading as="h3" size="lg" font="serif" className="text-[#1D1D1F] mb-1">
+                  {CATEGORY_CAFES.title}
                 </Heading>
-              </div>
-            </div>
-            <div className="p-8 sm:p-10">
-              <div className="mb-8">
-                <Text size="xs" variant="accent" weight="bold" className="uppercase tracking-widest text-brand-blue mb-2">
-                  Ingredients / Description
-                </Text>
-                <Text variant="primary" size="lg" className="leading-relaxed text-text-dark/90 font-light">
-                  {selectedFood.desc}
+                <Text size="sm" className="text-[#86868B]">
+                  {CATEGORY_CAFES.subtitle}
                 </Text>
               </div>
-              
-              <div className="bg-brand-green/5 border border-brand-green/10 rounded-xl p-4 mb-8 flex items-start gap-4">
-                <div className="text-brand-green mt-1">
-                  <Icon name="MapPin" size={20} />
-                </div>
-                <div>
-                  <Text size="sm" weight="bold" className="text-brand-green-dark mb-1">Where to try it in Vietnam</Text>
-                  <Text size="sm" variant="subtle">Available at our trusted partner restaurants and exclusive <BrandName /> curated food tours across the country.</Text>
+            </div>
+
+            {/* Local Knowledge */}
+            <div 
+              className="lg:col-span-2 bg-[#1D1D1F] rounded-3xl p-8 md:p-12 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden"
+              onClick={() => openCategory(CATEGORY_LOCAL_KNOWLEDGE)}
+            >
+              <div className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-700">
+                <img src={CATEGORY_LOCAL_KNOWLEDGE.heroImage} alt="Team" className="w-full h-full object-cover grayscale" />
+              </div>
+              <div className="relative z-10 flex flex-col h-full justify-center max-w-lg">
+                <Heading as="h3" size="2xl" font="serif" variant="white" className="mb-6">
+                  {CATEGORY_LOCAL_KNOWLEDGE.title}
+                </Heading>
+                <Text size="lg" className="text-white/80 font-light leading-relaxed mb-8">
+                  Good food isn't just about taste. It's about comfort, memories, and bringing people together. Discover our trusted circle.
+                </Text>
+                <div className="inline-flex items-center gap-2 text-white font-medium group-hover:text-brand-gold transition-colors">
+                  Read Our Story <span className="text-xl leading-none">&rarr;</span>
                 </div>
               </div>
-
-              <Button 
-                className="w-full"
-                onClick={() => window.open(MessagingService.generateFoodInterestWhatsApp(selectedFood.name), '_blank')}
-              >
-                Plan a Trip with this Dish
-              </Button>
             </div>
+
           </div>
-        )}
-      </Modal>
 
-      {/* CAFE MODAL */}
-      <Modal 
-        isOpen={!!selectedCafe} 
-        onClose={() => setSelectedCafe(null)}
-        maxWidth="max-w-sm"
-        className="overflow-hidden rounded-3xl"
-        variant="light"
-      >
-        {selectedCafe && (
-          <div className="flex flex-col bg-white">
-            <div className="relative h-48 w-full overflow-hidden">
-              <img 
-                src={selectedCafe.img} 
-                alt={selectedCafe.name} 
-                className="w-full h-full object-cover" 
-              />
-            </div>
-            <div className="p-8 text-center">
-              <Heading as="h3" size="xl" font="serif" className="text-brand-green-dark mb-4">
-                {selectedCafe.name}
-              </Heading>
-              <Text variant="subtle" size="sm" className="mb-8">
-                {selectedCafe.desc}
-              </Text>
-              
-              <Button 
-                variant="outline" 
-                className="w-full sm:w-auto px-8 mx-auto shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2 border-brand-blue/30 text-brand-blue hover:bg-brand-blue/5"
-                onClick={() => {
-                  window.open(`https://www.google.com/maps/search/${encodeURIComponent(selectedCafe.mapQuery)}`, '_blank');
-                }}
-              >
-                View on Google Maps
-                <Icon name="MapPin" size={18} />
-              </Button>
-            </div>
-          </div>
-        )}
-      </Modal>
+        </Container>
+      </Section>
 
-    </Section>
+      {/* The Ecosystem Side Sheet */}
+      <FoodSideSheet 
+        isOpen={selectedCategory !== null}
+        onClose={closeSideSheet}
+        category={selectedCategory}
+      />
+    </>
   );
 };
 
