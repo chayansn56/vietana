@@ -1,95 +1,273 @@
-import React from 'react';
-import Section from './ui/layout/Section';
-import Container from './ui/layout/Container';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Heading, Text } from './ui/Typography';
-import { useTranslation } from '../contexts/LanguageContext';
-
-const JOURNAL_ARTICLES = [
-  {
-    category: 'Video',
-    title: 'Cinematic Vietnam: A Visual Journey',
-    type: 'video',
-    src: '/videos/journal.mp4',
-    date: 'Jan 15'
-  },
-  {
-    category: 'Guides',
-    title: 'The Ultimate First-Timer’s Guide to Ho Chi Minh City',
-    type: 'image',
-    img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80',
-    date: 'Oct 12'
-  },
-  {
-    category: 'Food',
-    title: 'Navigating Vietnamese Street Food as a Vegetarian',
-    type: 'image',
-    img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cb438?w=800&q=80',
-    date: 'Nov 04'
-  }
-];
+import Container from './ui/layout/Container';
+import BrandName from './ui/BrandName';
+import Icon from './ui/Icon';
+import { magazineData, Article, Collection } from '../data/notesMagazine';
+import NotesSideSheet from './NotesSideSheet';
 
 const Journal: React.FC = () => {
-  const { t } = useTranslation();
+  const [activeArticle, setActiveArticle] = useState<Article | null>(null);
+
+  // Function to open side sheet with an article
+  const openArticle = (article: Article) => {
+    setActiveArticle(article);
+  };
 
   return (
-    <Section id="journal" spacing="lg" className="bg-[#fcfaf8] text-black border-t border-black/10">
-      <Container>
-        <div className="mb-16 flex flex-col md:flex-row justify-between items-end border-b border-black/20 pb-8">
-          <div>
-            <Text size="sm" className="uppercase tracking-widest text-brand-gold font-bold mb-4">
-              The Vietana Journal
-            </Text>
-            <Heading as="h2" size="4xl" font="serif" className="tracking-tight text-black">
-              Stories & Insights
-            </Heading>
-          </div>
-          <button className="mt-6 md:mt-0 px-6 py-3 border border-black rounded-full text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-colors duration-300">
-            Read All Articles
-          </button>
-        </div>
+    <div id="journal" className="bg-[#FAF8F3] min-h-screen font-sans text-[#2B2B2B]">
+      
+      {/* Side Sheet */}
+      <NotesSideSheet 
+        isOpen={activeArticle !== null} 
+        onClose={() => setActiveArticle(null)} 
+        article={activeArticle} 
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {JOURNAL_ARTICLES.map((article, idx) => (
-            <div key={idx} className="group flex flex-col">
-              <div className="w-full aspect-[4/5] overflow-hidden mb-6 rounded-lg bg-black">
-                {article.type === 'video' ? (
-                  <div className="relative w-full h-full cursor-pointer">
-                    <video
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      src={article.src}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/10">
-                      <div className="w-14 h-14 bg-white/20 backdrop-blur-md border border-white/40 rounded-full flex items-center justify-center text-white transform transition-transform duration-300 group-hover:scale-110">
-                        <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <img 
-                    src={article.img} 
-                    alt={article.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 cursor-pointer group-hover:scale-105"
-                  />
-                )}
+      {/* HERO SECTION */}
+      <div className="relative h-[80vh] w-full overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=2000&q=80" 
+          alt="Hoi An Lanterns" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#1D1D1F]/50 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1D1D1F]/80 via-transparent to-transparent" />
+        
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-center text-white"
+          >
+            <Heading as="h1" size="5xl" font="serif" className="mb-4 drop-shadow-lg tracking-wide">
+              NOTES FROM VIETNAM
+            </Heading>
+            <Text size="xl" className="font-light opacity-90 drop-shadow-md max-w-2xl mx-auto mb-12">
+              Stories, guides and inspiration from the people who call Vietnam home.
+            </Text>
+
+            {/* Search Bar */}
+            <div className="max-w-xl mx-auto relative group">
+              <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+                <Icon name="Search" size={20} className="text-[#2B2B2B]/50" />
               </div>
-              <div className="flex items-center justify-between mb-3 text-xs uppercase tracking-widest text-black/50 font-semibold cursor-pointer">
-                <span>{article.category}</span>
-                <span>{article.date}</span>
-              </div>
-              <Heading as="h3" size="xl" font="serif" className="leading-snug cursor-pointer group-hover:text-brand-gold transition-colors duration-300">
-                {article.title}
-              </Heading>
+              <input 
+                type="text" 
+                placeholder="Search destinations, guides or experiences..." 
+                className="w-full bg-white/90 backdrop-blur-md text-[#2B2B2B] placeholder:text-[#2B2B2B]/50 rounded-full py-5 pl-14 pr-8 outline-none focus:bg-white focus:ring-2 focus:ring-[#1E4D45]/50 transition-all shadow-lg text-lg"
+              />
             </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* CURATED COLLECTIONS */}
+      <div className="pt-32 pb-16 overflow-hidden">
+        <Container>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <Heading as="h2" size="3xl" font="serif" className="text-[#1E4D45] mb-2">
+              Curated Collections
+            </Heading>
+            <Text className="text-[#2B2B2B]/60 text-lg">Hand-picked guides for your journey.</Text>
+          </motion.div>
+        </Container>
+
+        {/* Horizontal Scroll */}
+        <div className="flex overflow-x-auto pb-12 pt-4 px-4 md:px-12 xl:px-24 gap-8 snap-x snap-mandatory hide-scrollbar">
+          {magazineData.collections.map((collection, i) => (
+            <motion.div 
+              key={collection.id}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="shrink-0 w-[300px] md:w-[400px] snap-center group cursor-pointer"
+              // For MVP, clicking a collection opens its first article if it exists, or just a dummy placeholder if empty
+              onClick={() => {
+                if (collection.articles.length > 0) {
+                  openArticle(collection.articles[0]);
+                } else {
+                  openArticle({
+                    id: `dummy-${collection.id}`,
+                    title: `Exploring ${collection.title}`,
+                    intro: `The best of ${collection.title.toLowerCase()} is coming soon.`,
+                    image: collection.image,
+                    isComingSoon: true
+                  });
+                }
+              }}
+            >
+              <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+                <div className="h-64 overflow-hidden relative">
+                  <img 
+                    src={collection.image} 
+                    alt={collection.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-2 shadow-sm">
+                    <span>{collection.icon}</span>
+                    <Text size="xs" weight="bold" className="uppercase tracking-widest text-[#1E4D45]">
+                      {collection.articles.length} Stories
+                    </Text>
+                  </div>
+                </div>
+                <div className="p-8 flex justify-between items-end">
+                  <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F]">
+                    {collection.title}
+                  </Heading>
+                  <span className="text-[#1E4D45] group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
-      </Container>
-    </Section>
+      </div>
+
+      {/* FEATURED STORIES */}
+      <div className="py-24">
+        <Container>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16 text-center"
+          >
+            <Heading as="h2" size="4xl" font="serif" className="text-[#1D1D1F] mb-4">
+              Featured Stories
+            </Heading>
+            <Text className="text-[#2B2B2B]/60 text-lg max-w-xl mx-auto">
+              Essential reading to inspire and prepare you for the road ahead.
+            </Text>
+          </motion.div>
+
+          {/* Staggered 3-Card Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            
+            {/* Story 1: Large Left */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="md:col-span-7 group cursor-pointer"
+              onClick={() => openArticle(magazineData.featured[0])}
+            >
+              <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+                <div className="h-[400px] overflow-hidden relative">
+                  <img 
+                    src={magazineData.featured[0].image} 
+                    alt={magazineData.featured[0].title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-10 md:p-12">
+                  <Heading as="h3" size="3xl" font="serif" className="text-[#1D1D1F] mb-4 group-hover:text-[#1E4D45] transition-colors">
+                    {magazineData.featured[0].title}
+                  </Heading>
+                  <div className="flex items-center text-[#1E4D45] font-medium tracking-wide">
+                    Explore <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Stories 2 & 3: Stacked Right */}
+            <div className="md:col-span-5 flex flex-col gap-8 md:pt-16">
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="group cursor-pointer"
+                onClick={() => openArticle(magazineData.featured[1])}
+              >
+                <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+                  <div className="h-[250px] overflow-hidden relative">
+                    <img 
+                      src={magazineData.featured[1].image} 
+                      alt={magazineData.featured[1].title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-4 group-hover:text-[#1E4D45] transition-colors">
+                      {magazineData.featured[1].title}
+                    </Heading>
+                    <div className="flex items-center text-[#1E4D45] font-medium tracking-wide">
+                      Explore <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="group cursor-pointer"
+                onClick={() => openArticle(magazineData.featured[2])}
+              >
+                <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+                  <div className="h-[250px] overflow-hidden relative">
+                    <img 
+                      src={magazineData.featured[2].image} 
+                      alt={magazineData.featured[2].title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-4 group-hover:text-[#1E4D45] transition-colors">
+                      {magazineData.featured[2].title}
+                    </Heading>
+                    <div className="flex items-center text-[#1E4D45] font-medium tracking-wide">
+                      Explore <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </Container>
+      </div>
+
+      {/* BOTTOM SECTION */}
+      <div className="py-24 text-center">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <Text size="sm" weight="medium" className="uppercase tracking-[0.2em] text-[#1E4D45]/70">
+              Travel Gets Better With <BrandName />
+            </Text>
+          </motion.div>
+        </Container>
+      </div>
+
+      {/* Hide scrollbar styles */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}} />
+    </div>
   );
 };
 
