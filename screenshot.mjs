@@ -14,7 +14,7 @@ async function capture() {
   
   console.log("Navigating to local server...");
   // Assuming the dev server is running on localhost:5173
-  await page.goto('http://localhost:3000/#journal', { waitUntil: 'networkidle0' });
+  await page.goto('http://localhost:4173/#journal', { waitUntil: 'networkidle0' });
   
   // Wait a bit for animations
   await new Promise(resolve => setTimeout(resolve, 2000));

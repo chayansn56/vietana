@@ -26,7 +26,7 @@ const Journal: React.FC = () => {
       />
 
       {/* HERO SECTION */}
-      <div className="relative h-[80vh] w-full overflow-hidden">
+      <div className="relative h-[45vh] min-h-[400px] w-full overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=2000&q=80" 
           alt="Hoi An Lanterns" 
@@ -46,7 +46,7 @@ const Journal: React.FC = () => {
             <Heading as="h1" size="5xl" font="serif" className="mb-4 drop-shadow-lg tracking-wide">
               NOTES FROM VIETNAM
             </Heading>
-            <Text size="xl" className="font-light opacity-90 drop-shadow-md max-w-2xl mx-auto mb-12">
+            <Text size="xl" className="font-light opacity-90 drop-shadow-md max-w-2xl mx-auto mb-8">
               Stories, guides and inspiration from the people who call Vietnam home.
             </Text>
 
@@ -66,7 +66,7 @@ const Journal: React.FC = () => {
       </div>
 
       {/* CURATED COLLECTIONS */}
-      <div className="pt-32 pb-16 overflow-hidden">
+      <div className="pt-16 pb-8 overflow-hidden">
         <Container>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ const Journal: React.FC = () => {
                 }
               }}
             >
-              <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+              <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-shadow duration-700 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
                 <div className="h-64 overflow-hidden relative">
                   <img 
                     src={collection.image} 
@@ -133,13 +133,13 @@ const Journal: React.FC = () => {
       </div>
 
       {/* FEATURED STORIES */}
-      <div className="py-24">
+      <div className="py-8 pb-20">
         <Container>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16 text-center"
+            className="mb-10 text-center"
           >
             <Heading as="h2" size="4xl" font="serif" className="text-[#1D1D1F] mb-4">
               Featured Stories
@@ -160,7 +160,7 @@ const Journal: React.FC = () => {
               className="md:col-span-7 group cursor-pointer"
               onClick={() => openArticle(magazineData.featured[0])}
             >
-              <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+              <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-shadow duration-700 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
                 <div className="h-[400px] overflow-hidden relative">
                   <img 
                     src={magazineData.featured[0].image} 
@@ -190,7 +190,7 @@ const Journal: React.FC = () => {
                 className="group cursor-pointer"
                 onClick={() => openArticle(magazineData.featured[1])}
               >
-                <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+                <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-shadow duration-700 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
                   <div className="h-[250px] overflow-hidden relative">
                     <img 
                       src={magazineData.featured[1].image} 
@@ -217,7 +217,7 @@ const Journal: React.FC = () => {
                 className="group cursor-pointer"
                 onClick={() => openArticle(magazineData.featured[2])}
               >
-                <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+                <div className="bg-[#FFFFFF] rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-shadow duration-700 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
                   <div className="h-[250px] overflow-hidden relative">
                     <img 
                       src={magazineData.featured[2].image} 
@@ -241,21 +241,7 @@ const Journal: React.FC = () => {
         </Container>
       </div>
 
-      {/* BOTTOM SECTION */}
-      <div className="py-24 text-center">
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-          >
-            <Text size="sm" weight="medium" className="uppercase tracking-[0.2em] text-[#1E4D45]/70">
-              Travel Gets Better With <BrandName />
-            </Text>
-          </motion.div>
-        </Container>
-      </div>
+
 
       {/* Hide scrollbar styles */}
       <style dangerouslySetInnerHTML={{__html: `
