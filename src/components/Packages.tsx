@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   BY_THEME_CATEGORIES, 
@@ -34,11 +34,23 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
   const activeCategory = categories.find(c => c.name === activeCategoryName) || categories[0];
   const activePackage = activeCategory.packages.find(p => p.id === activePackageId) || activeCategory.packages[0];
 
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollSlider = (direction: 'left' | 'right') => {
+    if (sliderRef.current) {
+      const scrollAmount = direction === 'left' ? -380 : 380;
+      sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   const handleCategoryChange = (catName: string) => {
     setActiveCategoryName(catName);
     const newCat = categories.find(c => c.name === catName) || categories[0];
     if (newCat && newCat.packages.length > 0) {
       setActivePackageId(newCat.packages[0].id);
+    }
+    if (sliderRef.current) {
+      sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
     }
   };
 
@@ -204,148 +216,117 @@ Please load this itinerary and let me customize it!`;
           })}
         </div>
 
-        {/* Side-by-Side Explorer Grid (Editorial Lookbook) */}
-        <div className="flex flex-col lg:flex-row gap-10 items-stretch relative z-10">
-          {/* LEFT: Featured package canvas (55% width) */}
-          {activePackage && (
-            <div className="w-full lg:w-[55%] bg-[#1a1a1a]/60 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col justify-between shadow-heavy hover:border-brand-gold/25 transition-all duration-500 min-h-[550px] relative">
-              <div className="absolute inset-0 bg-cover bg-center transition-all duration-700 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url(${activePackage.img})` }} />
-              
-              <div className="h-64 w-full overflow-hidden relative shrink-0">
-                <img 
-                  src={activePackage.img} 
-                  alt={activePackage.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
-                <Badge variant="gold-filled" className="absolute top-6 left-6 shadow-lg bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase">
-                  {activePackage.badge}
-                </Badge>
-              </div>
-
-              <div className="p-8 md:p-10 flex-1 flex flex-col justify-between relative z-10">
-                <div>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                    <Heading as="h4" variant="none" className="text-2xl font-serif text-white tracking-wide">
-                      {activePackage.title}
-                    </Heading>
-                    <span className="self-start sm:self-auto shrink-0 bg-brand-gold/10 text-brand-gold-light border border-brand-gold/20 px-3.5 py-1 rounded-full text-[0.65rem] tracking-widest uppercase font-semibold">
-                      {activePackage.duration}
-                    </span>
-                  </div>
-                  
-                  <Text variant="none" className="text-white/40 text-[0.7rem] uppercase tracking-widest font-semibold block mb-4">
-                    📍 {activePackage.destinations.join(' → ')}
-                  </Text>
-                  
-                  <Text variant="none" className="text-white/80 text-sm font-light leading-relaxed mb-6 block">
-                    {activePackage.desc}
-                  </Text>
-
-                  <div className="mb-6">
-                    <span className="text-[0.65rem] uppercase tracking-widest text-brand-gold-light font-bold block mb-3">Key Hotels</span>
-                    <div className="flex flex-col gap-2 pl-3 border-l border-brand-gold/30">
-                      {activePackage.hotels.map((h, i) => (
-                        <span key={i} className="text-xs text-white/70 font-light flex items-center gap-2">
-                          🏨 {h}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-3 pt-6 border-t border-white/5">
-                  {/* PDF Itinerary Direct Download */}
-                  <a
-                    href={getDownloadPaths(activePackage.id).pdf}
-                    download
-                    className="w-full py-3 px-4 bg-[#1E4D45]/45 hover:bg-[#1E4D45]/75 border border-white/10 rounded-xl text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-strong"
-                  >
-                    <Icon name="FileText" size={14} className="text-brand-gold" />
-                    Download PDF Handbook (No Pricing)
-                  </a>
-
-                  <div className="flex gap-3">
-                    <Button
-                      variant="glass"
-                      className="flex-1 py-3 text-[0.65rem] tracking-widest uppercase font-bold text-white bg-white/5 hover:bg-white/10 border border-white/20 rounded-xl"
-                      onClick={() => setSelectedPackage(activePackage)}
-                    >
-                      View Day-by-Day Details
-                    </Button>
-                    <Button
-                      className="flex-1 py-3 text-[0.65rem] tracking-widest uppercase font-bold text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light rounded-xl shadow-gold"
-                      onClick={() => handleOpenPlanner(activePackage)}
-                    >
-                      Customize with AI
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* RIGHT: Journey Scroll Index (45% width) */}
-          <div className="flex-1 flex flex-col gap-4">
-            <div className="mb-2">
-              <span className="text-[0.65rem] uppercase tracking-widest text-white/40 font-bold">Category Vibe</span>
-              <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide mt-1">
-                {activeCategory.name}
-              </Heading>
-              <Text variant="none" className="text-white/55 text-xs font-light italic mt-1 block">
-                "{activeCategory.tagline}"
-              </Text>
-            </div>
-
-            <div className="flex flex-col gap-3 max-h-[580px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-              {activeCategory.packages.map((pkg, idx) => {
-                const isActive = activePackage && pkg.id === activePackage.id;
-                return (
-                  <div
-                    key={pkg.id}
-                    onClick={() => setActivePackageId(pkg.id)}
-                    className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex gap-4 items-center group relative overflow-hidden ${
-                      isActive
-                        ? 'bg-brand-gold/10 border-brand-gold/40 text-brand-gold-light'
-                        : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'
-                    }`}
-                  >
-                    {/* Index Number */}
-                    <span className={`text-xl font-serif tracking-tighter shrink-0 ${isActive ? 'text-brand-gold' : 'text-white/20 group-hover:text-white/45'}`}>
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    
-                    {/* Image Thumbnail */}
-                    <img 
-                      src={pkg.img} 
-                      alt={pkg.title}
-                      className="w-14 h-14 rounded-xl object-cover shrink-0 border border-white/10"
-                    />
-
-                    {/* Text Details */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2 mb-1">
-                        <Text variant="none" className={`text-sm font-semibold truncate ${isActive ? 'text-brand-gold-light' : 'text-white'}`}>
-                          {pkg.title}
-                        </Text>
-                        <span className="text-[0.6rem] text-white/45 shrink-0 font-medium tracking-wider">
-                          {pkg.duration}
-                        </span>
-                      </div>
-                      <Text variant="none" className="text-[0.65rem] text-white/55 truncate block">
-                        📍 {pkg.destinations.join(', ')}
-                      </Text>
-                    </div>
-
-                    {/* Hover indicator arrow */}
-                    <span className={`text-lg transition-transform duration-300 ${isActive ? 'translate-x-0 text-brand-gold-light' : 'opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-white/45'}`}>
-                      ➔
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+        {/* Category Header with Scroll Buttons (Apple Style) */}
+        <div className="flex justify-between items-end mb-8 relative z-10">
+          <div>
+            <span className="text-[0.65rem] uppercase tracking-widest text-white/40 font-bold">Category Vibe</span>
+            <Heading as="h4" variant="none" className="text-2xl font-serif text-white tracking-wide mt-1">
+              {activeCategory.name}
+            </Heading>
+            <Text variant="none" className="text-white/55 text-xs font-light italic mt-1 block">
+              "{activeCategory.tagline}"
+            </Text>
           </div>
+
+          {/* Apple-style circular slide controls */}
+          <div className="flex gap-2.5">
+            <button
+              onClick={() => scrollSlider('left')}
+              className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
+            >
+              <Icon name="ChevronLeft" size={18} />
+            </button>
+            <button
+              onClick={() => scrollSlider('right')}
+              className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
+            >
+              <Icon name="ChevronRight" size={18} />
+            </button>
+          </div>
+        </div>
+
+        {/* Snapping Horizontal Slider Deck */}
+        <div 
+          ref={sliderRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10"
+        >
+          {activeCategory.packages.map((pkg) => {
+            const downloadPaths = getDownloadPaths(pkg.id);
+            return (
+              <div
+                key={pkg.id}
+                className="w-[85vw] sm:w-[420px] h-[580px] bg-[#161616]/80 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col justify-between shrink-0 snap-start relative group hover:border-brand-gold/45 hover:shadow-gold transition-all duration-500"
+              >
+                {/* Visual background image with zoom hover effect */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                  <img 
+                    src={pkg.img} 
+                    alt={pkg.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] opacity-45"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                </div>
+
+                {/* Top header badge */}
+                <div className="p-6 relative z-10 flex justify-between items-start">
+                  <Badge variant="gold-filled" className="bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase">
+                    {pkg.badge}
+                  </Badge>
+                  <span className="bg-black/55 backdrop-blur-md text-brand-gold-light border border-brand-gold/25 px-3 py-1 rounded-full text-[0.6rem] tracking-widest uppercase font-bold">
+                    {pkg.duration}
+                  </span>
+                </div>
+
+                {/* Bottom Glassmorphic Card Panel */}
+                <div className="p-6 m-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl relative z-10 flex flex-col gap-4 shadow-heavy">
+                  <div>
+                    <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide mb-1 leading-tight">
+                      {pkg.title}
+                    </Heading>
+                    <Text variant="none" className="text-brand-gold-light text-[0.65rem] uppercase tracking-widest font-semibold block mb-2">
+                      📍 {pkg.destinations.join(' → ')}
+                    </Text>
+                    <Text variant="none" className="text-white/70 text-xs font-light leading-relaxed line-clamp-3">
+                      {pkg.desc}
+                    </Text>
+                  </div>
+
+                  {/* Recommended Hotels */}
+                  <div className="py-2 border-y border-white/5">
+                    <span className="text-[0.6rem] uppercase tracking-widest text-white/40 font-bold block mb-1">Key Stay</span>
+                    <span className="text-xs text-white/80 truncate block font-light">🏨 {pkg.hotels[0]}</span>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col gap-2">
+                    <a
+                      href={downloadPaths.pdf}
+                      download
+                      className="w-full py-2.5 px-4 bg-[#1E4D45]/60 hover:bg-[#1E4D45]/90 border border-white/10 rounded-xl text-white text-[0.65rem] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-md"
+                    >
+                      <Icon name="FileText" size={12} className="text-brand-gold" />
+                      PDF Handbook
+                    </a>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="glass"
+                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl"
+                        onClick={() => setSelectedPackage(pkg)}
+                      >
+                        Details
+                      </Button>
+                      <Button
+                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light rounded-xl"
+                        onClick={() => handleOpenPlanner(pkg)}
+                      >
+                        Customize
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* FULLY CUSTOM BUILDER BANNER */}

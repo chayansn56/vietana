@@ -22,6 +22,7 @@ import {
   Menu,
   X,
   ChevronRight,
+  ChevronLeft,
   ChevronDown,
   ClipboardList,
   Wifi,
@@ -58,7 +59,7 @@ export type IconName =
   | 'MapPin' | 'Phone' | 'MessageCircle' | 'Mail' 
   | 'Car' | 'Building' | 'Palmtree' | 'Mountain' 
   | 'Sailboat' | 'Map' | 'Camera' | 'Flame'
-  | 'Check' | 'Clock' | 'Menu' | 'X' | 'ChevronRight' | 'ChevronDown'
+  | 'Check' | 'Clock' | 'Menu' | 'X' | 'ChevronRight' | 'ChevronLeft' | 'ChevronDown'
   | 'ClipboardList' | 'Wifi' | 'Ticket' | 'Globe'
   | 'Settings' | 'Train' | 'Edit3'
   | 'Castle' | 'Users' | 'Moon' | 'Target' | 'Mic'
@@ -70,7 +71,7 @@ export type IconName =
 const iconMap: Record<IconName, React.ElementType> = {
   Leaf, Plane, Soup, Sparkles, Star, MapPin, Phone, MessageCircle, Mail,
   Car, Building, Palmtree, Mountain, Sailboat, Map, Camera, Flame,
-  Check, Clock, Menu, X, ChevronRight, ChevronDown,
+  Check, Clock, Menu, X, ChevronRight, ChevronLeft, ChevronDown,
   ClipboardList, Wifi, Ticket, Globe,
   Settings, Train, Edit3, Castle, Users, Moon, Target, Mic,
   Ban, Fish, Drumstick, LeafyGreen, UtensilsCrossed, MessageSquare, ArrowRight,
