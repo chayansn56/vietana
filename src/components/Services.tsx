@@ -159,7 +159,7 @@ const Services: React.FC = () => {
       <div className="absolute bottom-20 -right-20 w-[40rem] h-[40rem] bg-[#E9DFC8]/30 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Subtle Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.015] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231E4D45' fill-opacity='1'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
 
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 rotate-180">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[100px]">

@@ -4,6 +4,7 @@ import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import BrandName from './ui/BrandName';
 import Button from './ui/Button';
+import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -23,7 +24,7 @@ const Footer: React.FC = () => {
           </Text>
 
           <Button 
-            onClick={() => window.open('https://wa.me/919953294543', '_blank')}
+            onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
             className="px-12 py-6 text-xl font-bold bg-white/10 backdrop-blur-xl border border-white/30 text-white rounded-full shadow-[0_20px_60px_rgba(202,138,4,0.3)] hover:bg-white/20 hover:scale-105 transition-all duration-500 ease-out"
           >
             Start Planning Now <span className="ml-2">✨</span>
@@ -42,7 +43,7 @@ const Footer: React.FC = () => {
           </div>
           
           <ul className="flex flex-wrap justify-center gap-x-8 gap-y-4 list-none p-0">
-            {['Services', 'Packages', 'Food', 'About'].map((link) => (
+            {['Destinations', 'Services', 'Packages', 'Food', 'Journal'].map((link) => (
               <li key={link}>
                 <a 
                   href={`#${link.toLowerCase()}`} 

@@ -3,6 +3,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
+import { WHATSAPP_INDIA, WHATSAPP_VIETNAM } from '../utils/whatsapp';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -18,7 +19,7 @@ const CONTACT_LOCATIONS = [
     person: 'Vikram Sonker',
     role: 'Guest Relations Director',
     phone: '+91 9953294543',
-    waUrl: 'https://wa.me/919953294543',
+    waUrl: WHATSAPP_INDIA,
     email: 'vikram@vietana.com',
     address: 'RZ 35/36, Indra Park Ext.\nUttam Nagar, East Delhi',
     image: '/concierge_delhi.png',
@@ -34,7 +35,7 @@ const CONTACT_LOCATIONS = [
     person: 'Chayan Soni',
     role: 'Director of Experiences',
     phone: '+84 902434006',
-    waUrl: 'https://wa.me/84902434006',
+    waUrl: WHATSAPP_VIETNAM,
     email: 'chayan@vietana.com',
     address: '45 Nguyễn Quý Đức\nAn Phú, Ho Chi Minh City',
     image: '/concierge_hcmc.png',
@@ -76,7 +77,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
               <div className="flex justify-between items-start">
                 <div className="bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full inline-flex items-center gap-2 shadow-lg">
                   <Icon name="MapPin" size={14} className={loc.accentColor} />
-                  <Text size="xs" weight="bold" className="tracking-widest uppercase text-white/90">
+                  <Text size="xs" weight="bold" className="tracking-widest uppercase text-white/80">
                     {loc.title}
                   </Text>
                 </div>
@@ -84,7 +85,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
               {/* Bottom Details */}
               <div className="mt-auto transform transition-transform duration-500 md:translate-y-4 md:group-hover:translate-y-0">
-                <Text size="sm" className="text-white/60 tracking-widest uppercase mb-2 font-medium">
+                <Text size="sm" className="text-white/80 tracking-widest uppercase mb-2 font-medium">
                   {loc.subtitle}
                 </Text>
                 <Heading as="h2" variant="white" className="text-4xl md:text-5xl font-serif mb-1 leading-tight">
@@ -115,7 +116,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <div className="flex flex-col sm:flex-row gap-3 transition-transform duration-300">
                   <a 
                     href={loc.waUrl}
                     target="_blank"

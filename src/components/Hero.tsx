@@ -106,7 +106,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             <div className="animate-reveal-up [animation-duration:0.8s] flex items-center justify-center gap-3">
               <span className="w-8 h-px bg-brand-gold/50"></span>
               <Text variant="none" className="uppercase tracking-[0.3em] text-[0.65rem] sm:text-xs font-semibold text-brand-gold-light drop-shadow-md">
-                {t.hero.subtitle}
+                {t.hero.support}
               </Text>
               <span className="w-8 h-px bg-brand-gold/50"></span>
             </div>
@@ -127,7 +127,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             variant="none"
             className="max-w-xl mx-auto mb-10 text-white/90 text-sm sm:text-lg font-light leading-relaxed animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] drop-shadow-md"
           >
-            {t.hero.description}
+            {t.hero.sub}
           </Text>
 
           <div className="flex animate-reveal-up [animation-delay:0.7s]">
@@ -137,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               onClick={onOpenMagic}
             >
               <span className="flex items-center justify-center gap-3">
-                Design My Escape
+                {t.nav.cta}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </span>
             </Button>

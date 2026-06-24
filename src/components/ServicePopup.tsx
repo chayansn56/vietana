@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Heading } from './ui/Typography';
 import Icon, { IconName } from './ui/Icon';
+import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
 
 export interface ServiceDetail {
   id: string;
@@ -112,7 +113,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
             <p className="text-xs text-text-subtle mb-4 uppercase tracking-widest font-semibold">Contact Concierge</p>
             <div className="flex flex-wrap gap-3">
               <button 
-                onClick={() => window.open('https://wa.me/message/RWHIX4D7ZZYCP1', '_blank')}
+                onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 hover:border-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-sm font-medium text-text-charcoal bg-white shadow-sm"
               >
                 <Icon name="MessageCircle" size={16} />

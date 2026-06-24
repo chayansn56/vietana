@@ -339,7 +339,9 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({ isOpen, onClose, 
 - Visa: ${visaType} entry
 - Duration: ${days} Days
 - Travelers: ${pax} People
-- Special Notes: ${notes || 'None'}`;
+- Special Notes: ${notes || 'None'}
+
+Please generate a structured day-by-day itinerary right away for this trip!`;
                  onOpenAIPlanner(details);
                }}
             >

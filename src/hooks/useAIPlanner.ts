@@ -19,6 +19,19 @@ export interface Preferences {
   extras?: string;
 }
 
+export interface ItineraryDay {
+  day: number;
+  title: string;
+  description: string;
+  activities: string[];
+  food: string[];
+}
+
+export interface Itinerary {
+  title: string;
+  days: ItineraryDay[];
+}
+
 const getSystemKnowledge = () => {
   return JSON.stringify({
     destinations: MAP_DESTINATIONS,
@@ -41,6 +54,7 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [options, setOptions] = useState<string[]>([]);
+  const [itinerary, setItinerary] = useState<Itinerary | null>(null);
   const [preferences, setPreferences] = useState<Preferences>({
     focus: initialDestination || undefined
   });
@@ -102,6 +116,11 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
         { role: 'model', parts: [{ text: newBotMsg }] }
       ]);
 
+      // If an itinerary is returned, save it
+      if (data.itinerary) {
+        setItinerary(data.itinerary);
+      }
+
       // Update preferences safely
       setPreferences(prev => {
         const next = { ...prev };
@@ -113,7 +132,7 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
       });
 
       // Show blueprint button if they seem ready
-      if (newBotMsg.toLowerCase().includes('generate itinerary') || newBotMsg.toLowerCase().includes('ready to plan')) {
+      if (newBotMsg.toLowerCase().includes('generate itinerary') || newBotMsg.toLowerCase().includes('ready to plan') || data.itinerary) {
         setMessages(prev => [...prev, { text: '', type: 'blueprint' }]);
       }
 
@@ -133,6 +152,7 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
     options,
     isFinished: false,
     preferences,
+    itinerary,
     handleSend
   };
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { MessagingService } from '../services/messagingService';
 import Modal from './ui/Modal';
@@ -6,6 +6,16 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import { useAIPlanner } from '../hooks/useAIPlanner';
 import Icon, { IconName } from './ui/Icon';
+
+/** Lightweight HTML sanitizer — strips script/iframe/on* attributes */
+const sanitize = (html: string): string => {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
+    .replace(/on\w+="[^"]*"/gi, '')
+    .replace(/on\w+='[^']*'/gi, '')
+    .replace(/javascript:/gi, '');
+};
 
 interface AIPlannerProps {
   isOpen: boolean;
@@ -16,6 +26,7 @@ interface AIPlannerProps {
 
 const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestination, initialPrompt }) => {
   const { t } = useTranslation();
+  const [expandedDay, setExpandedDay] = useState<number | null>(1);
   const {
     messages,
     inputValue,
@@ -24,6 +35,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
     options,
     isFinished,
     preferences,
+    itinerary,
     handleSend
   } = useAIPlanner(isOpen ? initialDestination : undefined, isOpen ? initialPrompt : undefined);
 
@@ -49,7 +61,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full  pointer-events-none z-0 hidden animate-blob-float" style={{ animationDelay: '2s' }} />
 
       {/* LEFT: Chat Consultation (Lush Glassmorphism) */}
-      <div className="flex-1 md:flex-[0.65] flex flex-col relative z-10 border-r border-white/5 w-full">
+      <div className="flex-1 md:flex-[0.58] flex flex-col relative z-10 border-r border-white/5 w-full">
         <div className="p-6 md:p-10 pb-4 md:pb-6 text-left relative">
           <Heading as="h3" variant="white" className="text-2xl md:text-3xl font-serif tracking-wide flex items-center gap-3">
             <span className="text-brand-gold-light"><Icon name="Leaf" size={24} className="md:w-8 md:h-8" /></span> {t.planner.title}
@@ -73,8 +85,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                       <Icon name="Sparkles" size={20} /> Your Vietnam Journey Blueprint
                     </Heading>
                     <Text variant="none" className="text-sm font-light text-white/80 leading-relaxed mb-8">
-                      Your trip will focus on <span className="text-brand-gold-light font-medium italic">{preferences.focus}</span>, 
-                      balancing <span className="text-brand-gold-light font-medium italic">{preferences.food}</span> and <span className="text-brand-gold-light font-medium italic">{preferences.style}</span>.
+                      Your trip will focus on <span className="text-brand-gold-light font-medium italic">{preferences.focus || 'Vietnam'}</span>, 
+                      balancing <span className="text-brand-gold-light font-medium italic">{preferences.food || 'local gastronomy'}</span> and <span className="text-brand-gold-light font-medium italic">{preferences.style || 'bespoke comfort'}</span>.
                     </Text>
 
                     <div className="flex flex-col gap-3">
@@ -107,7 +119,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   <Text
                     variant="none"
                     className={`leading-relaxed text-base md:text-lg ${msg.type === 'user' ? 'text-white' : 'text-white/90'} [&_strong]:text-brand-gold-light [&_strong]:font-medium`}
-                    dangerouslySetInnerHTML={{ __html: msg.text }}
+                    dangerouslySetInnerHTML={{ __html: sanitize(msg.text) }}
                   />
                 </div>
               </div>
@@ -167,50 +179,155 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
         </div>
       </div>
 
-      {/* RIGHT: Live Preferences (Glassmorphic Ticket) */}
-      <div className="hidden md:flex flex-[0.35] flex-col glass-dark bg-black/40 p-10 relative z-10 border-l border-white/5 shadow-inner border-t-0 border-b-0 border-r-0 rounded-none">
-        <Heading as="h4" variant="none" className="text-white/40 tracking-[0.2em] text-xs uppercase mb-10 flex items-center gap-4 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-brand-gold/50 after:to-transparent">
-          {t.planner.live}
-        </Heading>
+      {/* RIGHT COLUMN: Itinerary Visualizer or Live Preferences */}
+      <div className="hidden md:flex flex-[0.42] flex-col glass-dark bg-black/40 p-8 md:p-10 relative z-10 border-l border-white/5 shadow-inner border-t-0 border-b-0 border-r-0 rounded-none overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+        {itinerary ? (
+          /* Structured Day-by-Day Timeline Accordion */
+          <div className="flex flex-col h-full">
+            <div className="mb-6 pb-4 border-b border-white/5">
+              <Text variant="none" className="text-xs text-brand-gold uppercase tracking-[0.2em] font-semibold mb-1">
+                JOURNEY TIMELINE
+              </Text>
+              <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide leading-tight">
+                {itinerary.title}
+              </Heading>
+            </div>
 
-        <div className="flex flex-col gap-8 flex-1 mt-2">
-          {[
-            { label: t.planner.labels.vibe, value: preferences.vibe, icon: 'Sparkles' as IconName },
-            { label: t.planner.labels.style, value: preferences.style, icon: 'Castle' as IconName },
-            { label: t.planner.labels.food, value: preferences.food, icon: 'Soup' as IconName },
-            { label: t.planner.labels.group, value: preferences.group, icon: 'Users' as IconName },
-            { label: t.planner.labels.nightlife, value: preferences.nightlife, icon: 'Moon' as IconName },
-            { label: t.planner.labels.focus, value: preferences.focus, icon: 'Target' as IconName },
-            { label: t.planner.labels.extras, value: preferences.extras, icon: 'MapPin' as IconName }
-          ].map((item, i) => {
-            const isSet = !!item.value;
-            return (
-              <div key={i} className="flex flex-col gap-1.5">
-                <Text variant="none" className="text-xs text-white/40 uppercase tracking-widest font-semibold flex items-center gap-2">
-                  <span className="opacity-70"><Icon name={item.icon} size={14} /></span> {item.label}
-                </Text>
-                <Text
-                  variant="none"
-                  className={`text-base leading-tight min-h-6 transition-all duration-500 ${
-                    isSet ? 'text-brand-gold-light font-medium' : 'text-white/20 italic'
-                  }`}
-                >
-                  {item.value || 'Not set'}
-                </Text>
+            <div className="flex-1 flex flex-col gap-4 relative pl-4 border-l border-dashed border-white/10">
+              {itinerary.days.map((day) => {
+                const isExpanded = expandedDay === day.day;
+                return (
+                  <div key={day.day} className="relative group transition-all duration-300">
+                    {/* Timeline Node dot */}
+                    <div className={`absolute -left-[21px] top-4 w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      isExpanded ? 'bg-brand-gold shadow-[0_0_8px_rgba(201,168,76,0.8)] scale-125' : 'bg-white/20 group-hover:bg-white/50'
+                    }`} />
+
+                    {/* Day Card */}
+                    <div 
+                      className={`border rounded-2xl p-5 cursor-pointer transition-all duration-300 ${
+                        isExpanded ? 'bg-brand-green-dark/20 border-brand-gold/30 shadow-soft' : 'bg-white/5 border-white/10 hover:bg-white/10'
+                      }`}
+                      onClick={() => setExpandedDay(isExpanded ? null : day.day)}
+                    >
+                      <div className="flex justify-between items-center">
+                        <Heading as="h5" variant="none" className="text-sm font-serif text-brand-gold-light tracking-wide">
+                          Day {day.day}: {day.title}
+                        </Heading>
+                        <span className="text-white/40 text-xs transition-transform duration-300">
+                          <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={16} />
+                        </span>
+                      </div>
+
+                      {isExpanded && (
+                        <div className="mt-3 flex flex-col gap-4 animate-msg-fade-in">
+                          <Text variant="none" className="text-white/70 text-xs italic font-light leading-relaxed">
+                            {day.description}
+                          </Text>
+
+                          {/* Sights checklist */}
+                          {day.activities?.length > 0 && (
+                            <div>
+                              <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                <Icon name="MapPin" size={10} className="text-brand-gold" /> Exploration Points
+                              </Text>
+                              <div className="flex flex-col gap-1 pl-1">
+                                {day.activities.map((act, idx) => (
+                                  <div key={idx} className="flex items-start gap-2 text-xs text-white/90 font-light">
+                                    <span className="text-brand-gold-light font-medium mt-0.5">✓</span>
+                                    <span>{act}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Food Suggestions */}
+                          {day.food?.length > 0 && (
+                            <div>
+                              <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                <Icon name="Soup" size={10} className="text-brand-gold" /> Gastronomy Picks
+                              </Text>
+                              <div className="flex flex-col gap-1 pl-1">
+                                {day.food.map((f, idx) => (
+                                  <div key={idx} className="flex items-start gap-2 text-xs text-white/80 font-light italic">
+                                    <span className="text-brand-gold/60 mt-0.5">✦</span>
+                                    <span>{f}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 pt-4 border-t border-white/5">
+              <Button
+                className="w-full bg-brand-gold hover:bg-brand-gold-light text-brand-green-extra-dark py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs shadow-gold transition-all duration-300 flex items-center justify-center gap-2"
+                onClick={() => {
+                  const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
+                  const message = `Hello Vietana! I've designed an itinerary blueprint:\n\n*${itinerary.title}*\n\n${itemsList}`;
+                  window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
+                }}
+              >
+                <Icon name="MessageCircle" size={18} /> Book this Itinerary
+              </Button>
+            </div>
+          </div>
+        ) : (
+          /* Default: Live Preferences Checklist */
+          <div className="flex flex-col h-full justify-between">
+            <div>
+              <Heading as="h4" variant="none" className="text-white/40 tracking-[0.2em] text-xs uppercase mb-10 flex items-center gap-4 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-brand-gold/50 after:to-transparent">
+                {t.planner.live}
+              </Heading>
+
+              <div className="flex flex-col gap-8 flex-1 mt-2">
+                {[
+                  { label: t.planner.labels.vibe, value: preferences.vibe, icon: 'Sparkles' as IconName },
+                  { label: t.planner.labels.style, value: preferences.style, icon: 'Castle' as IconName },
+                  { label: t.planner.labels.food, value: preferences.food, icon: 'Soup' as IconName },
+                  { label: t.planner.labels.group, value: preferences.group, icon: 'Users' as IconName },
+                  { label: t.planner.labels.nightlife, value: preferences.nightlife, icon: 'Moon' as IconName },
+                  { label: t.planner.labels.focus, value: preferences.focus, icon: 'Target' as IconName },
+                  { label: t.planner.labels.extras, value: preferences.extras, icon: 'MapPin' as IconName }
+                ].map((item, i) => {
+                  const isSet = !!item.value;
+                  return (
+                    <div key={i} className="flex flex-col gap-1.5">
+                      <Text variant="none" className="text-xs text-white/40 uppercase tracking-widest font-semibold flex items-center gap-2">
+                        <span className="opacity-70"><Icon name={item.icon} size={14} /></span> {item.label}
+                      </Text>
+                      <Text
+                        variant="none"
+                        className={`text-base leading-tight min-h-6 transition-all duration-500 ${
+                          isSet ? 'text-brand-gold-light font-medium' : 'text-white/20 italic'
+                        }`}
+                      >
+                        {item.value || 'Not set'}
+                      </Text>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
+            </div>
 
-        <div className="mt-12 flex flex-col gap-4">
-          <Button
-            variant="glass"
-            className="w-full bg-white/5 border-white/10 hover:bg-brand-gold/20 hover:border-brand-gold/40 text-white flex items-center justify-center gap-2"
-            onClick={() => window.open(MessagingService.generateBlueprintWhatsApp(preferences.focus, preferences.vibe, preferences.style, preferences.food, 'INDIA'), '_blank')}
-          >
-            <Icon name="MessageCircle" size={18} /> Ask an Expert
-          </Button>
-        </div>
+            <div className="mt-12">
+              <Button
+                variant="glass"
+                className="w-full bg-white/5 border-white/10 hover:bg-brand-gold/20 hover:border-brand-gold/40 text-white flex items-center justify-center gap-2"
+                onClick={() => window.open(MessagingService.generateBlueprintWhatsApp(preferences.focus, preferences.vibe, preferences.style, preferences.food, 'INDIA'), '_blank')}
+              >
+                <Icon name="MessageCircle" size={18} /> Ask an Expert
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </Modal>
   );

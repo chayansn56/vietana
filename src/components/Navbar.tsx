@@ -15,13 +15,15 @@ interface NavbarProps {
   onOpenPlanner: () => void;
   onOpenContact: () => void;
   onOpenExperiences: () => void;
+  onOpenMapCurtain: () => void;
   onOpenAbout: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenAbout }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain, onOpenAbout }) => {
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
   const [emergencyOpen, setEmergencyOpen] = useState(false);
+  const [expDropOpen, setExpDropOpen] = useState(false);
 
   const isLight = navClass === 'light';
 
@@ -66,46 +68,112 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
         
         <ul className="hidden lg:flex gap-8 list-none items-center flex-wrap">
           {NAV_LINKS.map((link) => (
-            <li key={link.key}>
-              <a 
-                href={link.href} 
-                onClick={(e) => {
-                  if ((link as any).isPlanner) {
-                    e.preventDefault();
-                    onOpenPlanner();
-                  } else if ((link as any).isExperiences) {
-                    e.preventDefault();
-                    onOpenExperiences();
-                  } else if (link.href === '#contact') {
-                    e.preventDefault();
-                    onOpenContact();
-                  } else if (link.key === 'about') {
-                    e.preventDefault();
-                    onOpenAbout();
-                  }
-                }}
-                className="relative no-underline group"
-              >
-                <Text 
-                  size="sm" 
-                  variant="none"
-                  weight="bold"
-                  className={`tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm
-                    ${scrolled ? 'text-text-dark/90' : 'text-white/90'}
-                    [&::after]:content-[''] [&::after]:absolute [&::after]:bottom-[-4px] [&::after]:left-0 [&::after]:right-[100%] [&::after]:h-[2px] [&::after]:bg-brand-gold [&::after]:transition-[right] [&::after]:duration-400 [&::after]:ease-soft hover:[&::after]:right-0`}
+            <li key={link.key} className="relative">
+              {link.key === 'experiences' ? (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setExpDropOpen(!expDropOpen);
+                    }}
+                    className="relative no-underline bg-transparent border-none p-0 cursor-pointer flex items-center gap-1 group"
+                  >
+                    <Text 
+                      size="sm" 
+                      variant="none"
+                      weight="bold"
+                      className={`tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm
+                        ${scrolled ? 'text-text-dark/90' : 'text-white/90'}
+                        ${expDropOpen ? 'text-brand-gold' : ''}`}
+                    >
+                      {t.nav[link.key as keyof typeof t.nav]}
+                    </Text>
+                    <Icon 
+                      name="ChevronDown" 
+                      size={12} 
+                      className={`transition-transform duration-300 ${scrolled ? 'text-text-dark/70' : 'text-white/70'} ${expDropOpen ? 'rotate-180 text-brand-gold' : ''}`} 
+                    />
+                  </button>
+                  
+                  {/* Dropdown Menu */}
+                  <div className={`absolute top-[calc(100%+0.8rem)] left-0 glass-dark rounded-xl overflow-hidden min-w-[200px] shadow-deep border border-white/10 transition-all duration-300 ease-smooth z-[600]
+                    ${expDropOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
+                  >
+                    <a
+                      href="#experiences"
+                      onClick={(e) => {
+                        setExpDropOpen(false);
+                        const el = document.getElementById('experiences');
+                        if (el) {
+                          e.preventDefault();
+                          el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                      className="flex items-center gap-3 w-full px-4 py-3 text-left transition-colors duration-250 hover:bg-brand-gold/12 no-underline text-white/80"
+                    >
+                      <Icon name="Compass" size={14} className="text-brand-gold" />
+                      <Text size="sm" variant="none" className="text-white/80 font-medium">
+                        Curated Experiences
+                      </Text>
+                    </a>
+                    
+                    <button
+                      onClick={() => {
+                        setExpDropOpen(false);
+                        onOpenExperiences();
+                      }}
+                      className="flex items-center gap-3 w-full px-4 py-3 text-left transition-colors duration-250 hover:bg-brand-gold/12 border-none bg-transparent cursor-pointer text-white/80"
+                    >
+                      <Icon name="Sparkles" size={14} className="text-brand-gold" />
+                      <Text size="sm" variant="none" className="text-white/80 font-medium">
+                        Hidden Experiences
+                      </Text>
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <a 
+                  href={link.href} 
+                  onClick={(e) => {
+                    if ((link as any).isPlanner) {
+                      e.preventDefault();
+                      onOpenPlanner();
+                    } else if (link.href === '#contact') {
+                      e.preventDefault();
+                      onOpenContact();
+                    } else if (link.key === 'about') {
+                      e.preventDefault();
+                      onOpenAbout();
+                    }
+                  }}
+                  className="relative no-underline group"
                 >
-                  {t.nav[link.key as keyof typeof t.nav]}
-                </Text>
-              </a>
+                  <Text 
+                    size="sm" 
+                    variant="none"
+                    weight="bold"
+                    className={`tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm
+                      ${scrolled ? 'text-text-dark/90' : 'text-white/90'}
+                      [&::after]:content-[''] [&::after]:absolute [&::after]:bottom-[-4px] [&::after]:left-0 [&::after]:right-[100%] [&::after]:h-[2px] [&::after]:bg-brand-gold [&::after]:transition-[right] [&::after]:duration-400 [&::after]:ease-soft hover:[&::after]:right-0`}
+                  >
+                    {t.nav[link.key as keyof typeof t.nav]}
+                  </Text>
+                </a>
+              )}
             </li>
           ))}
-
         </ul>
 
         <div className="flex items-center gap-4 shrink-0">
 
 
-          {/* Map button removed */}
+          <button 
+            onClick={() => onOpenMapCurtain()}
+            className={`hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full transition-colors border ${isLight ? 'glass border-[#1D1D1F]/10 text-[#1D1D1F] hover:bg-[#F2EFE8]' : 'glass-dark border-white/20 text-surface-cream hover:bg-white/10'}`}
+          >
+            <Icon name="Map" size={14} />
+            <span className="text-xs tracking-[0.1em] font-medium uppercase">Map</span>
+          </button>
           
           <div className="relative flex items-center">
             <div 
@@ -164,44 +232,78 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
           ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         {NAV_LINKS.map((link) => (
-          <a 
-            key={link.key}
-            href={link.href} 
-            className="no-underline"
-            onClick={(e) => {
-              if ((link as any).isPlanner) {
-                e.preventDefault();
-                setMobileMenuOpen(false);
-                onOpenPlanner();
-              } else if ((link as any).isExperiences) {
-                e.preventDefault();
-                setMobileMenuOpen(false);
-                onOpenExperiences();
-              } else if (link.href === '#contact') {
-                e.preventDefault();
-                setMobileMenuOpen(false);
-                onOpenContact();
-              } else if (link.key === 'about') {
-                e.preventDefault();
-                setMobileMenuOpen(false);
-                onOpenAbout();
-              } else {
-                setMobileMenuOpen(false);
-              }
-            }}
-          >
-            <Heading 
-              as="span" 
-              size="xl" 
-              font="serif" 
-              weight="light"
-              variant="none"
-              className={`text-white/80 transition-all duration-500 ease-smooth hover:text-brand-gold block text-4xl
-                ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+          link.key === 'experiences' ? (
+            <div key={link.key} className="flex flex-col items-center gap-2">
+              <Heading 
+                as="span" 
+                size="xl" 
+                font="serif" 
+                weight="light"
+                variant="none"
+                className={`text-brand-gold block text-4xl transition-all duration-500 ease-smooth
+                  ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              >
+                {t.nav[link.key as keyof typeof t.nav]}
+              </Heading>
+              <div className="flex flex-col gap-2 items-center mt-1">
+                <a
+                  href="#experiences"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    const el = document.getElementById('experiences');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-white/60 hover:text-white text-lg no-underline py-1"
+                >
+                  — Curated Experiences
+                </a>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenExperiences();
+                  }}
+                  className="text-white/60 hover:text-white text-lg bg-transparent border-none cursor-pointer py-1"
+                >
+                  — Hidden Experiences
+                </button>
+              </div>
+            </div>
+          ) : (
+            <a 
+              key={link.key}
+              href={link.href} 
+              className="no-underline"
+              onClick={(e) => {
+                if ((link as any).isPlanner) {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  onOpenPlanner();
+                } else if (link.href === '#contact') {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  onOpenContact();
+                } else if (link.key === 'about') {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  onOpenAbout();
+                } else {
+                  setMobileMenuOpen(false);
+                }
+              }}
             >
-              {t.nav[link.key as keyof typeof t.nav]}
-            </Heading>
-          </a>
+              <Heading 
+                as="span" 
+                size="xl" 
+                font="serif" 
+                weight="light"
+                variant="none"
+                className={`text-white/80 transition-all duration-500 ease-smooth hover:text-brand-gold block text-4xl
+                  ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+              >
+                {t.nav[link.key as keyof typeof t.nav]}
+              </Heading>
+            </a>
+          )
         ))}
         <div className="h-px w-2/3 bg-white/10 my-4"></div>
 
@@ -240,8 +342,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
         </a>
       </div>
 
-      {/* Click outside to close lang drop */}
+      {/* Click outside to close drops */}
       {langOpen && <div className="fixed inset-0 z-[999]" onClick={() => setLangOpen(false)}></div>}
+      {expDropOpen && <div className="fixed inset-0 z-[999]" onClick={() => setExpDropOpen(false)}></div>}
 
       <Modal isOpen={emergencyOpen} onClose={() => setEmergencyOpen(false)} maxWidth="max-w-xl">
         <div className="p-6 sm:p-8 flex flex-col gap-6 relative">

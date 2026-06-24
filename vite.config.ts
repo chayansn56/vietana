@@ -79,6 +79,18 @@ Your response MUST be a valid JSON object matching this schema:
     "vibe": "Update if they mention a vibe (e.g. relaxing, adventure, romantic), otherwise leave null",
     "food": "Update if they mention food preferences (e.g. vegetarian, spicy, street food), otherwise leave null",
     "style": "Update if they mention luxury, budget, family, etc., otherwise leave null"
+  },
+  "itinerary": {
+    "title": "A premium descriptive title for the journey (only provide this object if they request an itinerary, plan, or if they submit parameters from the custom builder, otherwise leave this whole field null)",
+    "days": [
+      {
+        "day": 1,
+        "title": "Day's theme or focus (e.g., Charming Old Quarter Explorations)",
+        "description": "Compelling 1-2 sentence overview of the day's flow",
+        "activities": ["List 2-3 specific sights or activities from the destinations database"],
+        "food": ["List 1-2 specific restaurants, cafes, or street food items from the food database matching their style"]
+      }
+    ]
   }
 }
 DO NOT output any markdown blocks outside the JSON, just the JSON string.

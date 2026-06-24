@@ -3,6 +3,7 @@ import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import BrandName from './ui/BrandName';
+import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
 
 interface FAQProps {
   onOpenPlanner?: (dest?: string, prompt?: string) => void;
@@ -19,8 +20,7 @@ const INFO_CARDS = [
 
 const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
   const handleWhatsApp = () => {
-    const text = 'Hello VIETANA, I would like to know more about traveling to Vietnam.';
-    window.open(`https://wa.me/919953294543?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`${WHATSAPP_DEFAULT}`, '_blank');
   };
 
   return (
@@ -55,7 +55,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
         {/* Bottom Pill */}
         <div className="flex justify-center">
           <div className="bg-[#FFFFFF] rounded-full px-6 py-4 inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-[#1D1D1F]/5">
-            <Text size="sm" weight="medium" className="text-[#1D1D1F]/60 uppercase tracking-widest mr-2">
+            <Text size="sm" weight="medium" className="text-[#1D1D1F]/80 uppercase tracking-widest mr-2">
               Still Curious?
             </Text>
             

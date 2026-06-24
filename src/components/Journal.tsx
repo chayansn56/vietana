@@ -8,6 +8,19 @@ import NotesSideSheet from './NotesSideSheet';
 
 const Journal: React.FC = () => {
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const q = searchQuery.toLowerCase().trim();
+  const filteredStories = q
+    ? magazineData.featured.filter(s =>
+        s.title.toLowerCase().includes(q) || s.intro?.toLowerCase().includes(q)
+      )
+    : magazineData.featured;
+  const filteredCollections = q
+    ? magazineData.collections.filter(c =>
+        c.title.toLowerCase().includes(q)
+      )
+    : magazineData.collections;
 
   const openArticle = (article: Article) => {
     setActiveArticle(article);
@@ -41,7 +54,7 @@ const Journal: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center text-white"
           >
-            <Heading as="h1" size="4xl" font="serif" className="mb-2 drop-shadow-md tracking-wide text-white">
+            <Heading as="h2" size="4xl" font="serif" className="mb-2 drop-shadow-md tracking-wide text-white">
               Notes From Vietnam
             </Heading>
             <Text size="md" className="font-light opacity-90 drop-shadow-sm max-w-lg mx-auto mb-6">
@@ -56,6 +69,8 @@ const Journal: React.FC = () => {
               <input 
                 type="text" 
                 placeholder="Search..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-white/95 backdrop-blur-xl text-[#2B2B2B] placeholder:text-[#2B2B2B]/40 rounded-full py-3 pl-10 pr-6 outline-none focus:bg-white focus:ring-2 focus:ring-[#1E4D45]/30 transition-all shadow-sm text-sm"
               />
             </div>
@@ -83,7 +98,7 @@ const Journal: React.FC = () => {
 
         {/* Compact Horizontal Scroll */}
         <div className="flex overflow-x-auto pb-8 pt-2 px-4 md:px-12 xl:px-24 gap-4 snap-x snap-mandatory hide-scrollbar">
-          {magazineData.collections.map((collection, i) => (
+          {filteredCollections.map((collection, i) => (
             <motion.div 
               key={collection.id}
               initial={{ opacity: 0, x: 10 }}
@@ -151,7 +166,11 @@ const Journal: React.FC = () => {
 
           {/* 3-Column App Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {magazineData.featured.map((story, i) => (
+            {filteredStories.length === 0 ? (
+            <div className="col-span-3 py-16 text-center text-[#2B2B2B]/40 text-sm font-light tracking-wide">
+              No stories found for "{searchQuery}".
+            </div>
+          ) : filteredStories.map((story, i) => (
               <motion.div 
                 key={story.id}
                 initial={{ opacity: 0, y: 20 }}
