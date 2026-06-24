@@ -277,8 +277,8 @@ Please load this itinerary and let me customize it!`;
                   </span>
                 </div>
 
-                {/* Bottom Glassmorphic Card Panel */}
-                <div className="p-6 m-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl relative z-10 flex flex-col gap-4 shadow-heavy">
+                {/* Bottom Premium Card Panel (High Legibility) */}
+                <div className="p-6 m-4 bg-[#0c1f1a]/95 border border-brand-gold/20 rounded-3xl relative z-10 flex flex-col gap-4 shadow-heavy">
                   <div>
                     <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide mb-1 leading-tight">
                       {pkg.title}
@@ -286,15 +286,15 @@ Please load this itinerary and let me customize it!`;
                     <Text variant="none" className="text-brand-gold-light text-[0.65rem] uppercase tracking-widest font-semibold block mb-2">
                       📍 {pkg.destinations.join(' → ')}
                     </Text>
-                    <Text variant="none" className="text-white/70 text-xs font-light leading-relaxed line-clamp-3">
+                    <Text variant="none" className="text-white/90 text-xs font-light leading-relaxed line-clamp-3">
                       {pkg.desc}
                     </Text>
                   </div>
 
                   {/* Recommended Hotels */}
                   <div className="py-2 border-y border-white/5">
-                    <span className="text-[0.6rem] uppercase tracking-widest text-white/40 font-bold block mb-1">Key Stay</span>
-                    <span className="text-xs text-white/80 truncate block font-light">🏨 {pkg.hotels[0]}</span>
+                    <span className="text-[0.6rem] uppercase tracking-widest text-brand-gold-light font-bold block mb-1">Key Stay</span>
+                    <span className="text-xs text-white/95 truncate block font-medium">🏨 {pkg.hotels[0]}</span>
                   </div>
 
                   {/* Action Buttons */}
