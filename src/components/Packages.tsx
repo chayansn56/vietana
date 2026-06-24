@@ -24,11 +24,74 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
   const [activeCategoryName, setActiveCategoryName] = useState<string>(
     BY_THEME_CATEGORIES[0].name
   );
+  const [activePackageId, setActivePackageId] = useState<string | null>(
+    BY_THEME_CATEGORIES[0].packages[0]?.id || null
+  );
   const [selectedPackage, setSelectedPackage] = useState<PackageProduct | null>(null);
   const [expandedDay, setExpandedDay] = useState<number | null>(1);
 
   const categories = activeTab === 'theme' ? BY_THEME_CATEGORIES : BY_REGION_CATEGORIES;
   const activeCategory = categories.find(c => c.name === activeCategoryName) || categories[0];
+  const activePackage = activeCategory.packages.find(p => p.id === activePackageId) || activeCategory.packages[0];
+
+  const handleCategoryChange = (catName: string) => {
+    setActiveCategoryName(catName);
+    const newCat = categories.find(c => c.name === catName) || categories[0];
+    if (newCat && newCat.packages.length > 0) {
+      setActivePackageId(newCat.packages[0].id);
+    }
+  };
+
+  const getDownloadPaths = (id: string) => {
+    let category = '';
+    let filename = '';
+
+    switch (id) {
+      case 'budget-explorer':
+        category = 'First Time in Vietnam';
+        filename = '1_Vietnam_Essentials_5D4N';
+        break;
+      case 'hanoi-escape':
+        category = 'Adventure & Offbeat';
+        filename = '17_Hanoi_Discovery_4D3N';
+        break;
+      case 'danang-discovery':
+        category = 'Beach Escapes';
+        filename = '7_Danang_Beaches_5D4N';
+        break;
+      case 'vietnam-classic':
+        category = 'First Time in Vietnam';
+        filename = '2_Best_of_Vietnam_7D6N';
+        break;
+      case 'vietnam-complete':
+        category = 'First Time in Vietnam';
+        filename = '3_Complete_Vietnam_10D9N';
+        break;
+      case 'vietnam-honeymoon':
+        category = 'Honeymoons & Romance';
+        filename = '9_Romantic_Escapes_6D5N';
+        break;
+      case 'vietnam-family':
+        category = 'Family Holidays';
+        filename = '11_Family_Favorites_7D6N';
+        break;
+      case 'phuquoc-paradise':
+        category = 'Beach Escapes';
+        filename = '6_Phu_Quoc_Escapes_5D4N';
+        break;
+      case 'luxury-vietnam':
+        category = 'Luxury & Wellness';
+        filename = '23_Signature_Luxury_7D6N';
+        break;
+      default:
+        category = 'First Time in Vietnam';
+        filename = '1_Vietnam_Essentials_5D4N';
+    }
+
+    return {
+      pdf: `/itineraries/PDFs/${category}/${filename}.pdf`
+    };
+  };
 
   const handleOpenPlanner = (pkg: PackageProduct) => {
     if (onOpenPlanner) {
@@ -75,6 +138,9 @@ Please load this itinerary and let me customize it!`;
               onClick={() => {
                 setActiveTab('theme');
                 setActiveCategoryName(BY_THEME_CATEGORIES[0].name);
+                if (BY_THEME_CATEGORIES[0].packages.length > 0) {
+                  setActivePackageId(BY_THEME_CATEGORIES[0].packages[0].id);
+                }
               }}
             >
               Browse By Interest
@@ -88,6 +154,9 @@ Please load this itinerary and let me customize it!`;
               onClick={() => {
                 setActiveTab('region');
                 setActiveCategoryName(BY_REGION_CATEGORIES[0].name);
+                if (BY_REGION_CATEGORIES[0].packages.length > 0) {
+                  setActivePackageId(BY_REGION_CATEGORIES[0].packages[0].id);
+                }
               }}
             >
               Browse By Region
@@ -115,99 +184,166 @@ Please load this itinerary and let me customize it!`;
           ))}
         </div>
 
-        {/* Side-by-Side Explorer Grid */}
-        <div className="flex flex-col lg:flex-row gap-10 items-start">
-          {/* LEFT: Category lists */}
-          <div className="w-full lg:w-[28%] flex flex-wrap lg:flex-col gap-2 shrink-0">
-            {categories.map((cat) => {
-              const isActive = cat.name === activeCategoryName;
-              return (
-                <button
-                  key={cat.name}
-                  className={`w-full text-left px-6 py-4.5 rounded-2xl border text-sm tracking-wider font-medium transition-all duration-300 flex items-center justify-between group ${
-                    isActive 
-                      ? 'bg-brand-gold/10 border-brand-gold/40 text-brand-gold-light shadow-gold' 
-                      : 'bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:border-white/20 hover:text-white'
-                  }`}
-                  onClick={() => setActiveCategoryName(cat.name)}
-                >
-                  <span>{cat.name}</span>
-                  <span className={`transition-transform duration-300 ${isActive ? 'translate-x-1 text-brand-gold-light' : 'text-white/20 group-hover:text-white/40'}`}>→</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* Category horizontal tab bar */}
+        <div className="flex flex-wrap border-b border-white/10 gap-1 mb-10 overflow-x-auto scrollbar-none pb-2 relative z-10">
+          {categories.map((cat) => {
+            const isActive = cat.name === activeCategoryName;
+            return (
+              <button
+                key={cat.name}
+                onClick={() => handleCategoryChange(cat.name)}
+                className={`px-6 py-3 text-xs tracking-widest font-semibold uppercase border-b-2 transition-all duration-300 ${
+                  isActive
+                    ? 'border-brand-gold text-brand-gold-light'
+                    : 'border-transparent text-white/50 hover:text-white/80'
+                }`}
+              >
+                {cat.name}
+              </button>
+            );
+          })}
+        </div>
 
-          {/* RIGHT: Category details and packages */}
-          <div className="flex-1 w-full">
-            <div className="mb-10">
-              <Heading as="h4" variant="none" className="text-2xl font-serif text-white tracking-wide mb-2">
-                {activeCategory.name}
-              </Heading>
-              <Text variant="none" className="text-white/55 text-sm font-light italic mb-6 block">
-                "{activeCategory.tagline}"
-              </Text>
-
-              {/* Sub-sections pills */}
-              <div className="flex flex-wrap gap-2">
-                {activeCategory.subsections.map((sub, idx) => (
-                  <span key={idx} className="bg-white/5 border border-white/10 text-white/50 px-4 py-1.5 rounded-full text-[0.65rem] uppercase tracking-widest font-semibold">
-                    {sub}
-                  </span>
-                ))}
+        {/* Side-by-Side Explorer Grid (Editorial Lookbook) */}
+        <div className="flex flex-col lg:flex-row gap-10 items-stretch relative z-10">
+          {/* LEFT: Featured package canvas (55% width) */}
+          {activePackage && (
+            <div className="w-full lg:w-[55%] bg-[#1a1a1a]/60 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col justify-between shadow-heavy hover:border-brand-gold/25 transition-all duration-500 min-h-[550px] relative">
+              <div className="absolute inset-0 bg-cover bg-center transition-all duration-700 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url(${activePackage.img})` }} />
+              
+              <div className="h-64 w-full overflow-hidden relative shrink-0">
+                <img 
+                  src={activePackage.img} 
+                  alt={activePackage.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
+                <Badge variant="gold-filled" className="absolute top-6 left-6 shadow-lg bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase">
+                  {activePackage.badge}
+                </Badge>
               </div>
-            </div>
 
-            {/* Packages Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {activeCategory.packages.map((pkg) => (
-                <div 
-                  key={pkg.id} 
-                  className="bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden group hover:border-brand-gold/40 hover:shadow-gold transition-all duration-500 flex flex-col justify-between h-[450px]"
-                >
-                  <div className="h-44 w-full overflow-hidden relative shrink-0">
-                    <img 
-                      src={pkg.img} 
-                      alt={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <Badge variant="gold-filled" className="absolute top-6 left-6 shadow-lg bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase">
-                      {pkg.badge}
-                    </Badge>
+              <div className="p-8 md:p-10 flex-1 flex flex-col justify-between relative z-10">
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <Heading as="h4" variant="none" className="text-2xl font-serif text-white tracking-wide">
+                      {activePackage.title}
+                    </Heading>
+                    <span className="self-start sm:self-auto shrink-0 bg-brand-gold/10 text-brand-gold-light border border-brand-gold/20 px-3.5 py-1 rounded-full text-[0.65rem] tracking-widest uppercase font-semibold">
+                      {activePackage.duration}
+                    </span>
                   </div>
+                  
+                  <Text variant="none" className="text-white/40 text-[0.7rem] uppercase tracking-widest font-semibold block mb-4">
+                    📍 {activePackage.destinations.join(' → ')}
+                  </Text>
+                  
+                  <Text variant="none" className="text-white/80 text-sm font-light leading-relaxed mb-6 block">
+                    {activePackage.desc}
+                  </Text>
 
-                  <div className="p-8 flex-1 flex flex-col justify-between">
-                    <div>
-                      <Heading as="h5" variant="none" className="text-lg font-serif text-white mb-2 leading-tight">
-                        {pkg.title}
-                      </Heading>
-                      <Text variant="none" className="text-white/50 text-[0.7rem] uppercase tracking-widest font-semibold block mb-4">
-                        📍 {pkg.destinations.join(' → ')}
-                      </Text>
-                      <Text variant="none" className="text-white/70 text-xs font-light leading-relaxed line-clamp-3">
-                        {pkg.desc}
-                      </Text>
-                    </div>
-
-                    <div className="flex gap-3 mt-6 pt-4 border-t border-white/5">
-                      <Button
-                        variant="glass"
-                        className="flex-1 py-3 text-[0.65rem] tracking-widest uppercase font-bold text-white bg-white/5 hover:bg-white/10 border border-white/20 rounded-xl"
-                        onClick={() => setSelectedPackage(pkg)}
-                      >
-                        View Details
-                      </Button>
-                      <Button
-                        className="flex-1 py-3 text-[0.65rem] tracking-widest uppercase font-bold text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light rounded-xl shadow-gold"
-                        onClick={() => handleOpenPlanner(pkg)}
-                      >
-                        Customize It
-                      </Button>
+                  <div className="mb-6">
+                    <span className="text-[0.65rem] uppercase tracking-widest text-brand-gold-light font-bold block mb-3">Key Hotels</span>
+                    <div className="flex flex-col gap-2 pl-3 border-l border-brand-gold/30">
+                      {activePackage.hotels.map((h, i) => (
+                        <span key={i} className="text-xs text-white/70 font-light flex items-center gap-2">
+                          🏨 {h}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-              ))}
+
+                <div className="flex flex-col gap-3 pt-6 border-t border-white/5">
+                  {/* PDF Itinerary Direct Download */}
+                  <a
+                    href={getDownloadPaths(activePackage.id).pdf}
+                    download
+                    className="w-full py-3 px-4 bg-[#1E4D45]/45 hover:bg-[#1E4D45]/75 border border-white/10 rounded-xl text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-strong"
+                  >
+                    <Icon name="FileText" size={14} className="text-brand-gold" />
+                    Download PDF Handbook (No Pricing)
+                  </a>
+
+                  <div className="flex gap-3">
+                    <Button
+                      variant="glass"
+                      className="flex-1 py-3 text-[0.65rem] tracking-widest uppercase font-bold text-white bg-white/5 hover:bg-white/10 border border-white/20 rounded-xl"
+                      onClick={() => setSelectedPackage(activePackage)}
+                    >
+                      View Day-by-Day Details
+                    </Button>
+                    <Button
+                      className="flex-1 py-3 text-[0.65rem] tracking-widest uppercase font-bold text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light rounded-xl shadow-gold"
+                      onClick={() => handleOpenPlanner(activePackage)}
+                    >
+                      Customize with AI
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* RIGHT: Journey Scroll Index (45% width) */}
+          <div className="flex-1 flex flex-col gap-4">
+            <div className="mb-2">
+              <span className="text-[0.65rem] uppercase tracking-widest text-white/40 font-bold">Category Vibe</span>
+              <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide mt-1">
+                {activeCategory.name}
+              </Heading>
+              <Text variant="none" className="text-white/55 text-xs font-light italic mt-1 block">
+                "{activeCategory.tagline}"
+              </Text>
+            </div>
+
+            <div className="flex flex-col gap-3 max-h-[580px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+              {activeCategory.packages.map((pkg, idx) => {
+                const isActive = activePackage && pkg.id === activePackage.id;
+                return (
+                  <div
+                    key={pkg.id}
+                    onClick={() => setActivePackageId(pkg.id)}
+                    className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex gap-4 items-center group relative overflow-hidden ${
+                      isActive
+                        ? 'bg-brand-gold/10 border-brand-gold/40 text-brand-gold-light'
+                        : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'
+                    }`}
+                  >
+                    {/* Index Number */}
+                    <span className={`text-xl font-serif tracking-tighter shrink-0 ${isActive ? 'text-brand-gold' : 'text-white/20 group-hover:text-white/45'}`}>
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    
+                    {/* Image Thumbnail */}
+                    <img 
+                      src={pkg.img} 
+                      alt={pkg.title}
+                      className="w-14 h-14 rounded-xl object-cover shrink-0 border border-white/10"
+                    />
+
+                    {/* Text Details */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <Text variant="none" className={`text-sm font-semibold truncate ${isActive ? 'text-brand-gold-light' : 'text-white'}`}>
+                          {pkg.title}
+                        </Text>
+                        <span className="text-[0.6rem] text-white/45 shrink-0 font-medium tracking-wider">
+                          {pkg.duration}
+                        </span>
+                      </div>
+                      <Text variant="none" className="text-[0.65rem] text-white/55 truncate block">
+                        📍 {pkg.destinations.join(', ')}
+                      </Text>
+                    </div>
+
+                    {/* Hover indicator arrow */}
+                    <span className={`text-lg transition-transform duration-300 ${isActive ? 'translate-x-0 text-brand-gold-light' : 'opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-white/45'}`}>
+                      ➔
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
