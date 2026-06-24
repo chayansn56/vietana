@@ -356,6 +356,88 @@ Please load this itinerary and let me customize it!`;
               </div>
             </div>
 
+            {/* Premium Download Buttons */}
+            {(() => {
+              const getDownloadPaths = (id: string) => {
+                let category = '';
+                let filename = '';
+
+                switch (id) {
+                  case 'budget-explorer':
+                    category = 'First Time in Vietnam';
+                    filename = '1_Vietnam_Essentials_5D4N';
+                    break;
+                  case 'hanoi-escape':
+                    category = 'Adventure & Offbeat';
+                    filename = '17_Hanoi_Discovery_4D3N';
+                    break;
+                  case 'danang-discovery':
+                    category = 'Beach Escapes';
+                    filename = '7_Danang_Beaches_5D4N';
+                    break;
+                  case 'vietnam-classic':
+                    category = 'First Time in Vietnam';
+                    filename = '2_Best_of_Vietnam_7D6N';
+                    break;
+                  case 'vietnam-complete':
+                    category = 'First Time in Vietnam';
+                    filename = '3_Complete_Vietnam_10D9N';
+                    break;
+                  case 'vietnam-honeymoon':
+                    category = 'Honeymoons & Romance';
+                    filename = '9_Romantic_Escapes_6D5N';
+                    break;
+                  case 'vietnam-family':
+                    category = 'Family Holidays';
+                    filename = '11_Family_Favorites_7D6N';
+                    break;
+                  case 'phuquoc-paradise':
+                    category = 'Beach Escapes';
+                    filename = '6_Phu_Quoc_Escapes_5D4N';
+                    break;
+                  case 'luxury-vietnam':
+                    category = 'Luxury & Wellness';
+                    filename = '23_Signature_Luxury_7D6N';
+                    break;
+                  default:
+                    category = 'First Time in Vietnam';
+                    filename = '1_Vietnam_Essentials_5D4N';
+                }
+
+                return {
+                  pdf: `/itineraries/PDFs/${category}/${filename}.pdf`,
+                  word: `/itineraries/Word Documents/${category}/${filename}.docx`
+                };
+              };
+
+              const paths = getDownloadPaths(selectedPackage.id);
+              return (
+                <div className="px-6 py-4 bg-white/5 border-t border-white/5 shrink-0 flex flex-col gap-2">
+                  <span className="text-[0.65rem] uppercase tracking-widest text-brand-gold-light font-semibold text-center mb-1">
+                    Download Luxury Handbooks (No Pricing)
+                  </span>
+                  <div className="flex border border-white/10 rounded-2xl overflow-hidden shadow-strong">
+                    <a
+                      href={paths.pdf}
+                      download
+                      className="flex-1 py-3 px-4 bg-[#1E4D45]/40 hover:bg-[#1E4D45]/60 text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 border-r border-white/10 transition-colors duration-300"
+                    >
+                      <Icon name="FileText" size={14} className="text-brand-gold" />
+                      PDF Itinerary
+                    </a>
+                    <a
+                      href={paths.word}
+                      download
+                      className="flex-1 py-3 px-4 bg-brand-gold hover:bg-brand-gold-light text-brand-green-extra-dark text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300"
+                    >
+                      <Icon name="FileText" size={14} className="text-brand-green-extra-dark" />
+                      Word Document
+                    </a>
+                  </div>
+                </div>
+              );
+            })()}
+
             {/* Modal Actions */}
             <div className="p-6 bg-black/60 border-t border-white/5 shrink-0 flex flex-col sm:flex-row gap-3">
               <Button
