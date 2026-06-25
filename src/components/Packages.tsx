@@ -177,20 +177,20 @@ Please load this itinerary and let me customize it!`;
         </div>
 
         {/* Indian Market Fit Trust Badges */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16 bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16 bg-white/5 border border-white/10 p-5 sm:p-6 rounded-3xl backdrop-blur-xl">
           {[
             { label: "Veg & Jain Dining", desc: "Curated Indian comfort & veg restaurants", icon: "Leaf", color: "text-brand-green-light" },
             { label: "24/7 Local Support", desc: "On-ground team contactable via WhatsApp", icon: "MessageCircle", color: "text-brand-gold-light" },
             { label: "Express Visa Support", desc: "Seamless e-visa approval letter service", icon: "FileText", color: "text-brand-gold-light" },
             { label: "Expert Local Guides", desc: "Hindi & English speaking verified guides", icon: "Users", color: "text-brand-green-light" }
           ].map((item, idx) => (
-            <div key={idx} className="flex gap-4 items-center">
-              <span className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 ${item.color}`}>
+            <div key={idx} className="flex gap-4 items-start">
+              <span className={`w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 ${item.color} mt-0.5`}>
                 <Icon name={item.icon as any} size={20} />
               </span>
               <div>
                 <Text variant="white" weight="bold" size="sm" className="tracking-wide">{item.label}</Text>
-                <Text variant="none" className="text-white/50 text-[0.7rem] leading-snug mt-0.5">{item.desc}</Text>
+                <Text variant="none" className="text-white/55 text-[0.7rem] leading-snug mt-0.5">{item.desc}</Text>
               </div>
             </div>
           ))}
@@ -223,7 +223,7 @@ Please load this itinerary and let me customize it!`;
             <Heading as="h4" variant="none" className="text-2xl font-serif text-white tracking-wide mt-1">
               {activeCategory.name}
             </Heading>
-            <Text variant="none" className="text-white/55 text-xs font-light italic mt-1 block">
+            <Text variant="none" className="text-white/70 text-xs font-light italic mt-1 block">
               "{activeCategory.tagline}"
             </Text>
           </div>

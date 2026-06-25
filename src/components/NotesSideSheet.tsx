@@ -35,7 +35,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-[#1D1D1F]/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[1900] bg-[#1D1D1F]/40 backdrop-blur-sm"
           />
 
           {/* Side Sheet */}
@@ -44,7 +44,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-[60] h-full w-[90%] md:w-[80%] max-w-4xl bg-[#FAF8F3] shadow-2xl overflow-y-auto rounded-l-[32px]"
+            className="fixed top-0 right-0 z-[2000] h-full w-[100%] md:w-[80%] max-w-4xl bg-[#FAF8F3] shadow-2xl overflow-y-auto md:rounded-l-[32px]"
           >
             {/* Close Button */}
             <button
@@ -84,6 +84,30 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                   <Text className="text-[#1D1D1F]/60">
                     Our team is currently on the ground gathering the best insights, photos, and recommendations for this guide. It will be available soon.
                   </Text>
+                </div>
+              ) : article.sections && article.sections.length > 0 ? (
+                <div className="space-y-12">
+                  {article.sections.map((section, idx) => (
+                    <div key={idx} className="space-y-4">
+                      {section.heading && (
+                        <Heading as="h2" size="2xl" font="serif" className="text-[#1D1D1F] border-b border-[#1D1D1F]/10 pb-4 mb-6">
+                          {section.heading}
+                        </Heading>
+                      )}
+                      {section.paragraphs?.map((p, pIdx) => (
+                        <Text key={pIdx} size="lg" className="text-[#1D1D1F]/80 leading-relaxed">
+                          {p}
+                        </Text>
+                      ))}
+                      {section.list && section.list.length > 0 && (
+                        <ul className="list-disc pl-6 space-y-3 mt-4 text-lg text-[#1D1D1F]/80 leading-relaxed marker:text-brand-gold">
+                          {section.list.map((item, lIdx) => (
+                            <li key={lIdx}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
                 </div>
               ) : (
                 <div className="space-y-8">

@@ -8,12 +8,14 @@
   --color-brand-green-extra-dark: #0A1C18;
   
   --color-brand-gold: #D4AF37; /* Keeping original gold as secondary */
+  --color-brand-gold-light: #E8C84A; /* Lighter gold for text on dark backgrounds */
   --color-brand-gold-muted: #B8860B;
   
   --color-brand-sage: #AAB7A1; /* Muted Sage */
   --color-brand-champagne: #E9DFC8; /* Champagne Beige */
   
   --color-brand-blue: #1E3A8A; /* Deep Ocean Blue */
+  --color-brand-blue-light: #60A5FA; /* Light blue for accent text */
   
   --color-surface-ivory: #FAF8F3; /* Warm Ivory */
   --color-surface-white: #FFFFFF; /* Soft White */

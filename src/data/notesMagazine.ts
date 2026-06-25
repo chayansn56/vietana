@@ -1,3 +1,9 @@
+export interface ArticleSection {
+  heading?: string;
+  paragraphs?: string[];
+  list?: string[];
+}
+
 export interface Article {
   id: string;
   title: string;
@@ -6,6 +12,7 @@ export interface Article {
   sourceName?: string;
   sourceUrl?: string;
   isComingSoon?: boolean;
+  sections?: ArticleSection[];
 }
 
 export interface Collection {
@@ -20,19 +27,67 @@ export const magazineData = {
   featured: [
     {
       id: "f1",
-      title: "Planning Your First Vietnam Trip",
-      intro: "Everything you need to know before your first journey to Vietnam.",
+      title: "The Ultimate Guide to Getting a Vietnam E-Visa for Indian Citizens (2025)",
+      intro: "Everything you need to know about applying for, tracking, and using your Vietnam e-Visa as an Indian passport holder.",
       image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80",
-      sourceName: "Lonely Planet",
-      sourceUrl: "https://www.lonelyplanet.com/articles/vietnam-tips-a-guide"
+      sections: [
+        {
+          heading: "Vietnam E-Visa for Indians: The Basics",
+          paragraphs: [
+            "Vietnam is increasingly becoming the top choice for Indian travelers seeking luxury, culture, and natural beauty. Fortunately, the visa process for Indian citizens is entirely digital and highly efficient.",
+            "Since August 2023, Vietnam has expanded its e-visa validity to 90 days for multiple entries, making it easier than ever to plan extended luxury itineraries or combine Vietnam with neighboring countries."
+          ]
+        },
+        {
+          heading: "Step-by-Step Application Process",
+          paragraphs: [
+            "Applying for a Vietnam e-visa takes about 10-15 minutes. Here is the exact process:"
+          ],
+          list: [
+            "Visit the official Vietnam Immigration Portal (avoid third-party agencies charging premium fees for free forms).",
+            "Upload a standard passport-sized photograph (4x6 cm) without glasses, and a clear scan of your passport data page.",
+            "Fill out the application form with your exact details as printed on the passport.",
+            "Pay the $25 USD processing fee using an international credit or debit card.",
+            "Receive your registration code. The processing time is typically 3-5 working days."
+          ]
+        },
+        {
+          heading: "Why Vietana Handled Visas are Better",
+          paragraphs: [
+            "While the e-visa process is simple, minor errors (like incorrect date formats or uploading a blurry passport scan) can lead to delays or rejections at the immigration counter. At Vietana, we handle the entire visa process for you as part of our premium concierge service. You arrive, we handle the friction."
+          ]
+        }
+      ]
     },
     {
       id: "f2",
-      title: "Vegetarian Vietnam",
-      intro: "A complete guide to navigating and enjoying Vietnam as a vegetarian.",
+      title: "Top Indian & Jain Restaurants in Ho Chi Minh City",
+      intro: "A curated guide to finding authentic vegetarian and Jain-friendly dining in Vietnam's most vibrant city.",
       image: "https://images.unsplash.com/photo-1582293041079-7814c2f12063?w=1600&q=80",
-      sourceName: "Vietnam Travel",
-      sourceUrl: "https://vietnam.travel/things-to-do/vegetarian-guide-vietnam"
+      sections: [
+        {
+          heading: "Navigating Vietnam as a Vegetarian",
+          paragraphs: [
+            "Vietnam is a food lover's paradise, but for Indian travelers with strict dietary requirements—such as pure vegetarian or Jain diets—it can be intimidating. The language barrier often makes it difficult to ensure no fish sauce or meat broth is used.",
+            "However, Ho Chi Minh City has a thriving Indian community and an incredible selection of authentic Indian restaurants that cater specifically to these needs."
+          ]
+        },
+        {
+          heading: "Our Top Recommendations",
+          list: [
+            "Shanti Indian Cuisine - Located in District 1, they offer a separate Jain menu and exceptional North Indian curries.",
+            "Baba's Kitchen - A staple on Bui Vien street. Known for their generous portions and strict adherence to vegetarian prep upon request.",
+            "Dalcheeni - For a more upscale dining experience offering royal Indian cuisine by the Saigon River.",
+            "Benaras - Club & Restaurant - Offering modern Indian fusion in a premium setting, perfect for an evening out."
+          ]
+        },
+        {
+          heading: "The Vietana Food Concierge",
+          paragraphs: [
+            "When you travel with Vietana, you never have to worry about your next meal. We curate daily dining reservations based on your exact dietary profile, ensuring that every meal is both culturally immersive and strictly adheres to your preferences—whether that is pure veg, Jain, or Halal."
+          ]
+        }
+      ]
     },
     {
       id: "f3",

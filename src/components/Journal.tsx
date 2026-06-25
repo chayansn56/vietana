@@ -40,7 +40,7 @@ const Journal: React.FC = () => {
       <div className="relative h-[250px] md:h-[300px] w-full overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=2000&q=80" 
-          alt="Hoi An Lanterns" 
+          alt="Hoi An Lanterns - Vietnam Travel Guide" 
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[#1D1D1F]/50 mix-blend-multiply" />

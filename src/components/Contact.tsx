@@ -56,10 +56,10 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
       variant="dark"
       className="overflow-hidden p-0 bg-brand-green-dark border border-white/10 rounded-[24px] shadow-2xl"
     >
-      <div className="flex flex-col md:flex-row h-[85vh] max-h-[800px]">
+      <div className="flex flex-col md:flex-row h-auto md:h-[85vh] max-h-[90vh] md:max-h-[800px] overflow-y-auto md:overflow-hidden">
         
         {CONTACT_LOCATIONS.map((loc, index) => (
-          <div key={loc.id} className="relative flex-1 flex flex-col justify-end group overflow-hidden border-b md:border-b-0 md:border-r border-white/10 last:border-0">
+          <div key={loc.id} className="relative flex-1 min-h-[380px] md:min-h-0 flex flex-col justify-end group overflow-hidden border-b md:border-b-0 md:border-r border-white/10 last:border-0">
             {/* Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"

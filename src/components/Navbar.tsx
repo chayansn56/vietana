@@ -49,8 +49,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
 
       <nav 
         id="nav" 
-        className={`fixed left-1/2 -translate-x-1/2 z-[1000] px-6 md:px-10 flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] gap-2 md:gap-4 w-[95%] max-w-7xl rounded-full border shadow-[0_10px_30px_rgba(0,0,0,0.1)]
-          ${scrolled ? 'top-4 py-3 bg-white/30 backdrop-blur-[20px] border-white/40' : 'top-6 py-4 bg-black/20 backdrop-blur-[10px] border-white/20'}`}
+        className={`fixed left-1/2 -translate-x-1/2 z-[1000] px-6 md:px-10 flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] gap-2 md:gap-4 w-[95%] max-w-7xl rounded-full border 
+          ${mobileMenuOpen ? 'top-6 py-4 border-transparent shadow-none bg-transparent' : (scrolled ? 'top-4 py-3 bg-white/30 backdrop-blur-[20px] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.1)]' : 'top-6 py-4 bg-black/20 backdrop-blur-[10px] border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.1)]')}`}
       >
         <a href="#" className="flex shrink-0 items-center gap-2 no-underline group/logo">
           <img src="/vietana_logo.png" className="h-[35px] md:h-[45px]" alt="Vietana Logo" />
@@ -228,118 +228,120 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       {/* MOBILE MENU */}
       <div 
         id="mob" 
-        className={`fixed inset-0 z-[390] glass-dark flex flex-col items-center justify-center gap-8 transition-opacity duration-500 ease-soft
+        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark flex flex-col overflow-hidden transition-opacity duration-500 ease-soft
           ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
-        {NAV_LINKS.map((link) => (
-          link.key === 'experiences' ? (
-            <div key={link.key} className="flex flex-col items-center gap-2">
-              <Heading 
-                as="span" 
-                size="xl" 
-                font="serif" 
-                weight="light"
-                variant="none"
-                className={`text-brand-gold block text-4xl transition-all duration-500 ease-smooth
-                  ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
-              >
-                {t.nav[link.key as keyof typeof t.nav]}
-              </Heading>
-              <div className="flex flex-col gap-2 items-center mt-1">
-                <a
-                  href="#experiences"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    const el = document.getElementById('experiences');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-white/60 hover:text-white text-lg no-underline py-1"
+        <div className="flex-grow overflow-y-auto mt-28 pb-16 px-6 flex flex-col items-center gap-8 w-full">
+          {NAV_LINKS.map((link) => (
+            link.key === 'experiences' ? (
+              <div key={link.key} className="flex flex-col items-center gap-2">
+                <Heading 
+                  as="span" 
+                  size="xl" 
+                  font="serif" 
+                  weight="light"
+                  variant="none"
+                  className={`text-brand-gold block text-4xl transition-all duration-500 ease-smooth
+                    ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
                 >
-                  — Curated Experiences
-                </a>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenExperiences();
-                  }}
-                  className="text-white/60 hover:text-white text-lg bg-transparent border-none cursor-pointer py-1"
-                >
-                  — Hidden Experiences
-                </button>
+                  {t.nav[link.key as keyof typeof t.nav]}
+                </Heading>
+                <div className="flex flex-col gap-2 items-center mt-1">
+                  <a
+                    href="#experiences"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      const el = document.getElementById('experiences');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="text-white/60 hover:text-white text-lg no-underline py-1"
+                  >
+                    — Curated Experiences
+                  </a>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenExperiences();
+                    }}
+                    className="text-white/60 hover:text-white text-lg bg-transparent border-none cursor-pointer py-1"
+                  >
+                    — Hidden Experiences
+                  </button>
+                </div>
               </div>
-            </div>
-          ) : (
-            <a 
-              key={link.key}
-              href={link.href} 
-              className="no-underline"
-              onClick={(e) => {
-                if ((link as any).isPlanner) {
-                  e.preventDefault();
-                  setMobileMenuOpen(false);
-                  onOpenPlanner();
-                } else if (link.href === '#contact') {
-                  e.preventDefault();
-                  setMobileMenuOpen(false);
-                  onOpenContact();
-                } else if (link.key === 'about') {
-                  e.preventDefault();
-                  setMobileMenuOpen(false);
-                  onOpenAbout();
-                } else {
-                  setMobileMenuOpen(false);
-                }
-              }}
-            >
-              <Heading 
-                as="span" 
-                size="xl" 
-                font="serif" 
-                weight="light"
-                variant="none"
-                className={`text-white/80 transition-all duration-500 ease-smooth hover:text-brand-gold block text-4xl
-                  ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+            ) : (
+              <a 
+                key={link.key}
+                href={link.href} 
+                className="no-underline"
+                onClick={(e) => {
+                  if ((link as any).isPlanner) {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    onOpenPlanner();
+                  } else if (link.href === '#contact') {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    onOpenContact();
+                  } else if (link.key === 'about') {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    onOpenAbout();
+                  } else {
+                    setMobileMenuOpen(false);
+                  }
+                }}
               >
-                {t.nav[link.key as keyof typeof t.nav]}
-              </Heading>
-            </a>
-          )
-        ))}
-        <div className="h-px w-2/3 bg-white/10 my-4"></div>
+                <Heading 
+                  as="span" 
+                  size="xl" 
+                  font="serif" 
+                  weight="light"
+                  variant="none"
+                  className={`text-white/80 transition-all duration-500 ease-smooth hover:text-brand-gold block text-4xl
+                    ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                >
+                  {t.nav[link.key as keyof typeof t.nav]}
+                </Heading>
+              </a>
+            )
+          ))}
+          <div className="h-px w-2/3 bg-white/10 my-4"></div>
 
-        <button 
-          onClick={() => { setMobileMenuOpen(false); setEmergencyOpen(true); }}
-          className="flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 transition-colors no-underline w-full max-w-[200px] cursor-pointer"
-        >
-          <Icon name="AlertCircle" size={20} />
-          <span className="text-lg font-medium tracking-wide uppercase">Emergency</span>
-        </button>
-        
-        <button 
-          onClick={() => {
-            setMobileMenuOpen(false);
-            onOpenMapCurtain();
-          }}
-          className="flex items-center gap-3 px-6 py-3 rounded-full bg-brand-gold/20 border border-brand-gold/50 text-brand-gold transition-colors"
-        >
-          <Icon name="Map" size={20} />
-          <span className="text-lg font-medium tracking-wide">Explore Map</span>
-        </button>
+          <button 
+            onClick={() => { setMobileMenuOpen(false); setEmergencyOpen(true); }}
+            className="flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 transition-colors no-underline w-full max-w-[200px] cursor-pointer"
+          >
+            <Icon name="AlertCircle" size={20} />
+            <span className="text-lg font-medium tracking-wide uppercase">Emergency</span>
+          </button>
+          
+          <button 
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenMapCurtain();
+            }}
+            className="flex items-center gap-3 px-6 py-3 rounded-full bg-brand-gold/20 border border-brand-gold/50 text-brand-gold transition-colors"
+          >
+            <Icon name="Map" size={20} />
+            <span className="text-lg font-medium tracking-wide">Explore Map</span>
+          </button>
 
-        <div className="flex gap-4 mt-2">
-            {['EN', 'HI', 'VI'].map((l) => (
-              <button 
-                key={l}
-                className="bg-transparent border border-white text-white px-4 py-2 rounded-full cursor-pointer hover:bg-white/10 transition-colors"
-                onClick={() => { setLanguage(l as any); setMobileMenuOpen(false); }}
-              >
-                {l}
-              </button>
-            ))}
+          <div className="flex gap-4 mt-2">
+              {['EN', 'HI', 'VI'].map((l) => (
+                <button 
+                  key={l}
+                  className="bg-transparent border border-white text-white px-4 py-2 rounded-full cursor-pointer hover:bg-white/10 transition-colors"
+                  onClick={() => { setLanguage(l as any); setMobileMenuOpen(false); }}
+                >
+                  {l}
+                </button>
+              ))}
+          </div>
+          <a href={buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT)} className="text-brand-gold text-xl no-underline flex items-center gap-2" target="_blank" rel="noreferrer">
+            <Icon name="MessageCircle" size={24} /> +91 9953294543
+          </a>
         </div>
-        <a href={buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT)} className="text-brand-gold text-xl no-underline flex items-center gap-2" target="_blank" rel="noreferrer">
-          <Icon name="MessageCircle" size={24} /> +91 9953294543
-        </a>
       </div>
 
       {/* Click outside to close drops */}

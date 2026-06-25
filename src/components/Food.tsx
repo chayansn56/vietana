@@ -113,7 +113,7 @@ const Food: React.FC = () => {
               onClick={() => openCategory(CATEGORY_VIETNAMESE)}
             >
               <div className="absolute inset-0 opacity-20 mix-blend-overlay group-hover:opacity-40 transition-opacity duration-500">
-                <img src={CATEGORY_VIETNAMESE.heroImage} alt="Vietnamese" className="w-full h-full object-cover" />
+                <img src={CATEGORY_VIETNAMESE.heroImage} alt="Authentic Vietnamese Food for Indian Travelers" className="w-full h-full object-cover" />
               </div>
               <div className="relative z-10">
                 <Text size="sm" weight="bold" className="uppercase tracking-widest text-brand-gold mb-4">Local Soul</Text>
@@ -134,7 +134,7 @@ const Food: React.FC = () => {
               onClick={() => openCategory(CATEGORY_CAFES)}
             >
               <div className="flex-1 mb-6 rounded-2xl overflow-hidden relative">
-                 <img src={CATEGORY_CAFES.heroImage} alt="Cafes" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                 <img src={CATEGORY_CAFES.heroImage} alt="Best Cafes and Coffee Shops in Vietnam" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div>
                 <Heading as="h3" size="lg" font="serif" className="text-[#1D1D1F] mb-1">
@@ -152,7 +152,7 @@ const Food: React.FC = () => {
               onClick={() => openCategory(CATEGORY_LOCAL_KNOWLEDGE)}
             >
               <div className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-700">
-                <img src={CATEGORY_LOCAL_KNOWLEDGE.heroImage} alt="Team" className="w-full h-full object-cover grayscale" />
+                <img src={CATEGORY_LOCAL_KNOWLEDGE.heroImage} alt="Vietana Local Support Team in Ho Chi Minh City" className="w-full h-full object-cover grayscale" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-center max-w-lg">
                 <Heading as="h3" size="2xl" font="serif" variant="white" className="mb-6">

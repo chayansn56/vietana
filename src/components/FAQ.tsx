@@ -32,7 +32,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
           <Heading as="h2" size="3xl" font="serif" className="mb-3 font-normal text-[#1D1D1F]">
             Clarity & Peace of Mind
           </Heading>
-          <Text size="md" className="text-[#1D1D1F]/60 font-light">
+          <Text size="md" className="text-[#1D1D1F]/75 font-light">
             A few things travelers often ask.
           </Text>
         </div>
@@ -46,7 +46,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
             >
               <span className="text-xl">{card.icon}</span>
               <Text size="sm" weight="medium" className="text-[#1D1D1F] m-0">
-                {card.title} <span className="text-[#1D1D1F]/40 mx-1">→</span> <span className="font-light text-[#1D1D1F]/70">{card.text}</span>
+                {card.title} <span className="text-[#1D1D1F]/55 mx-1">→</span> <span className="font-light text-[#1D1D1F]/75">{card.text}</span>
               </Text>
             </div>
           ))}
@@ -55,7 +55,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
         {/* Bottom Pill */}
         <div className="flex justify-center">
           <div className="bg-[#FFFFFF] rounded-full px-6 py-4 inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-[#1D1D1F]/5">
-            <Text size="sm" weight="medium" className="text-[#1D1D1F]/80 uppercase tracking-widest mr-2">
+            <Text size="sm" weight="medium" className="text-[#1D1D1F]/85 uppercase tracking-widest mr-2">
               Still Curious?
             </Text>
             

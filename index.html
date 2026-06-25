@@ -6,13 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VIETANA — Feel Vietnam, Your Way 🇻🇳</title>
     <meta name="description" content="Vietnam made easy for Indian travelers. Visa, hotels, food, experiences — handled locally from Ho Chi Minh City.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://vietana.com/" />
+
+    <!-- Open Graph (for Facebook, WhatsApp, LinkedIn sharing) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vietana.com/" />
+    <meta property="og:title" content="VIETANA — Feel Vietnam, Your Way" />
+    <meta property="og:description" content="Premium, bespoke travel experiences for Indian travelers. Locally managed from Ho Chi Minh City with 24/7 on-ground support." />
+    <meta property="og:image" content="https://vietana.com/og_image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="VIETANA" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VIETANA — Feel Vietnam, Your Way" />
+    <meta name="twitter:description" content="Premium bespoke Vietnam travel for Indian travelers. Visa, hotels, food & experiences — all handled locally." />
+    <meta name="twitter:image" content="https://vietana.com/og_image.jpg" />
+
+    <!-- Mobile Browser Chrome Color -->
+    <meta name="theme-color" content="#0A1C18" />
+
+    <!-- Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-    <link rel="preload" href="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1920&q=90" as="image" />
+    
+    <!-- Hero image preload for LCP -->
+    <link rel="preload" href="/hero_hoian.png" as="image" fetchpriority="high" />
+
+    <!-- Schema Markup (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "VIETANA",
+        "url": "https://vietana.com",
+        "logo": "https://vietana.com/vietana_logo.png",
+        "image": "https://vietana.com/og_image.jpg",
+        "description": "Premium, bespoke travel experiences in Vietnam for Indian travelers. Locally managed from Ho Chi Minh City with 24/7 on-ground support.",
+        "telephone": "+840902434006",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ho Chi Minh City",
+          "addressCountry": "VN"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Vietnam"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Indian Travelers"
+        },
+        "priceRange": "$$$"
+      }
+    </script>
+
   </head>
   <body>
     <div id="root"></div>

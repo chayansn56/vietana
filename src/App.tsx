@@ -91,7 +91,7 @@ export default function App() {
             onOpenPlanner={(dest, prompt) => openPlanner(dest, prompt)}
           />
           <Separator variant="gold" />
-          <Services onOpenPlanner={(dest) => openPlanner(dest)} />
+          <Services />
           <Separator variant="green" />
           <Food />
           <Separator variant="gold" />
