@@ -1,25 +1,13 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { HERO_SLIDES } from '../data/siteContent';
-import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';
-import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import Clock from './Clock';
-import Badge from './ui/Badge';
-import Icon from './ui/Icon';
-import BrandName from './ui/BrandName';
 
 interface HeroProps {
   onOpenMagic: () => void;
 }
-
-const TRIPTYCH_PANELS = [
-  { img: '/hero_sapa.png', label: 'Mountains & Culture' },
-  { img: '/hero_hoian.png', label: 'Heritage & Coastlines' },
-  { img: '/hero_halong.png', label: 'Delta & Energy' },
-];
 
 const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
   const { t } = useTranslation();
@@ -28,19 +16,6 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
     vn: { time: '--:--', date: '---' },
     in: { time: '--:--', date: '---' }
   });
-
-  // Generate stable particles for cinematic light leaks
-  const lightLeaks = useMemo(() => {
-    return Array.from({ length: 4 }).map((_, i) => ({
-      id: i,
-      left: `${Math.random() * 80}%`,
-      top: `${Math.random() * 80}%`,
-      dur: `${15 + Math.random() * 10}s`,
-      del: `${Math.random() * 5}s`,
-      op: `${0.1 + Math.random() * 0.15}`,
-      size: `${200 + Math.random() * 300}px`
-    }));
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,7 +28,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         return {
           time: `${h}:${m}`,
-          date: `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`
+          date: `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`
         };
       };
       setClocks({
@@ -62,122 +37,93 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       });
     }, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <Section id="hero" spacing="none" className="h-screen min-h-[700px] flex w-full items-center justify-start">
-      {/* TRIPTYCH BACKGROUND */}
-      <div className="absolute inset-0 z-0 flex w-full h-full overflow-hidden bg-black">
-        {TRIPTYCH_PANELS.map((panel, idx) => (
-          <div 
-            key={idx}
-            className={`relative h-full flex-1 transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-[1.5] group cursor-default ${idx !== 1 ? 'hidden md:block' : ''}`}
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] ease-out group-hover:scale-105"
-              style={{ backgroundImage: `url(${panel.img})` }}
-            />
-            {/* Ambient vignette per panel */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/85 pointer-events-none" />
-            
-            {/* Panel Label */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 md:bottom-20 md:left-10 md:translate-x-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-              <Text variant="none" className="text-white/70 tracking-[0.3em] text-[0.65rem] uppercase font-bold drop-shadow-md">
-                {panel.label}
-              </Text>
-            </div>
-
-            {/* Vertical Divider */}
-            {idx < TRIPTYCH_PANELS.length - 1 && (
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-white/20 z-10" />
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* CENTERED HERO CONTENT (Extracted for max z-index and clickability) */}
-      <div className="absolute inset-0 z-[40] w-full h-full flex items-center justify-center pointer-events-none">
-        <div className="max-w-[90%] flex flex-col items-center text-center pointer-events-auto mt-[-5vh]">
-          {/* Subtle Label */}
-          <div className="mb-6 overflow-hidden">
-            <div className="animate-reveal-up [animation-duration:0.8s] flex items-center justify-center gap-3">
-              <span className="w-8 h-px bg-brand-gold/50"></span>
-              <Text variant="none" className="uppercase tracking-[0.3em] text-[0.65rem] sm:text-xs font-semibold text-brand-gold-light drop-shadow-md">
-                {t.hero.support}
-              </Text>
-              <span className="w-8 h-px bg-brand-gold/50"></span>
-            </div>
+    <Section id="hero" spacing="none" className="min-h-screen flex flex-col md:flex-row w-full items-stretch bg-[#FAF7F0] overflow-hidden pt-20 md:pt-0">
+      {/* LEFT SIDE: Editorial Typography & Canvas */}
+      <div className="flex-1 flex flex-col justify-center px-[8%] py-12 md:py-0 relative bg-noise">
+        <div className="max-w-xl space-y-6 md:space-y-8">
+          {/* Vintage Travel Stamp Style Badge */}
+          <div className="inline-flex items-center gap-3 px-3 py-1.5 border border-[#D4AF37]/35 rounded-md bg-[#FAF7F0]">
+            <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#B8860B] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
+              {t.hero.support}
+            </span>
           </div>
 
-          <Heading 
-            as="h1" 
-            size="4xl"
-            variant="none" 
-            font="serif"
-            className="mb-4 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] tracking-tight leading-[1.1] text-white"
-          >
-            {t.hero.welcome}
-            <span className="block mt-3 text-brand-gold text-3xl sm:text-5xl tracking-tight font-light drop-shadow-[0_2px_20px_rgba(212,175,55,0.4)]">{t.hero.tagline}</span>
-          </Heading>
+          <div className="space-y-3">
+            <Heading 
+              as="h1" 
+              variant="none" 
+              className="text-[#1E4D45] text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] font-serif"
+            >
+              {t.hero.welcome}
+            </Heading>
+            <p className="text-2xl sm:text-3xl text-[#B8860B] font-light font-serif italic">
+              {t.hero.tagline}
+            </p>
+          </div>
 
           <Text 
             variant="none"
-            className="max-w-xl mx-auto mb-10 text-white/90 text-sm sm:text-lg font-light leading-relaxed animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] drop-shadow-md"
+            className="text-[#555555] text-base md:text-lg font-light leading-relaxed max-w-lg"
           >
             {t.hero.sub}
           </Text>
 
-          <div className="flex animate-reveal-up [animation-delay:0.7s]">
-            <Button 
-              variant="solid" 
-              className="group bg-brand-gold hover:bg-brand-gold-muted text-white shadow-gold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] px-8 py-4 rounded-full text-sm tracking-widest uppercase font-semibold hover:scale-105 transform-gpu"
+          {/* Floating ticket-stub inquiry button */}
+          <div className="pt-4 flex">
+            <button 
               onClick={onOpenMagic}
+              className="flex items-center bg-[#1A2421] border border-[#D4AF37]/50 rounded-lg p-0 hover:scale-[1.02] transform transition duration-300 text-left cursor-pointer group shadow-lg"
             >
-              <span className="flex items-center justify-center gap-3">
-                {t.nav.cta}
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </span>
-            </Button>
+              {/* Ticket Left Part */}
+              <div className="p-4 sm:p-5 border-r border-dashed border-[#D4AF37]/30 relative">
+                <div className="text-[10px] uppercase tracking-widest text-[#FAF7F0]/60 mb-1">INQUIRY BOARDING PASS</div>
+                <div className="text-white font-serif text-lg sm:text-xl tracking-wide font-medium flex items-center gap-3">
+                  DEL <span className="text-[#D4AF37] text-sm">➔</span> SGN
+                </div>
+                {/* Visual tickets cuts */}
+                <div className="absolute top-1/2 -translate-y-1/2 -right-[7px] w-[14px] h-[14px] bg-[#FAF7F0] rounded-full z-10 border border-transparent"></div>
+              </div>
+              {/* Ticket Stub right part */}
+              <div className="p-4 sm:p-5 bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 transition duration-300 rounded-r-lg flex flex-col justify-center">
+                <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase flex items-center gap-1.5">
+                  {t.nav.cta} <span className="group-hover:translate-x-1 transition duration-200">→</span>
+                </span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Vintage clocks in sidebar */}
+        <div className="absolute bottom-8 left-[8%] right-[8%] flex items-center justify-between border-t border-[#E8E4D9] pt-4 text-xs text-[#555555]/60">
+          <div className="flex gap-4">
+            <Clock flag="🇮🇳" city="DEL" time={clocks.in.time} date={clocks.in.date} />
+            <Clock flag="🇻🇳" city="SGN" time={clocks.vn.time} date={clocks.vn.date} />
+          </div>
+          <div className="hidden sm:block uppercase tracking-widest font-mono text-[9px]">
+            SCROLL TO DEPART
           </div>
         </div>
       </div>
-      
-      {/* CINEMATIC LIGHT LEAKS */}
-      <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden mix-blend-screen">
-        {lightLeaks.map(l => (
-          <span 
-            key={l.id} 
-            className="absolute rounded-full bg-[radial-gradient(circle_at_center,rgba(255,220,150,0.8)_0%,transparent_70%)] opacity-0 animate-light-leak"
-            style={{ 
-              left: l.left, 
-              top: l.top,
-              animationDuration: l.dur,
-              animationDelay: l.del,
-              '--leak-op': l.op,
-              width: l.size, 
-              height: l.size 
-            } as React.CSSProperties}
-          />
-        ))}
-      </div>
 
-
-
-
-
-      {/* BOTTOM FOOTER */}
-      <div className="absolute bottom-0 left-0 right-0 z-[3] flex flex-col sm:flex-row justify-between items-start sm:items-end px-[var(--spacing-layout)] pb-6 md:pb-11 opacity-0 animate-reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards] gap-4 md:gap-6">
-        <Text as="div" size="xs" variant="none" className="flex items-center gap-4 text-white/40 tracking-[0.22em] uppercase">
-          <div className="relative w-12 h-px bg-gradient-to-r from-brand-gold to-transparent animate-sla" />
-          <span>Scroll to explore</span>
-        </Text>
-
-        <div className="flex flex-row flex-wrap sm:flex-nowrap gap-3 opacity-0 animate-reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
-          <Clock flag="🇻🇳" city="Ho Chi Minh" time={clocks.vn.time} date={clocks.vn.date} />
-          <Clock flag="🇮🇳" city="Delhi" time={clocks.in.time} date={clocks.in.date} />
+      {/* RIGHT SIDE: Cinematic Zoom Slide */}
+      <div className="flex-1 relative overflow-hidden min-h-[350px] md:min-h-0 bg-[#0A1C18]">
+        <div 
+          className="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+          style={{ backgroundImage: `url('/hero_halong.png')` }}
+        />
+        {/* Soft elegant gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C18]/80 via-transparent to-[#0A1C18]/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F0] via-transparent to-transparent hidden md:block w-[10%] pointer-events-none" />
+        
+        {/* Destination Coordinate Tag */}
+        <div className="absolute bottom-8 right-8 text-right text-white/50 text-[10px] tracking-widest font-mono pointer-events-none bg-[#0A1C18]/65 backdrop-blur-sm px-3 py-1.5 rounded border border-white/10">
+          <div>LOC // HA LONG BAY</div>
+          <div>COORD // 20.9758° N, 107.0460° E</div>
         </div>
       </div>
     </Section>

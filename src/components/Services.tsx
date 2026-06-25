@@ -136,107 +136,88 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
 
 const Services: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
-  const [isGridVisible, setIsGridVisible] = useState(false);
-  const gridRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsGridVisible(true);
-      }
-    }, { threshold: 0.1 });
-
-    if (gridRef.current) {
-      observer.observe(gridRef.current);
-    }
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <Section id="services" spacing="xl" className="bg-[#FAF8F3] relative overflow-hidden">
-      {/* Ambient Magic Background Glows */}
-      <div className="absolute top-20 -left-20 w-[40rem] h-[40rem] bg-[#AAB7A1]/10 rounded-full blur-[120px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-20 -right-20 w-[40rem] h-[40rem] bg-[#E9DFC8]/30 rounded-full blur-[120px] pointer-events-none" />
+    <Section id="services" spacing="xl" className="bg-[#FAF7F0] relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-[#E9DFC8]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Subtle Grid Pattern Overlay */}
-      <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231E4D45' fill-opacity='1'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
-
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 rotate-180">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[100px]">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C50,16.5,100,32.5,150,47.5A788.66,788.66,0,0,0,321.39,56.44Z" fill="#000000"></path>
-        </svg>
-      </div>
-
-      <Container className="relative z-20 pt-16 md:pt-24">
-        <div className="mb-20 md:mb-32 flex flex-col items-center text-center">
-          <span className="text-[#AAB7A1] text-[11px] tracking-[0.3em] font-semibold uppercase mb-6">
-            The Essentials
+      <Container className="relative z-20 max-w-[1200px]">
+        {/* Section Header */}
+        <div className="mb-20 text-center max-w-2xl mx-auto">
+          <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
+            CONCIERGE SERVICES
           </span>
-          
-          <Heading as="h2" size="4xl" font="serif" className="text-[#1D1D1F] mb-6 leading-[1.1] tracking-tight">
-            Everything you need.<br className="hidden md:block"/> 
-            <span className="text-[#86868B]">Nothing you don't.</span>
+          <Heading as="h2" size="4xl" font="serif" className="text-[#1E4D45] tracking-tight mb-4">
+            The Travel Ledger
           </Heading>
-          <Text size="lg" className="text-[#86868B] font-light max-w-2xl mx-auto space-y-2 relative text-[19px] leading-[1.4]">
-            <p>Whether it’s getting your visa, finding the right hotel, or staying connected, we handle the friction so you don't have to.</p>
+          <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-6"></div>
+          <Text variant="none" className="text-[#555555] font-light leading-relaxed">
+            From seamless e-visa approvals to dedicated Indian & Jain culinary guidance, our local team logs every detail to safeguard your itinerary.
           </Text>
         </div>
 
-        {/* Minimalist Grid - Apple Style */}
-        <div 
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-32 max-w-7xl mx-auto px-4"
-        >
-          {PREMIUM_SERVICES.map((service, index) => (
-            <div
-              key={service.id}
-              onClick={() => setSelectedService(service)}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              className={`group relative bg-white/70 backdrop-blur-2xl rounded-[32px] p-8 cursor-pointer border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] flex flex-col ${
-                isGridVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-16 scale-95'
-              } hover:scale-[1.02] hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)]`}
-            >
-              {/* Apple-style Squircle Icon Container */}
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-white to-[#FAF8F3] border border-[#E9DFC8]/40 shadow-sm flex items-center justify-center mb-8 text-[#1E4D45] group-hover:scale-110 transition-transform duration-500 ease-out">
-                <Icon name={service.icon} size={24} strokeWidth={1.5} />
+        {/* Vintage Guest Book Ledger */}
+        <div className="vintage-ledger rounded-2xl border border-[#E8E4D9] overflow-hidden shadow-lg p-6 sm:p-10 mb-20">
+          {/* Header row of Ledger */}
+          <div className="hidden sm:flex border-b-2 border-[#1E4D45]/20 pb-4 text-[#B8860B] font-mono text-[10px] tracking-widest uppercase">
+            <div className="w-[10%]">ENTRY</div>
+            <div className="w-[30%]">DEPARTMENT</div>
+            <div className="w-[50%]">LOGGED DESCRIPTION</div>
+            <div className="w-[10%] text-right">ACTION</div>
+          </div>
+
+          {/* Ledger rows */}
+          <div className="flex flex-col">
+            {PREMIUM_SERVICES.map((service, index) => (
+              <div
+                key={service.id}
+                onClick={() => setSelectedService(service)}
+                className="ledger-row py-6 sm:py-7 flex flex-col sm:flex-row items-start sm:items-center text-left cursor-pointer border-b border-[#E8E4D9]/60 hover:bg-[#FAF7F0]/40 transition duration-300"
+              >
+                {/* Entry ID */}
+                <div className="w-[10%] font-mono text-xs text-[#B8860B] mb-2 sm:mb-0">
+                  #00{index + 1}
+                </div>
+
+                {/* Service Department / Icon */}
+                <div className="w-full sm:w-[30%] flex items-center gap-3 mb-2 sm:mb-0">
+                  <div className="text-[#1E4D45] shrink-0">
+                    <Icon name={service.icon} size={18} strokeWidth={1.5} />
+                  </div>
+                  <Heading as="h4" variant="none" className="text-base font-bold text-[#1E4D45]">
+                    {service.shortTitle}
+                  </Heading>
+                </div>
+
+                {/* Logged Description */}
+                <div className="w-full sm:w-[50%] text-xs sm:text-sm text-[#555555] font-light pr-4 mb-4 sm:mb-0">
+                  {service.shortDesc}
+                </div>
+
+                {/* View Stamp */}
+                <div className="w-full sm:w-[10%] sm:text-right">
+                  <span className="inline-block text-[9px] font-mono font-bold tracking-widest uppercase text-[#B8860B] border border-[#D4AF37]/50 rounded px-2.5 py-1 hover:bg-[#D4AF37]/10 transition duration-300">
+                    OPEN
+                  </span>
+                </div>
               </div>
-              
-              <h3 className="text-[22px] font-semibold text-[#1D1D1F] mb-3 tracking-tight">
-                {service.shortTitle}
-              </h3>
-              
-              <p className="text-[#4B4B4F] text-[15px] font-normal leading-relaxed flex-1 mb-8">
-                {service.shortDesc}
-              </p>
-
-              <div className="flex items-center text-[15px] font-semibold text-[#1E4D45] transition-all duration-300 group-hover:text-brand-green-light group-hover:underline underline-offset-4 decoration-1">
-                Learn more 
-                <span className="ml-1 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">›</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Final Bottom Section */}
-        <div className="relative rounded-3xl overflow-hidden bg-[#E9DFC8] shadow-[0_12px_40px_rgba(46,46,46,0.06)] group max-w-7xl mx-auto">
-          <div className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-multiply transition-transform duration-[20s] group-hover:scale-105" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?auto=format&fit=crop&q=80')" }}></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F3] via-[#FAF8F3]/60 to-transparent mix-blend-normal"></div>
-
-          <div className="relative z-10 p-10 md:p-20 text-center max-w-3xl mx-auto flex flex-col items-center">
-            <h3 className="text-3xl md:text-5xl font-serif text-[#2E2E2E] mb-8 leading-tight">
-              More Than Just Bookings
-            </h3>
-            <div className="w-12 h-[2px] bg-[#AAB7A1] mb-8 mx-auto"></div>
-            <div className="text-[#5C5C5C] text-lg font-light space-y-6">
-              <p>At VIETANA, we believe travel is not only about visiting places.</p>
-              <p>It’s about feeling comfortable, confident and well looked after throughout your journey.</p>
-              <p>And wherever you go in Vietnam, it’s always good to know that someone is there to help when needed.</p>
-              <p className="text-2xl text-[#1E4D45] italic mt-10 font-serif">Feel Vietnam, Your Way.</p>
-            </div>
+            ))}
           </div>
         </div>
-      </Container>
 
+        {/* Ledger Bottom Note */}
+        <div className="bg-[#FAF7F0] border border-[#E8E4D9] rounded-xl p-8 text-center max-w-2xl mx-auto shadow-sm relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FAF7F0] px-4 text-[#B8860B] font-mono text-[9px] tracking-widest uppercase">
+            OFFICIAL STAMP
+          </div>
+          <p className="text-xl font-serif italic text-[#1E4D45] mb-2">"Feel Vietnam, Your Way."</p>
+          <Text size="sm" variant="none" className="text-[#555555]/80 font-light">
+            With certified ground handlers in HCMC and local assistance centers in Hanoi and Da Nang, our ledger stays fully interactive for you.
+          </Text>
+        </div>
+      </Container>
 
       <ServicePopup 
         isOpen={!!selectedService} 

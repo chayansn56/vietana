@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
@@ -11,17 +11,17 @@ import { soundService } from '../services/CardSoundService';
 
 const getWeatherForCity = (cityName: string) => {
   switch (cityName) {
-    case 'Sapa': return { icon: '🌤️', temp: '18°C', desc: 'Cool & Misty' };
-    case 'Hanoi': return { icon: '☀️', temp: '26°C', desc: 'Pleasant' };
-    case 'Ha Long Bay': return { icon: '🌤️', temp: '25°C', desc: 'Breezy' };
-    case 'Ninh Binh': return { icon: '☀️', temp: '27°C', desc: 'Clear Skies' };
-    case 'Da Nang': return { icon: '☀️', temp: '29°C', desc: 'Tropical Sun' };
-    case 'Hoi An': return { icon: '☀️', temp: '28°C', desc: 'Sunny' };
-    case 'Da Lat': return { icon: '🌤️', temp: '20°C', desc: 'Cool Breeze' };
-    case 'Nha Trang': return { icon: '☀️', temp: '30°C', desc: 'Perfect Beach' };
-    case 'Ho Chi Minh City': return { icon: '🌦️', temp: '31°C', desc: 'Warm Showers' };
-    case 'Phu Quoc': return { icon: '☀️', temp: '32°C', desc: 'Humid & Sunny' };
-    default: return { icon: '☀️', temp: '28°C', desc: 'Sunny' };
+    case 'Sapa': return { icon: '🌤️', temp: '18°C', desc: 'Cool & Misty', coord: '22.3364° N, 103.8438° E' };
+    case 'Hanoi': return { icon: '☀️', temp: '26°C', desc: 'Pleasant', coord: '21.0285° N, 105.8542° E' };
+    case 'Ha Long Bay': return { icon: '🌤️', temp: '25°C', desc: 'Breezy', coord: '20.9758° N, 107.0460° E' };
+    case 'Ninh Binh': return { icon: '☀️', temp: '27°C', desc: 'Clear Skies', coord: '20.2506° N, 105.9745° E' };
+    case 'Da Nang': return { icon: '☀️', temp: '29°C', desc: 'Tropical Sun', coord: '16.0544° N, 108.2022° E' };
+    case 'Hoi An': return { icon: '☀️', temp: '28°C', desc: 'Sunny', coord: '15.8801° N, 108.3380° E' };
+    case 'Da Lat': return { icon: '🌤️', temp: '20°C', desc: 'Cool Breeze', coord: '11.9404° N, 108.4583° E' };
+    case 'Nha Trang': return { icon: '☀️', temp: '30°C', desc: 'Perfect Beach', coord: '12.2388° N, 109.1967° E' };
+    case 'Ho Chi Minh City': return { icon: '🌦️', temp: '31°C', desc: 'Warm Showers', coord: '10.8231° N, 106.6297° E' };
+    case 'Phu Quoc': return { icon: '☀️', temp: '32°C', desc: 'Humid & Sunny', coord: '10.2899° N, 103.9840° E' };
+    default: return { icon: '☀️', temp: '28°C', desc: 'Sunny', coord: '14.0583° N, 108.2772° E' };
   }
 };
 
@@ -30,120 +30,86 @@ const Destinations: React.FC = () => {
   const [selectedCity, setSelectedCity] = useState<CityDestination | null>(null);
   const [expandedSight, setExpandedSight] = useState<string | null>(null);
   const [isAllCitiesOpen, setIsAllCitiesOpen] = useState(false);
-  const sliderRef = useRef<HTMLDivElement>(null);
-
-  const triggerScrollSound = () => {
-    soundService.playSwish();
-  };
 
   const handleCardHover = () => {
     soundService.playTick();
   };
 
-  const scrollDeck = (direction: 'left' | 'right') => {
-    if (sliderRef.current) {
-      const scrollAmount = direction === 'left' ? -350 : 350;
-      sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      triggerScrollSound();
-    }
+  // Rotational angles for polaroid scrapbook aesthetic
+  const getAngle = (index: number) => {
+    const angles = [-1.5, 1, -2, 1.8, -1, 2, -1.2, 1.5];
+    return angles[index % angles.length];
   };
 
   return (
-    <Section id="destinations" spacing="lg" className="bg-[#FAF8F3] text-[#1D1D1F] relative overflow-hidden transition-colors duration-500">
-      {/* Background blobs for premium bright aesthetic */}
-      <div className="absolute top-[10%] left-[-5%] w-[450px] h-[450px] bg-[#EAF7FF] rounded-full blur-[100px] opacity-60 pointer-events-none z-0" />
-      <div className="absolute bottom-[10%] right-[-5%] w-[450px] h-[450px] bg-[#F1FFF3] rounded-full blur-[100px] opacity-50 pointer-events-none z-0" />
+    <Section id="destinations" spacing="lg" className="bg-[#FAF7F0] text-[#111111] relative overflow-hidden">
+      {/* Subtle organic decorations */}
+      <div className="absolute top-[5%] left-[-2%] w-[300px] h-[300px] bg-[#E9DFC8]/25 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-[5%] right-[-2%] w-[350px] h-[350px] bg-[#AAB7A1]/20 rounded-full blur-[90px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
-        {/* Header Section */}
-        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <span className="text-[11px] font-bold tracking-[0.2em] text-[#3D8B7D] uppercase mb-3 block">
-              🌿 CHOOSE YOUR VIBE
-            </span>
-            <Heading as="h2" size="4xl" font="serif" className="text-[#1D1D1F] tracking-tight mb-4">
-              Explore Destinations
-            </Heading>
-            <Heading as="h3" size="lg" className="font-sans font-light text-[#1D1D1F]/70 tracking-wide max-w-2xl">
-              Sensory travel folders crafted dynamically. Hover to slide the view open.
-            </Heading>
-          </div>
-
-          {/* Slide Deck Arrows */}
-          <div className="flex gap-3">
-            <button
-              onClick={() => scrollDeck('left')}
-              className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-[#FAF8F3] hover:border-black/25 flex items-center justify-center text-black/60 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95 btn-pressable"
-              aria-label="Scroll left"
-            >
-              <Icon name="ChevronLeft" size={20} />
-            </button>
-            <button
-              onClick={() => scrollDeck('right')}
-              className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-[#FAF8F3] hover:border-black/25 flex items-center justify-center text-black/60 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95 btn-pressable"
-              aria-label="Scroll right"
-            >
-              <Icon name="ChevronRight" size={20} />
-            </button>
-          </div>
+        {/* Editorial Section Header */}
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
+            EXPLORE THE REGIONS
+          </span>
+          <Heading as="h2" size="4xl" font="serif" className="text-[#1E4D45] tracking-tight mb-4">
+            Destinations Portfolio
+          </Heading>
+          <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-6"></div>
+          <Text variant="none" className="text-[#555555] font-light leading-relaxed text-base md:text-lg">
+            A curated folder of sensory landscapes, historical towns, and modern ports. Click on any postcard to review local coordinates, temperature, and detailed sightseeing guides.
+          </Text>
         </div>
 
-        {/* Postcard Deck Scrollbar Area */}
-        <div
-          ref={sliderRef}
-          onScroll={triggerScrollSound}
-          className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-12 pt-4 relative z-10 w-full"
-        >
-          {CITIES.slice(0, 10).map((city) => (
-            <motion.div
-              key={city.id}
-              className="w-[85vw] sm:w-[320px] h-[450px] skeuo-paper rounded-[2rem] skeuo-shadow flex flex-col justify-between shrink-0 snap-start relative overflow-hidden group cursor-pointer hover:border-brand-gold/45 hover:shadow-[0_20px_40px_rgba(212,175,55,0.15)] transition-all duration-500"
-              onClick={() => setSelectedCity(city)}
-              onMouseEnter={handleCardHover}
-              whileHover={{
-                y: [0, -6, 0],
-                transition: { duration: 0.5, repeat: Infinity, ease: "easeInOut" }
-              }}
-            >
-              {/* Postcard folder structure - Image hidden in bottom half, slides up to reveal */}
-              <div className="absolute inset-x-0 bottom-[120px] top-0 z-0 overflow-hidden rounded-[1.5rem] m-4 bg-[#F2EFE8] border border-black/5 shadow-inner">
-                <motion.div
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url(${city.coverImage})` }}
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ duration: 0.8 }}
-                />
-                {/* Slit folder shadow cover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
-              </div>
+        {/* Polaroid Scrapbook Masonry Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 xl:gap-12 px-2">
+          {CITIES.slice(0, 8).map((city, idx) => {
+            const rotAngle = getAngle(idx);
+            const weather = getWeatherForCity(city.name);
+            return (
+              <div 
+                key={city.id}
+                style={{ transform: `rotate(${rotAngle}deg)` }}
+                className="polaroid-frame group cursor-pointer bg-white"
+                onClick={() => setSelectedCity(city)}
+                onMouseEnter={handleCardHover}
+              >
+                {/* Polaroid Photo area */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF7F0] border border-black/5">
+                  <div 
+                    className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    style={{ backgroundImage: `url(${city.coverImage})` }}
+                  />
+                  {/* Stamp style overlay */}
+                  <div className="absolute top-3 right-3 text-[9px] font-mono bg-[#FAF7F0]/80 text-[#B8860B] border border-[#D4AF37]/35 rounded px-2 py-0.5 pointer-events-none shadow-sm">
+                    {weather.icon} {weather.temp}
+                  </div>
+                </div>
 
-              {/* Top Weather Indicator in card */}
-              <div className="p-6 relative z-10 flex justify-between items-start">
-                <span className="bg-black/5 backdrop-blur-md text-[#1E4D45] px-3 py-1 rounded-full text-[0.65rem] tracking-wider uppercase font-bold border border-black/5 shadow-sm">
-                  {getWeatherForCity(city.name).icon} {getWeatherForCity(city.name).temp}
-                </span>
-                <span className="text-[10px] tracking-widest text-[#3D8B7D] uppercase font-bold bg-[#3D8B7D]/10 px-2.5 py-1 rounded-full border border-[#3D8B7D]/10">
-                  EXPLORE
-                </span>
+                {/* Polaroid Title/Label area */}
+                <div className="pt-5 pb-1 text-left">
+                  <div className="flex justify-between items-baseline">
+                    <h3 className="font-serif text-lg font-bold text-[#1E4D45] tracking-tight">
+                      {city.name}
+                    </h3>
+                  </div>
+                  <p className="text-[10px] text-[#B8860B] font-mono tracking-widest uppercase mt-1">
+                    📍 {weather.coord}
+                  </p>
+                  <p className="text-xs text-[#555555] font-light mt-2 line-clamp-2 leading-relaxed">
+                    {city.shortDesc}
+                  </p>
+                </div>
               </div>
-
-              {/* Bottom Card Title Detail Drawer */}
-              <div className="p-6 bg-transparent relative z-10 border-t border-black/5 flex flex-col gap-1 shrink-0 rounded-b-[2rem]">
-                <Heading as="h4" variant="none" className="text-xl font-serif text-[#1D1D1F] tracking-wide leading-tight">
-                  {city.name}
-                </Heading>
-                <Text variant="none" className="text-[#3D8B7D] text-[0.65rem] uppercase tracking-widest font-semibold block">
-                  📍 {city.shortDesc}
-                </Text>
-              </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* View all cities button */}
-        <div className="mt-14 text-center">
+        <div className="mt-16 text-center">
           <button
-            className="px-8 py-4 bg-white hover:bg-[#FAF8F3] text-brand-gold hover:text-brand-gold-muted border border-black/10 rounded-full tracking-widest uppercase text-xs font-bold transition-all duration-300 shadow-sm flex items-center justify-center gap-2.5 mx-auto cursor-pointer hover:-translate-y-0.5 active:scale-95 btn-pressable"
+            className="px-8 py-4 bg-[#1E4D45] hover:bg-[#12302B] text-white rounded-md tracking-widest uppercase text-xs font-bold transition-all duration-300 shadow-md flex items-center justify-center gap-2.5 mx-auto cursor-pointer hover:-translate-y-0.5 active:scale-95 btn-pressable"
             onClick={() => setIsAllCitiesOpen(true)}
           >
             Click to view more cities <Icon name="ArrowRight" size={14} />
@@ -166,9 +132,9 @@ const Destinations: React.FC = () => {
               {(() => {
                 const w = getWeatherForCity(selectedCity.name);
                 return (
-                  <div className="absolute top-6 right-6 bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-2 text-white/90 shadow-md">
+                  <div className="absolute top-6 right-6 bg-[#FAF7F0] border border-[#D4AF37]/30 px-3 py-1.5 rounded flex items-center gap-2 text-[#1E4D45] shadow-md">
                     <span className="text-sm">{w.icon}</span>
-                    <span className="text-[10px] tracking-wider uppercase font-bold">{w.temp} • {w.desc}</span>
+                    <span className="text-[10px] tracking-wider uppercase font-mono font-bold">{w.temp} • {w.desc}</span>
                   </div>
                 );
               })()}
@@ -204,8 +170,8 @@ const Destinations: React.FC = () => {
                     >
                       <div className="flex items-center gap-4 p-3 md:p-4">
                         <div 
-                           className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-cover bg-center shrink-0"
-                           style={{ backgroundImage: `url(${sight.image})` }}
+                          className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-cover bg-center shrink-0"
+                          style={{ backgroundImage: `url(${sight.image})` }}
                         />
                         <div className="flex-1 min-w-0">
                           <Heading as="h5" size="md" variant="none" className="text-white/90 group-hover:text-brand-gold transition-colors text-base md:text-lg truncate whitespace-normal line-clamp-2">
@@ -267,7 +233,7 @@ const Destinations: React.FC = () => {
                   className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer border border-brand-gold/30 hover:border-brand-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] transition-all duration-500"
                   onClick={() => {
                     setIsAllCitiesOpen(false);
-                    setTimeout(() => setSelectedCity(city), 300); // Wait for modal close transition
+                    setTimeout(() => setSelectedCity(city), 300);
                   }}
                 >
                   <div 

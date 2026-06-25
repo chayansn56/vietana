@@ -297,78 +297,90 @@ Please load this itinerary and let me customize it!`;
               return (
                 <div
                   key={pkg.id}
-                  className="w-[85vw] sm:w-[420px] h-[580px] bg-[#161616]/80 border border-white/10 rounded-[2.5rem] flex flex-col justify-between shrink-0 snap-start relative group hover:border-brand-gold/45 hover:shadow-gold transition-all duration-500"
+                  className="w-[85vw] sm:w-[450px] h-[550px] bg-[#161D1A] border border-[#D4AF37]/20 rounded-2xl flex flex-col justify-between shrink-0 snap-start relative group shadow-[0_15px_40px_rgba(0,0,0,0.3)] overflow-hidden"
                 >
-                  {/* Visual background image with zoom hover effect */}
-                  <div className="absolute inset-0 z-0 overflow-hidden rounded-[2.5rem]">
+                  {/* Image Background */}
+                  <div className="h-[200px] relative w-full overflow-hidden shrink-0">
                     <img 
                       src={pkg.img} 
                       alt={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] opacity-45"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] opacity-50"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#161D1A] to-transparent" />
+                    
+                    {/* Top ticket badges */}
+                    <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
+                      <span className="bg-[#D4AF37] text-[#111111] font-bold text-[9px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
+                        {pkg.badge}
+                      </span>
+                      <span className="bg-[#111111]/85 border border-[#D4AF37]/35 text-[#D4AF37] px-2.5 py-1 rounded text-[9px] tracking-widest uppercase font-mono font-bold">
+                        {pkg.duration}
+                      </span>
+                    </div>
                   </div>
 
-                {/* Top header badge */}
-                <div className="p-6 relative z-10 flex justify-between items-start">
-                  <Badge variant="gold-filled" className="bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase">
-                    {pkg.badge}
-                  </Badge>
-                  <span className="bg-black/55 backdrop-blur-md text-brand-gold-light border border-brand-gold/25 px-3 py-1 rounded-full text-[0.6rem] tracking-widest uppercase font-bold">
-                    {pkg.duration}
-                  </span>
-                </div>
+                  {/* Boarding Pass Body / Content */}
+                  <div className="flex-1 px-6 pb-2 pt-1 flex flex-col justify-between relative">
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-baseline">
+                        <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide leading-tight">
+                          {pkg.title}
+                        </Heading>
+                      </div>
+                      
+                      <div className="text-[10px] text-[#D4AF37] tracking-widest uppercase font-mono py-1 border-y border-[#D4AF37]/10 flex items-center justify-between">
+                        <span>ROUTE // IND ➔ VNM</span>
+                        <span className="font-bold">CLASS // FIRST</span>
+                      </div>
 
-                {/* Bottom Premium Card Panel (High Legibility) */}
-                <div className="p-6 m-4 bg-[#0c1f1a]/95 border border-brand-gold/20 rounded-3xl relative z-10 flex flex-col gap-4 shadow-heavy ticket-cutout-left ticket-cutout-right">
-                  <div>
-                    <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide mb-1 leading-tight">
-                      {pkg.title}
-                    </Heading>
-                    <Text variant="none" className="text-brand-gold-light text-[0.65rem] uppercase tracking-widest font-semibold block mb-2">
-                      📍 {pkg.destinations.join(' → ')}
-                    </Text>
-                    <Text variant="none" className="text-white/90 text-xs font-light leading-relaxed line-clamp-3">
-                      {pkg.desc}
-                    </Text>
+                      <Text variant="none" className="text-white/80 text-xs font-light leading-relaxed line-clamp-3">
+                        {pkg.desc}
+                      </Text>
+                    </div>
+
+                    <div className="py-2.5 border-t border-dashed border-[#D4AF37]/20 relative flex items-center justify-between gap-4 mt-2">
+                      {/* Ticket Circular Cutouts */}
+                      <div className="absolute -left-[31px] w-[12px] h-[12px] bg-[#111111] rounded-full z-20"></div>
+                      <div className="absolute -right-[31px] w-[12px] h-[12px] bg-[#111111] rounded-full z-20"></div>
+                      
+                      <div>
+                        <span className="text-[8px] uppercase tracking-widest text-[#D4AF37] font-bold block mb-0.5">Stay Curation</span>
+                        <span className="text-[11px] text-white truncate block font-medium">🏨 {pkg.hotels[0]}</span>
+                      </div>
+
+                      {/* Barcode Graphic */}
+                      <div className="h-6 w-24 bg-white/10 shrink-0 opacity-40 group-hover:opacity-70 transition duration-300 relative flex items-center justify-center">
+                        <div className="absolute inset-x-2 inset-y-1 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,#fff_2px,#fff_4px)]"></div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Recommended Hotels */}
-                  <div className="py-2 border-y border-white/5">
-                    <span className="text-[0.6rem] uppercase tracking-widest text-brand-gold-light font-bold block mb-1">Key Stay</span>
-                    <span className="text-xs text-white/95 truncate block font-medium">🏨 {pkg.hotels[0]}</span>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex flex-col gap-2">
+                  {/* Ticket Tear-off Action Footer */}
+                  <div className="bg-[#111615] border-t border-dashed border-[#D4AF37]/25 p-4 rounded-b-2xl flex gap-3 shrink-0">
                     <a
                       href={downloadPaths.pdf}
                       download
-                      className="w-full py-2.5 px-4 bg-[#1E4D45]/60 hover:bg-[#1E4D45]/90 border border-white/10 rounded-xl text-white text-[0.65rem] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-md btn-pressable"
+                      className="flex-1 py-2 px-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded text-white text-[9px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300"
                     >
-                      <Icon name="FileText" size={12} className="text-brand-gold" />
-                      PDF Handbook
+                      <Icon name="FileText" size={11} className="text-[#D4AF37]" />
+                      Itinerary PDF
                     </a>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="glass"
-                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl btn-pressable"
-                        onClick={() => setSelectedPackage(pkg)}
-                      >
-                        Details
-                      </Button>
-                      <Button
-                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light rounded-xl btn-pressable"
-                        onClick={() => handleOpenPlanner(pkg)}
-                      >
-                        Customize
-                      </Button>
-                    </div>
+                    <button
+                      className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-[#111111] bg-[#D4AF37] hover:bg-[#E8C84A] rounded transition duration-300 active:scale-95 cursor-pointer stamp-btn border-none"
+                      onClick={() => handleOpenPlanner(pkg)}
+                    >
+                      Customize
+                    </button>
+                    <button
+                      className="py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-white/70 hover:text-white bg-transparent border border-white/20 rounded transition duration-300 cursor-pointer"
+                      onClick={() => setSelectedPackage(pkg)}
+                    >
+                      Details
+                    </button>
                   </div>
                 </div>
-              </div>
-            );
-          }))}
+              );
+            }))}
         </div>
 
         {/* FULLY CUSTOM BUILDER BANNER */}
