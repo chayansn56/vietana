@@ -200,7 +200,7 @@ Please load this itinerary and let me customize it!`;
         </div>
 
         {/* Indian Market Fit Trust Badges */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16 bg-white/5 border border-white/10 p-5 sm:p-6 rounded-3xl backdrop-blur-xl">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16 bg-white/5 border border-white/10 p-5 sm:p-6 rounded-3xl backdrop-blur-xl">
           {[
             { label: "Veg & Jain Dining", desc: "Curated Indian comfort & veg restaurants", icon: "Leaf", color: "text-brand-green-light" },
             { label: "24/7 Local Support", desc: "On-ground team contactable via WhatsApp", icon: "MessageCircle", color: "text-brand-gold-light" },
@@ -297,17 +297,17 @@ Please load this itinerary and let me customize it!`;
               return (
                 <div
                   key={pkg.id}
-                className="w-[85vw] sm:w-[420px] h-[580px] bg-[#161616]/80 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col justify-between shrink-0 snap-start relative group hover:border-brand-gold/45 hover:shadow-gold transition-all duration-500"
-              >
-                {/* Visual background image with zoom hover effect */}
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                  <img 
-                    src={pkg.img} 
-                    alt={pkg.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] opacity-45"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                </div>
+                  className="w-[85vw] sm:w-[420px] h-[580px] bg-[#161616]/80 border border-white/10 rounded-[2.5rem] flex flex-col justify-between shrink-0 snap-start relative group hover:border-brand-gold/45 hover:shadow-gold transition-all duration-500"
+                >
+                  {/* Visual background image with zoom hover effect */}
+                  <div className="absolute inset-0 z-0 overflow-hidden rounded-[2.5rem]">
+                    <img 
+                      src={pkg.img} 
+                      alt={pkg.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] opacity-45"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  </div>
 
                 {/* Top header badge */}
                 <div className="p-6 relative z-10 flex justify-between items-start">

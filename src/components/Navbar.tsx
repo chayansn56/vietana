@@ -6,6 +6,7 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import Modal from './ui/Modal';
+import ThemeToggle from './ui/ThemeToggle';
 
 interface NavbarProps {
   scrolled: boolean;
@@ -24,6 +25,12 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
   const [langOpen, setLangOpen] = useState(false);
   const [emergencyOpen, setEmergencyOpen] = useState(false);
   const [expDropOpen, setExpDropOpen] = useState(false);
+  const [isEmergencyPulsing, setIsEmergencyPulsing] = useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsEmergencyPulsing(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const isLight = navClass === 'light';
 
@@ -41,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
     <>
       <button 
         onClick={() => setEmergencyOpen(true)}
-        className="fixed top-6 right-6 z-[9999] hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] animate-pulse hover:animate-none"
+        className={`fixed top-6 right-6 z-[9999] hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] hover:animate-none ${isEmergencyPulsing ? 'animate-pulse' : ''}`}
       >
         <Icon name="AlertCircle" size={16} />
         <span className="text-xs font-bold tracking-widest uppercase">Emergency</span>
@@ -50,10 +57,20 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
       <nav 
         id="nav" 
         className={`fixed left-1/2 -translate-x-1/2 z-[1000] px-6 md:px-10 flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] gap-2 md:gap-4 w-[95%] max-w-7xl rounded-full border 
-          ${mobileMenuOpen ? 'top-6 py-4 border-transparent shadow-none bg-transparent' : (scrolled ? 'top-4 py-3 bg-white/30 backdrop-blur-[20px] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.1)]' : 'top-6 py-4 bg-black/20 backdrop-blur-[10px] border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.1)]')}`}
+          ${mobileMenuOpen 
+            ? 'top-6 py-4 border-transparent shadow-none bg-transparent' 
+            : (scrolled 
+                ? 'top-4 py-3 bg-white/85 supports-[backdrop-filter]:bg-white/30 backdrop-blur-[20px] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.1)]' 
+                : 'top-6 py-4 bg-black/75 supports-[backdrop-filter]:bg-black/20 backdrop-blur-[10px] border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.1)]'
+              )}`}
       >
         <a href="#" className="flex shrink-0 items-center gap-2 no-underline group/logo">
-          <img src="/vietana_logo.png" className="h-[35px] md:h-[45px]" alt="Vietana Logo" />
+          <img 
+            src="/vietana_logo.png" 
+            className="h-[35px] md:h-[45px] transition-all duration-300" 
+            style={{ filter: scrolled ? 'brightness(0) opacity(0.85)' : 'none' }}
+            alt="Vietana Logo" 
+          />
           <Heading 
             as="span" 
             size="xl" 
@@ -174,6 +191,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             <Icon name="Map" size={14} />
             <span className="text-xs tracking-[0.1em] font-medium uppercase">Map</span>
           </button>
+
+          <ThemeToggle />
           
           <div className="relative flex items-center">
             <div 
@@ -214,24 +233,27 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             </div>
           </div>
 
-          <div 
-            className={`flex lg:hidden flex-col gap-[5px] cursor-pointer p-1.25 z-[500] group`} 
+          <button 
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded={mobileMenuOpen}
+            className={`flex lg:hidden flex-col gap-[5px] cursor-pointer p-1.25 z-[500] group bg-transparent border-none`} 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? 'rotate-45 translate-x-[4.2px] translate-y-[4.2px]' : ''}`}></span>
             <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`}></span>
             <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? '-rotate-45 translate-x-[4.2px] -translate-y-[4.2px]' : ''}`}></span>
-          </div>
+          </button>
         </div>
       </nav>
 
       {/* MOBILE MENU */}
       <div 
         id="mob" 
-        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark flex flex-col overflow-hidden transition-opacity duration-500 ease-soft
+        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark overflow-y-auto transition-opacity duration-500 ease-soft
           ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
-        <div className="flex-grow overflow-y-auto mt-28 pb-16 px-6 flex flex-col items-center gap-8 w-full">
+        <div className="mt-28 pb-16 px-6 flex flex-col items-center gap-6 w-full">
           {NAV_LINKS.map((link) => (
             link.key === 'experiences' ? (
               <div key={link.key} className="flex flex-col items-center gap-2">

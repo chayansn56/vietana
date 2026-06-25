@@ -205,20 +205,20 @@ const Services: React.FC = () => {
                 {service.shortTitle}
               </h3>
               
-              <p className="text-[#86868B] text-[15px] font-normal leading-relaxed flex-1 mb-8">
+              <p className="text-[#4B4B4F] text-[15px] font-normal leading-relaxed flex-1 mb-8">
                 {service.shortDesc}
               </p>
 
-              <div className="flex items-center text-[15px] font-medium text-[#1E4D45] transition-opacity duration-300">
+              <div className="flex items-center text-[15px] font-semibold text-[#1E4D45] transition-all duration-300 group-hover:text-brand-green-light group-hover:underline underline-offset-4 decoration-1">
                 Learn more 
-                <span className="ml-1 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">›</span>
+                <span className="ml-1 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">›</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Final Bottom Section */}
-        <div className="relative rounded-3xl overflow-hidden bg-[#E9DFC8] shadow-[0_12px_40px_rgba(46,46,46,0.06)] group max-w-6xl mx-auto">
+        <div className="relative rounded-3xl overflow-hidden bg-[#E9DFC8] shadow-[0_12px_40px_rgba(46,46,46,0.06)] group max-w-7xl mx-auto">
           <div className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-multiply transition-transform duration-[20s] group-hover:scale-105" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?auto=format&fit=crop&q=80')" }}></div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F3] via-[#FAF8F3]/60 to-transparent mix-blend-normal"></div>
 

@@ -19,6 +19,7 @@
   
   --color-surface-ivory: #FAF8F3; /* Warm Ivory */
   --color-surface-white: #FFFFFF; /* Soft White */
+  --color-surface-dark: #111615; /* Premium Deep Charcoal Green */
   
   --color-text-charcoal: #111111; /* Near Pure Black */
   --color-text-muted: #333333; /* Dark Gray */
@@ -492,6 +493,13 @@ html {
     z-index: 0;
     opacity: 0.6;
     mix-blend-mode: multiply;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

@@ -32,34 +32,39 @@ const Footer: React.FC = () => {
         </Container>
 
         {/* Bottom Credits */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col md:flex-row items-center justify-between border-t border-white/10 bg-black/40 backdrop-blur-md z-10">
-          <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
-            <Heading as="h2" size="xl" variant="none" className="text-brand-gold tracking-wider mb-1 font-serif">
-              VIETANA
-            </Heading>
-            <Text variant="white" size="sm" className="opacity-70">
-              © {currentYear} <BrandName /> Travel. Built for Indian Travelers.
-            </Text>
-          </div>
-          
-          <ul className="flex flex-wrap justify-center gap-x-8 gap-y-4 list-none p-0">
-            {['Destinations', 'Services', 'Packages', 'Food', 'Journal'].map((link) => (
-              <li key={link}>
-                <a 
-                  href={`#${link.toLowerCase()}`} 
-                  className="no-underline group"
-                >
-                  <Text 
-                    size="sm" 
-                    variant="none"
-                    className="text-white/70 transition-colors duration-300 group-hover:text-brand-gold"
+        <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/40 backdrop-blur-md z-10">
+          <div className="max-w-7xl mx-auto px-8 py-6 flex flex-col md:flex-row items-center justify-between w-full">
+            <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
+              <Heading as="h2" size="xl" variant="none" className="text-brand-gold tracking-wider mb-1 font-serif">
+                VIETANA
+              </Heading>
+              <Text variant="white" size="sm" className="opacity-70">
+                © {currentYear} <BrandName /> Travel. Built for Indian Travelers.
+              </Text>
+              <Text variant="white" size="xxs" className="opacity-40 tracking-wider mt-1.5 uppercase font-sans">
+                Emergency: +84 902 434 006 | Tourism Police: 113 | Med: 115
+              </Text>
+            </div>
+            
+            <ul className="flex flex-wrap justify-center gap-x-8 gap-y-4 list-none p-0 m-0">
+              {['Destinations', 'Services', 'Packages', 'Food', 'Journal'].map((link) => (
+                <li key={link}>
+                  <a 
+                    href={`#${link.toLowerCase()}`} 
+                    className="no-underline group"
                   >
-                    {link}
-                  </Text>
-                </a>
-              </li>
-            ))}
-          </ul>
+                    <Text 
+                      size="sm" 
+                      variant="none"
+                      className="text-white/70 transition-colors duration-300 group-hover:text-brand-gold"
+                    >
+                      {link}
+                    </Text>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Section>
     </FooterWrapper>

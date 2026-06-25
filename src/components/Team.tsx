@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'motion/react';
+import React, { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'motion/react';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
@@ -46,8 +46,8 @@ const AnimatedCounter = ({ value, label }: { value: string | number, label: stri
   const { count, nodeRef } = useCountUp(isNumber ? (value as number) : 0, 2500);
 
   return (
-    <div ref={nodeRef} className="flex flex-col items-center justify-center">
-      <div className="w-28 h-28 rounded-full border border-[#D4AF37]/30 flex flex-col items-center justify-center mb-4 text-[#D4AF37]">
+    <div ref={nodeRef} className="flex flex-col items-center justify-center group/counter">
+      <div className="w-28 h-28 rounded-full border-2 border-[#D4AF37]/50 hover:border-[#D4AF37] hover:shadow-[0_0_20px_rgba(212,175,55,0.45)] hover:scale-105 flex flex-col items-center justify-center mb-4 text-[#D4AF37] transition-all duration-500 ease-smooth transform-gpu">
         <Heading as="div" size="4xl" font="serif" className="m-0 font-normal">
           {isNumber ? count : value}
         </Heading>
@@ -93,17 +93,17 @@ const LiveClock = ({ timeZone, label }: { timeZone: string, label: string }) => 
 
 const AnimatedMapLine = () => {
   return (
-    <div className="relative w-full max-w-lg mx-auto h-32 flex items-center justify-between mt-12 mb-20 px-8">
+    <div className="relative w-full max-w-lg mx-auto h-32 flex items-center justify-between mt-12 mb-20 px-4">
       {/* Delhi */}
-      <div className="flex flex-col items-center z-10">
+      <div className="flex flex-col items-center z-10 bg-[#FAF8F3] px-3">
         <div className="w-3 h-3 rounded-full bg-[#1D1D1F] mb-3" />
-        <Text size="sm" weight="medium" className="uppercase tracking-widest text-[#1D1D1F]">
+        <Text size="sm" weight="medium" className="uppercase tracking-widest text-[#1D1D1F] whitespace-nowrap">
           🇮🇳 Delhi
         </Text>
       </div>
 
       {/* Dotted Line Animation */}
-      <div className="absolute left-16 right-16 top-1/2 -translate-y-1/2 overflow-hidden h-4 flex items-center">
+      <div className="absolute left-8 right-8 top-1/2 -translate-y-1/2 overflow-hidden h-4 flex items-center z-0">
         <svg width="100%" height="2" className="w-full">
           <motion.line 
             x1="0" y1="1" x2="100%" y2="1" 
@@ -118,9 +118,9 @@ const AnimatedMapLine = () => {
       </div>
 
       {/* HCMC */}
-      <div className="flex flex-col items-center z-10">
+      <div className="flex flex-col items-center z-10 bg-[#FAF8F3] px-3">
         <div className="w-3 h-3 rounded-full bg-[#1D1D1F] mb-3" />
-        <Text size="sm" weight="medium" className="uppercase tracking-widest text-[#1D1D1F]">
+        <Text size="sm" weight="medium" className="uppercase tracking-widest text-[#1D1D1F] whitespace-nowrap">
           Ho Chi Minh City 🇻🇳
         </Text>
       </div>
@@ -129,13 +129,28 @@ const AnimatedMapLine = () => {
 };
 
 const Connection: React.FC = () => {
-  const copyToClipboard = (text: string) => {
+  const [copiedText, setCopiedText] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
-    // In a real app, add a tiny toast notification here
+    setCopiedText(label);
+    setTimeout(() => setCopiedText(null), 2000);
   };
 
   return (
     <div id="team" className="font-sans text-[#1D1D1F] bg-[#FAF8F3]">
+      <AnimatePresence>
+        {copiedText && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 20, x: '-50%' }}
+            className="fixed bottom-6 left-1/2 z-[10000] bg-brand-green text-white px-5 py-3 rounded-full shadow-lg text-xs font-semibold tracking-wider uppercase flex items-center gap-2 border border-brand-green-light"
+          >
+            <Icon name="Check" size={14} className="text-brand-gold" /> Copied {copiedText} Address!
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* TOP AREA: Warm Ivory */}
       <div className="bg-[#FAF8F3] pt-16 pb-8">
@@ -276,7 +291,7 @@ const Connection: React.FC = () => {
               </Text>
               <div className="flex gap-4">
                 <button 
-                  onClick={() => copyToClipboard("RZ 35/36, Indra Park Extension, Near Hanuman Mandir, Uttam Nagar East, Delhi – 110059, India")}
+                  onClick={() => copyToClipboard("RZ 35/36, Indra Park Extension, Near Hanuman Mandir, Uttam Nagar East, Delhi – 110059, India", "Delhi")}
                   className="px-6 py-3 border border-[#1D1D1F]/10 rounded-full text-sm font-medium hover:bg-[#1D1D1F]/5 transition-colors"
                 >
                   Copy Address
@@ -303,7 +318,7 @@ const Connection: React.FC = () => {
               </Text>
               <div className="flex gap-4">
                 <button 
-                  onClick={() => copyToClipboard("45 Nguyễn Quý Đức, An Phú, Bình Trưng, Ho Chi Minh City 756000, Vietnam")}
+                  onClick={() => copyToClipboard("45 Nguyễn Quý Đức, An Phú, Bình Trưng, Ho Chi Minh City 756000, Vietnam", "HCMC")}
                   className="px-6 py-3 border border-[#1D1D1F]/10 rounded-full text-sm font-medium hover:bg-[#1D1D1F]/5 transition-colors"
                 >
                   Copy Address

@@ -13,6 +13,19 @@ interface FoodSideSheetProps {
 }
 
 export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, category }) => {
+  const [copiedId, setCopiedId] = React.useState<string | null>(null);
+
+  const handleCopy = (id: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const openGoogleMaps = (name: string, city: string) => {
+    const query = encodeURIComponent(`${name}, ${city}, Vietnam`);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+  };
+
   return (
     <AnimatePresence>
       {isOpen && category && (
@@ -32,7 +45,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200, duration: 0.4 }}
-            className="fixed inset-y-0 right-0 z-50 w-full md:w-[75%] bg-[#F5F5F7] rounded-l-3xl shadow-2xl overflow-y-auto flex flex-col"
+            className="fixed inset-y-0 right-0 z-50 w-full md:w-[75%] bg-[#F5F5F7] rounded-l-3xl shadow-2xl overflow-y-auto overscroll-contain flex flex-col"
           >
             {/* Header / Hero Image */}
             <div className="relative h-64 md:h-80 w-full shrink-0">
@@ -140,29 +153,39 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                             </div>
                             
                             {/* Action Row */}
-                            <div className="mt-6 flex items-center justify-between pt-4 border-t border-black/5">
-                              {isRestaurant ? (
-                                <>
-                                  <div className="flex items-center gap-1.5 text-[#86868B]">
-                                    <Icon name="MapPin" size={14} />
-                                    <Text size="sm">{(item as RestaurantDetails).city}</Text>
-                                  </div>
-                                  <button className="flex items-center gap-1.5 text-brand-blue hover:text-brand-blue-dark transition-colors font-medium text-sm">
-                                    Open Maps <Icon name="ArrowRight" size={14} />
+                            <div className="mt-6 flex items-center justify-between pt-4 border-t border-black/5 flex-wrap gap-2">
+                               {isRestaurant ? (
+                                 <>
+                                   <button 
+                                     onClick={() => handleCopy(item.id, `${item.name}, ${(item as RestaurantDetails).city}, Vietnam`)}
+                                     className="flex items-center gap-1.5 text-[#86868B] hover:text-brand-gold transition-colors font-medium text-sm cursor-pointer"
+                                     title="Click to copy address"
+                                   >
+                                     <Icon name="MapPin" size={14} />
+                                     <span>{copiedId === item.id ? 'Address Copied!' : (item as RestaurantDetails).city}</span>
+                                   </button>
+                                   <button 
+                                     onClick={() => openGoogleMaps(item.name, (item as RestaurantDetails).city)}
+                                     className="flex items-center gap-1.5 text-brand-blue hover:text-brand-blue-dark transition-colors font-medium text-sm cursor-pointer"
+                                   >
+                                     Open Maps <Icon name="ArrowRight" size={14} />
                                   </button>
-                                </>
-                              ) : (
-                                <>
-                                  <div className="flex items-center gap-1.5 text-[#86868B]">
-                                    <Icon name="Map" size={14} />
-                                    <Text size="sm">{(item as DishDetails).recommendedCities.join(', ')}</Text>
-                                  </div>
-                                  <button className="flex items-center gap-1.5 text-brand-green hover:text-brand-green-dark transition-colors font-medium text-sm">
-                                    Where to Try <Icon name="ArrowRight" size={14} />
-                                  </button>
-                                </>
-                              )}
-                            </div>
+                                 </>
+                               ) : (
+                                 <>
+                                   <div className="flex items-center gap-1.5 text-[#86868B]">
+                                     <Icon name="Map" size={14} />
+                                     <Text size="sm">{(item as DishDetails).recommendedCities.join(', ')}</Text>
+                                   </div>
+                                   <button 
+                                     onClick={() => openGoogleMaps(item.name, (item as DishDetails).recommendedCities[0])}
+                                     className="flex items-center gap-1.5 text-brand-green hover:text-brand-green-dark transition-colors font-medium text-sm cursor-pointer"
+                                   >
+                                     Where to Try <Icon name="ArrowRight" size={14} />
+                                   </button>
+                                 </>
+                               )}
+                             </div>
                             
                           </div>
                         </div>

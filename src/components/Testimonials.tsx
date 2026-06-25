@@ -43,23 +43,47 @@ const TESTIMONIALS_DATA: Testimonial[] = [
   }
 ];
 
+const getInitials = (name: string) => {
+  if (name.includes('&')) {
+    const parts = name.split('&');
+    const first = parts[0].trim().charAt(0);
+    const second = parts[1].trim().charAt(0);
+    return (first + second).toUpperCase();
+  }
+  const cleanName = name.replace(/^(Dr\.|Mr\.|Mrs\.|Ms\.)\s+/i, '');
+  const words = cleanName.trim().split(/\s+/);
+  if (words.length >= 2) {
+    return (words[0].charAt(0) + words[1].charAt(0)).toUpperCase();
+  }
+  return words[0].charAt(0).toUpperCase();
+};
+
 const Testimonials: React.FC = () => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
+    if (!isPlaying) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPlaying]);
 
   const handlePrev = () => {
+    setIsPlaying(false);
     setActiveIndex((prev) => (prev - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length);
   };
 
   const handleNext = () => {
+    setIsPlaying(false);
     setActiveIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
+  };
+
+  const handleDotClick = (idx: number) => {
+    setIsPlaying(false);
+    setActiveIndex(idx);
   };
 
   return (
@@ -107,13 +131,16 @@ const Testimonials: React.FC = () => {
                 </Text>
 
                 {/* Badge Tag */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-gold/20 bg-brand-gold/5 text-brand-gold-light text-xs font-bold uppercase tracking-wider mb-4">
-                  <Icon name="CheckCircle2" size={12} />
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-gold/20 bg-brand-gold/5 text-brand-gold-light text-xs font-bold uppercase tracking-wider mb-6">
+                  <Icon name="Check" size={12} />
                   {item.tag}
                 </div>
 
                 {/* Author Info */}
-                <div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full border-2 border-brand-gold/30 bg-brand-gold/10 flex items-center justify-center text-brand-gold-light text-sm font-semibold tracking-wider mb-3 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
+                    {getInitials(item.name)}
+                  </div>
                   <Heading as="h4" size="md" font="sans" weight="bold" className="text-white mb-0.5">
                     {item.name}
                   </Heading>
@@ -132,14 +159,14 @@ const Testimonials: React.FC = () => {
             onClick={handlePrev}
             className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/55 hover:text-brand-gold hover:border-brand-gold/30 hover:bg-white/5 transition-all duration-300 cursor-pointer"
           >
-            <Icon name="ArrowLeft" size={16} />
+            <Icon name="ChevronLeft" size={16} />
           </button>
           
           <div className="flex gap-2">
             {TESTIMONIALS_DATA.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => setActiveIndex(idx)}
+                onClick={() => handleDotClick(idx)}
                 className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex ? 'w-6 bg-brand-gold' : 'w-1.5 bg-white/20'}`}
               />
             ))}
@@ -149,7 +176,7 @@ const Testimonials: React.FC = () => {
             onClick={handleNext}
             className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/55 hover:text-brand-gold hover:border-brand-gold/30 hover:bg-white/5 transition-all duration-300 cursor-pointer"
           >
-            <Icon name="ArrowRight" size={16} />
+            <Icon name="ChevronRight" size={16} />
           </button>
         </div>
       </div>

@@ -22,6 +22,7 @@ interface ServicePopupProps {
 const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -41,6 +42,23 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
     const x = (e.clientX / window.innerWidth) * 2 - 1;
     const y = (e.clientY / window.innerHeight) * 2 - 1;
     setMousePos({ x, y });
+  };
+
+  const handleCopyChecklist = () => {
+    if (!service) return;
+    // Extract plain text helper
+    let text = `${service.popupTitle}\n\n`;
+    if (service.id === 'visa') {
+      text += `Vietnam E-Visa Checklist:\n- Passport copy (valid for at least 6 months)\n- Passport-style photograph\n\nUrgent Visa Support:\nNeed it urgently? Flight already booked? Traveling within 24 hours? Get in touch with Vietana!`;
+    } else if (service.id === 'airport') {
+      text += `Airport pickup & transfers arranged by Vietana based on group size, luggage, and luxury comfort requirements.`;
+    } else {
+      text += service.shortDesc;
+    }
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   if (!service) return null;
@@ -103,8 +121,19 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
               </Heading>
             </div>
 
-            <div className="text-text-muted space-y-3 text-sm md:text-base font-light leading-snug">
+            <div className="text-text-charcoal space-y-3 text-sm md:text-base font-light leading-snug">
               {service.content}
+            </div>
+
+            {/* Copy Checklist Action */}
+            <div className="mt-4">
+              <button 
+                onClick={handleCopyChecklist}
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#1E4D45] hover:text-brand-green-light underline decoration-dotted transition-colors"
+              >
+                <Icon name={copied ? 'Check' : 'Copy'} size={12} />
+                {copied ? 'Checklist Copied!' : 'Copy Checklist to Clipboard'}
+              </button>
             </div>
           </div>
 

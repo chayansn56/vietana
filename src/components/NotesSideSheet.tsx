@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
@@ -11,6 +11,8 @@ interface NotesSideSheetProps {
 }
 
 const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, article }) => {
+  const [saved, setSaved] = useState(false);
+
   // Lock body scroll when sheet is open
   useEffect(() => {
     if (isOpen) {
@@ -22,6 +24,29 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // Estimate reading time
+  const getReadingTime = (art: Article) => {
+    if (art.isComingSoon) return 'Coming Soon';
+    let textLength = art.intro.length;
+    art.sections?.forEach(s => {
+      textLength += (s.heading || '').length;
+      s.paragraphs?.forEach(p => {
+        textLength += p.length;
+      });
+      s.list?.forEach(l => {
+        textLength += l.length;
+      });
+    });
+    const words = textLength / 5;
+    const minutes = Math.max(1, Math.round(words / 200));
+    return `${minutes} min read`;
+  };
+
+  const handleSaveToPlan = () => {
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
 
   if (!article) return null;
 
@@ -44,7 +69,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-[2000] h-full w-[100%] md:w-[80%] max-w-4xl bg-[#FAF8F3] shadow-2xl overflow-y-auto md:rounded-l-[32px]"
+            className="fixed top-0 right-0 z-[2000] h-full w-[100%] md:w-[80%] max-w-4xl bg-[#FAF8F3] shadow-2xl overflow-y-auto overscroll-contain md:rounded-l-[32px]"
           >
             {/* Close Button */}
             <button
@@ -58,12 +83,24 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             <div className="relative h-[40vh] md:h-[50vh] w-full">
               <img
                 src={article.image}
-                alt={article.title}
+                alt={`Featured image for story: ${article.title}`}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1D1D1F]/60 to-transparent" />
               
-              <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white">
+              <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white w-full">
+                <div className="flex items-center gap-3 mb-2 flex-wrap">
+                  <span className="bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full">
+                    {getReadingTime(article)}
+                  </span>
+                  <button 
+                    onClick={handleSaveToPlan}
+                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all"
+                  >
+                    <Icon name={saved ? 'Check' : 'Bookmark'} size={10} />
+                    {saved ? 'Saved!' : 'Save to Plan'}
+                  </button>
+                </div>
                 <Heading as="h1" size="4xl" font="serif" className="mb-4">
                   {article.title}
                 </Heading>

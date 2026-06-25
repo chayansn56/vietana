@@ -10,6 +10,7 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import BrandName from './ui/BrandName';
+import { Compass, Heart, Sparkles, Gem } from 'lucide-react';
 
 interface CustomTripBuilderProps {
   isOpen: boolean;
@@ -290,16 +291,20 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
             <div>
               <Text variant="none" className="text-white/50 text-[0.65rem] uppercase tracking-widest mb-4 font-semibold">Travel Style</Text>
               <div className="grid grid-cols-2 lg:grid-cols-4 bg-white/5 border border-white/10 rounded-xl p-1.5 gap-1 relative ">
-                {(['budget', 'comfort', 'premium', 'luxury'] as const).map(s => (
-                  <button 
-                   key={s}
-                   className={`py-3.5 rounded-lg text-[0.65rem] font-semibold tracking-widest uppercase transition-all duration-500 cursor-pointer
-                     ${style === s ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong scale-[1.02]' : 'bg-transparent text-white/40 hover:text-white/80 hover:bg-white/5'}`} 
-                   onClick={() => setStyle(s)}
-                  >
-                    {s}{s === 'comfort' ? ' ⭐' : ''}
-                  </button>
-                ))}
+                {(['budget', 'comfort', 'premium', 'luxury'] as const).map(s => {
+                  const IconComponent = s === 'budget' ? Compass : s === 'comfort' ? Heart : s === 'premium' ? Sparkles : Gem;
+                  return (
+                    <button 
+                      key={s}
+                      className={`py-3.5 px-2 rounded-lg text-[0.65rem] font-semibold tracking-widest uppercase transition-all duration-500 cursor-pointer flex items-center justify-center gap-1.5
+                        ${style === s ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong scale-[1.02]' : 'bg-transparent text-white/40 hover:text-white/80 hover:bg-white/5'}`} 
+                      onClick={() => setStyle(s)}
+                    >
+                      <IconComponent size={12} className="shrink-0" />
+                      <span>{s}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -337,10 +342,11 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-end">
-                  <Text variant="none" className="text-white/50 text-[0.65rem] uppercase tracking-widest font-semibold">Duration</Text>
+                  <label htmlFor="trip-duration" className="text-white/50 text-[0.65rem] uppercase tracking-widest font-semibold">Duration</label>
                   <Text variant="none" className="text-brand-gold-light text-xl font-serif">{days} Days</Text>
                 </div>
                 <input 
+                  id="trip-duration"
                   type="range" min="3" max="30" 
                   value={days} onChange={(e) => setDays(parseInt(e.target.value))} 
                   className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(201,168,76,0.6)] transition-all" 
@@ -349,10 +355,11 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
 
               <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-end">
-                  <Text variant="none" className="text-white/50 text-[0.65rem] uppercase tracking-widest font-semibold">Travelers</Text>
+                  <label htmlFor="trip-pax" className="text-white/50 text-[0.65rem] uppercase tracking-widest font-semibold">Travelers</label>
                   <Text variant="none" className="text-brand-gold-light text-xl font-serif">{pax} {pax === 1 ? 'Person' : 'People'}</Text>
                 </div>
                 <input 
+                  id="trip-pax"
                   type="range" min="1" max="10" 
                   value={pax} onChange={(e) => setPax(parseInt(e.target.value))} 
                   className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(201,168,76,0.6)] transition-all" 
@@ -375,8 +382,9 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
             {b2bEnabled && (
               <div className="flex flex-col gap-5 pt-4 border-t border-white/5 animate-msg-fade-in">
                 <div>
-                  <label className="text-white/50 text-[0.65rem] uppercase tracking-widest block mb-2 font-semibold">Agency Name</label>
+                  <label htmlFor="b2b-agency-name" className="text-white/50 text-[0.65rem] uppercase tracking-widest block mb-2 font-semibold">Agency Name</label>
                   <input
+                    id="b2b-agency-name"
                     type="text"
                     value={agencyName}
                     onChange={(e) => setAgencyName(e.target.value)}
@@ -386,12 +394,13 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                 </div>
 
                 <div>
-                  <label className="text-white/50 text-[0.65rem] uppercase tracking-widest block mb-2 font-semibold">Agency Logo</label>
+                  <label htmlFor="b2b-agency-logo" className="text-white/50 text-[0.65rem] uppercase tracking-widest block mb-2 font-semibold">Agency Logo</label>
                   <div className="flex items-center gap-4">
                     {agencyLogo && (
                       <img src={agencyLogo} alt="Logo" className="w-12 h-12 object-contain bg-white/10 rounded border border-white/10 p-1" />
                     )}
                     <input
+                      id="b2b-agency-logo"
                       type="file"
                       accept="image/*"
                       onChange={handleLogoUpload}
@@ -402,10 +411,11 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
 
                 <div>
                   <div className="flex justify-between items-end mb-2">
-                    <label className="text-white/50 text-[0.65rem] uppercase tracking-widest font-semibold">Price Markup</label>
+                    <label htmlFor="b2b-price-markup" className="text-white/50 text-[0.65rem] uppercase tracking-widest font-semibold">Price Markup</label>
                     <span className="text-brand-gold-light text-sm font-semibold">{priceMarkup}%</span>
                   </div>
                   <input
+                    id="b2b-price-markup"
                     type="range"
                     min="0"
                     max="30"

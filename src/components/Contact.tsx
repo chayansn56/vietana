@@ -76,15 +76,18 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
               {/* Top Meta */}
               <div className="flex justify-between items-start">
                 <div className="bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full inline-flex items-center gap-2 shadow-lg">
-                  <Icon name="MapPin" size={14} className={loc.accentColor} />
+                  <span className="relative flex h-2 w-2 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
                   <Text size="xs" weight="bold" className="tracking-widest uppercase text-white/80">
-                    {loc.title}
+                    {loc.title} • Active Support
                   </Text>
                 </div>
               </div>
 
               {/* Bottom Details */}
-              <div className="mt-auto transform transition-transform duration-500 md:translate-y-4 md:group-hover:translate-y-0">
+              <div className="mt-auto transform transition-transform duration-500 md:translate-y-2 md:group-hover:translate-y-0">
                 <Text size="sm" className="text-white/80 tracking-widest uppercase mb-2 font-medium">
                   {loc.subtitle}
                 </Text>

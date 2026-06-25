@@ -82,34 +82,37 @@ const Food: React.FC = () => {
             
             {/* Vegetarian & Jain */}
             <div 
-              className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-black/5 flex flex-col justify-between group cursor-pointer hover:shadow-xl transition-all duration-500 overflow-hidden relative"
+              className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-black/5 flex flex-col md:flex-row justify-between group cursor-pointer hover:shadow-xl transition-all duration-500 overflow-hidden relative min-h-[320px]"
               onClick={() => openCategory(CATEGORY_VEG_JAIN)}
             >
-              <div className="absolute top-0 right-0 w-1/2 h-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+              <div className="relative z-20 w-full md:max-w-[55%] flex flex-col justify-between h-full min-h-[220px] md:min-h-0">
+                <div>
+                  <Text size="sm" weight="bold" className="uppercase tracking-widest text-brand-green mb-4">Plant Based</Text>
+                  <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-4">
+                    {CATEGORY_VEG_JAIN.title}
+                  </Heading>
+                  <Text className="text-[#86868B] mb-6">
+                    {CATEGORY_VEG_JAIN.subtitle}
+                  </Text>
+                </div>
+                <div className="inline-flex items-center gap-2 text-[#1D1D1F] font-medium group-hover:text-brand-green transition-colors mt-auto">
+                  Explore <span className="text-xl leading-none">&rarr;</span>
+                </div>
+              </div>
+
+              <div className="relative md:absolute md:top-0 md:right-0 w-full md:w-1/2 h-44 md:h-full mt-6 md:mt-0 rounded-2xl md:rounded-none overflow-hidden shrink-0">
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
                 <img 
                   src={CATEGORY_VEG_JAIN.heroImage} 
                   alt={CATEGORY_VEG_JAIN.title}
                   className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 
                 />
               </div>
-              <div className="relative z-20 max-w-[60%]">
-                <Text size="sm" weight="bold" className="uppercase tracking-widest text-brand-green mb-4">Plant Based</Text>
-                <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-4">
-                  {CATEGORY_VEG_JAIN.title}
-                </Heading>
-                <Text className="text-[#86868B] mb-8">
-                  {CATEGORY_VEG_JAIN.subtitle}
-                </Text>
-                <div className="inline-flex items-center gap-2 text-[#1D1D1F] font-medium group-hover:text-brand-green transition-colors">
-                  Explore <span className="text-xl leading-none">&rarr;</span>
-                </div>
-              </div>
             </div>
 
             {/* Vietnamese Favorites */}
             <div 
-              className="bg-brand-green rounded-3xl p-8 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden flex flex-col justify-between min-h-[300px]"
+              className="bg-brand-green rounded-3xl p-8 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden flex flex-col justify-between min-h-[320px]"
               onClick={() => openCategory(CATEGORY_VIETNAMESE)}
             >
               <div className="absolute inset-0 opacity-20 mix-blend-overlay group-hover:opacity-40 transition-opacity duration-500">
@@ -130,10 +133,10 @@ const Food: React.FC = () => {
 
             {/* Cafes */}
             <div 
-              className="bg-white rounded-3xl p-8 shadow-sm border border-black/5 group cursor-pointer hover:shadow-xl transition-all duration-500 min-h-[300px] flex flex-col"
+              className="bg-white rounded-3xl p-8 shadow-sm border border-black/5 group cursor-pointer hover:shadow-xl transition-all duration-500 min-h-[320px] flex flex-col"
               onClick={() => openCategory(CATEGORY_CAFES)}
             >
-              <div className="flex-1 mb-6 rounded-2xl overflow-hidden relative">
+              <div className="flex-1 mb-6 rounded-2xl overflow-hidden relative min-h-[160px]">
                  <img src={CATEGORY_CAFES.heroImage} alt="Best Cafes and Coffee Shops in Vietnam" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div>
@@ -148,11 +151,11 @@ const Food: React.FC = () => {
 
             {/* Local Knowledge */}
             <div 
-              className="lg:col-span-2 bg-[#1D1D1F] rounded-3xl p-8 md:p-12 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden"
+              className="lg:col-span-2 bg-[#1D1D1F] rounded-3xl p-8 md:p-12 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden min-h-[320px]"
               onClick={() => openCategory(CATEGORY_LOCAL_KNOWLEDGE)}
             >
               <div className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-700">
-                <img src={CATEGORY_LOCAL_KNOWLEDGE.heroImage} alt="Vietana Local Support Team in Ho Chi Minh City" className="w-full h-full object-cover grayscale" />
+                <img src={CATEGORY_LOCAL_KNOWLEDGE.heroImage} alt="Vietana Local Support Team in Ho Chi Minh City" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-center max-w-lg">
                 <Heading as="h3" size="2xl" font="serif" variant="white" className="mb-6">

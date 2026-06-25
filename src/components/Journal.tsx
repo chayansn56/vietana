@@ -6,6 +6,24 @@ import Icon from './ui/Icon';
 import { magazineData, Article } from '../data/notesMagazine';
 import NotesSideSheet from './NotesSideSheet';
 
+const highlightText = (text: string, query: string) => {
+  if (!query) return <>{text}</>;
+  const parts = text.split(new RegExp(`(${query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')})`, 'gi'));
+  return (
+    <>
+      {parts.map((part, index) => 
+        part.toLowerCase() === query.toLowerCase() ? (
+          <mark key={index} className="bg-amber-200 text-black px-0.5 rounded">
+            {part}
+          </mark>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+};
+
 const Journal: React.FC = () => {
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -124,7 +142,7 @@ const Journal: React.FC = () => {
                 <div className="h-[140px] overflow-hidden relative">
                   <img 
                     src={collection.image} 
-                    alt={collection.title} 
+                    alt={`Curated collection of travel stories for ${collection.title}`} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md rounded-full px-3 py-1 flex items-center gap-1.5 shadow-sm">
@@ -136,7 +154,7 @@ const Journal: React.FC = () => {
                 </div>
                 <div className="p-5 flex justify-between items-center">
                   <Heading as="h3" size="lg" font="serif" className="text-[#1D1D1F] truncate">
-                    {collection.title}
+                    {highlightText(collection.title, searchQuery)}
                   </Heading>
                   <div className="w-8 h-8 rounded-full bg-[#FAF8F3] flex items-center justify-center text-[#1E4D45] group-hover:bg-[#1E4D45] group-hover:text-white transition-colors">
                     <span className="text-sm">→</span>
@@ -145,6 +163,8 @@ const Journal: React.FC = () => {
               </div>
             </motion.div>
           ))}
+          {/* Spacer to prevent final card clipping on mobile */}
+          <div className="w-4 md:w-12 xl:w-24 shrink-0 pointer-events-none" />
         </div>
       </div>
 
@@ -184,7 +204,7 @@ const Journal: React.FC = () => {
                   <div className="h-[200px] overflow-hidden relative shrink-0">
                     <img 
                       src={story.image} 
-                      alt={story.title} 
+                      alt={`Featured travel story: ${story.title}`} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
@@ -193,10 +213,10 @@ const Journal: React.FC = () => {
                       Featured
                     </Text>
                     <Heading as="h3" size="xl" font="serif" className="text-[#1D1D1F] mb-3 group-hover:text-[#1E4D45] transition-colors line-clamp-2">
-                      {story.title}
+                      {highlightText(story.title, searchQuery)}
                     </Heading>
                     <Text size="sm" className="text-[#2B2B2B]/60 mb-6 line-clamp-3 flex-1">
-                      {story.intro}
+                      {highlightText(story.intro || '', searchQuery)}
                     </Text>
                     <div className="flex items-center text-[#1E4D45] text-sm font-semibold tracking-wide">
                       Read Story <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>

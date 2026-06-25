@@ -137,7 +137,7 @@ DO NOT output any markdown blocks outside the JSON, just the JSON string.
               ];
  
               const response = await ai.models.generateContent({
-                model: "gemini-1.5-flash",
+                model: "gemini-2.5-flash",
                 contents,
                 config: { systemInstruction }
               });
@@ -154,7 +154,7 @@ DO NOT output any markdown blocks outside the JSON, just the JSON string.
               res.end(JSON.stringify(parsed));
             } else {
               // Fallback if AI fails to format JSON
-              res.end(JSON.stringify({ text: rawText, extractedPreferences: {} }));
+              res.end(JSON.stringify({ text: responseText, extractedPreferences: {} }));
             }
           } catch (error) {
             console.error('Gemini API Error:', error);

@@ -6,6 +6,8 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import { useAIPlanner } from '../hooks/useAIPlanner';
 import Icon, { IconName } from './ui/Icon';
+import { featureFlags } from '../config/featureFlags';
+import { generateAffiliateUrl } from '../utils/affiliate';
 
 /** Lightweight HTML sanitizer — strips script/iframe/on* attributes */
 const sanitize = (html: string): string => {
@@ -27,6 +29,7 @@ interface AIPlannerProps {
 const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestination, initialPrompt }) => {
   const { t } = useTranslation();
   const [expandedDay, setExpandedDay] = useState<number | null>(1);
+  const [activeTab, setActiveTab] = useState<'itinerary' | 'deals' | 'pricing'>('itinerary');
   const {
     messages,
     inputValue,
@@ -123,8 +126,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   </div>
                 )}
                 <div className={`max-w-[80%] ${msg.type === 'user'
-                    ? 'bg-brand-gold/15 border border-brand-gold/20 rounded-2xl rounded-br-sm p-5  shadow-soft text-right'
-                    : 'bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm p-5  shadow-soft text-left'
+                    ? 'bg-gradient-to-r from-brand-gold/10 to-brand-gold/20 border border-brand-gold/30 rounded-2xl rounded-br-sm p-5 shadow-soft text-right'
+                    : 'bg-gradient-to-br from-brand-green/20 via-brand-green-dark/10 to-white/5 border border-brand-green-light/20 rounded-2xl rounded-bl-sm p-5 shadow-soft text-left'
                   }`}>
                   <Text
                     variant="none"
@@ -198,96 +201,159 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               <Text variant="none" className="text-xs text-brand-gold uppercase tracking-[0.2em] font-semibold mb-1">
                 JOURNEY TIMELINE
               </Text>
-              <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide leading-tight">
+              <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide leading-tight mb-4">
                 {itinerary.title}
               </Heading>
+              <div className="flex gap-2">
+                <button 
+                  onClick={() => setActiveTab('itinerary')}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors ${activeTab === 'itinerary' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                >
+                  Itinerary
+                </button>
+                {featureFlags.enableAffiliateLinks && (
+                  <button 
+                    onClick={() => setActiveTab('deals')}
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors ${activeTab === 'deals' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                  >
+                    Smart Deals
+                  </button>
+                )}
+              </div>
             </div>
 
-            <div className="flex-1 flex flex-col gap-4 relative pl-4 border-l border-dashed border-white/10">
-              {itinerary.days.map((day) => {
-                const isExpanded = expandedDay === day.day;
-                return (
-                  <div key={day.day} className="relative group transition-all duration-300">
-                    {/* Timeline Node dot */}
-                    <div className={`absolute -left-[21px] top-4 w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      isExpanded ? 'bg-brand-gold shadow-[0_0_8px_rgba(201,168,76,0.8)] scale-125' : 'bg-white/20 group-hover:bg-white/50'
-                    }`} />
+            {activeTab === 'itinerary' && (
+              <>
+                <div className="flex-1 flex flex-col gap-4 relative pl-4 border-l border-dashed border-white/10">
+                {itinerary.days.map((day) => {
+                  const isExpanded = expandedDay === day.day;
+                  return (
+                    <div key={day.day} className="relative group transition-all duration-300">
+                      {/* Timeline Node dot */}
+                      <div className={`absolute -left-[21px] top-4 w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                        isExpanded ? 'bg-brand-gold shadow-[0_0_8px_rgba(201,168,76,0.8)] scale-125' : 'bg-white/20 group-hover:bg-white/50'
+                      }`} />
 
-                    {/* Day Card */}
-                    <div 
-                      className={`border rounded-2xl p-5 cursor-pointer transition-all duration-300 ${
-                        isExpanded ? 'bg-brand-green-dark/20 border-brand-gold/30 shadow-soft' : 'bg-white/5 border-white/10 hover:bg-white/10'
-                      }`}
-                      onClick={() => setExpandedDay(isExpanded ? null : day.day)}
-                    >
-                      <div className="flex justify-between items-center">
-                        <Heading as="h5" variant="none" className="text-sm font-serif text-brand-gold-light tracking-wide">
-                          Day {day.day}: {day.title}
-                        </Heading>
-                        <span className="text-white/40 text-xs transition-transform duration-300">
-                          <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={16} />
-                        </span>
-                      </div>
-
-                      {isExpanded && (
-                        <div className="mt-3 flex flex-col gap-4 animate-msg-fade-in">
-                          <Text variant="none" className="text-white/70 text-xs italic font-light leading-relaxed">
-                            {day.description}
-                          </Text>
-
-                          {/* Sights checklist */}
-                          {day.activities?.length > 0 && (
-                            <div>
-                              <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
-                                <Icon name="MapPin" size={10} className="text-brand-gold" /> Exploration Points
-                              </Text>
-                              <div className="flex flex-col gap-1 pl-1">
-                                {day.activities.map((act, idx) => (
-                                  <div key={idx} className="flex items-start gap-2 text-xs text-white/90 font-light">
-                                    <span className="text-brand-gold-light font-medium mt-0.5">✓</span>
-                                    <span>{act}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Food Suggestions */}
-                          {day.food?.length > 0 && (
-                            <div>
-                              <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
-                                <Icon name="Soup" size={10} className="text-brand-gold" /> Gastronomy Picks
-                              </Text>
-                              <div className="flex flex-col gap-1 pl-1">
-                                {day.food.map((f, idx) => (
-                                  <div key={idx} className="flex items-start gap-2 text-xs text-white/80 font-light italic">
-                                    <span className="text-brand-gold/60 mt-0.5">✦</span>
-                                    <span>{f}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
+                      {/* Day Card */}
+                      <div 
+                        className={`border rounded-2xl p-5 cursor-pointer transition-all duration-300 ${
+                          isExpanded ? 'bg-brand-green-dark/20 border-brand-gold/30 shadow-soft' : 'bg-white/5 border-white/10 hover:bg-white/10'
+                        }`}
+                        onClick={() => setExpandedDay(isExpanded ? null : day.day)}
+                      >
+                        <div className="flex justify-between items-center">
+                          <Heading as="h5" variant="none" className="text-sm font-serif text-brand-gold-light tracking-wide">
+                            Day {day.day}: {day.title}
+                          </Heading>
+                          <span className="text-white/40 text-xs transition-transform duration-300">
+                            <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={16} />
+                          </span>
                         </div>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
 
-            <div className="mt-8 pt-4 border-t border-white/5">
-              <Button
-                className="w-full bg-brand-gold hover:bg-brand-gold-light text-brand-green-extra-dark py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs shadow-gold transition-all duration-300 flex items-center justify-center gap-2"
-                onClick={() => {
-                  const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
-                  const message = `Hello Vietana! I've designed an itinerary blueprint:\n\n*${itinerary.title}*\n\n${itemsList}`;
-                  window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
-                }}
-              >
-                <Icon name="MessageCircle" size={18} /> Book this Itinerary
-              </Button>
-            </div>
+                        {isExpanded && (
+                          <div className="mt-3 flex flex-col gap-4 animate-msg-fade-in">
+                            <Text variant="none" className="text-white/70 text-xs italic font-light leading-relaxed">
+                              {day.description}
+                            </Text>
+
+                            {/* Sights checklist */}
+                            {day.activities?.length > 0 && (
+                              <div>
+                                <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                  <Icon name="MapPin" size={10} className="text-brand-gold" /> Exploration Points
+                                </Text>
+                                <div className="flex flex-col gap-1 pl-1">
+                                  {day.activities.map((act, idx) => (
+                                    <div key={idx} className="flex items-start gap-2 text-xs text-white/90 font-light">
+                                      <span className="text-brand-gold-light font-medium mt-0.5">✓</span>
+                                      <span>{act}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Food Suggestions */}
+                            {day.food?.length > 0 && (
+                              <div>
+                                <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                  <Icon name="Soup" size={10} className="text-brand-gold" /> Gastronomy Picks
+                                </Text>
+                                <div className="flex flex-col gap-1 pl-1">
+                                  {day.food.map((f, idx) => (
+                                    <div key={idx} className="flex items-start gap-2 text-xs text-white/80 font-light italic">
+                                      <span className="text-brand-gold/60 mt-0.5">✦</span>
+                                      <span>{f}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-white/5">
+                  <Button
+                    className="w-full bg-brand-gold hover:bg-brand-gold-light text-brand-green-extra-dark py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs shadow-gold transition-all duration-300 flex items-center justify-center gap-2"
+                    onClick={() => {
+                      const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
+                      const message = `Hello Vietana! I've designed an itinerary blueprint:\n\n*${itinerary.title}*\n\n${itemsList}`;
+                      window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
+                    }}
+                  >
+                    <Icon name="MessageCircle" size={18} /> Book this Itinerary
+                  </Button>
+                </div>
+              </>
+            )}
+
+            {activeTab === 'deals' && (
+              <div className="flex-1 flex flex-col gap-4">
+                <Text variant="none" className="text-white/60 text-sm leading-relaxed mb-4">
+                  Based on your itinerary, we've found the best deals for flights, hotels, and insurance.
+                </Text>
+                
+                <div className="grid grid-cols-1 gap-3">
+                  <a href={generateAffiliateUrl('flight', 'Vietnam')} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 hover:border-brand-gold/50 p-4 rounded-2xl flex items-center justify-between group transition-all">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center"><Icon name="Plane" size={18} /></div>
+                      <div>
+                        <Heading as="h5" variant="none" className="text-white text-sm font-semibold">Flights to Vietnam</Heading>
+                        <Text variant="none" className="text-white/40 text-xs">Compare prices on Skyscanner</Text>
+                      </div>
+                    </div>
+                    <Icon name="ArrowRight" size={16} className="text-white/30 group-hover:text-brand-gold transition-colors" />
+                  </a>
+
+                  <a href={generateAffiliateUrl('hotel', 'Vietnam')} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 hover:border-brand-gold/50 p-4 rounded-2xl flex items-center justify-between group transition-all">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center"><Icon name="Castle" size={18} /></div>
+                      <div>
+                        <Heading as="h5" variant="none" className="text-white text-sm font-semibold">Hotels & Stays</Heading>
+                        <Text variant="none" className="text-white/40 text-xs">Up to 15% off on Booking.com</Text>
+                      </div>
+                    </div>
+                    <Icon name="ArrowRight" size={16} className="text-white/30 group-hover:text-brand-gold transition-colors" />
+                  </a>
+
+                  <a href={generateAffiliateUrl('insurance', 'Vietnam')} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 hover:border-brand-gold/50 p-4 rounded-2xl flex items-center justify-between group transition-all">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center"><Icon name="Shield" size={18} /></div>
+                      <div>
+                        <Heading as="h5" variant="none" className="text-white text-sm font-semibold">Travel Insurance</Heading>
+                        <Text variant="none" className="text-white/40 text-xs">Stay protected with World Nomads</Text>
+                      </div>
+                    </div>
+                    <Icon name="ArrowRight" size={16} className="text-white/30 group-hover:text-brand-gold transition-colors" />
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           /* Default: Live Preferences Checklist */

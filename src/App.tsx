@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import ProgressBar from './components/layout/ProgressBar';
 import BackToTop from './components/layout/BackToTop';
 import FloatingWhatsApp from './components/layout/FloatingWhatsApp';
+import FloatingPlanner from './components/layout/FloatingPlanner';
 import Separator from './components/ui/layout/Separator';
 
 // Hooks
@@ -86,6 +87,7 @@ export default function App() {
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />
       <FloatingWhatsApp />
+      <FloatingPlanner onClick={() => openPlanner()} />
 
       <Navbar 
         scrolled={isScrolled}

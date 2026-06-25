@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               style={{ backgroundImage: `url(${panel.img})` }}
             />
             {/* Ambient vignette per panel */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/60 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/85 pointer-events-none" />
             
             {/* Panel Label */}
             <div className="absolute bottom-12 left-1/2 -translate-x-1/2 md:bottom-20 md:left-10 md:translate-x-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
@@ -133,7 +133,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
           <div className="flex animate-reveal-up [animation-delay:0.7s]">
             <Button 
               variant="solid" 
-              className="group bg-brand-gold hover:bg-brand-gold-muted text-white shadow-gold transition-all duration-500 px-8 py-4 rounded-full text-sm tracking-widest uppercase font-semibold hover:scale-105"
+              className="group bg-brand-gold hover:bg-brand-gold-muted text-white shadow-gold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] px-8 py-4 rounded-full text-sm tracking-widest uppercase font-semibold hover:scale-105 transform-gpu"
               onClick={onOpenMagic}
             >
               <span className="flex items-center justify-center gap-3">
@@ -169,15 +169,15 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
 
       {/* BOTTOM FOOTER */}
-      <div className="absolute bottom-0 left-0 right-0 z-[3] flex flex-col sm:flex-row justify-between items-start sm:items-end px-[var(--spacing-layout)] pb-11 opacity-0 animate-reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards] gap-6">
+      <div className="absolute bottom-0 left-0 right-0 z-[3] flex flex-col sm:flex-row justify-between items-start sm:items-end px-[var(--spacing-layout)] pb-6 md:pb-11 opacity-0 animate-reveal-up [animation-delay:1.4s] [animation-fill-mode:forwards] gap-4 md:gap-6">
         <Text as="div" size="xs" variant="none" className="flex items-center gap-4 text-white/40 tracking-[0.22em] uppercase">
           <div className="relative w-12 h-px bg-gradient-to-r from-brand-gold to-transparent animate-sla" />
           <span>Scroll to explore</span>
         </Text>
 
-        <div className="flex flex-col sm:flex-row gap-3 opacity-0 animate-reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
-          <Clock flag="🇻🇳" city="Ho Chi Minh City" time={clocks.vn.time} date={clocks.vn.date} />
-          <Clock flag="🇮🇳" city="New Delhi" time={clocks.in.time} date={clocks.in.date} />
+        <div className="flex flex-row flex-wrap sm:flex-nowrap gap-3 opacity-0 animate-reveal-up [animation-delay:1.55s] [animation-fill-mode:forwards]">
+          <Clock flag="🇻🇳" city="Ho Chi Minh" time={clocks.vn.time} date={clocks.vn.date} />
+          <Clock flag="🇮🇳" city="Delhi" time={clocks.in.time} date={clocks.in.date} />
         </div>
       </div>
     </Section>
