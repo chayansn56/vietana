@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   BY_THEME_CATEGORIES, 
@@ -29,10 +29,19 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
   );
   const [selectedPackage, setSelectedPackage] = useState<PackageProduct | null>(null);
   const [expandedDay, setExpandedDay] = useState<number | null>(1);
+  const [jainVegOnly, setJainVegOnly] = useState(false);
 
   const categories = activeTab === 'theme' ? BY_THEME_CATEGORIES : BY_REGION_CATEGORIES;
   const activeCategory = categories.find(c => c.name === activeCategoryName) || categories[0];
-  const activePackage = activeCategory.packages.find(p => p.id === activePackageId) || activeCategory.packages[0];
+  
+  const displayedPackages = useMemo(() => {
+    if (jainVegOnly) {
+      return activeCategory.packages.filter(p => p.isJainVegFriendly);
+    }
+    return activeCategory.packages;
+  }, [activeCategory, jainVegOnly]);
+
+  const activePackage = displayedPackages.find(p => p.id === activePackageId) || displayedPackages[0] || activeCategory.packages[0];
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -139,39 +148,53 @@ Please load this itinerary and let me customize it!`;
             </Heading>
           </div>
 
-          {/* Interest vs Region Selector */}
-          <div className="flex bg-white/5 border border-white/10 p-1.5 rounded-2xl gap-2 w-full md:w-auto self-start">
+          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto items-start sm:items-center self-start">
+            {/* Interest vs Region Selector */}
+            <div className="flex bg-white/5 border border-white/10 p-1.5 rounded-2xl gap-2 w-full md:w-auto">
+              <button
+                className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all duration-300 ${
+                  activeTab === 'theme' 
+                    ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong' 
+                    : 'text-white/40 hover:text-white/85'
+                }`}
+                onClick={() => {
+                  setActiveTab('theme');
+                  setActiveCategoryName(BY_THEME_CATEGORIES[0].name);
+                  if (BY_THEME_CATEGORIES[0].packages.length > 0) {
+                    setActivePackageId(BY_THEME_CATEGORIES[0].packages[0].id);
+                  }
+                }}
+              >
+                Browse By Interest
+              </button>
+              <button
+                className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all duration-300 ${
+                  activeTab === 'region' 
+                    ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong' 
+                    : 'text-white/40 hover:text-white/85'
+                }`}
+                onClick={() => {
+                  setActiveTab('region');
+                  setActiveCategoryName(BY_REGION_CATEGORIES[0].name);
+                  if (BY_REGION_CATEGORIES[0].packages.length > 0) {
+                    setActivePackageId(BY_REGION_CATEGORIES[0].packages[0].id);
+                  }
+                }}
+              >
+                Browse By Region
+              </button>
+            </div>
+
+            {/* Jain & Veg Toggle */}
             <button
-              className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all duration-300 ${
-                activeTab === 'theme' 
-                  ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong' 
-                  : 'text-white/40 hover:text-white/85'
-              }`}
-              onClick={() => {
-                setActiveTab('theme');
-                setActiveCategoryName(BY_THEME_CATEGORIES[0].name);
-                if (BY_THEME_CATEGORIES[0].packages.length > 0) {
-                  setActivePackageId(BY_THEME_CATEGORIES[0].packages[0].id);
-                }
-              }}
+              onClick={() => setJainVegOnly(!jainVegOnly)}
+              className={`px-5 py-3 rounded-2xl text-xs font-semibold tracking-wider uppercase border flex items-center gap-2 cursor-pointer transition-all duration-300 w-full sm:w-auto justify-center
+                ${jainVegOnly 
+                  ? 'bg-brand-green-light border-brand-green text-white shadow-[0_4px_15px_rgba(44,110,99,0.3)]' 
+                  : 'bg-white/5 border-white/10 text-white/60 hover:text-white/90 hover:bg-white/10'}`}
             >
-              Browse By Interest
-            </button>
-            <button
-              className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all duration-300 ${
-                activeTab === 'region' 
-                  ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong' 
-                  : 'text-white/40 hover:text-white/85'
-              }`}
-              onClick={() => {
-                setActiveTab('region');
-                setActiveCategoryName(BY_REGION_CATEGORIES[0].name);
-                if (BY_REGION_CATEGORIES[0].packages.length > 0) {
-                  setActivePackageId(BY_REGION_CATEGORIES[0].packages[0].id);
-                }
-              }}
-            >
-              Browse By Region
+              <Icon name="Leaf" size={14} className={jainVegOnly ? 'text-white' : 'text-brand-green-light'} />
+              Jain & Veg Friendly
             </button>
           </div>
         </div>
@@ -248,13 +271,32 @@ Please load this itinerary and let me customize it!`;
         {/* Snapping Horizontal Slider Deck */}
         <div 
           ref={sliderRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10"
+          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10 w-full"
         >
-          {activeCategory.packages.map((pkg) => {
-            const downloadPaths = getDownloadPaths(pkg.id);
-            return (
-              <div
-                key={pkg.id}
+          {displayedPackages.length === 0 ? (
+            <div className="w-full max-w-xl mx-auto min-h-[350px] flex flex-col items-center justify-center text-center p-10 bg-[#161616]/60 border border-brand-gold/10 rounded-[2.5rem] gap-4 shadow-heavy backdrop-blur-md">
+              <div className="w-16 h-16 rounded-full bg-brand-green/20 text-brand-gold flex items-center justify-center mb-2">
+                <Icon name="Leaf" size={32} />
+              </div>
+              <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide">Custom Jain & Veg Tours Available</Heading>
+              <Text variant="none" className="text-white/70 text-xs font-light leading-relaxed max-w-md">
+                We craft bespoke itineraries with certified Jain kitchens, Indian chefs, and 100% vegetarian catering for this region. Let's build your perfect tour!
+              </Text>
+              <div className="flex gap-3 mt-4 w-full justify-center">
+                <Button 
+                  className="px-6 py-3 bg-brand-gold hover:bg-brand-gold-light text-brand-green-extra-dark font-bold text-xs tracking-wider uppercase rounded-xl shadow-gold"
+                  onClick={() => onOpenBuilder([])}
+                >
+                  Custom Planner
+                </Button>
+              </div>
+            </div>
+          ) : (
+            displayedPackages.map((pkg) => {
+              const downloadPaths = getDownloadPaths(pkg.id);
+              return (
+                <div
+                  key={pkg.id}
                 className="w-[85vw] sm:w-[420px] h-[580px] bg-[#161616]/80 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col justify-between shrink-0 snap-start relative group hover:border-brand-gold/45 hover:shadow-gold transition-all duration-500"
               >
                 {/* Visual background image with zoom hover effect */}
@@ -326,7 +368,7 @@ Please load this itinerary and let me customize it!`;
                 </div>
               </div>
             );
-          })}
+          }))}
         </div>
 
         {/* FULLY CUSTOM BUILDER BANNER */}

@@ -26,6 +26,7 @@ const Journal = lazy(() => import('./components/Journal'));
 const Services = lazy(() => import('./components/Services'));
 const Packages = lazy(() => import('./components/Packages'));
 const Food = lazy(() => import('./components/Food'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const About = lazy(() => import('./components/About'));
 const Contact = lazy(() => import('./components/Contact'));
@@ -99,6 +100,8 @@ export default function App() {
           <Separator variant="green" />
           <Journal />
           <FAQ onOpenPlanner={(dest, prompt) => openPlanner(dest, prompt)} />
+          <Separator variant="gold" />
+          <Testimonials />
         </Suspense>
       </main>
 
@@ -143,6 +146,14 @@ export default function App() {
           isOpen={isMapOpen}
           onClose={() => setIsMapOpen(false)}
           onOpenPlanner={(dest) => openPlanner(dest)}
+          selectedCities={builderDestinations}
+          onAddCity={(city) => {
+            setBuilderDestinations(prev => {
+              const next = prev.includes(city) ? prev.filter(c => c !== city) : [...prev, city];
+              setIsBuilderOpen(true);
+              return next;
+            });
+          }}
         />
         <Contact 
           isOpen={isContactOpen}

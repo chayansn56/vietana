@@ -18,6 +18,7 @@ export interface PackageProduct {
     activities: string[];
     food: string[];
   }[];
+  isJainVegFriendly?: boolean;
 }
 
 export interface CategoryData {
@@ -1218,3 +1219,19 @@ export const BY_REGION_CATEGORIES: CategoryData[] = [
     ]
   }
 ];
+
+// Tag Jain & Vegetarian friendly packages dynamically
+const JAIN_VEG_FRIENDLY_IDS = ['budget-explorer', 'vietnam-classic', 'vietnam-family', 'luxury-vietnam'];
+ITINERARIES_DATABASE.forEach(pkg => {
+  if (JAIN_VEG_FRIENDLY_IDS.includes(pkg.id)) {
+    pkg.isJainVegFriendly = true;
+  }
+});
+// Re-assign references in categories just to be safe
+BY_THEME_CATEGORIES.forEach(cat => {
+  cat.packages = cat.packages.map(p => ITINERARIES_DATABASE.find(db => db.id === p.id) || p);
+});
+BY_REGION_CATEGORIES.forEach(cat => {
+  cat.packages = cat.packages.map(p => ITINERARIES_DATABASE.find(db => db.id === p.id) || p);
+});
+

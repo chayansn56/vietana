@@ -350,11 +350,102 @@ Please generate a structured day-by-day itinerary right away for this trip!`;
           )}
 
           <Button 
+             variant="glass"
+             className="w-full sm:flex-1 md:flex-none px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-bold tracking-widest uppercase text-xs rounded-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap"
+             onClick={() => window.print()}
+          >
+            <Icon name="Download" size={18} /> Download Itinerary PDF
+          </Button>
+
+          <Button 
              className="w-full sm:flex-1 md:flex-none px-6 py-4 bg-brand-gold hover:bg-brand-gold-light text-brand-green-extra-dark font-bold tracking-widest uppercase text-xs rounded-xl shadow-gold transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap"
              onClick={sendToWhatsApp}
           >
             <Icon name="MessageCircle" size={18} /> Send to WhatsApp
           </Button>
+        </div>
+      </div>
+
+      {/* PRINT-ONLY AREA */}
+      <div id="print-area" className="hidden print:block bg-white text-black p-8 max-w-3xl mx-auto">
+        <div className="flex justify-between items-center border-b pb-6 mb-6">
+          <div>
+            <h1 className="text-3xl font-serif font-bold text-[#1E4D45]">VIETANA</h1>
+            <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">Real-time Estimate Receipt & Itinerary</p>
+          </div>
+          <div className="text-right">
+            <p className="text-sm font-semibold text-[#D4AF37]">Premium Bespoke Vietnam Travel</p>
+            <p className="text-xs text-gray-500">Managed from Ho Chi Minh City</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-6 mb-8 border-b pb-6">
+          <div>
+            <h3 className="text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Trip Specifications</h3>
+            <p className="text-sm"><strong>Suggested Route:</strong> {suggestedRoute}</p>
+            <p className="text-sm capitalize"><strong>Travel Vibe:</strong> {style} Explorer</p>
+            <p className="text-sm"><strong>Duration:</strong> {days} Days</p>
+            <p className="text-sm"><strong>Travelers:</strong> {pax} {pax === 1 ? 'Person' : 'People'}</p>
+          </div>
+          <div>
+            <h3 className="text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Flight & Entry</h3>
+            <p className="text-sm"><strong>Flight Type:</strong> {flightType === 'round' ? 'Round Trip' : 'One Way'}</p>
+            <p className="text-sm"><strong>E-Visa Type:</strong> {visaType === 'single' ? 'Single Entry' : 'Multiple Entry'}</p>
+            {notes && <p className="text-sm mt-2"><strong>Notes:</strong> {notes}</p>}
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <h3 className="text-xs uppercase tracking-wider text-gray-400 font-bold mb-4">Cost Breakdown (Real-time Estimate)</h3>
+          <table className="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr className="border-b font-semibold text-gray-600">
+                <th className="py-2">Item</th>
+                <th className="py-2 text-right">Estimated Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="py-2">Flights estimate ({flightType === 'round' ? 'Round' : 'One-way'})</td>
+                <td className="py-2 text-right">₹{estimate.flight.toLocaleString('en-IN')}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2">Vietnam E-Visa support</td>
+                <td className="py-2 text-right">₹{estimate.visa.toLocaleString('en-IN')}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2">Transfers & Airport greeting</td>
+                <td className="py-2 text-right">₹{estimate.transfers.toLocaleString('en-IN')}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2">Hotels ({days} days)</td>
+                <td className="py-2 text-right">₹{estimate.hotels.toLocaleString('en-IN')}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2">Culinary allowance (Jain/Indian/Local mapped)</td>
+                <td className="py-2 text-right">₹{estimate.food.toLocaleString('en-IN')}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2">Local transport</td>
+                <td className="py-2 text-right">₹{estimate.transport.toLocaleString('en-IN')}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2">Curated & Hidden experiences</td>
+                <td className="py-2 text-right">₹{estimate.experiences.toLocaleString('en-IN')}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr className="font-bold text-[#1E4D45] text-lg">
+                <td className="py-4">Grand Total (INR)</td>
+                <td className="py-4 text-right">₹{estimate.total.toLocaleString('en-IN')}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div className="border-t pt-6 text-center text-xs text-gray-400">
+          <p>This is a custom digital quote prepared by Vietana.</p>
+          <p className="mt-1">For changes or offline bookings, message us on WhatsApp: +91 9953294543</p>
         </div>
       </div>
     </Modal>

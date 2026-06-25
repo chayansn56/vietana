@@ -13,7 +13,12 @@ const LAND_STROKE = '#1E4D45'; // Dark Emerald
 const MARKER_COLOR = '#1E4D45';
 const MARKER_HOVER_COLOR = '#D4AF37'; // Gold accent
 
-const VietnamVectorMap: React.FC = () => {
+interface VietnamVectorMapProps {
+  selectedCities?: string[];
+  onAddCity?: (city: string) => void;
+}
+
+const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = [], onAddCity }) => {
   const [hoveredDest, setHoveredDest] = useState<number | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [geoData, setGeoData] = useState<any>(null);
@@ -92,29 +97,36 @@ const VietnamVectorMap: React.FC = () => {
         {/* Destination markers */}
         {MAP_DESTINATIONS.map((dest, idx) => {
           const [x, y] = projection([dest.lng, dest.lat]) as [number, number];
+          const isSelected = selectedCities.includes(dest.name);
+          const currentMarkerColor = isSelected ? '#D4AF37' : MARKER_COLOR;
           return (
             <g
               key={dest.name}
               className="cursor-pointer"
               onMouseEnter={() => setHoveredDest(idx)}
               onMouseLeave={() => setHoveredDest(null)}
+              onClick={() => {
+                if (onAddCity) {
+                  onAddCity(dest.name);
+                }
+              }}
             >
               {/* Glowing ring */}
               <motion.circle
                 cx={x}
                 cy={y}
-                r={8}
-                fill={MARKER_COLOR}
+                r={isSelected ? 12 : 8}
+                fill={currentMarkerColor}
                 opacity={0.2}
-                animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
+                animate={{ scale: isSelected ? [1, 1.3, 1] : [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               />
               {/* Center dot */}
               <circle
                 cx={x}
                 cy={y}
-                r={3}
-                fill={hoveredDest === idx ? MARKER_HOVER_COLOR : MARKER_COLOR}
+                r={isSelected ? 4 : 3}
+                fill={hoveredDest === idx ? MARKER_HOVER_COLOR : currentMarkerColor}
                 className="transition-colors duration-300"
               />
             </g>
@@ -149,10 +161,15 @@ const VietnamVectorMap: React.FC = () => {
                 </Heading>
               </div>
             </div>
-            <div className="p-4 bg-white">
+            <div className="p-4 bg-white flex flex-col gap-2">
               <Text size="sm" className="text-[#2B2B2B]/70 leading-snug">
                 {MAP_DESTINATIONS[hoveredDest].desc}
               </Text>
+              <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#1D1D1F]/5">
+                <span className={`text-[0.6rem] font-bold tracking-widest uppercase ${selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? 'text-[#D4AF37]' : 'text-gray-400'}`}>
+                  {selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
+                </span>
+              </div>
             </div>
           </motion.div>
         )}
