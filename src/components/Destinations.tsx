@@ -73,14 +73,14 @@ const Destinations: React.FC = () => {
           <div className="flex gap-3">
             <button
               onClick={() => scrollDeck('left')}
-              className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-[#FAF8F3] hover:border-black/25 flex items-center justify-center text-black/60 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95"
+              className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-[#FAF8F3] hover:border-black/25 flex items-center justify-center text-black/60 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95 btn-pressable"
               aria-label="Scroll left"
             >
               <Icon name="ChevronLeft" size={20} />
             </button>
             <button
               onClick={() => scrollDeck('right')}
-              className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-[#FAF8F3] hover:border-black/25 flex items-center justify-center text-black/60 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95"
+              className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-[#FAF8F3] hover:border-black/25 flex items-center justify-center text-black/60 hover:text-black transition-all cursor-pointer shadow-sm active:scale-95 btn-pressable"
               aria-label="Scroll right"
             >
               <Icon name="ChevronRight" size={20} />
@@ -97,7 +97,7 @@ const Destinations: React.FC = () => {
           {CITIES.slice(0, 10).map((city) => (
             <motion.div
               key={city.id}
-              className="w-[85vw] sm:w-[320px] h-[450px] bg-white border border-black/5 rounded-[2rem] shadow-[0_12px_32px_rgba(0,0,0,0.04)] flex flex-col justify-between shrink-0 snap-start relative overflow-hidden group cursor-pointer hover:border-brand-gold/40 hover:shadow-[0_20px_40px_rgba(212,175,55,0.12)] transition-all duration-500"
+              className="w-[85vw] sm:w-[320px] h-[450px] skeuo-paper rounded-[2rem] skeuo-shadow flex flex-col justify-between shrink-0 snap-start relative overflow-hidden group cursor-pointer hover:border-brand-gold/45 hover:shadow-[0_20px_40px_rgba(212,175,55,0.15)] transition-all duration-500"
               onClick={() => setSelectedCity(city)}
               onMouseEnter={handleCardHover}
               whileHover={{
@@ -106,7 +106,7 @@ const Destinations: React.FC = () => {
               }}
             >
               {/* Postcard folder structure - Image hidden in bottom half, slides up to reveal */}
-              <div className="absolute inset-x-0 bottom-[120px] top-0 z-0 overflow-hidden rounded-[1.5rem] m-4 bg-[#F2EFE8]">
+              <div className="absolute inset-x-0 bottom-[120px] top-0 z-0 overflow-hidden rounded-[1.5rem] m-4 bg-[#F2EFE8] border border-black/5 shadow-inner">
                 <motion.div
                   className="w-full h-full bg-cover bg-center"
                   style={{ backgroundImage: `url(${city.coverImage})` }}
@@ -119,16 +119,16 @@ const Destinations: React.FC = () => {
 
               {/* Top Weather Indicator in card */}
               <div className="p-6 relative z-10 flex justify-between items-start">
-                <span className="bg-black/5 backdrop-blur-md text-[#1E4D45] px-3 py-1 rounded-full text-[0.65rem] tracking-wider uppercase font-bold">
+                <span className="bg-black/5 backdrop-blur-md text-[#1E4D45] px-3 py-1 rounded-full text-[0.65rem] tracking-wider uppercase font-bold border border-black/5 shadow-sm">
                   {getWeatherForCity(city.name).icon} {getWeatherForCity(city.name).temp}
                 </span>
-                <span className="text-[10px] tracking-widest text-[#3D8B7D] uppercase font-bold bg-[#3D8B7D]/10 px-2.5 py-1 rounded-full">
+                <span className="text-[10px] tracking-widest text-[#3D8B7D] uppercase font-bold bg-[#3D8B7D]/10 px-2.5 py-1 rounded-full border border-[#3D8B7D]/10">
                   EXPLORE
                 </span>
               </div>
 
               {/* Bottom Card Title Detail Drawer */}
-              <div className="p-6 bg-white relative z-10 border-t border-black/5 flex flex-col gap-1 shrink-0 rounded-b-[2rem]">
+              <div className="p-6 bg-transparent relative z-10 border-t border-black/5 flex flex-col gap-1 shrink-0 rounded-b-[2rem]">
                 <Heading as="h4" variant="none" className="text-xl font-serif text-[#1D1D1F] tracking-wide leading-tight">
                   {city.name}
                 </Heading>
@@ -143,7 +143,7 @@ const Destinations: React.FC = () => {
         {/* View all cities button */}
         <div className="mt-14 text-center">
           <button
-            className="px-8 py-4 bg-white hover:bg-[#FAF8F3] text-brand-gold hover:text-brand-gold-muted border border-black/10 rounded-full tracking-widest uppercase text-xs font-bold transition-all duration-300 shadow-sm flex items-center justify-center gap-2.5 mx-auto cursor-pointer hover:-translate-y-0.5 active:scale-95"
+            className="px-8 py-4 bg-white hover:bg-[#FAF8F3] text-brand-gold hover:text-brand-gold-muted border border-black/10 rounded-full tracking-widest uppercase text-xs font-bold transition-all duration-300 shadow-sm flex items-center justify-center gap-2.5 mx-auto cursor-pointer hover:-translate-y-0.5 active:scale-95 btn-pressable"
             onClick={() => setIsAllCitiesOpen(true)}
           >
             Click to view more cities <Icon name="ArrowRight" size={14} />

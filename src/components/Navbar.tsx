@@ -60,8 +60,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
           ${mobileMenuOpen 
             ? 'top-6 py-4 border-transparent shadow-none bg-transparent' 
             : (scrolled 
-                ? 'top-4 py-3 bg-white/85 supports-[backdrop-filter]:bg-white/30 backdrop-blur-[20px] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.1)]' 
-                : 'top-6 py-4 bg-black/75 supports-[backdrop-filter]:bg-black/20 backdrop-blur-[10px] border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.1)]'
+                ? 'top-4 py-3 bg-[#FAF8F3]/90 supports-[backdrop-filter]:bg-[#FAF8F3]/70 backdrop-blur-[20px] border-black/10 shadow-[0_8px_32px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.8)]' 
+                : 'top-6 py-4 bg-[#111111]/85 supports-[backdrop-filter]:bg-[#111111]/60 backdrop-blur-[10px] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)]'
               )}`}
       >
         <a href="#" className="flex shrink-0 items-center gap-2 no-underline group/logo">

@@ -320,7 +320,7 @@ Please load this itinerary and let me customize it!`;
                 </div>
 
                 {/* Bottom Premium Card Panel (High Legibility) */}
-                <div className="p-6 m-4 bg-[#0c1f1a]/95 border border-brand-gold/20 rounded-3xl relative z-10 flex flex-col gap-4 shadow-heavy">
+                <div className="p-6 m-4 bg-[#0c1f1a]/95 border border-brand-gold/20 rounded-3xl relative z-10 flex flex-col gap-4 shadow-heavy ticket-cutout-left ticket-cutout-right">
                   <div>
                     <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide mb-1 leading-tight">
                       {pkg.title}
@@ -344,7 +344,7 @@ Please load this itinerary and let me customize it!`;
                     <a
                       href={downloadPaths.pdf}
                       download
-                      className="w-full py-2.5 px-4 bg-[#1E4D45]/60 hover:bg-[#1E4D45]/90 border border-white/10 rounded-xl text-white text-[0.65rem] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-md"
+                      className="w-full py-2.5 px-4 bg-[#1E4D45]/60 hover:bg-[#1E4D45]/90 border border-white/10 rounded-xl text-white text-[0.65rem] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-2 transition-all duration-300 shadow-md btn-pressable"
                     >
                       <Icon name="FileText" size={12} className="text-brand-gold" />
                       PDF Handbook
@@ -352,13 +352,13 @@ Please load this itinerary and let me customize it!`;
                     <div className="flex gap-2">
                       <Button
                         variant="glass"
-                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl"
+                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl btn-pressable"
                         onClick={() => setSelectedPackage(pkg)}
                       >
                         Details
                       </Button>
                       <Button
-                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light rounded-xl"
+                        className="flex-1 py-2.5 text-[0.6rem] tracking-widest uppercase font-bold text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light rounded-xl btn-pressable"
                         onClick={() => handleOpenPlanner(pkg)}
                       >
                         Customize
