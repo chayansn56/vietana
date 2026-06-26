@@ -13,6 +13,7 @@ import { Heading, Text } from './ui/Typography';
 import Badge from './ui/Badge';
 import Icon from './ui/Icon';
 import Modal from './ui/Modal';
+import PDFCustomizerModal from './PDFCustomizerModal';
 
 interface PackagesProps {
   onOpenBuilder: (dest?: string[]) => void;
@@ -28,6 +29,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
     BY_THEME_CATEGORIES[0].packages[0]?.id || null
   );
   const [selectedPackage, setSelectedPackage] = useState<PackageProduct | null>(null);
+  const [customizerPkg, setCustomizerPkg] = useState<PackageProduct | null>(null);
   const [expandedDay, setExpandedDay] = useState<number | null>(1);
   const [jainVegOnly, setJainVegOnly] = useState(false);
 
@@ -258,14 +260,13 @@ Please load this itinerary and let me customize it!`;
 
                   {/* Vogue Editorial Action Footer */}
                   <div className="bg-[#FAF7F0] border-t border-[#E8E4D9] p-4 flex gap-3 shrink-0">
-                    <a
-                      href={downloadPaths.pdf}
-                      download
-                      className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-[#1E4D45] text-[9px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300"
+                    <button
+                      onClick={() => setCustomizerPkg(pkg)}
+                      className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-[#1E4D45] text-[9px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300 cursor-pointer"
                     >
                       <Icon name="FileText" size={11} className="text-[#B8860B]" />
                       PDF Info
-                    </a>
+                    </button>
                     <button
                       className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn"
                       onClick={() => handleOpenPlanner(pkg)}
@@ -434,14 +435,16 @@ Please load this itinerary and let me customize it!`;
                     Download Luxury Handbook
                   </span>
                   <div className="flex border border-[#E8E4D9] rounded overflow-hidden shadow-sm">
-                    <a
-                      href={paths.pdf}
-                      download
-                      className="w-full py-3 px-4 bg-[#1E4D45] hover:bg-[#12302B] text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300"
+                    <button
+                      onClick={() => {
+                        setSelectedPackage(null);
+                        setCustomizerPkg(selectedPackage);
+                      }}
+                      className="w-full py-3 px-4 bg-[#1E4D45] hover:bg-[#12302B] text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300 cursor-pointer"
                     >
                       <Icon name="FileText" size={14} className="text-[#D4AF37]" />
-                      Download PDF Itinerary
-                    </a>
+                      Customize & Download PDF
+                    </button>
                   </div>
                 </div>
               );
@@ -474,6 +477,11 @@ Please load this itinerary and let me customize it!`;
           </Modal>
         )}
       </AnimatePresence>
+      <PDFCustomizerModal 
+        isOpen={customizerPkg !== null} 
+        onClose={() => setCustomizerPkg(null)} 
+        pkg={customizerPkg} 
+      />
     </Section>
   );
 };

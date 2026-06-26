@@ -39,6 +39,8 @@ const CustomTripBuilder = lazy(() => import('./components/CustomTripBuilder'));
 const ExperiencesDrawer = lazy(() => import('./components/ExperiencesDrawer'));
 const MapCurtain = lazy(() => import('./components/MapCurtain'));
 
+import SEO from './components/seo/SEO';
+
 export default function App() {
   const { t } = useTranslation();
   const { scrollProgress, isScrolled, scrollY } = useScroll();
@@ -84,6 +86,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden selection:bg-brand-gold selection:text-black">
+      <SEO />
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />
       <FloatingWhatsApp />

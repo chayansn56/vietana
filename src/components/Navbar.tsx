@@ -349,7 +349,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             <span className="text-lg font-medium tracking-wide">Explore Map</span>
           </button>
 
-          <div className="flex gap-4 mt-2">
+          <div className="flex items-center gap-4 mt-2">
               {['EN', 'HI', 'VI'].map((l) => (
                 <button 
                   key={l}
@@ -359,6 +359,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                   {l}
                 </button>
               ))}
+              <div className="border-l border-white/20 pl-4">
+                <ThemeToggle />
+              </div>
           </div>
           <a href={buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT)} className="text-brand-gold text-xl no-underline flex items-center gap-2" target="_blank" rel="noreferrer">
             <Icon name="MessageCircle" size={24} /> +91 9953294543

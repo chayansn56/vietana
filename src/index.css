@@ -711,5 +711,98 @@ html {
   color: #FAF7F0;
 }
 
+/* ==========================================================================
+   Dark Mode Theme System
+   ========================================================================== */
 
+/* Dark mode variable overrides */
+.dark {
+  --color-surface-ivory: #111615; /* Charcoal Green */
+  --color-surface-white: #1A2120; /* Dark Panel */
+  --color-text-charcoal: #FAF8F3; /* Warm White */
+  --color-text-muted: #E9DFC8; /* Champagne */
+  --color-text-subtle: #AAB7A1; /* Muted Sage */
+}
 
+/* Base structural overrides when in dark mode */
+.dark body {
+  background-color: #111615 !important;
+  color: #FAF8F3 !important;
+}
+
+.dark section {
+  background-color: #111615 !important;
+  color: #FAF8F3 !important;
+}
+
+.dark .bg-\[\#FAF7F0\],
+.dark .bg-\[\#FAF8F3\] {
+  background-color: #111615 !important;
+}
+
+.dark .bg-white,
+.dark .bg-white\/80 {
+  background-color: #1A2120 !important;
+  color: #FAF8F3 !important;
+}
+
+.dark .text-charcoal,
+.dark .text-\[\#111111\],
+.dark .text-\[\#1E4D45\],
+.dark .text-\[\#1D1D1F\] {
+  color: #FAF8F3 !important;
+}
+
+.dark .text-\[\#555555\],
+.dark .text-\[\#666666\] {
+  color: #AAB7A1 !important;
+}
+
+.dark .border-\[\#E8E4D9\],
+.dark .border-\[\#1D1D1F\]\/10,
+.dark .border-black\/5,
+.dark .border-black\/10 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .editorial-card {
+  background-color: #1A2120 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.dark .editorial-card:hover {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .editorial-btn {
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+}
+
+.dark .editorial-btn:hover {
+  background: #D4AF37 !important;
+  color: #111615 !important;
+}
+
+.dark input, 
+.dark select, 
+.dark textarea {
+  background-color: #12302B !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #FAF8F3 !important;
+}
+
+.dark input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.dark .glass-dark {
+  background: rgba(18, 48, 43, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Soft transition support on theme toggle */
+* {
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
