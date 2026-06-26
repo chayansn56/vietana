@@ -20,7 +20,8 @@ interface NavbarProps {
   onOpenAbout: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain, onOpenAbout }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain, onOpenAbout }) => {
+  const scrolled = false;
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
   const [emergencyOpen, setEmergencyOpen] = useState(false);
@@ -32,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
     return () => clearTimeout(timer);
   }, []);
 
-  const isLight = navClass === 'light';
+  const isLight = false;
 
   const toggleLang = (e: React.MouseEvent) => {
     e.stopPropagation();
