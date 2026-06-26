@@ -73,6 +73,29 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
             {/* List of Experiences */}
             <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-brand-gold/30 scrollbar-track-transparent p-8 pb-32">
               <div className="flex flex-col gap-12">
+                
+                {/* Budget Experiences Coming Soon Banner */}
+                <div className="group flex flex-col gap-4 relative bg-brand-gold/10 p-6 rounded-2xl border border-brand-gold/20 -mt-2">
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 pt-1 shrink-0 flex justify-center">
+                      <Icon name="Sparkles" size={20} className="text-brand-gold animate-pulse" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2 flex-wrap">
+                        <Heading as="h3" className="text-xl font-serif text-brand-green-extra-dark">
+                          Budget & Ultra-Budget Itineraries
+                        </Heading>
+                        <span className="bg-brand-gold text-brand-green-extra-dark text-[0.55rem] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full whitespace-nowrap">Coming Soon</span>
+                      </div>
+                      <Text className="text-sm font-light text-brand-green-extra-dark/80 leading-relaxed">
+                        We are currently crafting exclusive, highly curated guides for budget and ultra-budget backpacking experiences across Vietnam. From cheap cross-country rail passes to the best local homestays. Stay tuned!
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full h-px bg-black/5 -my-4 hidden md:block" />
+
                 {EXPERIENCES.map((exp, idx) => (
                   <div 
                     key={exp.id} 
