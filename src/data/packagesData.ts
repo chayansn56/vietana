@@ -332,7 +332,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Personal items"
     ],
     days: [
-      { day: 1, title: "Saigon Arrival & Walking Street", description: "Arrive in HCMC, check-in, and explore Nguyen Hue walking street." },
+      { day: 1, title: "Saigon Arrival & Café Apartment", description: "Arrive in HCMC, check-in, and visit the famous Walking Street Café Apartment." },
       { day: 2, title: "Cu Chi Tunnels historical tour", description: "Tour the historic tunnels and visit Ben Thanh Market." },
       { day: 3, title: "Drive to Da Lat Highlands", description: "Private drive to Da Lat, check-in, and visit Dalat Night Market." },
       { day: 4, title: "Valley of Love & Waterfall", description: "Explore the Valley of Love and Datanla waterfalls." },
@@ -494,6 +494,45 @@ export const BY_THEME_CATEGORIES: CategoryData[] = [
       ITINERARIES_DATABASE[9],  // Explore Vietnam
       ITINERARIES_DATABASE[10], // Best of Vietnam
       ITINERARIES_DATABASE[11]  // Incredible Hanoi and Da Nang
+    ]
+  },
+  {
+    name: "Culinary Experiences",
+    tagline: "Taste the real Vietnam.",
+    subsections: ["Street Food Journeys", "Cooking Classes", "Coffee Experiences"],
+    packages: [
+      ITINERARIES_DATABASE[0], // Unforgettable Vietnam (street food focus)
+      ITINERARIES_DATABASE[2], // Vietnam Highlights (regional cuisines)
+      ITINERARIES_DATABASE[10] // Best of Vietnam
+    ]
+  },
+  {
+    name: "City Discovery",
+    tagline: "Vietnam's most vibrant cities.",
+    subsections: ["Hanoi Discovery", "Saigon Explorer"],
+    packages: [
+      ITINERARIES_DATABASE[1], // Explore Ho Chi Minh with Beach
+      ITINERARIES_DATABASE[2], // Vietnam Highlights
+      ITINERARIES_DATABASE[6]  // Mesmerizing Dalat (Saigon focus)
+    ]
+  },
+  {
+    name: "Nature & Adventure",
+    tagline: "Vietnam beyond the cities.",
+    subsections: ["Sapa Adventures", "Cave Exploration"],
+    packages: [
+      ITINERARIES_DATABASE[0], // Unforgettable Vietnam (Ninh Binh caves)
+      ITINERARIES_DATABASE[5], // Da Nang Gateway (Cham Island boat)
+      ITINERARIES_DATABASE[8]  // Valley of Love (Dalat hills)
+    ]
+  },
+  {
+    name: "Luxury Vietnam",
+    tagline: "Vietnam at its finest.",
+    subsections: ["Signature Luxury", "Wellness Retreats"],
+    packages: [
+      ITINERARIES_DATABASE[7], // Honeymoon Getaway (resorts & sunset cruises)
+      ITINERARIES_DATABASE[9]  // Explore Vietnam (flights and open safari)
     ]
   }
 ];
