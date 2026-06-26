@@ -63,56 +63,14 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
     }
   };
 
-  const getDownloadPaths = (id: string) => {
-    let category = '';
-    let filename = '';
-
-    switch (id) {
-      case 'budget-explorer':
-        category = 'First Time in Vietnam';
-        filename = '1_Vietnam_Essentials_5D4N';
-        break;
-      case 'hanoi-escape':
-        category = 'Adventure & Offbeat';
-        filename = '17_Hanoi_Discovery_4D3N';
-        break;
-      case 'danang-discovery':
-        category = 'Beach Escapes';
-        filename = '7_Danang_Beaches_5D4N';
-        break;
-      case 'vietnam-classic':
-        category = 'First Time in Vietnam';
-        filename = '2_Best_of_Vietnam_7D6N';
-        break;
-      case 'vietnam-complete':
-        category = 'First Time in Vietnam';
-        filename = '3_Complete_Vietnam_10D9N';
-        break;
-      case 'vietnam-honeymoon':
-        category = 'Honeymoons & Romance';
-        filename = '9_Romantic_Escapes_6D5N';
-        break;
-      case 'vietnam-family':
-        category = 'Family Holidays';
-        filename = '11_Family_Favorites_7D6N';
-        break;
-      case 'phuquoc-paradise':
-        category = 'Beach Escapes';
-        filename = '6_Phu_Quoc_Escapes_5D4N';
-        break;
-      case 'luxury-vietnam':
-        category = 'Luxury & Wellness';
-        filename = '23_Signature_Luxury_7D6N';
-        break;
-      default:
-        category = 'First Time in Vietnam';
-        filename = '1_Vietnam_Essentials_5D4N';
-    }
-
+  const getDownloadPaths = (pkg: PackageProduct) => {
+    const category = pkg.category;
+    const filename = pkg.title.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '.pdf';
     return {
-      pdf: `/itineraries/PDFs/${category}/${filename}.pdf`
+      pdf: `/itineraries/PDFs/${category}/${filename}`
     };
   };
+
 
   const handleOpenPlanner = (pkg: PackageProduct) => {
     if (onOpenPlanner) {
@@ -243,7 +201,7 @@ Please load this itinerary and let me customize it!`;
             </div>
           ) : (
             displayedPackages.map((pkg) => {
-              const downloadPaths = getDownloadPaths(pkg.id);
+              const downloadPaths = getDownloadPaths(pkg);
               return (
                 <div
                   key={pkg.id}
@@ -469,58 +427,7 @@ Please load this itinerary and let me customize it!`;
 
             {/* Premium Download Buttons */}
             {(() => {
-              const getDownloadPaths = (id: string) => {
-                let category = '';
-                let filename = '';
-
-                switch (id) {
-                  case 'budget-explorer':
-                    category = 'First Time in Vietnam';
-                    filename = '1_Vietnam_Essentials_5D4N';
-                    break;
-                  case 'hanoi-escape':
-                    category = 'Adventure & Offbeat';
-                    filename = '17_Hanoi_Discovery_4D3N';
-                    break;
-                  case 'danang-discovery':
-                    category = 'Beach Escapes';
-                    filename = '7_Danang_Beaches_5D4N';
-                    break;
-                  case 'vietnam-classic':
-                    category = 'First Time in Vietnam';
-                    filename = '2_Best_of_Vietnam_7D6N';
-                    break;
-                  case 'vietnam-complete':
-                    category = 'First Time in Vietnam';
-                    filename = '3_Complete_Vietnam_10D9N';
-                    break;
-                  case 'vietnam-honeymoon':
-                    category = 'Honeymoons & Romance';
-                    filename = '9_Romantic_Escapes_6D5N';
-                    break;
-                  case 'vietnam-family':
-                    category = 'Family Holidays';
-                    filename = '11_Family_Favorites_7D6N';
-                    break;
-                  case 'phuquoc-paradise':
-                    category = 'Beach Escapes';
-                    filename = '6_Phu_Quoc_Escapes_5D4N';
-                    break;
-                  case 'luxury-vietnam':
-                    category = 'Luxury & Wellness';
-                    filename = '23_Signature_Luxury_7D6N';
-                    break;
-                  default:
-                    category = 'First Time in Vietnam';
-                    filename = '1_Vietnam_Essentials_5D4N';
-                }
-
-                return {
-                  pdf: `/itineraries/PDFs/${category}/${filename}.pdf`
-                };
-              };
-
-              const paths = getDownloadPaths(selectedPackage.id);
+              const paths = getDownloadPaths(selectedPackage);
               return (
                 <div className="px-6 py-4 bg-[#FAF7F0] border-t border-[#E8E4D9] shrink-0 flex flex-col gap-2">
                   <span className="text-[0.65rem] uppercase tracking-widest text-[#B8860B] font-semibold text-center mb-1">
