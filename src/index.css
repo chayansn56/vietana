@@ -673,4 +673,43 @@ html {
   transform: scale(0.95);
 }
 
+/* Vogue Editorial Grid System */
+.editorial-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: all 0.5s var(--ease-smooth);
+}
+
+.editorial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(46, 38, 20, 0.05);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.editorial-meta-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #B8860B;
+}
+
+.editorial-btn {
+  background: transparent;
+  border: 1px solid #1E4D45;
+  color: #1E4D45;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.editorial-btn:hover {
+  background: #1E4D45;
+  color: #FAF7F0;
+}
+
+
 

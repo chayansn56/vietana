@@ -128,34 +128,35 @@ Please load this itinerary and let me customize it!`;
   };
 
   return (
-    <Section id="experiences" spacing="lg" className="bg-[#111111] text-white relative overflow-hidden">
-      {/* Background blobs for premium glass feel */}
-      <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full pointer-events-none z-0 hidden animate-blob-float" />
-      <div className="absolute bottom-[10%] right-[-10%] w-[400px] h-[400px] bg-brand-green/5 rounded-full pointer-events-none z-0 hidden animate-blob-float" style={{ animationDelay: '2.5s' }} />
+    <Section id="experiences" spacing="lg" className="bg-[#FAF7F0] text-[#111111] relative overflow-hidden">
+      {/* Editorial layout elements */}
+      <div className="absolute top-[10%] left-[-5%] w-[350px] h-[350px] bg-[#E9DFC8]/15 rounded-full blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
         {/* Main Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <Badge variant="gold-filled" className="mb-4 bg-brand-gold/90">
-              EXPLORE PACKAGES
-            </Badge>
-            <Heading as="h2" size="4xl" font="serif" className="mb-4 tracking-tight text-white">
-              Curated Journeys
+            <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
+              CURATED JOURNEYS
+            </span>
+            <Heading as="h2" size="4xl" font="serif" className="mb-4 tracking-tight text-[#1E4D45]">
+              Explore Experiences
             </Heading>
-            <Heading as="h3" size="xl" className="font-sans font-light text-white/70 tracking-wide max-w-2xl">
-              Locally crafted itineraries for the discerning Indian traveler.
-            </Heading>
+            <div className="w-16 h-px bg-[#D4AF37] mb-6"></div>
+            <Text variant="none" className="text-[#555555] font-light max-w-2xl text-base md:text-lg">
+              Locally handpicked and customized itineraries matching the preferences of premium Indian travelers.
+            </Text>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto items-start sm:items-center self-start">
             {/* Interest vs Region Selector */}
-            <div className="flex bg-white/5 border border-white/10 p-1.5 rounded-2xl gap-2 w-full md:w-auto">
+            <div className="flex bg-[#FAF7F0] border border-[#E8E4D9] p-1.5 rounded-lg gap-2 w-full md:w-auto">
               <button
-                className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all duration-300 ${
+                className={`flex-1 md:flex-none px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase transition duration-300 ${
                   activeTab === 'theme' 
-                    ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong' 
-                    : 'text-white/40 hover:text-white/85'
+                    ? 'bg-[#1E4D45] text-white shadow-sm' 
+                    : 'text-[#1E4D45]/60 hover:text-[#1E4D45]'
                 }`}
                 onClick={() => {
                   setActiveTab('theme');
@@ -165,13 +166,13 @@ Please load this itinerary and let me customize it!`;
                   }
                 }}
               >
-                Browse By Interest
+                By Theme
               </button>
               <button
-                className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all duration-300 ${
+                className={`flex-1 md:flex-none px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase transition duration-300 ${
                   activeTab === 'region' 
-                    ? 'bg-brand-gold text-brand-green-extra-dark shadow-strong' 
-                    : 'text-white/40 hover:text-white/85'
+                    ? 'bg-[#1E4D45] text-white shadow-sm' 
+                    : 'text-[#1E4D45]/60 hover:text-[#1E4D45]'
                 }`}
                 onClick={() => {
                   setActiveTab('region');
@@ -181,114 +182,63 @@ Please load this itinerary and let me customize it!`;
                   }
                 }}
               >
-                Browse By Region
+                By Region
               </button>
             </div>
 
-            {/* Jain & Veg Toggle */}
-            <button
-              onClick={() => setJainVegOnly(!jainVegOnly)}
-              className={`px-5 py-3 rounded-2xl text-xs font-semibold tracking-wider uppercase border flex items-center gap-2 cursor-pointer transition-all duration-300 w-full sm:w-auto justify-center
-                ${jainVegOnly 
-                  ? 'bg-brand-green-light border-brand-green text-white shadow-[0_4px_15px_rgba(44,110,99,0.3)]' 
-                  : 'bg-white/5 border-white/10 text-white/60 hover:text-white/90 hover:bg-white/10'}`}
-            >
-              <Icon name="Leaf" size={14} className={jainVegOnly ? 'text-white' : 'text-brand-green-light'} />
-              Jain & Veg Friendly
-            </button>
-          </div>
-        </div>
-
-        {/* Indian Market Fit Trust Badges */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16 bg-white/5 border border-white/10 p-5 sm:p-6 rounded-3xl backdrop-blur-xl">
-          {[
-            { label: "Veg & Jain Dining", desc: "Curated Indian comfort & veg restaurants", icon: "Leaf", color: "text-brand-green-light" },
-            { label: "24/7 Local Support", desc: "On-ground team contactable via WhatsApp", icon: "MessageCircle", color: "text-brand-gold-light" },
-            { label: "Express Visa Support", desc: "Seamless e-visa approval letter service", icon: "FileText", color: "text-brand-gold-light" },
-            { label: "Expert Local Guides", desc: "Hindi & English speaking verified guides", icon: "Users", color: "text-brand-green-light" }
-          ].map((item, idx) => (
-            <div key={idx} className="flex gap-4 items-start">
-              <span className={`w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 ${item.color} mt-0.5`}>
-                <Icon name={item.icon as any} size={20} />
+            {/* Jain Veg Option filter */}
+            <label className="flex items-center gap-3 cursor-pointer self-start sm:self-auto py-2">
+              <input 
+                type="checkbox" 
+                checked={jainVegOnly}
+                onChange={() => setJainVegOnly(!jainVegOnly)}
+                className="w-4.5 h-4.5 accent-[#1E4D45] cursor-pointer"
+              />
+              <span className="text-xs font-mono uppercase tracking-wider text-[#1E4D45]">
+                🟢 Jain & Veg Only
               </span>
-              <div>
-                <Text variant="white" weight="bold" size="sm" className="tracking-wide">{item.label}</Text>
-                <Text variant="none" className="text-white/55 text-[0.7rem] leading-snug mt-0.5">{item.desc}</Text>
-              </div>
-            </div>
+            </label>
+          </div>
+        </div>
+
+        {/* Category Tabs list horizontal */}
+        <div className="flex gap-2 overflow-x-auto pb-4 mb-10 border-b border-[#E8E4D9] scrollbar-none">
+          {categories.map((cat) => (
+            <button
+              key={cat.name}
+              className={`px-4 py-2 border rounded-full text-xs font-medium tracking-wide uppercase transition shrink-0 duration-300 ${
+                activeCategoryName === cat.name
+                  ? 'border-[#1E4D45] bg-[#1E4D45]/5 text-[#1E4D45]'
+                  : 'border-[#E8E4D9] text-[#555555] hover:border-[#1E4D45]/50'
+              }`}
+              onClick={() => handleCategoryChange(cat.name)}
+            >
+              {cat.name} ({cat.packages.length})
+            </button>
           ))}
-        </div>
-
-        {/* Category horizontal tab bar */}
-        <div className="flex flex-wrap border-b border-white/10 gap-1 mb-10 overflow-x-auto scrollbar-none pb-2 relative z-10">
-          {categories.map((cat) => {
-            const isActive = cat.name === activeCategoryName;
-            return (
-              <button
-                key={cat.name}
-                onClick={() => handleCategoryChange(cat.name)}
-                className={`px-6 py-3 text-xs tracking-widest font-semibold uppercase border-b-2 transition-all duration-300 ${
-                  isActive
-                    ? 'border-brand-gold text-brand-gold-light'
-                    : 'border-transparent text-white/50 hover:text-white/80'
-                }`}
-              >
-                {cat.name}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Category Header with Scroll Buttons (Apple Style) */}
-        <div className="flex justify-between items-end mb-8 relative z-10">
-          <div>
-            <span className="text-[0.65rem] uppercase tracking-widest text-white/40 font-bold">Category Vibe</span>
-            <Heading as="h4" variant="none" className="text-2xl font-serif text-white tracking-wide mt-1">
-              {activeCategory.name}
-            </Heading>
-            <Text variant="none" className="text-white/70 text-xs font-light italic mt-1 block">
-              "{activeCategory.tagline}"
-            </Text>
-          </div>
-
-          {/* Apple-style circular slide controls */}
-          <div className="flex gap-2.5">
-            <button
-              onClick={() => scrollSlider('left')}
-              className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
-            >
-              <Icon name="ChevronLeft" size={18} />
-            </button>
-            <button
-              onClick={() => scrollSlider('right')}
-              className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
-            >
-              <Icon name="ChevronRight" size={18} />
-            </button>
-          </div>
         </div>
 
         {/* Snapping Horizontal Slider Deck */}
         <div 
           ref={sliderRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10 w-full"
+          className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10 w-full"
         >
           {displayedPackages.length === 0 ? (
-            <div className="w-full max-w-xl mx-auto min-h-[350px] flex flex-col items-center justify-center text-center p-10 bg-[#161616]/60 border border-brand-gold/10 rounded-[2.5rem] gap-4 shadow-heavy backdrop-blur-md">
-              <div className="w-16 h-16 rounded-full bg-brand-green/20 text-brand-gold flex items-center justify-center mb-2">
-                <Icon name="Leaf" size={32} />
+            <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white border border-[#E8E4D9] rounded-xl gap-4 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#1E4D45]/10 text-[#1E4D45] flex items-center justify-center mb-2">
+                <Icon name="Leaf" size={24} />
               </div>
-              <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide">Custom Jain & Veg Tours Available</Heading>
-              <Text variant="none" className="text-white/70 text-xs font-light leading-relaxed max-w-md">
+              <Heading as="h4" variant="none" className="text-xl font-serif text-[#1E4D45] tracking-wide">Custom Jain & Veg Tours Available</Heading>
+              <Text variant="none" className="text-[#555555] text-xs font-light leading-relaxed max-w-md">
                 We craft bespoke itineraries with certified Jain kitchens, Indian chefs, and 100% vegetarian catering for this region. Let's build your perfect tour!
               </Text>
               <div className="flex gap-3 mt-4 w-full justify-center">
-                <Button 
-                  className="px-6 py-3 bg-brand-gold hover:bg-brand-gold-light text-brand-green-extra-dark font-bold text-xs tracking-wider uppercase rounded-xl shadow-gold"
+                <button 
+                  className="px-6 py-3 bg-[#1E4D45] hover:bg-[#12302B] text-white text-xs tracking-wider uppercase rounded shadow"
                   onClick={() => onOpenBuilder([])}
                 >
                   Custom Planner
-                </Button>
+                </button>
               </div>
             </div>
           ) : (
@@ -297,82 +247,75 @@ Please load this itinerary and let me customize it!`;
               return (
                 <div
                   key={pkg.id}
-                  className="w-[85vw] sm:w-[450px] h-[550px] bg-[#161D1A] border border-[#D4AF37]/20 rounded-2xl flex flex-col justify-between shrink-0 snap-start relative group shadow-[0_15px_40px_rgba(0,0,0,0.3)] overflow-hidden"
+                  className="w-[85vw] sm:w-[420px] h-[540px] editorial-card rounded-xl flex flex-col justify-between shrink-0 snap-start relative group overflow-hidden border border-[#E8E4D9]"
                 >
-                  {/* Image Background */}
-                  <div className="h-[200px] relative w-full overflow-hidden shrink-0">
+                  {/* Photo area */}
+                  <div className="h-[220px] relative w-full overflow-hidden shrink-0 border-b border-[#E8E4D9]">
                     <img 
                       src={pkg.img} 
                       alt={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] opacity-50"
+                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1200ms]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#161D1A] to-transparent" />
                     
-                    {/* Top ticket badges */}
+                    {/* Top tags */}
                     <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
-                      <span className="bg-[#D4AF37] text-[#111111] font-bold text-[9px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
+                      <span className="bg-[#1E4D45] text-white font-semibold text-[8px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
                         {pkg.badge}
                       </span>
-                      <span className="bg-[#111111]/85 border border-[#D4AF37]/35 text-[#D4AF37] px-2.5 py-1 rounded text-[9px] tracking-widest uppercase font-mono font-bold">
+                      <span className="bg-white text-[#1E4D45] border border-[#E8E4D9] px-2.5 py-1 rounded text-[8px] tracking-widest uppercase font-mono font-bold">
                         {pkg.duration}
                       </span>
                     </div>
                   </div>
 
-                  {/* Boarding Pass Body / Content */}
-                  <div className="flex-1 px-6 pb-2 pt-1 flex flex-col justify-between relative">
+                  {/* Editorial Body / Content */}
+                  <div className="flex-1 px-6 py-5 flex flex-col justify-between relative bg-white">
                     <div className="space-y-2">
-                      <div className="flex justify-between items-baseline">
-                        <Heading as="h4" variant="none" className="text-xl font-serif text-white tracking-wide leading-tight">
-                          {pkg.title}
-                        </Heading>
-                      </div>
+                      <h4 className="text-lg font-bold font-serif text-[#1E4D45] tracking-tight leading-tight">
+                        {pkg.title}
+                      </h4>
                       
-                      <div className="text-[10px] text-[#D4AF37] tracking-widest uppercase font-mono py-1 border-y border-[#D4AF37]/10 flex items-center justify-between">
-                        <span>ROUTE // IND ➔ VNM</span>
-                        <span className="font-bold">CLASS // FIRST</span>
+                      <div className="editorial-meta-tag pb-1 border-b border-[#E8E4D9]">
+                        ROUTE // {pkg.destinations.join(' ➔ ')}
                       </div>
 
-                      <Text variant="none" className="text-white/80 text-xs font-light leading-relaxed line-clamp-3">
+                      <p className="text-[#555555] text-xs font-light leading-relaxed line-clamp-3">
                         {pkg.desc}
-                      </Text>
+                      </p>
                     </div>
 
-                    <div className="py-2.5 border-t border-dashed border-[#D4AF37]/20 relative flex items-center justify-between gap-4 mt-2">
-                      {/* Ticket Circular Cutouts */}
-                      <div className="absolute -left-[31px] w-[12px] h-[12px] bg-[#111111] rounded-full z-20"></div>
-                      <div className="absolute -right-[31px] w-[12px] h-[12px] bg-[#111111] rounded-full z-20"></div>
-                      
+                    <div className="py-2.5 border-t border-[#E8E4D9] flex items-center justify-between gap-4 mt-2">
                       <div>
-                        <span className="text-[8px] uppercase tracking-widest text-[#D4AF37] font-bold block mb-0.5">Stay Curation</span>
-                        <span className="text-[11px] text-white truncate block font-medium">🏨 {pkg.hotels[0]}</span>
+                        <span className="text-[8px] uppercase tracking-widest text-[#B8860B] font-bold block mb-0.5">Stay Curation</span>
+                        <span className="text-[11px] text-[#1E4D45] truncate block font-medium">🏨 {pkg.hotels[0]}</span>
                       </div>
-
-                      {/* Barcode Graphic */}
-                      <div className="h-6 w-24 bg-white/10 shrink-0 opacity-40 group-hover:opacity-70 transition duration-300 relative flex items-center justify-center">
-                        <div className="absolute inset-x-2 inset-y-1 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,#fff_2px,#fff_4px)]"></div>
-                      </div>
+                      
+                      {pkg.isJainVegFriendly && (
+                        <span className="text-[9px] bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
+                          Veg Friendly
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Ticket Tear-off Action Footer */}
-                  <div className="bg-[#111615] border-t border-dashed border-[#D4AF37]/25 p-4 rounded-b-2xl flex gap-3 shrink-0">
+                  {/* Vogue Editorial Action Footer */}
+                  <div className="bg-[#FAF7F0] border-t border-[#E8E4D9] p-4 flex gap-3 shrink-0">
                     <a
                       href={downloadPaths.pdf}
                       download
-                      className="flex-1 py-2 px-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded text-white text-[9px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300"
+                      className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-[#1E4D45] text-[9px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300"
                     >
-                      <Icon name="FileText" size={11} className="text-[#D4AF37]" />
-                      Itinerary PDF
+                      <Icon name="FileText" size={11} className="text-[#B8860B]" />
+                      PDF Info
                     </a>
                     <button
-                      className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-[#111111] bg-[#D4AF37] hover:bg-[#E8C84A] rounded transition duration-300 active:scale-95 cursor-pointer stamp-btn border-none"
+                      className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn"
                       onClick={() => handleOpenPlanner(pkg)}
                     >
                       Customize
                     </button>
                     <button
-                      className="py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-white/70 hover:text-white bg-transparent border border-white/20 rounded transition duration-300 cursor-pointer"
+                      className="py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-[#555555] hover:text-[#111111] bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
                       onClick={() => setSelectedPackage(pkg)}
                     >
                       Details
@@ -385,28 +328,25 @@ Please load this itinerary and let me customize it!`;
 
         {/* FULLY CUSTOM BUILDER BANNER */}
         <div 
-          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-[2.5rem] bg-black/40 backdrop-blur-[40px] border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-2" 
+          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-xl bg-white border border-[#E8E4D9] shadow-sm relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-1" 
           onClick={() => onOpenBuilder([])}
         >
-          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-105" style={{ backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101" style={{ backgroundImage: `linear-gradient(135deg, rgba(250, 247, 240, 0.9), rgba(250, 247, 240, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
           <div className="flex-1 text-center md:text-left relative z-10">
-            <Badge variant="gold-filled" className="mb-4">
-              Fully Custom
-            </Badge>
-            <Heading as="h3" size="2xl" className="mt-2 mb-4 text-white font-extrabold tracking-tight">
+            <span className="text-[10px] font-bold tracking-[0.2em] text-[#B8860B] uppercase">Bespoke Curation</span>
+            <Heading as="h3" size="2xl" className="mt-2 mb-4 text-[#1E4D45] font-serif font-bold tracking-tight">
               Build Your Own Story
             </Heading>
-            <Text variant="white" size="xl" className="opacity-90">
+            <Text variant="none" className="text-[#555555] text-base font-light max-w-xl">
               Select your destinations, travel style, and let our on-ground expert team plan the rest.
             </Text>
           </div>
 
-          <Button 
-            variant="glass"
-            className="w-full md:w-auto px-10 py-5 bg-brand-gold text-white border-none shadow-[0_10px_30px_rgba(202,138,4,0.3)] hover:shadow-[0_15px_40px_rgba(202,138,4,0.5)] group/btn relative z-10 text-lg font-semibold"
+          <button 
+            className="w-full md:w-auto px-8 py-4 bg-[#1E4D45] hover:bg-[#12302B] text-white border-none shadow transition-all duration-300 rounded text-xs tracking-widest uppercase font-bold z-10"
           >
-            Open Trip Builder <span className="transition-transform duration-300 group-hover/btn:translate-x-2 ml-2">→</span>
-          </Button>
+            Open Trip Builder <span className="ml-2">→</span>
+          </button>
         </div>
       </Container>
 
@@ -417,7 +357,7 @@ Please load this itinerary and let me customize it!`;
             isOpen={!!selectedPackage}
             onClose={() => { setSelectedPackage(null); setExpandedDay(1); }}
             maxWidth="max-w-4xl"
-            className="h-[80vh] flex flex-col p-0 overflow-hidden glass-dark rounded-[32px] shadow-heavy"
+            className="h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-xl shadow-heavy"
           >
             {/* Header image details */}
             <div className="h-48 w-full overflow-hidden relative shrink-0">
@@ -426,9 +366,9 @@ Please load this itinerary and let me customize it!`;
                 alt={selectedPackage.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111111] to-black/35" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-brand-gold font-bold mb-1.5 block">
+                <Text variant="none" className="text-[0.65rem] uppercase tracking-widest text-[#D4AF37] font-mono font-bold mb-1.5 block">
                   {selectedPackage.duration} · {selectedPackage.badge}
                 </Text>
                 <Heading as="h3" variant="none" className="text-2xl font-serif text-white tracking-wide">
@@ -438,15 +378,15 @@ Please load this itinerary and let me customize it!`;
             </div>
 
             {/* Scrollable details tab */}
-            <div className="flex-1 overflow-y-auto p-8 md:p-10 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-white/5">
+            <div className="flex-1 overflow-y-auto p-8 md:p-10 scrollbar-thin">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-[#E8E4D9]">
                 <div>
-                  <Heading as="h4" variant="none" className="text-xs text-brand-gold-light uppercase tracking-widest font-semibold mb-3">
+                  <Heading as="h4" variant="none" className="text-xs text-[#B8860B] uppercase tracking-widest font-mono font-semibold mb-3">
                     RECOMMENDED HOTELS
                   </Heading>
                   <div className="flex flex-col gap-2">
                     {selectedPackage.hotels.map((h, idx) => (
-                      <Text key={idx} variant="none" className="text-white/80 text-xs font-light">
+                      <Text key={idx} variant="none" className="text-[#555555] text-xs font-light">
                         🏨 {h}
                       </Text>
                     ))}
@@ -454,17 +394,17 @@ Please load this itinerary and let me customize it!`;
                 </div>
 
                 <div>
-                  <Heading as="h4" variant="none" className="text-xs text-brand-gold-light uppercase tracking-widest font-semibold mb-3">
+                  <Heading as="h4" variant="none" className="text-xs text-[#B8860B] uppercase tracking-widest font-mono font-semibold mb-3">
                     KEY INCLUSIONS
                   </Heading>
                   <div className="flex flex-col gap-1.5">
                     {selectedPackage.inclusions.slice(0, 4).map((inc, idx) => (
-                      <Text key={idx} variant="none" className="text-white/80 text-xs font-light flex items-start gap-2">
-                        <span className="text-brand-green-light mt-0.5">✓</span> <span>{inc}</span>
+                      <Text key={idx} variant="none" className="text-[#555555] text-xs font-light flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5">✓</span> <span>{inc}</span>
                       </Text>
                     ))}
                     {selectedPackage.inclusions.length > 4 && (
-                      <Text variant="none" className="text-white/40 text-[0.65rem] italic pl-5">
+                      <Text variant="none" className="text-[#555555]/60 text-[0.65rem] italic pl-5">
                         + {selectedPackage.inclusions.length - 4} more inclusions
                       </Text>
                     )}
@@ -474,47 +414,47 @@ Please load this itinerary and let me customize it!`;
 
               {/* Day-by-Day Accordion preview */}
               <div className="mb-6">
-                <Heading as="h4" variant="none" className="text-xs text-brand-gold-light uppercase tracking-widest font-semibold mb-6">
+                <Heading as="h4" variant="none" className="text-xs text-[#B8860B] uppercase tracking-widest font-mono font-semibold mb-6">
                   DAY-BY-DAY ITINERARY PREVIEW
                 </Heading>
 
-                <div className="flex flex-col gap-3 pl-4 border-l border-dashed border-white/10">
+                <div className="flex flex-col gap-3 pl-4 border-l border-dashed border-[#E8E4D9]">
                   {selectedPackage.days.map((day) => {
                     const isExpanded = expandedDay === day.day;
                     return (
                       <div key={day.day} className="relative">
                         <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${
-                          isExpanded ? 'bg-brand-gold shadow-[0_0_6px_rgba(201,168,76,0.6)]' : 'bg-white/20'
+                          isExpanded ? 'bg-[#1E4D45]' : 'bg-[#E8E4D9]'
                         }`} />
 
                         <div 
                           className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${
-                            isExpanded ? 'bg-white/5 border-brand-gold/30' : 'bg-[#1a1a1a]/40 border-white/5 hover:bg-white/5'
+                            isExpanded ? 'bg-[#FAF7F0] border-[#1E4D45]/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
                           }`}
                           onClick={() => setExpandedDay(isExpanded ? null : day.day)}
                         >
                           <div className="flex justify-between items-center">
-                            <Text variant="none" className="text-xs font-serif text-brand-gold-light font-bold">
+                            <Text variant="none" className="text-xs font-serif text-[#1E4D45] font-bold">
                               Day {day.day}: {day.title}
                             </Text>
-                            <span className="text-white/30 text-xs">
+                            <span className="text-[#555555]/65 text-xs">
                               <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={14} />
                             </span>
                           </div>
 
                           {isExpanded && (
-                            <div className="mt-3 text-xs flex flex-col gap-3 animate-msg-fade-in font-light leading-relaxed text-white/80">
-                              <Text variant="none" className="italic text-white/60 mb-1">{day.description}</Text>
+                            <div className="mt-3 text-xs flex flex-col gap-3 animate-msg-fade-in font-light leading-relaxed text-[#555555]">
+                              <Text variant="none" className="italic text-[#555555]/85 mb-1">{day.description}</Text>
                               <div>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-brand-gold-light block mb-1">Activities:</span>
+                                <span className="text-[0.6rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Activities:</span>
                                 {day.activities.map((act, i) => (
                                   <div key={i} className="pl-2 flex gap-2"><span>-</span> <span>{act}</span></div>
                                 ))}
                               </div>
                               <div>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-brand-gold-light block mb-1">Gastronomy:</span>
+                                <span className="text-[0.6rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Gastronomy:</span>
                                 {day.food.map((f, i) => (
-                                  <div key={i} className="pl-2 flex gap-2 italic text-white/60"><span>✦</span> <span>{f}</span></div>
+                                  <div key={i} className="pl-2 flex gap-2 italic text-[#555555]/80"><span>✦</span> <span>{f}</span></div>
                                 ))}
                               </div>
                             </div>
@@ -582,17 +522,17 @@ Please load this itinerary and let me customize it!`;
 
               const paths = getDownloadPaths(selectedPackage.id);
               return (
-                <div className="px-6 py-4 bg-white/5 border-t border-white/5 shrink-0 flex flex-col gap-2">
-                  <span className="text-[0.65rem] uppercase tracking-widest text-brand-gold-light font-semibold text-center mb-1">
-                    Download Luxury Handbook (No Pricing)
+                <div className="px-6 py-4 bg-[#FAF7F0] border-t border-[#E8E4D9] shrink-0 flex flex-col gap-2">
+                  <span className="text-[0.65rem] uppercase tracking-widest text-[#B8860B] font-semibold text-center mb-1">
+                    Download Luxury Handbook
                   </span>
-                  <div className="flex border border-white/10 rounded-2xl overflow-hidden shadow-strong">
+                  <div className="flex border border-[#E8E4D9] rounded overflow-hidden shadow-sm">
                     <a
                       href={paths.pdf}
                       download
-                      className="w-full py-3 px-4 bg-[#1E4D45]/45 hover:bg-[#1E4D45]/75 text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300"
+                      className="w-full py-3 px-4 bg-[#1E4D45] hover:bg-[#12302B] text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300"
                     >
-                      <Icon name="FileText" size={14} className="text-brand-gold" />
+                      <Icon name="FileText" size={14} className="text-[#D4AF37]" />
                       Download PDF Itinerary
                     </a>
                   </div>
@@ -601,10 +541,10 @@ Please load this itinerary and let me customize it!`;
             })()}
 
             {/* Modal Actions */}
-            <div className="p-6 bg-black/60 border-t border-white/5 shrink-0 flex flex-col sm:flex-row gap-3">
+            <div className="p-6 bg-white border-t border-[#E8E4D9] shrink-0 flex flex-col sm:flex-row gap-3">
               <Button
                 variant="glass"
-                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-white bg-white/5 border border-white/10 hover:bg-white/10"
+                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-[#1E4D45] bg-[#FAF7F0] border border-[#E8E4D9] hover:bg-[#1E4D45]/5"
                 onClick={() => {
                   const itemsList = selectedPackage.days.map(d => `Day ${d.day}: ${d.title}`).join('\n');
                   const msg = `Hi Vietana! I'm interested in the "${selectedPackage.title}" package:\n\n${itemsList}`;
@@ -614,7 +554,7 @@ Please load this itinerary and let me customize it!`;
                 <Icon name="MessageCircle" size={16} className="mr-2" /> Book via WhatsApp
               </Button>
               <Button
-                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-brand-green-extra-dark bg-brand-gold hover:bg-brand-gold-light shadow-gold"
+                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-white bg-[#1E4D45] hover:bg-[#12302B]"
                 onClick={() => {
                   const pkg = selectedPackage;
                   setSelectedPackage(null);
