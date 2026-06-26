@@ -93,6 +93,12 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                   <span className="bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full">
                     {getReadingTime(article)}
                   </span>
+                  {article.author && (
+                    <span className="bg-white/20 backdrop-blur-md border border-white/10 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
+                      <Icon name="User" size={10} />
+                      By {article.author}
+                    </span>
+                  )}
                   <button 
                     onClick={handleSaveToPlan}
                     className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all"
@@ -145,6 +151,21 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                       )}
                     </div>
                   ))}
+                  
+                  {/* Footer Logo */}
+                  <div className="pt-16 pb-8 flex flex-col items-center justify-center opacity-40">
+                    <div className="w-12 h-12 mb-4 text-[#1D1D1F]">
+                      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.4H4.8L12 5.8z"/>
+                      </svg>
+                    </div>
+                    <Heading as="h4" size="lg" font="serif" className="text-[#1D1D1F] tracking-[0.3em] uppercase mb-1">
+                      VIETANA
+                    </Heading>
+                    <Text size="xs" className="tracking-[0.3em] uppercase text-[#1D1D1F]/70 font-mono">
+                      JOURNAL
+                    </Text>
+                  </div>
                 </div>
               ) : (
                 <div className="space-y-8">
