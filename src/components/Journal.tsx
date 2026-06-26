@@ -5,6 +5,7 @@ import Container from './ui/layout/Container';
 import Icon from './ui/Icon';
 import { magazineData, Article } from '../data/notesMagazine';
 import NotesSideSheet from './NotesSideSheet';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 
 const highlightText = (text: string, query: string) => {
   if (!query) return <>{text}</>;
@@ -234,6 +235,29 @@ const Journal: React.FC = () => {
                 </motion.div>
               );
             })}
+          </div>
+        </Container>
+      </div>
+
+      {/* SUBMIT STORY CTA */}
+      <div className="py-16 bg-[#1E4D45] text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+        <Container>
+          <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto py-8">
+            <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-4 block">SHARE YOUR JOURNEY</span>
+            <Heading as="h2" size="3xl" font="serif" className="mb-6 text-white drop-shadow-md">
+              Send Your Own Story
+            </Heading>
+            <Text size="md" className="font-light opacity-90 mb-10 leading-relaxed text-[#E8E4D9]">
+              Every traveler sees Vietnam differently. Whether it's a hidden café in Hanoi or a misty morning in Sapa, we'd love to feature your travel memories in our journal. 
+            </Text>
+            <button 
+              onClick={() => window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT, "please this is my story upload it on vietana JOURNAL ."), '_blank')}
+              className="px-8 py-4 bg-brand-gold hover:bg-brand-gold-light text-[#111111] font-bold tracking-widest uppercase text-sm rounded-full shadow-[0_8px_32px_rgba(201,168,76,0.3)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(201,168,76,0.5)] transition-all duration-300 flex items-center gap-3 cursor-pointer group"
+            >
+              <Icon name="MessageCircle" size={20} className="group-hover:scale-110 transition-transform" />
+              Message Us on WhatsApp
+            </button>
           </div>
         </Container>
       </div>
