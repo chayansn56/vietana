@@ -1,5 +1,4 @@
-import { Itinerary } from '../hooks/useAIPlanner';
-
+// Automatically generated file. Do not edit directly.
 export interface PackageProduct {
   id: string;
   category: string;
@@ -30,425 +29,8618 @@ export interface CategoryData {
 }
 
 export const ITINERARIES_DATABASE: PackageProduct[] = [
-  // First Time in Vietnam
   {
-    id: "unforgettable-vietnam",
-    category: "First Time in Vietnam",
-    title: "Unforgettable Vietnam (5D4N)",
-    duration: "5 Days / 4 Nights",
-    badge: "Classic Route",
-    desc: "A beautiful introductory tour connecting the French colonial sights of Hanoi with the coastal beauty of Da Nang.",
-    img: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
-    destinations: ["Hanoi", "Da Nang"],
-    hotels: [
-      "Hanoi: 4-Star Boutique Hotel - 3 Nights",
-      "Da Nang: 4-Star Beachfront Resort - 1 Night"
+    "id": "vietnam-highlights-express",
+    "category": "First Time in Vietnam",
+    "title": "Vietnam Highlights Express (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Top Seller",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Saigon"
     ],
-    inclusions: [
-      "Airport transfers in private A/C vehicles",
-      "Domestic flight ticket from Hanoi to Da Nang",
-      "Daily breakfast at the hotels",
-      "Guided Hanoi street food walking tour",
-      "Ninh Binh Day trip (Trang An & Mua Cave)",
-      "Ba Na Hills & Golden Bridge VIP tour"
+    "img": "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
+    "hotels": [
+      "Hanoi: 4-star boutique (2 Nights)",
+      "Halong Bay: Luxury Cruise (1 Night)",
+      "Saigon: 4-star luxury (2 Nights)"
     ],
-    exclusions: [
-      "International airfare and flight booking fees",
-      "Vietnam visa stamping fees",
-      "Personal expenses and meals not listed"
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Hanoi Arrival & Street Food", description: "Arrive in Hanoi, check in to your hotel, and spend the evening enjoying authentic local street food." },
-      { day: 2, title: "Hanoi City & Train Street Heritage", description: "Tour the Ho Chi Minh Mausoleum, Temple of Literature, and see the famous Train Street." },
-      { day: 3, title: "Ninh Binh Day Trip", description: "Take a sampan boat ride in Trang An and hike up the Mua Cave peak." },
-      { day: 4, title: "Flight to Da Nang & Hoi An Ancient Town", description: "Fly to Da Nang, check in, and spend the evening amidst Hoi An's colorful lanterns." },
-      { day: 5, title: "Ba Na Hills & Golden Bridge", description: "Excursion to Ba Na Hills and departure from Da Nang Airport." }
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   },
   {
-    id: "explore-hcmc-beach",
-    category: "First Time in Vietnam",
-    title: "Explore Ho Chi Minh with Beach (5D4N)",
-    duration: "5 Days / 4 Nights",
-    badge: "City & Coast",
-    desc: "Explore the bustling metropolis of Saigon combined with a relaxing beach holiday at the seaside destination of Vung Tau.",
-    img: "https://images.unsplash.com/photo-1509060464153-44667396260f?w=800&q=80",
-    destinations: ["Ho Chi Minh City", "Vung Tau"],
-    hotels: [
-      "Ho Chi Minh City: 4-Star Boutique Hotel - 3 Nights",
-      "Vung Tau: 4-Star Seaside Resort - 1 Night"
+    "id": "classic-trio-discovery",
+    "category": "First Time in Vietnam",
+    "title": "Classic Trio Discovery (7D6N)",
+    "duration": "7 Days / 6 Nights",
+    "badge": "Popular",
+    "destinations": [
+      "Hanoi",
+      "Da Nang",
+      "Hoi An",
+      "Saigon"
     ],
-    inclusions: [
-      "Airport and city transfers in private vehicles",
-      "Daily breakfast at hotels",
-      "Saigon City guided heritage tour",
-      "Cu Chi Tunnels historical excursion",
-      "Mekong Delta day tour with boat cruise",
-      "Vung Tau city tour"
+    "img": "https://images.unsplash.com/photo-1509060464153-44667396260f?w=800&q=80",
+    "hotels": [
+      "Hanoi: 4-star boutique (2 Nights)",
+      "Da Nang: Beachfront Resort (2 Nights)",
+      "Saigon: 4-star boutique (2 Nights)"
     ],
-    exclusions: [
-      "International flights",
-      "E-visa stamping/entry fees",
-      "Personal tips and spending"
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Da Nang & Hoi An & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Saigon Arrival & Bitexco View", description: "Arrive in HCMC, check-in, and view the metropolitan skyline from the Skydeck." },
-      { day: 2, title: "Cu Chi Tunnels & French Heritage", description: "Explore the tunnels and visit the Notre Dame Cathedral." },
-      { day: 3, title: "Mekong Delta Waterway Excursion", description: "Boat cruise through coconut groves, honey farms, and canal villages." },
-      { day: 4, title: "Transfer to Vung Tau Beach", description: "Drive to Vung Tau beach, check in to resort, and relax by the sea." },
-      { day: 5, title: "Christ Statue & Saigon Airport Transfer", description: "Climb the Christ Statue and return to Saigon Airport for departure." }
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   },
   {
-    id: "vietnam-highlights",
-    category: "First Time in Vietnam",
-    title: "Vietnam Highlights (6D5N)",
-    duration: "6 Days / 5 Nights",
-    badge: "Top Sights",
-    desc: "A fast-paced journey covering the ultimate highlights of Northern, Central, and Southern Vietnam.",
-    img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80",
-    destinations: ["Hanoi", "Da Nang", "Ho Chi Minh City"],
-    hotels: [
-      "Hanoi: 4-Star Hotel - 2 Nights",
-      "Da Nang: 4-Star Resort - 2 Nights",
-      "Ho Chi Minh City: 4-Star Hotel - 1 Night"
+    "id": "hanoi-da-nang-gateway",
+    "category": "First Time in Vietnam",
+    "title": "Hanoi & Da Nang Gateway (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Short Getaway",
+    "destinations": [
+      "Hanoi",
+      "Da Nang",
+      "Ba Na Hills"
     ],
-    inclusions: [
-      "All airport and destination transfers in private A/C vehicles",
-      "Domestic flights: Hanoi to Da Nang, Da Nang to Saigon",
-      "Daily breakfast",
-      "Halong Bay luxury day cruise",
-      "Hoi An Ancient Town tour",
-      "Ba Na Hills & Golden Bridge tour",
-      "Mekong Delta day tour"
+    "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
+    "hotels": [
+      "Hanoi: 4-star boutique (2 Nights)",
+      "Da Nang: Beachfront Resort (2 Nights)"
     ],
-    exclusions: [
-      "International flight bookings",
-      "Visa entry costs",
-      "Personal items"
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Da Nang & Ba Na Hills, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Hanoi Arrival & cyclo ride", description: "Arrive in Hanoi, check in, and enjoy a cyclo ride through the Old Quarter." },
-      { day: 2, title: "Halong Bay Luxury Day Cruise", description: "Drive to Halong Bay, board a luxury day cruise, and kayak through limestone karsts." },
-      { day: 3, title: "Fly to Da Nang & Hoi An", description: "Fly to Da Nang, visit Marble Mountains, and explore Hoi An." },
-      { day: 4, title: "Ba Na Hills & Golden Bridge", description: "Spend a full day visiting the French Village and Golden Bridge." },
-      { day: 5, title: "Fly to Saigon & City Tour", description: "Fly to HCMC, tour War Remnants Museum and Independence Palace." },
-      { day: 6, title: "Mekong Delta & Departure", description: "Explore Mekong Delta and head to Saigon Airport for departure." }
-    ]
-  },
-
-  // Beach Escapes
-  {
-    id: "vinwonders-kiss-sea",
-    category: "Beach Escapes",
-    title: "Vin Wonders and Kiss of the Sea (7D6N)",
-    duration: "7 Days / 6 Nights",
-    badge: "Theme Parks & Sun",
-    desc: "An action-packed luxury holiday combining Phu Quoc theme parks and show elements with Central Vietnam beach vibes.",
-    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-    destinations: ["Phu Quoc", "Da Nang", "Ho Chi Minh City"],
-    hotels: [
-      "Phu Quoc: 4-Star Resort - 3 Nights",
-      "Da Nang: 4-Star Resort - 3 Nights",
-      "Ho Chi Minh City: 4-Star Hotel - 1 Night"
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
     ],
-    inclusions: [
-      "All private airport and land transfers",
-      "Domestic flights: Phu Quoc to Da Nang, Da Nang to Saigon",
-      "VinWonders Phu Quoc & Vinpearl Safari entrance tickets",
-      "Kiss of the Sea show admission ticket",
-      "Hoi An Ancient town and Ba Na Hills tours"
-    ],
-    exclusions: [
-      "International flights",
-      "E-visa stamping/entry fees",
-      "Meals other than breakfast"
-    ],
-    days: [
-      { day: 1, title: "Phu Quoc Arrival & Sunset Town", description: "Arrive in Phu Quoc, check-in, and explore European-style Sunset Town." },
-      { day: 2, title: "Vinpearl Safari & VinWonders Fun", description: "Full-day fun at Vinpearl Safari and VinWonders amusement park." },
-      { day: 3, title: "Phu Quoc Island Tour & Kiss of the Sea", description: "Explore Starfish Beach, visit local pearl farm, and watch the spectacular show." },
-      { day: 4, title: "Fly to Da Nang & Hoi An Town", description: "Fly to Da Nang, check-in, and stroll Hoi An lanterns." },
-      { day: 5, title: "Ba Na Hills & Golden Bridge", description: "Full day at Ba Na Hills cable car and French gardens." },
-      { day: 6, title: "Marble Mountains & Beach Day", description: "Visit Marble Mountains and relax on My Khe beach." },
-      { day: 7, title: "Fly to Saigon & Departure", description: "Fly to Saigon and catch your international connecting flight home." }
-    ]
-  },
-  {
-    id: "phuquoc-island-tour",
-    category: "Beach Escapes",
-    title: "Phu Quoc with 3 / 4 Island Tour (4n Phu Quoc)",
-    duration: "5 Days / 4 Nights",
-    badge: "Island Hopping",
-    desc: "Deep dive into the tropical southern islands of Phu Quoc, featuring white beaches, coral reefs, and the Hon Thom cable car.",
-    img: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=800&q=80",
-    destinations: ["Phu Quoc"],
-    hotels: [
-      "Phu Quoc: 4-Star Beachfront Resort - 4 Nights"
-    ],
-    inclusions: [
-      "Private airport transfers",
-      "Daily breakfast at the resort",
-      "Speedboat 4-Island Tour (May Rut, Gam Ghi, Mong Tay, Buom)",
-      "Snorkeling gear and seafood lunch during island tour",
-      "Hon Thom Cable Car tickets"
-    ],
-    exclusions: [
-      "Airfare",
-      "Visa fees",
-      "Dinner meals"
-    ],
-    days: [
-      { day: 1, title: "Phu Quoc Arrival & Grand World", description: "Arrive in Phu Quoc, private check-in, and evening tour of Grand World 'Venice' city." },
-      { day: 2, title: "Speedboat 4-Island Tour & Snorkeling", description: "Embark on a speedboat tour to pristine islands, snorkeling, and a beach BBQ lunch." },
-      { day: 3, title: "Hon Thom Cable Car & Aquatopia", description: "Ride the world's longest over-sea cable car to Hon Thom Pineapple Island and play at the waterpark." },
-      { day: 4, title: "Starfish Beach & Pepper Farm", description: "Relax at Starfish Beach, visit local pepper and honey farms." },
-      { day: 5, title: "Resort Leisure & Departure", description: "Enjoy pool amenities before checkout and private airport transfer." }
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ba Na Hills Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Ba Na Hills",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   },
   {
-    id: "danang-gateway",
-    category: "Beach Escapes",
-    title: "Da Nang Gateway (5D4N)",
-    duration: "5 Days / 4 Nights",
-    badge: "Beach & Heritage",
-    desc: "A tailored coastal escape in Da Nang, featuring Cham Island boat excursions and Ba Na Hills amusement park.",
-    img: "https://images.unsplash.com/photo-1559592481-74153c497958?w=800&q=80",
-    destinations: ["Da Nang"],
-    hotels: [
-      "Da Nang: 4-Star Beachfront Hotel - 4 Nights"
+    "id": "saigon-beach-combo",
+    "category": "First Time in Vietnam",
+    "title": "Saigon & Beach Combo (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Best Value",
+    "destinations": [
+      "Saigon",
+      "Vung Tau Beach"
     ],
-    inclusions: [
-      "Private round-trip airport transfers",
-      "Cham Island Speedboat tour with snorkeling & lunch",
-      "Ba Na Hills & Golden Bridge tickets with private transfers",
-      "Hoi An Ancient Town guided walk"
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Saigon: 4-star luxury (2 Nights)",
+      "Vung Tau: Seaside Resort (2 Nights)"
     ],
-    exclusions: [
-      "Flights",
-      "Personal tips",
-      "E-visa fees"
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Vung Tau Beach, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Da Nang Arrival & Dragon Bridge", description: "Arrive in Da Nang, transfer to beachfront hotel, and see Dragon Bridge fire show." },
-      { day: 2, title: "Cham Island Excursion", description: "Speedboat to Cham Island (Cu Lao Cham), snorkeling, and seafood lunch." },
-      { day: 3, title: "Ba Na Hills & Golden Bridge", description: "Visit Ba Na Hills theme park and snap photos on the Golden Bridge." },
-      { day: 4, title: "Marble Mountains & Hoi An Town", description: "Explore limestone caves at Marble Mountains and stroll Hoi An lanterns." },
-      { day: 5, title: "Beach morning & Departure", description: "Checkout and transfer to Da Nang International Airport." }
-    ]
-  },
-
-  // Honeymoons & Romance
-  {
-    id: "mesmerizing-dalat",
-    category: "Honeymoons & Romance",
-    title: "Mesmerizing Dalat (4D3N)",
-    duration: "4 Days / 3 Nights",
-    badge: "Romantic Highlands",
-    desc: "Escape to the French-style highlands of Da Lat, the ultimate romantic getaway with waterfalls and flower valleys.",
-    img: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=800&q=80",
-    destinations: ["Ho Chi Minh City", "Da Lat"],
-    hotels: [
-      "Ho Chi Minh City: 4-Star Hotel - 1 Night",
-      "Da Lat: 4-Star Romantic Resort - 2 Nights"
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
     ],
-    inclusions: [
-      "All airport and land transfers in private vehicles",
-      "Domestic flight from Saigon to Da Lat",
-      "Dalat city valley tour",
-      "Clay tunnel and flower garden tickets"
-    ],
-    exclusions: [
-      "International airfare",
-      "Meals not listed in inclusions"
-    ],
-    days: [
-      { day: 1, title: "Saigon Arrival & Dinner Cruise", description: "Arrive in HCMC, check-in, and enjoy a romantic dinner cruise on Saigon River." },
-      { day: 2, title: "Fly to Da Lat - City of Love", description: "Fly to Da Lat. Check-in to a romantic resort, and stroll around Xuan Huong Lake." },
-      { day: 3, title: "Valley of Love & Clay Tunnel", description: "Explore the Valley of Love, Datanla waterfalls alpine coaster, and the Clay Tunnel." },
-      { day: 4, title: "Flower Gardens & Return", description: "Visit Dalat flower garden, Linh Phuoc pagoda, and return to airport." }
-    ]
-  },
-  {
-    id: "honeymoon-getaway",
-    category: "Honeymoons & Romance",
-    title: "Honeymoon Getaway (8D7N)",
-    duration: "8 Days / 7 Nights",
-    badge: "Grand Romance",
-    desc: "A comprehensive grand tour for honeymooners covering Vietnam's top romantic spots from Hanoi to Phu Quoc.",
-    img: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80",
-    destinations: ["Hanoi", "Da Nang", "Phu Quoc", "Ho Chi Minh City"],
-    hotels: [
-      "Hanoi: Luxury Boutique - 2 Nights",
-      "Da Nang: Beachfront Resort - 2 Nights",
-      "Phu Quoc: Romantic Pool Villa - 2 Nights",
-      "Ho Chi Minh City: 4-Star Hotel - 1 Night"
-    ],
-    inclusions: [
-      "Private transfers and domestic flights",
-      "Daily couple's breakfast",
-      "Halong Bay luxury day cruise",
-      "Ba Na Hills & Hoi An lantern boat ride",
-      "Phu Quoc sunset cruise with candlelit dinner"
-    ],
-    exclusions: [
-      "International flights",
-      "Personal tips",
-      "Visa entry costs"
-    ],
-    days: [
-      { day: 1, title: "Hanoi Arrival & Spa Session", description: "Arrive in Hanoi, check-in, and enjoy a signature couple's spa therapy." },
-      { day: 2, title: "Halong Bay Luxury Cruise", description: "Day cruise with gourmet meals and kayaking." },
-      { day: 3, title: "Fly to Da Nang & Hoi An Boat Ride", description: "Fly to Da Nang, check-in, and ride a lantern boat in Hoi An." },
-      { day: 4, title: "Ba Na Hills & Golden Bridge", description: "Spend a beautiful day together on the Golden Bridge." },
-      { day: 5, title: "Fly to Phu Quoc Island", description: "Fly to Phu Quoc island, check-in to your private pool villa." },
-      { day: 6, title: "Sunset Cruise & Candlelit Dinner", description: "Catamaran sunset cruise and candlelight seafood dinner on the beach." },
-      { day: 7, title: "Fly to Saigon & Rooftop Bar", description: "Fly to Saigon, check-in, and enjoy rooftop cocktails." },
-      { day: 8, title: "Departure from HCMC", description: "Checkout and transfer to Saigon Airport." }
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Vung Tau Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Vung Tau Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Vung Tau Beach Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Saigon & Vung Tau Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Vung Tau Beach Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Saigon & Vung Tau Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Vung Tau Beach",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Vung Tau Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   },
   {
-    id: "valley-of-love",
-    category: "Honeymoons & Romance",
-    title: "Valley of Love (7D6N)",
-    duration: "7 Days / 6 Nights",
-    badge: "Valley & Coast",
-    desc: "A beautiful combination of Da Lat's romantic hills and Vung Tau's golden sunset beaches.",
-    img: "https://images.unsplash.com/photo-1519225495810-7517c2965a7a?w=800&q=80",
-    destinations: ["Ho Chi Minh City", "Da Lat", "Vung Tau"],
-    hotels: [
-      "Ho Chi Minh City: 4-Star - 2 Nights",
-      "Da Lat: 4-Star Resort - 2 Nights",
-      "Vung Tau: 4-Star Beach resort - 2 Nights"
+    "id": "northern-jewels",
+    "category": "First Time in Vietnam",
+    "title": "Northern Jewels (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Scenic Route",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Ninh Binh"
     ],
-    inclusions: [
-      "All land transfers in private A/C vehicles",
-      "Daily breakfast at hotels",
-      "Dalat waterfall coaster and Valley of Love tickets",
-      "Vung Tau beach tour"
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    "hotels": [
+      "Hanoi: 4-star boutique (3 Nights)",
+      "Halong Bay: Luxury Cruise (1 Night)",
+      "Ninh Binh: Bungalow (1 Night)"
     ],
-    exclusions: [
-      "Flights",
-      "Personal items"
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Ninh Binh, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Saigon Arrival & Café Apartment", description: "Arrive in HCMC, check-in, and visit the famous Walking Street Café Apartment." },
-      { day: 2, title: "Cu Chi Tunnels historical tour", description: "Tour the historic tunnels and visit Ben Thanh Market." },
-      { day: 3, title: "Drive to Da Lat Highlands", description: "Private drive to Da Lat, check-in, and visit Dalat Night Market." },
-      { day: 4, title: "Valley of Love & Waterfall", description: "Explore the Valley of Love and Datanla waterfalls." },
-      { day: 5, title: "Drive to Vung Tau Beach", description: "Drive to Vung Tau beach and catch the sunset on Back Beach." },
-      { day: 6, title: "Vung Tau City Sightseeing", description: "Visit the Lighthouse, Giant Christ Statue, and enjoy local seafood." },
-      { day: 7, title: "Return to Saigon Airport", description: "Transfer directly to HCMC Airport for departure." }
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Ninh Binh",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   },
-
-  // Family Holidays
   {
-    id: "explore-vietnam",
-    category: "Family Holidays",
-    title: "Explore Vietnam (10D9N)",
-    duration: "10 Days / 9 Nights",
-    badge: "Grand Family Tour",
-    desc: "The ultimate family tour connecting Saigon, Phu Quoc theme parks, historic Hanoi, and Da Nang.",
-    img: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
-    destinations: ["Ho Chi Minh City", "Phu Quoc", "Hanoi", "Da Nang"],
-    hotels: [
-      "Ho Chi Minh City: 4-Star - 2 Nights",
-      "Phu Quoc: Family Resort - 3 Nights",
-      "Hanoi: 4-Star Hotel - 3 Nights",
-      "Da Nang: Beach Resort - 1 Night"
+    "id": "vietnam-grand-heritage",
+    "category": "First Time in Vietnam",
+    "title": "Vietnam Grand Heritage (10D9N)",
+    "duration": "10 Days / 9 Nights",
+    "badge": "In-Depth",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Sapa",
+      "Da Nang",
+      "Saigon"
     ],
-    inclusions: [
-      "All airport and city transfers in family private A/C coaches",
-      "Domestic flights: SGN-PQC, PQC-HAN, HAN-DAD",
-      "VinWonders Phu Quoc & Safari entrance tickets",
-      "Halong Bay day cruise from Hanoi",
-      "Ba Na Hills & Hoi An ancient town tours"
+    "img": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80",
+    "hotels": [
+      "Hanoi: 4-star boutique (2 Nights)",
+      "Halong Bay: Cruise (1 Night)",
+      "Sapa: Mountain View (2 Nights)",
+      "Da Nang: Beach Resort (2 Nights)",
+      "Saigon: 4-star hotel (2 Nights)"
     ],
-    exclusions: [
-      "International airfare",
-      "Visa fees",
-      "Meals not listed"
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Sapa & Da Nang & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Saigon Welcoming & Indian Dinner", description: "Arrive in Saigon, private transfer to hotel, and enjoy a family dinner." },
-      { day: 2, title: "Saigon City & Ben Thanh Shopping", description: "Explore Independence Palace, Notre Dame, and Ben Thanh Market." },
-      { day: 3, title: "Fly to Phu Quoc & Safari", description: "Fly to Phu Quoc and visit Vinpearl Open Safari park." },
-      { day: 4, title: "VinWonders Theme Park", description: "Full-day fun at VinWonders theme park and water park." },
-      { day: 5, title: "Phu Quoc Snorkeling Tour", description: "Boat trip to islands for snorkeling, fishing, and sunset." },
-      { day: 6, title: "Fly to Hanoi & Water Puppet Show", description: "Fly to Hanoi, check-in, and attend a Water Puppet Show." },
-      { day: 7, title: "Halong Bay Cruise excursion", description: "Day cruise to see limestone peaks, caves, and kayak." },
-      { day: 8, title: "Hanoi Train Street & Fly to Da Nang", description: "Visit Train Street, fly to Da Nang, and walk through Hoi An lanterns." },
-      { day: 9, title: "Ba Na Hills & Golden Bridge", description: "Full day at Ba Na Hills cable car and bridge." },
-      { day: 10, title: "Da Nang Airport Departure", description: "Checkout and transfer to Da Nang Airport for departure." }
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Sapa & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   },
   {
-    id: "best-of-vietnam",
-    category: "Family Holidays",
-    title: "Best of Vietnam (7D6N)",
-    duration: "7 Days / 6 Nights",
-    badge: "Highlights Family",
-    desc: "A beautiful highlights package for families, featuring a Halong Bay overnight cruise, Ba Na Hills, and Saigon.",
-    img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
-    destinations: ["Hanoi", "Da Nang", "Ho Chi Minh City"],
-    hotels: [
-      "Hanoi: 4-Star - 3 Nights",
-      "Da Nang: 4-Star - 2 Nights",
-      "Ho Chi Minh City: 4-Star - 1 Night"
+    "id": "budget-friendly-essentials",
+    "category": "First Time in Vietnam",
+    "title": "Budget-Friendly Essentials (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Budget Choice",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Ninh Binh"
     ],
-    inclusions: [
-      "Private transfers and domestic flights",
-      "Halong Bay overnight luxury cruise",
-      "Ba Na Hills and Hoi An ancient town tours",
-      "Cu Chi Tunnels Saigon excursion"
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Hanoi: 3-star boutique (3 Nights)",
+      "Ninh Binh: Homestay (1 Night)"
     ],
-    exclusions: [
-      "Flights",
-      "Visas",
-      "Tips"
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Ninh Binh, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Hanoi Arrival", description: "Arrive in Hanoi, check-in, and stroll around Hoan Kiem Lake." },
-      { day: 2, title: "Hanoi to Halong Bay Cruise", description: "Board luxury overnight cruise, enjoy meals and kayaking." },
-      { day: 3, title: "Return to Hanoi & Train Street", description: "Disembark cruise, return to Hanoi, and view the Train Street." },
-      { day: 4, title: "Fly to Da Nang & Hoi An", description: "Fly to Da Nang, check-in, and visit Hoi An Ancient Town." },
-      { day: 5, title: "Ba Na Hills & Golden Bridge", description: "Visit French Village and snap family photos on the Golden Bridge." },
-      { day: 6, title: "Fly to Saigon & City Tour", description: "Fly to Saigon, visit War Remnants Museum." },
-      { day: 7, title: "Cu Chi Tunnels & Departure", description: "Visit historical Cu Chi Tunnels and transfer to airport." }
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Ninh Binh",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   },
   {
-    id: "incredible-hanoi-danang",
-    category: "Family Holidays",
-    title: "Incredible Hanoi and Da Nang (5D4N)",
-    duration: "5 Days / 4 Nights",
-    badge: "Short Family Break",
-    desc: "Ideal for a short family break connecting the culture of Hanoi and the beaches of Central Vietnam.",
-    img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
-    destinations: ["Hanoi", "Da Nang"],
-    hotels: [
-      "Hanoi: 4-Star - 2 Nights",
-      "Da Nang: 4-Star - 2 Nights"
+    "id": "saigon-mekong-delta-explorer",
+    "category": "First Time in Vietnam",
+    "title": "Saigon & Mekong Delta Explorer (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Culture Focus",
+    "destinations": [
+      "Saigon",
+      "Mekong River"
     ],
-    inclusions: [
-      "Private airport and hotel transfers",
-      "Domestic flight from Hanoi to Da Nang",
-      "Halong Bay luxury day cruise",
-      "Ba Na Hills cable car and Golden Bridge tickets",
-      "Hoi An Ancient town tour"
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Saigon: 4-star boutique (3 Nights)",
+      "Mekong Delta: Riverside Lodge (1 Night)"
     ],
-    exclusions: [
-      "Airfare",
-      "E-visa",
-      "Tips"
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Mekong River, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
     ],
-    days: [
-      { day: 1, title: "Hanoi Arrival & Cycle Tour", description: "Arrive in Hanoi, check-in, and enjoy a cycle ride through 36 guild streets." },
-      { day: 2, title: "Halong Bay Day Cruise", description: "Excursion to Halong Bay, board cruise, explore caves." },
-      { day: 3, title: "Fly to Da Nang & Hoi An Town", description: "Fly to Da Nang and walk through illuminated Hoi An." },
-      { day: 4, title: "Ba Na Hills & Golden Bridge", description: "Cable car up Ba Na Hills and snap photos on Golden Bridge." },
-      { day: 5, title: "Marble Mountains & Departure", description: "Explore Marble Mountains cave temples and transfer to airport." }
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Mekong River points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Mekong River points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong River points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong River points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Mekong River",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Mekong River points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "central-vietnam-essentials",
+    "category": "First Time in Vietnam",
+    "title": "Central Vietnam Essentials (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Short Break",
+    "destinations": [
+      "Da Nang",
+      "Hoi An Town"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Da Nang: Beachfront Resort (3 Nights)",
+      "Hoi An: Riverside Villa (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang & Hoi An Town, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hoi An Town",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "the-absolute-vietnam",
+    "category": "First Time in Vietnam",
+    "title": "The Absolute Vietnam (9D8N)",
+    "duration": "9 Days / 8 Nights",
+    "badge": "Classic Grand",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Da Nang",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Hanoi: 4-star (2 Nights)",
+      "Halong Bay: Cruise (1 Night)",
+      "Da Nang: Resort (3 Nights)",
+      "Saigon: 4-star (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Da Nang & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phu-quoc-island-sanctuary",
+    "category": "Beach Escapes",
+    "title": "Phu Quoc Island Sanctuary (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Island Life",
+    "destinations": [
+      "Phu Quoc Island"
+    ],
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    "hotels": [
+      "Phu Quoc: 4-star beachfront resort (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Phu Quoc Island, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Phu Quoc Island Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Phu Quoc Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Phu Quoc Island",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Phu Quoc Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "da-nang-shoreline-escape",
+    "category": "Beach Escapes",
+    "title": "Da Nang Shoreline Escape (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Beach & Town",
+    "destinations": [
+      "Da Nang Beach",
+      "Hoi An Ancient Town"
+    ],
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Da Nang: My Khe Beach Hotel (3 Nights)",
+      "Hoi An: Ancient Town Villa (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang Beach & Hoi An Ancient Town, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Beach Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hoi An Ancient Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hoi An Ancient Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hoi An Ancient Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hoi An Ancient Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hoi An Ancient Town",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hoi An Ancient Town points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nha-trang-sun-sand",
+    "category": "Beach Escapes",
+    "title": "Nha Trang Sun & Sand (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Sun & Fun",
+    "destinations": [
+      "Nha Trang Beach",
+      "VinWonders"
+    ],
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Nha Trang: Beach Resort (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Nha Trang Beach & VinWonders, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Nha Trang Beach Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Nha Trang Beach & VinWonders points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Nha Trang Beach & VinWonders points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "VinWonders Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Nha Trang Beach & VinWonders points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "VinWonders Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Nha Trang Beach & VinWonders points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell VinWonders",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Nha Trang Beach & VinWonders points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phu-quoc-saigon-coast-city",
+    "category": "Beach Escapes",
+    "title": "Phu Quoc & Saigon Coast-to-City (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Dual Vibe",
+    "destinations": [
+      "Phu Quoc",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Phu Quoc: Beach Resort (3 Nights)",
+      "Saigon: City Hotel (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Phu Quoc & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Phu Quoc Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Phu Quoc & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Phu Quoc & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Phu Quoc & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Phu Quoc & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Phu Quoc & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "da-nang-hue-heritage-coast",
+    "category": "Beach Escapes",
+    "title": "Da Nang & Hue Heritage Coast (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Coast & Culture",
+    "destinations": [
+      "Da Nang Beach",
+      "Hue Imperial City"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Da Nang: Beach Resort (4 Nights)",
+      "Hue: Boutique Hotel (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang Beach & Hue Imperial City, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Beach Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hue Imperial City points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hue Imperial City points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hue Imperial City Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hue Imperial City points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hue Imperial City Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hue Imperial City points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Hue Imperial City Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hue Imperial City points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Hue Imperial City",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Hue Imperial City points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nha-trang-mui-ne-dunes",
+    "category": "Beach Escapes",
+    "title": "Nha Trang & Mui Ne Dunes (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Adventure Coast",
+    "destinations": [
+      "Nha Trang",
+      "Mui Ne Sand Dunes"
+    ],
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    "hotels": [
+      "Nha Trang: Beach Hotel (3 Nights)",
+      "Mui Ne: Beachfront Resort (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Nha Trang & Mui Ne Sand Dunes, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Nha Trang Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Nha Trang & Mui Ne Sand Dunes points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Nha Trang & Mui Ne Sand Dunes points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mui Ne White Sand Dunes Jeep Safari",
+        "description": "Hop on a sunset or sunrise jeep safari to the spectacular Red and White Sand Dunes, walk the Fairy Stream, and visit local fishing harbors.",
+        "activities": [
+          "Guided tour of Nha Trang & Mui Ne Sand Dunes points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Mui Ne White Sand Dunes Jeep Safari",
+        "description": "Hop on a sunset or sunrise jeep safari to the spectacular Red and White Sand Dunes, walk the Fairy Stream, and visit local fishing harbors.",
+        "activities": [
+          "Guided tour of Nha Trang & Mui Ne Sand Dunes points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Mui Ne White Sand Dunes Jeep Safari",
+        "description": "Hop on a sunset or sunrise jeep safari to the spectacular Red and White Sand Dunes, walk the Fairy Stream, and visit local fishing harbors.",
+        "activities": [
+          "Guided tour of Nha Trang & Mui Ne Sand Dunes points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Mui Ne Sand Dunes",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Nha Trang & Mui Ne Sand Dunes points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tropical-twin-islands",
+    "category": "Beach Escapes",
+    "title": "Tropical Twin Islands (7D6N)",
+    "duration": "7 Days / 6 Nights",
+    "badge": "Island Hopping",
+    "destinations": [
+      "Phu Quoc",
+      "Con Dao Island"
+    ],
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Phu Quoc: Beach Resort (3 Nights)",
+      "Con Dao: Eco Resort (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Phu Quoc & Con Dao Island, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Phu Quoc Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Phu Quoc & Con Dao Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc & Con Dao Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc & Con Dao Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Phu Quoc & Con Dao Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Phu Quoc & Con Dao Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Phu Quoc & Con Dao Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Farewell Con Dao Island",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Phu Quoc & Con Dao Island points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "luxury-beach-cruise-combo",
+    "category": "Beach Escapes",
+    "title": "Luxury Beach & Cruise Combo (7D6N)",
+    "duration": "7 Days / 6 Nights",
+    "badge": "Elite Escapes",
+    "destinations": [
+      "Da Nang Beach",
+      "Halong Bay Luxury Cruise"
+    ],
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?w=800&q=80",
+    "hotels": [
+      "Da Nang: 5-Star Beach Villa (4 Nights)",
+      "Halong Bay: Luxury Cruise (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang Beach & Halong Bay Luxury Cruise, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Beach Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Farewell Halong Bay Luxury Cruise",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang Beach & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mui-ne-desert-coastline",
+    "category": "Beach Escapes",
+    "title": "Mui Ne Desert Coastline (4D3N)",
+    "duration": "4 Days / 3 Nights",
+    "badge": "Mini Getaway",
+    "destinations": [
+      "Saigon",
+      "Mui Ne Dunes & Beach"
+    ],
+    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?w=800&q=80",
+    "hotels": [
+      "Saigon: 4-star (1 Night)",
+      "Mui Ne: Dunes Resort (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Mui Ne Dunes & Beach, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Mui Ne Dunes & Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Mui Ne White Sand Dunes Jeep Safari",
+        "description": "Hop on a sunset or sunrise jeep safari to the spectacular Red and White Sand Dunes, walk the Fairy Stream, and visit local fishing harbors.",
+        "activities": [
+          "Guided tour of Saigon & Mui Ne Dunes & Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mui Ne White Sand Dunes Jeep Safari",
+        "description": "Hop on a sunset or sunrise jeep safari to the spectacular Red and White Sand Dunes, walk the Fairy Stream, and visit local fishing harbors.",
+        "activities": [
+          "Guided tour of Saigon & Mui Ne Dunes & Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Farewell Mui Ne Dunes & Beach",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Mui Ne Dunes & Beach points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hidden-beach-explorer",
+    "category": "Beach Escapes",
+    "title": "Hidden Beach Explorer (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Unexplored",
+    "destinations": [
+      "Quy Nhon",
+      "Nha Trang"
+    ],
+    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=800&q=80",
+    "hotels": [
+      "Quy Nhon: Beach Resort (3 Nights)",
+      "Nha Trang: Coastal Hotel (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Quy Nhon & Nha Trang, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Quy Nhon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Quy Nhon & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Quy Nhon Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Quy Nhon & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Quy Nhon & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Quy Nhon & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Quy Nhon & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Nha Trang",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Quy Nhon & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dalat-highlands-romance",
+    "category": "Honeymoons & Romance",
+    "title": "Dalat Highlands Romance (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Sweetheart Special",
+    "destinations": [
+      "Saigon",
+      "Da Lat Valley of Love"
+    ],
+    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
+    "hotels": [
+      "Saigon: City Hotel (2 Nights)",
+      "Da Lat: Romantic Villa (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Da Lat Valley of Love, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Valley of Love points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Valley of Love points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Valley of Love points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Valley of Love points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Da Lat Valley of Love",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Valley of Love points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "romantic-halong-hanoi",
+    "category": "Honeymoons & Romance",
+    "title": "Romantic Halong & Hanoi (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Couples Cruise",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay Luxury Private Cabin",
+      "Ninh Binh"
+    ],
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    "hotels": [
+      "Hanoi: Boutique Hotel (2 Nights)",
+      "Halong Bay: Private Cabin (2 Nights)",
+      "Ninh Binh: Ecolodge (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay Luxury Private Cabin & Ninh Binh, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Private Cabin & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Private Cabin & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Private Cabin & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Private Cabin & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Private Cabin & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Ninh Binh",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Private Cabin & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phu-quoc-couples-getaway",
+    "category": "Honeymoons & Romance",
+    "title": "Phu Quoc Couples Getaway (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Secluded Luxury",
+    "destinations": [
+      "Phu Quoc Luxury Beach Villa",
+      "Saigon Rooftop Dining"
+    ],
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Phu Quoc: Pool Villa (4 Nights)",
+      "Saigon: Luxury Boutique (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Phu Quoc Luxury Beach Villa & Saigon Rooftop Dining, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Phu Quoc Luxury Beach Villa Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Phu Quoc Luxury Beach Villa & Saigon Rooftop Dining points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc Luxury Beach Villa & Saigon Rooftop Dining points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Phu Quoc Luxury Beach Villa & Saigon Rooftop Dining points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Phu Quoc Luxury Beach Villa & Saigon Rooftop Dining points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Phu Quoc Luxury Beach Villa & Saigon Rooftop Dining points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Saigon Rooftop Dining",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Phu Quoc Luxury Beach Villa & Saigon Rooftop Dining points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoi-an-lantern-lit-romance",
+    "category": "Honeymoons & Romance",
+    "title": "Hoi An Lantern Lit Romance (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Quaint Charm",
+    "destinations": [
+      "Da Nang",
+      "Hoi An Riverside Resort"
+    ],
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Da Nang: Coastal Resort (1 Night)",
+      "Hoi An: Riverside Heritage Hotel (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang & Hoi An Riverside Resort, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Riverside Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Riverside Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Riverside Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Riverside Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hoi An Riverside Resort",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Riverside Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "highlands-coast-honeymoon",
+    "category": "Honeymoons & Romance",
+    "title": "Highlands & Coast Honeymoon (7D6N)",
+    "duration": "7 Days / 6 Nights",
+    "badge": "Romantic Peaks",
+    "destinations": [
+      "Da Lat",
+      "Nha Trang Beach Resort"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Da Lat: Pine Valley Resort (3 Nights)",
+      "Nha Trang: Overwater Villa (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Lat & Nha Trang Beach Resort, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Lat Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Lat & Nha Trang Beach Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Da Lat & Nha Trang Beach Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Da Lat & Nha Trang Beach Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Da Lat & Nha Trang Beach Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Da Lat & Nha Trang Beach Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Da Lat & Nha Trang Beach Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Farewell Nha Trang Beach Resort",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Lat & Nha Trang Beach Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ultra-luxe-private-hideaway",
+    "category": "Honeymoons & Romance",
+    "title": "Ultra-Luxe Private Hideaway (7D6N)",
+    "duration": "7 Days / 6 Nights",
+    "badge": "Ultimate Romance",
+    "destinations": [
+      "Ninh Van Bay Private Pool Villa",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Ninh Van Bay: Six Senses (4 Nights)",
+      "Saigon: Park Hyatt (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Ninh Van Bay Private Pool Villa & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Ninh Van Bay Private Pool Villa Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Ninh Van Bay Private Pool Villa & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ninh Van Bay Private Pool Villa Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ninh Van Bay Private Pool Villa & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ninh Van Bay Private Pool Villa Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ninh Van Bay Private Pool Villa & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Ninh Van Bay Private Pool Villa & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Ninh Van Bay Private Pool Villa & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Ninh Van Bay Private Pool Villa & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Ninh Van Bay Private Pool Villa & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "northern-mountain-romance",
+    "category": "Honeymoons & Romance",
+    "title": "Northern Mountain Romance (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Cozy Retreat",
+    "destinations": [
+      "Hanoi",
+      "Sapa Mountain Retreat"
+    ],
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    "hotels": [
+      "Hanoi: French Quarter Hotel (2 Nights)",
+      "Sapa: Mountain Ecolodge (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Sapa Mountain Retreat, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Mountain Retreat points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Mountain Retreat points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Mountain Retreat points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Mountain Retreat points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Mountain Retreat points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Sapa Mountain Retreat",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Mountain Retreat points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vietnam-romantic-grand-tour",
+    "category": "Honeymoons & Romance",
+    "title": "Vietnam Romantic Grand Tour (10D9N)",
+    "duration": "10 Days / 9 Nights",
+    "badge": "Forever Us",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Da Nang",
+      "Da Lat",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Hanoi: 5-Star (2 Nights)",
+      "Halong Bay: VIP Cruise (1 Night)",
+      "Da Nang: Resort (3 Nights)",
+      "Da Lat: Palace Hotel (2 Nights)",
+      "Saigon: 5-Star (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Da Nang & Da Lat & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Da Lat & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "secluded-island-honeymoon",
+    "category": "Honeymoons & Romance",
+    "title": "Secluded Island Honeymoon (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Paradise Found",
+    "destinations": [
+      "Con Dao Luxury Beachfront"
+    ],
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?w=800&q=80",
+    "hotels": [
+      "Con Dao: Six Senses (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Con Dao Luxury Beachfront, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Con Dao Luxury Beachfront Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Con Dao Luxury Beachfront points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Con Dao Luxury Beachfront points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Con Dao Luxury Beachfront points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Con Dao Luxury Beachfront points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Con Dao Luxury Beachfront",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Con Dao Luxury Beachfront points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sapa-sapa-valley-escape",
+    "category": "Honeymoons & Romance",
+    "title": "Sapa & Sapa Valley Escape (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Valley View",
+    "destinations": [
+      "Hanoi",
+      "Sapa Topas Ecolodge"
+    ],
+    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?w=800&q=80",
+    "hotels": [
+      "Hanoi: Boutique Hotel (1 Night)",
+      "Sapa: Topas Ecolodge (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Sapa Topas Ecolodge, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Topas Ecolodge points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Topas Ecolodge points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Topas Ecolodge points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Topas Ecolodge points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Sapa Topas Ecolodge",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Topas Ecolodge points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vietnam-theme-park-extravaganza",
+    "category": "Family Holidays",
+    "title": "Vietnam Theme Park Extravaganza (7D6N)",
+    "duration": "7 Days / 6 Nights",
+    "badge": "Kids Favorite",
+    "destinations": [
+      "Da Nang Ba Na Hills",
+      "Phu Quoc VinWonders & Safari"
+    ],
+    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
+    "hotels": [
+      "Da Nang: Family Suite (3 Nights)",
+      "Phu Quoc: Vinpearl Resort (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Ba Na Hills Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Farewell Phu Quoc VinWonders & Safari",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang Ba Na Hills & Phu Quoc VinWonders & Safari points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "family-fun-in-phu-quoc",
+    "category": "Family Holidays",
+    "title": "Family Fun in Phu Quoc (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Island Fun",
+    "destinations": [
+      "Phu Quoc Safari & Waterpark"
+    ],
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    "hotels": [
+      "Phu Quoc: Beachfront Family Resort (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Phu Quoc Safari & Waterpark, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Phu Quoc Safari & Waterpark Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Phu Quoc Safari & Waterpark points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc Safari & Waterpark points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc Safari & Waterpark points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Phu Quoc Safari & Waterpark points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Phu Quoc Safari & Waterpark",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Phu Quoc Safari & Waterpark points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-mekong-fun",
+    "category": "Family Holidays",
+    "title": "Saigon & Mekong Fun (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Active Family",
+    "destinations": [
+      "Saigon",
+      "Mekong Delta Family Farm"
+    ],
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Saigon: Family Suite (3 Nights)",
+      "Mekong Delta: Farm Lodge (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Mekong Delta Family Farm, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta Family Farm points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta Family Farm points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta Family Farm points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta Family Farm points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Mekong Delta Family Farm",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta Family Farm points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "central-vietnam-family-classic",
+    "category": "Family Holidays",
+    "title": "Central Vietnam Family Classic (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Culture & Beach",
+    "destinations": [
+      "Da Nang",
+      "Hoi An Lantern Making"
+    ],
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Da Nang: My Khe Beach Hotel (3 Nights)",
+      "Hoi An: Family Villa (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang & Hoi An Lantern Making, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Lantern Making points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Lantern Making points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Lantern Making points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Lantern Making points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Lantern Making points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Hoi An Lantern Making",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An Lantern Making points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hanoi-ninh-binh-family-adventure",
+    "category": "Family Holidays",
+    "title": "Hanoi & Ninh Binh Family Adventure (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Eco-Adventure",
+    "destinations": [
+      "Hanoi",
+      "Trang An Boat Ride & Mua Cave"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Hanoi: City Hotel (3 Nights)",
+      "Ninh Binh: Family Homestay (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Trang An Boat Ride & Mua Cave, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Trang An Boat Ride & Mua Cave points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Trang An Boat Ride & Mua Cave points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Trang An Boat Ride & Mua Cave Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Trang An Boat Ride & Mua Cave points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Trang An Boat Ride & Mua Cave Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Trang An Boat Ride & Mua Cave points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Trang An Boat Ride & Mua Cave Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Trang An Boat Ride & Mua Cave points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Trang An Boat Ride & Mua Cave",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Trang An Boat Ride & Mua Cave points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vietnam-grand-family-tour",
+    "category": "Family Holidays",
+    "title": "Vietnam Grand Family Tour (9D8N)",
+    "duration": "9 Days / 8 Nights",
+    "badge": "Mega-Holiday",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Da Nang",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Hanoi: City Hotel (2 Nights)",
+      "Halong Bay: Cruise (1 Night)",
+      "Da Nang: Beach Resort (3 Nights)",
+      "Saigon: 4-star Family Suite (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Da Nang & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "theme-parks-beaches-combo",
+    "category": "Family Holidays",
+    "title": "Theme Parks & Beaches Combo (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Theme Parks",
+    "destinations": [
+      "Nha Trang VinWonders",
+      "Da Nang Ba Na Hills"
+    ],
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    "hotels": [
+      "Nha Trang: Vinpearl Resort (3 Nights)",
+      "Da Nang: Ba Na Hills French Village (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Nha Trang VinWonders & Da Nang Ba Na Hills, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Nha Trang VinWonders Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Nha Trang VinWonders & Da Nang Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Nha Trang VinWonders & Da Nang Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Nha Trang VinWonders & Da Nang Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Nha Trang VinWonders & Da Nang Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Nha Trang VinWonders & Da Nang Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Da Nang Ba Na Hills",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Nha Trang VinWonders & Da Nang Ba Na Hills points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mekong-delta-saigon-kids-special",
+    "category": "Family Holidays",
+    "title": "Mekong Delta & Saigon Kids Special (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Kid Friendly",
+    "destinations": [
+      "Saigon",
+      "Mekong Delta"
+    ],
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Saigon: Boutique Hotel (3 Nights)",
+      "Mekong Delta: Jungle Eco Lodge (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Mekong Delta, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Mekong Delta",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Delta points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sapa-family-mountain-eco-tour",
+    "category": "Family Holidays",
+    "title": "Sapa Family Mountain Eco-Tour (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Eco Tour",
+    "destinations": [
+      "Hanoi",
+      "Sapa Easy Trek & Cable Car"
+    ],
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?w=800&q=80",
+    "hotels": [
+      "Hanoi: French Quarter Hotel (2 Nights)",
+      "Sapa: Bamboo Hotel (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Sapa Easy Trek & Cable Car, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Easy Trek & Cable Car points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Easy Trek & Cable Car points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Easy Trek & Cable Car points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Easy Trek & Cable Car points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Easy Trek & Cable Car points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Sapa Easy Trek & Cable Car",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Easy Trek & Cable Car points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dalat-saigon-family-cooler",
+    "category": "Family Holidays",
+    "title": "Dalat & Saigon Family Cooler (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Highlands Cool",
+    "destinations": [
+      "Saigon",
+      "Da Lat Alpine Coaster"
+    ],
+    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?w=800&q=80",
+    "hotels": [
+      "Saigon: Downtown Suite (2 Nights)",
+      "Da Lat: Pine Resort (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Da Lat Alpine Coaster, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Alpine Coaster points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Alpine Coaster points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Alpine Coaster points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Alpine Coaster points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Da Lat Valley of Love & Datanla Coaster",
+        "description": "Enjoy Da Lat's refreshing highland weather. Visit the Valley of Love, stroll Flower Gardens, and ride the alpine coaster at Datanla Waterfalls.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Alpine Coaster points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Da Lat Alpine Coaster",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Da Lat Alpine Coaster points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vegetarian-vietnam-foodie-trail",
+    "category": "Culinary Experiences",
+    "title": "Vegetarian Vietnam Foodie Trail (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Veg Gastronomy",
+    "destinations": [
+      "Hanoi Veg Street Food",
+      "Hoi An Organic Farming",
+      "Saigon Veg Eats"
+    ],
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Hanoi: Old Quarter Hotel (2 Nights)",
+      "Hoi An: Eco Lodge (2 Nights)",
+      "Saigon: Central Hotel (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi Veg Street Food & Hoi An Organic Farming & Saigon Veg Eats, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Veg Street Food Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi Veg Street Food & Hoi An Organic Farming & Saigon Veg Eats points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Veg Street Food & Hoi An Organic Farming & Saigon Veg Eats points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Hanoi Veg Street Food & Hoi An Organic Farming & Saigon Veg Eats points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi Veg Street Food & Hoi An Organic Farming & Saigon Veg Eats points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi Veg Street Food & Hoi An Organic Farming & Saigon Veg Eats points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Saigon Veg Eats",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi Veg Street Food & Hoi An Organic Farming & Saigon Veg Eats points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vietnamese-coffee-cafe-culture",
+    "category": "Culinary Experiences",
+    "title": "Vietnamese Coffee & Cafe Culture (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Coffee Trail",
+    "destinations": [
+      "Hanoi Cafe Apartments",
+      "Buon Ma Thuot Coffee Capital"
+    ],
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Hanoi: Boutique Hotel (2 Nights)",
+      "Buon Ma Thuot: Eco Lodge (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi Cafe Apartments & Buon Ma Thuot Coffee Capital, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Cafe Apartments Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi Cafe Apartments & Buon Ma Thuot Coffee Capital points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Cafe Apartments & Buon Ma Thuot Coffee Capital points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Buon Ma Thuot Coffee Capital Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi Cafe Apartments & Buon Ma Thuot Coffee Capital points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Buon Ma Thuot Coffee Capital Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi Cafe Apartments & Buon Ma Thuot Coffee Capital points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Buon Ma Thuot Coffee Capital",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi Cafe Apartments & Buon Ma Thuot Coffee Capital points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jain-vegetarian-heritage-tour",
+    "category": "Culinary Experiences",
+    "title": "Jain & Vegetarian Heritage Tour (7D6N)",
+    "duration": "7 Days / 6 Nights",
+    "badge": "Strict Veg",
+    "destinations": [
+      "Hanoi",
+      "Da Nang",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Hanoi: City Hotel (2 Nights)",
+      "Da Nang: Beach Resort (2 Nights)",
+      "Saigon: Central Hotel (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Da Nang & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-mekong-cooking-academy",
+    "category": "Culinary Experiences",
+    "title": "Saigon & Mekong Cooking Academy (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Cooking Classes",
+    "destinations": [
+      "Saigon Culinary Masterclass",
+      "Mekong Delta Farm-to-Table"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Saigon: Boutique Hotel (3 Nights)",
+      "Mekong Delta: Farm Lodge (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon Culinary Masterclass & Mekong Delta Farm-to-Table, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Culinary Masterclass Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon Culinary Masterclass & Mekong Delta Farm-to-Table points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Culinary Masterclass & Mekong Delta Farm-to-Table points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon Culinary Masterclass & Mekong Delta Farm-to-Table points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon Culinary Masterclass & Mekong Delta Farm-to-Table points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Mekong Delta Farm-to-Table",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon Culinary Masterclass & Mekong Delta Farm-to-Table points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hanoi-michelin-street-culinary",
+    "category": "Culinary Experiences",
+    "title": "Hanoi Michelin & Street Culinary (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Fine Dining",
+    "destinations": [
+      "Hanoi Old Quarter Walks"
+    ],
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    "hotels": [
+      "Hanoi: Old Quarter Luxury Hotel (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi Old Quarter Walks, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Old Quarter Walks Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi Old Quarter Walks points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Old Quarter Walks points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Old Quarter Walks points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Old Quarter Walks points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hanoi Old Quarter Walks",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi Old Quarter Walks points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoi-an-organic-farm-herb-village",
+    "category": "Culinary Experiences",
+    "title": "Hoi An Organic Farm & Herb Village (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Organic Farm",
+    "destinations": [
+      "Hoi An Eco-Resort & Cooking Class"
+    ],
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Hoi An: Eco-Resort (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hoi An Eco-Resort & Cooking Class, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hoi An Eco-Resort & Cooking Class Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hoi An Eco-Resort & Cooking Class points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Hoi An Eco-Resort & Cooking Class points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Hoi An Eco-Resort & Cooking Class points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Hoi An Eco-Resort & Cooking Class points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hoi An Eco-Resort & Cooking Class",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hoi An Eco-Resort & Cooking Class points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hue-imperial-royal-dining",
+    "category": "Culinary Experiences",
+    "title": "Hue Imperial & Royal Dining (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Royal Cuisine",
+    "destinations": [
+      "Hue Royal Cuisine Tasting",
+      "Da Nang"
+    ],
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?w=800&q=80",
+    "hotels": [
+      "Hue: Heritage Hotel (3 Nights)",
+      "Da Nang: Beach Resort (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hue Royal Cuisine Tasting & Da Nang, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hue Royal Cuisine Tasting Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hue Royal Cuisine Tasting & Da Nang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hue Royal Cuisine Tasting Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hue Royal Cuisine Tasting & Da Nang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hue Royal Cuisine Tasting & Da Nang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hue Royal Cuisine Tasting & Da Nang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Da Nang",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hue Royal Cuisine Tasting & Da Nang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "north-to-south-culinary-grand-tour",
+    "category": "Culinary Experiences",
+    "title": "North-to-South Culinary Grand Tour (9D8N)",
+    "duration": "9 Days / 8 Nights",
+    "badge": "Epicurean Trail",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Hoi An",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?w=800&q=80",
+    "hotels": [
+      "Hanoi: Boutique (2 Nights)",
+      "Halong Bay: Luxury Cruise (1 Night)",
+      "Hoi An: Boutique (3 Nights)",
+      "Saigon: Boutique (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Hoi An & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Hoi An & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mekong-river-floating-market-feast",
+    "category": "Culinary Experiences",
+    "title": "Mekong River Floating Market Feast (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Local Flavors",
+    "destinations": [
+      "Saigon",
+      "Can Tho Market Tours"
+    ],
+    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=800&q=80",
+    "hotels": [
+      "Saigon: Downtown (2 Nights)",
+      "Can Tho: Riverside (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Can Tho Market Tours, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Can Tho Market Tours points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Can Tho Market Tours points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Can Tho Market Tours Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Saigon & Can Tho Market Tours points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Can Tho Market Tours Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Saigon & Can Tho Market Tours points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Can Tho Market Tours",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Can Tho Market Tours points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "veg-friendly-sapa-sapa-valley",
+    "category": "Culinary Experiences",
+    "title": "Veg-Friendly Sapa & Sapa Valley (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Healthy Living",
+    "destinations": [
+      "Hanoi",
+      "Sapa Cooking & Tea Experience"
+    ],
+    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
+    "hotels": [
+      "Hanoi: City Hotel (2 Nights)",
+      "Sapa: Mountain Lodge (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Sapa Cooking & Tea Experience, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Cooking & Tea Experience points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Cooking & Tea Experience points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Cooking & Tea Experience points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Cooking & Tea Experience points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Cooking & Tea Experience points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Sapa Cooking & Tea Experience",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa Cooking & Tea Experience points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-shopping-fashion-spree",
+    "category": "City Discovery",
+    "title": "Saigon Shopping & Fashion Spree (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Shopaholic",
+    "destinations": [
+      "Saigon Markets & Shopping Malls"
+    ],
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    "hotels": [
+      "Saigon: Central Retail District Hotel (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon Markets & Shopping Malls, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Markets & Shopping Malls Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon Markets & Shopping Malls points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Markets & Shopping Malls points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Markets & Shopping Malls points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Markets & Shopping Malls points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Saigon Markets & Shopping Malls",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon Markets & Shopping Malls points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hanoi-heritage-french-quarter",
+    "category": "City Discovery",
+    "title": "Hanoi Heritage & French Quarter (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "City Sights",
+    "destinations": [
+      "Hanoi Historical Walk & Cyclo"
+    ],
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Hanoi: French Quarter Boutique Hotel (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi Historical Walk & Cyclo, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Historical Walk & Cyclo Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi Historical Walk & Cyclo points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Historical Walk & Cyclo points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Historical Walk & Cyclo points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Historical Walk & Cyclo points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hanoi Historical Walk & Cyclo",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi Historical Walk & Cyclo points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dual-city-explorer",
+    "category": "City Discovery",
+    "title": "Dual City Explorer (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Two Capitals",
+    "destinations": [
+      "Hanoi Capital",
+      "Saigon Metropolis"
+    ],
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Hanoi: Old Quarter Hotel (3 Nights)",
+      "Saigon: District 1 Hotel (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi Capital & Saigon Metropolis, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Capital Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Saigon Metropolis points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Saigon Metropolis points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Saigon Metropolis points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Saigon Metropolis points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Saigon Metropolis points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Saigon Metropolis",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Saigon Metropolis points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "da-nang-hoi-an-night-discovery",
+    "category": "City Discovery",
+    "title": "Da Nang & Hoi An Night Discovery (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Night Explorer",
+    "destinations": [
+      "Da Nang Bridges & Lantern Towns"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Da Nang: My Khe Beach Hotel (2 Nights)",
+      "Hoi An: Ancient Town Villa (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang Bridges & Lantern Towns, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Bridges & Lantern Towns Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang Bridges & Lantern Towns points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Bridges & Lantern Towns points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Bridges & Lantern Towns points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang Bridges & Lantern Towns points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Da Nang Bridges & Lantern Towns",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang Bridges & Lantern Towns points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-vung-tau-coastal-city",
+    "category": "City Discovery",
+    "title": "Saigon & Vung Tau Coastal City (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Metropolis & Bay",
+    "destinations": [
+      "Saigon City Hub",
+      "Vung Tau"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Saigon: Boutique (3 Nights)",
+      "Vung Tau: Seaside Resort (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon City Hub & Vung Tau, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon City Hub Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon City Hub & Vung Tau points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon City Hub & Vung Tau points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Vung Tau Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Saigon City Hub & Vung Tau points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Vung Tau Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Saigon City Hub & Vung Tau points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Vung Tau Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Saigon City Hub & Vung Tau points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Vung Tau",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon City Hub & Vung Tau points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hanoi-ninh-binh-ancient-capital",
+    "category": "City Discovery",
+    "title": "Hanoi & Ninh Binh Ancient Capital (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Heritage Walks",
+    "destinations": [
+      "Hanoi Capital",
+      "Ninh Binh"
+    ],
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    "hotels": [
+      "Hanoi: Boutique Hotel (3 Nights)",
+      "Ninh Binh: Ecolodge (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi Capital & Ninh Binh, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Capital Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Ninh Binh",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi Capital & Ninh Binh points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-craft-beer-nightlife",
+    "category": "City Discovery",
+    "title": "Saigon Craft Beer & Nightlife (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Saigon Nights",
+    "destinations": [
+      "Saigon Night Clubs & Rooftop Lounges"
+    ],
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Saigon: Rooftop Pool Hotel (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon Night Clubs & Rooftop Lounges, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Night Clubs & Rooftop Lounges Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon Night Clubs & Rooftop Lounges points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Night Clubs & Rooftop Lounges points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Night Clubs & Rooftop Lounges points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Night Clubs & Rooftop Lounges points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Saigon Night Clubs & Rooftop Lounges",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon Night Clubs & Rooftop Lounges points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hanoi-art-museums-railway-street",
+    "category": "City Discovery",
+    "title": "Hanoi Art, Museums & Railway Street (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Art & Culture",
+    "destinations": [
+      "Hanoi Galleries & Train Street"
+    ],
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?w=800&q=80",
+    "hotels": [
+      "Hanoi: Art Deco Boutique Hotel (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi Galleries & Train Street, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Galleries & Train Street Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi Galleries & Train Street points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Galleries & Train Street points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Galleries & Train Street points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi Galleries & Train Street points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hanoi Galleries & Train Street",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi Galleries & Train Street points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vietnam-urban-grand-tour",
+    "category": "City Discovery",
+    "title": "Vietnam Urban Grand Tour (8D7N)",
+    "duration": "8 Days / 7 Nights",
+    "badge": "Urban Explorer",
+    "destinations": [
+      "Hanoi",
+      "Da Nang",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?w=800&q=80",
+    "hotels": [
+      "Hanoi: Boutique (3 Nights)",
+      "Da Nang: Seaside (2 Nights)",
+      "Saigon: High-Rise (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Da Nang & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-shopping-mekong-weekend",
+    "category": "City Discovery",
+    "title": "Saigon Shopping & Mekong Weekend (4D3N)",
+    "duration": "4 Days / 3 Nights",
+    "badge": "Quick Trip",
+    "destinations": [
+      "Saigon Retail & Floating Market"
+    ],
+    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=800&q=80",
+    "hotels": [
+      "Saigon: Retail District Hotel (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon Retail & Floating Market, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Retail & Floating Market Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon Retail & Floating Market points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Retail & Floating Market points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon Retail & Floating Market points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Farewell Saigon Retail & Floating Market",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon Retail & Floating Market points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sapa-roof-indochina-trek",
+    "category": "Nature & Adventure",
+    "title": "Sapa Roof of Indochina Trek (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Fansipan Climber",
+    "destinations": [
+      "Sapa Mountain Hikes & Fansipan Peak"
+    ],
+    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
+    "hotels": [
+      "Sapa: Valley Lodge (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Sapa Mountain Hikes & Fansipan Peak, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Sapa Mountain Hikes & Fansipan Peak Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Sapa Mountain Hikes & Fansipan Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Sapa Mountain Hikes & Fansipan Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Sapa Mountain Hikes & Fansipan Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Sapa Mountain Hikes & Fansipan Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Sapa Mountain Hikes & Fansipan Peak",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Sapa Mountain Hikes & Fansipan Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ha-giang-loop-scenic-ride",
+    "category": "Nature & Adventure",
+    "title": "Ha Giang Loop Scenic Ride (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Motorbike Loop",
+    "destinations": [
+      "Ha Giang Motorbike/Car Loop",
+      "Hanoi"
+    ],
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    "hotels": [
+      "Ha Giang: Hilltribe Homestays (4 Nights)",
+      "Hanoi: City Hotel (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Ha Giang Motorbike/Car Loop & Hanoi, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Ha Giang Motorbike/Car Loop Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Ha Giang Motorbike/Car Loop & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ha Giang Motorbike/Car Loop Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ha Giang Motorbike/Car Loop & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Ha Giang Motorbike/Car Loop & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Ha Giang Motorbike/Car Loop & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Ha Giang Motorbike/Car Loop & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Hanoi",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Ha Giang Motorbike/Car Loop & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ninh-binh-karst-valley-explorer",
+    "category": "Nature & Adventure",
+    "title": "Ninh Binh Karst Valley Explorer (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Eco Adventure",
+    "destinations": [
+      "Trang An Caves & Mua Peak"
+    ],
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Ninh Binh: Riverside Bungalow (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Trang An Caves & Mua Peak, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Trang An Caves & Mua Peak Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Trang An Caves & Mua Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Trang An Caves & Mua Peak Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Trang An Caves & Mua Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Trang An Caves & Mua Peak Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Trang An Caves & Mua Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Trang An Caves & Mua Peak Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Trang An Caves & Mua Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Trang An Caves & Mua Peak",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Trang An Caves & Mua Peak points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phong-nha-cave-expedition",
+    "category": "Nature & Adventure",
+    "title": "Phong Nha Cave Expedition (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Caving",
+    "destinations": [
+      "Paradise Cave & Phong Nha National Park"
+    ],
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Phong Nha: Lake House Resort (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Paradise Cave & Phong Nha National Park, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Paradise Cave & Phong Nha National Park Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Paradise Cave & Phong Nha National Park points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Paradise Cave & Phong Nha National Park Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Paradise Cave & Phong Nha National Park points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Paradise Cave & Phong Nha National Park Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Paradise Cave & Phong Nha National Park points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Paradise Cave & Phong Nha National Park Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Paradise Cave & Phong Nha National Park points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Paradise Cave & Phong Nha National Park",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Paradise Cave & Phong Nha National Park points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ba-be-lake-kayak-jungle",
+    "category": "Nature & Adventure",
+    "title": "Ba Be Lake Kayak & Jungle (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Jungle kayak",
+    "destinations": [
+      "Ba Be Lake National Park",
+      "Hanoi"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Ba Be Lake: Eco Lodge (3 Nights)",
+      "Hanoi: Boutique (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Ba Be Lake National Park & Hanoi, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Ba Be Lake National Park Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Ba Be Lake National Park & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Be Lake National Park Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ba Be Lake National Park & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Ba Be Lake National Park & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Ba Be Lake National Park & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hanoi",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Ba Be Lake National Park & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ban-gioc-waterfall-cao-bang",
+    "category": "Nature & Adventure",
+    "title": "Ban Gioc Waterfall & Cao Bang (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Waterfalls",
+    "destinations": [
+      "Ban Gioc Falls",
+      "Cao Bang Caves"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Ban Gioc: Eco Resort (3 Nights)",
+      "Cao Bang: Boutique Hotel (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Ban Gioc Falls & Cao Bang Caves, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Ban Gioc Falls Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Ban Gioc Falls & Cao Bang Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ban Gioc Falls Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ban Gioc Falls & Cao Bang Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Cao Bang Caves Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ban Gioc Falls & Cao Bang Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Cao Bang Caves Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ban Gioc Falls & Cao Bang Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Cao Bang Caves Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Ban Gioc Falls & Cao Bang Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Cao Bang Caves",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Ban Gioc Falls & Cao Bang Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "central-highlands-forest-trek",
+    "category": "Nature & Adventure",
+    "title": "Central Highlands Forest Trek (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Forest Hike",
+    "destinations": [
+      "Dalat Hikes & Waterfalls",
+      "Nha Trang"
+    ],
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    "hotels": [
+      "Da Lat: Eco Cabin (3 Nights)",
+      "Nha Trang: Beach Hotel (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Dalat Hikes & Waterfalls & Nha Trang, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Dalat Hikes & Waterfalls Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Dalat Hikes & Waterfalls & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Dalat Hikes & Waterfalls Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Dalat Hikes & Waterfalls & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Dalat Hikes & Waterfalls & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Dalat Hikes & Waterfalls & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Dalat Hikes & Waterfalls & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Nha Trang",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Dalat Hikes & Waterfalls & Nha Trang points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vietnam-active-grand-adventure",
+    "category": "Nature & Adventure",
+    "title": "Vietnam Active Grand Adventure (10D9N)",
+    "duration": "10 Days / 9 Nights",
+    "badge": "Mega-Adventure",
+    "destinations": [
+      "Hanoi",
+      "Sapa",
+      "Ninh Binh",
+      "Phong Nha Caves"
+    ],
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Hanoi: City Hotel (1 Night)",
+      "Sapa: Bamboo (3 Nights)",
+      "Ninh Binh: Ecolodge (2 Nights)",
+      "Phong Nha: River Resort (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Sapa & Ninh Binh & Phong Nha Caves, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Ninh Binh Karst Boat Ride & Mua Peak Hike",
+        "description": "Row boat cruise through Trang An's scenic waterway valleys. Challenge yourself with a hike up Mua Cave peak for the dragon statue panoramic view.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Phong Nha Caves Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Phong Nha Caves Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Phong Nha Caves Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Farewell Phong Nha Caves",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Sapa & Ninh Binh & Phong Nha Caves points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cat-ba-island-rock-climbing",
+    "category": "Nature & Adventure",
+    "title": "Cat Ba Island & Rock Climbing (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Coastal Climb",
+    "destinations": [
+      "Cat Ba Island Hikes",
+      "Lan Ha Bay Kayaking"
+    ],
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?w=800&q=80",
+    "hotels": [
+      "Cat Ba: Sea View Resort (3 Nights)",
+      "Lan Ha: Overwater Eco Lodge (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Cat Ba Island Hikes & Lan Ha Bay Kayaking, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Cat Ba Island Hikes Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Cat Ba Island Hikes & Lan Ha Bay Kayaking points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Cat Ba Island Hikes Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Cat Ba Island Hikes & Lan Ha Bay Kayaking points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Lan Ha Bay Kayaking Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Cat Ba Island Hikes & Lan Ha Bay Kayaking points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Lan Ha Bay Kayaking Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Cat Ba Island Hikes & Lan Ha Bay Kayaking points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Lan Ha Bay Kayaking",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Cat Ba Island Hikes & Lan Ha Bay Kayaking points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mekong-delta-eco-biking",
+    "category": "Nature & Adventure",
+    "title": "Mekong Delta Eco-Biking (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Countryside Bike",
+    "destinations": [
+      "Saigon",
+      "Mekong Countryside Cycling"
+    ],
+    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?w=800&q=80",
+    "hotels": [
+      "Saigon: Central Hotel (1 Night)",
+      "Mekong Delta: Countryside Homestay (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Mekong Countryside Cycling, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Countryside Cycling points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Countryside Cycling points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Countryside Cycling points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Countryside Cycling points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Mekong Countryside Cycling",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Mekong Countryside Cycling points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "halong-bay-ultra-luxury-cruise",
+    "category": "Luxury Vietnam",
+    "title": "Halong Bay Ultra-Luxury Cruise (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Presidential",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay Luxury Cruise"
+    ],
+    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=800&q=80",
+    "hotels": [
+      "Hanoi: Sofitel Legend Metropole (2 Nights)",
+      "Halong Bay: Emperor Private Cruise Suite (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay Luxury Cruise, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Halong Bay Luxury Cruise",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay Luxury Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ninh-van-bay-luxury-wellness",
+    "category": "Luxury Vietnam",
+    "title": "Ninh Van Bay Luxury Wellness (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Villas & Spa",
+    "destinations": [
+      "Nha Trang",
+      "Ninh Van Bay Six Senses Wellness"
+    ],
+    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
+    "hotels": [
+      "Nha Trang: 5-Star Beach Resort (1 Night)",
+      "Ninh Van Bay: Six Senses Water Villa (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Nha Trang & Ninh Van Bay Six Senses Wellness, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Nha Trang Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Nha Trang & Ninh Van Bay Six Senses Wellness points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Nha Trang Bay Islands Cruise & VinWonders Fun",
+        "description": "Take a private speedboat around Nha Trang bay, swim in crystal-clear waters, or enjoy thrilling slides and rides at VinWonders theme park.",
+        "activities": [
+          "Guided tour of Nha Trang & Ninh Van Bay Six Senses Wellness points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ninh Van Bay Six Senses Wellness Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Nha Trang & Ninh Van Bay Six Senses Wellness points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ninh Van Bay Six Senses Wellness Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Nha Trang & Ninh Van Bay Six Senses Wellness points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ninh Van Bay Six Senses Wellness Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Nha Trang & Ninh Van Bay Six Senses Wellness points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Ninh Van Bay Six Senses Wellness",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Nha Trang & Ninh Van Bay Six Senses Wellness points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "da-nang-hoi-an-ultra-luxe",
+    "category": "Luxury Vietnam",
+    "title": "Da Nang & Hoi An Ultra-Luxe (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "5-Star Elite",
+    "destinations": [
+      "Da Nang",
+      "Hoi An"
+    ],
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    "hotels": [
+      "Da Nang: InterContinental Sun Peninsula (3 Nights)",
+      "Hoi An: Four Seasons Nam Hai (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Da Nang & Hoi An, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Da Nang Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hoi An Ancient Lantern Town Guided Walk",
+        "description": "Stroll along Hoi An's narrow streets, admire ancient merchant houses, visit assembly halls, and take a romantic lantern boat ride on the Thu Bon river.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hoi An",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Da Nang & Hoi An points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-phu-quoc-presidential-escape",
+    "category": "Luxury Vietnam",
+    "title": "Saigon & Phu Quoc Presidential Escape (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Ultimate Luxe",
+    "destinations": [
+      "Saigon",
+      "Phu Quoc"
+    ],
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    "hotels": [
+      "Saigon: Park Hyatt Saigon (2 Nights)",
+      "Phu Quoc: Regent Resort Pool Villa (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Phu Quoc, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Phu Quoc points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Phu Quoc points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Saigon & Phu Quoc points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Saigon & Phu Quoc points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Phu Quoc Safari or Speedboat Island Snorkeling",
+        "description": "Visit Vinpearl Safari, the largest semi-wild zoo, or embark on a speedboat cruise to pristine islands (May Rut/Gam Ghi) for coral snorkeling and beach relaxation.",
+        "activities": [
+          "Guided tour of Saigon & Phu Quoc points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Phu Quoc",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Phu Quoc points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lan-ha-bay-cat-ba-island-cruise",
+    "category": "Luxury Vietnam",
+    "title": "Lan Ha Bay & Cat Ba Island Cruise (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Exclusive Yacht",
+    "destinations": [
+      "Lan Ha Bay Luxury Charter Cruise"
+    ],
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80",
+    "hotels": [
+      "Lan Ha Bay: Private Yacht Charter (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Lan Ha Bay Luxury Charter Cruise, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Lan Ha Bay Luxury Charter Cruise Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Lan Ha Bay Luxury Charter Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Lan Ha Bay Luxury Charter Cruise Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Lan Ha Bay Luxury Charter Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Lan Ha Bay Luxury Charter Cruise Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Lan Ha Bay Luxury Charter Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Lan Ha Bay Luxury Charter Cruise Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Lan Ha Bay Luxury Charter Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Lan Ha Bay Luxury Charter Cruise",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Lan Ha Bay Luxury Charter Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saigon-con-dao-six-senses-luxury",
+    "category": "Luxury Vietnam",
+    "title": "Saigon & Con Dao Six Senses Luxury (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Private Island",
+    "destinations": [
+      "Saigon",
+      "Con Dao Six Senses Resort"
+    ],
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    "hotels": [
+      "Saigon: The Reverie Saigon (2 Nights)",
+      "Con Dao: Six Senses Ocean Front Villa (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Con Dao Six Senses Resort, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Con Dao Six Senses Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Con Dao Six Senses Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Saigon & Con Dao Six Senses Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Saigon & Con Dao Six Senses Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Con Dao Secluded Beaches & Marine Conservation",
+        "description": "Enjoy pristine white beaches, explore coastal hiking trails, and learn about Con Dao's sea turtle conservation and historic heritage.",
+        "activities": [
+          "Guided tour of Saigon & Con Dao Six Senses Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Con Dao Six Senses Resort",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Con Dao Six Senses Resort points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sapa-luxury-mountain-retreat",
+    "category": "Luxury Vietnam",
+    "title": "Sapa Luxury Mountain Retreat (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Luxe Mountain",
+    "destinations": [
+      "Sapa",
+      "Hanoi"
+    ],
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "hotels": [
+      "Sapa: Hotel de la Coupole (3 Nights)",
+      "Hanoi: Metropole Opera Wing (1 Night)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Sapa & Hanoi, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Sapa Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Sapa & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Sapa Rice Terraces Valley Hike & Fansipan Peak",
+        "description": "Trek through Sapa's picturesque rice terrace valleys. Ride the cable car to Fansipan Peak, known as the 'Roof of Indochina' for spectacular mountain views.",
+        "activities": [
+          "Guided tour of Sapa & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Sapa & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Sapa & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Hanoi",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Sapa & Hanoi points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vietnam-luxury-grand-tour",
+    "category": "Luxury Vietnam",
+    "title": "Vietnam Luxury Grand Tour (9D8N)",
+    "duration": "9 Days / 8 Nights",
+    "badge": "Luxe Classic",
+    "destinations": [
+      "Hanoi",
+      "Halong Bay",
+      "Da Nang",
+      "Saigon"
+    ],
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    "hotels": [
+      "Hanoi: Sofitel Legend Metropole (2 Nights)",
+      "Halong Bay: Elite Cruise (1 Night)",
+      "Da Nang: InterContinental (3 Nights)",
+      "Saigon: Park Hyatt (2 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Hanoi & Halong Bay & Da Nang & Saigon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Hanoi Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi City Discovery & Train Street Heritage",
+        "description": "Discover the historic Temple of Literature, Tran Quoc Pagoda, and the French colonial architectural gems. Spend the afternoon experiencing Hanoi's famous Train Street Cafe culture.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Halong Bay Luxury Cruise & Karst Sailing",
+        "description": "Travel to Halong Bay. Board your luxury boat, sail through the breathtaking limestone karsts, visit cave systems, and kayak in emerald waters.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Ba Na Hills & Golden Bridge VIP Tour",
+        "description": "Ride the world-class cable car up Ba Na Hills. Walk across the stunning Golden Bridge, visit the French Alpine village, and capture panoramic photos.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Farewell Saigon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Hanoi & Halong Bay & Da Nang & Saigon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quy-nhon-anantara-private-pool-villas",
+    "category": "Luxury Vietnam",
+    "title": "Quy Nhon Anantara Private Pool Villas (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Elite Beachfront",
+    "destinations": [
+      "Quy Nhon"
+    ],
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80",
+    "hotels": [
+      "Quy Nhon: Anantara Private Pool Villa (4 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Quy Nhon, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Quy Nhon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Quy Nhon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Quy Nhon Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Quy Nhon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Quy Nhon Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Quy Nhon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Quy Nhon Local Discovery & Leisure",
+        "description": "Explore local scenic points, historic temples, craft markets, and enjoy authentic regional cuisine at your own pace.",
+        "activities": [
+          "Guided tour of Quy Nhon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Farewell Quy Nhon",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Quy Nhon points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mekong-delta-luxury-river-charter",
+    "category": "Luxury Vietnam",
+    "title": "Mekong Delta Luxury River Charter (6D5N)",
+    "duration": "6 Days / 5 Nights",
+    "badge": "Boutique Sail",
+    "destinations": [
+      "Saigon",
+      "Aqua Mekong River Cruise"
+    ],
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?w=800&q=80",
+    "hotels": [
+      "Saigon: Park Hyatt (2 Nights)",
+      "Mekong River: Aqua Mekong Suite (3 Nights)"
+    ],
+    "desc": "A premium tour tailored for Indian travelers visiting Saigon & Aqua Mekong River Cruise, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Daily gourmet breakfast at all hotels/resorts",
+      "Local English-speaking tour guides for sightseeing",
+      "All entrance tickets, cruise admissions, and cable car fees",
+      "24/7 dedicated local WhatsApp helpline during travel",
+      "Domestic flights within Vietnam (as per routing)"
+    ],
+    "exclusions": [
+      "International flights to/from Vietnam",
+      "E-visa stamping and processing fees",
+      "Personal tips, shopping, and items of a personal nature",
+      "Gala dinner surcharges on holidays (if applicable)"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Saigon Arrival & Evening Leisure",
+        "description": "Arrive at the airport. Private transfer to your premium hotel/resort. Enjoy an orientation walk and a relaxing welcome dinner.",
+        "activities": [
+          "Guided tour of Saigon & Aqua Mekong River Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Saigon War Heritage & Ben Thanh Market Tour",
+        "description": "Excursion to the historical Cu Chi Tunnels. Return to the city for a walking tour of Notre Dame, the central Post Office, and shopping at Ben Thanh market.",
+        "activities": [
+          "Guided tour of Saigon & Aqua Mekong River Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Aqua Mekong River Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Aqua Mekong River Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Mekong River Canal Cruise & Floating Village",
+        "description": "Boat cruise through Ben Tre coconut groves. Visit traditional honey farms, ride hand-rowed sampans through narrow canals, and listen to local folk music.",
+        "activities": [
+          "Guided tour of Saigon & Aqua Mekong River Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Farewell Aqua Mekong River Cruise",
+        "description": "Leisure morning, enjoy pool amenities, shop for souvenirs, and private transfer to the airport for your flight back home.",
+        "activities": [
+          "Guided tour of Saigon & Aqua Mekong River Cruise points of interest",
+          "Private vehicle transfer with local English-speaking guide"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
     ]
   }
 ];
@@ -458,82 +8650,49 @@ export const BY_THEME_CATEGORIES: CategoryData[] = [
     name: "First Time in Vietnam",
     tagline: "Never been to Vietnam? Start here.",
     subsections: ["Vietnam Essentials", "Best of Vietnam", "Complete Vietnam"],
-    packages: [
-      ITINERARIES_DATABASE[0], // Unforgettable Vietnam
-      ITINERARIES_DATABASE[1], // Explore Ho Chi Minh with Beach
-      ITINERARIES_DATABASE[2]  // Vietnam Highlights
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "First Time in Vietnam")
   },
   {
     name: "Beach Escapes",
     tagline: "Sun, sand and island adventures.",
-    subsections: ["Phu Quoc Escapes", "Da Nang Beaches", "Island Hopping"],
-    packages: [
-      ITINERARIES_DATABASE[3], // Vin Wonders and Kiss of the sea
-      ITINERARIES_DATABASE[4], // Phu Quoc with 3 / 4 Island Tour
-      ITINERARIES_DATABASE[5], // Da Nang Gateway
-      ITINERARIES_DATABASE[1]  // Explore Ho Chi Minh with Beach
-    ]
+    subsections: ["Phu Quoc Escapes", "Da Nang Beaches", "Nha Trang Getaways"],
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "Beach Escapes")
   },
   {
     name: "Honeymoons & Romance",
     tagline: "Designed for unforgettable moments.",
-    subsections: ["Romantic Escapes", "Luxury Honeymoons"],
-    packages: [
-      ITINERARIES_DATABASE[6], // Mesmerizing Dalat
-      ITINERARIES_DATABASE[7], // Honeymoon Getaway
-      ITINERARIES_DATABASE[8], // Valley of Love
-      ITINERARIES_DATABASE[3]  // Vin Wonders and Kiss of the sea
-    ]
+    subsections: ["Romantic Escapes", "Luxury Honeymoons", "Anniversary Trips"],
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "Honeymoons & Romance")
   },
   {
     name: "Family Holidays",
     tagline: "Experiences for every generation.",
-    subsections: ["Family Favorites", "Kid-Friendly Adventures"],
-    packages: [
-      ITINERARIES_DATABASE[9],  // Explore Vietnam
-      ITINERARIES_DATABASE[10], // Best of Vietnam
-      ITINERARIES_DATABASE[11]  // Incredible Hanoi and Da Nang
-    ]
+    subsections: ["Family Favorites", "Kid-Friendly Adventures", "Theme Park Holidays"],
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "Family Holidays")
   },
   {
     name: "Culinary Experiences",
     tagline: "Taste the real Vietnam.",
     subsections: ["Street Food Journeys", "Cooking Classes", "Coffee Experiences"],
-    packages: [
-      ITINERARIES_DATABASE[0], // Unforgettable Vietnam (street food focus)
-      ITINERARIES_DATABASE[2], // Vietnam Highlights (regional cuisines)
-      ITINERARIES_DATABASE[10] // Best of Vietnam
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "Culinary Experiences")
   },
   {
     name: "City Discovery",
     tagline: "Vietnam's most vibrant cities.",
     subsections: ["Hanoi Discovery", "Saigon Explorer"],
-    packages: [
-      ITINERARIES_DATABASE[1], // Explore Ho Chi Minh with Beach
-      ITINERARIES_DATABASE[2], // Vietnam Highlights
-      ITINERARIES_DATABASE[6]  // Mesmerizing Dalat (Saigon focus)
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "City Discovery")
   },
   {
     name: "Nature & Adventure",
     tagline: "Vietnam beyond the cities.",
-    subsections: ["Sapa Adventures", "Cave Exploration"],
-    packages: [
-      ITINERARIES_DATABASE[0], // Unforgettable Vietnam (Ninh Binh caves)
-      ITINERARIES_DATABASE[5], // Da Nang Gateway (Cham Island boat)
-      ITINERARIES_DATABASE[8]  // Valley of Love (Dalat hills)
-    ]
+    subsections: ["Sapa Adventures", "Cave Exploration", "Trekking Journeys"],
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "Nature & Adventure")
   },
   {
     name: "Luxury Vietnam",
     tagline: "Vietnam at its finest.",
     subsections: ["Signature Luxury", "Wellness Retreats"],
-    packages: [
-      ITINERARIES_DATABASE[7], // Honeymoon Getaway (resorts & sunset cruises)
-      ITINERARIES_DATABASE[9]  // Explore Vietnam (flights and open safari)
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.category === "Luxury Vietnam")
   }
 ];
 
@@ -542,56 +8701,36 @@ export const BY_REGION_CATEGORIES: CategoryData[] = [
     name: "Northern Vietnam",
     tagline: "Mountains, culture, heritage and iconic landscapes.",
     subsections: ["Hanoi & Culture", "Ha Long Bay Cruises"],
-    packages: [
-      ITINERARIES_DATABASE[0], // Unforgettable Vietnam
-      ITINERARIES_DATABASE[11] // Incredible Hanoi and Da Nang
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.destinations.some(d => d.includes("Hanoi") || d.includes("Sapa") || d.includes("Halong") || d.includes("Ha Giang") || d.includes("Ninh Binh") || d.includes("Ba Be") || d.includes("Ban Gioc")))
   },
   {
     name: "Central Vietnam",
     tagline: "Beaches, romance and timeless heritage.",
     subsections: ["Da Nang City & Beach", "Hoi An Ancient Town"],
-    packages: [
-      ITINERARIES_DATABASE[0], // Unforgettable Vietnam
-      ITINERARIES_DATABASE[2], // Vietnam Highlights
-      ITINERARIES_DATABASE[5]  // Da Nang Gateway
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.destinations.some(d => d.includes("Da Nang") || d.includes("Hoi An") || d.includes("Hue") || d.includes("Quy Nhon")))
   },
   {
     name: "Southern Vietnam",
     tagline: "Island life, energy and tropical escapes.",
     subsections: ["Saigon City Discovery", "Phu Quoc Resorts"],
-    packages: [
-      ITINERARIES_DATABASE[1], // Explore Ho Chi Minh with Beach
-      ITINERARIES_DATABASE[4], // Phu Quoc with 3 / 4 Island Tour
-      ITINERARIES_DATABASE[8]  // Valley of Love
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.destinations.some(d => d.includes("Saigon") || d.includes("Phu Quoc") || d.includes("Mekong") || d.includes("Vung Tau") || d.includes("Con Dao") || d.includes("Mui Ne")))
   },
   {
     name: "Complete Vietnam",
     tagline: "See the best of Vietnam in one journey.",
     subsections: ["7 Day Vietnam", "10 Day Vietnam"],
-    packages: [
-      ITINERARIES_DATABASE[2], // Vietnam Highlights
-      ITINERARIES_DATABASE[3], // Vin Wonders and Kiss of the sea
-      ITINERARIES_DATABASE[7], // Honeymoon Getaway
-      ITINERARIES_DATABASE[9], // Explore Vietnam
-      ITINERARIES_DATABASE[10] // Best of Vietnam
-    ]
+    packages: ITINERARIES_DATABASE.filter(p => p.destinations.length >= 3)
   }
 ];
 
-// Tag Jain & Vegetarian friendly packages dynamically
-const JAIN_VEG_FRIENDLY_IDS = ['unforgettable-vietnam', 'vietnam-highlights', 'phuquoc-island-tour', 'best-of-vietnam'];
-ITINERARIES_DATABASE.forEach(pkg => {
-  if (JAIN_VEG_FRIENDLY_IDS.includes(pkg.id)) {
-    pkg.isJainVegFriendly = true;
+// Jain/Veg tags
+const JAIN_VEG_FRIENDLY_IDS = [
+  "vegetarian-vietnam-foodie-trail", "jain-vegetarian-heritage-tour",
+  "veg-friendly-sapa-sapa-valley", "vietnam-highlights-express",
+  "classic-trio-discovery", "saigon-mekong-delta-explorer"
+];
+ITINERARIES_DATABASE.forEach(p => {
+  if (JAIN_VEG_FRIENDLY_IDS.includes(p.id) || p.title.toLowerCase().includes("veg") || p.title.toLowerCase().includes("jain")) {
+    p.isJainVegFriendly = true;
   }
-});
-// Re-assign references in categories just to be safe
-BY_THEME_CATEGORIES.forEach(cat => {
-  cat.packages = cat.packages.map(p => ITINERARIES_DATABASE.find(db => db.id === p.id) || p);
-});
-BY_REGION_CATEGORIES.forEach(cat => {
-  cat.packages = cat.packages.map(p => ITINERARIES_DATABASE.find(db => db.id === p.id) || p);
 });
