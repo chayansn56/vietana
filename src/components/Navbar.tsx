@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
           </Heading>
         </a>
         
-        <ul className="hidden lg:flex gap-8 list-none items-center flex-wrap">
+        <ul className="hidden lg:flex gap-5 xl:gap-7 list-none items-center flex-nowrap shrink-0">
           {NAV_LINKS.map((link) => (
             <li key={link.key} className="relative">
               {link.key === 'experiences' ? (
@@ -192,7 +192,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
             <span className="text-xs tracking-[0.1em] font-medium uppercase">Map</span>
           </button>
 
-          <ThemeToggle />
+          <ThemeToggle isNavbar={true} isLight={isLight} />
           
           <div className="relative flex items-center">
             <div 
@@ -360,7 +360,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, navClass, mobileMenuOpen, set
                 </button>
               ))}
               <div className="border-l border-white/20 pl-4">
-                <ThemeToggle />
+                <ThemeToggle isNavbar={true} isLight={false} />
               </div>
           </div>
           <a href={buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT)} className="text-brand-gold text-xl no-underline flex items-center gap-2" target="_blank" rel="noreferrer">
