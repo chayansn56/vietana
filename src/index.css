@@ -770,7 +770,9 @@ html {
 }
 
 .dark .text-\[\#555555\],
-.dark .text-\[\#666666\] {
+.dark .text-\[\#666666\],
+.dark .text-\[\#86868B\],
+.dark .text-\[\#86868b\] {
   color: #AAB7A1 !important;
 }
 
