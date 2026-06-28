@@ -237,20 +237,20 @@ const Destinations: React.FC = () => {
                   }}
                 >
                   <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out md:group-hover:scale-110"
                     style={{ backgroundImage: `url(${city.coverImage})` }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 md:group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 flex flex-col justify-end">
-                    <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 group-hover:-translate-y-1 text-lg md:text-2xl leading-tight">
+                    <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 md:group-hover:-translate-y-1 text-lg md:text-2xl leading-tight">
                       {city.name}
                     </Heading>
                     <div className="overflow-hidden">
                       <Text 
                         variant="none" 
                         size="xs" 
-                        className="text-white/80 md:text-white/70 transform translate-y-full opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 line-clamp-2 text-[10px] md:text-xs leading-snug"
+                        className="text-white/80 md:text-white/70 transform md:translate-y-full md:opacity-0 transition-all duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100 line-clamp-2 text-[10px] md:text-xs leading-snug"
                       >
                         {city.shortDesc}
                       </Text>
