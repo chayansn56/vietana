@@ -15,35 +15,6 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
   const locale = language.toLowerCase() === 'hi' ? 'hi' : language.toLowerCase() === 'vi' ? 'vi' : 'en';
   const marker = travelpayoutsConfig.marker;
 
-  // Compile the srcdoc for standard Travelpayouts script widget execution
-  const iframeSrcDoc = `
-    <!DOCTYPE html>
-    <html lang="${locale}">
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-          body {
-            margin: 0;
-            padding: 0;
-            background-color: transparent;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          }
-          /* Hide empty space or scrolls */
-          ::-webkit-scrollbar {
-            display: none;
-          }
-        </style>
-      </head>
-      <body>
-        <div id="widget-holder">
-          <script charset="utf-8" src="https://tp.media/content?promo_id=7399&shmarker=${marker}&campaign_id=100&trs=297444&target_host=c.tp.media&locale=${locale}&type=compact&width=100%25&search_host=vietana.com&border_radius=16&plain=false&color_button=%23cfa15c&color_button_text=%23000000&color_background=%23111111&color_text=%23ffffff" async></script>
-        </div>
-      </body>
-    </html>
-  `;
-
   return (
     <Modal
       isOpen={isOpen}
@@ -70,14 +41,14 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           </Text>
         </div>
 
-        {/* Widget Container via Iframe srcDoc to resolve React script injection and document.write constraints */}
+        {/* Widget Container via static HTML page to solve hostname verification issues inside iframe */}
         <div className="w-full min-h-[350px] relative rounded-2xl overflow-hidden bg-black/40 border border-white/5">
           {isOpen && (
             <iframe
               title="Travelpayouts Flight Search"
-              srcDoc={iframeSrcDoc}
+              src={`/tp-widget.html?locale=${locale}&marker=${marker}`}
               className="w-full h-[350px] border-none bg-transparent"
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
             />
           )}
         </div>

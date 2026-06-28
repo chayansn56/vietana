@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travelpayouts Widget Loader</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      /* Hide scrollbars */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tp-widget-container"></div>
+    <script>
+      // Extract parameters passed from the React iframe parent
+      const urlParams = new URLSearchParams(window.location.search);
+      const locale = urlParams.get('locale') || 'en';
+      const marker = urlParams.get('marker') || '550267';
+
+      // Build script source URL dynamically
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.charset = 'utf-8';
+      script.async = true;
+      script.src = `https://tp.media/content?promo_id=7399&shmarker=${marker}&campaign_id=100&trs=297444&target_host=c.tp.media&locale=${locale}&type=compact&width=100%25&search_host=vietana.com&border_radius=16&plain=false&color_button=%23cfa15c&color_button_text=%23000000&color_background=%23111111&color_text=%23ffffff`;
+
+      document.getElementById('tp-widget-container').appendChild(script);
+    </script>
+  </body>
+</html>
