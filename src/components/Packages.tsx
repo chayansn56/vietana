@@ -95,77 +95,125 @@ Please load this itinerary and let me customize it!`;
 
       <Container className="relative z-10 w-full max-w-[1400px]">
         {/* Most Selling Hot Highlight Block at the very top */}
-        {(() => {
-          const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-phu-quoc-explorer-5d4n");
-          if (!hotPkg) return null;
-          return (
-            <div className="mb-20 p-8 md:p-12 bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] text-white rounded-xl shadow-[0_20px_50px_rgba(212,175,55,0.15)] border-2 border-[#D4AF37] relative overflow-hidden group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)]">
-              {/* Flashy gold corner ribbon */}
-              <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden pointer-events-none z-20">
-                <div className="absolute top-6 -right-10 w-36 bg-[#E8C84A] text-[#12302B] text-[9px] font-bold tracking-widest text-center py-1.5 uppercase transform rotate-45 shadow-md border-y border-white/20">
-                  Best Seller
-                </div>
-              </div>
-              <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-gradient-to-br from-[#D4AF37]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-              
-              <div className="flex flex-col lg:flex-row gap-10 items-center relative z-10">
-                <div className="w-full lg:w-1/2 aspect-[16/10] rounded-lg overflow-hidden border-2 border-[#D4AF37]/30 shadow-2xl relative group-hover:border-[#D4AF37] transition-colors duration-500">
-                  <img 
-                    src={hotPkg.img} 
-                    alt={hotPkg.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                    <span className="text-white text-xs font-serif italic tracking-wide">Premium Resorts & Excursions await</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+          {/* HCMC & Phu Quoc Featured Card */}
+          {(() => {
+            const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-phu-quoc-explorer-5d4n");
+            if (!hotPkg) return null;
+            return (
+              <div className="p-8 bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] text-white rounded-xl shadow-[0_20px_50px_rgba(212,175,55,0.15)] border-2 border-[#D4AF37] relative overflow-hidden group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] flex flex-col justify-between min-h-[550px]">
+                {/* Flashy gold corner ribbon */}
+                <div className="absolute top-0 right-0 w-28 h-28 overflow-hidden pointer-events-none z-20">
+                  <div className="absolute top-4 -right-10 w-36 bg-[#E8C84A] text-[#12302B] text-[8px] font-bold tracking-widest text-center py-1 uppercase transform rotate-45 shadow-md border-y border-white/20">
+                    Bestseller
                   </div>
                 </div>
                 
-                <div className="w-full lg:w-1/2 flex flex-col justify-between h-full text-left">
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-3 mb-5">
-                      <span className="bg-[#E8C84A] text-[#12302B] text-[10px] font-extrabold tracking-[0.25em] uppercase px-3 py-1 rounded shadow-md border border-white/20 animate-pulse">
-                        🔥 MOST POPULAR TOUR
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="bg-[#E8C84A] text-[#12302B] text-[9px] font-extrabold tracking-[0.2em] uppercase px-2.5 py-1 rounded shadow-sm border border-white/10">
+                        🔥 Popular Coast
                       </span>
-                      <span className="border-2 border-[#D4AF37] text-[#E8C84A] text-[9px] font-extrabold tracking-widest uppercase px-3 py-0.5 rounded-full font-mono bg-[#1E4D45]/40 shadow-sm">
+                      <span className="border-2 border-[#D4AF37] text-[#E8C84A] text-[9px] font-extrabold tracking-widest uppercase px-2.5 py-0.5 rounded-full font-mono bg-[#1E4D45]/40">
                         {hotPkg.duration}
                       </span>
                     </div>
-                    <Heading as="h3" variant="none" className="text-3xl md:text-5xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-5 font-bold">
+                    <Heading as="h3" variant="none" className="text-2xl md:text-3xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-4 font-bold">
                       {hotPkg.title}
                     </Heading>
-                    <p className="text-white/80 text-sm font-light leading-relaxed mb-6 max-w-xl">
+                    <p className="text-white/80 text-xs font-light leading-relaxed mb-6">
                       An incredible 5-day journey from the historic streets of Ho Chi Minh City to the tropical sands of Phu Quoc Island. Includes Cu Chi Tunnels tour, Mekong Delta cruise, 3 Island speedboating with snorkeling, and admission to VinWonders theme park.
                     </p>
-                    <div className="grid grid-cols-2 gap-6 mb-8 border-y border-white/10 py-5">
+                    <div className="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
                       <div>
-                        <span className="text-[9px] uppercase tracking-[0.25em] text-[#E8C84A] font-extrabold block mb-1.5">HOTELS INCLUDED</span>
-                        <span className="text-sm text-white/95 font-semibold flex items-center gap-1.5">🏨 HCMC & Phu Quoc (3★ Premium)</span>
+                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">HOTELS INCLUDED</span>
+                        <span className="text-xs text-white/90 font-semibold">🏨 HCMC & Phu Quoc (3★ Premium)</span>
                       </div>
                       <div>
-                        <span className="text-[9px] uppercase tracking-[0.25em] text-[#E8C84A] font-extrabold block mb-1.5">SPECIAL INDIAN RATE</span>
-                        <span className="text-2xl font-mono font-extrabold text-[#E8C84A] drop-shadow-md">{hotPkg.price} <span className="text-xs font-normal text-white/60">PP</span></span>
+                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">SPECIAL INDIAN RATE</span>
+                        <span className="text-3xl md:text-4xl font-mono font-black text-[#E8C84A] drop-shadow-md">{hotPkg.price} <span className="text-xs font-normal text-white/60">PP</span></span>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-4 pt-2">
+                  <div className="flex flex-wrap gap-3 pt-2">
                     <button 
                       onClick={() => handleOpenPlanner(hotPkg)}
-                      className="px-8 py-3.5 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-xs font-extrabold tracking-widest uppercase rounded shadow-[0_4px_15px_rgba(232,200,74,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-2"
+                      className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
                     >
-                      <Icon name="Mic" size={14} /> Customize with Voice
+                      <Icon name="Mic" size={12} /> Voice Customize
                     </button>
                     <button 
                       onClick={() => setSelectedPackage(hotPkg)}
-                      className="px-8 py-3.5 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-xs font-extrabold tracking-widest uppercase rounded transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+                      className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-[10px] font-extrabold tracking-widest uppercase rounded transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
                     >
-                      View Details
+                      Details
                     </button>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })()}
+            );
+          })()}
+
+          {/* HCMC & Da Lat Featured Card */}
+          {(() => {
+            const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-dalat-explorer-5d4n");
+            if (!hotPkg) return null;
+            return (
+              <div className="p-8 bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] text-white rounded-xl shadow-[0_20px_50px_rgba(212,175,55,0.15)] border-2 border-[#D4AF37] relative overflow-hidden group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] flex flex-col justify-between min-h-[550px]">
+                {/* Flashy gold corner ribbon */}
+                <div className="absolute top-0 right-0 w-28 h-28 overflow-hidden pointer-events-none z-20">
+                  <div className="absolute top-4 -right-10 w-36 bg-[#E8C84A] text-[#12302B] text-[8px] font-bold tracking-widest text-center py-1 uppercase transform rotate-45 shadow-md border-y border-white/20">
+                    Bestseller
+                  </div>
+                </div>
+                
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="bg-[#E8C84A] text-[#12302B] text-[9px] font-extrabold tracking-[0.2em] uppercase px-2.5 py-1 rounded shadow-sm border border-white/10">
+                        🏔 Cool Highlands
+                      </span>
+                      <span className="border-2 border-[#D4AF37] text-[#E8C84A] text-[9px] font-extrabold tracking-widest uppercase px-2.5 py-0.5 rounded-full font-mono bg-[#1E4D45]/40">
+                        {hotPkg.duration}
+                      </span>
+                    </div>
+                    <Heading as="h3" variant="none" className="text-2xl md:text-3xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-4 font-bold">
+                      {hotPkg.title}
+                    </Heading>
+                    <p className="text-white/80 text-xs font-light leading-relaxed mb-6">
+                      A breathtaking 5-day journey from the vibrant streets of Ho Chi Minh City to the cool pine mountain forests of Da Lat. Features Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
+                      <div>
+                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">HOTELS INCLUDED</span>
+                        <span className="text-xs text-white/90 font-semibold">🏨 HCMC & Da Lat (3★ Premium)</span>
+                      </div>
+                      <div>
+                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">SPECIAL INDIAN RATE</span>
+                        <span className="text-3xl md:text-4xl font-mono font-black text-[#E8C84A] drop-shadow-md">{hotPkg.price} <span className="text-xs font-normal text-white/60">PP</span></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <button 
+                      onClick={() => handleOpenPlanner(hotPkg)}
+                      className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
+                    >
+                      <Icon name="Mic" size={12} /> Voice Customize
+                    </button>
+                    <button 
+                      onClick={() => setSelectedPackage(hotPkg)}
+                      className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-[10px] font-extrabold tracking-widest uppercase rounded transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+                    >
+                      Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
 
         {/* Main Header */}
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">

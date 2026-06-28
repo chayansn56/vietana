@@ -1571,6 +1571,106 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     ]
   },
   {
+    "id": "hcmc-dalat-explorer-5d4n",
+    "category": "Beach Escapes",
+    "title": "Ho Chi Minh City & Da Lat Explorer (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Bestseller",
+    "destinations": [
+      "Ho Chi Minh City",
+      "Da Lat"
+    ],
+    "img": "/assets/saigon_skyline.jpg",
+    "hotels": [
+      "Ho Chi Minh City: Riverside Hotel Saigon (★★★ - 2 Nights)",
+      "Da Lat: Tulip Hotel Group (★★★ - 2 Nights)"
+    ],
+    "price": "₹47,678",
+    "desc": "A breathtaking 5-day journey from the vibrant streets of Ho Chi Minh City to the cool pine mountain forests of Da Lat. Features Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.",
+    "inclusions": [
+      "Airport transfers in private A/C luxury vehicles",
+      "Accommodation at Riverside Hotel Saigon & Tulip Hotel Group",
+      "Daily breakfast at both hotels",
+      "All sightseeing entrance fees & activities ticket",
+      "Saigon River Sunset Cruise Admission",
+      "Cu Chi Tunnels Guided Tour & Saigon City Tour",
+      "Datanla Waterfall tour including Alpine Coaster rides",
+      "Mekong Delta day-trip with honey tea & folk music",
+      "Complimentary drone footage & local photo assist",
+      "Local lunch during Day 2 & Day 4 excursions"
+    ],
+    "exclusions": [
+      "International & Domestic Airfare",
+      "Vietnam Visa and Travel Insurance",
+      "Personal shopping and tips/gratuities",
+      "Early Check-in / Late Check-out"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Arrival in Ho Chi Minh City & Sunset Cruise",
+        "description": "Arrive at Tan Son Nhat airport in HCMC. Meet and greet with your driver, private transfer to Riverside Hotel Saigon. In the evening, step onto a premium Saigon River Sunset Cruise with welcome drink.",
+        "activities": [
+          "Airport Private Transfer to Riverside Hotel Saigon",
+          "Evening Saigon River Sunset Cruise with welcome drink"
+        ],
+        "food": [
+          "None"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Cu Chi Tunnel & Saigon City Tour",
+        "description": "Explore the legendary Cu Chi Tunnels underground network in the morning. Afternoon guided city tour of HCMC icons: War Remnants Museum, Independence Palace, Notre Dame, and Central Post Office.",
+        "activities": [
+          "Cu Chi Tunnels guided tour",
+          "Saigon city landmarks exploration"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Fly to Da Lat & Xuan Huong Lake",
+        "description": "Check out and private transfer to airport for short flight to Da Lat. Check into Tulip Hotel Group. Walk around the borders of Xuan Huong Lake and the Da Lat Night Market in the evening.",
+        "activities": [
+          "Private Airport Transfer in HCMC",
+          "Private Airport Transfer in Da Lat",
+          "Xuan Huong Lake & Da Lat Night Market orientation"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Datanla Alpine Coaster & Da Lat Highlights",
+        "description": "Hop on the famous alpine coaster winding through pine woods down to Datanla Waterfall. Stroll the Clay Tunnel carvings and photograph Linh Phuoc Pagoda mosaic architecture.",
+        "activities": [
+          "Datanla Waterfall Alpine Coaster ride",
+          "Clay Tunnel, Valley of Love, and Linh Phuoc Pagoda sightseeing"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Da Lat Leisure & Departure",
+        "description": "Enjoy a leisurely morning of fresh mountain air. Free time for local coffee before private transfer to Lien Khuong airport for your return flight.",
+        "activities": [
+          "Private departure transfer to Lien Khuong Airport"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
     "id": "phu-quoc-saigon-coast-city",
     "category": "Beach Escapes",
     "title": "Phu Quoc & Saigon Coast-to-City (6D5N)",
