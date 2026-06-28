@@ -14,6 +14,15 @@ interface FoodSideSheetProps {
 
 export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, category }) => {
   const [copiedId, setCopiedId] = React.useState<string | null>(null);
+  const [isSpeakingId, setIsSpeakingId] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [isOpen]);
 
   const handleCopy = (id: string, text: string) => {
     navigator.clipboard.writeText(text);
@@ -24,6 +33,25 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
   const openGoogleMaps = (name: string, city: string) => {
     const query = encodeURIComponent(`${name}, ${city}, Vietnam`);
     window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+  };
+
+  const speakText = (id: string, text: string) => {
+    if (!('speechSynthesis' in window)) return;
+    
+    if (isSpeakingId === id) {
+      window.speechSynthesis.cancel();
+      setIsSpeakingId(null);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const cleanText = text.replace(/<[^>]*>/g, '');
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'en-US';
+    utterance.onstart = () => setIsSpeakingId(id);
+    utterance.onend = () => setIsSpeakingId(null);
+    utterance.onerror = () => setIsSpeakingId(null);
+    window.speechSynthesis.speak(utterance);
   };
 
   return (
@@ -138,15 +166,27 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                             )}
 
                             {/* VIETANA Notes */}
-                            <div className="bg-[#F5F5F7] p-4 rounded-xl border border-black/5 flex items-start gap-3">
+                            <div className="bg-[#F5F5F7] p-4 rounded-xl border border-black/5 flex items-start gap-3 relative group/note w-full">
                               <div className="text-brand-gold mt-0.5">
                                 <Icon name="Quote" size={18} />
                               </div>
-                              <div>
-                                <Text size="xs" weight="bold" className="uppercase tracking-widest text-[#1D1D1F] mb-1">
-                                  VIETANA Notes
-                                </Text>
-                                <Text size="sm" className="text-[#1D1D1F]/80 leading-relaxed italic">
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between gap-4 mb-2">
+                                  <Text size="xs" weight="bold" className="uppercase tracking-widest text-[#1D1D1F] m-0">
+                                    VIETANA Notes
+                                  </Text>
+                                  <button
+                                    onClick={() => speakText(item.id, item.vietanaNotes)}
+                                    className={`text-[#86868B] hover:text-brand-gold cursor-pointer transition-colors p-1.5 rounded-lg hover:bg-black/5 flex items-center gap-1.5 shrink-0 ${
+                                      isSpeakingId === item.id ? 'text-brand-gold animate-pulse bg-brand-gold/10' : ''
+                                    }`}
+                                    title={isSpeakingId === item.id ? "Stop audio guide" : "Listen to audio guide"}
+                                  >
+                                    <Icon name={isSpeakingId === item.id ? "VolumeX" : "Volume2"} size={13} />
+                                    <span className="text-[10px] uppercase font-extrabold tracking-widest font-mono">Audio Guide</span>
+                                  </button>
+                                </div>
+                                <Text size="sm" className="text-[#1D1D1F]/80 leading-relaxed italic m-0">
                                   {item.vietanaNotes}
                                 </Text>
                               </div>
