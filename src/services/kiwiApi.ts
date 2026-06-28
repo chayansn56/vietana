@@ -38,7 +38,11 @@ const AIRLINES: Record<string, { name: string; logo: string }> = {
   VJ: { name: 'VietJet Air', logo: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=80&h=80&fit=crop&q=80' },
   '6E': { name: 'IndiGo', logo: 'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=80&h=80&fit=crop&q=80' },
   AI: { name: 'Air India', logo: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=80&h=80&fit=crop&q=80' },
-  SQ: { name: 'Singapore Airlines', logo: 'https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=80&h=80&fit=crop&q=80' }
+  SQ: { name: 'Singapore Airlines', logo: 'https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=80&h=80&fit=crop&q=80' },
+  QH: { name: 'Bamboo Airways', logo: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=80&h=80&fit=crop&q=80' },
+  UK: { name: 'Vistara', logo: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=80&h=80&fit=crop&q=80' },
+  TG: { name: 'Thai Airways', logo: 'https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=80&h=80&fit=crop&q=80' },
+  MH: { name: 'Malaysia Airlines', logo: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=80&h=80&fit=crop&q=80' }
 };
 
 // Popular mock airports list for immediate offline autocomplete resolution
@@ -158,120 +162,73 @@ export async function searchFlights(params: SearchParams): Promise<FlightRoute[]
     
     // Trip type multiplier
     const tripMultiplier = params.tripType === 'round' ? 1.85 : 1.0;
-    
-    const passengerCount = params.adults + params.children; // Infants don't get full seat charges usually
-    const basePrice = (isVietnam(origin) && isVietnam(destination) ? 3500 : isIndia(origin) && isIndia(destination) ? 5500 : isIndia(origin) && isVietnam(destination) ? 19000 : 35000);
-    const calculatedPrice = Math.round(basePrice * classMultiplier * tripMultiplier * passengerCount);
-
+    const passengerCount = params.adults + params.children;
     const bookingUrl = `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${params.departureDate}${params.returnDate ? `&return=${params.returnDate}` : ''}&passengers=${passengers}&cabinClass=${params.cabinClass}`;
 
     let mockList: FlightRoute[] = [];
 
+    // Helper to generate a flight record
+    const makeFlight = (
+      airlineCode: string, 
+      flightNo: string, 
+      dep: string, 
+      arr: string, 
+      durStr: string, 
+      stopsCount: number, 
+      baseCost: number
+    ): FlightRoute => {
+      const carrier = AIRLINES[airlineCode] || { name: 'Airlines', logo: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=80&h=80&fit=crop&q=80' };
+      const calculatedPrice = Math.round(baseCost * classMultiplier * tripMultiplier * passengerCount);
+      return {
+        airline: airlineCode,
+        airlineName: carrier.name,
+        airlineLogo: carrier.logo,
+        flightNumber: `${airlineCode}${flightNo}`,
+        departureTime: dep,
+        arrivalTime: arr,
+        duration: durStr,
+        stops: stopsCount,
+        price: calculatedPrice,
+        bookingUrl
+      };
+    };
+
     if (isVietnam(origin) && isVietnam(destination)) {
+      // Vietnam Domestic Route
       mockList = [
-        {
-          airline: 'VJ',
-          airlineName: 'VietJet Air',
-          airlineLogo: AIRLINES.VJ.logo,
-          flightNumber: 'VJ152',
-          departureTime: '09:15',
-          arrivalTime: '11:25',
-          duration: '2h 10m',
-          stops: 0,
-          price: Math.round(calculatedPrice * 0.8),
-          bookingUrl
-        },
-        {
-          airline: 'VN',
-          airlineName: 'Vietnam Airlines',
-          airlineLogo: AIRLINES.VN.logo,
-          flightNumber: 'VN244',
-          departureTime: '15:20',
-          arrivalTime: '17:30',
-          duration: '2h 10m',
-          stops: 0,
-          price: calculatedPrice,
-          bookingUrl
-        }
+        makeFlight('VN', '213', '06:00', '08:15', '2h 15m', 0, 4800),
+        makeFlight('VJ', '152', '09:15', '11:25', '2h 10m', 0, 3100),
+        makeFlight('QH', '244', '12:30', '14:45', '2h 15m', 0, 3600),
+        makeFlight('VN', '258', '15:20', '17:30', '2h 10m', 0, 5200),
+        makeFlight('VJ', '178', '18:45', '20:55', '2h 10m', 0, 2900),
+        makeFlight('QH', '202', '21:10', '23:25', '2h 15m', 0, 3400)
       ];
     } else if (isIndia(origin) && isIndia(destination)) {
+      // India Domestic Route
       mockList = [
-        {
-          airline: '6E',
-          airlineName: 'IndiGo',
-          airlineLogo: AIRLINES['6E'].logo,
-          flightNumber: '6E2248',
-          departureTime: '06:30',
-          arrivalTime: '08:45',
-          duration: '2h 15m',
-          stops: 0,
-          price: Math.round(calculatedPrice * 0.85),
-          bookingUrl
-        },
-        {
-          airline: 'AI',
-          airlineName: 'Air India',
-          airlineLogo: AIRLINES.AI.logo,
-          flightNumber: 'AI812',
-          departureTime: '18:10',
-          arrivalTime: '20:25',
-          duration: '2h 15m',
-          stops: 0,
-          price: calculatedPrice,
-          bookingUrl
-        }
+        makeFlight('6E', '2248', '06:30', '08:45', '2h 15m', 0, 4500),
+        makeFlight('AI', '812', '09:10', '11:30', '2h 20m', 0, 5500),
+        makeFlight('UK', '945', '13:00', '15:15', '2h 15m', 0, 5800),
+        makeFlight('6E', '512', '16:40', '18:55', '2h 15m', 0, 4200),
+        makeFlight('AI', '452', '18:10', '20:25', '2h 15m', 0, 5200),
+        makeFlight('UK', '988', '20:45', '23:00', '2h 15m', 0, 5600)
       ];
     } else {
-      // Standard international / Indo-Vietnam
+      // International Routes (e.g. India to Vietnam)
       mockList = [
-        {
-          airline: 'VJ',
-          airlineName: 'VietJet Air',
-          airlineLogo: AIRLINES.VJ.logo,
-          flightNumber: 'VJ896',
-          departureTime: '13:50',
-          arrivalTime: '19:40',
-          duration: '4h 20m',
-          stops: 0,
-          price: Math.round(calculatedPrice * 0.75),
-          bookingUrl
-        },
-        {
-          airline: 'VN',
-          airlineName: 'Vietnam Airlines',
-          airlineLogo: AIRLINES.VN.logo,
-          flightNumber: 'VN502',
-          departureTime: '23:35',
-          arrivalTime: '06:10',
-          duration: '5h 05m',
-          stops: 0,
-          price: calculatedPrice,
-          bookingUrl
-        },
-        {
-          airline: '6E',
-          airlineName: 'IndiGo',
-          airlineLogo: AIRLINES['6E'].logo,
-          flightNumber: '6E1611',
-          departureTime: '08:45',
-          arrivalTime: '14:25',
-          duration: '4h 10m',
-          stops: 0,
-          price: Math.round(calculatedPrice * 0.72),
-          bookingUrl
-        },
-        {
-          airline: 'SQ',
-          airlineName: 'Singapore Airlines',
-          airlineLogo: AIRLINES.SQ.logo,
-          flightNumber: 'SQ401',
-          departureTime: '09:20',
-          arrivalTime: '18:15',
-          duration: '7h 25m',
-          stops: 1,
-          price: Math.round(calculatedPrice * 1.35),
-          bookingUrl
-        }
+        // Direct Flights
+        makeFlight('VJ', '896', '13:50', '19:40', '4h 20m', 0, 16000),
+        makeFlight('VN', '502', '23:35', '06:10', '5h 05m', 0, 21000),
+        makeFlight('6E', '1611', '08:45', '14:25', '4h 10m', 0, 15500),
+        makeFlight('AI', '342', '21:00', '03:15', '4h 45m', 0, 19500),
+        
+        // 1-Stop Layovers
+        makeFlight('SQ', '401', '09:20', '18:15', '7h 25m', 1, 28000),
+        makeFlight('TG', '316', '11:45', '20:10', '6h 55m', 1, 26000),
+        makeFlight('MH', '191', '07:30', '16:50', '7h 50m', 1, 24500),
+        makeFlight('SQ', '403', '16:10', '01:05', '7h 25m', 1, 29000),
+        makeFlight('TG', '324', '18:30', '02:40', '6h 40m', 1, 27000),
+        makeFlight('MH', '195', '23:00', '08:20', '7h 50m', 1, 25000)
       ];
     }
 
