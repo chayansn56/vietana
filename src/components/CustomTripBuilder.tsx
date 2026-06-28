@@ -305,12 +305,16 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
 
 
       {/* HEADER */}
-      <div className="p-10 pb-8 border-b border-white/5 relative z-10 flex flex-col items-center text-center">
-        <Heading as="h2" variant="white" className="text-4xl font-serif mb-3 tracking-wide flex items-center gap-3">
+      <div className="p-10 pb-8 border-b border-white/5 relative z-10 flex flex-col items-center text-center select-none shrink-0">
+        <div className="flex items-center gap-2 mb-3 bg-black/20 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-xs">
+          <Icon name="Leaf" size={14} className="text-[#E8C84A]" />
+          <span className="font-sans font-black tracking-[0.25em] text-[10px] text-white uppercase">VIETANA</span>
+        </div>
+        <Heading as="h2" variant="white" className="text-3xl md:text-4xl font-serif mb-2 tracking-wide">
            Craft Your <span className="text-brand-gold-light italic">Journey</span>
         </Heading>
-        <Text variant="none" className="text-white/50 text-sm font-light tracking-widest uppercase">
-          <BrandName /> REAL-TIME ESTIMATE ENGINE V4
+        <Text variant="none" className="text-white/40 text-[10px] font-mono tracking-widest uppercase">
+          REAL-TIME ESTIMATE ENGINE V4
         </Text>
       </div>
 
@@ -318,7 +322,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
       <div className="flex-1 overflow-y-auto flex flex-col md:flex-row relative z-10 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
         
         {/* LEFT: Parameters & Destinations */}
-        <div className="flex-1 md:flex-[0.5] p-10 border-r border-white/5 flex flex-col gap-10">
+        <div className="flex-shrink-0 md:flex-1 md:flex-[0.5] p-6 md:p-10 border-b md:border-b-0 md:border-r border-white/5 flex flex-col gap-8 md:gap-10">
           
           <div className="flex flex-col gap-8">
             <Heading as="h3" variant="none" className="text-brand-gold/70 uppercase tracking-[0.2em] text-xs font-semibold flex items-center gap-3">
@@ -544,7 +548,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
         </div>
 
         {/* RIGHT: Estimate Receipt & Insights */}
-        <div className="flex-1 md:flex-[0.5] p-10 bg-black/60 flex flex-col shadow-inner border-l border-white/5 rounded-none border-t-0 border-r-0 border-b-0 overflow-y-auto">
+        <div className="flex-shrink-0 md:flex-1 md:flex-[0.5] p-6 md:p-10 bg-black/60 flex flex-col shadow-inner border-t md:border-t-0 md:border-l border-white/5 rounded-none md:overflow-y-auto">
            
            {/* Smart Insights Panel */}
            <div className="mb-10 bg-brand-gold/5 border border-brand-gold/20 rounded-2xl p-6">

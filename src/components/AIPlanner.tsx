@@ -56,6 +56,13 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
 
   const recognitionRef = useRef<any>(null);
 
+  // Automatically reset planner on open to ensure a fresh session
+  useEffect(() => {
+    if (isOpen) {
+      resetPlanner();
+    }
+  }, [isOpen]);
+
   // Initialize Speech Recognition
   useEffect(() => {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -138,6 +145,15 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
     }
   }, [itinerary]);
 
+  // Cancel voice speech when modal is closed or unmounted
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [isOpen]);
+
   const pcMsgsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -153,7 +169,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       isOpen={isOpen}
       onClose={onClose}
       maxWidth="max-w-6xl"
-      className={`h-[85vh] max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden glass-dark rounded-[32px] transition-all duration-700 ${
+      className={`h-[100dvh] md:h-[85vh] max-h-none md:max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden glass-dark rounded-none md:rounded-[32px] transition-all duration-700 ${
         isListening 
           ? 'shadow-[0_0_60px_rgba(168,85,247,0.35)]' 
           : isSpeaking 
@@ -175,7 +191,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       }`} />
 
       {/* LEFT: Chat Consultation (Lush Glassmorphism) */}
-      <div className="flex-1 md:flex-[0.58] flex flex-col relative z-10 border-r border-white/5 w-full">
+      <div className="flex-1 md:flex-[0.58] flex flex-col relative z-10 border-r border-white/5 w-full bg-gradient-to-b from-[#0F2622] via-[#0B1A18] to-[#071110]">
         <div className="p-6 md:p-10 pb-4 md:pb-6 text-left relative flex justify-between items-start">
           <div>
             <Heading as="h3" variant="white" className="text-2xl md:text-3xl font-serif tracking-wide flex items-center gap-3">
@@ -248,7 +264,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 )}
                 <div className={`max-w-[80%] relative group/msg ${msg.type === 'user'
                     ? 'bg-gradient-to-r from-brand-gold/10 to-brand-gold/20 border border-brand-gold/30 rounded-2xl rounded-br-sm p-5 shadow-soft text-right'
-                    : 'bg-gradient-to-br from-brand-green/20 via-brand-green-dark/10 to-white/5 border border-brand-green-light/20 rounded-2xl rounded-bl-sm p-5 pr-12 shadow-soft text-left'
+                    : 'bg-gradient-to-br from-[#1E4D45]/30 via-white/5 to-[#D4AF37]/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 pr-12 shadow-soft text-left'
                   }`}>
                   <Text
                     variant="none"
@@ -408,7 +424,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       </div>
 
       {/* RIGHT COLUMN: Itinerary Visualizer or Live Preferences */}
-      <div className="hidden md:flex flex-[0.42] flex-col glass-dark bg-black/40 p-8 md:p-10 relative z-10 border-l border-white/5 shadow-inner border-t-0 border-b-0 border-r-0 rounded-none overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+      <div className="hidden md:flex flex-[0.42] flex-col bg-gradient-to-br from-[#121A1D] via-[#0F1417] to-[#080B0D] p-8 md:p-10 relative z-10 border-l border-white/5 shadow-inner border-t-0 border-b-0 border-r-0 rounded-none overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
         {itinerary ? (
           /* Structured Day-by-Day Timeline Accordion */
           <div className="flex flex-col h-full">

@@ -141,7 +141,7 @@ Please load this itinerary and let me customize it!`;
                       onClick={() => handleOpenPlanner(hotPkg)}
                       className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
                     >
-                      <Icon name="Mic" size={12} /> Voice Customize
+                      <Icon name="Sparkles" size={12} /> AI Customization
                     </button>
                     <button 
                       onClick={() => setSelectedPackage(hotPkg)}
@@ -200,7 +200,7 @@ Please load this itinerary and let me customize it!`;
                       onClick={() => handleOpenPlanner(hotPkg)}
                       className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
                     >
-                      <Icon name="Mic" size={12} /> Voice Customize
+                      <Icon name="Sparkles" size={12} /> AI Customization
                     </button>
                     <button 
                       onClick={() => setSelectedPackage(hotPkg)}
@@ -405,7 +405,7 @@ Please load this itinerary and let me customize it!`;
                       className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn flex items-center justify-center gap-1"
                       onClick={() => handleOpenPlanner(pkg)}
                     >
-                      <Icon name="Mic" size={10} /> Voice Customize
+                      <Icon name="Sparkles" size={10} /> AI Customization
                     </button>
                     <button
                       className="py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-[#555555] hover:text-[#111111] bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
@@ -473,6 +473,12 @@ Please load this itinerary and let me customize it!`;
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+              
+              {/* Vietana Brand Logo Label */}
+              <div className="absolute top-5 left-6 text-white/85 text-[10px] tracking-widest font-mono font-bold uppercase flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
+                <Icon name="Leaf" size={12} className="text-[#E8C84A]" /> VIETANA CURATED
+              </div>
+
               <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end gap-4">
                 <div>
                   <Text variant="none" className="text-[0.65rem] uppercase tracking-widest text-[#D4AF37] font-mono font-bold mb-1.5 block">

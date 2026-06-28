@@ -7,9 +7,9 @@ export const MAP_DESTINATIONS: Destination[] = [
     "desc": "Misty mountains and terraced rice fields.",
     "lat": 22.3364,
     "lng": 103.8438,
-    "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Tay_sa_pa.jpg",
+    "img": "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=800&q=80",
     "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/7/7e/Tay_sa_pa.jpg",
+      "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=800&q=80",
       "https://upload.wikimedia.org/wikipedia/commons/b/b6/An_ancient_engraved_rock_of_Sapa.JPG",
       "https://upload.wikimedia.org/wikipedia/commons/a/a0/B%C3%A1n_qu%E1%BA%A7n_%C3%A1o_t%E1%BA%A1i_Sa_Pa.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/6/66/B%C3%A3i_%C4%91%C3%A1_c%E1%BB%95.jpg",
@@ -82,9 +82,9 @@ export const MAP_DESTINATIONS: Destination[] = [
     "desc": "Ancient imperial city and royal tombs.",
     "lat": 16.4637,
     "lng": 107.5909,
-    "img": "https://upload.wikimedia.org/wikipedia/commons/5/52/Hu%E1%BA%BF_%282024%29_-_Meridian_Gate_-_Ng%E1%BB%8D_M%C3%B4n_%28Ho%C3%A0ng_th%C3%A0nh_Hu%E1%BA%BF%29_-_img_02.jpg",
+    "img": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
     "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/5/52/Hu%E1%BA%BF_%282024%29_-_Meridian_Gate_-_Ng%E1%BB%8D_M%C3%B4n_%28Ho%C3%A0ng_th%C3%A0nh_Hu%E1%BA%BF%29_-_img_02.jpg",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
       "https://upload.wikimedia.org/wikipedia/commons/4/40/Th%C3%A0nh_ph%E1%BB%91_Hu%E1%BA%BF_nh%C3%ACn_t%E1%BB%AB_tr%C3%AAn_cao_%282%29.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/0/04/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF_-_Ch%E1%BB%A3_%C4%90%C3%B4ng_Ba_%282024%29_-_img_02.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/9/96/Marines_Fire_From_a_House_Window%2C_February_1968_%2816242259837%29_%28cropped%29.jpg",

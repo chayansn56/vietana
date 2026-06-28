@@ -30,10 +30,10 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
       document.body.style.overflow = 'hidden';
     } else {
       setIsVisible(false);
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -80,7 +80,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
 
       {/* Modal Content - Elegant Box */}
       <div 
-        className={`relative w-[95vw] max-w-5xl h-[85dvh] md:h-[70vh] max-h-[800px] md:max-h-[600px] overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
+        className={`relative w-[95vw] max-w-5xl h-[85dvh] md:h-[70vh] max-h-[800px] md:max-h-[600px] overflow-y-auto md:overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}
       >
@@ -104,7 +104,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
         </div>
 
         {/* Right Side: Content Container */}
-        <div className="relative w-full h-2/3 md:h-full md:w-7/12 flex flex-col bg-surface-ivory">
+        <div className="relative w-full h-2/3 md:h-full md:w-7/12 flex flex-col bg-surface-ivory overflow-y-auto md:overflow-y-visible">
           
           {/* Tightly Packed Content Area */}
           <div className="flex-1 flex flex-col justify-center p-5 md:p-8 lg:p-10">
