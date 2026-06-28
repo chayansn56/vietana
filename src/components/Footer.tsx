@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
             onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
             className="px-12 py-6 text-xl font-bold bg-white/10 backdrop-blur-xl border border-white/30 text-white rounded-full shadow-[0_20px_60px_rgba(202,138,4,0.3)] hover:bg-white/20 hover:scale-105 transition-all duration-500 ease-out"
           >
-            Start Planning Now <span className="ml-2">✨</span>
+            Start Planning Now
           </Button>
         </Container>
 

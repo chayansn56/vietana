@@ -588,7 +588,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
              {/* Dynamic Price Sync Panel */}
              <div className="bg-white/5 border border-white/10 rounded-xl p-3 mb-6 flex justify-between items-center gap-2">
                <div className="flex flex-col">
-                 <span className="text-[8px] uppercase tracking-widest text-white/40">Hourly Feed Status</span>
+                 <span className="text-[11px] uppercase tracking-widest text-white/40">Hourly Feed Status</span>
                  <span className="text-[10px] text-white/80 font-mono">
                    Last query: {lastSyncTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                  </span>

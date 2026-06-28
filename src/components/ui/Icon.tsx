@@ -59,7 +59,8 @@ import {
   Bookmark,
   Volume2,
   VolumeX,
-  RotateCcw
+  RotateCcw,
+  Handshake
 } from 'lucide-react';
 
 export type IconName = 
@@ -74,7 +75,7 @@ export type IconName =
   | 'Ban' | 'Fish' | 'Drumstick' | 'LeafyGreen' | 'UtensilsCrossed'
   | 'MessageSquare' | 'ArrowRight'
   | 'AlertTriangle' | 'AlertCircle' | 'HeartPulse' | 'Flag' | 'ShieldAlert' | 'Download'
-  | 'FileText' | 'Utensils' | 'Heart' | 'Search' | 'ArrowLeftRight' | 'ExternalLink' | 'User' | 'Bookmark' | 'Volume2' | 'VolumeX' | 'RotateCcw';
+  | 'FileText' | 'Utensils' | 'Heart' | 'Search' | 'ArrowLeftRight' | 'ExternalLink' | 'User' | 'Bookmark' | 'Volume2' | 'VolumeX' | 'RotateCcw' | 'Handshake';
 
 const iconMap: Record<IconName, React.ElementType> = {
   Leaf, Plane, Soup, Sparkles, Star, MapPin, Phone, MessageCircle, Mail,
@@ -84,7 +85,7 @@ const iconMap: Record<IconName, React.ElementType> = {
   Settings, Train, Edit3, Castle, Users, Moon, Target, Mic,
   Ban, Fish, Drumstick, LeafyGreen, UtensilsCrossed, MessageSquare, ArrowRight,
   AlertTriangle, AlertCircle, HeartPulse, Flag, ShieldAlert, Download,
-  FileText, Utensils, Heart, Search, ArrowLeftRight, ExternalLink, User, Bookmark, Volume2, VolumeX, RotateCcw
+  FileText, Utensils, Heart, Search, ArrowLeftRight, ExternalLink, User, Bookmark, Volume2, VolumeX, RotateCcw, Handshake
 };
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {

@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
+  const baseStyles = 'focus-ring inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
   
   const variants = {
     primary: 'bg-brand-gold text-brand-green-dark hover:bg-brand-gold-light hover:-translate-y-1 shadow-gold hover:shadow-gold-hover border-none',

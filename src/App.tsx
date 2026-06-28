@@ -137,7 +137,7 @@ export default function App() {
 
       <AnimatePresence>
         {isPlannerOpen && (
-          <Suspense>
+          <Suspense fallback={<ModalFallback />}>
             <AIPlanner 
               isOpen={isPlannerOpen} 
               onClose={() => { setIsPlannerOpen(false); setInitialDestination(undefined); setInitialPrompt(undefined); }} 
@@ -150,7 +150,7 @@ export default function App() {
 
       <AnimatePresence>
         {isMagicModeOpen && (
-          <Suspense>
+          <Suspense fallback={<ModalFallback />}>
             <MagicMode 
               isOpen={isMagicModeOpen} 
               onClose={() => setIsMagicModeOpen(false)} 
@@ -167,7 +167,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <Suspense>
+      <Suspense fallback={<ModalFallback />}>
         <CustomTripBuilder 
           isOpen={isBuilderOpen} 
           onClose={() => setIsBuilderOpen(false)} 
@@ -221,19 +221,28 @@ export default function App() {
   );
 }
 
+const ModalFallback = () => (
+  <div className="fixed inset-0 z-[200] bg-surface-dark flex items-center justify-center">
+    <div className="flex flex-col items-center gap-4">
+      <div className="w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full animate-spin" />
+      <span className="text-xs text-brand-gold/60 uppercase tracking-widest">Loading</span>
+    </div>
+  </div>
+);
+
 const SectionPlaceholder = () => (
-  <div className="w-full py-24 bg-surface-cream overflow-hidden border-t border-black/5">
+  <div className="w-full py-24 bg-surface-cream overflow-hidden border-t border-black/5 dark:border-white/5">
     <div className="container mx-auto px-6 max-w-7xl">
-      <div className="flex flex-col items-center md:items-start gap-4 animate-pulse mb-12">
-        <div className="h-3 w-24 bg-brand-gold/30 rounded-full"></div>
-        <div className="h-10 w-64 bg-black/10 rounded-md"></div>
+      <div className="flex flex-col items-center md:items-start gap-4 mb-12">
+        <div className="h-3 w-24 skeleton"></div>
+        <div className="h-10 w-64 skeleton"></div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[1, 2, 3].map((i) => (
           <div key={i} className="flex flex-col gap-4">
-            <div className="w-full h-80 bg-black/5 rounded-2xl animate-pulse"></div>
-            <div className="h-6 w-3/4 bg-black/10 rounded-md animate-pulse"></div>
-            <div className="h-4 w-1/2 bg-black/5 rounded-md animate-pulse"></div>
+            <div className="w-full h-80 skeleton rounded-2xl"></div>
+            <div className="h-6 w-3/4 skeleton"></div>
+            <div className="h-4 w-1/2 skeleton"></div>
           </div>
         ))}
       </div>

@@ -30,18 +30,18 @@ const Food: React.FC = () => {
 
   return (
     <>
-      <Section id="food" className="relative py-32 bg-[#F5F5F7] text-[#1D1D1F] overflow-hidden">
+      <Section id="food" className="relative py-32 bg-[#FAF8F3] text-[#111111] overflow-hidden">
         <Container>
           
           {/* Main Hero Header */}
           <div className="mb-20 text-center max-w-4xl mx-auto reveal">
-            <Text size="lg" weight="medium" className="uppercase tracking-[0.3em] text-brand-gold mb-6">
+            <Text size="lg" weight="medium" className="uppercase tracking-[0.3em] text-brand-sage mb-6">
               VIETANA Food Concierge™
             </Text>
-            <Heading as="h2" size="4xl" font="serif" className="mb-6 font-extrabold text-[#1D1D1F]">
+            <Heading as="h2" size="4xl" font="serif" className="mb-6 font-bold text-brand-green-dark tracking-tight">
               A Taste Of Home
             </Heading>
-            <Text size="xl" className="text-[#86868B] font-light leading-relaxed">
+            <Text size="xl" className="text-[#555555] font-light leading-relaxed">
               Because great journeys shouldn't come with food worries. 
               Discover our carefully curated ecosystem of comfort, flavor, and local secrets.
             </Text>
@@ -88,14 +88,14 @@ const Food: React.FC = () => {
               <div className="relative z-20 w-full md:max-w-[55%] flex flex-col justify-between h-full min-h-[220px] md:min-h-0">
                 <div>
                   <Text size="sm" weight="bold" className="uppercase tracking-widest text-brand-green mb-4">Plant Based</Text>
-                  <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-4">
+                  <Heading as="h3" size="2xl" font="serif" className="text-brand-green-dark mb-4">
                     {CATEGORY_VEG_JAIN.title}
                   </Heading>
-                  <Text className="text-[#86868B] mb-6">
+                  <Text className="text-[#555555] mb-6">
                     {CATEGORY_VEG_JAIN.subtitle}
                   </Text>
                 </div>
-                <div className="inline-flex items-center gap-2 text-[#1D1D1F] font-medium group-hover:text-brand-green transition-colors mt-auto">
+                <div className="inline-flex items-center gap-2 text-[#111111] font-medium group-hover:text-brand-green transition-colors mt-auto">
                   Explore <span className="text-xl leading-none">&rarr;</span>
                 </div>
               </div>
@@ -140,10 +140,10 @@ const Food: React.FC = () => {
                  <img src={CATEGORY_CAFES.heroImage} alt="Best Cafes and Coffee Shops in Vietnam" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div>
-                <Heading as="h3" size="lg" font="serif" className="text-[#1D1D1F] mb-1">
+                <Heading as="h3" size="lg" font="serif" className="text-brand-green-dark mb-1">
                   {CATEGORY_CAFES.title}
                 </Heading>
-                <Text size="sm" className="text-[#86868B]">
+                <Text size="sm" className="text-[#555555]">
                   {CATEGORY_CAFES.subtitle}
                 </Text>
               </div>
@@ -151,7 +151,7 @@ const Food: React.FC = () => {
 
             {/* Local Knowledge */}
             <div 
-              className="lg:col-span-2 bg-[#1D1D1F] rounded-3xl p-8 md:p-12 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden min-h-[320px]"
+              className="lg:col-span-2 bg-brand-green-extra-dark rounded-3xl p-8 md:p-12 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden min-h-[320px]"
               onClick={() => openCategory(CATEGORY_LOCAL_KNOWLEDGE)}
             >
               <div className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-700">

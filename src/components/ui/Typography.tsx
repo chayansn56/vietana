@@ -35,8 +35,12 @@ export const Heading: React.FC<HeadingProps> = ({
     md: 'text-xl md:text-2xl font-normal',
     lg: 'text-2xl md:text-3xl font-normal',
     xl: 'text-3xl md:text-4xl font-normal',
+    h5: 'text-h5',
+    h4: 'text-h4',
+    h3: 'text-h3',
     '2xl': 'text-h2 font-light leading-tight',
     '3xl': 'text-h1 font-light leading-none',
+    display: 'text-display font-light leading-none',
     none: '',
   };
 
@@ -90,12 +94,14 @@ export const Text: React.FC<TextProps> = ({
   ...props
 }) => {
   const sizes: Record<string, string> = {
-    xxs: 'text-xxs leading-relaxed',
-    xs: 'text-xs leading-relaxed',
+    xxs: 'text-caption leading-snug tracking-wider uppercase',
+    xs: 'text-xs leading-normal',
     sm: 'text-sm leading-relaxed',
     md: 'text-base leading-relaxed',
     lg: 'text-lg leading-relaxed',
     xl: 'text-xl md:text-2xl leading-relaxed',
+    caption: 'text-xs leading-snug tracking-wider uppercase',
+    meta: 'text-xs leading-snug tracking-widest uppercase',
   };
 
   const variants: Record<string, string> = {

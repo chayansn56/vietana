@@ -103,7 +103,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
       onMouseMove={handleMouseMove}
     >
       {/* Side Control Panel */}
-      <div className="w-full md:w-80 bg-white/80 dark:bg-[#1A2120]/90 backdrop-blur-md border-r border-[#1D1D1F]/5 dark:border-white/5 p-6 flex flex-col gap-6 relative z-20 shrink-0">
+      <div className="w-full md:w-80 bg-white/80 dark:bg-[#1A2120]/90 backdrop-blur-md border-r border-[#111111]/5 dark:border-white/5 p-6 flex flex-col gap-6 relative z-20 shrink-0">
         <div>
           <span className="text-[9px] font-bold tracking-[0.22em] text-[#1E4D45] dark:text-brand-gold uppercase block mb-1">Illustrative Cartography</span>
           <Heading as="h3" size="lg" font="serif" className="text-[#1E4D45] dark:text-white tracking-wide">Regions of Vietnam</Heading>
@@ -266,7 +266,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
-              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-[#1A2120] rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-[#1D1D1F]/5 dark:border-white/5"
+              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-[#1A2120] rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-[#111111]/5 dark:border-white/5"
               style={cardStyle}
             >
               <div className="h-32 w-full relative">
@@ -289,7 +289,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 <Text size="sm" className="text-[#2B2B2B]/70 dark:text-white/70 leading-snug">
                   {MAP_DESTINATIONS[hoveredDest].desc}
                 </Text>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#1D1D1F]/5 dark:border-white/5">
+                <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#111111]/5 dark:border-white/5">
                   <span className={`text-[0.6rem] font-bold tracking-widest uppercase ${selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? 'text-[#D4AF37]' : 'text-gray-400 dark:text-white/40'}`}>
                     {selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
                   </span>
@@ -307,7 +307,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
-              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-[#1A2120] rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-[#1D1D1F]/5 dark:border-white/5"
+              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-[#1A2120] rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-[#111111]/5 dark:border-white/5"
               style={cardStyle}
             >
               <div className="h-32 w-full relative">
@@ -330,7 +330,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 <Text size="sm" className="text-[#2B2B2B]/70 dark:text-white/70 leading-snug">
                   {hoveredSight.desc}
                 </Text>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#1D1D1F]/5 dark:border-white/5">
+                <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#111111]/5 dark:border-white/5">
                   <span className={`text-[0.6rem] font-bold tracking-widest uppercase ${selectedSights.includes(hoveredSight.name) ? 'text-[#D4AF37]' : 'text-gray-400 dark:text-white/40'}`}>
                     {selectedSights.includes(hoveredSight.name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
                   </span>

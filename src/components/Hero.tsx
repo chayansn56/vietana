@@ -83,8 +83,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             {/* Ambient vignette per panel */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/85 pointer-events-none" />
             
-            {/* Panel Label */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 md:bottom-20 md:left-10 md:translate-x-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+            {/* Panel Label — visible on hover, always visible on mobile */}
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 md:bottom-20 md:left-10 md:translate-x-0 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
               <Text variant="none" className="text-white/70 tracking-[0.3em] text-[0.65rem] uppercase font-bold drop-shadow-md">
                 {panel.label}
               </Text>
@@ -92,8 +92,20 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
             {/* Vertical Divider */}
             {idx < TRIPTYCH_PANELS.length - 1 && (
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-white/20 z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-px bg-white/20 z-10 hidden md:block" />
             )}
+          </div>
+        ))}
+      </div>
+      
+      {/* MOBILE FILMSTRIP — shows all 3 panels as a bottom strip on small screens */}
+      <div className="absolute bottom-0 left-0 right-0 z-[5] flex md:hidden h-14 bg-black/60 backdrop-blur-sm border-t border-white/10">
+        {TRIPTYCH_PANELS.map((panel, idx) => (
+          <div key={idx} className="flex-1 flex items-center justify-center relative overflow-hidden border-r border-white/10 last:border-r-0">
+            <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: `url(${panel.img})` }} />
+            <Text variant="none" className="relative text-[0.6rem] text-white/80 tracking-[0.2em] uppercase font-semibold drop-shadow-md">
+              {panel.label}
+            </Text>
           </div>
         ))}
       </div>
@@ -125,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
           <Text 
             variant="none"
-            className="max-w-xl mx-auto mb-10 text-white/90 text-sm sm:text-lg font-light leading-relaxed animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] drop-shadow-md"
+            className="max-w-xl mx-auto mb-10 text-white/90 text-sm sm:text-lg leading-relaxed animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] drop-shadow-md light-on-dark"
           >
             {t.hero.sub}
           </Text>

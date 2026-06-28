@@ -94,139 +94,78 @@ Please load this itinerary and let me customize it!`;
       <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
-        {/* Most Selling Hot Highlight Block at the very top */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-          {/* HCMC & Phu Quoc Featured Card */}
-          {(() => {
-            const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-phu-quoc-explorer-5d4n");
-            if (!hotPkg) return null;
-            return (
-              <div className="p-8 bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] text-white rounded-xl shadow-[0_20px_50px_rgba(212,175,55,0.15)] border-2 border-[#D4AF37] relative overflow-hidden group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] flex flex-col justify-between min-h-[550px]">
-                {/* Flashy gold corner ribbon */}
-                <div className="absolute top-0 right-0 w-28 h-28 overflow-hidden pointer-events-none z-20">
-                  <div className="absolute top-4 -right-10 w-36 bg-[#E8C84A] text-[#12302B] text-[8px] font-bold tracking-widest text-center py-1 uppercase transform rotate-45 shadow-md border-y border-white/20">
-                    Bestseller
+        {/* Featured Packages — redesigned editorial cards */}
+        {(() => {
+          const hotPkg1 = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-phu-quoc-explorer-5d4n");
+          const hotPkg2 = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-dalat-explorer-5d4n");
+          if (!hotPkg1 || !hotPkg2) return null;
+          return (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-14">
+              {[hotPkg1, hotPkg2].map((pkg, idx) => (
+                <div key={pkg.id} className="relative">
+                  <div className="absolute top-3 right-0 z-20">
+                    <div className="bg-[#E8C84A] text-[#12302B] text-[11px] font-bold tracking-widest text-center py-1 px-5 uppercase shadow-sm border-y border-white/20 rounded-l-sm">
+                      Bestseller
+                    </div>
                   </div>
-                </div>
-                
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <div>
+                  <div className="group rounded-xl bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] border border-white/10 transition-all duration-500 hover:border-white/20 overflow-hidden">
+                  {/* Gold top accent line */}
+                  <div className="h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
+                  <div className="p-6 md:p-8">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-[#E8C84A] text-[#12302B] text-[9px] font-extrabold tracking-[0.2em] uppercase px-2.5 py-1 rounded shadow-sm border border-white/10">
-                        🔥 Popular Coast
+                      <span className="bg-brand-sage/20 text-brand-sage text-[11px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded">
+                        {idx === 0 ? 'Coastal' : 'Highlands'}
                       </span>
-                      <span className="border-2 border-[#D4AF37] text-[#E8C84A] text-[9px] font-extrabold tracking-widest uppercase px-2.5 py-0.5 rounded-full font-mono bg-[#1E4D45]/40">
-                        {hotPkg.duration}
-                      </span>
+                      <span className="text-white/50 text-[11px] font-mono tracking-wider">{pkg.duration}</span>
                     </div>
-                    <Heading as="h3" variant="none" className="text-2xl md:text-3xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-4 font-bold">
-                      {hotPkg.title}
+                    <Heading as="h3" size="h4" font="serif" variant="white" className="mb-3">
+                      {pkg.title}
                     </Heading>
-                    <p className="text-white/80 text-xs font-light leading-relaxed mb-6">
-                      An incredible 5-day journey from the historic streets of Ho Chi Minh City to the tropical sands of Phu Quoc Island. Includes Cu Chi Tunnels tour, Mekong Delta cruise, 3 Island speedboating with snorkeling, and admission to VinWonders theme park.
+                    <p className="text-white/70 text-sm font-light leading-relaxed mb-5 max-w-prose">
+                      {idx === 0
+                        ? 'From Ho Chi Minh to Phu Quoc — Cu Chi Tunnels, Mekong Delta cruise, and 3 Island speedboating with snorkeling.'
+                        : 'From Ho Chi Minh to Da Lat — Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.'}
                     </p>
-                    <div className="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
+                    <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
                       <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">HOTELS INCLUDED</span>
-                        <span className="text-xs text-white/90 font-semibold">🏨 HCMC & Phu Quoc (3★ Premium)</span>
+                        <span className="text-white/40 text-[11px] uppercase tracking-widest font-semibold block mb-1">From</span>
+                        <span className="text-2xl font-mono font-bold text-[#E8C84A] tabular-nums">{pkg.price} <span className="text-xs font-normal text-white/50">PP</span></span>
                       </div>
-                      <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">SPECIAL INDIAN RATE</span>
-                        <span className="text-3xl md:text-4xl font-mono font-black text-[#E8C84A] drop-shadow-md">{hotPkg.price} <span className="text-xs font-normal text-white/60">PP</span></span>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleOpenPlanner(pkg)}
+                          className="px-4 py-2 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
+                        >
+                          Customize
+                        </button>
+                        <button
+                          onClick={() => setSelectedPackage(pkg)}
+                          className="px-4 py-2 border border-white/20 hover:bg-white/10 text-white text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
+                        >
+                          Details
+                        </button>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    <button 
-                      onClick={() => handleOpenPlanner(hotPkg)}
-                      className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
-                    >
-                      <Icon name="Sparkles" size={12} /> AI Customization
-                    </button>
-                    <button 
-                      onClick={() => setSelectedPackage(hotPkg)}
-                      className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-[10px] font-extrabold tracking-widest uppercase rounded transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
-                    >
-                      Details
-                    </button>
                   </div>
                 </div>
-              </div>
-            );
-          })()}
+              ))}
+            </div>
+          );
+        })()}
 
-          {/* HCMC & Da Lat Featured Card */}
-          {(() => {
-            const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-dalat-explorer-5d4n");
-            if (!hotPkg) return null;
-            return (
-              <div className="p-8 bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] text-white rounded-xl shadow-[0_20px_50px_rgba(212,175,55,0.15)] border-2 border-[#D4AF37] relative overflow-hidden group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] flex flex-col justify-between min-h-[550px]">
-                {/* Flashy gold corner ribbon */}
-                <div className="absolute top-0 right-0 w-28 h-28 overflow-hidden pointer-events-none z-20">
-                  <div className="absolute top-4 -right-10 w-36 bg-[#E8C84A] text-[#12302B] text-[8px] font-bold tracking-widest text-center py-1 uppercase transform rotate-45 shadow-md border-y border-white/20">
-                    Bestseller
-                  </div>
-                </div>
-                
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-[#E8C84A] text-[#12302B] text-[9px] font-extrabold tracking-[0.2em] uppercase px-2.5 py-1 rounded shadow-sm border border-white/10">
-                        🏔 Cool Highlands
-                      </span>
-                      <span className="border-2 border-[#D4AF37] text-[#E8C84A] text-[9px] font-extrabold tracking-widest uppercase px-2.5 py-0.5 rounded-full font-mono bg-[#1E4D45]/40">
-                        {hotPkg.duration}
-                      </span>
-                    </div>
-                    <Heading as="h3" variant="none" className="text-2xl md:text-3xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-4 font-bold">
-                      {hotPkg.title}
-                    </Heading>
-                    <p className="text-white/80 text-xs font-light leading-relaxed mb-6">
-                      A breathtaking 5-day journey from the vibrant streets of Ho Chi Minh City to the cool pine mountain forests of Da Lat. Features Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
-                      <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">HOTELS INCLUDED</span>
-                        <span className="text-xs text-white/90 font-semibold">🏨 HCMC & Da Lat (3★ Premium)</span>
-                      </div>
-                      <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">SPECIAL INDIAN RATE</span>
-                        <span className="text-3xl md:text-4xl font-mono font-black text-[#E8C84A] drop-shadow-md">{hotPkg.price} <span className="text-xs font-normal text-white/60">PP</span></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    <button 
-                      onClick={() => handleOpenPlanner(hotPkg)}
-                      className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
-                    >
-                      <Icon name="Sparkles" size={12} /> AI Customization
-                    </button>
-                    <button 
-                      onClick={() => setSelectedPackage(hotPkg)}
-                      className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-[10px] font-extrabold tracking-widest uppercase rounded transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
-                    >
-                      Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-        </div>
-
-        {/* Main Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* Section Header */}
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
-              MORE EXPERIENCES
+            <span className="text-xs font-bold tracking-[0.25em] text-brand-sage uppercase mb-3 block">
+              VIETANA CURATED
             </span>
-            <Heading as="h2" size="4xl" font="serif" className="mb-4 tracking-tight text-[#1E4D45]">
+            <Heading as="h2" size="h3" font="serif" className="mb-3 tracking-tight text-[#1E4D45]">
               Explore Packages
             </Heading>
-            <div className="w-16 h-px bg-[#D4AF37] mb-6"></div>
-            <Text variant="none" className="text-[#555555] font-light max-w-2xl text-base md:text-lg">
-              Locally handpicked and customized itineraries matching the preferences of premium Indian travelers.
+            <div className="w-12 h-px bg-[#D4AF37] mb-5"></div>
+            <Text variant="none" className="text-[#555555] font-light max-w-2xl text-sm md:text-base">
+              Handpicked itineraries crafted for premium Indian travelers, with local support from Ho Chi Minh City.
             </Text>
           </div>
 
@@ -340,15 +279,15 @@ Please load this itinerary and let me customize it!`;
                     
                     {/* Top tags */}
                     <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
-                      <span className="bg-[#1E4D45] text-white font-semibold text-[8px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
+                      <span className="bg-[#1E4D45] text-white font-semibold text-[11px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
                         {pkg.badge}
                       </span>
                       {pkg.price ? (
-                        <span className="bg-[#E8C84A] text-[#12302B] px-2.5 py-1 rounded text-[9px] tracking-wider uppercase font-mono font-bold shadow-sm border border-white/20">
+                        <span className="bg-[#E8C84A] text-[#12302B] px-2.5 py-1 rounded text-[11px] tracking-wider uppercase font-mono font-bold shadow-sm border border-white/20">
                           {pkg.price} PP
                         </span>
                       ) : (
-                        <span className="bg-white text-[#1E4D45] border border-[#E8E4D9] px-2.5 py-1 rounded text-[8px] tracking-widest uppercase font-mono font-bold">
+                        <span className="bg-white text-[#1E4D45] border border-[#E8E4D9] px-2.5 py-1 rounded text-[11px] tracking-widest uppercase font-mono font-bold">
                           {pkg.duration}
                         </span>
                       )}
@@ -363,7 +302,7 @@ Please load this itinerary and let me customize it!`;
                           {pkg.title}
                         </h4>
                         {pkg.price && (
-                          <span className="text-[10px] text-[#B8860B] font-bold border border-[#B8860B]/20 bg-[#FAF7F0] px-2 py-0.5 rounded font-mono shrink-0">
+                          <span className="text-xs text-[#B8860B] font-bold border border-[#B8860B]/20 bg-[#FAF7F0] px-2 py-0.5 rounded font-mono shrink-0">
                             {pkg.duration}
                           </span>
                         )}
@@ -380,12 +319,12 @@ Please load this itinerary and let me customize it!`;
 
                     <div className="py-2.5 border-t border-[#E8E4D9] flex items-center justify-between gap-4 mt-2">
                       <div>
-                        <span className="text-[8px] uppercase tracking-widest text-[#B8860B] font-bold block mb-0.5">Stay Curation</span>
+                        <span className="text-[11px] uppercase tracking-widest text-[#B8860B] font-bold block mb-0.5">Stay Curation</span>
                         <span className="text-[11px] text-[#1E4D45] truncate block font-medium">🏨 {pkg.hotels[0]}</span>
                       </div>
                       
                       {pkg.isJainVegFriendly && (
-                        <span className="text-[9px] bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
+                        <span className="text-[11px] bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
                           Veg Friendly
                         </span>
                       )}
@@ -396,19 +335,19 @@ Please load this itinerary and let me customize it!`;
                   <div className="bg-[#FAF7F0] border-t border-[#E8E4D9] p-4 flex gap-3 shrink-0">
                     <button
                       onClick={() => setCustomizerPkg(pkg)}
-                      className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-[#1E4D45] text-[9px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300 cursor-pointer"
+                      className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-[#1E4D45] text-[11px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300 cursor-pointer"
                     >
                       <Icon name="FileText" size={11} className="text-[#B8860B]" />
                       PDF Info
                     </button>
                     <button
-                      className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn flex items-center justify-center gap-1"
+                      className="flex-1 py-2 px-3 text-[11px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn flex items-center justify-center gap-1"
                       onClick={() => handleOpenPlanner(pkg)}
                     >
                       <Icon name="Sparkles" size={10} /> AI Customization
                     </button>
                     <button
-                      className="py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-[#555555] hover:text-[#111111] bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
+                      className="py-2 px-3 text-[11px] tracking-widest uppercase font-bold text-[#555555] hover:text-[#111111] bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
                       onClick={() => setSelectedPackage(pkg)}
                     >
                       Details
@@ -426,7 +365,7 @@ Please load this itinerary and let me customize it!`;
         >
           <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101" style={{ backgroundImage: `linear-gradient(135deg, rgba(250, 247, 240, 0.9), rgba(250, 247, 240, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
           <div className="flex-1 text-center md:text-left relative z-10">
-            <span className="text-[10px] font-bold tracking-[0.2em] text-[#B8860B] uppercase">Bespoke Curation</span>
+            <span className="text-xs font-bold tracking-[0.2em] text-brand-sage uppercase">Bespoke Curation</span>
             <Heading as="h3" size="2xl" className="mt-2 mb-4 text-[#1E4D45] font-serif font-bold tracking-tight">
               Build Your Own Story
             </Heading>
@@ -444,7 +383,7 @@ Please load this itinerary and let me customize it!`;
 
         {/* MORE BUDGET TOURS COMING SOON BANNER */}
         <div className="mt-8 p-6 text-center bg-[#1E4D45]/5 border border-[#1E4D45]/15 rounded-xl">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F0] border border-[#E8E4D9] text-[9px] font-mono tracking-widest text-[#B8860B] uppercase font-bold mb-3 shadow-xs">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F0] border border-[#E8E4D9] text-[11px] font-mono tracking-widest text-[#B8860B] uppercase font-bold mb-3 shadow-xs">
             📢 UPCOMING OFFERINGS
           </span>
           <Heading as="h4" variant="none" className="text-xl font-serif text-[#1E4D45] mb-2 font-semibold">
@@ -475,7 +414,7 @@ Please load this itinerary and let me customize it!`;
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               
               {/* Vietana Brand Logo Label */}
-              <div className="absolute top-5 left-6 text-white/85 text-[10px] tracking-widest font-mono font-bold uppercase flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
+              <div className="absolute top-5 left-6 text-white/85 text-xs tracking-widest font-mono font-bold uppercase flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
                 <Icon name="Leaf" size={12} className="text-[#E8C84A]" /> VIETANA CURATED
               </div>
 
@@ -490,8 +429,8 @@ Please load this itinerary and let me customize it!`;
                 </div>
                 {selectedPackage.price && (
                   <div className="bg-[#E8C84A] text-[#12302B] px-4 py-2 rounded shadow-md border border-white/20 text-center shrink-0">
-                    <span className="text-[9px] uppercase tracking-widest font-bold block opacity-85 leading-none mb-1">Indian Price</span>
-                    <span className="text-lg font-mono font-extrabold leading-none">{selectedPackage.price} PP</span>
+                    <span className="text-[11px] uppercase tracking-widest font-bold block opacity-85 leading-none mb-1">Indian Price</span>
+                    <span className="text-lg font-mono font-extrabold leading-none tabular-nums">{selectedPackage.price} PP</span>
                   </div>
                 )}
               </div>
@@ -566,13 +505,13 @@ Please load this itinerary and let me customize it!`;
                             <div className="mt-3 text-xs flex flex-col gap-3 animate-msg-fade-in font-light leading-relaxed text-[#555555]">
                               <Text variant="none" className="italic text-[#555555]/85 mb-1">{day.description}</Text>
                               <div>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Activities:</span>
+                                <span className="text-[0.65rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Activities:</span>
                                 {day.activities.map((act, i) => (
                                   <div key={i} className="pl-2 flex gap-2"><span>-</span> <span>{act}</span></div>
                                 ))}
                               </div>
                               <div>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Gastronomy:</span>
+                                <span className="text-[0.65rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Gastronomy:</span>
                                 {day.food.map((f, i) => (
                                   <div key={i} className="pl-2 flex gap-2 italic text-[#555555]/80"><span>✦</span> <span>{f}</span></div>
                                 ))}

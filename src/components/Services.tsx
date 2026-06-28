@@ -4,6 +4,7 @@ import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import ServicePopup, { ServiceDetail } from './ServicePopup';
+import SectionHeader from './ui/SectionHeader';
 
 const PREMIUM_SERVICES: ServiceDetail[] = [
   {
@@ -144,78 +145,74 @@ const Services: React.FC = () => {
       <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-20 max-w-[1200px]">
-        {/* Section Header */}
-        <div className="mb-20 text-center max-w-2xl mx-auto">
-          <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
-            CONCIERGE SERVICES
-          </span>
-          <Heading as="h2" size="4xl" font="serif" className="text-[#1E4D45] tracking-tight mb-4">
-            The Travel Ledger
-          </Heading>
-          <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-6"></div>
-          <Text variant="none" className="text-[#555555] font-light leading-relaxed">
-            From seamless e-visa approvals to dedicated Indian & Jain culinary guidance, our local team logs every detail to safeguard your itinerary.
-          </Text>
-        </div>
+        <SectionHeader
+          label="CONCIERGE SERVICES"
+          title="The Travel Ledger"
+          description="From seamless e-visa approvals to dedicated Indian and Jain culinary guidance, our local team logs every detail to safeguard your itinerary."
+        />
 
-        {/* Vintage Guest Book Ledger */}
-        <div className="vintage-ledger rounded-2xl border border-[#E8E4D9] overflow-hidden shadow-lg p-6 sm:p-10 mb-20">
-          {/* Header row of Ledger */}
-          <div className="hidden sm:flex border-b-2 border-[#1E4D45]/20 pb-4 text-[#B8860B] font-mono text-[10px] tracking-widest uppercase">
-            <div className="w-[10%]">ENTRY</div>
-            <div className="w-[30%]">DEPARTMENT</div>
-            <div className="w-[50%]">LOGGED DESCRIPTION</div>
-            <div className="w-[10%] text-right">ACTION</div>
-          </div>
-
-          {/* Ledger rows */}
-          <div className="flex flex-col">
-            {PREMIUM_SERVICES.map((service, index) => (
-              <div
-                key={service.id}
-                onClick={() => setSelectedService(service)}
-                className="ledger-row py-6 sm:py-7 flex flex-col sm:flex-row items-start sm:items-center text-left cursor-pointer border-b border-[#E8E4D9]/60 hover:bg-[#FAF7F0]/40 transition duration-300"
-              >
-                {/* Entry ID */}
-                <div className="w-[10%] font-mono text-xs text-[#B8860B] mb-2 sm:mb-0">
-                  #00{index + 1}
-                </div>
-
-                {/* Service Department / Icon */}
-                <div className="w-full sm:w-[30%] flex items-center gap-3 mb-2 sm:mb-0">
-                  <div className="text-[#1E4D45] shrink-0">
-                    <Icon name={service.icon} size={18} strokeWidth={1.5} />
-                  </div>
-                  <Heading as="h4" variant="none" className="text-base font-bold text-[#1E4D45]">
+        {/* Editorial card grid row 1 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+          {PREMIUM_SERVICES.slice(0, 4).map((service, index) => (
+            <div
+              key={service.id}
+              onClick={() => setSelectedService(service)}
+              className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div className="h-36 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.shortTitle}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-7 h-7 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0">
+                    <Icon name={service.icon} size={14} strokeWidth={1.5} />
+                  </span>
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-[#1E4D45]">
                     {service.shortTitle}
                   </Heading>
                 </div>
-
-                {/* Logged Description */}
-                <div className="w-full sm:w-[50%] text-xs sm:text-sm text-[#555555] font-light pr-4 mb-4 sm:mb-0">
+                <Text size="xs" variant="muted" className="font-light">
                   {service.shortDesc}
-                </div>
-
-                {/* View Stamp */}
-                <div className="w-full sm:w-[10%] sm:text-right">
-                  <span className="inline-block text-[9px] font-mono font-bold tracking-widest uppercase text-[#B8860B] border border-[#D4AF37]/50 rounded px-2.5 py-1 hover:bg-[#D4AF37]/10 transition duration-300">
-                    OPEN
-                  </span>
-                </div>
+                </Text>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Ledger Bottom Note */}
-        <div className="bg-[#FAF7F0] border border-[#E8E4D9] rounded-xl p-8 text-center max-w-2xl mx-auto shadow-sm relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FAF7F0] px-4 text-[#B8860B] font-mono text-[9px] tracking-widest uppercase">
-            OFFICIAL STAMP
-          </div>
-          <p className="text-xl font-serif italic text-[#1E4D45] mb-2">"Feel Vietnam, Your Way."</p>
-          <Text size="sm" variant="none" className="text-[#555555]/80 font-light">
-            With certified ground handlers in HCMC and local assistance centers in Hanoi and Da Nang, our ledger stays fully interactive for you.
-          </Text>
+        {/* Editorial card grid row 2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {PREMIUM_SERVICES.slice(4).map((service) => (
+            <div
+              key={service.id}
+              onClick={() => setSelectedService(service)}
+              className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div className="h-36 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.shortTitle}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-7 h-7 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0">
+                    <Icon name={service.icon} size={14} strokeWidth={1.5} />
+                  </span>
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-[#1E4D45]">
+                    {service.shortTitle}
+                  </Heading>
+                </div>
+                <Text size="xs" variant="muted" className="font-light">
+                  {service.shortDesc}
+                </Text>
+              </div>
+            </div>
+          ))}
         </div>
       </Container>
 

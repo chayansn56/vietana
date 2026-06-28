@@ -11,7 +11,7 @@ const FloatingWhatsApp: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[310] flex flex-col gap-4">
+    <div className="fixed bottom-8 right-8 z-[310] flex flex-col gap-4 safe-bottom safe-right">
       {/* Zalo Button */}
       <div 
         className="cursor-pointer flex items-center justify-center w-14 h-14 bg-[#0068FF] text-white rounded-full shadow-[0_4px_20px_rgba(0,104,255,0.4)] hover:-translate-y-1 transition-transform duration-300 group relative"

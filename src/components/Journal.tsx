@@ -115,7 +115,7 @@ const Journal: React.FC = () => {
             className="mb-8 flex justify-between items-end border-b border-[#E8E4D9] pb-4"
           >
             <div>
-              <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-1 block">REGIONAL LOGBOOKS</span>
+              <span className="text-xs font-bold tracking-[0.25em] text-brand-sage uppercase mb-1 block">REGIONAL LOGBOOKS</span>
               <Heading as="h2" size="2xl" font="serif" className="text-[#1E4D45]">
                 Curated Collections
               </Heading>
@@ -124,6 +124,18 @@ const Journal: React.FC = () => {
         </Container>
 
         {/* Compact Horizontal Scroll */}
+        {filteredCollections.length === 0 ? (
+          <div className="py-16 text-center">
+            <p className="text-[#555555]/60 text-sm font-light mb-2">No collections match "{searchQuery}".</p>
+            <p className="text-xs text-[#555555]/50 font-light">Clear the search to browse all collections.</p>
+            <button
+              onClick={() => setSearchQuery('')}
+              className="mt-4 px-5 py-2 bg-[#1E4D45] text-white text-xs font-semibold tracking-wider uppercase rounded transition-colors hover:bg-[#12302B] cursor-pointer"
+            >
+              Clear Search
+            </button>
+          </div>
+        ) : (
         <div className="flex overflow-x-auto pb-8 pt-2 px-4 md:px-12 xl:px-24 gap-6 snap-x snap-mandatory hide-scrollbar">
           {filteredCollections.map((collection, i) => (
             <motion.div 
@@ -145,7 +157,7 @@ const Journal: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-3 left-3 bg-[#FAF7F0] dark:bg-[#111615] border border-[#D4AF37]/30 dark:border-white/10 rounded px-2 py-0.5 shadow-sm">
-                    <Text size="xs" variant="none" className="uppercase tracking-widest text-[#B8860B] dark:text-brand-gold font-mono text-[9px] font-bold">
+                    <Text size="xs" variant="none" className="uppercase tracking-widest text-brand-sage font-mono text-xs font-bold">
                       {collection.articles.length} Stories
                     </Text>
                   </div>
@@ -164,6 +176,7 @@ const Journal: React.FC = () => {
           {/* Spacer */}
           <div className="w-4 md:w-12 xl:w-24 shrink-0 pointer-events-none" />
         </div>
+        )}
 
         {/* Active Collection Articles Display */}
         <Container className="mt-4 mb-8">
@@ -172,7 +185,7 @@ const Journal: React.FC = () => {
               <Heading as="h3" size="xl" font="serif" className="text-[#1E4D45] flex items-center gap-2">
                 <span className="text-xl">{selectedCollection.icon}</span> {selectedCollection.title} Guides
               </Heading>
-              <span className="text-[10px] font-mono bg-[#B8860B]/10 text-[#B8860B] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              <span className="text-xs font-mono bg-brand-sage/10 text-brand-sage font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 {selectedCollection.articles.length} Journals Available
               </span>
             </div>
@@ -200,7 +213,7 @@ const Journal: React.FC = () => {
                         {article.intro}
                       </p>
                     </div>
-                    <span className="text-[9px] text-[#B8860B] font-mono mt-4 block font-bold tracking-widest uppercase">
+                    <span className="text-[11px] text-[#B8860B] font-mono mt-4 block font-bold tracking-widest uppercase">
                       READ RECORD ➔
                     </span>
                   </div>
@@ -221,58 +234,91 @@ const Journal: React.FC = () => {
             className="mb-12 flex justify-between items-end border-b border-[#E8E4D9] pb-4"
           >
             <div>
-              <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-1 block">TRAVEL DIARIES</span>
+              <span className="text-xs font-bold tracking-[0.25em] text-brand-sage uppercase mb-1 block">TRAVEL DIARIES</span>
               <Heading as="h2" size="2xl" font="serif" className="text-[#1E4D45]">
                 Featured Stories
               </Heading>
             </div>
           </motion.div>
 
-          {/* Polaroid Layout Staggered Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 xl:gap-14 px-2">
+          {/* Editorial Magazine Grid */}
+          <div className="space-y-8">
             {filteredStories.length === 0 ? (
-              <div className="col-span-3 py-16 text-center text-[#555555]/50 text-sm font-light font-mono">
-                No stories logged for "{searchQuery}".
+              <div className="py-16 text-center text-[#555555]/60 text-sm font-light">
+                <p className="mb-2">No stories match "{searchQuery}".</p>
+                <p className="text-xs">Try a different search or browse the curated collections above.</p>
               </div>
-            ) : filteredStories.map((story, i) => {
-              const rotAngle = getAngle(i);
-              return (
-                <motion.div 
-                  key={story.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  style={{ transform: `rotate(${rotAngle}deg)` }}
-                  className="polaroid-frame group cursor-pointer bg-white"
-                  onClick={() => openArticle(story)}
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF7F0] border border-black/5">
-                    <img 
-                      src={story.image} 
-                      alt={`Featured travel story: ${story.title}`} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute top-3 left-3 bg-[#FAF7F0]/90 text-[8px] tracking-widest text-[#B8860B] font-mono border border-[#D4AF37]/35 rounded px-2 py-0.5 shadow-sm">
-                      FEATURED
+            ) : (
+              <>
+                {/* Hero story — full-width, image-led */}
+                {filteredStories[0] && (
+                  <motion.div
+                    key={filteredStories[0].id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg"
+                    onClick={() => openArticle(filteredStories[0])}
+                  >
+                    <div className="md:grid md:grid-cols-2 md:gap-0">
+                      <div className="h-56 md:h-full min-h-[280px] overflow-hidden">
+                        <img 
+                          src={filteredStories[0].image} 
+                          alt={`Featured travel story: ${filteredStories[0].title}`} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-6 md:p-10 flex flex-col justify-center">
+                        <span className="text-brand-sage text-[11px] font-bold tracking-widest uppercase mb-2">Featured Story</span>
+                        <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1E4D45] group-hover:text-[#B8860B] transition-colors leading-tight mb-3">
+                          {highlightText(filteredStories[0].title, searchQuery)}
+                        </h3>
+                        <p className="text-sm text-[#555555] font-light leading-relaxed line-clamp-3 mb-6">
+                          {highlightText(filteredStories[0].intro || '', searchQuery)}
+                        </p>
+                        <span className="text-[#B8860B] font-mono text-xs tracking-widest uppercase inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                          Read Record <span className="text-lg leading-none">→</span>
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* Title & Caption */}
-                  <div className="pt-5 pb-1 text-left">
-                    <h3 className="font-serif text-base font-bold text-[#1E4D45] group-hover:text-[#B8860B] transition-colors leading-snug line-clamp-2">
-                      {highlightText(story.title, searchQuery)}
-                    </h3>
-                    <p className="text-[11px] text-[#555555] font-light leading-relaxed mt-2 line-clamp-3">
-                      {highlightText(story.intro || '', searchQuery)}
-                    </p>
-                    <div className="flex items-center text-[#B8860B] font-mono text-[9px] tracking-widest uppercase mt-4">
-                      READ RECORD ➔
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                )}
+
+                {/* Remaining stories — horizontal editorial cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {filteredStories.slice(1).map((story, i) => (
+                    <motion.div
+                      key={story.id}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.08 }}
+                      className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg"
+                      onClick={() => openArticle(story)}
+                    >
+                      <div className="h-48 overflow-hidden">
+                        <img 
+                          src={story.image} 
+                          alt={`Featured travel story: ${story.title}`} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-serif text-lg font-bold text-[#1E4D45] group-hover:text-[#B8860B] transition-colors leading-snug line-clamp-2 mb-2">
+                          {highlightText(story.title, searchQuery)}
+                        </h3>
+                        <p className="text-sm text-[#555555] font-light leading-relaxed line-clamp-2 mb-4">
+                          {highlightText(story.intro || '', searchQuery)}
+                        </p>
+                        <span className="text-[#B8860B] font-mono text-[11px] tracking-widest uppercase inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                          Read <span className="text-base leading-none">→</span>
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </Container>
       </div>
@@ -282,7 +328,7 @@ const Journal: React.FC = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
         <Container>
           <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto py-8">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-4 block">SHARE YOUR JOURNEY</span>
+            <span className="text-xs font-bold tracking-[0.25em] text-brand-sage uppercase mb-4 block">SHARE YOUR JOURNEY</span>
             <Heading as="h2" size="3xl" font="serif" className="mb-6 text-white drop-shadow-md">
               Send Your Own Story
             </Heading>

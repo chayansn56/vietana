@@ -5,6 +5,7 @@ import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import { useAIPlanner } from '../hooks/useAIPlanner';
+import { useSpeechSynthesis } from '../hooks/useSpeechSynthesis';
 import Icon, { IconName } from './ui/Icon';
 import { featureFlags } from '../config/featureFlags';
 import { generateAffiliateUrl } from '../utils/affiliate';
@@ -31,15 +32,17 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
   const [expandedDay, setExpandedDay] = useState<number | null>(1);
   const [activeTab, setActiveTab] = useState<'itinerary' | 'deals' | 'pricing'>('itinerary');
   const [isListening, setIsListening] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const [ttsEnabled, setTtsEnabled] = useState(false);
   const [showActionPopup, setShowActionPopup] = useState(false);
+  const [speechError, setSpeechError] = useState<string | null>(null);
 
   const getLanguageTag = (lang: string) => {
     if (lang === 'HI') return 'hi-IN';
     if (lang === 'VI') return 'vi-VN';
     return 'en-US';
   };
+
+  const { speak, cancel, isSpeaking } = useSpeechSynthesis(getLanguageTag(language));
 
   const {
     messages,
@@ -101,7 +104,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
 
   const toggleListening = () => {
     if (!recognitionRef.current) {
-      alert("Speech recognition is not supported in this browser. Please try Chrome or Safari.");
+      setSpeechError("Speech recognition is not supported in this browser. Please try Chrome or Safari.");
       return;
     }
     if (isListening) {
@@ -113,18 +116,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
   };
 
   const speakText = (text: string) => {
-    if (!ttsEnabled || !('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-    const cleanText = text.replace(/<[^>]*>/g, '');
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    
-    // Choose voice depending on lang or general fallback
-    utterance.lang = getLanguageTag(language);
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-    
-    window.speechSynthesis.speak(utterance);
+    if (!ttsEnabled) return;
+    speak('bot-speech', text);
   };
 
   // Speak when new message from bot arrives
@@ -144,15 +137,6 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       speakText("I have created your custom itinerary. Would you like me to send it over WhatsApp or Email?");
     }
   }, [itinerary]);
-
-  // Cancel voice speech when modal is closed or unmounted
-  useEffect(() => {
-    return () => {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, [isOpen]);
 
   const pcMsgsRef = useRef<HTMLDivElement>(null);
 
@@ -184,7 +168,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       {/* Dynamic Voice Ambient Glow Ring */}
       <div className={`absolute inset-0 border-2 rounded-[32px] pointer-events-none z-50 transition-all duration-700 ${
         isListening 
-          ? 'border-purple-500/40 opacity-100 shadow-[inset_0_0_30px_rgba(168,85,247,0.25)]' 
+          ? 'border-brand-gold/40 opacity-100 shadow-[inset_0_0_30px_rgba(212,175,55,0.25)]' 
           : isSpeaking 
             ? 'border-brand-gold/40 opacity-100 shadow-[inset_0_0_30px_rgba(232,200,74,0.25)]' 
             : 'border-transparent opacity-0 shadow-none'
@@ -206,8 +190,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               onClick={() => {
                 const newVal = !ttsEnabled;
                 setTtsEnabled(newVal);
-                if (!newVal && 'speechSynthesis' in window) {
-                  window.speechSynthesis.cancel();
+                if (!newVal) {
+                  cancel();
                 }
               }}
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl border transition-all duration-300 text-xs cursor-pointer font-medium uppercase tracking-wider ${
@@ -335,9 +319,9 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           )}
 
           {showActionPopup && itinerary && (
-            <div className="mb-4 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/30 rounded-2xl p-5 shadow-lg animate-msg-fade-in flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="mb-4 bg-gradient-to-r from-brand-green-dark to-brand-green border border-brand-gold/30 rounded-2xl p-5 shadow-lg animate-msg-fade-in flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center shrink-0">
                   <Icon name="Sparkles" size={20} />
                 </div>
                 <div className="text-left">
@@ -394,15 +378,30 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             💡 Try: "make it veg-only", "add a day in Da Lat", or "upgrade to 5★ hotels"
           </div>
 
+          {speechError && (
+            <div className="mb-3 text-xs bg-rose-500/10 border border-rose-500/30 text-rose-300 px-4 py-2.5 rounded-xl flex items-center justify-between gap-3 animate-msg-fade-in text-left">
+              <div className="flex items-center gap-2">
+                <Icon name="AlertCircle" size={14} className="shrink-0" />
+                <span>{speechError}</span>
+              </div>
+              <button 
+                onClick={() => setSpeechError(null)}
+                className="text-white/40 hover:text-white/80 p-0.5 rounded-md hover:bg-white/5 transition-colors border-none bg-transparent cursor-pointer flex items-center justify-center"
+              >
+                <Icon name="X" size={12} />
+              </button>
+            </div>
+          )}
+
           <div className={`relative bg-white/5 border rounded-2xl p-2 transition-all duration-300 shadow-inner ${
-            isListening ? 'border-purple-500/50 bg-purple-500/5' : 'border-white/10 focus-within:border-brand-gold/40 focus-within:bg-white/10'
+            isListening ? 'border-brand-gold/50 bg-brand-gold/5' : 'border-white/10 focus-within:border-brand-gold/40 focus-within:bg-white/10'
           }`}>
             <div className="flex items-center gap-3">
               <button
                 type="button"
                 onClick={toggleListening}
                 className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer ${
-                  isListening ? 'bg-purple-600 text-white animate-pulse' : 'text-white/40 hover:text-white/80 hover:bg-white/5'
+                  isListening ? 'bg-brand-gold text-brand-green-extra-dark animate-pulse' : 'text-white/40 hover:text-white/80 hover:bg-white/5'
                 }`}
                 title={isListening ? "Listening..." : "Click to Speak"}
               >

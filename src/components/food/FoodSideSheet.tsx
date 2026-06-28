@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ConciergeCategory, RestaurantDetails, DishDetails } from '../../data/foodConcierge';
 import { Heading, Text } from '../ui/Typography';
+import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis';
 import Icon from '../ui/Icon';
 import Badge from '../ui/Badge';
 import BrandName from '../ui/BrandName';
@@ -14,15 +15,7 @@ interface FoodSideSheetProps {
 
 export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, category }) => {
   const [copiedId, setCopiedId] = React.useState<string | null>(null);
-  const [isSpeakingId, setIsSpeakingId] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
-    return () => {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, [isOpen]);
+  const { speak, speakingId: isSpeakingId } = useSpeechSynthesis('en-US');
 
   const handleCopy = (id: string, text: string) => {
     navigator.clipboard.writeText(text);
@@ -36,22 +29,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
   };
 
   const speakText = (id: string, text: string) => {
-    if (!('speechSynthesis' in window)) return;
-    
-    if (isSpeakingId === id) {
-      window.speechSynthesis.cancel();
-      setIsSpeakingId(null);
-      return;
-    }
-
-    window.speechSynthesis.cancel();
-    const cleanText = text.replace(/<[^>]*>/g, '');
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'en-US';
-    utterance.onstart = () => setIsSpeakingId(id);
-    utterance.onend = () => setIsSpeakingId(null);
-    utterance.onerror = () => setIsSpeakingId(null);
-    window.speechSynthesis.speak(utterance);
+    speak(id, text);
   };
 
   return (
@@ -72,8 +50,8 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200, duration: 0.4 }}
-            className="fixed inset-y-0 right-0 z-50 w-full md:w-[75%] bg-[#F5F5F7] rounded-l-3xl shadow-2xl overflow-y-auto overscroll-contain flex flex-col"
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-y-0 right-0 z-50 w-full md:w-[75%] bg-surface-cream rounded-l-3xl shadow-2xl overflow-y-auto overscroll-contain flex flex-col"
           >
             {/* Header / Hero Image */}
             <div className="relative h-64 md:h-80 w-full shrink-0">
@@ -106,7 +84,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
               
               {category.collections.map((collection) => (
                 <div key={collection.id} className="mb-16">
-                  <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-8 border-b border-black/10 pb-4">
+                  <Heading as="h3" size="2xl" font="serif" className="text-text-dark mb-8 border-b border-black/10 pb-4">
                     {collection.title}
                   </Heading>
 
@@ -125,7 +103,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                             {isRestaurant && (item as RestaurantDetails).isOwnedAndLoved && (
                               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
                                 <Icon name="Heart" size={14} className="text-rose-500 fill-rose-500" />
-                                <Text size="xs" weight="bold" className="text-[#1D1D1F] uppercase tracking-wider text-[10px]">
+                                <Text size="xs" weight="bold" className="text-text-dark uppercase tracking-wider text-[10px]">
                                   Owned & Loved by <BrandName />
                                 </Text>
                               </div>
@@ -134,7 +112,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                           
                           <div className="p-6">
                             <div className="flex items-start justify-between mb-2">
-                              <Heading as="h4" size="lg" font="serif" className="text-[#1D1D1F] m-0">
+                              <Heading as="h4" size="lg" font="serif" className="text-text-dark m-0">
                                 {item.name}
                               </Heading>
                               {isRestaurant && (
@@ -158,7 +136,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                             {isRestaurant && (item as RestaurantDetails).tags?.length > 0 && (
                               <div className="flex flex-wrap gap-2 mb-6">
                                 {(item as RestaurantDetails).tags.map((tag) => (
-                                  <Badge key={tag} variant="neutral" className="!bg-[#F5F5F7] !text-[#86868B] !border-transparent text-xs py-1">
+                                  <Badge key={tag} variant="neutral" className="!bg-surface-cream !text-text-subtle !border-transparent text-xs py-1">
                                     {tag}
                                   </Badge>
                                 ))}
@@ -166,18 +144,18 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                             )}
 
                             {/* VIETANA Notes */}
-                            <div className="bg-[#F5F5F7] p-4 rounded-xl border border-black/5 flex items-start gap-3 relative group/note w-full">
+                            <div className="bg-surface-cream p-4 rounded-xl border border-black/5 flex items-start gap-3 relative group/note w-full">
                               <div className="text-brand-gold mt-0.5">
                                 <Icon name="Quote" size={18} />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center justify-between gap-4 mb-2">
-                                  <Text size="xs" weight="bold" className="uppercase tracking-widest text-[#1D1D1F] m-0">
+                                  <Text size="xs" weight="bold" className="uppercase tracking-widest text-text-dark m-0">
                                     VIETANA Notes
                                   </Text>
                                   <button
                                     onClick={() => speakText(item.id, item.vietanaNotes)}
-                                    className={`text-[#86868B] hover:text-brand-gold cursor-pointer transition-colors p-1.5 rounded-lg hover:bg-black/5 flex items-center gap-1.5 shrink-0 ${
+                                    className={`text-[#555555] hover:text-brand-gold cursor-pointer transition-colors p-1.5 rounded-lg hover:bg-black/5 flex items-center gap-1.5 shrink-0 ${
                                       isSpeakingId === item.id ? 'text-brand-gold animate-pulse bg-brand-gold/10' : ''
                                     }`}
                                     title={isSpeakingId === item.id ? "Stop audio guide" : "Listen to audio guide"}
@@ -186,7 +164,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                                     <span className="text-[10px] uppercase font-extrabold tracking-widest font-mono">Audio Guide</span>
                                   </button>
                                 </div>
-                                <Text size="sm" className="text-[#1D1D1F]/80 leading-relaxed italic m-0">
+                                <Text size="sm" className="text-text-dark/80 leading-relaxed italic m-0">
                                   {item.vietanaNotes}
                                 </Text>
                               </div>
@@ -198,7 +176,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                                  <>
                                    <button 
                                      onClick={() => handleCopy(item.id, `${item.name}, ${(item as RestaurantDetails).city}, Vietnam`)}
-                                     className="flex items-center gap-1.5 text-[#86868B] hover:text-brand-gold transition-colors font-medium text-sm cursor-pointer"
+                                     className="flex items-center gap-1.5 text-text-subtle hover:text-brand-gold transition-colors font-medium text-sm cursor-pointer"
                                      title="Click to copy address"
                                    >
                                      <Icon name="MapPin" size={14} />
@@ -213,7 +191,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                                  </>
                                ) : (
                                  <>
-                                   <div className="flex items-center gap-1.5 text-[#86868B]">
+                                   <div className="flex items-center gap-1.5 text-text-subtle">
                                      <Icon name="Map" size={14} />
                                      <Text size="sm">{(item as DishDetails).recommendedCities.join(', ')}</Text>
                                    </div>

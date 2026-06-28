@@ -6,6 +6,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { CITIES, CityDestination } from '../data/destinations';
 import Modal from './ui/Modal';
 import Icon from './ui/Icon';
+import SectionHeader from './ui/SectionHeader';
 import { motion, AnimatePresence } from 'motion/react';
 import { soundService } from '../services/CardSoundService';
 
@@ -48,19 +49,12 @@ const Destinations: React.FC = () => {
       <div className="absolute bottom-[5%] right-[-2%] w-[350px] h-[350px] bg-[#AAB7A1]/20 rounded-full blur-[90px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
-        {/* Editorial Section Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
-            EXPLORE THE REGIONS
-          </span>
-          <Heading as="h2" size="4xl" font="serif" className="text-[#1E4D45] tracking-tight mb-4">
-            Destinations Portfolio
-          </Heading>
-          <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-6"></div>
-          <Text variant="none" className="text-[#555555] font-light leading-relaxed text-base md:text-lg">
-            A curated folder of sensory landscapes, historical towns, and modern ports. Click on any postcard to review local coordinates, temperature, and detailed sightseeing guides.
-          </Text>
-        </div>
+        <SectionHeader
+          label="EXPLORE THE REGIONS"
+          title="Destinations Portfolio"
+          description="A curated folder of sensory landscapes, historical towns, and modern ports. Click on any postcard to review local coordinates, temperature, and detailed sightseeing guides."
+          centered
+        />
 
         {/* Polaroid Scrapbook Masonry Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 xl:gap-12 px-2">
@@ -82,7 +76,7 @@ const Destinations: React.FC = () => {
                     style={{ backgroundImage: `url(${city.coverImage})` }}
                   />
                   {/* Stamp style overlay */}
-                  <div className="absolute top-3 right-3 text-[9px] font-mono bg-[#FAF7F0]/80 text-[#B8860B] border border-[#D4AF37]/35 rounded px-2 py-0.5 pointer-events-none shadow-sm">
+                  <div className="absolute top-3 right-3 text-[11px] font-mono bg-[#FAF7F0]/80 text-[#B8860B] border border-[#D4AF37]/35 rounded px-2 py-0.5 pointer-events-none shadow-sm">
                     {weather.icon} {weather.temp}
                   </div>
                 </div>
@@ -94,8 +88,8 @@ const Destinations: React.FC = () => {
                       {city.name}
                     </h3>
                   </div>
-                  <p className="text-[10px] text-[#B8860B] font-mono tracking-widest uppercase mt-1">
-                    📍 {weather.coord}
+                  <p className="text-[10px] text-[#B8860B] font-mono tracking-widest uppercase mt-1 flex items-center gap-1">
+                    <Icon name="MapPin" size={10} /> {weather.coord}
                   </p>
                   <p className="text-xs text-[#555555] font-light mt-2 line-clamp-2 leading-relaxed">
                     {city.shortDesc}
@@ -151,7 +145,7 @@ const Destinations: React.FC = () => {
 
             {/* Modal Body */}
             <div className="p-5 md:p-10 bg-surface-dark flex-1 overflow-y-auto custom-scrollbar">
-              <Text size="md" variant="none" className="text-white/80 font-light leading-relaxed mb-8 md:mb-10 text-sm md:text-base">
+              <Text size="md" variant="none" className="text-white/80 font-light leading-relaxed mb-8 md:mb-10 text-sm md:text-base max-w-prose">
                 {selectedCity.fullDesc}
               </Text>
 
@@ -215,22 +209,22 @@ const Destinations: React.FC = () => {
 
       {/* All Cities Modal */}
       <Modal isOpen={isAllCitiesOpen} onClose={() => setIsAllCitiesOpen(false)} maxWidth="max-w-6xl">
-        <div className="p-6 md:p-10 flex flex-col max-h-[85vh] md:max-h-[90vh]">
-          <div className="mb-8 border-b border-white/10 pb-6 shrink-0">
-            <Heading as="h2" size="3xl" font="serif" className="text-white tracking-tight mb-2">
+        <div className="p-6 md:p-10 flex flex-col max-h-[85vh] md:max-h-[90vh] bg-[#FAF7F0] rounded-2xl">
+          <div className="mb-8 border-b border-[#E8E4D9] pb-6 shrink-0">
+            <Heading as="h2" size="3xl" font="serif" className="text-brand-green-dark tracking-tight mb-2">
               All Destinations
             </Heading>
-            <Text variant="white" size="md" className="opacity-70 font-light">
+            <Text variant="none" size="md" className="text-[#555555] font-light">
               Explore our complete collection of Vietnam's most beautiful tourist cities.
             </Text>
           </div>
 
-          <div className="overflow-y-auto custom-scrollbar flex-1 -mx-6 px-6 -mb-6 pb-6 md:-mx-10 md:px-10 md:-mb-10 md:pb-10">
+          <div className="overflow-y-auto flex-1 -mx-6 px-6 -mb-6 pb-6 md:-mx-10 md:px-10 md:-mb-10 md:pb-10">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {CITIES.map((city) => (
                 <div 
                   key={`all-${city.id}`} 
-                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer border border-brand-gold/30 hover:border-brand-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] transition-all duration-500"
+                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer border border-brand-green/30 hover:border-brand-green hover:shadow-[0_4px_20px_rgba(30,77,69,0.15)] transition-all duration-500"
                   onClick={() => {
                     setIsAllCitiesOpen(false);
                     setTimeout(() => setSelectedCity(city), 300);

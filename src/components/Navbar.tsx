@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
     <>
       <button 
         onClick={() => setEmergencyOpen(true)}
-        className={`fixed top-6 right-6 z-[9999] hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] hover:animate-none ${isEmergencyPulsing ? 'animate-pulse' : ''}`}
+        className={`focus-ring fixed top-6 right-6 z-[9999] hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] hover:animate-none ${isEmergencyPulsing ? 'animate-pulse' : ''}`}
       >
         <Icon name="AlertCircle" size={16} />
         <span className="text-xs font-bold tracking-widest uppercase">Emergency</span>
@@ -58,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
 
       <nav 
         id="nav" 
-        className={`fixed left-1/2 -translate-x-1/2 z-[1000] px-6 md:px-10 flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] gap-2 md:gap-4 w-[95%] max-w-7xl rounded-full border 
+        className={`fixed left-1/2 -translate-x-1/2 z-[1000] px-6 md:px-10 flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] gap-2 md:gap-4 w-[95%] max-w-7xl rounded-full border safe-top 
           ${mobileMenuOpen 
             ? 'top-6 py-4 border-transparent shadow-none bg-transparent' 
             : (scrolledParam 
@@ -95,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
                       e.preventDefault();
                       setExpDropOpen(!expDropOpen);
                     }}
-                    className="relative no-underline bg-transparent border-none p-0 cursor-pointer flex items-center gap-1 group"
+                    className="focus-ring relative no-underline bg-transparent border-none p-0 cursor-pointer flex items-center gap-1 group"
                   >
                     <Text 
                       size="sm" 
@@ -152,7 +152,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
                 </>
               ) : (
                 <a 
-                  href={link.href} 
+                  href={link.href}
+                  className="focus-ring relative no-underline group"
                   onClick={(e) => {
                     if ((link as any).isPlanner) {
                       e.preventDefault();
@@ -168,7 +169,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
                       onOpenFlightSearch();
                     }
                   }}
-                  className="relative no-underline group"
                 >
                   <Text 
                     size="sm" 
@@ -191,7 +191,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
 
           <button 
             onClick={() => onOpenMapCurtain()}
-            className={`hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full transition-colors border ${isLight ? 'glass border-[#1D1D1F]/10 text-[#1D1D1F] hover:bg-[#F2EFE8]' : 'glass-dark border-white/20 text-surface-cream hover:bg-white/10'}`}
+            className={`focus-ring hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full transition-colors border ${isLight ? 'glass border-[#1D1D1F]/10 text-[#1D1D1F] hover:bg-[#F2EFE8]' : 'glass-dark border-white/20 text-surface-cream hover:bg-white/10'}`}
           >
             <Icon name="Map" size={14} />
             <span className="text-xs tracking-[0.1em] font-medium uppercase">Map</span>
@@ -242,7 +242,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
             type="button"
             aria-label="Open navigation menu"
             aria-expanded={mobileMenuOpen}
-            className={`flex lg:hidden flex-col gap-[5px] cursor-pointer p-1.25 z-[500] group bg-transparent border-none`} 
+            className={`flex lg:hidden flex-col items-center justify-center gap-[5px] cursor-pointer min-w-[44px] min-h-[44px] z-[500] group bg-transparent border-none rounded-lg`} 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${isLight ? 'bg-brand-green' : 'bg-white'} ${mobileMenuOpen ? 'rotate-45 translate-x-[4.2px] translate-y-[4.2px]' : ''}`}></span>
@@ -255,7 +255,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
       {/* MOBILE MENU */}
       <div 
         id="mob" 
-        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark overflow-y-auto transition-opacity duration-500 ease-soft
+        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark overflow-y-auto transition-opacity duration-500 ease-soft safe-top
           ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         <div className="mt-28 pb-16 px-6 flex flex-col items-center gap-6 w-full">
@@ -300,7 +300,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
               <a 
                 key={link.key}
                 href={link.href} 
-                className="no-underline"
+                className="focus-ring no-underline"
                 onClick={(e) => {
                   if ((link as any).isPlanner) {
                     e.preventDefault();
