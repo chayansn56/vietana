@@ -153,11 +153,26 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       isOpen={isOpen}
       onClose={onClose}
       maxWidth="max-w-6xl"
-      className="h-[85vh] max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden glass-dark rounded-[32px] shadow-heavy"
+      className={`h-[85vh] max-h-[850px] flex flex-col md:flex-row p-0 overflow-hidden glass-dark rounded-[32px] transition-all duration-700 ${
+        isListening 
+          ? 'shadow-[0_0_60px_rgba(168,85,247,0.35)]' 
+          : isSpeaking 
+            ? 'shadow-[0_0_60px_rgba(232,200,74,0.35)]' 
+            : 'shadow-heavy'
+      }`}
     >
       {/* Background Orbs for Organic Lush Vibe */}
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-gold/5 rounded-full  pointer-events-none z-0 hidden animate-blob-float" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full  pointer-events-none z-0 hidden animate-blob-float" style={{ animationDelay: '2s' }} />
+
+      {/* Dynamic Voice Ambient Glow Ring */}
+      <div className={`absolute inset-0 border-2 rounded-[32px] pointer-events-none z-50 transition-all duration-700 ${
+        isListening 
+          ? 'border-purple-500/40 opacity-100 shadow-[inset_0_0_30px_rgba(168,85,247,0.25)]' 
+          : isSpeaking 
+            ? 'border-brand-gold/40 opacity-100 shadow-[inset_0_0_30px_rgba(232,200,74,0.25)]' 
+            : 'border-transparent opacity-0 shadow-none'
+      }`} />
 
       {/* LEFT: Chat Consultation (Lush Glassmorphism) */}
       <div className="flex-1 md:flex-[0.58] flex flex-col relative z-10 border-r border-white/5 w-full">
