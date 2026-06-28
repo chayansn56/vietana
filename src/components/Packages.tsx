@@ -1,5 +1,4 @@
 import React, { useState, useRef, useMemo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import {
   BY_THEME_CATEGORIES,
   BY_REGION_CATEGORIES,
@@ -14,6 +13,10 @@ import Badge from './ui/Badge';
 import Icon from './ui/Icon';
 import Modal from './ui/Modal';
 import PDFCustomizerModal from './PDFCustomizerModal';
+
+import PackageFilters from './packages/PackageFilters';
+import PackageCard from './packages/PackageCard';
+import PackageDetailsModal from './packages/PackageDetailsModal';
 
 interface PackagesProps {
   onOpenBuilder: (dest?: string[]) => void;
@@ -63,14 +66,6 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
     if (sliderRef.current) {
       sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
     }
-  };
-
-  const getDownloadPaths = (pkg: PackageProduct) => {
-    const category = pkg.category;
-    const filename = pkg.title.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '.pdf';
-    return {
-      pdf: `/itineraries/PDFs/${category}/${filename}`
-    };
   };
 
 
@@ -168,76 +163,22 @@ Please load this itinerary and let me customize it!`;
           </Text>
         </div>
 
-        {/* Filters & Navigation Toolbar */}
-        <div className="mb-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-
-            {/* Interest vs Region Selector */}
-            <div className="flex bg-[#FAF7F0] dark:bg-black/20 border border-[#E8E4D9] dark:border-white/5 p-1.5 rounded-lg gap-2 w-full sm:w-auto">
-              <button
-                className={`flex-1 sm:flex-none px-6 py-2 rounded-md text-[11px] font-bold tracking-widest uppercase transition-all duration-300 ${activeTab === 'theme'
-                  ? 'bg-brand-green dark:bg-brand-sage text-white dark:text-brand-green-dark shadow-sm'
-                  : 'text-brand-green/60 dark:text-brand-sage/60 hover:text-brand-green dark:hover:text-brand-sage'
-                  }`}
-                onClick={() => {
-                  setActiveTab('theme');
-                  setActiveCategoryName(BY_THEME_CATEGORIES[0].name);
-                  if (BY_THEME_CATEGORIES[0].packages.length > 0) {
-                    setActivePackageId(BY_THEME_CATEGORIES[0].packages[0].id);
-                  }
-                }}
-              >
-                By Theme
-              </button>
-              <button
-                className={`flex-1 sm:flex-none px-6 py-2 rounded-md text-[11px] font-bold tracking-widest uppercase transition-all duration-300 ${activeTab === 'region'
-                  ? 'bg-brand-green dark:bg-brand-sage text-white dark:text-brand-green-dark shadow-sm'
-                  : 'text-brand-green/60 dark:text-brand-sage/60 hover:text-brand-green dark:hover:text-brand-sage'
-                  }`}
-                onClick={() => {
-                  setActiveTab('region');
-                  setActiveCategoryName(BY_REGION_CATEGORIES[0].name);
-                  if (BY_REGION_CATEGORIES[0].packages.length > 0) {
-                    setActivePackageId(BY_REGION_CATEGORIES[0].packages[0].id);
-                  }
-                }}
-              >
-                By Region
-              </button>
-            </div>
-
-            {/* Premium Jain Veg Toggle */}
-            <div className="flex items-center gap-3 px-2 shrink-0">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-text-subtle dark:text-white/60">
-                🟢 Jain & Veg Only
-              </span>
-              <button
-                onClick={() => setJainVegOnly(!jainVegOnly)}
-                className={`relative inline-flex h-[22px] w-10 items-center rounded-full transition-colors duration-300 focus:outline-none cursor-pointer ${jainVegOnly ? 'bg-brand-green dark:bg-brand-sage' : 'bg-[#E8E4D9] dark:bg-white/20'}`}
-              >
-                <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 shadow-sm ${jainVegOnly ? 'translate-x-[22px]' : 'translate-x-[3px]'}`}
-                />
-              </button>
-            </div>
-          </div>
-
-          {/* Category Tabs list horizontal */}
-          <div className="flex gap-2 overflow-x-auto pb-4 border-b border-[#E8E4D9] dark:border-white/10 scrollbar-none">
-            {categories.map((cat) => (
-              <button
-                key={cat.name}
-                className={`px-5 py-2 border rounded-full text-[11px] font-bold tracking-widest uppercase transition shrink-0 duration-300 ${activeCategoryName === cat.name
-                  ? 'border-brand-green bg-brand-green/5 text-brand-green dark:border-brand-sage dark:bg-brand-sage/10 dark:text-brand-sage'
-                  : 'border-[#E8E4D9] dark:border-white/10 text-text-subtle dark:text-white/60 hover:border-brand-green/50 dark:hover:border-brand-sage/50'
-                  }`}
-                onClick={() => handleCategoryChange(cat.name)}
-              >
-                {cat.name} <span className="opacity-60 ml-1">({cat.packages.length})</span>
-              </button>
-            ))}
-          </div>
-        </div>
+        <PackageFilters
+          activeTab={activeTab}
+          onTabChange={(tab) => {
+            setActiveTab(tab);
+            const cats = tab === 'theme' ? BY_THEME_CATEGORIES : BY_REGION_CATEGORIES;
+            setActiveCategoryName(cats[0].name);
+            if (cats[0].packages.length > 0) {
+              setActivePackageId(cats[0].packages[0].id);
+            }
+          }}
+          jainVegOnly={jainVegOnly}
+          onToggleJainVeg={setJainVegOnly}
+          categories={categories}
+          activeCategoryName={activeCategoryName}
+          onCategoryChange={handleCategoryChange}
+        />
 
         {/* Snapping Horizontal Slider Deck */}
         <div
@@ -263,100 +204,16 @@ Please load this itinerary and let me customize it!`;
               </div>
             </div>
           ) : (
-            displayedPackages.map((pkg) => {
-              const downloadPaths = getDownloadPaths(pkg);
-              return (
-                <div
-                  key={pkg.id}
-                  className="w-[85vw] sm:w-[420px] h-[540px] editorial-card rounded-xl flex flex-col justify-between shrink-0 snap-start relative group overflow-hidden border border-[#E8E4D9]"
-                >
-                  {/* Photo area */}
-                  <div className="h-[220px] relative w-full overflow-hidden shrink-0 border-b border-[#E8E4D9]">
-                    <img
-                      src={pkg.img}
-                      alt={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1200ms]"
-                    />
-
-                    {/* Top tags */}
-                    <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
-                      <span className="bg-brand-green text-white font-semibold text-[11px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
-                        {pkg.badge}
-                      </span>
-                      {pkg.price ? (
-                        <span className="bg-brand-gold-light text-brand-green-dark px-2.5 py-1 rounded text-[11px] tracking-wider uppercase font-mono font-bold shadow-sm border border-white/20">
-                          {pkg.price} PP
-                        </span>
-                      ) : (
-                        <span className="bg-white text-brand-green border border-[#E8E4D9] px-2.5 py-1 rounded text-[11px] tracking-widest uppercase font-mono font-bold">
-                          {pkg.duration}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Editorial Body / Content */}
-                  <div className="flex-1 px-6 py-5 flex flex-col justify-between relative bg-white">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-start gap-2">
-                        <h4 className="text-lg font-bold font-serif text-brand-green tracking-tight leading-tight flex-1">
-                          {pkg.title}
-                        </h4>
-                        {pkg.price && (
-                          <span className="text-xs text-brand-gold-muted font-bold border border-brand-gold-muted/20 bg-[#FAF7F0] px-2 py-0.5 rounded font-mono shrink-0">
-                            {pkg.duration}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="editorial-meta-tag pb-1 border-b border-[#E8E4D9]">
-                        ROUTE // {pkg.destinations.join(' ➔ ')}
-                      </div>
-
-                      <p className="text-text-subtle text-xs font-light leading-relaxed line-clamp-3">
-                        {pkg.desc}
-                      </p>
-                    </div>
-
-                    <div className="py-2.5 border-t border-[#E8E4D9] flex items-center justify-between gap-4 mt-2">
-                      <div>
-                        <span className="text-[11px] uppercase tracking-widest text-brand-gold-muted font-bold block mb-0.5">Stay Curation</span>
-                        <span className="text-[11px] text-brand-green truncate block font-medium">🏨 {pkg.hotels[0]}</span>
-                      </div>
-
-                      {pkg.isJainVegFriendly && (
-                        <span className="text-[11px] bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
-                          Veg Friendly
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Vogue Editorial Action Footer */}
-                  <div className="bg-[#FAF7F0] border-t border-[#E8E4D9] p-4 flex gap-3 shrink-0">
-                    <button
-                      onClick={() => setCustomizerPkg(pkg)}
-                      className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-brand-green text-[11px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300 cursor-pointer"
-                    >
-                      <Icon name="FileText" size={11} className="text-brand-gold-muted" />
-                      PDF Info
-                    </button>
-                    <button
-                      className="flex-1 py-2 px-3 text-[11px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn flex items-center justify-center gap-1"
-                      onClick={() => handleOpenPlanner(pkg)}
-                    >
-                      <Icon name="Sparkles" size={10} /> AI Customization
-                    </button>
-                    <button
-                      className="py-2 px-3 text-[11px] tracking-widest uppercase font-bold text-text-subtle hover:text-text-dark bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
-                      onClick={() => setSelectedPackage(pkg)}
-                    >
-                      Details
-                    </button>
-                  </div>
-                </div>
-              );
-            }))}
+            displayedPackages.map((pkg) => (
+              <PackageCard
+                key={pkg.id}
+                pkg={pkg}
+                onSetCustomizerPkg={setCustomizerPkg}
+                onOpenPlanner={handleOpenPlanner}
+                onSetSelectedPackage={setSelectedPackage}
+              />
+            ))
+          )}
         </div>
 
         {/* FULLY CUSTOM BUILDER BANNER */}
@@ -400,186 +257,18 @@ Please load this itinerary and let me customize it!`;
         </div>
       </Container>
 
-      {/* Package Detail Modal (Accordion Itinerary overview) */}
-      <AnimatePresence>
-        {selectedPackage && (
-          <Modal
-            isOpen={!!selectedPackage}
-            onClose={() => { setSelectedPackage(null); setExpandedDay(1); }}
-            maxWidth="max-w-4xl"
-            className="h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-xl shadow-heavy"
-          >
-            {/* Header image details */}
-            <div className="h-48 w-full overflow-hidden relative shrink-0">
-              <img
-                src={selectedPackage.img}
-                alt={selectedPackage.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+      <PackageDetailsModal
+        selectedPackage={selectedPackage}
+        expandedDay={expandedDay}
+        onSetExpandedDay={setExpandedDay}
+        onClose={() => {
+          setSelectedPackage(null);
+          setExpandedDay(1);
+        }}
+        onSetCustomizerPkg={setCustomizerPkg}
+        onOpenPlanner={handleOpenPlanner}
+      />
 
-              {/* Vietana Brand Logo Label */}
-              <div className="absolute top-5 left-6 text-white/85 text-xs tracking-widest font-mono font-bold uppercase flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
-                <Icon name="Leaf" size={12} className="text-brand-gold-light" /> VIETANA CURATED
-              </div>
-
-              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end gap-4">
-                <div>
-                  <Text variant="none" className="text-caption uppercase tracking-widest text-brand-gold font-mono font-bold mb-1.5 block">
-                    {selectedPackage.duration} · {selectedPackage.badge}
-                  </Text>
-                  <Heading as="h3" variant="none" className="text-2xl font-serif text-white tracking-wide">
-                    {selectedPackage.title}
-                  </Heading>
-                </div>
-                {selectedPackage.price && (
-                  <div className="bg-brand-gold-light text-brand-green-dark px-4 py-2 rounded shadow-md border border-white/20 text-center shrink-0">
-                    <span className="text-[11px] uppercase tracking-widest font-bold block opacity-85 leading-none mb-1">Indian Price</span>
-                    <span className="text-lg font-mono font-extrabold leading-none tabular-nums">{selectedPackage.price} PP</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Scrollable details tab */}
-            <div className="flex-1 overflow-y-auto p-8 md:p-10 scrollbar-thin">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-[#E8E4D9]">
-                <div>
-                  <Heading as="h4" variant="none" className="text-xs text-brand-gold-muted uppercase tracking-widest font-mono font-semibold mb-3">
-                    RECOMMENDED HOTELS
-                  </Heading>
-                  <div className="flex flex-col gap-2">
-                    {selectedPackage.hotels.map((h, idx) => (
-                      <Text key={idx} variant="none" className="text-text-subtle text-xs font-light">
-                        🏨 {h}
-                      </Text>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <Heading as="h4" variant="none" className="text-xs text-brand-gold-muted uppercase tracking-widest font-mono font-semibold mb-3">
-                    KEY INCLUSIONS
-                  </Heading>
-                  <div className="flex flex-col gap-1.5">
-                    {selectedPackage.inclusions.slice(0, 4).map((inc, idx) => (
-                      <Text key={idx} variant="none" className="text-text-subtle text-xs font-light flex items-start gap-2">
-                        <span className="text-green-600 mt-0.5">✓</span> <span>{inc}</span>
-                      </Text>
-                    ))}
-                    {selectedPackage.inclusions.length > 4 && (
-                      <Text variant="none" className="text-text-subtle/60 text-caption italic pl-5">
-                        + {selectedPackage.inclusions.length - 4} more inclusions
-                      </Text>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Day-by-Day Accordion preview */}
-              <div className="mb-6">
-                <Heading as="h4" variant="none" className="text-xs text-brand-gold-muted uppercase tracking-widest font-mono font-semibold mb-6">
-                  DAY-BY-DAY ITINERARY PREVIEW
-                </Heading>
-
-                <div className="flex flex-col gap-3 pl-4 border-l border-dashed border-[#E8E4D9]">
-                  {selectedPackage.days.map((day) => {
-                    const isExpanded = expandedDay === day.day;
-                    return (
-                      <div key={day.day} className="relative">
-                        <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${isExpanded ? 'bg-brand-green' : 'bg-[#E8E4D9]'
-                          }`} />
-
-                        <div
-                          className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-[#FAF7F0] border-brand-green/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
-                            }`}
-                          onClick={() => setExpandedDay(isExpanded ? null : day.day)}
-                        >
-                          <div className="flex justify-between items-center">
-                            <Text variant="none" className="text-xs font-serif text-brand-green font-bold">
-                              Day {day.day}: {day.title}
-                            </Text>
-                            <span className="text-text-subtle/65 text-xs">
-                              <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={14} />
-                            </span>
-                          </div>
-
-                          {isExpanded && (
-                            <div className="mt-3 text-xs flex flex-col gap-3 animate-msg-fade-in font-light leading-relaxed text-text-subtle">
-                              <Text variant="none" className="italic text-text-subtle/85 mb-1">{day.description}</Text>
-                              <div>
-                                <span className="text-caption uppercase tracking-widest text-brand-gold-muted font-bold block mb-1">Activities:</span>
-                                {day.activities.map((act, i) => (
-                                  <div key={i} className="pl-2 flex gap-2"><span>-</span> <span>{act}</span></div>
-                                ))}
-                              </div>
-                              <div>
-                                <span className="text-caption uppercase tracking-widest text-brand-gold-muted font-bold block mb-1">Gastronomy:</span>
-                                {day.food.map((f, i) => (
-                                  <div key={i} className="pl-2 flex gap-2 italic text-text-subtle/80"><span>✦</span> <span>{f}</span></div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-
-            {/* Premium Download Buttons */}
-            {(() => {
-              const paths = getDownloadPaths(selectedPackage);
-              return (
-                <div className="px-6 py-4 bg-[#FAF7F0] border-t border-[#E8E4D9] shrink-0 flex flex-col gap-2">
-                  <span className="text-caption uppercase tracking-widest text-brand-gold-muted font-semibold text-center mb-1">
-                    Download Luxury Handbook
-                  </span>
-                  <div className="flex border border-[#E8E4D9] rounded overflow-hidden shadow-sm">
-                    <button
-                      onClick={() => {
-                        setSelectedPackage(null);
-                        setCustomizerPkg(selectedPackage);
-                      }}
-                      className="w-full py-3 px-4 bg-brand-green hover:bg-brand-green-dark text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300 cursor-pointer"
-                    >
-                      <Icon name="FileText" size={14} className="text-brand-gold" />
-                      Customize & Download PDF
-                    </button>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* Modal Actions */}
-            <div className="p-6 bg-white border-t border-[#E8E4D9] shrink-0 flex flex-col sm:flex-row gap-3">
-              <Button
-                variant="glass"
-                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-brand-green bg-[#FAF7F0] border border-[#E8E4D9] hover:bg-brand-green/5"
-                onClick={() => {
-                  const itemsList = selectedPackage.days.map(d => `Day ${d.day}: ${d.title}`).join('\n');
-                  const msg = `Hi Vietana! I'm interested in the "${selectedPackage.title}" package:\n\n${itemsList}`;
-                  window.open(`https://wa.me/919953294543?text=${encodeURIComponent(msg)}`, '_blank');
-                }}
-              >
-                <Icon name="MessageCircle" size={16} className="mr-2" /> Book via WhatsApp
-              </Button>
-              <Button
-                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-white bg-brand-green hover:bg-brand-green-dark flex items-center justify-center gap-1.5"
-                onClick={() => {
-                  const pkg = selectedPackage;
-                  setSelectedPackage(null);
-                  handleOpenPlanner(pkg);
-                }}
-              >
-                <Icon name="Mic" size={16} /> Customize with Voice
-              </Button>
-            </div>
-          </Modal>
-        )}
-      </AnimatePresence>
       <PDFCustomizerModal
         isOpen={customizerPkg !== null}
         onClose={() => setCustomizerPkg(null)}

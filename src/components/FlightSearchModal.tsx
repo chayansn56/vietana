@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import { useTranslation } from '../contexts/LanguageContext';
+import { useFlightSearch } from '../hooks/useFlightSearch';
 import { searchFlights, getAirportSuggestions, FlightRoute, AirportOption, SearchParams } from '../services/kiwiApi';
 import Icon from './ui/Icon';
 import { flightApiConfig } from '../config/travelpayouts';
@@ -25,50 +26,34 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
   const { language } = useTranslation();
 
   // Search parameters states
-  const [tripType, setTripType] = useState<'oneway' | 'round'>('oneway');
-  const [originInput, setOriginInput] = useState('Delhi (DEL)');
-  const [originCode, setOriginCode] = useState('DEL');
-  const [originSuggestions, setOriginSuggestions] = useState<AirportOption[]>([]);
-  
-  const [destInput, setDestInput] = useState('Ho Chi Minh City (SGN)');
-  const [destCode, setDestCode] = useState('SGN');
-  const [destSuggestions, setDestSuggestions] = useState<AirportOption[]>([]);
-  
-  const [departureDate, setDepartureDate] = useState(() => {
-    const future = new Date();
-    future.setDate(future.getDate() + 7);
-    return future.toISOString().split('T')[0];
-  });
-  
-  const [returnDate, setReturnDate] = useState(() => {
-    const future = new Date();
-    future.setDate(future.getDate() + 14);
-    return future.toISOString().split('T')[0];
-  });
+  const { state, actions } = useFlightSearch();
 
-  // Passengers splits
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
-  const [infants, setInfants] = useState(0);
-  const [showPassengerDropdown, setShowPassengerDropdown] = useState(false);
-  
-  const [cabinClass, setCabinClass] = useState<'M' | 'W' | 'C' | 'F'>('M');
-  const [sort, setSort] = useState<'price' | 'duration'>('price');
-  
-  // Results, loading, and display states
-  const [flights, setFlights] = useState<FlightRoute[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [searched, setSearched] = useState(false);
-  const [error, setError] = useState('');
+  const {
+    tripType, originInput, originCode, originSuggestions, destInput, destCode, destSuggestions,
+    departureDate, returnDate, adults, children, infants, showPassengerDropdown,
+    cabinClass, sort, flights, isLoading, searched, error, filterDirectOnly
+  } = state;
 
-  // Local filter states
-  const [filterDirectOnly, setFilterDirectOnly] = useState(false);
+  const {
+    setTripType, setOriginInput, setOriginCode, setOriginSuggestions, setDestInput, setDestCode, setDestSuggestions,
+    setDepartureDate, setReturnDate, setAdults, setChildren, setInfants, setShowPassengerDropdown,
+    setCabinClass, setSort, setFlights, setIsLoading, setSearched, setError, setFilterDirectOnly,
+    handleSwap, handleOriginChange, handleDestChange, performSearch, getAirportCodeFromInput
+  } = actions;
+
+  const cabinLabels: Record<'M' | 'W' | 'C' | 'F', string> = {
+    'M': 'Economy',
+    'W': 'Premium Economy',
+    'C': 'Business',
+    'F': 'First'
+  };
+
+  const displayedFlights = flights.filter(f => !filterDirectOnly || f.stops === 0);
 
   const passengerRef = useRef<HTMLDivElement>(null);
   const originRef = useRef<HTMLDivElement>(null);
   const destRef = useRef<HTMLDivElement>(null);
 
-  // Close passenger dropdown and suggestions on outside click
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (passengerRef.current && !passengerRef.current.contains(e.target as Node)) {
@@ -85,147 +70,10 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
-  const handleSwap = () => {
-    const tempInput = originInput;
-    const tempCode = originCode;
-    setOriginInput(destInput);
-    setOriginCode(destCode);
-    setDestInput(tempInput);
-    setDestCode(tempCode);
-  };
-
-  // Helper to extract airport code from input value (e.g., "Delhi (DEL)" -> "DEL")
-  const getAirportCodeFromInput = (val: string, fallbackCode: string) => {
-    // 1. Try to extract code from parentheses format
-    const match = val.match(/\(([A-Z]{3})\)/);
-    if (match) return match[1];
-
-    // 2. If it's a direct 3-letter uppercase code
-    const cleanVal = val.trim().toUpperCase();
-    if (cleanVal.length === 3 && /^[A-Z]+$/.test(cleanVal)) {
-      return cleanVal;
-    }
-
-    // 3. Fallback to check if city name matches mock list
-    const found = MOCK_AIRPORTS_RESOLVER.find(
-      (a) => a.city.toUpperCase() === cleanVal || a.name.toUpperCase() === cleanVal
-    );
-    if (found) return found.code;
-
-    return fallbackCode;
-  };
-
-  // Fetch suggestions for Origin
-  const handleOriginChange = async (val: string) => {
-    setOriginInput(val);
-    const code = getAirportCodeFromInput(val, '');
-    if (code) {
-      setOriginCode(code);
-    }
-    if (val.length >= 2) {
-      const sugs = await getAirportSuggestions(val);
-      setOriginSuggestions(sugs);
-    } else {
-      setOriginSuggestions([]);
-    }
-  };
-
-  // Fetch suggestions for Destination
-  const handleDestChange = async (val: string) => {
-    setDestInput(val);
-    const code = getAirportCodeFromInput(val, '');
-    if (code) {
-      setDestCode(code);
-    }
-    if (val.length >= 2) {
-      const sugs = await getAirportSuggestions(val);
-      setDestSuggestions(sugs);
-    } else {
-      setDestSuggestions([]);
-    }
-  };
-
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Resolve final codes on form submission
-    const finalOriginCode = getAirportCodeFromInput(originInput, originCode);
-    const finalDestCode = getAirportCodeFromInput(destInput, destCode);
-
-    if (!finalOriginCode || !finalDestCode) {
-      setError('Please select valid From and To cities from the autocomplete suggestions.');
-      return;
-    }
-    
-    setIsLoading(true);
-    setError('');
-    setSearched(true);
-    
-    const params: SearchParams = {
-      origin: finalOriginCode,
-      destination: finalDestCode,
-      departureDate,
-      returnDate: tripType === 'round' ? returnDate : undefined,
-      tripType,
-      adults,
-      children,
-      infants,
-      cabinClass,
-      sort
-    };
-
-    try {
-      const results = await searchFlights(params);
-      setFlights(results);
-    } catch (err) {
-      setError('Failed to fetch flight schedules. Please try again.');
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
+    await performSearch();
   };
-
-  // Trigger search again if sorting changes after search
-  useEffect(() => {
-    if (searched) {
-      const triggerSortReload = async () => {
-        const finalOriginCode = getAirportCodeFromInput(originInput, originCode);
-        const finalDestCode = getAirportCodeFromInput(destInput, destCode);
-
-        const params: SearchParams = {
-          origin: finalOriginCode,
-          destination: finalDestCode,
-          departureDate,
-          returnDate: tripType === 'round' ? returnDate : undefined,
-          tripType,
-          adults,
-          children,
-          infants,
-          cabinClass,
-          sort
-        };
-        try {
-          const results = await searchFlights(params);
-          setFlights(results);
-        } catch (e) {
-          console.error(e);
-        }
-      };
-      triggerSortReload();
-    }
-  }, [sort]);
-
-  const cabinLabels = {
-    M: 'Economy',
-    W: 'Premium Economy',
-    C: 'Business',
-    F: 'First Class'
-  };
-
-  // Filtered flights (Client-side filters)
-  const displayedFlights = flights.filter(
-    (f) => !filterDirectOnly || f.stops === 0
-  );
 
   return (
     <Modal
@@ -244,28 +92,27 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               className="text-brand-green tracking-wide mb-2 flex items-center gap-3"
             >
               {language === 'HI' ? 'प्रीमियम उड़ान खोज' : language === 'VI' ? 'Tìm chuyến bay cao cấp' : 'Premium Flight Search'}
-              <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border ${
-                flightApiConfig.kiwiApiKey 
-                  ? 'bg-green-500/10 text-green-600 border-green-500/30' 
-                  : 'bg-orange-500/10 text-orange-600 border-orange-500/30'
-              }`}>
+              <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border ${flightApiConfig.kiwiApiKey
+                ? 'bg-green-500/10 text-green-600 border-green-500/30'
+                : 'bg-orange-500/10 text-orange-600 border-orange-500/30'
+                }`}>
                 <span className={`w-1.5 h-1.5 rounded-full ${flightApiConfig.kiwiApiKey ? 'bg-green-600 animate-pulse' : 'bg-orange-500'}`} />
                 {flightApiConfig.kiwiApiKey ? 'Live Feed' : 'Demo Mode'}
               </span>
             </Heading>
             <Text size="sm" className="text-text-subtle/85">
-              {language === 'HI' 
-                ? 'वियतनाम के लिए सर्वोत्तम उड़ान दरें खोजें और सीधे एयरलाइन के साथ बुक करें।' 
-                : language === 'VI' 
-                ? 'Tìm giá vé máy bay tốt nhất đến Việt Nam và đặt vé trực tiếp với hãng hàng không.' 
-                : 'Find the best flight rates to Vietnam and book directly with the airline.'}
+              {language === 'HI'
+                ? 'वियतनाम के लिए सर्वोत्तम उड़ान दरें खोजें और सीधे एयरलाइन के साथ बुक करें।'
+                : language === 'VI'
+                  ? 'Tìm giá vé máy bay tốt nhất đến Việt Nam và đặt vé trực tiếp với hãng hàng không.'
+                  : 'Find the best flight rates to Vietnam and book directly with the airline.'}
             </Text>
           </div>
         </div>
 
         {/* Global Search Config Panel */}
         <form onSubmit={handleSearch} className="flex flex-col gap-4 bg-white p-6 rounded-3xl border border-[#E8E4D9]">
-          
+
           {/* Trip Type & Cabin Class Header */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E8E4D9] pb-4">
             {/* Trip Type Selector */}
@@ -303,7 +150,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
 
           {/* Form Inputs Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
-            
+
             {/* Swap Button (Absolute Positioned between columns on desktop) */}
             <button
               type="button"
@@ -591,15 +438,15 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           )}
 
           {!isLoading && displayedFlights.map((flight, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white border border-[#E8E4D9] hover:border-brand-green rounded-2xl p-5 transition-all duration-300 hover:shadow-xl"
             >
               {/* Airline Detail */}
               <div className="flex items-center gap-4 w-full md:w-auto">
-                <img 
-                  src={flight.airlineLogo} 
-                  alt={flight.airlineName} 
+                <img
+                  src={flight.airlineLogo}
+                  alt={flight.airlineName}
                   className="w-12 h-12 rounded-xl object-cover border border-[#E8E4D9] bg-surface-cream"
                 />
                 <div>
@@ -653,9 +500,9 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                     ₹{flight.price.toLocaleString('en-IN')}
                   </Heading>
                 </div>
-                <a 
-                  href={flight.bookingUrl} 
-                  target="_blank" 
+                <a
+                  href={flight.bookingUrl}
+                  target="_blank"
                   rel="noreferrer"
                   className="bg-brand-green hover:bg-brand-green/90 text-white border border-transparent px-5 py-2.5 rounded-xl font-bold uppercase tracking-wider text-xs transition-all duration-300 flex items-center gap-1.5 cursor-pointer shadow-md hover:shadow-lg"
                 >

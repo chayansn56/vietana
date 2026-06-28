@@ -9,6 +9,7 @@ import { useSpeechSynthesis } from '../hooks/useSpeechSynthesis';
 import Icon, { IconName } from './ui/Icon';
 import { featureFlags } from '../config/featureFlags';
 import { generateAffiliateUrl } from '../utils/affiliate';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 
 /** Lightweight HTML sanitizer — strips script/iframe/on* attributes */
 const sanitize = (html: string): string => {
@@ -334,7 +335,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   onClick={() => {
                     const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
                     const message = `Hello! I've designed your custom Vietnam itinerary:\n\n*${itinerary.title}*\n\n${itemsList}`;
-                    window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
+                    window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT, message), '_blank');
                   }}
                   className="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
@@ -539,7 +540,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                     onClick={() => {
                       const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
                       const message = `Hello Vietana! I've designed an itinerary blueprint:\n\n*${itinerary.title}*\n\n${itemsList}`;
-                      window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
+                      window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT, message), '_blank');
                     }}
                   >
                     <Icon name="MessageCircle" size={18} /> Book this Itinerary
