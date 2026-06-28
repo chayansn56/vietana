@@ -39,7 +39,7 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
           isOpen={!!selectedPackage}
           onClose={onClose}
           maxWidth="max-w-4xl"
-          className="h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-xl shadow-heavy"
+          className="h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-border-divider rounded-xl shadow-heavy"
         >
           {/* Header image details */}
           <div className="h-48 w-full overflow-hidden relative shrink-0">
@@ -66,7 +66,7 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
               </div>
               {selectedPackage.price && (
                 <div className="bg-brand-gold-light text-brand-green-dark px-4 py-2 rounded shadow-md border border-white/20 text-center shrink-0">
-                  <span className="text-[11px] uppercase tracking-widest font-bold block opacity-85 leading-none mb-1">Indian Price</span>
+                  <span className="text-tiny uppercase tracking-widest font-bold block opacity-85 leading-none mb-1">Indian Price</span>
                   <span className="text-lg font-mono font-extrabold leading-none tabular-nums">{selectedPackage.price} PP</span>
                 </div>
               )}
@@ -75,7 +75,7 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
 
           {/* Scrollable details tab */}
           <div className="flex-1 overflow-y-auto p-8 md:p-10 scrollbar-thin">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-[#E8E4D9]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-border-divider">
               <div>
                 <Heading as="h4" variant="none" className="text-xs text-brand-gold-muted uppercase tracking-widest font-mono font-semibold mb-3">
                   RECOMMENDED HOTELS
@@ -114,15 +114,15 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
                 DAY-BY-DAY ITINERARY PREVIEW
               </Heading>
 
-              <div className="flex flex-col gap-3 pl-4 border-l border-dashed border-[#E8E4D9]">
+              <div className="flex flex-col gap-3 pl-4 border-l border-dashed border-border-divider">
                 {selectedPackage.days.map((day) => {
                   const isExpanded = expandedDay === day.day;
                   return (
                     <div key={day.day} className="relative">
-                      <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${isExpanded ? 'bg-brand-green' : 'bg-[#E8E4D9]'}`} />
+                      <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${isExpanded ? 'bg-brand-green' : 'bg-border-divider'}`} />
 
                       <div
-                        className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-[#FAF7F0] border-brand-green/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'}`}
+                        className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-surface-linen border-brand-green/30' : 'bg-white border-border-divider/80 hover:bg-surface-linen'}`}
                         onClick={() => onSetExpandedDay(isExpanded ? null : day.day)}
                       >
                         <div className="flex justify-between items-center">
@@ -160,11 +160,11 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
           </div>
 
           {/* Premium Download Buttons */}
-          <div className="px-6 py-4 bg-[#FAF7F0] border-t border-[#E8E4D9] shrink-0 flex flex-col gap-2">
+          <div className="px-6 py-4 bg-surface-linen border-t border-border-divider shrink-0 flex flex-col gap-2">
             <span className="text-caption uppercase tracking-widest text-brand-gold-muted font-semibold text-center mb-1">
               Download Luxury Handbook
             </span>
-            <div className="flex border border-[#E8E4D9] rounded overflow-hidden shadow-sm">
+            <div className="flex border border-border-divider rounded overflow-hidden shadow-sm">
               <Button
                 variant="secondary"
                 onClick={() => {
@@ -180,10 +180,10 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
           </div>
 
           {/* Modal Actions */}
-          <div className="p-6 bg-white border-t border-[#E8E4D9] shrink-0 flex flex-col sm:flex-row gap-3">
+          <div className="p-6 bg-white border-t border-border-divider shrink-0 flex flex-col sm:flex-row gap-3">
             <Button
               variant="glass"
-              className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-brand-green bg-[#FAF7F0] border border-[#E8E4D9] hover:bg-brand-green/5"
+              className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-brand-green bg-surface-linen border border-border-divider hover:bg-brand-green/5"
               onClick={() => {
                 const itemsList = selectedPackage.days.map(d => `Day ${d.day}: ${d.title}`).join('\n');
                 const msg = `Hi Vietana! I'm interested in the "${selectedPackage.title}" package:\n\n${itemsList}`;

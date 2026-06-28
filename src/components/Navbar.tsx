@@ -174,7 +174,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
         <div className="flex items-center gap-2 lg:gap-3 xl:gap-5 shrink-0">
           <button
             onClick={() => onOpenMapCurtain()}
-            className={`focus-ring hidden sm:flex items-center justify-center gap-1.5 px-3 h-10 rounded-full transition-all duration-300 border backdrop-blur-md ${isLight ? 'bg-white/40 border-[#1D1D1F]/15 text-[#1D1D1F] hover:bg-white/60 shadow-sm' : 'bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/40 shadow-[0_2px_10px_rgba(0,0,0,0.2)]'}`}
+            className={`focus-ring hidden sm:flex items-center justify-center gap-1.5 px-3 h-10 rounded-full transition-all duration-300 border backdrop-blur-md ${isLight ? 'bg-white/40 border-text-dark/15 text-text-dark hover:bg-white/60 shadow-sm' : 'bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/40 shadow-[0_2px_10px_rgba(0,0,0,0.2)]'}`}
           >
             <Icon name="Map" size={14} />
             <span className="text-xs tracking-[0.1em] font-medium uppercase">Map</span>

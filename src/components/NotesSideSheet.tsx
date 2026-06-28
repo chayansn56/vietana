@@ -203,7 +203,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
               justify-content: space-between;
               font-size: 7.5pt;
               color: #888;
-              border-top: 1px solid #E8E4D9;
+              border-top: 1px solid var(--color-border-divider);
               padding-top: 10px;
             }
             

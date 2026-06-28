@@ -21,7 +21,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
   return (
     <Card className="w-[85vw] sm:w-[420px] h-[540px] editorial-card !p-0 flex flex-col justify-between shrink-0 snap-start relative group overflow-hidden">
       {/* Photo area */}
-      <div className="h-[220px] relative w-full overflow-hidden shrink-0 border-b border-[#E8E4D9]">
+      <div className="h-[220px] relative w-full overflow-hidden shrink-0 border-b border-border-divider">
         <img
           src={pkg.img}
           alt={pkg.title}
@@ -30,15 +30,15 @@ const PackageCard: React.FC<PackageCardProps> = ({
 
         {/* Top tags */}
         <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
-          <Badge variant="green-filled" className="!px-2.5 !py-1 !text-[11px] shadow-sm normal-case tracking-widest">
+          <Badge variant="green-filled" className="!px-2.5 !py-1 !text-tiny shadow-sm normal-case tracking-widest">
             {pkg.badge}
           </Badge>
           {pkg.price ? (
-            <Badge variant="gold-filled" className="!px-2.5 !py-1 !text-[11px] shadow-sm border-white/20 font-mono">
+            <Badge variant="gold-filled" className="!px-2.5 !py-1 !text-tiny shadow-sm border-white/20 font-mono">
               {pkg.price} PP
             </Badge>
           ) : (
-            <Badge variant="outline" className="!px-2.5 !py-1 !text-[11px] font-mono text-brand-green border-[#E8E4D9] bg-white">
+            <Badge variant="outline" className="!px-2.5 !py-1 !text-tiny font-mono text-brand-green border-border-divider bg-white">
               {pkg.duration}
             </Badge>
           )}
@@ -53,13 +53,13 @@ const PackageCard: React.FC<PackageCardProps> = ({
               {pkg.title}
             </h4>
             {pkg.price && (
-              <span className="text-xs text-brand-gold-muted font-bold border border-brand-gold-muted/20 bg-[#FAF7F0] px-2 py-0.5 rounded font-mono shrink-0">
+              <span className="text-xs text-brand-gold-muted font-bold border border-brand-gold-muted/20 bg-surface-linen px-2 py-0.5 rounded font-mono shrink-0">
                 {pkg.duration}
               </span>
             )}
           </div>
 
-          <div className="editorial-meta-tag pb-1 border-b border-[#E8E4D9]">
+          <div className="editorial-meta-tag pb-1 border-b border-border-divider">
             ROUTE // {pkg.destinations.join(' ➔ ')}
           </div>
 
@@ -68,14 +68,14 @@ const PackageCard: React.FC<PackageCardProps> = ({
           </p>
         </div>
 
-        <div className="py-2.5 border-t border-[#E8E4D9] flex items-center justify-between gap-4 mt-2">
+        <div className="py-2.5 border-t border-border-divider flex items-center justify-between gap-4 mt-2">
           <div>
-            <span className="text-[11px] uppercase tracking-widest text-brand-gold-muted font-bold block mb-0.5">Stay Curation</span>
-            <span className="text-[11px] text-brand-green truncate block font-medium">🏨 {pkg.hotels[0]}</span>
+            <span className="text-tiny uppercase tracking-widest text-brand-gold-muted font-bold block mb-0.5">Stay Curation</span>
+            <span className="text-tiny text-brand-green truncate block font-medium">🏨 {pkg.hotels[0]}</span>
           </div>
 
           {pkg.isJainVegFriendly && (
-            <span className="text-[11px] bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
+            <span className="text-tiny bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
               Veg Friendly
             </span>
           )}
@@ -83,18 +83,18 @@ const PackageCard: React.FC<PackageCardProps> = ({
       </div>
 
       {/* Vogue Editorial Action Footer */}
-      <div className="bg-[#FAF7F0] border-t border-[#E8E4D9] p-4 flex gap-3 shrink-0">
+      <div className="bg-surface-linen border-t border-border-divider p-4 flex gap-3 shrink-0">
         <Button
           variant="outline" size="sm"
           onClick={() => onSetCustomizerPkg(pkg)}
-          className="flex-1 !text-[11px] uppercase tracking-widest px-2"
+          className="flex-1 !text-tiny uppercase tracking-widest px-2"
           icon={<Icon name="FileText" size={11} className="text-brand-gold-muted" />}
         >
           PDF Info
         </Button>
         <Button
           variant="primary" size="sm"
-          className="flex-1 editorial-btn !text-[11px] uppercase tracking-widest px-2 shadow-sm"
+          className="flex-1 editorial-btn !text-tiny uppercase tracking-widest px-2 shadow-sm"
           onClick={() => onOpenPlanner(pkg)}
           icon={<Icon name="Sparkles" size={10} />}
         >
@@ -102,7 +102,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
         </Button>
         <Button
           variant="outline" size="sm"
-          className="!text-[11px] uppercase tracking-widest px-4"
+          className="!text-tiny uppercase tracking-widest px-4"
           onClick={() => onSetSelectedPackage(pkg)}
         >
           Details

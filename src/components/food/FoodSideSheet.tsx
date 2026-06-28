@@ -105,7 +105,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                             {isRestaurant && (item as RestaurantDetails).isOwnedAndLoved && (
                               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
                                 <Icon name="Heart" size={14} className="text-rose-500 fill-rose-500" />
-                                <Text size="xs" weight="bold" className="text-text-dark uppercase tracking-wider text-[10px]">
+                                <Text size="xs" weight="bold" className="text-text-dark uppercase tracking-wider text-mini">
                                   Owned & Loved by <BrandName />
                                 </Text>
                               </div>
@@ -163,7 +163,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                                     title={isSpeakingId === item.id ? "Stop audio guide" : "Listen to audio guide"}
                                   >
                                     <Icon name={isSpeakingId === item.id ? "VolumeX" : "Volume2"} size={13} />
-                                    <span className="text-[10px] uppercase font-extrabold tracking-widest font-mono">Audio Guide</span>
+                                    <span className="text-mini uppercase font-extrabold tracking-widest font-mono">Audio Guide</span>
                                   </Button>
                                 </div>
                                 <Text size="sm" className="text-text-dark/80 leading-relaxed italic m-0">

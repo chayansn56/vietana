@@ -121,12 +121,12 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
       <div className="p-10 pb-8 border-b border-white/5 relative z-10 flex flex-col items-center text-center select-none shrink-0">
         <div className="flex items-center gap-2 mb-3 bg-black/20 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-xs">
           <Icon name="Leaf" size={14} className="text-brand-gold-light" />
-          <span className="font-sans font-black tracking-wide-em text-[10px] text-white uppercase">VIETANA</span>
+          <span className="font-sans font-black tracking-wide-em text-mini text-white uppercase">VIETANA</span>
         </div>
         <Heading as="h2" variant="white" className="text-3xl md:text-4xl font-serif mb-2 tracking-wide">
           Craft Your <span className="text-brand-gold-light italic">Journey</span>
         </Heading>
-        <Text variant="none" className="text-white/40 text-[10px] font-mono tracking-widest uppercase">
+        <Text variant="none" className="text-white/40 text-mini font-mono tracking-widest uppercase">
           REAL-TIME ESTIMATE ENGINE V4
         </Text>
       </div>
@@ -387,7 +387,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8 relative overflow-hidden  shadow-inner before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-gradient-to-r before:from-transparent before:via-brand-gold/50 before:to-transparent">
             <Heading as="h4" variant="none" className="text-brand-gold/80 uppercase tracking-widest text-caption font-semibold mb-6 flex items-center justify-between gap-2">
               <span>Real-time Estimate Receipt</span>
-              <span className="flex items-center gap-1.5 text-[9px] font-mono text-emerald-400 normal-case tracking-normal">
+              <span className="flex items-center gap-1.5 text-micro font-mono text-emerald-400 normal-case tracking-normal">
                 <span className={`inline-block w-1.5 h-1.5 rounded-full ${isSyncing ? 'bg-amber-400 animate-pulse' : 'bg-emerald-500'}`} />
                 <span>{isSyncing ? syncStatus : 'Synced'}</span>
               </span>
@@ -396,15 +396,15 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
             {/* Dynamic Price Sync Panel */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-3 mb-6 flex justify-between items-center gap-2">
               <div className="flex flex-col">
-                <span className="text-[11px] uppercase tracking-widest text-white/40">Hourly Feed Status</span>
-                <span className="text-[10px] text-white/80 font-mono">
+                <span className="text-tiny uppercase tracking-widest text-white/40">Hourly Feed Status</span>
+                <span className="text-mini text-white/80 font-mono">
                   Last query: {lastSyncTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                 </span>
               </div>
               <button
                 onClick={handleSyncNow}
                 disabled={isSyncing}
-                className="bg-brand-gold/10 hover:bg-brand-gold/25 border border-brand-gold/30 hover:border-brand-gold/50 rounded-lg px-2.5 py-1.5 text-[9px] font-mono text-brand-gold-light uppercase tracking-wider flex items-center gap-1 transition-all disabled:opacity-50 disabled:cursor-not-allowed select-none cursor-pointer"
+                className="bg-brand-gold/10 hover:bg-brand-gold/25 border border-brand-gold/30 hover:border-brand-gold/50 rounded-lg px-2.5 py-1.5 text-micro font-mono text-brand-gold-light uppercase tracking-wider flex items-center gap-1 transition-all disabled:opacity-50 disabled:cursor-not-allowed select-none cursor-pointer"
               >
                 <Icon name="RefreshCw" size={10} className={isSyncing ? 'animate-spin' : ''} />
                 <span>{isSyncing ? 'Syncing...' : 'Sync Tariff'}</span>
@@ -422,12 +422,12 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
               </div>
               <div className="flex justify-between items-center group mb-4">
                 <Text variant="none" className="text-white/60 text-sm font-light tracking-wide flex items-center gap-2">
-                  <Icon name="Truck" size={14} className="text-brand-gold/60" /> 🚘 Transfers <span className="text-white/30 text-[0.55rem]">(T&C Apply)</span>
+                  <Icon name="Truck" size={14} className="text-brand-gold/60" /> 🚘 Transfers <span className="text-white/30 text-micro">(T&C Apply)</span>
                 </Text>
                 <Text variant="none" className="text-white/90 text-sm font-mono tracking-wider group-hover:text-brand-gold transition-colors">₹{estimate.transfers.toLocaleString('en-IN')}</Text>
               </div>
 
-              <Text variant="none" className="text-white/30 text-[0.6rem] uppercase tracking-widest font-semibold border-b border-white/5 pb-2 mb-2">Daily Costs Breakdown ({days} Days × {pax} Pax)</Text>
+              <Text variant="none" className="text-white/30 text-mini uppercase tracking-widest font-semibold border-b border-white/5 pb-2 mb-2">Daily Costs Breakdown ({days} Days × {pax} Pax)</Text>
 
               <div className="flex justify-between items-center group">
                 <Text variant="none" className="text-white/50 text-sm font-light tracking-wide flex items-center gap-2 pl-4">🏨 Hotels</Text>
@@ -454,7 +454,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
               </div>
             </div>
 
-            <Text variant="none" className="text-white/30 text-[0.6rem] leading-relaxed mt-6 text-center italic">
+            <Text variant="none" className="text-white/30 text-mini leading-relaxed mt-6 text-center italic">
               Actual pricing may vary based on season, hotel selection, flight availability and travel style.<br />
               Travel Gets Better with <BrandName />
             </Text>
@@ -530,7 +530,7 @@ Please generate a structured day-by-day itinerary right away for this trip!`;
               )}
               <div className="text-left">
                 <h2 className="text-lg font-serif font-semibold text-gray-800">{agencyName || 'Bespoke Travel'} Proposal</h2>
-                <p className="text-[10px] uppercase tracking-widest text-gray-500 mt-0.5">Prepared for your escape to Vietnam</p>
+                <p className="text-mini uppercase tracking-widest text-gray-500 mt-0.5">Prepared for your escape to Vietnam</p>
               </div>
             </div>
           ) : (

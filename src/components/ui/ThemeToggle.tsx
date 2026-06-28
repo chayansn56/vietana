@@ -21,6 +21,8 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isNavbar = false, 
   }, []);
 
   const toggleTheme = () => {
+    // Enable smooth transition only during toggle
+    document.documentElement.classList.add('theme-transitioning');
     setIsDark((prev) => {
       const next = !prev;
       if (next) {
@@ -32,6 +34,8 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isNavbar = false, 
       }
       return next;
     });
+    // Remove after transition completes
+    setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 500);
   };
 
   return (

@@ -1,3 +1,4 @@
+import './ai-planner.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { MessagingService } from '../services/messagingService';
@@ -385,7 +386,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             </div>
           )}
 
-          <div className="text-[10px] text-white/40 font-mono tracking-wider mb-2 text-left pl-2">
+          <div className="text-mini text-white/40 font-mono tracking-wider mb-2 text-left pl-2">
             💡 Try: "make it veg-only", "add a day in Da Lat", or "upgrade to 5★ hotels"
           </div>
 
@@ -506,7 +507,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                             {/* Sights checklist */}
                             {day.activities?.length > 0 && (
                               <div>
-                                <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                <Text variant="none" className="text-mini uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
                                   <Icon name="MapPin" size={10} className="text-brand-gold" /> Exploration Points
                                 </Text>
                                 <div className="flex flex-col gap-1 pl-1">
@@ -523,7 +524,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                             {/* Food Suggestions */}
                             {day.food?.length > 0 && (
                               <div>
-                                <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                <Text variant="none" className="text-mini uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
                                   <Icon name="Soup" size={10} className="text-brand-gold" /> Gastronomy Picks
                                 </Text>
                                 <div className="flex flex-col gap-1 pl-1">

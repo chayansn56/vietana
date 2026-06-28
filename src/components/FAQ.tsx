@@ -100,7 +100,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
                     )}
                   </div>
                   {isFeatured && (
-                    <span className="text-brand-green text-[10px] font-bold tracking-wider uppercase transition-opacity shrink-0">
+                    <span className="text-brand-green text-mini font-bold tracking-wider uppercase transition-opacity shrink-0">
                       {isExpanded ? 'Hide' : 'Info'}
                     </span>
                   )}

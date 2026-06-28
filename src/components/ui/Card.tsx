@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({
     green: 'rounded-[24px] glass-dark text-white border-brand-gold/20',
     outline: 'rounded-[24px] bg-transparent border border-brand-gold/30',
     'pro-max': 'rounded-[24px] glass border-brand-gold/30 text-text-dark',
-    editorial: 'rounded-xl bg-white dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 shadow-sm',
+    editorial: 'rounded-xl bg-white dark:bg-surface-dark border border-border-divider dark:border-white/10 shadow-sm',
   };
 
   const hoverStyles = hover

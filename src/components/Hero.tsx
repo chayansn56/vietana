@@ -103,7 +103,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         {TRIPTYCH_PANELS.map((panel, idx) => (
           <div key={idx} className="flex-1 flex items-center justify-center relative overflow-hidden border-r border-white/10 last:border-r-0">
             <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: `url(${panel.img})` }} />
-            <Text variant="none" className="relative text-[0.6rem] text-white/80 tracking-[0.2em] uppercase font-semibold drop-shadow-md">
+            <Text variant="none" className="relative text-mini text-white/80 tracking-[0.2em] uppercase font-semibold drop-shadow-md">
               {panel.label}
             </Text>
           </div>

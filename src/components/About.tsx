@@ -90,17 +90,17 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
       <div className="p-[30px] md:p-[50px] relative z-10 text-left flex flex-col items-start">
 
         {/* Header */}
-        <p className="text-[14px] font-semibold tracking-[2px] text-[#3D8B7D] uppercase mb-4">
+        <p className="text-sm font-semibold tracking-[2px] text-brand-green-light uppercase mb-4">
           🌿 Why Vietana?
         </p>
 
         {/* Main Title */}
-        <h2 className="font-['SF_Pro_Display',-apple-system,BlinkMacSystemFont,sans-serif] font-bold text-[38px] md:text-[54px] leading-[1.15] text-[#1F2328] mb-4">
+        <h2 className="font-['SF_Pro_Display',-apple-system,BlinkMacSystemFont,sans-serif] font-bold text-[38px] md:text-[54px] leading-[1.15] text-text-dark mb-4">
           Travel Gets Better<br />with VIETANA™
         </h2>
 
         {/* Subtitle */}
-        <p className="text-[18px] font-normal text-[#68707B] mb-12">
+        <p className="text-lg font-normal text-text-subtle mb-12">
           Thoughtful travel. Local knowledge. Human support.
         </p>
 
@@ -125,10 +125,10 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
                   />
                 </div>
                 <div className="p-6 flex flex-col justify-center">
-                  <h3 className="text-[18px] font-semibold text-[#1F2328] mb-2 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-text-dark mb-2 flex items-center gap-2">
                     <span>{card.icon}</span> {card.title}
                   </h3>
-                  <p className="text-[#68707B] text-[15px] leading-relaxed">
+                  <p className="text-text-subtle text-[15px] leading-relaxed">
                     {card.desc}
                   </p>
                 </div>
@@ -139,7 +139,7 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
 
         {/* Bottom Section */}
         <div className="max-w-[700px] mx-auto text-center mb-12">
-          <h3 className="text-[24px] md:text-[28px] font-semibold text-[#2E3135] leading-snug mb-10">
+          <h3 className="text-[24px] md:text-[28px] font-semibold text-text-dark leading-snug mb-10">
             Not a marketplace.<br className="hidden md:block" />
             Not another package company.<br className="hidden md:block" />
             Just thoughtful travel and people who genuinely care.
@@ -150,7 +150,7 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
             {PILLARS.map((pillar, idx) => (
               <div
                 key={idx}
-                className="bg-[rgba(255,255,255,0.6)] backdrop-blur-md border border-white/50 rounded-full px-5 py-2.5 flex items-center gap-2 text-[14px] text-[#2E3135] font-medium shadow-sm"
+                className="bg-[rgba(255,255,255,0.6)] backdrop-blur-md border border-white/50 rounded-full px-5 py-2.5 flex items-center gap-2 text-sm text-text-dark font-medium shadow-sm"
               >
                 <span>{pillar.icon}</span>
                 {pillar.text}
@@ -158,10 +158,10 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
             ))}
           </div>
 
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#3D8B7D]/30 to-transparent mx-auto mb-8"></div>
+          <div className="h-px w-24 bg-gradient-to-r from-transparent via-brand-green-light/30 to-transparent mx-auto mb-8"></div>
 
           {/* Signature & Button */}
-          <p className="text-[16px] font-medium text-[#3D8B7D] mb-8">
+          <p className="text-base font-medium text-brand-green-light mb-8">
             Travel Gets Better with VIETANA™
           </p>
 

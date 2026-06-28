@@ -105,7 +105,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
       {/* Side Control Panel */}
       <div className="w-full md:w-80 bg-white/80 dark:bg-surface-dark/90 backdrop-blur-md border-r border-text-dark/5 dark:border-white/5 p-6 flex flex-col gap-6 relative z-20 shrink-0">
         <div>
-          <span className="text-[9px] font-bold tracking-[0.22em] text-brand-green dark:text-brand-gold uppercase block mb-1">Illustrative Cartography</span>
+          <span className="text-micro font-bold tracking-[0.22em] text-brand-green dark:text-brand-gold uppercase block mb-1">Illustrative Cartography</span>
           <Heading as="h3" size="lg" font="serif" className="text-brand-green dark:text-white tracking-wide">Regions of Vietnam</Heading>
         </div>
 
@@ -125,18 +125,18 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 onMouseLeave={() => setActiveRegion(null)}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-bold font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold uppercase">{key}</span>
-                  <span className="text-[9px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/10 text-brand-green dark:text-surface-warm font-semibold">{reg.cities.length} Hotspots</span>
+                  <span className="text-mini font-bold font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold uppercase">{key}</span>
+                  <span className="text-micro px-2 py-0.5 rounded bg-black/5 dark:bg-white/10 text-brand-green dark:text-surface-warm font-semibold">{reg.cities.length} Hotspots</span>
                 </div>
                 <h4 className="text-sm font-semibold font-serif text-brand-green dark:text-white">{reg.name}</h4>
-                <p className="text-[11px] text-text-subtle dark:text-white/60 font-light leading-relaxed mt-2 line-clamp-3">{reg.desc}</p>
+                <p className="text-tiny text-text-subtle dark:text-white/60 font-light leading-relaxed mt-2 line-clamp-3">{reg.desc}</p>
               </button>
             );
           })}
         </div>
         
         <div className="mt-auto pt-4 border-t border-black/5 dark:border-white/5">
-          <p className="text-[10px] text-gray-400 dark:text-white/40 font-mono">Pulsing icons indicate major custom itinerary hotspots for Indian travelers. Hover over region tabs to highlight territory.</p>
+          <p className="text-mini text-gray-400 dark:text-white/40 font-mono">Pulsing icons indicate major custom itinerary hotspots for Indian travelers. Hover over region tabs to highlight territory.</p>
         </div>
       </div>
 
@@ -286,11 +286,11 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 </div>
               </div>
               <div className="p-4 flex flex-col gap-2">
-                <Text size="sm" className="text-[#2B2B2B]/70 dark:text-white/70 leading-snug">
+                <Text size="sm" className="text-text-dark/70 dark:text-white/70 leading-snug">
                   {MAP_DESTINATIONS[hoveredDest].desc}
                 </Text>
                 <div className="flex items-center justify-between mt-2 pt-2 border-t border-text-dark/5 dark:border-white/5">
-                  <span className={`text-[0.6rem] font-bold tracking-widest uppercase ${selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
+                  <span className={`text-mini font-bold tracking-widest uppercase ${selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
                     {selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
                   </span>
                 </div>
@@ -327,11 +327,11 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 </div>
               </div>
               <div className="p-4 flex flex-col gap-2">
-                <Text size="sm" className="text-[#2B2B2B]/70 dark:text-white/70 leading-snug">
+                <Text size="sm" className="text-text-dark/70 dark:text-white/70 leading-snug">
                   {hoveredSight.desc}
                 </Text>
                 <div className="flex items-center justify-between mt-2 pt-2 border-t border-text-dark/5 dark:border-white/5">
-                  <span className={`text-[0.6rem] font-bold tracking-widest uppercase ${selectedSights.includes(hoveredSight.name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
+                  <span className={`text-mini font-bold tracking-widest uppercase ${selectedSights.includes(hoveredSight.name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
                     {selectedSights.includes(hoveredSight.name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
                   </span>
                 </div>

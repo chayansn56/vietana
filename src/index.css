@@ -35,6 +35,14 @@
   /* Map cream to warm ivory */
   --color-surface-warm: #E9DFC8;
   /* Champagne/Warm Beige */
+  --color-surface-linen: #FAF7F0;
+  /* Linen White — used for editorial panels, pill groups */
+
+  /* Border Colors */
+  --color-border-divider: #E8E4D9;
+  /* Warm editorial divider */
+  --color-border-divider-subtle: rgba(0, 0, 0, 0.06);
+  /* Very subtle structural border */
 
   --color-text-charcoal: #111111;
   /* Near Pure Black */
@@ -58,6 +66,12 @@
   --color-state-disabled-bg: #F3F4F6;
 
   /* Typography Sizing — Editorial Luxury Scale */
+  --text-micro: 0.5625rem;
+  /* 9px — tiny labels, map annotations */
+  --text-mini: 0.625rem;
+  /* 10px — small metadata, mono labels */
+  --text-tiny: 0.6875rem;
+  /* 11px — compact badges, tag text */
   --font-size-xxs: 0.625rem;
   --font-size-caption: 0.65rem;
   --font-size-display: clamp(3rem, 10vw, 8rem);
@@ -307,25 +321,7 @@
     }
   }
 
-  @keyframes signal-pulse {
-    0% {
-      transform: scale(0.8);
-      opacity: 0.5;
-      box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
-    }
 
-    70% {
-      transform: scale(1.2);
-      opacity: 1;
-      box-shadow: 0 0 0 15px rgba(56, 189, 248, 0);
-    }
-
-    100% {
-      transform: scale(0.8);
-      opacity: 0.5;
-      box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
-    }
-  }
 
   @keyframes slow-zoom {
 
@@ -737,68 +733,7 @@ html {
   background-color: var(--color-brand-gold);
 }
 
-.marching-dashes path {
-  animation: march 4s linear infinite;
-}
 
-@keyframes march {
-  from {
-    stroke-dashoffset: 40;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* Living Topography Map Style */
-.living-topography path {
-  fill: #FDE68A;
-  fill-opacity: 0.15;
-  stroke: var(--color-brand-gold);
-  stroke-width: 1.5;
-  stroke-opacity: 0.8;
-  filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.2));
-  transition: fill 0.6s var(--ease-smooth), filter 0.6s var(--ease-smooth), stroke-opacity 0.6s var(--ease-smooth);
-  animation: breathe-topography 6s ease-in-out infinite alternate;
-  cursor: crosshair;
-}
-
-.living-topography path:hover {
-  fill: #FCD34D;
-  fill-opacity: 0.35;
-  stroke-opacity: 1;
-  filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.4));
-}
-
-@keyframes breathe-topography {
-  0% {
-    stroke-width: 1;
-    filter: drop-shadow(0 0 5px rgba(201, 168, 76, 0.2));
-  }
-
-  100% {
-    stroke-width: 2;
-    filter: drop-shadow(0 0 15px rgba(201, 168, 76, 0.4));
-  }
-}
-
-/* Glassmorphism Leaflet Popup Overrides */
-.glassmorphism-popup .leaflet-popup-content-wrapper {
-  background: transparent;
-  box-shadow: none;
-  padding: 0;
-  border-radius: 0;
-}
-
-.glassmorphism-popup .leaflet-popup-content {
-  margin: 0;
-  width: auto !important;
-}
-
-.glassmorphism-popup .leaflet-popup-tip-container {
-  display: none;
-}
 
 @layer utilities {
   .bg-grain {
@@ -880,65 +815,7 @@ html {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Boarding Pass ticket cutout cuts */
-.ticket-cutout-left,
-.ticket-cutout-right {
-  position: relative;
-}
-
-.ticket-cutout-left::after {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-color: #111111;
-  /* Matches dark packages background */
-  border-radius: 50%;
-  z-index: 10;
-  border-right: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-.ticket-cutout-right::after {
-  content: '';
-  position: absolute;
-  right: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-color: #111111;
-  border-radius: 50%;
-  z-index: 10;
-  border-left: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-/* Premium Skeuo and Editorial Utilities */
-.skeuo-paper-premium {
-  background: #FAF7F0;
-  /* Linen White */
-  position: relative;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.05),
-    0 10px 40px -10px rgba(46, 38, 20, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(200, 190, 170, 0.3);
-  border-radius: 12px;
-}
-
-.skeuo-paper-premium::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoisePremium'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoisePremium)' opacity='0.025'/%3E%3C/svg%3E");
-  z-index: 1;
-  opacity: 0.5;
-  border-radius: 12px;
-}
-
+/* Polaroid frame — used by Destinations */
 .polaroid-frame {
   background: #FFFFFF;
   padding: 10px 10px 28px 10px;
@@ -954,53 +831,6 @@ html {
   box-shadow:
     0 5px 12px rgba(0, 0, 0, 0.08),
     0 25px 55px -10px rgba(50, 40, 20, 0.2);
-}
-
-.vintage-ledger {
-  background-color: #F8F6F0;
-  border: 1px solid #E8E4D9;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.02), 0 4px 20px rgba(0, 0, 0, 0.03);
-  background-image: linear-gradient(rgba(220, 215, 200, 0.15) 1px, transparent 1px);
-  background-size: 100% 32px;
-}
-
-.ledger-row {
-  border-bottom: 1px solid rgba(220, 215, 200, 0.5);
-  transition: background-color 0.3s ease;
-}
-
-.ledger-row:hover {
-  background-color: rgba(212, 175, 55, 0.03);
-}
-
-.boarding-pass {
-  background: #1A2421;
-  /* Rich Dark Green-Black */
-  border: 1px dashed rgba(212, 175, 55, 0.3);
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.stamp-btn {
-  background: transparent;
-  border: 2px solid #D4AF37;
-  color: #D4AF37;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 0.15em;
-  font-weight: 700;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.stamp-btn:hover {
-  background: rgba(212, 175, 55, 0.1);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-}
-
-.stamp-btn:active {
-  transform: scale(0.95);
 }
 
 /* Vogue Editorial Grid System */
@@ -1055,6 +885,12 @@ html {
   /* Charcoal Green for cream */
   --color-surface-warm: #1A2120;
   /* Dark Panel for warm */
+  --color-surface-linen: #111615;
+  /* Dark mode linen */
+
+  /* Border Colors — Dark Mode */
+  --color-border-divider: rgba(255, 255, 255, 0.08);
+  --color-border-divider-subtle: rgba(255, 255, 255, 0.04);
 
   --color-text-charcoal: #FAF8F3;
   /* Warm White */
@@ -1077,13 +913,7 @@ html {
   color: #FAF8F3 !important;
 }
 
-.dark .bg-\[\#FAF7F0\],
-.dark .bg-\[\#faf7f0\],
-.dark .bg-\[\#FAF8F3\],
-.dark .bg-\[\#faf8f3\] {
-  background-color: #111615 !important;
-}
-
+/* Base utility overrides for dark mode */
 .dark .bg-white,
 .dark .bg-white\/80 {
   background-color: #1A2120 !important;
@@ -1091,90 +921,16 @@ html {
 }
 
 .dark .text-charcoal,
-.dark .text-\[\#111111\],
-.dark .text-\[\#1E4D45\],
-.dark .text-\[\#1e4d45\],
-.dark .text-\[\#1D1D1F\],
-.dark .text-\[\#1d1d1f\] {
+.dark .text-text-charcoal {
   color: #FAF8F3 !important;
 }
 
-.dark .text-\[\#555555\],
-.dark .text-\[\#666666\],
-.dark .text-\[\#86868B\],
-.dark .text-\[\#86868b\] {
-  color: #AAB7A1 !important;
-}
-
-/* Hardcoded opacity class overrides for dark mode */
-.dark .text-\[\#1D1D1F\]\/90,
-.dark .text-\[\#1d1d1f\]\/90 {
-  color: rgba(250, 248, 243, 0.9) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/80,
-.dark .text-\[\#1d1d1f\]\/80 {
-  color: rgba(250, 248, 243, 0.8) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/70,
-.dark .text-\[\#1d1d1f\]\/70 {
-  color: rgba(250, 248, 243, 0.7) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/60,
-.dark .text-\[\#1d1d1f\]\/60 {
-  color: rgba(250, 248, 243, 0.6) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/50,
-.dark .text-\[\#1d1d1f\]\/50 {
-  color: rgba(250, 248, 243, 0.5) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/40,
-.dark .text-\[\#1d1d1f\]\/40 {
-  color: rgba(250, 248, 243, 0.4) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/30,
-.dark .text-\[\#1d1d1f\]\/30 {
-  color: rgba(250, 248, 243, 0.3) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/20,
-.dark .text-\[\#1d1d1f\]\/20 {
-  color: rgba(250, 248, 243, 0.2) !important;
-}
-
-.dark .text-\[\#1D1D1F\]\/10,
-.dark .text-\[\#1d1d1f\]\/10 {
-  color: rgba(250, 248, 243, 0.1) !important;
-}
-
-.dark .border-\[\#1D1D1F\]\/5,
-.dark .border-\[\#1d1d1f\]\/5 {
-  border-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-.dark .bg-\[\#1D1D1F\]\/5,
-.dark .bg-\[\#1d1d1f\]\/5 {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-.dark .bg-\[\#1D1D1F\]\/20,
-.dark .bg-\[\#1d1d1f\]\/20 {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.dark .border-\[\#E8E4D9\],
-.dark .border-\[\#e8e4d9\],
-.dark .border-\[\#1D1D1F\]\/10,
-.dark .border-\[\#1d1d1f\]\/10,
 .dark .border-black\/5,
 .dark .border-black\/10 {
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
+
+/* Dark mode escape hatches for arbitrary hex removed — tokens handle dark mode via variable overrides */
 
 .dark .editorial-card {
   background-color: #1A2120 !important;
@@ -1250,155 +1006,12 @@ html {
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Soft transition support on theme toggle - targeted for performance */
-html,
-body,
-section,
-.editorial-card,
-.skeuo-paper,
-.skeuo-paper-premium,
-.vintage-ledger,
-.boarding-pass,
-button,
-input,
-select,
-textarea,
-p,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a {
-  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+/* Theme toggle transition — only active during toggle via JS class */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease !important;
 }
 
-/* Siri-like Glowing Voice Orb Animation — subtle ambient motion */
-@keyframes siri-pulse {
-  0% {
-    transform: scale(0.95) rotate(0deg);
-    opacity: 0.4;
-    filter: blur(6px);
-  }
-
-  50% {
-    transform: scale(1.05) rotate(180deg);
-    opacity: 0.7;
-    filter: blur(3px);
-  }
-
-  100% {
-    transform: scale(0.95) rotate(360deg);
-    opacity: 0.4;
-    filter: blur(6px);
-  }
-}
-
-@keyframes siri-pulse-slow {
-  0% {
-    transform: scale(1.02) rotate(360deg);
-    opacity: 0.25;
-  }
-
-  50% {
-    transform: scale(0.95) rotate(180deg);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(1.02) rotate(0deg);
-    opacity: 0.25;
-  }
-}
-
-.siri-orb-container {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.siri-orb-layer-1 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, rgba(30, 77, 69, 0.3) 60%, transparent 80%);
-  border-radius: 50%;
-  animation: siri-pulse 12s infinite linear;
-}
-
-.siri-orb-layer-2 {
-  position: absolute;
-  width: 85%;
-  height: 85%;
-  background: radial-gradient(circle, rgba(170, 183, 161, 0.5) 0%, rgba(46, 110, 99, 0.2) 60%, transparent 80%);
-  border-radius: 50%;
-  animation: siri-pulse-slow 15s infinite linear;
-}
-
-.siri-orb-layer-3 {
-  position: absolute;
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.7) 0%, rgba(170, 183, 161, 0.3) 50%, transparent 70%);
-  border-radius: 50%;
-  animation: siri-pulse 10s infinite ease-in-out alternate;
-}
-
-/* Speaking Wave bars animation */
-@keyframes speaking-wave-bar {
-
-  0%,
-  100% {
-    height: 4px;
-  }
-
-  50% {
-    height: 28px;
-  }
-}
-
-.speaking-wave-container {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 32px;
-  justify-content: center;
-}
-
-.speaking-wave-bar {
-  width: 4px;
-  height: 8px;
-  background-color: #D4AF37;
-  border-radius: 4px;
-  animation: speaking-wave-bar 1s ease-in-out infinite;
-}
-
-.speaking-wave-bar:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.speaking-wave-bar:nth-child(2) {
-  animation-delay: 0.2s;
-  background-color: #E8C84A;
-}
-
-.speaking-wave-bar:nth-child(3) {
-  animation-delay: 0.3s;
-  background-color: #AAB7A1;
-}
-
-.speaking-wave-bar:nth-child(4) {
-  animation-delay: 0.4s;
-  background-color: #2C6E63;
-}
-
-.speaking-wave-bar:nth-child(5) {
-  animation-delay: 0.5s;
-  background-color: #D4AF37;
-}
+/* AI Planner animations (siri-orb, speaking-wave) moved to ai-planner.css */

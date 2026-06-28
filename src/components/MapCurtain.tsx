@@ -45,7 +45,7 @@ const MapCurtain: React.FC<MapCurtainProps> = ({ isOpen, onClose, selectedCities
         >
           <Card variant="glass-panel" className="flex items-center justify-between p-4 sm:p-6 lg:px-12 absolute top-0 left-0 right-0 z-[3010] !rounded-none border-t-0 border-x-0 !shadow-sm">
             <div>
-              <Text className="text-[10px] tracking-widest uppercase text-brand-green dark:text-brand-gold font-bold mb-1">
+              <Text className="text-mini tracking-widest uppercase text-brand-green dark:text-brand-gold font-bold mb-1">
                 Cartography
               </Text>
               <Heading as="h2" className="text-2xl font-serif text-text-dark dark:text-white tracking-wider">

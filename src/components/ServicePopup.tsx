@@ -115,7 +115,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
               <div className="w-10 h-[2px] bg-brand-green mb-4"></div>
               <div className="flex items-center gap-2 mb-2 text-brand-green dark:text-brand-sage">
                 <Icon name={service.icon} size={16} />
-                <span className="text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase">
+                <span className="text-mini md:text-xs font-semibold tracking-[0.2em] uppercase">
                   {service.shortTitle}
                 </span>
               </div>

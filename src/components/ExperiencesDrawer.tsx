@@ -86,7 +86,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                         <Heading as="h3" className="text-xl font-serif text-brand-green-extra-dark">
                           Budget & Ultra-Budget Itineraries
                         </Heading>
-                        <span className="bg-brand-gold text-brand-green-extra-dark text-[0.55rem] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full whitespace-nowrap">Coming Soon</span>
+                        <span className="bg-brand-gold text-brand-green-extra-dark text-micro font-bold tracking-widest uppercase px-2 py-0.5 rounded-full whitespace-nowrap">Coming Soon</span>
                       </div>
                       <Text className="text-sm font-light text-brand-green-extra-dark/80 leading-relaxed">
                         We are currently crafting exclusive, highly curated guides for budget and ultra-budget backpacking experiences across Vietnam. From cheap cross-country rail passes to the best local homestays. Stay tuned!
@@ -119,7 +119,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                         <div className="flex items-center gap-4">
                           <Button
                             variant="outline" size="sm"
-                            className="!px-6 !py-2 text-[0.6rem] tracking-[0.2em] uppercase"
+                            className="!px-6 !py-2 text-mini tracking-[0.2em] uppercase"
                             onClick={(e) => {
                               e.stopPropagation();
                               onClose();

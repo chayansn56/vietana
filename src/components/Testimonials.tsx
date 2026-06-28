@@ -145,7 +145,7 @@ const Testimonials: React.FC = () => {
                   <Heading as="h4" size="md" font="sans" weight="bold" className="text-white mb-0.5">
                     {item.name}
                   </Heading>
-                  <Text size="sm" variant="none" className="text-white/50 uppercase tracking-widest text-[0.7rem] font-medium">
+                  <Text size="sm" variant="none" className="text-white/50 uppercase tracking-widest text-tiny font-medium">
                     {item.location} • {item.type}
                   </Text>
                 </div>

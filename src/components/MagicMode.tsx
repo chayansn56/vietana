@@ -137,7 +137,7 @@ const MagicMode: React.FC<MagicModeProps> = ({
           className="bg-brand-green-dark/45 border-white/10 hover:border-brand-gold/40 flex flex-col justify-between h-[360px] text-left transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(212,175,55,0.15)] group relative overflow-hidden"
           hover={false}
         >
-          <div className="absolute top-4 right-4 bg-brand-gold text-brand-green-extra-dark text-[11px] font-mono font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">
+          <div className="absolute top-4 right-4 bg-brand-gold text-brand-green-extra-dark text-tiny font-mono font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">
             LIVE SYNC
           </div>
           <div className="space-y-4">

@@ -81,7 +81,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
       isOpen={isOpen}
       onClose={onClose}
       maxWidth="max-w-4xl"
-      className="p-8 bg-surface-cream border border-[#E8E4D9] text-text-dark"
+      className="p-8 bg-surface-cream border border-border-divider text-text-dark"
     >
       <div className="flex flex-col gap-6 text-left">
         <div className="flex items-start justify-between gap-4">
@@ -93,7 +93,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               className="text-brand-green tracking-wide mb-2 flex items-center gap-3"
             >
               {language === 'HI' ? 'प्रीमियम उड़ान खोज' : language === 'VI' ? 'Tìm chuyến bay cao cấp' : 'Premium Flight Search'}
-              <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border ${flightApiConfig.kiwiApiKey
+              <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-mini font-bold tracking-wider uppercase border ${flightApiConfig.kiwiApiKey
                 ? 'bg-green-500/10 text-green-600 border-green-500/30'
                 : 'bg-orange-500/10 text-orange-600 border-orange-500/30'
                 }`}>
@@ -112,12 +112,12 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
         </div>
 
         {/* Global Search Config Panel */}
-        <form onSubmit={handleSearch} className="flex flex-col gap-4 bg-white p-6 rounded-3xl border border-[#E8E4D9]">
+        <form onSubmit={handleSearch} className="flex flex-col gap-4 bg-white p-6 rounded-3xl border border-border-divider">
 
           {/* Trip Type & Cabin Class Header */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E8E4D9] pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-divider pb-4">
             {/* Trip Type Selector */}
-            <div className="flex bg-[#FAF7F0] p-1 rounded-xl border border-[#E8E4D9] text-xs font-semibold">
+            <div className="flex bg-surface-linen p-1 rounded-xl border border-border-divider text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => setTripType('oneway')}
@@ -135,7 +135,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
             </div>
 
             {/* Cabin Class Selector */}
-            <div className="flex bg-[#FAF7F0] p-1 rounded-xl border border-[#E8E4D9] text-xs font-semibold">
+            <div className="flex bg-surface-linen p-1 rounded-xl border border-border-divider text-xs font-semibold">
               {(['M', 'W', 'C', 'F'] as const).map((cls) => (
                 <button
                   key={cls}
@@ -172,11 +172,11 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   placeholder="Origin city/airport"
                   value={originInput}
                   onChange={(e) => handleOriginChange(e.target.value)}
-                  className="w-full bg-white border border-[#E8E4D9] rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
+                  className="w-full bg-white border border-border-divider rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
                   required
                 />
                 {originSuggestions.length > 0 && (
-                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white border border-[#E8E4D9] rounded-xl overflow-hidden shadow-2xl z-[300]">
+                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white border border-border-divider rounded-xl overflow-hidden shadow-2xl z-[300]">
                     {originSuggestions.map((sug) => (
                       <button
                         key={sug.code}
@@ -186,7 +186,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                           setOriginCode(sug.code);
                           setOriginSuggestions([]);
                         }}
-                        className="w-full text-left px-4 py-2.5 hover:bg-[#FAF7F0] text-text-dark border-b border-[#E8E4D9]/50 text-xs transition-colors duration-200"
+                        className="w-full text-left px-4 py-2.5 hover:bg-surface-linen text-text-dark border-b border-border-divider/50 text-xs transition-colors duration-200"
                       >
                         <span className="font-bold text-brand-green">{sug.code}</span> - {sug.city}, {sug.name}
                       </button>
@@ -205,11 +205,11 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   placeholder="Destination city/airport"
                   value={destInput}
                   onChange={(e) => handleDestChange(e.target.value)}
-                  className="w-full bg-white border border-[#E8E4D9] rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
+                  className="w-full bg-white border border-border-divider rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
                   required
                 />
                 {destSuggestions.length > 0 && (
-                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white border border-[#E8E4D9] rounded-xl overflow-hidden shadow-2xl z-[300]">
+                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white border border-border-divider rounded-xl overflow-hidden shadow-2xl z-[300]">
                     {destSuggestions.map((sug) => (
                       <button
                         key={sug.code}
@@ -219,7 +219,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                           setDestCode(sug.code);
                           setDestSuggestions([]);
                         }}
-                        className="w-full text-left px-4 py-2.5 hover:bg-[#FAF7F0] text-text-dark border-b border-[#E8E4D9]/50 text-xs transition-colors duration-200"
+                        className="w-full text-left px-4 py-2.5 hover:bg-surface-linen text-text-dark border-b border-border-divider/50 text-xs transition-colors duration-200"
                       >
                         <span className="font-bold text-brand-green">{sug.code}</span> - {sug.city}, {sug.name}
                       </button>
@@ -240,7 +240,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   value={departureDate}
                   min={new Date().toISOString().split('T')[0]}
                   onChange={(e) => setDepartureDate(e.target.value)}
-                  className="w-full bg-white border border-[#E8E4D9] rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
+                  className="w-full bg-white border border-border-divider rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
                   required
                 />
                 {tripType === 'round' ? (
@@ -249,11 +249,11 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                     value={returnDate}
                     min={departureDate}
                     onChange={(e) => setReturnDate(e.target.value)}
-                    className="w-full bg-white border border-[#E8E4D9] rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
+                    className="w-full bg-white border border-border-divider rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
                     required
                   />
                 ) : (
-                  <div className="w-full bg-[#FAF7F0] border border-[#E8E4D9]/50 text-brand-green/30 rounded-xl px-3 py-3 text-xs flex items-center justify-center select-none font-bold">
+                  <div className="w-full bg-surface-linen border border-border-divider/50 text-brand-green/30 rounded-xl px-3 py-3 text-xs flex items-center justify-center select-none font-bold">
                     One Way
                   </div>
                 )}
@@ -266,7 +266,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               <button
                 type="button"
                 onClick={() => setShowPassengerDropdown(!showPassengerDropdown)}
-                className="w-full bg-white border border-[#E8E4D9] rounded-xl px-4 py-3 text-left text-text-dark focus:outline-none focus:border-brand-green flex items-center justify-between text-sm cursor-pointer"
+                className="w-full bg-white border border-border-divider rounded-xl px-4 py-3 text-left text-text-dark focus:outline-none focus:border-brand-green flex items-center justify-between text-sm cursor-pointer"
               >
                 <span>
                   {adults + children + infants} Traveler{adults + children + infants > 1 ? 's' : ''}
@@ -275,19 +275,19 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               </button>
 
               {showPassengerDropdown && (
-                <div className="absolute top-[calc(100%+0.5rem)] right-0 w-64 bg-white border border-[#E8E4D9] rounded-2xl p-4 shadow-2xl z-[300] flex flex-col gap-4 text-xs">
+                <div className="absolute top-[calc(100%+0.5rem)] right-0 w-64 bg-white border border-border-divider rounded-2xl p-4 shadow-2xl z-[300] flex flex-col gap-4 text-xs">
                   {/* Adults */}
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-bold text-brand-green">Adults</p>
-                      <p className="text-[10px] text-text-subtle/60">Age 12+</p>
+                      <p className="text-mini text-text-subtle/60">Age 12+</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
                         disabled={adults <= 1}
                         onClick={() => setAdults(adults - 1)}
-                        className="w-6 h-6 rounded-full bg-[#FAF7F0] hover:bg-[#E8E4D9] text-brand-green flex items-center justify-center font-bold cursor-pointer disabled:opacity-30 border border-[#E8E4D9]"
+                        className="w-6 h-6 rounded-full bg-surface-linen hover:bg-border-divider text-brand-green flex items-center justify-center font-bold cursor-pointer disabled:opacity-30 border border-border-divider"
                       >
                         -
                       </button>
@@ -295,7 +295,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                       <button
                         type="button"
                         onClick={() => setAdults(adults + 1)}
-                        className="w-6 h-6 rounded-full bg-[#FAF7F0] hover:bg-[#E8E4D9] text-brand-green flex items-center justify-center font-bold cursor-pointer border border-[#E8E4D9]"
+                        className="w-6 h-6 rounded-full bg-surface-linen hover:bg-border-divider text-brand-green flex items-center justify-center font-bold cursor-pointer border border-border-divider"
                       >
                         +
                       </button>
@@ -306,14 +306,14 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-bold text-brand-green">Children</p>
-                      <p className="text-[10px] text-text-subtle/60">Age 2-11</p>
+                      <p className="text-mini text-text-subtle/60">Age 2-11</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
                         disabled={children <= 0}
                         onClick={() => setChildren(children - 1)}
-                        className="w-6 h-6 rounded-full bg-[#FAF7F0] hover:bg-[#E8E4D9] text-brand-green flex items-center justify-center font-bold cursor-pointer disabled:opacity-30 border border-[#E8E4D9]"
+                        className="w-6 h-6 rounded-full bg-surface-linen hover:bg-border-divider text-brand-green flex items-center justify-center font-bold cursor-pointer disabled:opacity-30 border border-border-divider"
                       >
                         -
                       </button>
@@ -321,7 +321,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                       <button
                         type="button"
                         onClick={() => setChildren(children + 1)}
-                        className="w-6 h-6 rounded-full bg-[#FAF7F0] hover:bg-[#E8E4D9] text-brand-green flex items-center justify-center font-bold cursor-pointer border border-[#E8E4D9]"
+                        className="w-6 h-6 rounded-full bg-surface-linen hover:bg-border-divider text-brand-green flex items-center justify-center font-bold cursor-pointer border border-border-divider"
                       >
                         +
                       </button>
@@ -332,14 +332,14 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-bold text-brand-green">Infants</p>
-                      <p className="text-[10px] text-text-subtle/60">Under 2 (on lap)</p>
+                      <p className="text-mini text-text-subtle/60">Under 2 (on lap)</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
                         disabled={infants <= 0}
                         onClick={() => setInfants(infants - 1)}
-                        className="w-6 h-6 rounded-full bg-[#FAF7F0] hover:bg-[#E8E4D9] text-brand-green flex items-center justify-center font-bold cursor-pointer disabled:opacity-30 border border-[#E8E4D9]"
+                        className="w-6 h-6 rounded-full bg-surface-linen hover:bg-border-divider text-brand-green flex items-center justify-center font-bold cursor-pointer disabled:opacity-30 border border-border-divider"
                       >
                         -
                       </button>
@@ -347,7 +347,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                       <button
                         type="button"
                         onClick={() => setInfants(infants + 1)}
-                        className="w-6 h-6 rounded-full bg-[#FAF7F0] hover:bg-[#E8E4D9] text-brand-green flex items-center justify-center font-bold cursor-pointer border border-[#E8E4D9]"
+                        className="w-6 h-6 rounded-full bg-surface-linen hover:bg-border-divider text-brand-green flex items-center justify-center font-bold cursor-pointer border border-border-divider"
                       >
                         +
                       </button>
@@ -360,7 +360,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           </div>
 
           {/* Action Row */}
-          <div className="flex items-center justify-end border-t border-[#E8E4D9] pt-4">
+          <div className="flex items-center justify-end border-t border-border-divider pt-4">
             <Button
               type="submit"
               disabled={isLoading}
@@ -389,14 +389,14 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
 
         {/* Filters and Sorting Controls */}
         {searched && !isLoading && flights.length > 0 && (
-          <div className="flex flex-wrap items-center justify-between gap-4 bg-white border border-[#E8E4D9] px-5 py-3.5 rounded-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-4 bg-white border border-border-divider px-5 py-3.5 rounded-2xl">
             {/* Filter */}
             <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-brand-green select-none">
               <input
                 type="checkbox"
                 checked={filterDirectOnly}
                 onChange={(e) => setFilterDirectOnly(e.target.checked)}
-                className="w-4 h-4 rounded border-[#E8E4D9] bg-white text-brand-green focus:ring-0 cursor-pointer"
+                className="w-4 h-4 rounded border-border-divider bg-white text-brand-green focus:ring-0 cursor-pointer"
               />
               Direct Flights Only
             </label>
@@ -407,14 +407,14 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               <button
                 type="button"
                 onClick={() => setSort('price')}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${sort === 'price' ? 'bg-brand-green border-transparent text-white' : 'border-[#E8E4D9] text-brand-green/60 hover:border-brand-green/40 hover:text-brand-green'}`}
+                className={`px-3 py-1.5 rounded-lg border transition-all ${sort === 'price' ? 'bg-brand-green border-transparent text-white' : 'border-border-divider text-brand-green/60 hover:border-brand-green/40 hover:text-brand-green'}`}
               >
                 Price (Cheapest)
               </button>
               <button
                 type="button"
                 onClick={() => setSort('duration')}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${sort === 'duration' ? 'bg-brand-green border-transparent text-white' : 'border-[#E8E4D9] text-brand-green/60 hover:border-brand-green/40 hover:text-brand-green'}`}
+                className={`px-3 py-1.5 rounded-lg border transition-all ${sort === 'duration' ? 'bg-brand-green border-transparent text-white' : 'border-border-divider text-brand-green/60 hover:border-brand-green/40 hover:text-brand-green'}`}
               >
                 Duration (Fastest)
               </button>
@@ -434,7 +434,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           )}
 
           {!isLoading && searched && displayedFlights.length === 0 && (
-            <div className="text-center py-12 text-text-subtle/50 border border-[#E8E4D9] rounded-2xl">
+            <div className="text-center py-12 text-text-subtle/50 border border-border-divider rounded-2xl">
               No flights found matching the filters. Please try checking another route.
             </div>
           )}
@@ -442,14 +442,14 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           {!isLoading && displayedFlights.map((flight, idx) => (
             <div
               key={idx}
-              className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white border border-[#E8E4D9] hover:border-brand-green rounded-2xl p-5 transition-all duration-300 hover:shadow-xl"
+              className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white border border-border-divider hover:border-brand-green rounded-2xl p-5 transition-all duration-300 hover:shadow-xl"
             >
               {/* Airline Detail */}
               <div className="flex items-center gap-4 w-full md:w-auto">
                 <img
                   src={flight.airlineLogo}
                   alt={flight.airlineName}
-                  className="w-12 h-12 rounded-xl object-cover border border-[#E8E4D9] bg-surface-cream"
+                  className="w-12 h-12 rounded-xl object-cover border border-border-divider bg-surface-cream"
                 />
                 <div>
                   <Heading as="h4" size="md" className="font-semibold text-brand-green">
@@ -476,7 +476,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   <Text size="xs" className="text-brand-green font-medium mb-1">
                     {flight.stops === 0 ? 'Direct' : `${flight.stops} Stop`}
                   </Text>
-                  <div className="relative w-full h-[2px] bg-[#E8E4D9] my-1">
+                  <div className="relative w-full h-[2px] bg-border-divider my-1">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-brand-green" />
                   </div>
                   <Text size="xs" className="text-text-subtle/40 font-mono">
@@ -495,7 +495,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               </div>
 
               {/* Price & Book */}
-              <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto border-t md:border-t-0 border-[#E8E4D9] pt-4 md:pt-0">
+              <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto border-t md:border-t-0 border-border-divider pt-4 md:pt-0">
                 <div className="text-left md:text-right">
                   <Text size="xs" className="text-text-subtle/65 block">Total Price</Text>
                   <Heading as="h3" size="lg" className="font-bold text-brand-green">
@@ -516,7 +516,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           ))}
         </div>
 
-        <div className="flex items-center justify-between text-xs text-text-subtle/60 border-t border-[#E8E4D9] pt-4">
+        <div className="flex items-center justify-between text-xs text-text-subtle/60 border-t border-border-divider pt-4">
           <span>
             * Dynamic locations resolved via Kiwi API.
           </span>

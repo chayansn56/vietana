@@ -83,10 +83,10 @@ Please load this itinerary and let me customize it!`;
   };
 
   return (
-    <Section id="experiences" spacing="lg" className="bg-[#FAF7F0] dark:bg-surface-dark text-text-dark dark:text-white relative overflow-hidden">
+    <Section id="experiences" spacing="lg" className="bg-surface-linen dark:bg-surface-dark text-text-dark dark:text-white relative overflow-hidden">
       {/* Editorial layout elements */}
       <div className="absolute top-[10%] left-[-5%] w-[350px] h-[350px] bg-surface-warm/15 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-brand-sage/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
         {/* Featured Packages — redesigned editorial cards */}
@@ -99,7 +99,7 @@ Please load this itinerary and let me customize it!`;
               {[hotPkg1, hotPkg2].map((pkg, idx) => (
                 <div key={pkg.id} className="relative">
                   <div className="absolute top-3 right-0 z-20">
-                    <div className="bg-brand-gold-light text-brand-green-dark text-[11px] font-bold tracking-widest text-center py-1 px-5 uppercase shadow-sm border-y border-white/20 rounded-l-sm">
+                    <div className="bg-brand-gold-light text-brand-green-dark text-tiny font-bold tracking-widest text-center py-1 px-5 uppercase shadow-sm border-y border-white/20 rounded-l-sm">
                       Bestseller
                     </div>
                   </div>
@@ -108,10 +108,10 @@ Please load this itinerary and let me customize it!`;
                     <div className="h-[2px] bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
                     <div className="p-6 md:p-8">
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="bg-brand-sage/20 text-brand-sage text-[11px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded">
+                        <span className="bg-brand-sage/20 text-brand-sage text-tiny font-semibold tracking-widest uppercase px-2.5 py-1 rounded">
                           {idx === 0 ? 'Coastal' : 'Highlands'}
                         </span>
-                        <span className="text-white/50 text-[11px] font-mono tracking-wider">{pkg.duration}</span>
+                        <span className="text-white/50 text-tiny font-mono tracking-wider">{pkg.duration}</span>
                       </div>
                       <Heading as="h3" size="h4" font="serif" variant="white" className="mb-3">
                         {pkg.title}
@@ -123,7 +123,7 @@ Please load this itinerary and let me customize it!`;
                       </p>
                       <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
                         <div>
-                          <span className="text-white/40 text-[11px] uppercase tracking-widest font-semibold block mb-1">From</span>
+                          <span className="text-white/40 text-tiny uppercase tracking-widest font-semibold block mb-1">From</span>
                           <span className="text-2xl font-mono font-bold text-brand-gold-light tabular-nums">{pkg.price} <span className="text-xs font-normal text-white/50">PP</span></span>
                         </div>
                         <div className="flex gap-2">
@@ -186,7 +186,7 @@ Please load this itinerary and let me customize it!`;
           className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10 w-full"
         >
           {displayedPackages.length === 0 ? (
-            <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white border border-[#E8E4D9] rounded-xl gap-4 shadow-sm">
+            <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white border border-border-divider rounded-xl gap-4 shadow-sm">
               <div className="w-12 h-12 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center mb-2">
                 <Icon name="Leaf" size={24} />
               </div>
@@ -218,7 +218,7 @@ Please load this itinerary and let me customize it!`;
 
         {/* FULLY CUSTOM BUILDER BANNER */}
         <div
-          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-xl bg-white dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 shadow-sm relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-1"
+          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-xl bg-white dark:bg-surface-dark border border-border-divider dark:border-white/10 shadow-sm relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-1"
           onClick={() => onOpenBuilder([])}
         >
           {/* Light Mode Background */}
@@ -246,7 +246,7 @@ Please load this itinerary and let me customize it!`;
 
         {/* MORE BUDGET TOURS COMING SOON BANNER */}
         <div className="mt-8 p-6 text-center bg-brand-green/5 dark:bg-brand-green/10 border border-brand-green/15 dark:border-brand-green/20 rounded-xl">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F0] dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 text-[11px] font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold-light uppercase font-bold mb-3 shadow-xs">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-linen dark:bg-surface-dark border border-border-divider dark:border-white/10 text-tiny font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold-light uppercase font-bold mb-3 shadow-xs">
             📢 UPCOMING OFFERINGS
           </span>
           <Heading as="h4" variant="none" className="text-xl font-serif text-brand-green dark:text-brand-gold-light mb-2 font-semibold">

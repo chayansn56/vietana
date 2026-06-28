@@ -57,7 +57,7 @@ const Journal: React.FC = () => {
   };
 
   return (
-    <div id="journal" className="bg-[#FAF7F0] bg-noise min-h-screen text-text-dark pb-24">
+    <div id="journal" className="bg-surface-linen bg-noise min-h-screen text-text-dark pb-24">
       {/* Side Sheet */}
       <NotesSideSheet
         isOpen={activeArticle !== null}
@@ -66,7 +66,7 @@ const Journal: React.FC = () => {
       />
 
       {/* PANORAMIC HEADER */}
-      <div className="relative h-[250px] md:h-[300px] w-full overflow-hidden border-b border-[#E8E4D9]">
+      <div className="relative h-[250px] md:h-[300px] w-full overflow-hidden border-b border-border-divider">
         <img
           src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=2000&q=80"
           alt="Hoi An Lanterns - Vietnam Travel Guide"
@@ -93,14 +93,14 @@ const Journal: React.FC = () => {
             {/* Apple Style Search Bar */}
             <div className="max-w-md mx-auto relative group">
               <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <Icon name="Search" size={15} className="text-brand-green dark:text-[#AAB7A1]" />
+                <Icon name="Search" size={15} className="text-brand-green dark:text-brand-sage" />
               </div>
               <input
                 type="text"
                 placeholder="Search journal..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#FAF7F0] dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 text-brand-green dark:text-white placeholder:text-brand-green/50 dark:placeholder:text-[#AAB7A1]/50 rounded-md py-3.5 pl-11 pr-6 outline-none focus:ring-1 focus:ring-brand-gold transition-all shadow-sm text-xs font-mono"
+                className="w-full bg-surface-linen dark:bg-surface-dark border border-border-divider dark:border-white/10 text-brand-green dark:text-white placeholder:text-brand-green/50 dark:placeholder:text-brand-sage/50 rounded-md py-3.5 pl-11 pr-6 outline-none focus:ring-1 focus:ring-brand-gold transition-all shadow-sm text-xs font-mono"
               />
             </div>
           </motion.div>
@@ -114,7 +114,7 @@ const Journal: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-8 flex justify-between items-end border-b border-[#E8E4D9] pb-4"
+            className="mb-8 flex justify-between items-end border-b border-border-divider pb-4"
           >
             <div>
               <span className="text-xs font-bold tracking-wide-em text-brand-sage uppercase mb-1 block">REGIONAL LOGBOOKS</span>
@@ -151,24 +151,24 @@ const Journal: React.FC = () => {
                   }`}
                 onClick={() => setSelectedCollectionId(collection.id)}
               >
-                <div className="bg-white dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                <div className="bg-white dark:bg-surface-dark border border-border-divider dark:border-white/10 rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                   <div className="h-[140px] overflow-hidden relative">
                     <img
                       src={collection.image}
                       alt={`Curated collection of travel stories for ${collection.title}`}
                       className="w-full h-full object-cover img-zoom"
                     />
-                    <div className="absolute top-3 left-3 bg-[#FAF7F0] dark:bg-surface-dark border border-brand-gold/30 dark:border-white/10 rounded px-2 py-0.5 shadow-sm">
+                    <div className="absolute top-3 left-3 bg-surface-linen dark:bg-surface-dark border border-brand-gold/30 dark:border-white/10 rounded px-2 py-0.5 shadow-sm">
                       <Text size="xs" variant="none" className="uppercase tracking-widest text-brand-sage font-mono text-xs font-bold">
                         {collection.articles.length} Stories
                       </Text>
                     </div>
                   </div>
-                  <div className="p-4 flex justify-between items-center bg-[#FAF7F0]/30 dark:bg-black/20">
+                  <div className="p-4 flex justify-between items-center bg-surface-linen/30 dark:bg-black/20">
                     <Heading as="h3" size="lg" font="serif" className="text-brand-green dark:text-white truncate text-base">
                       {highlightText(collection.title, searchQuery)}
                     </Heading>
-                    <div className="w-7 h-7 rounded-full bg-[#FAF7F0] dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 flex items-center justify-center text-brand-green dark:text-white group-hover:bg-brand-green group-hover:text-white transition-colors">
+                    <div className="w-7 h-7 rounded-full bg-surface-linen dark:bg-surface-dark border border-border-divider dark:border-white/10 flex items-center justify-center text-brand-green dark:text-white group-hover:bg-brand-green group-hover:text-white transition-colors">
                       <span className="text-xs">→</span>
                     </div>
                   </div>
@@ -182,8 +182,8 @@ const Journal: React.FC = () => {
 
         {/* Active Collection Articles Display */}
         <Container className="mt-4 mb-8">
-          <div className="bg-white/40 border border-[#E8E4D9] rounded-3xl p-6 md:p-8 backdrop-blur-sm">
-            <div className="flex justify-between items-center mb-8 border-b border-[#E8E4D9] pb-4">
+          <div className="bg-white/40 border border-border-divider rounded-3xl p-6 md:p-8 backdrop-blur-sm">
+            <div className="flex justify-between items-center mb-8 border-b border-border-divider pb-4">
               <Heading as="h3" size="xl" font="serif" className="text-brand-green flex items-center gap-2">
                 <span className="text-xl">{selectedCollection.icon}</span> {selectedCollection.title} Guides
               </Heading>
@@ -197,9 +197,9 @@ const Journal: React.FC = () => {
                 <div
                   key={article.id}
                   onClick={() => openArticle(article)}
-                  className="bg-white border border-[#E8E4D9] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full group"
+                  className="bg-white border border-border-divider rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full group"
                 >
-                  <div className="h-32 overflow-hidden relative border-b border-[#E8E4D9]/40">
+                  <div className="h-32 overflow-hidden relative border-b border-border-divider/40">
                     <img
                       src={article.image}
                       alt={article.title}
@@ -211,11 +211,11 @@ const Journal: React.FC = () => {
                       <h4 className="font-serif text-sm font-bold text-brand-green line-clamp-2 mb-1.5 group-hover:text-brand-gold-muted transition-colors leading-snug">
                         {article.title}
                       </h4>
-                      <p className="text-[11px] text-text-subtle font-light line-clamp-3 leading-relaxed">
+                      <p className="text-tiny text-text-subtle font-light line-clamp-3 leading-relaxed">
                         {article.intro}
                       </p>
                     </div>
-                    <span className="text-[11px] text-brand-gold-muted font-mono mt-4 block font-bold tracking-widest uppercase">
+                    <span className="text-tiny text-brand-gold-muted font-mono mt-4 block font-bold tracking-widest uppercase">
                       READ RECORD ➔
                     </span>
                   </div>
@@ -233,7 +233,7 @@ const Journal: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12 flex justify-between items-end border-b border-[#E8E4D9] pb-4"
+            className="mb-12 flex justify-between items-end border-b border-border-divider pb-4"
           >
             <div>
               <span className="text-xs font-bold tracking-[0.25em] text-brand-sage uppercase mb-1 block">TRAVEL DIARIES</span>
@@ -259,7 +259,7 @@ const Journal: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg"
+                    className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-border-divider shadow-sm transition-all duration-500 hover:shadow-lg"
                     onClick={() => openArticle(filteredStories[0])}
                   >
                     <div className="md:grid md:grid-cols-2 md:gap-0">
@@ -271,7 +271,7 @@ const Journal: React.FC = () => {
                         />
                       </div>
                       <div className="p-6 md:p-10 flex flex-col justify-center">
-                        <span className="text-brand-sage text-[11px] font-bold tracking-widest uppercase mb-2">Featured Story</span>
+                        <span className="text-brand-sage text-tiny font-bold tracking-widest uppercase mb-2">Featured Story</span>
                         <h3 className="font-serif text-2xl md:text-3xl font-bold text-brand-green group-hover:text-brand-gold-muted transition-colors leading-tight mb-3">
                           {highlightText(filteredStories[0].title, searchQuery)}
                         </h3>
@@ -295,7 +295,7 @@ const Journal: React.FC = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.08 }}
-                      className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg"
+                      className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-border-divider shadow-sm transition-all duration-500 hover:shadow-lg"
                       onClick={() => openArticle(story)}
                     >
                       <div className="h-48 overflow-hidden">
@@ -312,7 +312,7 @@ const Journal: React.FC = () => {
                         <p className="text-sm text-text-subtle font-light leading-relaxed line-clamp-2 mb-4">
                           {highlightText(story.intro || '', searchQuery)}
                         </p>
-                        <span className="text-brand-gold-muted font-mono text-[11px] tracking-widest uppercase inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                        <span className="text-brand-gold-muted font-mono text-tiny tracking-widest uppercase inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                           Read <span className="text-base leading-none">→</span>
                         </span>
                       </div>
@@ -334,7 +334,7 @@ const Journal: React.FC = () => {
             <Heading as="h2" size="3xl" font="serif" className="mb-6 text-white drop-shadow-md">
               Send Your Own Story
             </Heading>
-            <Text size="md" className="font-light opacity-90 mb-10 leading-relaxed text-[#E8E4D9]">
+            <Text size="md" className="font-light opacity-90 mb-10 leading-relaxed text-border-divider">
               Every traveler sees Vietnam differently. Whether it's a hidden café in Hanoi or a misty morning in Sapa, we'd love to feature your travel memories in our journal.
             </Text>
             <Button

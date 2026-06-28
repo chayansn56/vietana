@@ -140,10 +140,10 @@ const Services: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   return (
-    <Section id="services" spacing="xl" className="bg-[#FAF7F0] dark:bg-surface-dark relative overflow-hidden">
+    <Section id="services" spacing="xl" className="bg-surface-linen dark:bg-surface-dark relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-surface-warm/15 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-brand-sage/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-20 max-w-[1200px]">
         <SectionHeader

@@ -46,10 +46,10 @@ const Destinations: React.FC = () => {
   };
 
   return (
-    <Section id="destinations" spacing="lg" className="bg-[#FAF7F0] text-text-dark relative overflow-hidden">
+    <Section id="destinations" spacing="lg" className="bg-surface-linen text-text-dark relative overflow-hidden">
       {/* Subtle organic decorations */}
       <div className="absolute top-[5%] left-[-2%] w-[300px] h-[300px] bg-surface-warm/25 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute bottom-[5%] right-[-2%] w-[350px] h-[350px] bg-[#AAB7A1]/20 rounded-full blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-[5%] right-[-2%] w-[350px] h-[350px] bg-brand-sage/20 rounded-full blur-[90px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
         <SectionHeader
@@ -65,21 +65,21 @@ const Destinations: React.FC = () => {
             const rotAngle = getAngle(idx);
             const weather = getWeatherForCity(city.name);
             return (
-              <Card
+              <div
                 key={city.id}
                 style={{ transform: `rotate(${rotAngle}deg)` }}
-                className="polaroid-frame !p-0 group cursor-pointer bg-white"
+                className="polaroid-frame group cursor-pointer bg-white"
                 onClick={() => setSelectedCity(city)}
                 onMouseEnter={handleCardHover}
               >
                 {/* Polaroid Photo area */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF7F0] border border-black/5">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-linen border border-black/5">
                   <div
                     className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ backgroundImage: `url(${city.coverImage})` }}
                   />
                   {/* Stamp style overlay */}
-                  <Badge variant="gold" className="absolute top-3 right-3 !px-2 !py-0.5 !text-[11px] pointer-events-none bg-[#FAF7F0]/80 border-brand-gold/35 text-brand-gold-muted shadow-sm normal-case tracking-normal">
+                  <Badge variant="gold" className="absolute top-3 right-3 !px-2 !py-0.5 !text-tiny pointer-events-none bg-surface-linen/80 border-brand-gold/35 text-brand-gold-muted shadow-sm normal-case tracking-normal">
                     {weather.icon} {weather.temp}
                   </Badge>
                 </div>
@@ -91,14 +91,14 @@ const Destinations: React.FC = () => {
                       {city.name}
                     </h3>
                   </div>
-                  <p className="text-[10px] text-brand-gold-muted font-mono tracking-widest uppercase mt-1 flex items-center gap-1">
+                  <p className="text-mini text-brand-gold-muted font-mono tracking-widest uppercase mt-1 flex items-center gap-1">
                     <Icon name="MapPin" size={10} /> {weather.coord}
                   </p>
                   <p className="text-xs text-text-subtle font-light mt-2 line-clamp-2 leading-relaxed">
                     {city.shortDesc}
                   </p>
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>
@@ -131,9 +131,9 @@ const Destinations: React.FC = () => {
               {(() => {
                 const w = getWeatherForCity(selectedCity.name);
                 return (
-                  <Badge variant="green" className="absolute top-6 right-6 bg-[#FAF7F0] shadow-md border-brand-gold/30 flex items-center gap-2 normal-case tracking-normal">
+                  <Badge variant="green" className="absolute top-6 right-6 bg-surface-linen shadow-md border-brand-gold/30 flex items-center gap-2 normal-case tracking-normal">
                     <span className="text-sm">{w.icon}</span>
-                    <span className="text-[10px] tracking-wider uppercase font-mono font-bold">{w.temp} • {w.desc}</span>
+                    <span className="text-mini tracking-wider uppercase font-mono font-bold">{w.temp} • {w.desc}</span>
                   </Badge>
                 );
               })()}
@@ -214,8 +214,8 @@ const Destinations: React.FC = () => {
 
       {/* All Cities Modal */}
       <Modal isOpen={isAllCitiesOpen} onClose={() => setIsAllCitiesOpen(false)} maxWidth="max-w-6xl">
-        <div className="p-6 md:p-10 flex flex-col max-h-[85vh] md:max-h-[90vh] bg-[#FAF7F0] rounded-2xl">
-          <div className="mb-8 border-b border-[#E8E4D9] pb-6 shrink-0">
+        <div className="p-6 md:p-10 flex flex-col max-h-[85vh] md:max-h-[90vh] bg-surface-linen rounded-2xl">
+          <div className="mb-8 border-b border-border-divider pb-6 shrink-0">
             <Heading as="h2" size="3xl" font="serif" className="text-brand-green-dark tracking-tight mb-2">
               All Destinations
             </Heading>
@@ -249,7 +249,7 @@ const Destinations: React.FC = () => {
                       <Text
                         variant="none"
                         size="xs"
-                        className="text-white/80 md:text-white/70 transform md:translate-y-full md:opacity-0 transition-all duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100 line-clamp-2 text-[10px] md:text-xs leading-snug"
+                        className="text-white/80 md:text-white/70 transform md:translate-y-full md:opacity-0 transition-all duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100 line-clamp-2 text-mini md:text-xs leading-snug"
                       >
                         {city.shortDesc}
                       </Text>

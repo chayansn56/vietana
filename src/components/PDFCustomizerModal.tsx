@@ -115,7 +115,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
               font-family: 'Playfair Display', serif;
               font-size: 16pt;
               color: ${primaryColor};
-              border-bottom: 1px solid #E8E4D9;
+              border-bottom: 1px solid var(--color-border-divider);
               padding-bottom: 8px;
               margin-top: 30px;
               margin-bottom: 15px;
@@ -182,7 +182,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
             
             .footer-branding {
               margin-top: 60px;
-              border-top: 1px solid #E8E4D9;
+              border-top: 1px solid var(--color-border-divider);
               padding-top: 15px;
               text-align: center;
               font-size: 8pt;
@@ -312,7 +312,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
         </Button>
 
         <div>
-          <span className="text-[9px] font-bold tracking-[0.2em] text-brand-gold-muted dark:text-brand-gold uppercase block mb-1">Custom PDF Exporter</span>
+          <span className="text-micro font-bold tracking-[0.2em] text-brand-gold-muted dark:text-brand-gold uppercase block mb-1">Custom PDF Exporter</span>
           <Heading as="h3" size="xl" font="serif" className="text-brand-green dark:text-white leading-tight">Personalize Itinerary</Heading>
         </div>
 
