@@ -19,6 +19,7 @@ export interface PackageProduct {
     food: string[];
   }[];
   isJainVegFriendly?: boolean;
+  price?: string;
 }
 
 export interface CategoryData {
@@ -1462,6 +1463,114 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     ]
   },
   {
+    "id": "hcmc-phu-quoc-explorer-5d4n",
+    "category": "Beach Escapes",
+    "title": "Ho Chi Minh City & Phu Quoc Explorer (5D4N)",
+    "duration": "5 Days / 4 Nights",
+    "badge": "Bestseller",
+    "destinations": [
+      "Ho Chi Minh City",
+      "Phu Quoc"
+    ],
+    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80",
+    "hotels": [
+      "Ho Chi Minh City: Duc Vuong Hotel (★★★ - 2 Nights)",
+      "Phu Quoc: Bay Resort (★★★ - 2 Nights)"
+    ],
+    "price": "₹28,000",
+    "desc": "An incredible 5-day journey from the historic streets of Ho Chi Minh City to the tropical sands of Phu Quoc Island. Features Cu Chi Tunnels, Mekong Delta, 3 Island speedboat tour, and VinWonders.",
+    "inclusions": [
+      "Airport transfers as per itinerary",
+      "Accommodation at Duc Vuong Hotel & Bay Resort in Double/Twin room",
+      "Daily Breakfast at hotels",
+      "Entrance fees for all activities",
+      "VinWonders Admission & Grand World visit",
+      "3 Island Speedboat Adventure (Shared)",
+      "Cu Chi Tunnel Tour & Mekong Delta Tour (Shared)",
+      "Hotel Pick-up & Drop-off for tours",
+      "Local Lunch during Cu Chi Tunnel & 3 Island Tours",
+      "Speedboat transfers & complimentary water",
+      "Drone footage & SUP board photos for the group",
+      "Snorkeling at Gam Ghi & Buom Islet, swimming at Hon May Rut"
+    ],
+    "exclusions": [
+      "International & Domestic Airfare",
+      "Vietnam Visa (if applicable)",
+      "Travel Insurance",
+      "Personal expenses, tips & gratuities",
+      "Early Check-in / Late Check-out",
+      "Meals not specifically mentioned under inclusions"
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": "Arrival in Ho Chi Minh City",
+        "description": "Arrive at Tan Son Nhat airport in HCMC. Meet and greet with your driver, private transfer to Duc Vuong Hotel. Enjoy the rest of the day at leisure.",
+        "activities": [
+          "Airport Private Transfer to Duc Vuong Hotel",
+          "Leisure Time & HCMC City exploration on your own"
+        ],
+        "food": [
+          "None"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Cu Chi Tunnel & Mekong Delta",
+        "description": "Explore the legendary Cu Chi Tunnels underground network in the morning. Afternoon cruise through Mekong Delta waterways, local villages, and folk music. Enjoy local lunch.",
+        "activities": [
+          "Shared Cu Chi Tunnel guided historic tour",
+          "Mekong Delta river cruise & canoe ride",
+          "Local lunch at riverside orchard restaurant"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Transfer to Phu Quoc & Grand World",
+        "description": "Check out and private transfer to airport. Take a short flight to Phu Quoc. Check-in to Bay Resort. In the evening, visit Grand World, the 'sleepless city' with Venetian canals.",
+        "activities": [
+          "Private Airport Transfer in HCMC",
+          "Flight to Phu Quoc Island",
+          "Grand World evening sightseeing & light show"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "3 Island Speedboat Adventure",
+        "description": "Embark on an exhilarating speedboat tour. Snorkel at Gam Ghi & Buom islets to see coral reefs. Swim at Hon May Rut Ngoai. Enjoy drone video & SUP board photos.",
+        "activities": [
+          "Shared 3 Island Speedboat Snorkeling & Swimming Tour",
+          "Gam Ghi Islet & Buom Islet coral reef snorkeling",
+          "Drone footage & SUP photography session",
+          "Local lunch on island"
+        ],
+        "food": [
+          "Breakfast",
+          "Lunch"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "VinWonders & Departure",
+        "description": "Spend your morning exploring VinWonders Phu Quoc, Vietnam's largest theme park. Free time for shopping before your departure transfer to Phu Quoc airport.",
+        "activities": [
+          "VinWonders Admission & theme park sights",
+          "Private departure transfer to Phu Quoc airport"
+        ],
+        "food": [
+          "Breakfast"
+        ]
+      }
+    ]
+  },
+  {
     "id": "phu-quoc-saigon-coast-city",
     "category": "Beach Escapes",
     "title": "Phu Quoc & Saigon Coast-to-City (6D5N)",
@@ -1471,7 +1580,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Phu Quoc",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Phu Quoc: Beach Resort (3 Nights)",
       "Saigon: City Hotel (2 Nights)"
@@ -1580,7 +1689,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang Beach",
       "Hue Imperial City"
     ],
-    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Nang: Beach Resort (4 Nights)",
       "Hue: Boutique Hotel (1 Night)"
@@ -1689,7 +1798,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Nha Trang",
       "Mui Ne Sand Dunes"
     ],
-    "img": "https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Nha Trang: Beach Hotel (3 Nights)",
       "Mui Ne: Beachfront Resort (2 Nights)"
@@ -1797,7 +1906,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Phu Quoc",
       "Con Dao Island"
     ],
-    "img": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Phu Quoc: Beach Resort (3 Nights)",
       "Con Dao: Eco Resort (3 Nights)"
@@ -1919,7 +2028,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang Beach",
       "Halong Bay Luxury Cruise"
     ],
-    "img": "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Nang: 5-Star Beach Villa (4 Nights)",
       "Halong Bay: Luxury Cruise (2 Nights)"
@@ -2041,7 +2150,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Mui Ne Dunes & Beach"
     ],
-    "img": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: 4-star (1 Night)",
       "Mui Ne: Dunes Resort (2 Nights)"
@@ -2123,7 +2232,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Quy Nhon",
       "Nha Trang"
     ],
-    "img": "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1516690561799-46d8f74f90f6?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Quy Nhon: Beach Resort (3 Nights)",
       "Nha Trang: Coastal Hotel (2 Nights)"
@@ -2232,7 +2341,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Da Lat Valley of Love"
     ],
-    "img": "https://images.unsplash.com/photo-1516690561799-46d8f74f90f6?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: City Hotel (2 Nights)",
       "Da Lat: Romantic Villa (2 Nights)"
@@ -2329,7 +2438,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Halong Bay Luxury Private Cabin",
       "Ninh Binh"
     ],
-    "img": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Boutique Hotel (2 Nights)",
       "Halong Bay: Private Cabin (2 Nights)",
@@ -2439,7 +2548,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Phu Quoc Luxury Beach Villa",
       "Saigon Rooftop Dining"
     ],
-    "img": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Phu Quoc: Pool Villa (4 Nights)",
       "Saigon: Luxury Boutique (1 Night)"
@@ -2548,7 +2657,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang",
       "Hoi An Riverside Resort"
     ],
-    "img": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Nang: Coastal Resort (1 Night)",
       "Hoi An: Riverside Heritage Hotel (3 Nights)"
@@ -2644,7 +2753,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Lat",
       "Nha Trang Beach Resort"
     ],
-    "img": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1504457047772-27faf1c005b7?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Lat: Pine Valley Resort (3 Nights)",
       "Nha Trang: Overwater Villa (3 Nights)"
@@ -2766,7 +2875,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Ninh Van Bay Private Pool Villa",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1504457047772-27faf1c005b7?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1562911672-6804e12e1069?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Ninh Van Bay: Six Senses (4 Nights)",
       "Saigon: Park Hyatt (2 Nights)"
@@ -2888,7 +2997,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi",
       "Sapa Mountain Retreat"
     ],
-    "img": "https://images.unsplash.com/photo-1562911672-6804e12e1069?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: French Quarter Hotel (2 Nights)",
       "Sapa: Mountain Ecolodge (3 Nights)"
@@ -3000,7 +3109,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Lat",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1531737212413-667205e0cda7?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: 5-Star (2 Nights)",
       "Halong Bay: VIP Cruise (1 Night)",
@@ -3163,7 +3272,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Con Dao Luxury Beachfront"
     ],
-    "img": "https://images.unsplash.com/photo-1531737212413-667205e0cda7?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Con Dao: Six Senses (4 Nights)"
     ],
@@ -3257,7 +3366,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi",
       "Sapa Topas Ecolodge"
     ],
-    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1583569704200-8b43bd1265fa?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Boutique Hotel (1 Night)",
       "Sapa: Topas Ecolodge (3 Nights)"
@@ -3353,7 +3462,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang Ba Na Hills",
       "Phu Quoc VinWonders & Safari"
     ],
-    "img": "https://images.unsplash.com/photo-1583569704200-8b43bd1265fa?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Nang: Family Suite (3 Nights)",
       "Phu Quoc: Vinpearl Resort (3 Nights)"
@@ -3474,7 +3583,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Phu Quoc Safari & Waterpark"
     ],
-    "img": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Phu Quoc: Beachfront Family Resort (4 Nights)"
     ],
@@ -3568,7 +3677,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Mekong Delta Family Farm"
     ],
-    "img": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Family Suite (3 Nights)",
       "Mekong Delta: Farm Lodge (1 Night)"
@@ -3664,7 +3773,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang",
       "Hoi An Lantern Making"
     ],
-    "img": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Nang: My Khe Beach Hotel (3 Nights)",
       "Hoi An: Family Villa (2 Nights)"
@@ -3773,7 +3882,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi",
       "Trang An Boat Ride & Mua Cave"
     ],
-    "img": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: City Hotel (3 Nights)",
       "Ninh Binh: Family Homestay (2 Nights)"
@@ -3884,7 +3993,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1616421590483-e18faea44d67?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: City Hotel (2 Nights)",
       "Halong Bay: Cruise (1 Night)",
@@ -4034,7 +4143,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Nha Trang VinWonders",
       "Da Nang Ba Na Hills"
     ],
-    "img": "https://images.unsplash.com/photo-1616421590483-e18faea44d67?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1557434522-835fc526017b?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Nha Trang: Vinpearl Resort (3 Nights)",
       "Da Nang: Ba Na Hills French Village (2 Nights)"
@@ -4143,7 +4252,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Mekong Delta"
     ],
-    "img": "https://images.unsplash.com/photo-1557434522-835fc526017b?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1596706927976-599187ecad26?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Boutique Hotel (3 Nights)",
       "Mekong Delta: Jungle Eco Lodge (2 Nights)"
@@ -4252,7 +4361,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi",
       "Sapa Easy Trek & Cable Car"
     ],
-    "img": "https://images.unsplash.com/photo-1596706927976-599187ecad26?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: French Quarter Hotel (2 Nights)",
       "Sapa: Bamboo Hotel (3 Nights)"
@@ -4361,7 +4470,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Da Lat Alpine Coaster"
     ],
-    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1509060464153-44667396260f?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Downtown Suite (2 Nights)",
       "Da Lat: Pine Resort (3 Nights)"
@@ -4471,7 +4580,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hoi An Organic Farming",
       "Saigon Veg Eats"
     ],
-    "img": "https://images.unsplash.com/photo-1509060464153-44667396260f?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Old Quarter Hotel (2 Nights)",
       "Hoi An: Eco Lodge (2 Nights)",
@@ -4581,7 +4690,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi Cafe Apartments",
       "Buon Ma Thuot Coffee Capital"
     ],
-    "img": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Boutique Hotel (2 Nights)",
       "Buon Ma Thuot: Eco Lodge (2 Nights)"
@@ -4678,7 +4787,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: City Hotel (2 Nights)",
       "Da Nang: Beach Resort (2 Nights)",
@@ -4801,7 +4910,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon Culinary Masterclass",
       "Mekong Delta Farm-to-Table"
     ],
-    "img": "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Boutique Hotel (3 Nights)",
       "Mekong Delta: Farm Lodge (1 Night)"
@@ -4896,7 +5005,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Hanoi Old Quarter Walks"
     ],
-    "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Old Quarter Luxury Hotel (4 Nights)"
     ],
@@ -4989,7 +5098,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Hoi An Eco-Resort & Cooking Class"
     ],
-    "img": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hoi An: Eco-Resort (4 Nights)"
     ],
@@ -5083,7 +5192,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hue Royal Cuisine Tasting",
       "Da Nang"
     ],
-    "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hue: Heritage Hotel (3 Nights)",
       "Da Nang: Beach Resort (1 Night)"
@@ -5181,7 +5290,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hoi An",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Boutique (2 Nights)",
       "Halong Bay: Luxury Cruise (1 Night)",
@@ -5331,7 +5440,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Can Tho Market Tours"
     ],
-    "img": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Downtown (2 Nights)",
       "Can Tho: Riverside (2 Nights)"
@@ -5427,7 +5536,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi",
       "Sapa Cooking & Tea Experience"
     ],
-    "img": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: City Hotel (2 Nights)",
       "Sapa: Mountain Lodge (3 Nights)"
@@ -5535,7 +5644,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Saigon Markets & Shopping Malls"
     ],
-    "img": "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Central Retail District Hotel (4 Nights)"
     ],
@@ -5628,7 +5737,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Hanoi Historical Walk & Cyclo"
     ],
-    "img": "https://images.unsplash.com/photo-1472214222541-d510753a8707?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: French Quarter Boutique Hotel (4 Nights)"
     ],
@@ -5722,7 +5831,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi Capital",
       "Saigon Metropolis"
     ],
-    "img": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Old Quarter Hotel (3 Nights)",
       "Saigon: District 1 Hotel (2 Nights)"
@@ -5830,7 +5939,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Da Nang Bridges & Lantern Towns"
     ],
-    "img": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Nang: My Khe Beach Hotel (2 Nights)",
       "Hoi An: Ancient Town Villa (2 Nights)"
@@ -5925,7 +6034,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon City Hub",
       "Vung Tau"
     ],
-    "img": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Boutique (3 Nights)",
       "Vung Tau: Seaside Resort (2 Nights)"
@@ -6033,7 +6142,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi Capital",
       "Ninh Binh"
     ],
-    "img": "https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Boutique Hotel (3 Nights)",
       "Ninh Binh: Ecolodge (1 Night)"
@@ -6128,7 +6237,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Saigon Night Clubs & Rooftop Lounges"
     ],
-    "img": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Rooftop Pool Hotel (4 Nights)"
     ],
@@ -6221,7 +6330,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Hanoi Galleries & Train Street"
     ],
-    "img": "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Art Deco Boutique Hotel (4 Nights)"
     ],
@@ -6316,7 +6425,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Boutique (3 Nights)",
       "Da Nang: Seaside (2 Nights)",
@@ -6451,7 +6560,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Saigon Retail & Floating Market"
     ],
-    "img": "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1516690561799-46d8f74f90f6?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Retail District Hotel (3 Nights)"
     ],
@@ -6531,7 +6640,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Sapa Mountain Hikes & Fansipan Peak"
     ],
-    "img": "https://images.unsplash.com/photo-1516690561799-46d8f74f90f6?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Sapa: Valley Lodge (4 Nights)"
     ],
@@ -6625,7 +6734,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Ha Giang Motorbike/Car Loop",
       "Hanoi"
     ],
-    "img": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Ha Giang: Hilltribe Homestays (4 Nights)",
       "Hanoi: City Hotel (1 Night)"
@@ -6733,7 +6842,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Trang An Caves & Mua Peak"
     ],
-    "img": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Ninh Binh: Riverside Bungalow (4 Nights)"
     ],
@@ -6826,7 +6935,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Paradise Cave & Phong Nha National Park"
     ],
-    "img": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Phong Nha: Lake House Resort (4 Nights)"
     ],
@@ -6920,7 +7029,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Ba Be Lake National Park",
       "Hanoi"
     ],
-    "img": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1504457047772-27faf1c005b7?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Ba Be Lake: Eco Lodge (3 Nights)",
       "Hanoi: Boutique (1 Night)"
@@ -7016,7 +7125,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Ban Gioc Falls",
       "Cao Bang Caves"
     ],
-    "img": "https://images.unsplash.com/photo-1504457047772-27faf1c005b7?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1562911672-6804e12e1069?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Ban Gioc: Eco Resort (3 Nights)",
       "Cao Bang: Boutique Hotel (2 Nights)"
@@ -7125,7 +7234,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Dalat Hikes & Waterfalls",
       "Nha Trang"
     ],
-    "img": "https://images.unsplash.com/photo-1562911672-6804e12e1069?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Lat: Eco Cabin (3 Nights)",
       "Nha Trang: Beach Hotel (2 Nights)"
@@ -7236,7 +7345,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Ninh Binh",
       "Phong Nha Caves"
     ],
-    "img": "https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1531737212413-667205e0cda7?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: City Hotel (1 Night)",
       "Sapa: Bamboo (3 Nights)",
@@ -7399,7 +7508,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Cat Ba Island Hikes",
       "Lan Ha Bay Kayaking"
     ],
-    "img": "https://images.unsplash.com/photo-1531737212413-667205e0cda7?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Cat Ba: Sea View Resort (3 Nights)",
       "Lan Ha: Overwater Eco Lodge (1 Night)"
@@ -7495,7 +7604,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Mekong Countryside Cycling"
     ],
-    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1583569704200-8b43bd1265fa?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Central Hotel (1 Night)",
       "Mekong Delta: Countryside Homestay (3 Nights)"
@@ -7591,7 +7700,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Hanoi",
       "Halong Bay Luxury Cruise"
     ],
-    "img": "https://images.unsplash.com/photo-1583569704200-8b43bd1265fa?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Sofitel Legend Metropole (2 Nights)",
       "Halong Bay: Emperor Private Cruise Suite (2 Nights)"
@@ -7687,7 +7796,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Nha Trang",
       "Ninh Van Bay Six Senses Wellness"
     ],
-    "img": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Nha Trang: 5-Star Beach Resort (1 Night)",
       "Ninh Van Bay: Six Senses Water Villa (4 Nights)"
@@ -7796,7 +7905,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang",
       "Hoi An"
     ],
-    "img": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Da Nang: InterContinental Sun Peninsula (3 Nights)",
       "Hoi An: Four Seasons Nam Hai (1 Night)"
@@ -7892,7 +8001,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Phu Quoc"
     ],
-    "img": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Park Hyatt Saigon (2 Nights)",
       "Phu Quoc: Regent Resort Pool Villa (3 Nights)"
@@ -8000,7 +8109,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Lan Ha Bay Luxury Charter Cruise"
     ],
-    "img": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Lan Ha Bay: Private Yacht Charter (4 Nights)"
     ],
@@ -8094,7 +8203,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Con Dao Six Senses Resort"
     ],
-    "img": "https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1616421590483-e18faea44d67?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: The Reverie Saigon (2 Nights)",
       "Con Dao: Six Senses Ocean Front Villa (3 Nights)"
@@ -8203,7 +8312,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Sapa",
       "Hanoi"
     ],
-    "img": "https://images.unsplash.com/photo-1616421590483-e18faea44d67?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1557434522-835fc526017b?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Sapa: Hotel de la Coupole (3 Nights)",
       "Hanoi: Metropole Opera Wing (1 Night)"
@@ -8301,7 +8410,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Da Nang",
       "Saigon"
     ],
-    "img": "https://images.unsplash.com/photo-1557434522-835fc526017b?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1596706927976-599187ecad26?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Hanoi: Sofitel Legend Metropole (2 Nights)",
       "Halong Bay: Elite Cruise (1 Night)",
@@ -8450,7 +8559,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
     "destinations": [
       "Quy Nhon"
     ],
-    "img": "https://images.unsplash.com/photo-1596706927976-599187ecad26?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Quy Nhon: Anantara Private Pool Villa (4 Nights)"
     ],
@@ -8544,7 +8653,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Saigon",
       "Aqua Mekong River Cruise"
     ],
-    "img": "https://images.unsplash.com/photo-1520625345718-d4c3ec813b10?auto=format&fit=crop&w=800&q=80",
+    "img": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
     "hotels": [
       "Saigon: Park Hyatt (2 Nights)",
       "Mekong River: Aqua Mekong Suite (3 Nights)"

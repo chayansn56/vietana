@@ -138,6 +138,17 @@ const rawPackages = [
     hotels: ["Nha Trang: Beach Resort (4 Nights)"]
   },
   {
+    id: "hcmc-phu-quoc-explorer-5d4n",
+    category: "Beach Escapes",
+    title: "Ho Chi Minh City & Phu Quoc Explorer (5D4N)",
+    duration: "5 Days / 4 Nights",
+    badge: "Bestseller",
+    destinations: ["Ho Chi Minh City", "Phu Quoc"],
+    img: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    hotels: ["Ho Chi Minh City: Duc Vuong Hotel (★★★ - 2 Nights)", "Phu Quoc: Bay Resort (★★★ - 2 Nights)"],
+    price: "₹28,000"
+  },
+  {
     id: "phu-quoc-saigon-coast-city",
     category: "Beach Escapes",
     title: "Phu Quoc & Saigon Coast-to-City (6D5N)",
@@ -985,6 +996,72 @@ function expandPackage(pkg, idx) {
     });
   }
 
+  if (pkg.id === "hcmc-phu-quoc-explorer-5d4n") {
+    return {
+      ...pkg,
+      desc: "An incredible 5-day journey from the historic streets of Ho Chi Minh City to the tropical sands of Phu Quoc Island. Features Cu Chi Tunnels, Mekong Delta, 3 Island speedboat tour, and VinWonders.",
+      inclusions: [
+        "Airport transfers as per itinerary",
+        "Accommodation at Duc Vuong Hotel & Bay Resort in Double/Twin room",
+        "Daily Breakfast at hotels",
+        "Entrance fees for all activities",
+        "VinWonders Admission & Grand World visit",
+        "3 Island Speedboat Adventure (Shared)",
+        "Cu Chi Tunnel Tour & Mekong Delta Tour (Shared)",
+        "Hotel Pick-up & Drop-off for tours",
+        "Local Lunch during Cu Chi Tunnel & 3 Island Tours",
+        "Speedboat transfers & complimentary water",
+        "Drone footage & SUP board photos for the group",
+        "Snorkeling at Gam Ghi & Buom Islet, swimming at Hon May Rut"
+      ],
+      exclusions: [
+        "International & Domestic Airfare",
+        "Vietnam Visa (if applicable)",
+        "Travel Insurance",
+        "Personal expenses, tips & gratuities",
+        "Early Check-in / Late Check-out",
+        "Meals not specifically mentioned under inclusions"
+      ],
+      days: [
+        {
+          day: 1,
+          title: "Arrival in Ho Chi Minh City",
+          description: "Arrive at Tan Son Nhat airport in HCMC. Meet and greet with your driver, private transfer to Duc Vuong Hotel. Enjoy the rest of the day at leisure.",
+          activities: ["Airport Private Transfer to Duc Vuong Hotel", "Leisure Time & HCMC City exploration on your own"],
+          food: ["None"]
+        },
+        {
+          day: 2,
+          title: "Cu Chi Tunnel & Mekong Delta",
+          description: "Explore the legendary Cu Chi Tunnels underground network in the morning. Afternoon cruise through Mekong Delta waterways, local villages, and folk music. Enjoy local lunch.",
+          activities: ["Shared Cu Chi Tunnel guided historic tour", "Mekong Delta river cruise & canoe ride", "Local lunch at riverside orchard restaurant"],
+          food: ["Breakfast", "Lunch"]
+        },
+        {
+          day: 3,
+          title: "Transfer to Phu Quoc & Grand World",
+          description: "Check out and private transfer to airport. Take a short flight to Phu Quoc. Check-in to Bay Resort. In the evening, visit Grand World, the 'sleepless city' with Venetian canals.",
+          activities: ["Private Airport Transfer in HCMC", "Flight to Phu Quoc Island", "Grand World evening sightseeing & light show"],
+          food: ["Breakfast"]
+        },
+        {
+          day: 4,
+          title: "3 Island Speedboat Adventure",
+          description: "Embark on an exhilarating speedboat tour. Snorkel at Gam Ghi & Buom islets to see coral reefs. Swim at Hon May Rut Ngoai. Enjoy drone video & SUP board photos.",
+          activities: ["Shared 3 Island Speedboat Snorkeling & Swimming Tour", "Gam Ghi Islet & Buom Islet coral reef snorkeling", "Drone footage & SUP photography session", "Local lunch on island"],
+          food: ["Breakfast", "Lunch"]
+        },
+        {
+          day: 5,
+          title: "VinWonders & Departure",
+          description: "Spend your morning exploring VinWonders Phu Quoc, Vietnam's largest theme park. Free time for shopping before your departure transfer to Phu Quoc airport.",
+          activities: ["VinWonders Admission & theme park sights", "Private departure transfer to Phu Quoc airport"],
+          food: ["Breakfast"]
+        }
+      ]
+    };
+  }
+
   // Generically compile inclusions and exclusions
   const inclusions = [
     "Airport transfers in private A/C luxury vehicles",
@@ -1039,6 +1116,7 @@ export interface PackageProduct {
     food: string[];
   }[];
   isJainVegFriendly?: boolean;
+  price?: string;
 }
 
 export interface CategoryData {

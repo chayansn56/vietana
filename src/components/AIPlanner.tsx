@@ -28,8 +28,13 @@ interface AIPlannerProps {
 
 const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestination, initialPrompt }) => {
   const { t } = useTranslation();
-  const [expandedDay, setExpandedDay] = useState<number | null>(1);
+    const [expandedDay, setExpandedDay] = useState<number | null>(1);
   const [activeTab, setActiveTab] = useState<'itinerary' | 'deals' | 'pricing'>('itinerary');
+  const [isListening, setIsListening] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [ttsEnabled, setTtsEnabled] = useState(true);
+  const [showActionPopup, setShowActionPopup] = useState(false);
+
   const {
     messages,
     inputValue,
@@ -42,6 +47,90 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
     handleSend,
     resetPlanner
   } = useAIPlanner(isOpen ? initialDestination : undefined, isOpen ? initialPrompt : undefined);
+
+  const recognitionRef = useRef<any>(null);
+
+  // Initialize Speech Recognition
+  useEffect(() => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = () => {
+        setIsListening(true);
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel(); // Stop talking when user speaks
+        }
+      };
+
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        if (transcript) {
+          handleSend(transcript);
+        }
+      };
+
+      recognition.onerror = (event: any) => {
+        console.error('Speech recognition error', event.error);
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognitionRef.current = recognition;
+    }
+  }, [handleSend]);
+
+  const toggleListening = () => {
+    if (!recognitionRef.current) {
+      alert("Speech recognition is not supported in this browser. Please try Chrome or Safari.");
+      return;
+    }
+    if (isListening) {
+      recognitionRef.current.stop();
+    } else {
+      setIsListening(true);
+      recognitionRef.current.start();
+    }
+  };
+
+  const speakText = (text: string) => {
+    if (!ttsEnabled || !('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const cleanText = text.replace(/<[^>]*>/g, '');
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    
+    // Choose voice depending on lang or general fallback
+    utterance.lang = 'en-US';
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Speak when new message from bot arrives
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMsg = messages[messages.length - 1];
+      if (lastMsg.type === 'bot') {
+        speakText(lastMsg.text);
+      }
+    }
+  }, [messages, ttsEnabled]);
+
+  // Auto trigger popup action card when itinerary is generated
+  useEffect(() => {
+    if (itinerary) {
+      setShowActionPopup(true);
+      speakText("I have created your custom itinerary. Would you like me to send it over WhatsApp or Email?");
+    }
+  }, [itinerary]);
 
   const pcMsgsRef = useRef<HTMLDivElement>(null);
 
@@ -75,13 +164,24 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               {t.planner.tagline}
             </Text>
           </div>
-          <button
-            onClick={resetPlanner}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-white/10 hover:border-brand-gold/30 hover:bg-white/5 text-white/60 hover:text-brand-gold transition-all duration-300 text-xs cursor-pointer font-medium uppercase tracking-wider mt-1"
-            title="Reset Chat"
-          >
-            <Icon name="RotateCcw" size={12} /> Clear
-          </button>
+          <div className="flex items-center gap-2 mt-1">
+            <button
+              onClick={() => setTtsEnabled(!ttsEnabled)}
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl border transition-all duration-300 text-xs cursor-pointer font-medium uppercase tracking-wider ${
+                ttsEnabled ? 'border-brand-gold/30 bg-brand-gold/10 text-brand-gold' : 'border-white/10 text-white/40 hover:text-white/60'
+              }`}
+              title={ttsEnabled ? "Mute Voice" : "Unmute Voice"}
+            >
+              <Icon name={ttsEnabled ? "Volume2" : "VolumeX"} size={12} /> {ttsEnabled ? "Voice On" : "Mute"}
+            </button>
+            <button
+              onClick={resetPlanner}
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-white/10 hover:border-brand-gold/30 hover:bg-white/5 text-white/60 hover:text-brand-gold transition-all duration-300 text-xs cursor-pointer font-medium uppercase tracking-wider"
+              title="Reset Chat"
+            >
+              <Icon name="RotateCcw" size={12} /> Clear
+            </button>
+          </div>
         </div>
 
         <div ref={pcMsgsRef} className="flex-1 overflow-y-auto px-6 md:px-10 py-4 flex flex-col gap-4 md:gap-6 scroll-smooth scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
@@ -152,6 +252,19 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 </div>
              </div>
           )}
+
+          {isListening && (
+            <div className="flex flex-col items-center justify-center py-6 gap-3 animate-msg-fade-in bg-black/20 rounded-2xl border border-white/5 p-4 my-2">
+              <div className="siri-orb-container">
+                <div className="siri-orb-layer-1" />
+                <div className="siri-orb-layer-2" />
+                <div className="siri-orb-layer-3" />
+              </div>
+              <Text variant="none" className="text-xs font-semibold text-brand-gold tracking-widest animate-pulse uppercase">
+                Vietana Siri Listening...
+              </Text>
+            </div>
+          )}
         </div>
 
         <div className="p-4 md:p-8 pt-4 md:pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent">
@@ -169,21 +282,76 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             </div>
           )}
 
-          <div className="relative bg-white/5 border border-white/10 rounded-2xl p-2 transition-all duration-300 shadow-inner focus-within:border-brand-gold/40 focus-within:bg-white/10 ">
+          {showActionPopup && itinerary && (
+            <div className="mb-4 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/30 rounded-2xl p-5 shadow-lg animate-msg-fade-in flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+                  <Icon name="Sparkles" size={20} />
+                </div>
+                <div className="text-left">
+                  <Heading as="h5" variant="none" className="text-white text-sm font-semibold">Quotation & Itinerary Ready!</Heading>
+                  <Text variant="none" className="text-white/60 text-xs">Share it instantly with the customer.</Text>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 w-full md:w-auto">
+                <button
+                  onClick={() => {
+                    const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
+                    const message = `Hello! I've designed your custom Vietnam itinerary:\n\n*${itinerary.title}*\n\n${itemsList}`;
+                    window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
+                  }}
+                  className="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <Icon name="MessageCircle" size={14} /> Send WhatsApp
+                </button>
+                <button
+                  onClick={() => {
+                    const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
+                    const subject = `Your Custom Vietana Vietnam Journey`;
+                    const body = `Hi! Here is your custom itinerary:\n\n${itinerary.title}\n\n${itemsList}`;
+                    window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+                  }}
+                  className="flex-1 md:flex-none bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <Icon name="Mail" size={14} /> Email Quote
+                </button>
+                <button
+                  onClick={() => setShowActionPopup(false)}
+                  className="text-white/40 hover:text-white/80 p-2 text-xs cursor-pointer"
+                >
+                  Dismiss
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className={`relative bg-white/5 border rounded-2xl p-2 transition-all duration-300 shadow-inner ${
+            isListening ? 'border-purple-500/50 bg-purple-500/5' : 'border-white/10 focus-within:border-brand-gold/40 focus-within:bg-white/10'
+          }`}>
             <div className="flex items-center gap-3">
-              <span className="text-white/30 pl-4 flex items-center justify-center"><Icon name="Mic" size={20} /></span>
+              <button
+                type="button"
+                onClick={toggleListening}
+                className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer ${
+                  isListening ? 'bg-purple-600 text-white animate-pulse' : 'text-white/40 hover:text-white/80 hover:bg-white/5'
+                }`}
+                title={isListening ? "Listening..." : "Click to Speak"}
+              >
+                <Icon name="Mic" size={20} />
+              </button>
               <input
                 type="text"
                 className="flex-1 bg-transparent border-none py-3 text-white text-lg font-light outline-none placeholder:text-white/30"
-                placeholder={t.planner.where || "Ask anything about Vietnam..."}
+                placeholder={isListening ? "Listening..." : (t.planner.where || "Ask anything about Vietnam...")}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                disabled={isListening}
               />
               <button
                 className="bg-brand-gold text-brand-green-extra-dark border-none rounded-xl px-6 py-3 font-semibold transition-all duration-300 mr-1 disabled:opacity-40 hover:bg-brand-gold-light hover:shadow-gold"
                 onClick={() => handleSend()}
-                disabled={!inputValue.trim()}
+                disabled={!inputValue.trim() || isListening}
               >
                 Send
               </button>

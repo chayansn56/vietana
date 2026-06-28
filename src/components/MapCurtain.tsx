@@ -41,8 +41,7 @@ const MapCurtain: React.FC<MapCurtainProps> = ({ isOpen, onClose, selectedCities
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-[3000] bg-[#FAF8F3] flex flex-col"
         >
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 lg:px-12 bg-[#FAF8F3]/80 backdrop-blur-xl absolute top-0 left-0 right-0 z-[3010] border-b border-[#1D1D1F]/5 shadow-sm">
+          <div className="flex items-center justify-between p-4 sm:p-6 lg:px-12 bg-[#FAF8F3]/80 backdrop-blur-xl absolute top-0 left-0 right-0 z-[3010] border-b border-[#1D1D1F]/5 shadow-sm">
             <div>
               <Text className="text-[10px] tracking-widest uppercase text-[#1E4D45] font-bold mb-1">
                 Cartography

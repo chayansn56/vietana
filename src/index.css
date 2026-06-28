@@ -824,3 +824,54 @@ html {
 html, body, section, .editorial-card, .skeuo-paper, .skeuo-paper-premium, .vintage-ledger, .boarding-pass, button, input, select, textarea, p, span, h1, h2, h3, h4, h5, h6, a {
   transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
+
+/* Siri-like Glowing Voice Orb Animation */
+@keyframes siri-pulse {
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.6; filter: blur(8px); }
+  50% { transform: scale(1.1) rotate(180deg); opacity: 0.95; filter: blur(4px); }
+  100% { transform: scale(0.9) rotate(360deg); opacity: 0.6; filter: blur(8px); }
+}
+
+@keyframes siri-pulse-slow {
+  0% { transform: scale(1.05) rotate(360deg); opacity: 0.4; }
+  50% { transform: scale(0.9) rotate(180deg); opacity: 0.8; }
+  100% { transform: scale(1.05) rotate(0deg); opacity: 0.4; }
+}
+
+.siri-orb-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.siri-orb-layer-1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.8) 0%, rgba(30, 77, 69, 0.4) 60%, transparent 80%);
+  border-radius: 50%;
+  animation: siri-pulse 4s infinite linear;
+}
+
+.siri-orb-layer-2 {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.7) 0%, rgba(59, 130, 246, 0.3) 60%, transparent 80%);
+  border-radius: 50%;
+  animation: siri-pulse-slow 6s infinite linear;
+}
+
+.siri-orb-layer-3 {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.9) 0%, rgba(212, 175, 55, 0.5) 50%, transparent 70%);
+  border-radius: 50%;
+  animation: siri-pulse 3s infinite ease-in-out alternate;
+}
+

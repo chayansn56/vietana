@@ -215,7 +215,21 @@ export default function App() {
 }
 
 const SectionPlaceholder = () => (
-  <div className="h-96 w-full bg-surface-warm animate-pulse flex items-center justify-center text-text-subtle">
-    Loading content...
+  <div className="w-full py-24 bg-surface-cream overflow-hidden border-t border-black/5">
+    <div className="container mx-auto px-6 max-w-7xl">
+      <div className="flex flex-col items-center md:items-start gap-4 animate-pulse mb-12">
+        <div className="h-3 w-24 bg-brand-gold/30 rounded-full"></div>
+        <div className="h-10 w-64 bg-black/10 rounded-md"></div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="flex flex-col gap-4">
+            <div className="w-full h-80 bg-black/5 rounded-2xl animate-pulse"></div>
+            <div className="h-6 w-3/4 bg-black/10 rounded-md animate-pulse"></div>
+            <div className="h-4 w-1/2 bg-black/5 rounded-md animate-pulse"></div>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 );

@@ -636,7 +636,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                 
                 <div className="mt-4 pt-6 border-t border-dashed border-white/20 flex justify-between items-end">
                   <Text variant="none" className="text-brand-gold uppercase tracking-[0.2em] text-xs font-semibold mb-1">Estimated Total</Text>
-                  <Heading variant="none" as="div" className="text-4xl font-serif text-brand-gold-light">
+                  <Heading variant="none" as="div" className="text-3xl sm:text-4xl font-serif text-brand-gold-light">
                     ₹{estimate.total.toLocaleString('en-IN')}
                   </Heading>
                 </div>

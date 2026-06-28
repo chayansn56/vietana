@@ -94,14 +94,76 @@ Please load this itinerary and let me customize it!`;
       <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
+        {/* Most Selling Hot Highlight Block at the very top */}
+        {(() => {
+          const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-phu-quoc-explorer-5d4n");
+          if (!hotPkg) return null;
+          return (
+            <div className="mb-20 p-8 md:p-12 bg-gradient-to-br from-[#1E4D45] to-[#12302B] text-white rounded-xl shadow-lg border border-[#D4AF37]/30 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#D4AF37]/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="flex flex-col lg:flex-row gap-8 items-center relative z-10">
+                <div className="w-full lg:w-1/2 aspect-[16/10] rounded-lg overflow-hidden border border-[#D4AF37]/20 shadow-md">
+                  <img 
+                    src={hotPkg.img} 
+                    alt={hotPkg.title} 
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1200ms]"
+                  />
+                </div>
+                <div className="w-full lg:w-1/2 flex flex-col justify-between h-full text-left">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="bg-[#E8C84A] text-[#12302B] text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full shadow-sm">
+                        🔥 MOST SELLING TOUR
+                      </span>
+                      <span className="border border-white/20 text-white/80 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">
+                        {hotPkg.duration}
+                      </span>
+                    </div>
+                    <Heading as="h3" variant="none" className="text-3xl md:text-4xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-4">
+                      {hotPkg.title}
+                    </Heading>
+                    <p className="text-white/80 text-sm font-light leading-relaxed mb-6">
+                      An incredible 5-day journey from the historic streets of Ho Chi Minh City to the tropical sands of Phu Quoc Island. Includes Cu Chi Tunnels tour, Mekong Delta cruise, 3 Island speedboating with snorkeling, and admission to VinWonders theme park.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
+                      <div>
+                        <span className="text-[9px] uppercase tracking-widest text-[#E8C84A] font-bold block mb-1">STAYS INCLUDED</span>
+                        <span className="text-xs text-white/90 font-medium">🏨 Duc Vuong & Bay Resort (3★)</span>
+                      </div>
+                      <div>
+                        <span className="text-[9px] uppercase tracking-widest text-[#E8C84A] font-bold block mb-1">SPECIAL INDIAN PRICE</span>
+                        <span className="text-lg font-mono font-extrabold text-[#E8C84A]">{hotPkg.price} PP</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    <button 
+                      onClick={() => handleOpenPlanner(hotPkg)}
+                      className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-xs font-bold tracking-widest uppercase rounded shadow transition-colors duration-300 cursor-pointer"
+                    >
+                      Customize Tour
+                    </button>
+                    <button 
+                      onClick={() => setSelectedPackage(hotPkg)}
+                      className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-xs font-bold tracking-widest uppercase rounded transition-colors duration-300 cursor-pointer"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
         {/* Main Header */}
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
-              CURATED JOURNEYS
+              MORE EXPERIENCES
             </span>
             <Heading as="h2" size="4xl" font="serif" className="mb-4 tracking-tight text-[#1E4D45]">
-              Explore Experiences
+              Explore Packages
             </Heading>
             <div className="w-16 h-px bg-[#D4AF37] mb-6"></div>
             <Text variant="none" className="text-[#555555] font-light max-w-2xl text-base md:text-lg">
@@ -222,18 +284,31 @@ Please load this itinerary and let me customize it!`;
                       <span className="bg-[#1E4D45] text-white font-semibold text-[8px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
                         {pkg.badge}
                       </span>
-                      <span className="bg-white text-[#1E4D45] border border-[#E8E4D9] px-2.5 py-1 rounded text-[8px] tracking-widest uppercase font-mono font-bold">
-                        {pkg.duration}
-                      </span>
+                      {pkg.price ? (
+                        <span className="bg-[#E8C84A] text-[#12302B] px-2.5 py-1 rounded text-[9px] tracking-wider uppercase font-mono font-bold shadow-sm border border-white/20">
+                          {pkg.price} PP
+                        </span>
+                      ) : (
+                        <span className="bg-white text-[#1E4D45] border border-[#E8E4D9] px-2.5 py-1 rounded text-[8px] tracking-widest uppercase font-mono font-bold">
+                          {pkg.duration}
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   {/* Editorial Body / Content */}
                   <div className="flex-1 px-6 py-5 flex flex-col justify-between relative bg-white">
                     <div className="space-y-2">
-                      <h4 className="text-lg font-bold font-serif text-[#1E4D45] tracking-tight leading-tight">
-                        {pkg.title}
-                      </h4>
+                      <div className="flex justify-between items-start gap-2">
+                        <h4 className="text-lg font-bold font-serif text-[#1E4D45] tracking-tight leading-tight flex-1">
+                          {pkg.title}
+                        </h4>
+                        {pkg.price && (
+                          <span className="text-[10px] text-[#B8860B] font-bold border border-[#B8860B]/20 bg-[#FAF7F0] px-2 py-0.5 rounded font-mono shrink-0">
+                            {pkg.duration}
+                          </span>
+                        )}
+                      </div>
                       
                       <div className="editorial-meta-tag pb-1 border-b border-[#E8E4D9]">
                         ROUTE // {pkg.destinations.join(' ➔ ')}
@@ -307,6 +382,19 @@ Please load this itinerary and let me customize it!`;
             Open Trip Builder <span className="ml-2">→</span>
           </button>
         </div>
+
+        {/* MORE BUDGET TOURS COMING SOON BANNER */}
+        <div className="mt-8 p-6 text-center bg-[#1E4D45]/5 border border-[#1E4D45]/15 rounded-xl">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F0] border border-[#E8E4D9] text-[9px] font-mono tracking-widest text-[#B8860B] uppercase font-bold mb-3 shadow-xs">
+            📢 UPCOMING OFFERINGS
+          </span>
+          <Heading as="h4" variant="none" className="text-xl font-serif text-[#1E4D45] mb-2 font-semibold">
+            More Budget Tours Coming Soon!
+          </Heading>
+          <Text variant="none" className="text-[#555555] text-xs font-light max-w-md mx-auto">
+            Our team is packaging more pocket-friendly packages featuring certified budget stays, shared group excursions, and seasonal deals. Stay tuned!
+          </Text>
+        </div>
       </Container>
 
       {/* Package Detail Modal (Accordion Itinerary overview) */}
@@ -326,13 +414,21 @@ Please load this itinerary and let me customize it!`;
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <Text variant="none" className="text-[0.65rem] uppercase tracking-widest text-[#D4AF37] font-mono font-bold mb-1.5 block">
-                  {selectedPackage.duration} · {selectedPackage.badge}
-                </Text>
-                <Heading as="h3" variant="none" className="text-2xl font-serif text-white tracking-wide">
-                  {selectedPackage.title}
-                </Heading>
+              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end gap-4">
+                <div>
+                  <Text variant="none" className="text-[0.65rem] uppercase tracking-widest text-[#D4AF37] font-mono font-bold mb-1.5 block">
+                    {selectedPackage.duration} · {selectedPackage.badge}
+                  </Text>
+                  <Heading as="h3" variant="none" className="text-2xl font-serif text-white tracking-wide">
+                    {selectedPackage.title}
+                  </Heading>
+                </div>
+                {selectedPackage.price && (
+                  <div className="bg-[#E8C84A] text-[#12302B] px-4 py-2 rounded shadow-md border border-white/20 text-center shrink-0">
+                    <span className="text-[9px] uppercase tracking-widest font-bold block opacity-85 leading-none mb-1">Indian Price</span>
+                    <span className="text-lg font-mono font-extrabold leading-none">{selectedPackage.price} PP</span>
+                  </div>
+                )}
               </div>
             </div>
 

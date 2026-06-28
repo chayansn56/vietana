@@ -68,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
   }, []);
 
   return (
-    <Section id="hero" spacing="none" className="h-screen min-h-[700px] flex w-full items-center justify-start">
+    <Section id="hero" spacing="none" className="h-[100svh] min-h-[650px] flex w-full items-center justify-start">
       {/* TRIPTYCH BACKGROUND */}
       <div className="absolute inset-0 z-0 flex w-full h-full overflow-hidden bg-black">
         {TRIPTYCH_PANELS.map((panel, idx) => (
@@ -114,13 +114,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
 
           <Heading 
             as="h1" 
-            size="4xl"
+            size="none"
             variant="none" 
             font="serif"
-            className="mb-4 animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] tracking-tight leading-[1.1] text-white"
+            className="mb-4 text-4xl sm:text-5xl lg:text-7xl animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] tracking-tight leading-[1.1] text-white"
           >
             {t.hero.welcome}
-            <span className="block mt-3 text-brand-gold text-3xl sm:text-5xl tracking-tight font-light drop-shadow-[0_2px_20px_rgba(212,175,55,0.4)]">{t.hero.tagline}</span>
+            <span className="block mt-3 text-brand-gold text-2xl sm:text-4xl lg:text-5xl tracking-tight font-light drop-shadow-[0_2px_20px_rgba(212,175,55,0.4)]">{t.hero.tagline}</span>
           </Heading>
 
           <Text 
