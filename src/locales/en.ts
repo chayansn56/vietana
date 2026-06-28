@@ -8,7 +8,8 @@ export const en: TranslationSchema = {
     experiences: 'Experiences',
     journal: 'Journal',
     team: 'The Team',
-    cta: 'Design My Escape'
+    cta: 'Design My Escape',
+    flights: 'Flights'
   },
   hero: {
     welcome: 'VIETANA',

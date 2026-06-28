@@ -8,7 +8,8 @@ export const vi: TranslationSchema = {
     experiences: 'Trải Nghiệm',
     journal: 'Nhật Ký',
     team: 'Đội Ngũ',
-    cta: 'Lên Kế Hoạch'
+    cta: 'Lên Kế Hoạch',
+    flights: 'Chuyến bay'
   },
   hero: {
     welcome: 'VIETANA',

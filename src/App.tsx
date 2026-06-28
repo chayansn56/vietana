@@ -38,6 +38,7 @@ const MagicMode = lazy(() => import('./components/MagicMode'));
 const CustomTripBuilder = lazy(() => import('./components/CustomTripBuilder'));
 const ExperiencesDrawer = lazy(() => import('./components/ExperiencesDrawer'));
 const MapCurtain = lazy(() => import('./components/MapCurtain'));
+const FlightSearchModal = lazy(() => import('./components/FlightSearchModal'));
 
 import SEO from './components/seo/SEO';
 
@@ -75,6 +76,7 @@ export default function App() {
   const [isExperiencesOpen, setIsExperiencesOpen] = useState(false);
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isFlightSearchOpen, setIsFlightSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navClass = useNavStyle(scrollY, isScrolled);
 
@@ -89,10 +91,10 @@ export default function App() {
       <SEO />
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />
-      {(!isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen) && (
+      {(!isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen && !isFlightSearchOpen) && (
         <FloatingWhatsApp />
       )}
-      {(!isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen) && (
+      {(!isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen && !isFlightSearchOpen) && (
         <FloatingPlanner onClick={() => openPlanner()} />
       )}
 
@@ -106,6 +108,7 @@ export default function App() {
         onOpenExperiences={() => setIsExperiencesOpen(true)}
         onOpenMapCurtain={() => setIsMapOpen(true)}
         onOpenAbout={() => setIsAboutOpen(true)}
+        onOpenFlightSearch={() => setIsFlightSearchOpen(true)}
       />
 
       <main>
@@ -206,6 +209,10 @@ export default function App() {
           isOpen={isAboutOpen}
           onClose={() => setIsAboutOpen(false)}
           onOpenBuilder={() => setIsBuilderOpen(true)}
+        />
+        <FlightSearchModal 
+          isOpen={isFlightSearchOpen}
+          onClose={() => setIsFlightSearchOpen(false)}
         />
       </Suspense>
 

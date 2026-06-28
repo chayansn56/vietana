@@ -13,6 +13,7 @@ export interface TranslationSchema {
     cta: string;
     essentials?: string;
     food?: string;
+    flights?: string;
   };
   hero: {
     welcome: string;

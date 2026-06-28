@@ -18,9 +18,10 @@ interface NavbarProps {
   onOpenExperiences: () => void;
   onOpenMapCurtain: () => void;
   onOpenAbout: () => void;
+  onOpenFlightSearch: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain, onOpenAbout }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenContact, onOpenExperiences, onOpenMapCurtain, onOpenAbout, onOpenFlightSearch }) => {
   const scrolled = false;
   const { language, setLanguage, t } = useTranslation();
   const [langOpen, setLangOpen] = useState(false);
@@ -162,6 +163,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
                     } else if (link.key === 'about') {
                       e.preventDefault();
                       onOpenAbout();
+                    } else if (link.key === 'flights') {
+                      e.preventDefault();
+                      onOpenFlightSearch();
                     }
                   }}
                   className="relative no-underline group"
@@ -310,6 +314,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
                     e.preventDefault();
                     setMobileMenuOpen(false);
                     onOpenAbout();
+                  } else if (link.key === 'flights') {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    onOpenFlightSearch();
                   } else {
                     setMobileMenuOpen(false);
                   }

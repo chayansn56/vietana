@@ -9,6 +9,7 @@ export const NAV_LINKS = [
   { key: 'essentials', href: '#services' },
   { key: 'food', href: '#food' },
   { key: 'experiences', href: '#experiences', isExperiences: true },
+  { key: 'flights', href: '#flights' },
   { key: 'journal', href: '#journal' },
   { key: 'team', href: '#team' },
 ];
