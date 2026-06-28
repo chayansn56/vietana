@@ -167,11 +167,11 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                 <Text variant="none" className="text-white/50 text-caption uppercase tracking-widest mb-4 font-semibold">Flight Type</Text>
                 <div className="flex bg-white/5 border border-white/10 rounded-xl p-1.5 gap-1">
                   <button
-                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all ${flightType === 'oneway' ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white/80'}`}
+                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all cursor-pointer ${flightType === 'oneway' ? 'bg-black/5 dark:bg-white/10 text-text-dark dark:text-white' : 'text-text-muted dark:text-white/40 hover:text-text-dark dark:hover:text-white/80'}`}
                     onClick={() => setFlightType('oneway')}
                   >One Way</button>
                   <button
-                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all ${flightType === 'round' ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white/80'}`}
+                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all cursor-pointer ${flightType === 'round' ? 'bg-black/5 dark:bg-white/10 text-text-dark dark:text-white' : 'text-text-muted dark:text-white/40 hover:text-text-dark dark:hover:text-white/80'}`}
                     onClick={() => setFlightType('round')}
                   >Round Trip</button>
                 </div>
@@ -180,11 +180,11 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                 <Text variant="none" className="text-white/50 text-caption uppercase tracking-widest mb-4 font-semibold">Vietnam E-Visa</Text>
                 <div className="flex bg-white/5 border border-white/10 rounded-xl p-1.5 gap-1">
                   <button
-                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all ${visaType === 'single' ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white/80'}`}
+                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all cursor-pointer ${visaType === 'single' ? 'bg-black/5 dark:bg-white/10 text-text-dark dark:text-white' : 'text-text-muted dark:text-white/40 hover:text-text-dark dark:hover:text-white/80'}`}
                     onClick={() => setVisaType('single')}
                   >Single</button>
                   <button
-                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all ${visaType === 'multiple' ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white/80'}`}
+                    className={`flex-1 py-2.5 rounded-lg text-xs transition-all cursor-pointer ${visaType === 'multiple' ? 'bg-black/5 dark:bg-white/10 text-text-dark dark:text-white' : 'text-text-muted dark:text-white/40 hover:text-text-dark dark:hover:text-white/80'}`}
                     onClick={() => setVisaType('multiple')}
                   >Multiple</button>
                 </div>
@@ -202,7 +202,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                   id="trip-duration"
                   type="range" min="3" max="30"
                   value={days} onChange={(e) => setDays(parseInt(e.target.value))}
-                  className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(201,168,76,0.6)] transition-all"
+                  className="w-full h-1.5 bg-black/10 dark:bg-white/10 rounded-full appearance-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-brand-gold [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(201,168,76,0.6)] transition-all cursor-pointer"
                 />
               </div>
 
@@ -242,7 +242,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                     value={agencyName}
                     onChange={(e) => setAgencyName(e.target.value)}
                     placeholder="e.g. Royal India Travels"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm outline-none focus:border-brand-gold/40 focus:bg-white/10"
+                    className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2.5 text-text-dark dark:text-white text-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus:border-brand-gold/40 focus:bg-black/10 dark:focus:bg-white/10"
                   />
                 </div>
 
@@ -476,7 +476,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Special requests? (e.g., Honeymoon, Halal food)"
-            className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-6 text-white text-sm outline-none focus:border-brand-gold/40 focus:bg-white/10 transition-all placeholder:text-white/30"
+            className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl py-4 pl-12 pr-6 text-text-dark dark:text-white text-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus:border-brand-gold/40 focus:bg-black/10 dark:focus:bg-white/10 transition-all placeholder:text-black/30 dark:placeholder:text-white/30"
           />
         </div>
 

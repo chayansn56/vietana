@@ -240,10 +240,10 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                     </Text>
 
                     <div className="flex flex-col gap-3">
-                      <a href={whatsappIndiaLink} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 hover:bg-white/10 hover:border-brand-gold/50 text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2">
+                      <a href={whatsappIndiaLink} target="_blank" rel="noopener noreferrer" className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 hover:border-brand-gold/50 text-text-dark dark:text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2 cursor-pointer">
                         <Icon name="MessageCircle" size={16} /> WhatsApp India
                       </a>
-                      <a href={whatsappVietnamLink} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 hover:bg-white/10 hover:border-brand-gold/50 text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2">
+                      <a href={whatsappVietnamLink} target="_blank" rel="noopener noreferrer" className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 hover:border-brand-gold/50 text-text-dark dark:text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2 cursor-pointer">
                         <Icon name="MessageCircle" size={16} /> WhatsApp Vietnam
                       </a>
                       <a href={emailLink} className="text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors mt-2 flex justify-center items-center gap-2">
@@ -404,7 +404,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           )}
 
           <div className={`relative bg-white/5 border rounded-2xl p-2 transition-all duration-300 shadow-inner ${
-            isListening ? 'border-brand-gold/50 bg-brand-gold/5' : 'border-white/10 focus-within:border-brand-gold/40 focus-within:bg-white/10'
+            isListening ? 'border-brand-gold/50 bg-brand-gold/5' : 'border-black/10 dark:border-white/10 focus-within:border-brand-gold/40 focus-within:bg-black/5 dark:focus-within:bg-white/10'
           }`}>
             <div className="flex items-center gap-3">
               <button
@@ -419,7 +419,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               </button>
               <input
                 type="text"
-                className="flex-1 bg-transparent border-none py-3 text-white text-lg font-light outline-none placeholder:text-white/30"
+                className="flex-1 bg-transparent border-none py-3 text-text-dark dark:text-white text-lg font-light outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-md placeholder:text-black/30 dark:placeholder:text-white/30"
                 placeholder={isListening ? "Listening..." : (t.planner.where || "Ask anything about Vietnam...")}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
@@ -453,14 +453,14 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               <div className="flex gap-2">
                 <button 
                   onClick={() => setActiveTab('itinerary')}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors ${activeTab === 'itinerary' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer ${activeTab === 'itinerary' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/20'}`}
                 >
                   Itinerary
                 </button>
                 {featureFlags.enableAffiliateLinks && (
                   <button 
                     onClick={() => setActiveTab('deals')}
-                    className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors ${activeTab === 'deals' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer ${activeTab === 'deals' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/20'}`}
                   >
                     Smart Deals
                   </button>
@@ -483,7 +483,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                       {/* Day Card */}
                       <div 
                         className={`border rounded-2xl p-5 cursor-pointer transition-all duration-300 ${
-                          isExpanded ? 'bg-brand-green-dark/20 border-brand-gold/30 shadow-soft' : 'bg-white/5 border-white/10 hover:bg-white/10'
+                          isExpanded ? 'bg-brand-green-light/10 dark:bg-brand-green-dark/20 border-brand-gold/30 shadow-soft' : 'bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10'
                         }`}
                         onClick={() => setExpandedDay(isExpanded ? null : day.day)}
                       >

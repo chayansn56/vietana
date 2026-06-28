@@ -135,7 +135,7 @@ Please load this itinerary and let me customize it!`;
                           </button>
                           <button
                             onClick={() => setSelectedPackage(pkg)}
-                            className="px-4 py-2 border border-white/20 hover:bg-white/10 text-white text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
+                            className="px-4 py-2 border border-black/10 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 text-text-dark dark:text-white text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
                           >
                             Details
                           </button>

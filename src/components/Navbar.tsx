@@ -198,9 +198,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
               ${langOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
             >
               {[
-                { code: 'EN', flag: '🇺🇸', name: 'English' },
-                { code: 'HI', flag: '🇮🇳', name: 'Hindi' },
-                { code: 'VI', flag: '🇻🇳', name: 'Vietnamese' }
+                { code: 'EN', name: 'English' },
+                { code: 'HI', name: 'Hindi' },
+                { code: 'VI', name: 'Vietnamese' }
               ].map((lang) => (
                 <button
                   key={lang.code}
@@ -208,11 +208,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
                     ${language === lang.code ? 'bg-brand-gold/8' : 'hover:bg-brand-gold/12'}`}
                   onClick={() => handleLangChange(lang.code as any)}
                 >
-                  <span className="text-base">{lang.flag}</span>
                   <Text size="sm" variant="none" className={`flex-1 ${language === lang.code ? 'text-brand-gold font-medium' : 'text-white/78'}`}>
                     {lang.name}
                   </Text>
-                  <Text size="xs" variant="none" className="opacity-50 text-white/78">
+                  <Text size="xs" variant="none" className="opacity-50 text-white/78 font-bold">
                     {lang.code}
                   </Text>
                   {language === lang.code && <Icon name="Check" size={16} className="ml-auto text-brand-gold" />}
