@@ -4,6 +4,7 @@ import { Heading, Text } from './ui/Typography';
 import { useTranslation } from '../contexts/LanguageContext';
 import { searchFlights, getAirportSuggestions, FlightRoute, AirportOption, SearchParams } from '../services/kiwiApi';
 import Icon from './ui/Icon';
+import { flightApiConfig } from '../config/travelpayouts';
 
 interface FlightSearchModalProps {
   isOpen: boolean;
@@ -54,17 +55,34 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
   const [filterDirectOnly, setFilterDirectOnly] = useState(false);
 
   const passengerRef = useRef<HTMLDivElement>(null);
+  const originRef = useRef<HTMLDivElement>(null);
+  const destRef = useRef<HTMLDivElement>(null);
 
-  // Close passenger dropdown on outside click
+  // Close passenger dropdown and suggestions on outside click
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (passengerRef.current && !passengerRef.current.contains(e.target as Node)) {
         setShowPassengerDropdown(false);
       }
+      if (originRef.current && !originRef.current.contains(e.target as Node)) {
+        setOriginSuggestions([]);
+      }
+      if (destRef.current && !destRef.current.contains(e.target as Node)) {
+        setDestSuggestions([]);
+      }
     };
     document.addEventListener('mousedown', handleOutsideClick);
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
+
+  const handleSwap = () => {
+    const tempInput = originInput;
+    const tempCode = originCode;
+    setOriginInput(destInput);
+    setOriginCode(destCode);
+    setDestInput(tempInput);
+    setDestCode(tempCode);
+  };
 
   // Fetch suggestions for Origin
   const handleOriginChange = async (val: string) => {
@@ -170,22 +188,32 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
       className="p-8 bg-[#111111] border border-white/10"
     >
       <div className="flex flex-col gap-6 text-left">
-        <div>
-          <Heading
-            as="h2"
-            size="2xl"
-            font="serif"
-            className="text-brand-gold tracking-wide mb-2"
-          >
-            {language === 'HI' ? 'प्रीमियम उड़ान खोज' : language === 'VI' ? 'Tìm chuyến bay cao cấp' : 'Premium Flight Search'}
-          </Heading>
-          <Text size="sm" className="text-white/60">
-            {language === 'HI' 
-              ? 'वियतनाम के लिए सर्वोत्तम उड़ान दरें खोजें और सीधे एयरलाइन के साथ बुक करें।' 
-              : language === 'VI' 
-              ? 'Tìm giá vé máy bay tốt nhất đến Việt Nam và đặt vé trực tiếp với hãng hàng không.' 
-              : 'Find the best flight rates to Vietnam and book directly with the airline.'}
-          </Text>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <Heading
+              as="h2"
+              size="2xl"
+              font="serif"
+              className="text-brand-gold tracking-wide mb-2 flex items-center gap-3"
+            >
+              {language === 'HI' ? 'प्रीमियम उड़ान खोज' : language === 'VI' ? 'Tìm chuyến bay cao cấp' : 'Premium Flight Search'}
+              <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border ${
+                flightApiConfig.kiwiApiKey 
+                  ? 'bg-green-500/10 text-green-400 border-green-500/30' 
+                  : 'bg-orange-500/10 text-orange-400 border-orange-500/30'
+              }`}>
+                <span className={`w-1.5 h-1.5 rounded-full ${flightApiConfig.kiwiApiKey ? 'bg-green-400 animate-pulse' : 'bg-orange-400'}`} />
+                {flightApiConfig.kiwiApiKey ? 'Live Feed' : 'Demo Mode'}
+              </span>
+            </Heading>
+            <Text size="sm" className="text-white/60">
+              {language === 'HI' 
+                ? 'वियतनाम के लिए सर्वोत्तम उड़ान दरें खोजें और सीधे एयरलाइन के साथ बुक करें।' 
+                : language === 'VI' 
+                ? 'Tìm giá vé máy bay tốt nhất đến Việt Nam và đặt vé trực tiếp với hãng hàng không.' 
+                : 'Find the best flight rates to Vietnam and book directly with the airline.'}
+            </Text>
+          </div>
         </div>
 
         {/* Global Search Config Panel */}
@@ -227,10 +255,20 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           </div>
 
           {/* Form Inputs Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
             
+            {/* Swap Button (Absolute Positioned between columns on desktop) */}
+            <button
+              type="button"
+              onClick={handleSwap}
+              className="absolute left-[23.5%] top-[55%] -translate-y-1/2 z-50 w-8 h-8 rounded-full bg-brand-gold text-black flex items-center justify-center border border-[#111111] hover:scale-110 transition-transform cursor-pointer hidden md:flex shadow-lg"
+              title="Swap Cities"
+            >
+              <Icon name="ArrowLeftRight" size={14} />
+            </button>
+
             {/* Origin Autocomplete Input */}
-            <div className="flex flex-col gap-2 relative">
+            <div className="flex flex-col gap-2 relative" ref={originRef}>
               <label className="text-xs text-white/50 font-bold uppercase tracking-wider">From</label>
               <div className="relative">
                 <input
@@ -263,7 +301,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
             </div>
 
             {/* Destination Autocomplete Input */}
-            <div className="flex flex-col gap-2 relative">
+            <div className="flex flex-col gap-2 relative" ref={destRef}>
               <label className="text-xs text-white/50 font-bold uppercase tracking-wider">To</label>
               <div className="relative">
                 <input
