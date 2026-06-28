@@ -68,7 +68,7 @@ const Journal: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[#0A1C18]/65 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F0] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F0] dark:from-[#111615] via-transparent to-transparent" />
         
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 pt-10">
           <motion.div 
@@ -88,14 +88,14 @@ const Journal: React.FC = () => {
             {/* Apple Style Search Bar */}
             <div className="max-w-md mx-auto relative group">
               <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <Icon name="Search" size={15} className="text-[#1E4D45]" />
+                <Icon name="Search" size={15} className="text-[#1E4D45] dark:text-[#AAB7A1]" />
               </div>
               <input 
                 type="text" 
                 placeholder="Search journal..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#FAF7F0] border border-[#E8E4D9] text-[#1E4D45] placeholder:text-[#1E4D45]/50 rounded-md py-3.5 pl-11 pr-6 outline-none focus:ring-1 focus:ring-[#D4AF37] transition-all shadow-sm text-xs font-mono"
+                className="w-full bg-[#FAF7F0] dark:bg-[#1A2120] border border-[#E8E4D9] dark:border-white/10 text-[#1E4D45] dark:text-white placeholder:text-[#1E4D45]/50 dark:placeholder:text-[#AAB7A1]/50 rounded-md py-3.5 pl-11 pr-6 outline-none focus:ring-1 focus:ring-[#D4AF37] transition-all shadow-sm text-xs font-mono"
               />
             </div>
           </motion.div>
@@ -144,24 +144,24 @@ const Journal: React.FC = () => {
                 }
               }}
             >
-              <div className="bg-[#FFFFFF] border border-[#E8E4D9] rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="bg-white dark:bg-[#1A2120] border border-[#E8E4D9] dark:border-white/10 rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="h-[140px] overflow-hidden relative">
                   <img 
                     src={collection.image} 
                     alt={`Curated collection of travel stories for ${collection.title}`} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute top-3 left-3 bg-[#FAF7F0] border border-[#D4AF37]/30 rounded px-2 py-0.5 shadow-sm">
-                    <Text size="xs" variant="none" className="uppercase tracking-widest text-[#B8860B] font-mono text-[9px] font-bold">
+                  <div className="absolute top-3 left-3 bg-[#FAF7F0] dark:bg-[#111615] border border-[#D4AF37]/30 dark:border-white/10 rounded px-2 py-0.5 shadow-sm">
+                    <Text size="xs" variant="none" className="uppercase tracking-widest text-[#B8860B] dark:text-brand-gold font-mono text-[9px] font-bold">
                       {collection.articles.length} Stories
                     </Text>
                   </div>
                 </div>
-                <div className="p-4 flex justify-between items-center bg-[#FAF7F0]/30">
-                  <Heading as="h3" size="lg" font="serif" className="text-[#1E4D45] truncate text-base">
+                <div className="p-4 flex justify-between items-center bg-[#FAF7F0]/30 dark:bg-black/20">
+                  <Heading as="h3" size="lg" font="serif" className="text-[#1E4D45] dark:text-white truncate text-base">
                     {highlightText(collection.title, searchQuery)}
                   </Heading>
-                  <div className="w-7 h-7 rounded-full bg-[#FAF7F0] border border-[#E8E4D9] flex items-center justify-center text-[#1E4D45] group-hover:bg-[#1E4D45] group-hover:text-white transition-colors">
+                  <div className="w-7 h-7 rounded-full bg-[#FAF7F0] dark:bg-[#111615] border border-[#E8E4D9] dark:border-white/10 flex items-center justify-center text-[#1E4D45] dark:text-white group-hover:bg-[#1E4D45] group-hover:text-white transition-colors">
                     <span className="text-xs">→</span>
                   </div>
                 </div>

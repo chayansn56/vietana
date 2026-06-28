@@ -60,7 +60,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[1900] bg-[#1D1D1F]/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[1900] bg-black/40 backdrop-blur-sm"
           />
 
           {/* Side Sheet */}
@@ -76,7 +76,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
               onClick={onClose}
               className="absolute top-6 right-6 z-10 w-12 h-12 bg-white/50 hover:bg-white backdrop-blur-md rounded-full flex items-center justify-center transition-colors shadow-sm"
             >
-              <Icon name="X" size={24} className="text-[#1D1D1F]" />
+              <Icon name="X" size={24} className="text-text-charcoal" />
             </button>
 
             {/* Hero Image */}
@@ -86,7 +86,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                 alt={`Featured image for story: ${article.title}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1D1D1F]/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               
               <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white w-full">
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
@@ -119,12 +119,12 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             {/* Content Area */}
             <div className="p-8 md:p-12 max-w-3xl">
               {article.isComingSoon ? (
-                <div className="bg-white rounded-[24px] p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-[#1D1D1F]/5">
+                <div className="bg-white dark:bg-[#1A2120] rounded-[24px] p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-text-charcoal/5">
                   <span className="text-4xl block mb-4">✍️</span>
-                  <Heading as="h3" size="2xl" font="serif" className="mb-4 text-[#1D1D1F]">
+                  <Heading as="h3" size="2xl" font="serif" className="mb-4 text-text-charcoal">
                     Currently Crafting
                   </Heading>
-                  <Text className="text-[#1D1D1F]/60">
+                  <Text className="text-text-charcoal/60">
                     Our team is currently on the ground gathering the best insights, photos, and recommendations for this guide. It will be available soon.
                   </Text>
                 </div>
@@ -133,17 +133,17 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                   {article.sections.map((section, idx) => (
                     <div key={idx} className="space-y-4">
                       {section.heading && (
-                        <Heading as="h2" size="2xl" font="serif" className="text-[#1D1D1F] border-b border-[#1D1D1F]/10 pb-4 mb-6">
+                        <Heading as="h2" size="2xl" font="serif" className="text-text-charcoal border-b border-text-charcoal/10 pb-4 mb-6">
                           {section.heading}
                         </Heading>
                       )}
                       {section.paragraphs?.map((p, pIdx) => (
-                        <Text key={pIdx} size="lg" className="text-[#1D1D1F]/80 leading-relaxed">
+                        <Text key={pIdx} size="lg" className="text-text-charcoal/80 leading-relaxed">
                           {p}
                         </Text>
                       ))}
                       {section.list && section.list.length > 0 && (
-                        <ul className="list-disc pl-6 space-y-3 mt-4 text-lg text-[#1D1D1F]/80 leading-relaxed marker:text-brand-gold">
+                        <ul className="list-disc pl-6 space-y-3 mt-4 text-lg text-text-charcoal/80 leading-relaxed marker:text-brand-gold">
                           {section.list.map((item, lIdx) => (
                             <li key={lIdx}>{item}</li>
                           ))}
@@ -154,15 +154,15 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                   
                   {/* Footer Logo */}
                   <div className="pt-16 pb-8 flex flex-col items-center justify-center opacity-40">
-                    <div className="w-12 h-12 mb-4 text-[#1D1D1F]">
+                    <div className="w-12 h-12 mb-4 text-text-charcoal">
                       <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2L2 22h20L12 2zm0 3.8l7.2 14.4H4.8L12 5.8z"/>
                       </svg>
                     </div>
-                    <Heading as="h4" size="lg" font="serif" className="text-[#1D1D1F] tracking-[0.3em] uppercase mb-1">
+                    <Heading as="h4" size="lg" font="serif" className="text-text-charcoal tracking-[0.3em] uppercase mb-1">
                       VIETANA
                     </Heading>
-                    <Text size="xs" className="tracking-[0.3em] uppercase text-[#1D1D1F]/70 font-mono">
+                    <Text size="xs" className="tracking-[0.3em] uppercase text-text-charcoal/70 font-mono">
                       JOURNAL
                     </Text>
                   </div>
@@ -170,15 +170,15 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
               ) : (
                 <div className="space-y-8">
                   {/* External Source Card */}
-                  <div className="bg-white rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-[#1D1D1F]/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                  <div className="bg-white dark:bg-[#1A2120] rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-text-charcoal/5 flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div>
-                      <Text size="sm" weight="semibold" className="uppercase tracking-widest text-[#1D1D1F]/50 mb-2">
+                      <Text size="sm" weight="semibold" className="uppercase tracking-widest text-text-charcoal/50 mb-2">
                         Curated Guide
                       </Text>
-                      <Heading as="h4" size="xl" font="serif" className="text-[#1D1D1F] mb-2">
+                      <Heading as="h4" size="xl" font="serif" className="text-text-charcoal mb-2">
                         Read on {article.sourceName || 'External Source'}
                       </Heading>
-                      <Text className="text-[#1D1D1F]/60">
+                      <Text className="text-text-charcoal/60">
                         We've selected this as one of the best resources available on the web for this topic.
                       </Text>
                     </div>
@@ -188,15 +188,15 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                         href={article.sourceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="shrink-0 bg-[#1D1D1F] text-white px-8 py-4 rounded-full font-medium hover:bg-[#1D1D1F]/90 transition-colors flex items-center gap-2"
+                        className="shrink-0 bg-text-charcoal text-surface-ivory dark:text-text-charcoal px-8 py-4 rounded-full font-medium hover:opacity-90 transition-colors flex items-center gap-2"
                       >
                         Read Full Guide <span className="ml-1">→</span>
                       </a>
                     )}
                   </div>
 
-                  <div className="pt-8 border-t border-[#1D1D1F]/10">
-                    <Text className="text-[#1D1D1F]/40 italic text-center">
+                  <div className="pt-8 border-t border-text-charcoal/10">
+                    <Text className="text-text-charcoal/40 italic text-center">
                       VIETANA™ is building the ultimate digital travel magazine. Right now, we curate the best external resources. Soon, this will be replaced with our own exclusive, on-the-ground guides.
                     </Text>
                   </div>
