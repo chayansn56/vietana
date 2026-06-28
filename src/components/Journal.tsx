@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Heading, Text } from './ui/Typography';
 import Container from './ui/layout/Container';
+import Button from './ui/Button';
+import Input from './ui/Input';
 import Icon from './ui/Icon';
 import { magazineData, Article } from '../data/notesMagazine';
 import NotesSideSheet from './NotesSideSheet';
@@ -12,7 +14,7 @@ const highlightText = (text: string, query: string) => {
   const parts = text.split(new RegExp(`(${query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')})`, 'gi'));
   return (
     <>
-      {parts.map((part, index) => 
+      {parts.map((part, index) =>
         part.toLowerCase() === query.toLowerCase() ? (
           <mark key={index} className="bg-amber-200 text-black px-0.5 rounded">
             {part}
@@ -33,13 +35,13 @@ const Journal: React.FC = () => {
   const q = searchQuery.toLowerCase().trim();
   const filteredStories = q
     ? magazineData.featured.filter(s =>
-        s.title.toLowerCase().includes(q) || s.intro?.toLowerCase().includes(q)
-      )
+      s.title.toLowerCase().includes(q) || s.intro?.toLowerCase().includes(q)
+    )
     : magazineData.featured;
   const filteredCollections = q
     ? magazineData.collections.filter(c =>
-        c.title.toLowerCase().includes(q)
-      )
+      c.title.toLowerCase().includes(q)
+    )
     : magazineData.collections;
 
   const selectedCollection = magazineData.collections.find(c => c.id === selectedCollectionId) || magazineData.collections[0];
@@ -57,24 +59,24 @@ const Journal: React.FC = () => {
   return (
     <div id="journal" className="bg-[#FAF7F0] bg-noise min-h-screen text-text-dark pb-24">
       {/* Side Sheet */}
-      <NotesSideSheet 
-        isOpen={activeArticle !== null} 
-        onClose={() => setActiveArticle(null)} 
-        article={activeArticle} 
+      <NotesSideSheet
+        isOpen={activeArticle !== null}
+        onClose={() => setActiveArticle(null)}
+        article={activeArticle}
       />
 
       {/* PANORAMIC HEADER */}
       <div className="relative h-[250px] md:h-[300px] w-full overflow-hidden border-b border-[#E8E4D9]">
-        <img 
-          src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=2000&q=80" 
-          alt="Hoi An Lanterns - Vietnam Travel Guide" 
+        <img
+          src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=2000&q=80"
+          alt="Hoi An Lanterns - Vietnam Travel Guide"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-brand-green-extra-dark/65 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F0] dark:from-surface-dark via-transparent to-transparent" />
-        
+
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 pt-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -93,9 +95,9 @@ const Journal: React.FC = () => {
               <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                 <Icon name="Search" size={15} className="text-brand-green dark:text-[#AAB7A1]" />
               </div>
-              <input 
-                type="text" 
-                placeholder="Search journal..." 
+              <input
+                type="text"
+                placeholder="Search journal..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-[#FAF7F0] dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 text-brand-green dark:text-white placeholder:text-brand-green/50 dark:placeholder:text-[#AAB7A1]/50 rounded-md py-3.5 pl-11 pr-6 outline-none focus:ring-1 focus:ring-brand-gold transition-all shadow-sm text-xs font-mono"
@@ -108,7 +110,7 @@ const Journal: React.FC = () => {
       {/* CURATED COLLECTIONS */}
       <div className="pt-16 pb-4 overflow-hidden relative z-10">
         <Container>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -128,54 +130,54 @@ const Journal: React.FC = () => {
           <div className="py-16 text-center">
             <p className="text-text-subtle/60 text-sm font-light mb-2">No collections match "{searchQuery}".</p>
             <p className="text-xs text-text-subtle/50 font-light">Clear the search to browse all collections.</p>
-            <button
+            <Button
+              variant="secondary" size="sm"
               onClick={() => setSearchQuery('')}
-              className="mt-4 px-5 py-2 bg-brand-green text-white text-xs font-semibold tracking-wider uppercase rounded transition-colors hover:bg-brand-green-dark cursor-pointer"
+              className="mt-4 text-xs font-semibold tracking-wider uppercase"
             >
               Clear Search
-            </button>
+            </Button>
           </div>
         ) : (
-        <div className="flex overflow-x-auto pb-8 pt-2 px-4 md:px-12 xl:px-24 gap-6 snap-x snap-mandatory hide-scrollbar">
-          {filteredCollections.map((collection, i) => (
-            <motion.div 
-              key={collection.id}
-              initial={{ opacity: 0, x: 10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className={`shrink-0 w-[240px] md:w-[280px] snap-center group cursor-pointer border-2 rounded-2xl p-1 transition-all duration-300 ${
-                selectedCollectionId === collection.id ? 'border-brand-gold-muted scale-[1.02] shadow-md bg-white/50' : 'border-transparent'
-              }`}
-              onClick={() => setSelectedCollectionId(collection.id)}
-            >
-              <div className="bg-white dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <div className="h-[140px] overflow-hidden relative">
-                  <img 
-                    src={collection.image} 
-                    alt={`Curated collection of travel stories for ${collection.title}`} 
-                    className="w-full h-full object-cover img-zoom"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#FAF7F0] dark:bg-surface-dark border border-brand-gold/30 dark:border-white/10 rounded px-2 py-0.5 shadow-sm">
-                    <Text size="xs" variant="none" className="uppercase tracking-widest text-brand-sage font-mono text-xs font-bold">
-                      {collection.articles.length} Stories
-                    </Text>
+          <div className="flex overflow-x-auto pb-8 pt-2 px-4 md:px-12 xl:px-24 gap-6 snap-x snap-mandatory hide-scrollbar">
+            {filteredCollections.map((collection, i) => (
+              <motion.div
+                key={collection.id}
+                initial={{ opacity: 0, x: 10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className={`shrink-0 w-[240px] md:w-[280px] snap-center group cursor-pointer border-2 rounded-2xl p-1 transition-all duration-300 ${selectedCollectionId === collection.id ? 'border-brand-gold-muted scale-[1.02] shadow-md bg-white/50' : 'border-transparent'
+                  }`}
+                onClick={() => setSelectedCollectionId(collection.id)}
+              >
+                <div className="bg-white dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <div className="h-[140px] overflow-hidden relative">
+                    <img
+                      src={collection.image}
+                      alt={`Curated collection of travel stories for ${collection.title}`}
+                      className="w-full h-full object-cover img-zoom"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#FAF7F0] dark:bg-surface-dark border border-brand-gold/30 dark:border-white/10 rounded px-2 py-0.5 shadow-sm">
+                      <Text size="xs" variant="none" className="uppercase tracking-widest text-brand-sage font-mono text-xs font-bold">
+                        {collection.articles.length} Stories
+                      </Text>
+                    </div>
+                  </div>
+                  <div className="p-4 flex justify-between items-center bg-[#FAF7F0]/30 dark:bg-black/20">
+                    <Heading as="h3" size="lg" font="serif" className="text-brand-green dark:text-white truncate text-base">
+                      {highlightText(collection.title, searchQuery)}
+                    </Heading>
+                    <div className="w-7 h-7 rounded-full bg-[#FAF7F0] dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 flex items-center justify-center text-brand-green dark:text-white group-hover:bg-brand-green group-hover:text-white transition-colors">
+                      <span className="text-xs">→</span>
+                    </div>
                   </div>
                 </div>
-                <div className="p-4 flex justify-between items-center bg-[#FAF7F0]/30 dark:bg-black/20">
-                  <Heading as="h3" size="lg" font="serif" className="text-brand-green dark:text-white truncate text-base">
-                    {highlightText(collection.title, searchQuery)}
-                  </Heading>
-                  <div className="w-7 h-7 rounded-full bg-[#FAF7F0] dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 flex items-center justify-center text-brand-green dark:text-white group-hover:bg-brand-green group-hover:text-white transition-colors">
-                    <span className="text-xs">→</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-          {/* Spacer */}
-          <div className="w-4 md:w-12 xl:w-24 shrink-0 pointer-events-none" />
-        </div>
+              </motion.div>
+            ))}
+            {/* Spacer */}
+            <div className="w-4 md:w-12 xl:w-24 shrink-0 pointer-events-none" />
+          </div>
         )}
 
         {/* Active Collection Articles Display */}
@@ -192,15 +194,15 @@ const Journal: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
               {selectedCollection.articles.map((article) => (
-                <div 
-                  key={article.id} 
+                <div
+                  key={article.id}
                   onClick={() => openArticle(article)}
                   className="bg-white border border-[#E8E4D9] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full group"
                 >
                   <div className="h-32 overflow-hidden relative border-b border-[#E8E4D9]/40">
-                    <img 
-                      src={article.image} 
-                      alt={article.title} 
+                    <img
+                      src={article.image}
+                      alt={article.title}
                       className="w-full h-full object-cover img-zoom"
                     />
                   </div>
@@ -227,7 +229,7 @@ const Journal: React.FC = () => {
       {/* FEATURED STORIES - POLAROID WALL */}
       <div className="py-12">
         <Container>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -262,9 +264,9 @@ const Journal: React.FC = () => {
                   >
                     <div className="md:grid md:grid-cols-2 md:gap-0">
                       <div className="h-56 md:h-full min-h-[280px] overflow-hidden">
-                        <img 
-                          src={filteredStories[0].image} 
-                          alt={`Featured travel story: ${filteredStories[0].title}`} 
+                        <img
+                          src={filteredStories[0].image}
+                          alt={`Featured travel story: ${filteredStories[0].title}`}
                           className="w-full h-full object-cover img-zoom"
                         />
                       </div>
@@ -297,9 +299,9 @@ const Journal: React.FC = () => {
                       onClick={() => openArticle(story)}
                     >
                       <div className="h-48 overflow-hidden">
-                        <img 
-                          src={story.image} 
-                          alt={`Featured travel story: ${story.title}`} 
+                        <img
+                          src={story.image}
+                          alt={`Featured travel story: ${story.title}`}
                           className="w-full h-full object-cover img-zoom"
                         />
                       </div>
@@ -333,20 +335,22 @@ const Journal: React.FC = () => {
               Send Your Own Story
             </Heading>
             <Text size="md" className="font-light opacity-90 mb-10 leading-relaxed text-[#E8E4D9]">
-              Every traveler sees Vietnam differently. Whether it's a hidden café in Hanoi or a misty morning in Sapa, we'd love to feature your travel memories in our journal. 
+              Every traveler sees Vietnam differently. Whether it's a hidden café in Hanoi or a misty morning in Sapa, we'd love to feature your travel memories in our journal.
             </Text>
-            <button 
+            <Button
+              variant="primary" size="lg"
               onClick={() => window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT, "please this is my story upload it on vietana JOURNAL ."), '_blank')}
-              className="px-8 py-4 bg-brand-gold hover:bg-brand-gold-light text-text-dark font-bold tracking-widest uppercase text-sm rounded-full shadow-[0_8px_32px_rgba(201,168,76,0.3)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(201,168,76,0.5)] transition-all duration-300 flex items-center gap-3 cursor-pointer group"
+              className="font-bold tracking-widest uppercase text-sm shadow-[0_8px_32px_rgba(201,168,76,0.3)] hover:shadow-[0_12px_40px_rgba(201,168,76,0.5)] group"
+              icon={<Icon name="MessageCircle" size={20} className="group-hover:scale-110 transition-transform" />}
             >
-              <Icon name="MessageCircle" size={20} className="group-hover:scale-110 transition-transform" />
               Message Us on WhatsApp
-            </button>
+            </Button>
           </div>
         </Container>
       </div>
 
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }

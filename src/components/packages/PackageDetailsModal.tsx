@@ -165,16 +165,17 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
               Download Luxury Handbook
             </span>
             <div className="flex border border-[#E8E4D9] rounded overflow-hidden shadow-sm">
-              <button
+              <Button
+                variant="secondary"
                 onClick={() => {
                   onClose();
                   onSetCustomizerPkg(selectedPackage);
                 }}
-                className="w-full py-3 px-4 bg-brand-green hover:bg-brand-green-dark text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300 cursor-pointer"
+                className="w-full text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2"
+                icon={<Icon name="FileText" size={14} className="text-brand-gold" />}
               >
-                <Icon name="FileText" size={14} className="text-brand-gold" />
                 Customize & Download PDF
-              </button>
+              </Button>
             </div>
           </div>
 

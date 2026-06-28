@@ -6,6 +6,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { CITIES, CityDestination } from '../data/destinations';
 import Modal from './ui/Modal';
 import Icon from './ui/Icon';
+import Button from './ui/Button';
 import SectionHeader from './ui/SectionHeader';
 import { motion, AnimatePresence } from 'motion/react';
 import { soundService } from '../services/CardSoundService';
@@ -62,7 +63,7 @@ const Destinations: React.FC = () => {
             const rotAngle = getAngle(idx);
             const weather = getWeatherForCity(city.name);
             return (
-              <div 
+              <div
                 key={city.id}
                 style={{ transform: `rotate(${rotAngle}deg)` }}
                 className="polaroid-frame group cursor-pointer bg-white"
@@ -71,7 +72,7 @@ const Destinations: React.FC = () => {
               >
                 {/* Polaroid Photo area */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF7F0] border border-black/5">
-                  <div 
+                  <div
                     className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ backgroundImage: `url(${city.coverImage})` }}
                   />
@@ -102,12 +103,14 @@ const Destinations: React.FC = () => {
 
         {/* View all cities button */}
         <div className="mt-16 text-center">
-          <button
-            className="px-8 py-4 bg-brand-green hover:bg-brand-green-dark text-white rounded-md tracking-widest uppercase text-xs font-bold transition-all duration-300 shadow-md flex items-center justify-center gap-2.5 mx-auto cursor-pointer hover:-translate-y-0.5 active:scale-95 btn-pressable"
+          <Button
+            variant="secondary" size="lg"
+            className="mx-auto shadow-md tracking-widest uppercase font-bold"
             onClick={() => setIsAllCitiesOpen(true)}
+            icon={<Icon name="ArrowRight" size={14} />}
           >
-            Click to view more cities <Icon name="ArrowRight" size={14} />
-          </button>
+            Click to view more cities
+          </Button>
         </div>
       </Container>
 
@@ -116,12 +119,12 @@ const Destinations: React.FC = () => {
         {selectedCity && (
           <div className="flex flex-col text-left max-h-[85vh] md:max-h-[90vh]">
             {/* Modal Header Image */}
-            <div 
+            <div
               className="w-full h-48 md:h-80 bg-cover bg-center relative shrink-0"
               style={{ backgroundImage: `url(${selectedCity.coverImage})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/100 via-surface-dark/40 to-transparent" />
-              
+
               {/* Weather Forecast Badge */}
               {(() => {
                 const w = getWeatherForCity(selectedCity.name);
@@ -157,13 +160,13 @@ const Destinations: React.FC = () => {
                 {selectedCity.sights.map((sight) => {
                   const isExpanded = expandedSight === sight.id;
                   return (
-                    <div 
+                    <div
                       key={sight.id}
                       className="bg-black/40 rounded-xl overflow-hidden border border-white/5 cursor-pointer hover:border-white/20 transition-colors duration-300"
                       onClick={() => setExpandedSight(isExpanded ? null : sight.id)}
                     >
                       <div className="flex items-center gap-4 p-3 md:p-4">
-                        <div 
+                        <div
                           className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-cover bg-center shrink-0"
                           style={{ backgroundImage: `url(${sight.image})` }}
                         />
@@ -179,7 +182,7 @@ const Destinations: React.FC = () => {
                           <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={20} />
                         </div>
                       </div>
-                      
+
                       {/* Accordion Content */}
                       <AnimatePresence initial={false}>
                         {isExpanded && (
@@ -222,28 +225,28 @@ const Destinations: React.FC = () => {
           <div className="overflow-y-auto flex-1 -mx-6 px-6 -mb-6 pb-6 md:-mx-10 md:px-10 md:-mb-10 md:pb-10">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {CITIES.map((city) => (
-                <div 
-                  key={`all-${city.id}`} 
+                <div
+                  key={`all-${city.id}`}
                   className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer border border-brand-green/30 hover:border-brand-green hover:shadow-[0_4px_20px_rgba(30,77,69,0.15)] transition-all duration-500"
                   onClick={() => {
                     setIsAllCitiesOpen(false);
                     setTimeout(() => setSelectedCity(city), 300);
                   }}
                 >
-                  <div 
+                  <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out md:group-hover:scale-110"
                     style={{ backgroundImage: `url(${city.coverImage})` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 md:group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 flex flex-col justify-end">
                     <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 md:group-hover:-translate-y-1 text-lg md:text-2xl leading-tight">
                       {city.name}
                     </Heading>
                     <div className="overflow-hidden">
-                      <Text 
-                        variant="none" 
-                        size="xs" 
+                      <Text
+                        variant="none"
+                        size="xs"
                         className="text-white/80 md:text-white/70 transform md:translate-y-full md:opacity-0 transition-all duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100 line-clamp-2 text-[10px] md:text-xs leading-snug"
                       >
                         {city.shortDesc}

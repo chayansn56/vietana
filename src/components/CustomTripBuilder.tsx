@@ -9,6 +9,8 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import BrandName from './ui/BrandName';
+import Slider from './ui/Slider';
+import Input from './ui/Input';
 import { Compass, Heart, Sparkles, Gem } from 'lucide-react';
 
 interface CustomTripBuilderProps {
@@ -198,11 +200,10 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                   <label htmlFor="trip-duration" className="text-white/50 text-caption uppercase tracking-widest font-semibold">Duration</label>
                   <Text variant="none" className="text-brand-gold-light text-xl font-serif">{days} Days</Text>
                 </div>
-                <input
+                <Slider
                   id="trip-duration"
-                  type="range" min="3" max="30"
+                  min="3" max="30"
                   value={days} onChange={(e) => setDays(parseInt(e.target.value))}
-                  className="w-full h-1.5 bg-black/10 dark:bg-white/10 rounded-full appearance-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-brand-gold [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(201,168,76,0.6)] transition-all cursor-pointer"
                 />
               </div>
 
@@ -211,11 +212,10 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                   <label htmlFor="trip-pax" className="text-white/50 text-caption uppercase tracking-widest font-semibold">Travelers</label>
                   <Text variant="none" className="text-brand-gold-light text-xl font-serif">{pax} {pax === 1 ? 'Person' : 'People'}</Text>
                 </div>
-                <input
+                <Slider
                   id="trip-pax"
-                  type="range" min="1" max="10"
+                  min="1" max="10"
                   value={pax} onChange={(e) => setPax(parseInt(e.target.value))}
-                  className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(201,168,76,0.6)] transition-all"
                 />
               </div>
             </div>
@@ -236,13 +236,12 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
               <div className="flex flex-col gap-5 pt-4 border-t border-white/5 animate-msg-fade-in">
                 <div>
                   <label htmlFor="b2b-agency-name" className="text-white/50 text-caption uppercase tracking-widest block mb-2 font-semibold">Agency Name</label>
-                  <input
+                  <Input
                     id="b2b-agency-name"
                     type="text"
                     value={agencyName}
                     onChange={(e) => setAgencyName(e.target.value)}
                     placeholder="e.g. Royal India Travels"
-                    className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2.5 text-text-dark dark:text-white text-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus:border-brand-gold/40 focus:bg-black/10 dark:focus:bg-white/10"
                   />
                 </div>
 
@@ -267,14 +266,12 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                     <label htmlFor="b2b-price-markup" className="text-white/50 text-caption uppercase tracking-widest font-semibold">Price Markup</label>
                     <span className="text-brand-gold-light text-sm font-semibold">{priceMarkup}%</span>
                   </div>
-                  <input
+                  <Slider
                     id="b2b-price-markup"
-                    type="range"
                     min="0"
                     max="30"
                     value={priceMarkup}
                     onChange={(e) => setPriceMarkup(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-brand-gold [&::-webkit-slider-thumb]:rounded-full transition-all"
                   />
                 </div>
               </div>
@@ -471,12 +468,12 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 transition-colors group-focus-within:text-brand-gold flex items-center justify-center">
             <Icon name="Edit3" size={16} />
           </span>
-          <input
+          <Input
             type="text"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Special requests? (e.g., Honeymoon, Halal food)"
-            className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl py-4 pl-12 pr-6 text-text-dark dark:text-white text-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus:border-brand-gold/40 focus:bg-black/10 dark:focus:bg-white/10 transition-all placeholder:text-black/30 dark:placeholder:text-white/30"
+            className="rounded-xl py-4 pl-12 pr-6"
           />
         </div>
 

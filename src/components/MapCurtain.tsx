@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Heading, Text } from './ui/Typography';
+import Button from './ui/Button';
 import Icon from './ui/Icon';
 
 const VietnamMap = React.lazy(() => import('./map/VietnamVectorMap'));
@@ -50,15 +51,16 @@ const MapCurtain: React.FC<MapCurtainProps> = ({ isOpen, onClose, selectedCities
                 Explore Vietnam
               </Heading>
             </div>
-            <button 
+            <Button
+              variant="glass" size="sm"
               onClick={onClose}
-              className="group flex items-center gap-3 px-4 py-2 rounded-full bg-white dark:bg-surface-dark hover:bg-[#F2EFE8] dark:hover:bg-surface-dark/80 transition-colors border border-text-dark/10 dark:border-white/10 shadow-sm"
+              className="rounded-full shadow-sm group"
             >
-              <Text className="text-xs tracking-[0.2em] uppercase text-text-dark/70 dark:text-white/70 group-hover:text-text-dark dark:group-hover:text-white font-bold hidden sm:block">
+              <Text className="text-xs tracking-[0.2em] uppercase font-bold hidden sm:block m-0">
                 Close Map
               </Text>
-              <Icon name="X" size={18} className="text-text-dark dark:text-white" />
-            </button>
+              <Icon name="X" size={18} />
+            </Button>
           </div>
 
           {/* Map Area */}
@@ -70,11 +72,11 @@ const MapCurtain: React.FC<MapCurtainProps> = ({ isOpen, onClose, selectedCities
                 </Text>
               </div>
             }>
-              <VietnamMap 
-                selectedCities={selectedCities} 
-                onAddCity={onAddCity} 
-                selectedSights={selectedSights} 
-                onAddSight={onAddSight} 
+              <VietnamMap
+                selectedCities={selectedCities}
+                onAddCity={onAddCity}
+                selectedSights={selectedSights}
+                onAddSight={onAddSight}
               />
             </Suspense>
           </div>

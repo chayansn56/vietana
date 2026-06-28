@@ -5,6 +5,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { useFlightSearch } from '../hooks/useFlightSearch';
 import { searchFlights, getAirportSuggestions, FlightRoute, AirportOption, SearchParams } from '../services/kiwiApi';
 import Icon from './ui/Icon';
+import Button from './ui/Button';
 import { flightApiConfig } from '../config/travelpayouts';
 
 interface FlightSearchModalProps {
@@ -152,14 +153,15 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
 
             {/* Swap Button (Absolute Positioned between columns on desktop) */}
-            <button
+            <Button
+              variant="secondary"
               type="button"
               onClick={handleSwap}
-              className="absolute left-[23.5%] top-[55%] -translate-y-1/2 z-50 w-8 h-8 rounded-full bg-brand-green text-white hover:bg-brand-gold hover:text-black flex items-center justify-center border border-surface-cream hover:scale-110 transition-transform cursor-pointer hidden md:flex shadow-lg"
+              className="absolute left-[23.5%] top-[55%] -translate-y-1/2 z-50 !w-8 !h-8 !p-0 rounded-full flex items-center justify-center hover:scale-110 hidden md:flex shadow-lg"
               title="Swap Cities"
             >
               <Icon name="ArrowLeftRight" size={14} />
-            </button>
+            </Button>
 
             {/* Origin Autocomplete Input */}
             <div className="flex flex-col gap-2 relative" ref={originRef}>
@@ -359,7 +361,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
 
           {/* Action Row */}
           <div className="flex items-center justify-end border-t border-[#E8E4D9] pt-4">
-            <button
+            <Button
               type="submit"
               disabled={isLoading}
               className="bg-brand-green hover:bg-brand-green/90 text-white font-bold uppercase tracking-wider px-8 py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-brand-green/15 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 text-sm"
@@ -375,7 +377,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   Find Flights
                 </>
               )}
-            </button>
+            </Button>
           </div>
         </form>
 

@@ -3,6 +3,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { MessagingService } from '../services/messagingService';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
+import Input from './ui/Input';
 import { Heading, Text } from './ui/Typography';
 import { useAIPlanner } from '../hooks/useAIPlanner';
 import { useSpeechSynthesis } from '../hooks/useSpeechSynthesis';
@@ -417,9 +418,9 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               >
                 <Icon name="Mic" size={20} />
               </button>
-              <input
+              <Input
                 type="text"
-                className="flex-1 bg-transparent border-none py-3 text-text-dark dark:text-white text-lg font-light outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-md placeholder:text-black/30 dark:placeholder:text-white/30"
+                variant="ghost"
                 placeholder={isListening ? "Listening..." : (t.planner.where || "Ask anything about Vietnam...")}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}

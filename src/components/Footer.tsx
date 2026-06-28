@@ -24,8 +24,9 @@ const Footer: React.FC = () => {
           </Text>
 
           <Button 
+            variant="glass" size="hero"
             onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
-            className="px-12 py-6 text-xl font-bold bg-black/5 dark:bg-white/10 backdrop-blur-xl border border-black/10 dark:border-white/30 text-text-dark dark:text-white rounded-full shadow-[0_20px_60px_rgba(202,138,4,0.3)] hover:bg-black/10 dark:hover:bg-white/20 hover:scale-105 transition-all duration-300 ease-out cursor-pointer"
+            className="ease-out"
           >
             Start Planning Now
           </Button>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PackageProduct } from '../../data/packagesData';
+import Button from '../ui/Button';
 import Icon from '../ui/Icon';
 
 interface PackageCardProps {
@@ -81,25 +82,29 @@ const PackageCard: React.FC<PackageCardProps> = ({
 
       {/* Vogue Editorial Action Footer */}
       <div className="bg-[#FAF7F0] border-t border-[#E8E4D9] p-4 flex gap-3 shrink-0">
-        <button
+        <Button
+          variant="outline" size="sm"
           onClick={() => onSetCustomizerPkg(pkg)}
-          className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-brand-green text-[11px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300 cursor-pointer"
+          className="flex-1 !text-[11px] uppercase tracking-widest px-2"
+          icon={<Icon name="FileText" size={11} className="text-brand-gold-muted" />}
         >
-          <Icon name="FileText" size={11} className="text-brand-gold-muted" />
           PDF Info
-        </button>
-        <button
-          className="flex-1 py-2 px-3 text-[11px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn flex items-center justify-center gap-1"
+        </Button>
+        <Button
+          variant="primary" size="sm"
+          className="flex-1 editorial-btn !text-[11px] uppercase tracking-widest px-2 shadow-sm"
           onClick={() => onOpenPlanner(pkg)}
+          icon={<Icon name="Sparkles" size={10} />}
         >
-          <Icon name="Sparkles" size={10} /> AI Customization
-        </button>
-        <button
-          className="py-2 px-3 text-[11px] tracking-widest uppercase font-bold text-text-subtle hover:text-text-dark bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
+          AI Customization
+        </Button>
+        <Button
+          variant="outline" size="sm"
+          className="!text-[11px] uppercase tracking-widest px-4"
           onClick={() => onSetSelectedPackage(pkg)}
         >
           Details
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -23,13 +23,14 @@ const Button: React.FC<ButtonProps> = ({
     secondary: 'bg-brand-green text-white hover:bg-brand-green-light hover:-translate-y-1 shadow-soft',
     outline: 'bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-green-dark',
     ghost: 'bg-transparent text-brand-gold hover:bg-brand-gold/10',
-    glass: 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1 ',
+    glass: 'bg-black/5 dark:bg-white/10 text-text-dark dark:text-white border border-black/10 dark:border-white/30 hover:bg-black/10 dark:hover:bg-white/20 backdrop-blur-xl',
   };
 
   const sizes = {
     sm: 'px-4 py-2 text-xs',
     md: 'px-8 py-3.5 text-sm',
     lg: 'px-10 py-4 text-base',
+    hero: 'px-12 py-6 text-xl shadow-[0_20px_60px_rgba(202,138,4,0.3)]',
   };
 
   return (

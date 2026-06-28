@@ -24,6 +24,7 @@ const Card: React.FC<CardProps> = ({
   const variants: Record<string, string> = {
     white: 'rounded-[24px] glass text-text-dark',
     glass: 'rounded-[24px] glass-dark text-white',
+    'glass-panel': 'rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-text-dark dark:text-white',
     green: 'rounded-[24px] glass-dark text-white border-brand-gold/20',
     outline: 'rounded-[24px] bg-transparent border border-brand-gold/30',
     'pro-max': 'rounded-[24px] glass border-brand-gold/30 text-text-dark',

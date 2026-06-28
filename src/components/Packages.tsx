@@ -127,18 +127,18 @@ Please load this itinerary and let me customize it!`;
                           <span className="text-2xl font-mono font-bold text-brand-gold-light tabular-nums">{pkg.price} <span className="text-xs font-normal text-white/50">PP</span></span>
                         </div>
                         <div className="flex gap-2">
-                          <button
+                          <Button
+                            variant="primary" size="sm" className="tracking-widest uppercase"
                             onClick={() => handleOpenPlanner(pkg)}
-                            className="px-4 py-2 bg-brand-gold-light hover:bg-[#d8b83a] text-brand-green-dark text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
                           >
                             Customize
-                          </button>
-                          <button
+                          </Button>
+                          <Button
+                            variant="glass" size="sm" className="tracking-widest uppercase"
                             onClick={() => setSelectedPackage(pkg)}
-                            className="px-4 py-2 border border-black/10 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 text-text-dark dark:text-white text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
                           >
                             Details
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -195,12 +195,12 @@ Please load this itinerary and let me customize it!`;
                 We craft bespoke itineraries with certified Jain kitchens, Indian chefs, and 100% vegetarian catering for this region. Let's build your perfect tour!
               </Text>
               <div className="flex gap-3 mt-4 w-full justify-center">
-                <button
-                  className="px-6 py-3 bg-brand-green hover:bg-brand-green-dark text-white text-xs tracking-wider uppercase rounded shadow"
+                <Button
+                  variant="primary" size="md" className="font-bold tracking-widest uppercase shadow-sm"
                   onClick={() => onOpenBuilder([])}
                 >
                   Custom Planner
-                </button>
+                </Button>
               </div>
             </div>
           ) : (
@@ -236,11 +236,12 @@ Please load this itinerary and let me customize it!`;
             </Text>
           </div>
 
-          <button
-            className="w-full md:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-dark text-white border-none shadow transition-all duration-300 rounded text-xs tracking-widest uppercase font-bold z-10"
+          <Button
+            variant="secondary" size="md"
+            className="w-full md:w-auto shadow-sm rounded text-xs tracking-widest uppercase font-bold z-10"
           >
             Open Trip Builder <span className="ml-2">→</span>
-          </button>
+          </Button>
         </div>
 
         {/* MORE BUDGET TOURS COMING SOON BANNER */}

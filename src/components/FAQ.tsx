@@ -5,6 +5,7 @@ import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import BrandName from './ui/BrandName';
+import Button from './ui/Button';
 import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
 
 interface FAQProps {
@@ -133,24 +134,26 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
               Still Curious?
             </Text>
             
-            <button 
+            <Button 
+              variant="ghost"
               onClick={() => onOpenPlanner?.()} 
-              className="text-sm font-medium text-text-dark hover:text-brand-gold transition-colors flex items-center gap-2"
+              className="text-sm font-medium hover:text-brand-gold flex items-center gap-2"
             >
               <Icon name="Sparkles" size={16} className="text-brand-gold" /> Ask <BrandName className="ml-1" /> AI
-            </button>
+            </Button>
 
             <span className="hidden sm:inline text-black/20">•</span>
 
-            <button 
+            <Button 
+              variant="ghost"
               onClick={handleWhatsApp}
-              className="text-sm font-medium text-text-dark hover:text-[#25D366] transition-colors flex items-center gap-2 group"
+              className="text-sm font-medium hover:text-[#25D366] flex items-center gap-2 group"
             >
               <svg className="w-5 h-5 fill-current transition-colors" viewBox="0 0 24 24">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.852.002-2.63-1.023-5.101-2.887-6.967C16.586 1.968 14.116.944 11.492.944c-5.439 0-9.863 4.422-9.867 9.856-.001 1.714.453 3.39 1.316 4.873L1.9 21.082l5.806-1.522c.002-.001.002-.001.006-.002zM18.91 16.584c-.33-.165-1.95-.963-2.253-1.074-.302-.11-.522-.165-.742.165-.22.33-.853 1.074-1.045 1.293-.192.22-.385.247-.715.082-1.003-.502-1.95-1.168-2.77-1.95-.66-.628-1.21-1.378-1.547-2.18-.19-.33-.02-.51.144-.674.15-.147.33-.385.495-.577.165-.192.22-.33.33-.55.11-.22.055-.412-.028-.577-.082-.165-.742-1.787-1.018-2.447-.269-.648-.54-.56-.742-.57-.19-.01-.41-.01-.63-.01s-.58.085-.88.415c-.3.33-1.155 1.127-1.155 2.748s1.18 3.19 1.346 3.41c.165.22 2.32 3.54 5.62 4.97 1.96.85 2.7 1.02 3.65.88.58-.085 1.95-.8 2.223-1.57.275-.77.275-1.43.19-1.57-.083-.14-.303-.22-.633-.385z" />
               </svg>
               WhatsApp Us
-            </button>
+            </Button>
           </div>
         </div>
 
