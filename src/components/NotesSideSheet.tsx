@@ -48,6 +48,215 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
     setTimeout(() => setSaved(false), 2000);
   };
 
+  const handleDownloadPDF = () => {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      alert("Please allow popups to download your customized PDF!");
+      return;
+    }
+
+    const title = article.title;
+    const intro = article.intro;
+    const author = article.author || 'Vietana Editorial';
+    const readingTime = getReadingTime(article);
+
+    let sectionsHtml = '';
+    if (article.sections && article.sections.length > 0) {
+      article.sections.forEach(sec => {
+        sectionsHtml += '<div class="section">';
+        if (sec.heading) {
+          sectionsHtml += '<h2 class="section-title">' + sec.heading + '</h2>';
+        }
+        if (sec.paragraphs) {
+          sec.paragraphs.forEach(p => {
+            sectionsHtml += '<p class="paragraph">' + p + '</p>';
+          });
+        }
+        if (sec.list && sec.list.length > 0) {
+          sectionsHtml += '<ul class="list">';
+          sec.list.forEach(li => {
+            sectionsHtml += '<li class="list-item">' + li + '</li>';
+          });
+          sectionsHtml += '</ul>';
+        }
+        sectionsHtml += '</div>';
+      });
+    } else {
+      sectionsHtml = '<div class="section"><p class="paragraph">' + intro + '</p></div>';
+    }
+
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>VIETANA Journal - \${title}</title>
+          <meta charset="utf-8" />
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+            
+            @page {
+              size: A4;
+              margin: 20mm 15mm 20mm 15mm;
+            }
+            
+            body {
+              font-family: 'DM Sans', sans-serif;
+              color: #2b2b2b;
+              background-color: #FAF8F3;
+              margin: 0;
+              padding: 0;
+              line-height: 1.6;
+              font-size: 11pt;
+            }
+            
+            .header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-bottom: 2px solid #D4AF37;
+              padding-bottom: 15px;
+              margin-bottom: 30px;
+            }
+            
+            .brand-logo {
+              font-family: 'Playfair Display', serif;
+              font-size: 18pt;
+              font-weight: bold;
+              letter-spacing: 0.2em;
+              color: #1E4D45;
+              text-transform: uppercase;
+            }
+            
+            .contact-info {
+              text-align: right;
+              font-size: 8pt;
+              color: #666;
+              line-height: 1.4;
+            }
+            
+            .cover-banner {
+              background-color: #1E4D45;
+              color: white;
+              padding: 35px;
+              border-radius: 12px;
+              margin-bottom: 35px;
+            }
+            
+            .cover-banner h1 {
+              font-family: 'Playfair Display', serif;
+              font-size: 22pt;
+              margin: 0 0 12px 0;
+              color: #FAF8F3;
+              line-height: 1.3;
+            }
+            
+            .meta-info {
+              font-size: 9pt;
+              color: rgba(250,248,243,0.8);
+              border-top: 1px solid rgba(255,255,255,0.15);
+              padding-top: 12px;
+              margin-top: 15px;
+              display: flex;
+              gap: 20px;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+              font-weight: bold;
+            }
+            
+            .section {
+              margin-bottom: 30px;
+              page-break-inside: avoid;
+            }
+            
+            .section-title {
+              font-family: 'Playfair Display', serif;
+              font-size: 14pt;
+              color: #1E4D45;
+              border-bottom: 1px solid rgba(30, 77, 69, 0.1);
+              padding-bottom: 6px;
+              margin-top: 0;
+              margin-bottom: 15px;
+            }
+            
+            .paragraph {
+              margin: 0 0 15px 0;
+              text-align: justify;
+              color: #333333;
+            }
+            
+            .list {
+              margin: 0 0 20px 0;
+              padding-left: 20px;
+            }
+            
+            .list-item {
+              margin-bottom: 8px;
+              color: #333333;
+            }
+            
+            .footer {
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              display: flex;
+              justify-content: space-between;
+              font-size: 7.5pt;
+              color: #888;
+              border-top: 1px solid #E8E4D9;
+              padding-top: 10px;
+            }
+            
+            .footer-brand {
+              font-family: 'Playfair Display', serif;
+              letter-spacing: 0.15em;
+              font-weight: bold;
+              text-transform: uppercase;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand-logo">VIETANA</div>
+            <div class="contact-info">
+              <div>PREMIUM TRAVEL CONCIERGE</div>
+              <div>WWW.VIETANA.COM</div>
+            </div>
+          </div>
+          
+          <div class="cover-banner">
+            <h1>\${title}</h1>
+            <div class="meta-info">
+              <span>By \${author}</span>
+              <span>•</span>
+              <span>\${readingTime}</span>
+            </div>
+          </div>
+          
+          <div class="content">
+            \${sectionsHtml}
+          </div>
+          
+          <div class="footer">
+            <div class="footer-brand">VIETANA JOURNAL</div>
+            <div>© \${new Date().getFullYear()} Vietana. All Rights Reserved.</div>
+          </div>
+
+          <script>
+            window.onload = function() {
+              setTimeout(function() {
+                window.print();
+              }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
   if (!article) return null;
 
   return (
@@ -101,10 +310,17 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
                   )}
                   <button 
                     onClick={handleSaveToPlan}
-                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all"
+                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
                   >
                     <Icon name={saved ? 'Check' : 'Bookmark'} size={10} />
                     {saved ? 'Saved!' : 'Save to Plan'}
+                  </button>
+                  <button 
+                    onClick={handleDownloadPDF}
+                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
+                  >
+                    <Icon name="Download" size={10} />
+                    Download PDF
                   </button>
                 </div>
                 <Heading as="h1" size="4xl" font="serif" className="mb-4">
