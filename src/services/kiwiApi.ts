@@ -1,4 +1,4 @@
-import { flightApiConfig, travelpayoutsConfig } from '../config/travelpayouts';
+import { flightApiConfig } from '../config/travelpayouts';
 
 export interface FlightRoute {
   airline: string;
@@ -31,11 +31,14 @@ export async function searchFlights(
   const origin = from.toUpperCase().trim();
   const destination = to.toUpperCase().trim();
   
+  // Date formatting helper for deep links
+  const dateParts = date.split('-');
+  const formattedDateForDeepLink = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`; // YYYY-MM-DD
+  
   // Try Kiwi API if API key is present
   if (flightApiConfig.kiwiApiKey) {
     try {
-      // Date format for Kiwi is DD/MM/YYYY
-      const dateParts = date.split('-');
+      // Date format for Kiwi API query is DD/MM/YYYY
       const kiwiDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
       
       const response = await fetch(
@@ -67,23 +70,23 @@ export async function searchFlights(
             duration: `${durationHrs}h ${durationMins}m`,
             stops: flight.route.length - 1,
             price: Math.round(flight.price),
-            bookingUrl: `https://c112.travelpayouts.com/click?shmarker=${travelpayoutsConfig.marker}&promo_id=7399&destination=https%3A%2F%2Fwww.kiwi.com%2Fdeep%3Ffrom%3D${origin}%26to%3D${destination}%26departure%3D${kiwiDate}`
+            bookingUrl: `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${formattedDateForDeepLink}&passengers=${passengers}`
           };
         });
       }
     } catch (e) {
-      console.error('Error fetching live flights:', e);
+      console.error('Error fetching live flights from Kiwi API:', e);
       if (!flightApiConfig.useMockFallback) {
         throw e;
       }
     }
   }
 
-  // Fallback / Mock Data Generator (Extremely realistic and customized based on parameters)
+  // Fallback / Mock Data Generator (Extremely realistic and dynamically matches any origin/destination)
   if (flightApiConfig.useMockFallback) {
-    await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulate network latency
+    await new Promise((resolve) => setTimeout(resolve, 1200)); // Simulate network latency
 
-    const basePrice = origin === 'DEL' && destination === 'SGN' ? 18500 : 22000;
+    const basePrice = origin === 'DEL' && destination === 'SGN' ? 18500 : 23000;
     
     return [
       {
@@ -96,7 +99,7 @@ export async function searchFlights(
         duration: '4h 20m',
         stops: 0,
         price: basePrice * passengers,
-        bookingUrl: `https://c112.travelpayouts.com/click?shmarker=${travelpayoutsConfig.marker}&promo_id=7399&destination=https%3A%2F%2Fwww.vietjetair.com`
+        bookingUrl: `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${formattedDateForDeepLink}&passengers=${passengers}`
       },
       {
         airline: 'VN',
@@ -108,7 +111,7 @@ export async function searchFlights(
         duration: '5h 05m',
         stops: 0,
         price: Math.round(basePrice * 1.25) * passengers,
-        bookingUrl: `https://c112.travelpayouts.com/click?shmarker=${travelpayoutsConfig.marker}&promo_id=7399&destination=https%3A%2F%2Fwww.vietnamairlines.com`
+        bookingUrl: `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${formattedDateForDeepLink}&passengers=${passengers}`
       },
       {
         airline: '6E',
@@ -120,11 +123,11 @@ export async function searchFlights(
         duration: '4h 10m',
         stops: 0,
         price: Math.round(basePrice * 0.95) * passengers,
-        bookingUrl: `https://c112.travelpayouts.com/click?shmarker=${travelpayoutsConfig.marker}&promo_id=7399&destination=https%3A%2F%2Fwww.goindigo.in`
+        bookingUrl: `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${formattedDateForDeepLink}&passengers=${passengers}`
       },
       {
         airline: 'SQ',
-        airlineName: 'Singapore Airlines (1-Stop)',
+        airlineName: 'Singapore Airlines',
         airlineLogo: 'https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=80&h=80&fit=crop&q=80',
         flightNumber: 'SQ401',
         departureTime: '09:20',
@@ -132,7 +135,7 @@ export async function searchFlights(
         duration: '7h 25m',
         stops: 1,
         price: Math.round(basePrice * 1.6) * passengers,
-        bookingUrl: `https://c112.travelpayouts.com/click?shmarker=${travelpayoutsConfig.marker}&promo_id=7399&destination=https%3A%2F%2Fwww.singaporeair.com`
+        bookingUrl: `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${formattedDateForDeepLink}&passengers=${passengers}`
       }
     ];
   }

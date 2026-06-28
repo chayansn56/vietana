@@ -91,28 +91,26 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
         <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white/5 p-5 rounded-2xl border border-white/10">
           <div className="flex flex-col gap-2">
             <label className="text-xs text-white/50 font-bold uppercase tracking-wider">From</label>
-            <select
+            <input
+              type="text"
+              placeholder="e.g. DEL or Delhi"
               value={origin}
-              onChange={(e) => setOrigin(e.target.value)}
-              className="bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold/50 cursor-pointer"
-            >
-              {popularCities.map((c) => (
-                <option key={c.code} value={c.code} className="bg-[#111111]">{c.label}</option>
-              ))}
-            </select>
+              onChange={(e) => setOrigin(e.target.value.toUpperCase())}
+              className="bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold/50 placeholder-white/20 uppercase"
+              required
+            />
           </div>
 
           <div className="flex flex-col gap-2">
             <label className="text-xs text-white/50 font-bold uppercase tracking-wider">To</label>
-            <select
+            <input
+              type="text"
+              placeholder="e.g. SGN or Saigon"
               value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              className="bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold/50 cursor-pointer"
-            >
-              {popularCities.map((c) => (
-                <option key={c.code} value={c.code} className="bg-[#111111]">{c.label}</option>
-              ))}
-            </select>
+              onChange={(e) => setDestination(e.target.value.toUpperCase())}
+              className="bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold/50 placeholder-white/20 uppercase"
+              required
+            />
           </div>
 
           <div className="flex flex-col gap-2">
@@ -123,6 +121,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               min={new Date().toISOString().split('T')[0]}
               onChange={(e) => setDate(e.target.value)}
               className="bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold/50 cursor-pointer"
+              required
             />
           </div>
 
@@ -146,6 +145,27 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
             </button>
           </div>
         </form>
+
+        {/* Popular Tags */}
+        <div className="flex flex-wrap items-center gap-2 text-xs">
+          <span className="text-white/40 font-bold uppercase tracking-wider mr-1">Popular:</span>
+          {popularCities.map((city) => (
+            <button
+              key={city.code}
+              type="button"
+              onClick={() => {
+                if (['DEL', 'BOM', 'BLR'].includes(city.code)) {
+                  setOrigin(city.code);
+                } else {
+                  setDestination(city.code);
+                }
+              }}
+              className="bg-white/5 border border-white/10 hover:border-brand-gold/40 text-white/80 hover:text-white px-3 py-1 rounded-full cursor-pointer transition-colors duration-250 font-medium"
+            >
+              {city.label}
+            </button>
+          ))}
+        </div>
 
         {error && (
           <div className="bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-xl text-sm">
