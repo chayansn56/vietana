@@ -69,7 +69,10 @@ export const magazineData = {
           ]
         }
       ]
-    }
+    },
+    ...essentialsArticles.slice(0, 2),
+    ...coffeeArticles.slice(0, 1),
+    ...foodArticles.slice(0, 1)
   ] as Article[],
 
   collections: [
