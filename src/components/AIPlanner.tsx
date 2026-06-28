@@ -32,7 +32,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
   const [activeTab, setActiveTab] = useState<'itinerary' | 'deals' | 'pricing'>('itinerary');
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [ttsEnabled, setTtsEnabled] = useState(true);
+  const [ttsEnabled, setTtsEnabled] = useState(false);
   const [showActionPopup, setShowActionPopup] = useState(false);
 
   const getLanguageTag = (lang: string) => {
@@ -203,7 +203,13 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           </div>
           <div className="flex items-center gap-2 mt-1">
             <button
-              onClick={() => setTtsEnabled(!ttsEnabled)}
+              onClick={() => {
+                const newVal = !ttsEnabled;
+                setTtsEnabled(newVal);
+                if (!newVal && 'speechSynthesis' in window) {
+                  window.speechSynthesis.cancel();
+                }
+              }}
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl border transition-all duration-300 text-xs cursor-pointer font-medium uppercase tracking-wider ${
                 ttsEnabled ? 'border-brand-gold/30 bg-brand-gold/10 text-brand-gold' : 'border-white/10 text-white/40 hover:text-white/60'
               }`}
