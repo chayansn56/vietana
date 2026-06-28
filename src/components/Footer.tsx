@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
               {['Destinations', 'Services', 'Packages', 'Food', 'Journal'].map((link) => (
                 <li key={link}>
                   <a 
-                    href={`#${link.toLowerCase()}`} 
+                    href={`#${link === 'Packages' ? 'experiences' : link.toLowerCase()}`} 
                     className="no-underline group"
                   >
                     <Text 

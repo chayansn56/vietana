@@ -5,6 +5,7 @@ import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import ServicePopup, { ServiceDetail } from './ServicePopup';
 import SectionHeader from './ui/SectionHeader';
+import Card from './ui/Card';
 
 const PREMIUM_SERVICES: ServiceDetail[] = [
   {
@@ -16,12 +17,12 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80',
     content: (
       <>
-        <p>Getting your Vietnam e-visa is simple. Just send us the following via WhatsApp, Zalo, or email, and we’ll guide you through the process:</p>
+        <p>Getting your Vietnam e-visa is simple. Just send us the following via WhatsApp, Zalo, or email, and we'll guide you through the process:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Passport copy (valid for at least 6 months)</li>
           <li>Passport-style photograph</li>
         </ul>
-        <p>We also help with declarations and other travel requirements, so you don’t have to figure everything out yourself.</p>
+        <p>We also help with declarations and other travel requirements, so you don't have to figure everything out yourself.</p>
         <div className="mt-8 p-5 bg-white border border-black/5 rounded-xl shadow-sm">
           <p className="text-sm font-semibold text-[#1E4D45] uppercase tracking-wider mb-2">Urgent Visa</p>
           <p className="text-sm">Need it urgently? Flight already booked? Traveling within the next 24 hours? Get in touch with us. Expedited options are available for urgent situations.</p>
@@ -39,7 +40,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     content: (
       <>
         <p>After a long flight, the last thing you need is confusion.</p>
-        <p>Whether you’re traveling alone, with family, or in a larger group, we can arrange comfortable transportation based on your requirements.</p>
+        <p>Whether you're traveling alone, with family, or in a larger group, we can arrange comfortable transportation based on your requirements.</p>
         <p className="font-medium text-[#1E4D45]">Simple, reliable and convenient.</p>
       </>
     )
@@ -53,7 +54,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80',
     content: (
       <>
-        <p>From hostels and budget hotels to premium resorts and luxury stays, we’ll help you find accommodation that suits your travel style and budget.</p>
+        <p>From hostels and budget hotels to premium resorts and luxury stays, we'll help you find accommodation that suits your travel style and budget.</p>
         <p>Our recommendations are based on experience and what works best for different types of travelers.</p>
       </>
     )
@@ -70,7 +71,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
         <p>Need an eSIM or a local SIM card?</p>
         <p>Need help setting up Grab, maps or other travel apps?</p>
         <p className="font-medium text-[#1E4D45]">No problem.</p>
-        <p>We’ll help you stay connected from the moment you arrive.</p>
+        <p>We'll help you stay connected from the moment you arrive.</p>
       </>
     )
   },
@@ -97,8 +98,8 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80',
     content: (
       <>
-        <p>Whether you’re looking for Indian food, vegetarian options, Jain meals, halal restaurants or authentic Vietnamese dishes, we’ll be happy to point you in the right direction.</p>
-        <p>Over the years, we’ve built strong relationships with restaurants across Vietnam and understand the preferences of Indian travelers.</p>
+        <p>Whether you're looking for Indian food, vegetarian options, Jain meals, halal restaurants or authentic Vietnamese dishes, we'll be happy to point you in the right direction.</p>
+        <p>Over the years, we've built strong relationships with restaurants across Vietnam and understand the preferences of Indian travelers.</p>
       </>
     )
   },
@@ -129,7 +130,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     content: (
       <>
         <p>Honeymoons, family trips, celebrations, hidden gems, nightlife or something completely unique.</p>
-        <p className="font-medium text-[#1E4D45]">If it’s possible, we’ll do our best to make it happen.</p>
+        <p className="font-medium text-[#1E4D45]">If it's possible, we'll do our best to make it happen.</p>
       </>
     )
   }
@@ -154,10 +155,13 @@ const Services: React.FC = () => {
         {/* Editorial card grid row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
           {PREMIUM_SERVICES.slice(0, 4).map((service, index) => (
-            <div
+            <Card
               key={service.id}
+              variant="editorial"
+              padding="none"
+              hover
               onClick={() => setSelectedService(service)}
-              className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+              className="cursor-pointer"
             >
               <div className="h-36 overflow-hidden">
                 <img
@@ -179,17 +183,20 @@ const Services: React.FC = () => {
                   {service.shortDesc}
                 </Text>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* Editorial card grid row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {PREMIUM_SERVICES.slice(4).map((service) => (
-            <div
+            <Card
               key={service.id}
+              variant="editorial"
+              padding="none"
+              hover
               onClick={() => setSelectedService(service)}
-              className="group cursor-pointer overflow-hidden rounded-xl bg-white border border-[#E8E4D9] shadow-sm transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+              className="cursor-pointer"
             >
               <div className="h-36 overflow-hidden">
                 <img
@@ -211,15 +218,15 @@ const Services: React.FC = () => {
                   {service.shortDesc}
                 </Text>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </Container>
 
-      <ServicePopup 
-        isOpen={!!selectedService} 
-        onClose={() => setSelectedService(null)} 
-        service={selectedService} 
+      <ServicePopup
+        isOpen={!!selectedService}
+        onClose={() => setSelectedService(null)}
+        service={selectedService}
       />
     </Section>
   );
