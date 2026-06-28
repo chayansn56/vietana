@@ -155,7 +155,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                                   </Text>
                                   <button
                                     onClick={() => speakText(item.id, item.vietanaNotes)}
-                                    className={`text-[#555555] hover:text-brand-gold cursor-pointer transition-colors p-1.5 rounded-lg hover:bg-black/5 flex items-center gap-1.5 shrink-0 ${
+                                    className={`text-text-subtle hover:text-brand-gold cursor-pointer transition-colors p-1.5 rounded-lg hover:bg-black/5 flex items-center gap-1.5 shrink-0 ${
                                       isSpeakingId === item.id ? 'text-brand-gold animate-pulse bg-brand-gold/10' : ''
                                     }`}
                                     title={isSpeakingId === item.id ? "Stop audio guide" : "Listen to audio guide"}

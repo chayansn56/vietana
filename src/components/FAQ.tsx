@@ -68,7 +68,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
           <Heading as="h2" size="3xl" font="serif" className="mb-3 font-normal text-brand-green-dark">
             Clarity & Peace of Mind
           </Heading>
-          <Text size="md" className="text-[#555555] font-light">
+          <Text size="md" className="text-text-subtle font-light">
             A few things travelers often ask.
           </Text>
         </div>

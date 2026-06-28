@@ -43,9 +43,9 @@ const Destinations: React.FC = () => {
   };
 
   return (
-    <Section id="destinations" spacing="lg" className="bg-[#FAF7F0] text-[#111111] relative overflow-hidden">
+    <Section id="destinations" spacing="lg" className="bg-[#FAF7F0] text-text-dark relative overflow-hidden">
       {/* Subtle organic decorations */}
-      <div className="absolute top-[5%] left-[-2%] w-[300px] h-[300px] bg-[#E9DFC8]/25 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-[5%] left-[-2%] w-[300px] h-[300px] bg-surface-warm/25 rounded-full blur-[80px] pointer-events-none" />
       <div className="absolute bottom-[5%] right-[-2%] w-[350px] h-[350px] bg-[#AAB7A1]/20 rounded-full blur-[90px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
@@ -76,7 +76,7 @@ const Destinations: React.FC = () => {
                     style={{ backgroundImage: `url(${city.coverImage})` }}
                   />
                   {/* Stamp style overlay */}
-                  <div className="absolute top-3 right-3 text-[11px] font-mono bg-[#FAF7F0]/80 text-[#B8860B] border border-[#D4AF37]/35 rounded px-2 py-0.5 pointer-events-none shadow-sm">
+                  <div className="absolute top-3 right-3 text-[11px] font-mono bg-[#FAF7F0]/80 text-brand-gold-muted border border-brand-gold/35 rounded px-2 py-0.5 pointer-events-none shadow-sm">
                     {weather.icon} {weather.temp}
                   </div>
                 </div>
@@ -84,14 +84,14 @@ const Destinations: React.FC = () => {
                 {/* Polaroid Title/Label area */}
                 <div className="pt-5 pb-1 text-left">
                   <div className="flex justify-between items-baseline">
-                    <h3 className="font-serif text-lg font-bold text-[#1E4D45] tracking-tight">
+                    <h3 className="font-serif text-lg font-bold text-brand-green tracking-tight">
                       {city.name}
                     </h3>
                   </div>
-                  <p className="text-[10px] text-[#B8860B] font-mono tracking-widest uppercase mt-1 flex items-center gap-1">
+                  <p className="text-[10px] text-brand-gold-muted font-mono tracking-widest uppercase mt-1 flex items-center gap-1">
                     <Icon name="MapPin" size={10} /> {weather.coord}
                   </p>
-                  <p className="text-xs text-[#555555] font-light mt-2 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-text-subtle font-light mt-2 line-clamp-2 leading-relaxed">
                     {city.shortDesc}
                   </p>
                 </div>
@@ -103,7 +103,7 @@ const Destinations: React.FC = () => {
         {/* View all cities button */}
         <div className="mt-16 text-center">
           <button
-            className="px-8 py-4 bg-[#1E4D45] hover:bg-[#12302B] text-white rounded-md tracking-widest uppercase text-xs font-bold transition-all duration-300 shadow-md flex items-center justify-center gap-2.5 mx-auto cursor-pointer hover:-translate-y-0.5 active:scale-95 btn-pressable"
+            className="px-8 py-4 bg-brand-green hover:bg-brand-green-dark text-white rounded-md tracking-widest uppercase text-xs font-bold transition-all duration-300 shadow-md flex items-center justify-center gap-2.5 mx-auto cursor-pointer hover:-translate-y-0.5 active:scale-95 btn-pressable"
             onClick={() => setIsAllCitiesOpen(true)}
           >
             Click to view more cities <Icon name="ArrowRight" size={14} />
@@ -126,7 +126,7 @@ const Destinations: React.FC = () => {
               {(() => {
                 const w = getWeatherForCity(selectedCity.name);
                 return (
-                  <div className="absolute top-6 right-6 bg-[#FAF7F0] border border-[#D4AF37]/30 px-3 py-1.5 rounded flex items-center gap-2 text-[#1E4D45] shadow-md">
+                  <div className="absolute top-6 right-6 bg-[#FAF7F0] border border-brand-gold/30 px-3 py-1.5 rounded flex items-center gap-2 text-brand-green shadow-md">
                     <span className="text-sm">{w.icon}</span>
                     <span className="text-[10px] tracking-wider uppercase font-mono font-bold">{w.temp} • {w.desc}</span>
                   </div>
@@ -214,7 +214,7 @@ const Destinations: React.FC = () => {
             <Heading as="h2" size="3xl" font="serif" className="text-brand-green-dark tracking-tight mb-2">
               All Destinations
             </Heading>
-            <Text variant="none" size="md" className="text-[#555555] font-light">
+            <Text variant="none" size="md" className="text-text-subtle font-light">
               Explore our complete collection of Vietnam's most beautiful tourist cities.
             </Text>
           </div>

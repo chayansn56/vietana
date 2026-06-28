@@ -307,7 +307,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
       {/* HEADER */}
       <div className="p-10 pb-8 border-b border-white/5 relative z-10 flex flex-col items-center text-center select-none shrink-0">
         <div className="flex items-center gap-2 mb-3 bg-black/20 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-xs">
-          <Icon name="Leaf" size={14} className="text-[#E8C84A]" />
+          <Icon name="Leaf" size={14} className="text-brand-gold-light" />
           <span className="font-sans font-black tracking-wide-em text-[10px] text-white uppercase">VIETANA</span>
         </div>
         <Heading as="h2" variant="white" className="text-3xl md:text-4xl font-serif mb-2 tracking-wide">
@@ -718,7 +718,7 @@ Please generate a structured day-by-day itinerary right away for this trip!`;
               {agencyLogo ? (
                 <img src={agencyLogo} alt={agencyName} className="w-16 h-16 object-contain" />
               ) : (
-                <h1 className="text-2xl font-serif font-bold text-[#1E4D45]">{agencyName || 'Travel Desk'}</h1>
+                <h1 className="text-2xl font-serif font-bold text-brand-green">{agencyName || 'Travel Desk'}</h1>
               )}
               <div className="text-left">
                 <h2 className="text-lg font-serif font-semibold text-gray-800">{agencyName || 'Bespoke Travel'} Proposal</h2>
@@ -727,12 +727,12 @@ Please generate a structured day-by-day itinerary right away for this trip!`;
             </div>
           ) : (
             <div className="text-left">
-              <h1 className="text-3xl font-serif font-bold text-[#1E4D45]">VIETANA</h1>
+              <h1 className="text-3xl font-serif font-bold text-brand-green">VIETANA</h1>
               <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">Real-time Estimate Receipt & Itinerary</p>
             </div>
           )}
           <div className="text-right">
-            <p className="text-sm font-semibold text-[#D4AF37]">Premium Bespoke Vietnam Travel</p>
+            <p className="text-sm font-semibold text-brand-gold">Premium Bespoke Vietnam Travel</p>
             <p className="text-xs text-gray-500">Managed from Ho Chi Minh City</p>
           </div>
         </div>
@@ -796,7 +796,7 @@ Please generate a structured day-by-day itinerary right away for this trip!`;
               </tr>
             </tbody>
             <tfoot>
-              <tr className="font-bold text-[#1E4D45] text-lg">
+              <tr className="font-bold text-brand-green text-lg">
                 <td className="py-4">Grand Total (INR)</td>
                 <td className="py-4 text-right">₹{estimate.total.toLocaleString('en-IN')}</td>
               </tr>

@@ -278,7 +278,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-0 right-0 z-[2000] h-full w-[100%] md:w-[80%] max-w-4xl bg-[#FAF8F3] shadow-2xl overflow-y-auto overscroll-contain md:rounded-l-[32px]"
+            className="fixed top-0 right-0 z-[2000] h-full w-[100%] md:w-[80%] max-w-4xl bg-surface-cream shadow-2xl overflow-y-auto overscroll-contain md:rounded-l-[32px]"
           >
             {/* Close Button */}
             <button
@@ -335,7 +335,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             {/* Content Area */}
             <div className="p-8 md:p-12 max-w-3xl">
               {article.isComingSoon ? (
-                <div className="bg-white dark:bg-[#1A2120] rounded-[24px] p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-text-charcoal/5">
+                <div className="bg-white dark:bg-surface-dark rounded-[24px] p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-text-charcoal/5">
                   <span className="text-4xl block mb-4">✍️</span>
                   <Heading as="h3" size="2xl" font="serif" className="mb-4 text-text-charcoal">
                     Currently Crafting
@@ -386,7 +386,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
               ) : (
                 <div className="space-y-8">
                   {/* External Source Card */}
-                  <div className="bg-white dark:bg-[#1A2120] rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-text-charcoal/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                  <div className="bg-white dark:bg-surface-dark rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-text-charcoal/5 flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div>
                       <Text size="sm" weight="semibold" className="uppercase tracking-widest text-text-charcoal/50 mb-2">
                         Curated Guide

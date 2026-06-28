@@ -30,7 +30,7 @@ const Food: React.FC = () => {
 
   return (
     <>
-      <Section id="food" className="relative py-32 bg-[#FAF8F3] text-[#111111] overflow-hidden">
+      <Section id="food" className="relative py-32 bg-surface-cream text-text-dark overflow-hidden">
         <Container>
           
           {/* Main Hero Header */}
@@ -41,7 +41,7 @@ const Food: React.FC = () => {
             <Heading as="h2" size="4xl" font="serif" className="mb-6 font-bold text-brand-green-dark tracking-tight">
               A Taste Of Home
             </Heading>
-            <Text size="xl" className="text-[#555555] font-light leading-relaxed">
+            <Text size="xl" className="text-text-subtle font-light leading-relaxed">
               Because great journeys shouldn't come with food worries. 
               Discover our carefully curated ecosystem of comfort, flavor, and local secrets.
             </Text>
@@ -91,11 +91,11 @@ const Food: React.FC = () => {
                   <Heading as="h3" size="2xl" font="serif" className="text-brand-green-dark mb-4">
                     {CATEGORY_VEG_JAIN.title}
                   </Heading>
-                  <Text className="text-[#555555] mb-6">
+                  <Text className="text-text-subtle mb-6">
                     {CATEGORY_VEG_JAIN.subtitle}
                   </Text>
                 </div>
-                <div className="inline-flex items-center gap-2 text-[#111111] font-medium group-hover:text-brand-green transition-colors mt-auto">
+                <div className="inline-flex items-center gap-2 text-text-dark font-medium group-hover:text-brand-green transition-colors mt-auto">
                   Explore <span className="text-xl leading-none">&rarr;</span>
                 </div>
               </div>
@@ -143,7 +143,7 @@ const Food: React.FC = () => {
                 <Heading as="h3" size="lg" font="serif" className="text-brand-green-dark mb-1">
                   {CATEGORY_CAFES.title}
                 </Heading>
-                <Text size="sm" className="text-[#555555]">
+                <Text size="sm" className="text-text-subtle">
                   {CATEGORY_CAFES.subtitle}
                 </Text>
               </div>

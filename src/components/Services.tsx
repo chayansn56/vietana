@@ -24,7 +24,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
         </ul>
         <p>We also help with declarations and other travel requirements, so you don't have to figure everything out yourself.</p>
         <div className="mt-8 p-5 bg-white border border-black/5 rounded-xl shadow-sm">
-          <p className="text-sm font-semibold text-[#1E4D45] uppercase tracking-wider mb-2">Urgent Visa</p>
+          <p className="text-sm font-semibold text-brand-green uppercase tracking-wider mb-2">Urgent Visa</p>
           <p className="text-sm">Need it urgently? Flight already booked? Traveling within the next 24 hours? Get in touch with us. Expedited options are available for urgent situations.</p>
         </div>
       </>
@@ -41,7 +41,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
       <>
         <p>After a long flight, the last thing you need is confusion.</p>
         <p>Whether you're traveling alone, with family, or in a larger group, we can arrange comfortable transportation based on your requirements.</p>
-        <p className="font-medium text-[#1E4D45]">Simple, reliable and convenient.</p>
+        <p className="font-medium text-brand-green">Simple, reliable and convenient.</p>
       </>
     )
   },
@@ -70,7 +70,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
       <>
         <p>Need an eSIM or a local SIM card?</p>
         <p>Need help setting up Grab, maps or other travel apps?</p>
-        <p className="font-medium text-[#1E4D45]">No problem.</p>
+        <p className="font-medium text-brand-green">No problem.</p>
         <p>We'll help you stay connected from the moment you arrive.</p>
       </>
     )
@@ -116,7 +116,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
         <p>Language barriers.</p>
         <p>Last-minute changes.</p>
         <p>Unexpected situations.</p>
-        <p className="mt-6 font-medium text-[#1E4D45]">With our presence in both India and Vietnam, help is always within reach.</p>
+        <p className="mt-6 font-medium text-brand-green">With our presence in both India and Vietnam, help is always within reach.</p>
       </>
     )
   },
@@ -130,7 +130,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     content: (
       <>
         <p>Honeymoons, family trips, celebrations, hidden gems, nightlife or something completely unique.</p>
-        <p className="font-medium text-[#1E4D45]">If it's possible, we'll do our best to make it happen.</p>
+        <p className="font-medium text-brand-green">If it's possible, we'll do our best to make it happen.</p>
       </>
     )
   }
@@ -142,7 +142,7 @@ const Services: React.FC = () => {
   return (
     <Section id="services" spacing="xl" className="bg-[#FAF7F0] relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-[#E9DFC8]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-surface-warm/15 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-20 max-w-[1200px]">
@@ -175,7 +175,7 @@ const Services: React.FC = () => {
                   <span className="w-7 h-7 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0">
                     <Icon name={service.icon} size={14} strokeWidth={1.5} />
                   </span>
-                  <Heading as="h4" variant="none" className="text-sm font-bold text-[#1E4D45]">
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green">
                     {service.shortTitle}
                   </Heading>
                 </div>
@@ -210,7 +210,7 @@ const Services: React.FC = () => {
                   <span className="w-7 h-7 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0">
                     <Icon name={service.icon} size={14} strokeWidth={1.5} />
                   </span>
-                  <Heading as="h4" variant="none" className="text-sm font-bold text-[#1E4D45]">
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green">
                     {service.shortTitle}
                   </Heading>
                 </div>

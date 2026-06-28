@@ -129,7 +129,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
             <div className="mt-4">
               <button 
                 onClick={handleCopyChecklist}
-                className="inline-flex items-center gap-2 text-xs font-semibold text-[#1E4D45] hover:text-brand-green-light underline decoration-dotted transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-brand-green hover:text-brand-green-light underline decoration-dotted transition-colors"
               >
                 <Icon name={copied ? 'Check' : 'Copy'} size={12} />
                 {copied ? 'Checklist Copied!' : 'Copy Checklist to Clipboard'}

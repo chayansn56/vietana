@@ -254,7 +254,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 )}
                 <div className={`max-w-[80%] relative group/msg ${msg.type === 'user'
                     ? 'bg-gradient-to-r from-brand-gold/10 to-brand-gold/20 border border-brand-gold/30 rounded-2xl rounded-br-sm p-5 shadow-soft text-right'
-                    : 'bg-gradient-to-br from-[#1E4D45]/30 via-white/5 to-[#D4AF37]/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 pr-12 shadow-soft text-left'
+                    : 'bg-gradient-to-br from-brand-green/30 via-white/5 to-brand-gold/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 pr-12 shadow-soft text-left'
                   }`}>
                   <Text
                     variant="none"

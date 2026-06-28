@@ -47,7 +47,7 @@ const AnimatedCounter = ({ value, label }: { value: string | number, label: stri
 
   return (
     <div ref={nodeRef} className="flex flex-col items-center justify-center group/counter">
-      <div className="w-28 h-28 rounded-full border-2 border-[#D4AF37]/50 hover:border-[#D4AF37] hover:shadow-[0_0_20px_rgba(212,175,55,0.45)] hover:scale-105 flex flex-col items-center justify-center mb-4 text-[#D4AF37] transition-all duration-500 ease-smooth transform-gpu">
+      <div className="w-28 h-28 rounded-full border-2 border-brand-gold/50 hover:border-brand-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.45)] hover:scale-105 flex flex-col items-center justify-center mb-4 text-brand-gold transition-all duration-500 ease-smooth transform-gpu">
         <Heading as="div" size="4xl" font="serif" className="m-0 font-normal">
           {isNumber ? count : value}
         </Heading>
