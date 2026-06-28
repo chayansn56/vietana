@@ -402,7 +402,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
           <div className="flex flex-col gap-4">
             <a 
               href="/vietana_emergency_medical_card.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setEmergencyOpen(false)}
               className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-red-500/50 transition-all group no-underline"
             >
@@ -418,7 +419,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
 
             <a 
               href="/vietana_embassy_and_consular_assistance.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setEmergencyOpen(false)}
               className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-brand-gold/50 transition-all group no-underline"
             >
@@ -434,7 +436,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, navClass, mobi
 
             <a 
               href="/vietana_travel_emergency_guide.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setEmergencyOpen(false)}
               className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all group no-underline"
             >
