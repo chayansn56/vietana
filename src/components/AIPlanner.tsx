@@ -276,7 +276,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 <div className="siri-orb-layer-3" />
               </div>
               <Text variant="none" className="text-xs font-semibold text-brand-gold tracking-widest animate-pulse uppercase">
-                Vietana Siri Listening...
+                Vietana Listening...
               </Text>
             </div>
           )}
@@ -349,9 +349,13 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 <div className="speaking-wave-bar" />
                 <div className="speaking-wave-bar" />
               </div>
-              <span className="text-xs font-medium text-brand-gold-light uppercase tracking-wider animate-pulse">Speaking Response...</span>
+              <span className="text-xs font-medium text-brand-gold-light uppercase tracking-wider animate-pulse">Vietana Speaking...</span>
             </div>
           )}
+
+          <div className="text-[10px] text-white/40 font-mono tracking-wider mb-2 text-left pl-2">
+            💡 Try: "make it veg-only", "add a day in Da Lat", or "upgrade to 5★ hotels"
+          </div>
 
           <div className={`relative bg-white/5 border rounded-2xl p-2 transition-all duration-300 shadow-inner ${
             isListening ? 'border-purple-500/50 bg-purple-500/5' : 'border-white/10 focus-within:border-brand-gold/40 focus-within:bg-white/10'
