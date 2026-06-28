@@ -205,7 +205,7 @@ const Connection: React.FC = () => {
             <div className="bg-[#FFFFFF] rounded-[24px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
               <div className="h-48 overflow-hidden relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1559828456-11f81d86d6ba?w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80" 
                   alt="Airplane window clouds" 
                   className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
                 />

@@ -2,8 +2,8 @@ import { FoodItem } from '../types';
 
 const IMAGES = [
   'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80',
-  'https://images.unsplash.com/photo-1631452180519-c014fe946bc0?w=800&q=80',
-  'https://images.unsplash.com/photo-1626082895617-2c6ad3ed3298?w=800&q=80',
+  'https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80',
+  'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
   'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80',
   'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80',
   'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=80',
@@ -70,11 +70,11 @@ export const INDIAN_NON_VEG_ITEMS: FoodItem[] = [
 export const CAFES = [
   { name: 'Cong Caphe', desc: 'Famous for its signature coconut coffee and nostalgic, vintage Vietnamese military decor.', img: 'https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=800&q=80', mapQuery: 'Cong Caphe Vietnam' },
   { name: 'Highlands Coffee', desc: 'The largest coffee chain in Vietnam, offering strong traditional phin filter coffee and comfortable seating.', img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80', mapQuery: 'Highlands Coffee Vietnam' },
-  { name: 'Trung Nguyen Legend', desc: 'A premium Vietnamese coffee brand known for its specialized blends and deep, roasted flavors.', img: 'https://images.unsplash.com/photo-1507133750073-1b07283737e4?auto=format&fit=crop&w=800&q=80', mapQuery: 'Trung Nguyen Legend Vietnam' },
-  { name: 'The Workshop', desc: 'Vietnam’s first specialty coffee roaster, located in a beautiful industrial-chic loft space in Ho Chi Minh City.', img: 'https://images.unsplash.com/photo-1495474472207-464a8d46cb31?auto=format&fit=crop&w=800&q=80', mapQuery: 'The Workshop Coffee Ho Chi Minh' },
+  { name: 'Trung Nguyen Legend', desc: 'A premium Vietnamese coffee brand known for its specialized blends and deep, roasted flavors.', img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=800&q=80', mapQuery: 'Trung Nguyen Legend Vietnam' },
+  { name: 'The Workshop', desc: 'Vietnam’s first specialty coffee roaster, located in a beautiful industrial-chic loft space in Ho Chi Minh City.', img: 'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&w=800&q=80', mapQuery: 'The Workshop Coffee Ho Chi Minh' },
   { name: 'Okkio Café', desc: 'A beautifully designed, modern specialty coffee shop known for its architectural aesthetics and great pour-overs.', img: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80', mapQuery: 'Okkio Caffe Ho Chi Minh' },
-  { name: 'Bosgaurus Coffee', desc: 'A bright, minimalist riverside cafe focusing on high-end Arabica beans and scientific brewing methods.', img: 'https://images.unsplash.com/photo-1461023058943-0708e52e4aeb?auto=format&fit=crop&w=800&q=80', mapQuery: 'Bosgaurus Coffee Ho Chi Minh' },
-  { name: 'La Viet Coffee', desc: 'Originating from Da Lat, this cafe focuses on locally grown Vietnamese Arabica with a farm-to-cup philosophy.', img: 'https://images.unsplash.com/photo-1522018873722-6b9468e27cda?auto=format&fit=crop&w=800&q=80', mapQuery: 'La Viet Coffee Vietnam' },
+  { name: 'Bosgaurus Coffee', desc: 'A bright, minimalist riverside cafe focusing on high-end Arabica beans and scientific brewing methods.', img: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80', mapQuery: 'Bosgaurus Coffee Ho Chi Minh' },
+  { name: 'La Viet Coffee', desc: 'Originating from Da Lat, this cafe focuses on locally grown Vietnamese Arabica with a farm-to-cup philosophy.', img: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=800&q=80', mapQuery: 'La Viet Coffee Vietnam' },
   { name: 'Every Half Coffee Roasters', desc: 'A trendy spot in Ho Chi Minh City offering excellent roasted beans and experimental coffee beverages.', img: 'https://images.unsplash.com/photo-1498603536246-15572faa67a6?auto=format&fit=crop&w=800&q=80', mapQuery: 'Every Half Coffee Roasters Ho Chi Minh' },
   { name: '43 Factory Coffee Roaster', desc: 'An ultra-modern, high-end specialty coffee roaster in Da Nang with a stunning glass exterior and koi pond.', img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80', mapQuery: '43 Factory Coffee Roaster' },
   { name: 'L’Usine', desc: 'A lifestyle cafe and boutique blending French colonial architecture with contemporary Vietnamese energy.', img: 'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=800&q=80', mapQuery: 'L\'Usine Cafe Vietnam' },

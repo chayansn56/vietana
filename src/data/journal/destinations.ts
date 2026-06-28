@@ -85,7 +85,7 @@ export const destinationsArticles: Article[] = [
   {
     id: "d4", title: "Da Lat: A Slice of Europe in Asia", author: "Karan & Neha",
     intro: "Exploring the cool climate, pine forests, and French colonial architecture of the Central Highlands.",
-    image: "https://images.unsplash.com/photo-1559828456-11f81d86d6ba?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
     sections: [
       {
         heading: "The City of Eternal Spring",

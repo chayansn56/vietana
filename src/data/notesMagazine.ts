@@ -77,14 +77,14 @@ export const magazineData = {
       id: "c1",
       icon: "✈️",
       title: "Travel Essentials",
-      image: "https://images.unsplash.com/photo-1544252890-48e025805d76?w=800&q=80",
+      image: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=800&q=80",
       articles: essentialsArticles
     },
     {
       id: "c2",
       icon: "📍",
       title: "Destinations",
-      image: "https://images.unsplash.com/photo-1550686524-7e50eb956334?w=800&q=80",
+      image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80",
       articles: destinationsArticles
     },
     {
@@ -98,7 +98,7 @@ export const magazineData = {
       id: "c4",
       icon: "❤️",
       title: "Honeymoons",
-      image: "https://images.unsplash.com/photo-1559828456-11f81d86d6ba?w=800&q=80",
+      image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
       articles: honeymoonArticles
     },
     {

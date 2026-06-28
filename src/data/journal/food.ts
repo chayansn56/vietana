@@ -4,7 +4,7 @@ export const foodArticles: Article[] = [
   {
     id: "fc1", title: "A Vegetarian's Guide to Street Food", author: "Sneha Reddy",
     intro: "How to safely navigate the bustling street food scene when you don't eat meat or seafood.",
-    image: "https://images.unsplash.com/photo-1544252890-48e025805d76?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=800&q=80",
     sections: [
       {
         heading: "Eating 'Chay'",
@@ -85,7 +85,7 @@ export const foodArticles: Article[] = [
   {
     id: "fc4", title: "The Mid-Autumn Festival", author: "Arjun Kapoor",
     intro: "Mooncakes, dragon dances, and celebrating one of Vietnam's most important cultural holidays.",
-    image: "https://images.unsplash.com/photo-1550686524-7e50eb956334?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80",
     sections: [
       {
         heading: "The Children's Festival",

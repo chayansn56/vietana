@@ -36,6 +36,6 @@ export const MAGIC_DESTINATIONS: MagicDestination[] = [
 export const MAGIC_MODE_SLIDES = [
   'https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80',
   'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1600&q=80',
-  'https://images.unsplash.com/photo-1542012843-0570b7787fc5?w=1600&q=80',
+  'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=1600&q=80',
   'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1600&q=80'
 ];

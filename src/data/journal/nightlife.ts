@@ -54,7 +54,7 @@ export const nightlifeArticles: Article[] = [
   {
     id: "nl3", title: "Beach Clubs in Da Nang", author: "Natasha Gill",
     intro: "Fire shows, DJs, and dancing by the ocean until the early hours.",
-    image: "https://images.unsplash.com/photo-1559828456-11f81d86d6ba?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
     sections: [
       {
         heading: "Oceanfront Parties",

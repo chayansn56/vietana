@@ -4,7 +4,7 @@ export const familyArticles: Article[] = [
   {
     id: "fj1", title: "Navigating Vietnam with Toddlers", author: "The Joshi Family",
     intro: "Tips, tricks, and the realities of traveling with strollers and young children in bustling cities.",
-    image: "https://images.unsplash.com/photo-1559828456-11f81d86d6ba?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
     sections: [
       {
         heading: "Embracing the Chaos",

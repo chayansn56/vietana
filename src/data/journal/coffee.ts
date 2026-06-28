@@ -4,7 +4,7 @@ export const coffeeArticles: Article[] = [
   {
     id: "cc1", title: "The Ultimate Egg Coffee Trail in Hanoi", author: "Aditya Verma",
     intro: "We visited 5 famous cafes to find the absolute best Cà Phê Trứng in the city.",
-    image: "https://images.unsplash.com/photo-1550686524-7e50eb956334?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80",
     sections: [
       {
         heading: "Liquid Tiramisu",

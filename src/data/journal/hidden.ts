@@ -4,7 +4,7 @@ export const hiddenArticles: Article[] = [
   {
     id: "hv1", title: "Motorbiking the Ha Giang Loop", author: "Kabir Singh",
     intro: "Four days of breathtaking mountain passes, remote villages, and unparalleled freedom.",
-    image: "https://images.unsplash.com/photo-1559828456-11f81d86d6ba?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
     sections: [
       {
         heading: "The Final Frontier",
@@ -106,7 +106,7 @@ export const hiddenArticles: Article[] = [
   {
     id: "hv5", title: "The Floating Markets of the Mekong", author: "Siddharth Rao",
     intro: "Waking up at 4 AM to witness the chaotic, colorful trading on the river.",
-    image: "https://images.unsplash.com/photo-1550686524-7e50eb956334?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80",
     sections: [
       {
         heading: "Life on the Water",

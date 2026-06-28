@@ -107,7 +107,7 @@ export const honeymoonArticles: Article[] = [
   {
     id: "hm5", title: "A Couple's Spa Journey in Da Nang", author: "Varun & Shruti",
     intro: "Reviewing the best couples' wellness retreats and mud baths on the central coast.",
-    image: "https://images.unsplash.com/photo-1550686524-7e50eb956334?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80",
     sections: [
       {
         heading: "Healing Waters",

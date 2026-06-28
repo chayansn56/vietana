@@ -82,7 +82,7 @@ const DISH_MI_QUANG: DishDetails = {
   id: 'dish-mi-quang',
   name: 'Mì Quảng',
   subtitle: 'Central Vietnam Specialty',
-  heroImage: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cb438?w=1200&q=80', // Atmosphere/Market
+  heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&q=80', // Atmosphere/Market
   story: 'Comforting, rich, and deeply tied to the heritage of Central Vietnam. Best enjoyed in Da Nang and Hoi An.',
   vietanaNotes: 'One of our favorite dishes and a must-try for first-time visitors.',
   recommendedCities: ['Da Nang', 'Hoi An'],
