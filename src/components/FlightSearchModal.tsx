@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import { useTranslation } from '../contexts/LanguageContext';
@@ -10,35 +10,39 @@ interface FlightSearchModalProps {
 }
 
 const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }) => {
-  const { t, language } = useTranslation();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const { language } = useTranslation();
 
-  useEffect(() => {
-    if (!isOpen || !containerRef.current) return;
+  const locale = language.toLowerCase() === 'hi' ? 'hi' : language.toLowerCase() === 'vi' ? 'vi' : 'en';
+  const marker = travelpayoutsConfig.marker;
 
-    // Clean up container
-    containerRef.current.innerHTML = '';
-
-    // Create script element
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.charset = 'utf-8';
-    script.async = true;
-
-    const locale = language.toLowerCase() === 'hi' ? 'hi' : language.toLowerCase() === 'vi' ? 'vi' : 'en';
-    const marker = travelpayoutsConfig.marker;
-
-    // Travelpayouts Promo Search Widget URL
-    script.src = `https://tp.media/content?promo_id=7399&shmarker=${marker}&campaign_id=100&trs=297444&target_host=c.tp.media&locale=${locale}&type=compact&width=100%25&search_host=vietana.com&border_radius=16&plain=false&color_button=%23cfa15c&color_button_text=%23000000&color_background=%23111111&color_text=%23ffffff`;
-
-    containerRef.current.appendChild(script);
-
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
-      }
-    };
-  }, [isOpen, language]);
+  // Compile the srcdoc for standard Travelpayouts script widget execution
+  const iframeSrcDoc = `
+    <!DOCTYPE html>
+    <html lang="${locale}">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          }
+          /* Hide empty space or scrolls */
+          ::-webkit-scrollbar {
+            display: none;
+          }
+        </style>
+      </head>
+      <body>
+        <div id="widget-holder">
+          <script charset="utf-8" src="https://tp.media/content?promo_id=7399&shmarker=${marker}&campaign_id=100&trs=297444&target_host=c.tp.media&locale=${locale}&type=compact&width=100%25&search_host=vietana.com&border_radius=16&plain=false&color_button=%23cfa15c&color_button_text=%23000000&color_background=%23111111&color_text=%23ffffff" async></script>
+        </div>
+      </body>
+    </html>
+  `;
 
   return (
     <Modal
@@ -66,11 +70,17 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           </Text>
         </div>
 
-        {/* Widget Container */}
-        <div 
-          ref={containerRef} 
-          className="w-full min-h-[350px] relative rounded-2xl overflow-hidden bg-black/40 border border-white/5 p-2"
-        />
+        {/* Widget Container via Iframe srcDoc to resolve React script injection and document.write constraints */}
+        <div className="w-full min-h-[350px] relative rounded-2xl overflow-hidden bg-black/40 border border-white/5">
+          {isOpen && (
+            <iframe
+              title="Travelpayouts Flight Search"
+              srcDoc={iframeSrcDoc}
+              className="w-full h-[350px] border-none bg-transparent"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            />
+          )}
+        </div>
 
         <div className="flex items-center justify-between text-xs text-white/40 border-t border-white/5 pt-4">
           <span>
