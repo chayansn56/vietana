@@ -20,17 +20,17 @@ const Card: React.FC<CardProps> = ({
 }) => {
   // We use 'group' here so we can trigger child effects on hover
   const baseStyles = 'group relative overflow-hidden transition-all duration-500 ease-out z-10';
-  
+
   const variants: Record<string, string> = {
     white: 'rounded-[24px] glass text-text-dark',
     glass: 'rounded-[24px] glass-dark text-white',
     green: 'rounded-[24px] glass-dark text-white border-brand-gold/20',
     outline: 'rounded-[24px] bg-transparent border border-brand-gold/30',
     'pro-max': 'rounded-[24px] glass border-brand-gold/30 text-text-dark',
-    editorial: 'rounded-xl bg-white border border-[#E8E4D9] shadow-sm',
+    editorial: 'rounded-xl bg-white dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 shadow-sm',
   };
 
-  const hoverStyles = hover 
+  const hoverStyles = hover
     ? variant === 'editorial'
       ? 'hover:shadow-lg hover:-translate-y-1 cursor-pointer'
       : 'hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)] cursor-pointer'
@@ -46,7 +46,7 @@ const Card: React.FC<CardProps> = ({
   const clickable = asButton ? '' : '';
 
   return (
-    <div 
+    <div
       className={`${baseStyles} ${variants[variant]} ${hoverStyles} ${paddings[padding]} ${clickable} ${className}`}
       role={asButton ? 'button' : undefined}
       tabIndex={asButton ? 0 : undefined}
@@ -59,7 +59,7 @@ const Card: React.FC<CardProps> = ({
           <div className="absolute -inset-[100%] bg-[radial-gradient(circle_at_50%_0%,rgba(202,138,4,0.15),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out mix-blend-overlay" />
         </div>
       )}
-      
+
       <div className="relative z-10">
         {children}
       </div>

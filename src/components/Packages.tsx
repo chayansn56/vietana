@@ -1,10 +1,10 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  BY_THEME_CATEGORIES, 
-  BY_REGION_CATEGORIES, 
-  PackageProduct, 
-  CategoryData 
+import {
+  BY_THEME_CATEGORIES,
+  BY_REGION_CATEGORIES,
+  PackageProduct,
+  CategoryData
 } from '../data/packagesData';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';
@@ -35,7 +35,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
 
   const categories = activeTab === 'theme' ? BY_THEME_CATEGORIES : BY_REGION_CATEGORIES;
   const activeCategory = categories.find(c => c.name === activeCategoryName) || categories[0];
-  
+
   const displayedPackages = useMemo(() => {
     if (jainVegOnly) {
       return activeCategory.packages.filter(p => p.isJainVegFriendly);
@@ -88,7 +88,7 @@ Please load this itinerary and let me customize it!`;
   };
 
   return (
-    <Section id="experiences" spacing="lg" className="bg-[#FAF7F0] text-text-dark relative overflow-hidden">
+    <Section id="experiences" spacing="lg" className="bg-[#FAF7F0] dark:bg-surface-dark text-text-dark dark:text-white relative overflow-hidden">
       {/* Editorial layout elements */}
       <div className="absolute top-[10%] left-[-5%] w-[350px] h-[350px] bg-surface-warm/15 rounded-full blur-[90px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
@@ -109,44 +109,44 @@ Please load this itinerary and let me customize it!`;
                     </div>
                   </div>
                   <div className="group rounded-xl bg-gradient-to-br from-brand-green via-brand-green-dark to-brand-green-extra-dark border border-white/10 transition-all duration-500 hover:border-white/20 overflow-hidden">
-                  {/* Gold top accent line */}
-                  <div className="h-[2px] bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
-                  <div className="p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-brand-sage/20 text-brand-sage text-[11px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded">
-                        {idx === 0 ? 'Coastal' : 'Highlands'}
-                      </span>
-                      <span className="text-white/50 text-[11px] font-mono tracking-wider">{pkg.duration}</span>
-                    </div>
-                    <Heading as="h3" size="h4" font="serif" variant="white" className="mb-3">
-                      {pkg.title}
-                    </Heading>
-                    <p className="text-white/70 text-sm font-light leading-relaxed mb-5 max-w-prose">
-                      {idx === 0
-                        ? 'From Ho Chi Minh to Phu Quoc — Cu Chi Tunnels, Mekong Delta cruise, and 3 Island speedboating with snorkeling.'
-                        : 'From Ho Chi Minh to Da Lat — Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.'}
-                    </p>
-                    <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
-                      <div>
-                        <span className="text-white/40 text-[11px] uppercase tracking-widest font-semibold block mb-1">From</span>
-                        <span className="text-2xl font-mono font-bold text-brand-gold-light tabular-nums">{pkg.price} <span className="text-xs font-normal text-white/50">PP</span></span>
+                    {/* Gold top accent line */}
+                    <div className="h-[2px] bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
+                    <div className="p-6 md:p-8">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="bg-brand-sage/20 text-brand-sage text-[11px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded">
+                          {idx === 0 ? 'Coastal' : 'Highlands'}
+                        </span>
+                        <span className="text-white/50 text-[11px] font-mono tracking-wider">{pkg.duration}</span>
                       </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleOpenPlanner(pkg)}
-                          className="px-4 py-2 bg-brand-gold-light hover:bg-[#d8b83a] text-brand-green-dark text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
-                        >
-                          Customize
-                        </button>
-                        <button
-                          onClick={() => setSelectedPackage(pkg)}
-                          className="px-4 py-2 border border-white/20 hover:bg-white/10 text-white text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
-                        >
-                          Details
-                        </button>
+                      <Heading as="h3" size="h4" font="serif" variant="white" className="mb-3">
+                        {pkg.title}
+                      </Heading>
+                      <p className="text-white/70 text-sm font-light leading-relaxed mb-5 max-w-prose">
+                        {idx === 0
+                          ? 'From Ho Chi Minh to Phu Quoc — Cu Chi Tunnels, Mekong Delta cruise, and 3 Island speedboating with snorkeling.'
+                          : 'From Ho Chi Minh to Da Lat — Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.'}
+                      </p>
+                      <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+                        <div>
+                          <span className="text-white/40 text-[11px] uppercase tracking-widest font-semibold block mb-1">From</span>
+                          <span className="text-2xl font-mono font-bold text-brand-gold-light tabular-nums">{pkg.price} <span className="text-xs font-normal text-white/50">PP</span></span>
+                        </div>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleOpenPlanner(pkg)}
+                            className="px-4 py-2 bg-brand-gold-light hover:bg-[#d8b83a] text-brand-green-dark text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
+                          >
+                            Customize
+                          </button>
+                          <button
+                            onClick={() => setSelectedPackage(pkg)}
+                            className="px-4 py-2 border border-white/20 hover:bg-white/10 text-white text-[11px] font-bold tracking-widest uppercase rounded transition-all duration-300 cursor-pointer"
+                          >
+                            Details
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </div>
                 </div>
               ))}
@@ -155,29 +155,30 @@ Please load this itinerary and let me customize it!`;
         })()}
 
         {/* Section Header */}
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <span className="text-xs font-bold tracking-wide-em text-brand-sage uppercase mb-3 block">
-              VIETANA CURATED
-            </span>
-            <Heading as="h2" size="h3" font="serif" className="mb-3 tracking-tight text-brand-green">
-              Explore Packages
-            </Heading>
-            <div className="w-12 h-px bg-brand-gold mb-5"></div>
-            <Text variant="none" className="text-text-subtle font-light max-w-2xl text-sm md:text-base">
-              Handpicked itineraries crafted for premium Indian travelers, with local support from Ho Chi Minh City.
-            </Text>
-          </div>
+        <div className="mb-8">
+          <span className="text-xs font-bold tracking-[0.2em] text-brand-sage uppercase mb-3 block">
+            VIETANA CURATED
+          </span>
+          <Heading as="h2" size="h3" font="serif" className="mb-3 tracking-tight text-brand-green dark:text-brand-gold-light">
+            Explore Packages
+          </Heading>
+          <div className="w-12 h-px bg-brand-gold mb-5"></div>
+          <Text variant="none" className="text-text-subtle dark:text-white/70 font-light max-w-2xl text-sm md:text-base">
+            Handpicked itineraries crafted for premium Indian travelers, with local support from Ho Chi Minh City.
+          </Text>
+        </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto items-start sm:items-center self-start">
+        {/* Filters & Navigation Toolbar */}
+        <div className="mb-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+
             {/* Interest vs Region Selector */}
-            <div className="flex bg-[#FAF7F0] border border-[#E8E4D9] p-1.5 rounded-lg gap-2 w-full md:w-auto">
+            <div className="flex bg-[#FAF7F0] dark:bg-black/20 border border-[#E8E4D9] dark:border-white/5 p-1.5 rounded-lg gap-2 w-full sm:w-auto">
               <button
-                className={`flex-1 md:flex-none px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase transition duration-300 ${
-                  activeTab === 'theme' 
-                    ? 'bg-brand-green text-white shadow-sm' 
-                    : 'text-brand-green/60 hover:text-brand-green'
-                }`}
+                className={`flex-1 sm:flex-none px-6 py-2 rounded-md text-[11px] font-bold tracking-widest uppercase transition-all duration-300 ${activeTab === 'theme'
+                  ? 'bg-brand-green dark:bg-brand-sage text-white dark:text-brand-green-dark shadow-sm'
+                  : 'text-brand-green/60 dark:text-brand-sage/60 hover:text-brand-green dark:hover:text-brand-sage'
+                  }`}
                 onClick={() => {
                   setActiveTab('theme');
                   setActiveCategoryName(BY_THEME_CATEGORIES[0].name);
@@ -189,11 +190,10 @@ Please load this itinerary and let me customize it!`;
                 By Theme
               </button>
               <button
-                className={`flex-1 md:flex-none px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase transition duration-300 ${
-                  activeTab === 'region' 
-                    ? 'bg-brand-green text-white shadow-sm' 
-                    : 'text-brand-green/60 hover:text-brand-green'
-                }`}
+                className={`flex-1 sm:flex-none px-6 py-2 rounded-md text-[11px] font-bold tracking-widest uppercase transition-all duration-300 ${activeTab === 'region'
+                  ? 'bg-brand-green dark:bg-brand-sage text-white dark:text-brand-green-dark shadow-sm'
+                  : 'text-brand-green/60 dark:text-brand-sage/60 hover:text-brand-green dark:hover:text-brand-sage'
+                  }`}
                 onClick={() => {
                   setActiveTab('region');
                   setActiveCategoryName(BY_REGION_CATEGORIES[0].name);
@@ -206,40 +206,41 @@ Please load this itinerary and let me customize it!`;
               </button>
             </div>
 
-            {/* Jain Veg Option filter */}
-            <label className="flex items-center gap-3 cursor-pointer self-start sm:self-auto py-2">
-              <input 
-                type="checkbox" 
-                checked={jainVegOnly}
-                onChange={() => setJainVegOnly(!jainVegOnly)}
-                className="w-4.5 h-4.5 accent-brand-green cursor-pointer"
-              />
-              <span className="text-xs font-mono uppercase tracking-wider text-brand-green">
+            {/* Premium Jain Veg Toggle */}
+            <div className="flex items-center gap-3 px-2 shrink-0">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-text-subtle dark:text-white/60">
                 🟢 Jain & Veg Only
               </span>
-            </label>
+              <button
+                onClick={() => setJainVegOnly(!jainVegOnly)}
+                className={`relative inline-flex h-[22px] w-10 items-center rounded-full transition-colors duration-300 focus:outline-none cursor-pointer ${jainVegOnly ? 'bg-brand-green dark:bg-brand-sage' : 'bg-[#E8E4D9] dark:bg-white/20'}`}
+              >
+                <span
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 shadow-sm ${jainVegOnly ? 'translate-x-[22px]' : 'translate-x-[3px]'}`}
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* Category Tabs list horizontal */}
+          <div className="flex gap-2 overflow-x-auto pb-4 border-b border-[#E8E4D9] dark:border-white/10 scrollbar-none">
+            {categories.map((cat) => (
+              <button
+                key={cat.name}
+                className={`px-5 py-2 border rounded-full text-[11px] font-bold tracking-widest uppercase transition shrink-0 duration-300 ${activeCategoryName === cat.name
+                  ? 'border-brand-green bg-brand-green/5 text-brand-green dark:border-brand-sage dark:bg-brand-sage/10 dark:text-brand-sage'
+                  : 'border-[#E8E4D9] dark:border-white/10 text-text-subtle dark:text-white/60 hover:border-brand-green/50 dark:hover:border-brand-sage/50'
+                  }`}
+                onClick={() => handleCategoryChange(cat.name)}
+              >
+                {cat.name} <span className="opacity-60 ml-1">({cat.packages.length})</span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Category Tabs list horizontal */}
-        <div className="flex gap-2 overflow-x-auto pb-4 mb-10 border-b border-[#E8E4D9] scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat.name}
-              className={`px-4 py-2 border rounded-full text-xs font-medium tracking-wide uppercase transition shrink-0 duration-300 ${
-                activeCategoryName === cat.name
-                  ? 'border-brand-green bg-brand-green/5 text-brand-green'
-                  : 'border-[#E8E4D9] text-text-subtle hover:border-brand-green/50'
-              }`}
-              onClick={() => handleCategoryChange(cat.name)}
-            >
-              {cat.name} ({cat.packages.length})
-            </button>
-          ))}
-        </div>
-
         {/* Snapping Horizontal Slider Deck */}
-        <div 
+        <div
           ref={sliderRef}
           className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10 w-full"
         >
@@ -253,7 +254,7 @@ Please load this itinerary and let me customize it!`;
                 We craft bespoke itineraries with certified Jain kitchens, Indian chefs, and 100% vegetarian catering for this region. Let's build your perfect tour!
               </Text>
               <div className="flex gap-3 mt-4 w-full justify-center">
-                <button 
+                <button
                   className="px-6 py-3 bg-brand-green hover:bg-brand-green-dark text-white text-xs tracking-wider uppercase rounded shadow"
                   onClick={() => onOpenBuilder([])}
                 >
@@ -271,12 +272,12 @@ Please load this itinerary and let me customize it!`;
                 >
                   {/* Photo area */}
                   <div className="h-[220px] relative w-full overflow-hidden shrink-0 border-b border-[#E8E4D9]">
-                    <img 
-                      src={pkg.img} 
+                    <img
+                      src={pkg.img}
                       alt={pkg.title}
                       className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1200ms]"
                     />
-                    
+
                     {/* Top tags */}
                     <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
                       <span className="bg-brand-green text-white font-semibold text-[11px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
@@ -307,7 +308,7 @@ Please load this itinerary and let me customize it!`;
                           </span>
                         )}
                       </div>
-                      
+
                       <div className="editorial-meta-tag pb-1 border-b border-[#E8E4D9]">
                         ROUTE // {pkg.destinations.join(' ➔ ')}
                       </div>
@@ -322,7 +323,7 @@ Please load this itinerary and let me customize it!`;
                         <span className="text-[11px] uppercase tracking-widest text-brand-gold-muted font-bold block mb-0.5">Stay Curation</span>
                         <span className="text-[11px] text-brand-green truncate block font-medium">🏨 {pkg.hotels[0]}</span>
                       </div>
-                      
+
                       {pkg.isJainVegFriendly && (
                         <span className="text-[11px] bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
                           Veg Friendly
@@ -359,22 +360,26 @@ Please load this itinerary and let me customize it!`;
         </div>
 
         {/* FULLY CUSTOM BUILDER BANNER */}
-        <div 
-          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-xl bg-white border border-[#E8E4D9] shadow-sm relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-1" 
+        <div
+          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-xl bg-white dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 shadow-sm relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-1"
           onClick={() => onOpenBuilder([])}
         >
-          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101" style={{ backgroundImage: `linear-gradient(135deg, rgba(250, 247, 240, 0.9), rgba(250, 247, 240, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+          {/* Light Mode Background */}
+          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101 dark:hidden" style={{ backgroundImage: `linear-gradient(135deg, rgba(250, 247, 240, 0.9), rgba(250, 247, 240, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+          {/* Dark Mode Background */}
+          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101 hidden dark:block" style={{ backgroundImage: `linear-gradient(135deg, rgba(17, 22, 21, 0.85), rgba(17, 22, 21, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+
           <div className="flex-1 text-center md:text-left relative z-10">
             <span className="text-xs font-bold tracking-[0.2em] text-brand-sage uppercase">Bespoke Curation</span>
-            <Heading as="h3" size="2xl" className="mt-2 mb-4 text-brand-green font-serif font-bold tracking-tight">
+            <Heading as="h3" size="2xl" className="mt-2 mb-4 text-brand-green dark:text-brand-gold-light font-serif font-bold tracking-tight">
               Build Your Own Story
             </Heading>
-            <Text variant="none" className="text-text-subtle text-base font-light max-w-xl">
+            <Text variant="none" className="text-text-subtle dark:text-white/70 text-base font-light max-w-xl">
               Select your destinations, travel style, and let our on-ground expert team plan the rest.
             </Text>
           </div>
 
-          <button 
+          <button
             className="w-full md:w-auto px-8 py-4 bg-brand-green hover:bg-brand-green-dark text-white border-none shadow transition-all duration-300 rounded text-xs tracking-widest uppercase font-bold z-10"
           >
             Open Trip Builder <span className="ml-2">→</span>
@@ -382,14 +387,14 @@ Please load this itinerary and let me customize it!`;
         </div>
 
         {/* MORE BUDGET TOURS COMING SOON BANNER */}
-        <div className="mt-8 p-6 text-center bg-brand-green/5 border border-brand-green/15 rounded-xl">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F0] border border-[#E8E4D9] text-[11px] font-mono tracking-widest text-brand-gold-muted uppercase font-bold mb-3 shadow-xs">
+        <div className="mt-8 p-6 text-center bg-brand-green/5 dark:bg-brand-green/10 border border-brand-green/15 dark:border-brand-green/20 rounded-xl">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F0] dark:bg-surface-dark border border-[#E8E4D9] dark:border-white/10 text-[11px] font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold-light uppercase font-bold mb-3 shadow-xs">
             📢 UPCOMING OFFERINGS
           </span>
-          <Heading as="h4" variant="none" className="text-xl font-serif text-brand-green mb-2 font-semibold">
+          <Heading as="h4" variant="none" className="text-xl font-serif text-brand-green dark:text-brand-gold-light mb-2 font-semibold">
             More Budget Tours Coming Soon!
           </Heading>
-          <Text variant="none" className="text-text-subtle text-xs font-light max-w-md mx-auto">
+          <Text variant="none" className="text-text-subtle dark:text-white/70 text-xs font-light max-w-md mx-auto">
             Our team is packaging more pocket-friendly packages featuring certified budget stays, shared group excursions, and seasonal deals. Stay tuned!
           </Text>
         </div>
@@ -406,13 +411,13 @@ Please load this itinerary and let me customize it!`;
           >
             {/* Header image details */}
             <div className="h-48 w-full overflow-hidden relative shrink-0">
-              <img 
-                src={selectedPackage.img} 
+              <img
+                src={selectedPackage.img}
                 alt={selectedPackage.title}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              
+
               {/* Vietana Brand Logo Label */}
               <div className="absolute top-5 left-6 text-white/85 text-xs tracking-widest font-mono font-bold uppercase flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
                 <Icon name="Leaf" size={12} className="text-brand-gold-light" /> VIETANA CURATED
@@ -482,14 +487,12 @@ Please load this itinerary and let me customize it!`;
                     const isExpanded = expandedDay === day.day;
                     return (
                       <div key={day.day} className="relative">
-                        <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${
-                          isExpanded ? 'bg-brand-green' : 'bg-[#E8E4D9]'
-                        }`} />
+                        <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${isExpanded ? 'bg-brand-green' : 'bg-[#E8E4D9]'
+                          }`} />
 
-                        <div 
-                          className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${
-                            isExpanded ? 'bg-[#FAF7F0] border-brand-green/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
-                          }`}
+                        <div
+                          className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-[#FAF7F0] border-brand-green/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
+                            }`}
                           onClick={() => setExpandedDay(isExpanded ? null : day.day)}
                         >
                           <div className="flex justify-between items-center">
@@ -577,10 +580,10 @@ Please load this itinerary and let me customize it!`;
           </Modal>
         )}
       </AnimatePresence>
-      <PDFCustomizerModal 
-        isOpen={customizerPkg !== null} 
-        onClose={() => setCustomizerPkg(null)} 
-        pkg={customizerPkg} 
+      <PDFCustomizerModal
+        isOpen={customizerPkg !== null}
+        onClose={() => setCustomizerPkg(null)}
+        pkg={customizerPkg}
       />
     </Section>
   );

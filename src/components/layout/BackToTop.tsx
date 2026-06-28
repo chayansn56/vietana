@@ -13,31 +13,40 @@ const BackToTop: React.FC<BackToTopProps> = ({ visible }) => {
 
   // Adjust bottom offset dynamically as user reaches footer page limit
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const docHeight = document.documentElement.scrollHeight;
-      const scrollPos = window.innerHeight + window.scrollY;
-      const footerLimit = docHeight - 400; // Average height threshold of footer section
-      
-      if (scrollPos > footerLimit) {
-        setOffsetBottom(Math.min(240, 176 + (scrollPos - footerLimit) * 0.15));
-      } else {
-        setOffsetBottom(176);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const docHeight = document.documentElement.scrollHeight;
+          const scrollPos = window.innerHeight + window.scrollY;
+          const footerLimit = docHeight - 400; // Average height threshold of footer section
+
+          if (scrollPos > footerLimit) {
+            setOffsetBottom(Math.min(240, 176 + (scrollPos - footerLimit) * 0.15));
+          } else {
+            setOffsetBottom(176);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <button 
+    <button
       className={`fixed right-[36px] z-[300] w-12 h-12 rounded-full border border-brand-gold/35 cursor-pointer bg-brand-green shadow-strong flex items-center justify-center transition-all duration-500 ease-smooth hover:bg-brand-green/90 hover:-translate-y-1 hover:scale-105 hover:shadow-heavy
         ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'}`}
       style={{ bottom: `${offsetBottom}px` }}
-      onClick={scrollToTop} 
+      onClick={scrollToTop}
       aria-label="Back to top"
     >
       <svg className="w-4 h-4 stroke-white fill-none stroke-[2.2] stroke-round" viewBox="0 0 24 24">
-        <polyline points="18 15 12 9 6 15"/>
+        <polyline points="18 15 12 9 6 15" />
       </svg>
     </button>
   );

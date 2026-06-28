@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Icon from "../ui/Icon";
 import Modal from "../ui/Modal";
 import { Heading, Text } from "../ui/Typography";
+import { events } from "../../utils/events";
 
 interface FloatingPlannerProps {
   onClick: () => void;
@@ -13,20 +14,19 @@ const FloatingPlanner: React.FC<FloatingPlannerProps> = ({ onClick }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => setIsEmergencyPulsing(false), 3000);
-    
-    const handleOpen = () => setEmergencyOpen(true);
-    window.addEventListener('open-emergency', handleOpen as EventListener);
-    
+
+    const unsubscribe = events.subscribe('open-emergency', () => setEmergencyOpen(true));
+
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('open-emergency', handleOpen as EventListener);
+      unsubscribe();
     };
   }, []);
 
   return (
     <>
       <div className="fixed bottom-8 left-8 z-[310] flex flex-col items-start gap-3 pointer-events-none safe-bottom safe-left">
-        <button 
+        <button
           onClick={() => setEmergencyOpen(true)}
           className={`pointer-events-auto focus-ring flex items-center gap-2 px-4 py-2.5 rounded-full border border-red-500 bg-red-500/10 backdrop-blur-md text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer shadow-[0_4px_15px_rgba(239,68,68,0.3)] hover:animate-none ${isEmergencyPulsing ? "animate-pulse" : ""}`}
         >
@@ -51,13 +51,13 @@ const FloatingPlanner: React.FC<FloatingPlannerProps> = ({ onClick }) => {
 
       <Modal isOpen={emergencyOpen} onClose={() => setEmergencyOpen(false)} maxWidth="max-w-xl">
         <div className="p-6 sm:p-8 flex flex-col gap-6 relative">
-          <button 
+          <button
             onClick={() => setEmergencyOpen(false)}
             className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors cursor-pointer"
           >
             <Icon name="X" size={24} />
           </button>
-          
+
           <div className="flex flex-col items-center text-center mb-2">
             <div className="w-16 h-16 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center mb-4 shrink-0">
               <Icon name="AlertTriangle" size={32} />
@@ -67,7 +67,7 @@ const FloatingPlanner: React.FC<FloatingPlannerProps> = ({ onClick }) => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <a 
+            <a
               href="/vietana_emergency_medical_card.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -84,7 +84,7 @@ const FloatingPlanner: React.FC<FloatingPlannerProps> = ({ onClick }) => {
               <Icon name="Download" size={20} className="text-white/30 group-hover:text-red-400 transition-colors" />
             </a>
 
-            <a 
+            <a
               href="/vietana_embassy_and_consular_assistance.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -101,7 +101,7 @@ const FloatingPlanner: React.FC<FloatingPlannerProps> = ({ onClick }) => {
               <Icon name="Download" size={20} className="text-white/30 group-hover:text-brand-gold transition-colors" />
             </a>
 
-            <a 
+            <a
               href="/vietana_travel_emergency_guide.pdf"
               target="_blank"
               rel="noopener noreferrer"

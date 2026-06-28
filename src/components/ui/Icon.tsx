@@ -1,21 +1,21 @@
 import React from 'react';
-import { 
-  Leaf, 
-  Plane, 
-  Soup, 
-  Sparkles, 
-  Star, 
-  MapPin, 
-  Phone, 
-  MessageCircle, 
-  Mail, 
-  Car, 
-  Building, 
-  Palmtree, 
-  Mountain, 
-  Sailboat, 
-  Map, 
-  Camera, 
+import {
+  Leaf,
+  Plane,
+  Soup,
+  Sparkles,
+  Star,
+  MapPin,
+  Phone,
+  MessageCircle,
+  Mail,
+  Car,
+  Building,
+  Palmtree,
+  Mountain,
+  Sailboat,
+  Map,
+  Camera,
   Flame,
   Check,
   Clock,
@@ -34,6 +34,7 @@ import {
   Castle,
   Users,
   Moon,
+  Sun,
   Target,
   Mic,
   Ban,
@@ -63,15 +64,15 @@ import {
   Handshake
 } from 'lucide-react';
 
-export type IconName = 
-  | 'Leaf' | 'Plane' | 'Soup' | 'Sparkles' | 'Star' 
-  | 'MapPin' | 'Phone' | 'MessageCircle' | 'Mail' 
-  | 'Car' | 'Building' | 'Palmtree' | 'Mountain' 
+export type IconName =
+  | 'Leaf' | 'Plane' | 'Soup' | 'Sparkles' | 'Star'
+  | 'MapPin' | 'Phone' | 'MessageCircle' | 'Mail'
+  | 'Car' | 'Building' | 'Palmtree' | 'Mountain'
   | 'Sailboat' | 'Map' | 'Camera' | 'Flame'
   | 'Check' | 'Clock' | 'Menu' | 'X' | 'ChevronRight' | 'ChevronLeft' | 'ChevronDown'
   | 'ClipboardList' | 'Wifi' | 'Ticket' | 'Globe'
   | 'Settings' | 'Train' | 'Edit3'
-  | 'Castle' | 'Users' | 'Moon' | 'Target' | 'Mic'
+  | 'Castle' | 'Users' | 'Moon' | 'Sun' | 'Target' | 'Mic'
   | 'Ban' | 'Fish' | 'Drumstick' | 'LeafyGreen' | 'UtensilsCrossed'
   | 'MessageSquare' | 'ArrowRight'
   | 'AlertTriangle' | 'AlertCircle' | 'HeartPulse' | 'Flag' | 'ShieldAlert' | 'Download'
@@ -82,7 +83,7 @@ const iconMap: Record<IconName, React.ElementType> = {
   Car, Building, Palmtree, Mountain, Sailboat, Map, Camera, Flame,
   Check, Clock, Menu, X, ChevronRight, ChevronLeft, ChevronDown,
   ClipboardList, Wifi, Ticket, Globe,
-  Settings, Train, Edit3, Castle, Users, Moon, Target, Mic,
+  Settings, Train, Edit3, Castle, Users, Moon, Sun, Target, Mic,
   Ban, Fish, Drumstick, LeafyGreen, UtensilsCrossed, MessageSquare, ArrowRight,
   AlertTriangle, AlertCircle, HeartPulse, Flag, ShieldAlert, Download,
   FileText, Utensils, Heart, Search, ArrowLeftRight, ExternalLink, User, Bookmark, Volume2, VolumeX, RotateCcw, Handshake
@@ -98,7 +99,7 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 const Icon: React.FC<IconProps> = ({ name, size = 24, color = 'currentColor', className = '', ...props }) => {
   const LucideIcon = iconMap[name];
   if (!LucideIcon) return null;
-  
+
   return <LucideIcon size={size} color={color} className={className} {...props} />;
 };
 

@@ -10,8 +10,7 @@ import Footer from './components/Footer';
 // Layout Components
 import ProgressBar from './components/layout/ProgressBar';
 import BackToTop from './components/layout/BackToTop';
-import FloatingWhatsApp from './components/layout/FloatingWhatsApp';
-import FloatingPlanner from './components/layout/FloatingPlanner';
+import OverlayLayout from './components/layout/OverlayLayout';
 import Separator from './components/ui/layout/Separator';
 
 // Hooks
@@ -19,6 +18,9 @@ import { useScroll } from './hooks/useScroll';
 import { useIntersectionObserver } from './hooks/useIntersectionObserver';
 import { useMetadata } from './hooks/useMetadata';
 import { useNavStyle } from './hooks/useNavStyle';
+import { useDebounce } from './hooks/useDebounce';
+
+import { useUIStore } from './contexts/UIContext';
 
 // Lazy Loaded Components (Below the fold)
 const Destinations = lazy(() => import('./components/Destinations'));
@@ -32,14 +34,6 @@ const FAQ = lazy(() => import('./components/FAQ'));
 const About = lazy(() => import('./components/About'));
 const Contact = lazy(() => import('./components/Contact'));
 
-// Modals
-const AIPlanner = lazy(() => import('./components/AIPlanner'));
-const MagicMode = lazy(() => import('./components/MagicMode'));
-const CustomTripBuilder = lazy(() => import('./components/CustomTripBuilder'));
-const ExperiencesDrawer = lazy(() => import('./components/ExperiencesDrawer'));
-const MapCurtain = lazy(() => import('./components/MapCurtain'));
-const FlightSearchModal = lazy(() => import('./components/FlightSearchModal'));
-
 import SEO from './components/seo/SEO';
 
 export default function App() {
@@ -48,42 +42,14 @@ export default function App() {
   useIntersectionObserver();
   useMetadata('Feel Vietnam, Your Way', 'Premium bespoke travel for Indian travelers. Locally managed from Ho Chi Minh City.');
 
-  const [isPlannerOpen, setIsPlannerOpen] = useState(false);
-  const [isBuilderOpen, setIsBuilderOpen] = useState(false);
-  
-  const [builderDestinations, setBuilderDestinations] = useState<string[]>(() => {
-    const cached = localStorage.getItem('vietana_trip_cities');
-    return cached ? JSON.parse(cached) : [];
-  });
-  
-  const [builderSights, setBuilderSights] = useState<string[]>(() => {
-    const cached = localStorage.getItem('vietana_trip_sights');
-    return cached ? JSON.parse(cached) : [];
-  });
+  const { setModalOpen, setPlannerInitialData, setBuilderDestinations } = useUIStore();
 
-  useEffect(() => {
-    localStorage.setItem('vietana_trip_cities', JSON.stringify(builderDestinations));
-  }, [builderDestinations]);
-
-  useEffect(() => {
-    localStorage.setItem('vietana_trip_sights', JSON.stringify(builderSights));
-  }, [builderSights]);
-
-  const [initialDestination, setInitialDestination] = useState<string | undefined>(undefined);
-  const [initialPrompt, setInitialPrompt] = useState<string | undefined>(undefined);
-  const [isMagicModeOpen, setIsMagicModeOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isExperiencesOpen, setIsExperiencesOpen] = useState(false);
-  const [isMapOpen, setIsMapOpen] = useState(false);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isFlightSearchOpen, setIsFlightSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navClass = useNavStyle(scrollY, isScrolled);
 
   const openPlanner = (destination?: string, prompt?: string) => {
-    setInitialDestination(destination);
-    setInitialPrompt(prompt);
-    setIsPlannerOpen(true);
+    setPlannerInitialData({ destination, prompt });
+    setModalOpen('planner', true);
   };
 
   return (
@@ -91,34 +57,30 @@ export default function App() {
       <SEO />
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />
-      {(!isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen && !isFlightSearchOpen) && (
-        <FloatingWhatsApp />
-      )}
-      {(!isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen && !isFlightSearchOpen) && (
-        <FloatingPlanner onClick={() => openPlanner()} />
-      )}
 
-      <Navbar 
+      <OverlayLayout />
+
+      <Navbar
         scrolled={isScrolled}
         navClass={navClass}
-        mobileMenuOpen={mobileMenuOpen} 
-        setMobileMenuOpen={setMobileMenuOpen} 
-        onOpenPlanner={() => openPlanner()} 
-        onOpenContact={() => setIsContactOpen(true)}
-        onOpenExperiences={() => setIsExperiencesOpen(true)}
-        onOpenMapCurtain={() => setIsMapOpen(true)}
-        onOpenAbout={() => setIsAboutOpen(true)}
-        onOpenFlightSearch={() => setIsFlightSearchOpen(true)}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+        onOpenPlanner={() => openPlanner()}
+        onOpenContact={() => setModalOpen('contact', true)}
+        onOpenExperiences={() => setModalOpen('experiences', true)}
+        onOpenMapCurtain={() => setModalOpen('map', true)}
+        onOpenAbout={() => setModalOpen('about', true)}
+        onOpenFlightSearch={() => setModalOpen('flightSearch', true)}
       />
 
       <main>
-        <Hero onOpenMagic={() => setIsMagicModeOpen(true)} />
-        
+        <Hero onOpenMagic={() => setModalOpen('magicMode', true)} />
+
         <Suspense fallback={<SectionPlaceholder />}>
           <Destinations />
           <Separator variant="green" />
-          <Packages 
-            onOpenBuilder={(dest) => { setBuilderDestinations(dest || []); setIsBuilderOpen(true); }} 
+          <Packages
+            onOpenBuilder={(dest) => { setBuilderDestinations(dest || []); setModalOpen('builder', true); }}
             onOpenPlanner={(dest, prompt) => openPlanner(dest, prompt)}
           />
           <Separator variant="gold" />
@@ -135,100 +97,10 @@ export default function App() {
         </Suspense>
       </main>
 
-      <AnimatePresence>
-        {isPlannerOpen && (
-          <Suspense fallback={<ModalFallback />}>
-            <AIPlanner 
-              isOpen={isPlannerOpen} 
-              onClose={() => { setIsPlannerOpen(false); setInitialDestination(undefined); setInitialPrompt(undefined); }} 
-              initialDestination={initialDestination}
-              initialPrompt={initialPrompt}
-            />
-          </Suspense>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {isMagicModeOpen && (
-          <Suspense fallback={<ModalFallback />}>
-            <MagicMode 
-              isOpen={isMagicModeOpen} 
-              onClose={() => setIsMagicModeOpen(false)} 
-              onOpenPlanner={(dest) => openPlanner(dest)}
-              onOpenBuilder={() => { setBuilderDestinations([]); setIsBuilderOpen(true); }}
-              onOpenPackages={() => {
-                const packagesSection = document.getElementById('experiences');
-                if (packagesSection) {
-                  packagesSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            />
-          </Suspense>
-        )}
-      </AnimatePresence>
-
-      <Suspense fallback={<ModalFallback />}>
-        <CustomTripBuilder 
-          isOpen={isBuilderOpen} 
-          onClose={() => setIsBuilderOpen(false)} 
-          initialDestinations={builderDestinations}
-          initialSights={builderSights}
-          onUpdateCities={setBuilderDestinations}
-          onUpdateSights={setBuilderSights}
-          onOpenAIPlanner={(prompt) => openPlanner(undefined, prompt)}
-        />
-        <ExperiencesDrawer 
-          isOpen={isExperiencesOpen}
-          onClose={() => setIsExperiencesOpen(false)}
-          onOpenPlanner={(dest) => openPlanner(dest)}
-        />
-        <MapCurtain 
-          isOpen={isMapOpen}
-          onClose={() => setIsMapOpen(false)}
-          onOpenPlanner={(dest) => openPlanner(dest)}
-          selectedCities={builderDestinations}
-          selectedSights={builderSights}
-          onAddCity={(city) => {
-            setBuilderDestinations(prev => {
-              const next = prev.includes(city) ? prev.filter(c => c !== city) : [...prev, city];
-              setIsBuilderOpen(true);
-              return next;
-            });
-          }}
-          onAddSight={(city, sight) => {
-            setBuilderDestinations(prev => prev.includes(city) ? prev : [...prev, city]);
-            setBuilderSights(prev => prev.includes(sight) ? prev.filter(s => s !== sight) : [...prev, sight]);
-            setIsBuilderOpen(true);
-          }}
-        />
-        <Contact 
-          isOpen={isContactOpen}
-          onClose={() => setIsContactOpen(false)}
-        />
-        <About 
-          isOpen={isAboutOpen}
-          onClose={() => setIsAboutOpen(false)}
-          onOpenBuilder={() => setIsBuilderOpen(true)}
-        />
-        <FlightSearchModal 
-          isOpen={isFlightSearchOpen}
-          onClose={() => setIsFlightSearchOpen(false)}
-        />
-      </Suspense>
-
       <Footer />
     </div>
   );
 }
-
-const ModalFallback = () => (
-  <div className="fixed inset-0 z-[200] bg-surface-dark flex items-center justify-center">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full animate-spin" />
-      <span className="text-xs text-brand-gold/60 uppercase tracking-widest">Loading</span>
-    </div>
-  </div>
-);
 
 const SectionPlaceholder = () => (
   <div className="w-full py-24 bg-surface-cream overflow-hidden border-t border-black/5 dark:border-white/5">

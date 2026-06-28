@@ -140,7 +140,7 @@ const Services: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   return (
-    <Section id="services" spacing="xl" className="bg-[#FAF7F0] relative overflow-hidden">
+    <Section id="services" spacing="xl" className="bg-[#FAF7F0] dark:bg-surface-dark relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-surface-warm/15 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
@@ -172,14 +172,14 @@ const Services: React.FC = () => {
               </div>
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="w-7 h-7 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0">
+                  <span className="w-7 h-7 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green dark:text-brand-sage flex items-center justify-center shrink-0">
                     <Icon name={service.icon} size={14} strokeWidth={1.5} />
                   </span>
-                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green">
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green dark:text-brand-gold-light">
                     {service.shortTitle}
                   </Heading>
                 </div>
-                <Text size="xs" variant="muted" className="font-light">
+                <Text size="xs" variant="none" className="font-light text-text-muted dark:text-white/70">
                   {service.shortDesc}
                 </Text>
               </div>
@@ -207,14 +207,14 @@ const Services: React.FC = () => {
               </div>
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="w-7 h-7 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0">
+                  <span className="w-7 h-7 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green dark:text-brand-sage flex items-center justify-center shrink-0">
                     <Icon name={service.icon} size={14} strokeWidth={1.5} />
                   </span>
-                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green">
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green dark:text-brand-gold-light">
                     {service.shortTitle}
                   </Heading>
                 </div>
-                <Text size="xs" variant="muted" className="font-light">
+                <Text size="xs" variant="none" className="font-light text-text-muted dark:text-white/70">
                   {service.shortDesc}
                 </Text>
               </div>
