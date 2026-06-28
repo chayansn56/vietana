@@ -27,13 +27,19 @@ interface AIPlannerProps {
 }
 
 const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestination, initialPrompt }) => {
-  const { t } = useTranslation();
-    const [expandedDay, setExpandedDay] = useState<number | null>(1);
+  const { t, language } = useTranslation();
+  const [expandedDay, setExpandedDay] = useState<number | null>(1);
   const [activeTab, setActiveTab] = useState<'itinerary' | 'deals' | 'pricing'>('itinerary');
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [ttsEnabled, setTtsEnabled] = useState(true);
   const [showActionPopup, setShowActionPopup] = useState(false);
+
+  const getLanguageTag = (lang: string) => {
+    if (lang === 'HI') return 'hi-IN';
+    if (lang === 'VI') return 'vi-VN';
+    return 'en-US';
+  };
 
   const {
     messages,
@@ -57,7 +63,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       const recognition = new SpeechRecognition();
       recognition.continuous = false;
       recognition.interimResults = false;
-      recognition.lang = 'en-US';
+      recognition.lang = getLanguageTag(language);
 
       recognition.onstart = () => {
         setIsListening(true);
@@ -84,7 +90,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
 
       recognitionRef.current = recognition;
     }
-  }, [handleSend]);
+  }, [handleSend, language]);
 
   const toggleListening = () => {
     if (!recognitionRef.current) {
@@ -106,7 +112,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
     const utterance = new SpeechSynthesisUtterance(cleanText);
     
     // Choose voice depending on lang or general fallback
-    utterance.lang = 'en-US';
+    utterance.lang = getLanguageTag(language);
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
     utterance.onerror = () => setIsSpeaking(false);
@@ -322,6 +328,19 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   Dismiss
                 </button>
               </div>
+            </div>
+          )}
+
+          {isSpeaking && (
+            <div className="flex items-center gap-3 justify-center mb-3 animate-msg-fade-in bg-brand-gold/5 border border-brand-gold/10 p-2.5 rounded-xl">
+              <div className="speaking-wave-container">
+                <div className="speaking-wave-bar" />
+                <div className="speaking-wave-bar" />
+                <div className="speaking-wave-bar" />
+                <div className="speaking-wave-bar" />
+                <div className="speaking-wave-bar" />
+              </div>
+              <span className="text-xs font-medium text-brand-gold-light uppercase tracking-wider animate-pulse">Speaking Response...</span>
             </div>
           )}
 

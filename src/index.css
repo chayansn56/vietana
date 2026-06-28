@@ -875,3 +875,32 @@ html, body, section, .editorial-card, .skeuo-paper, .skeuo-paper-premium, .vinta
   animation: siri-pulse 3s infinite ease-in-out alternate;
 }
 
+/* Speaking Wave bars animation */
+@keyframes speaking-wave-bar {
+  0%, 100% { height: 4px; }
+  50% { height: 28px; }
+}
+
+.speaking-wave-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  justify-content: center;
+}
+
+.speaking-wave-bar {
+  width: 4px;
+  height: 8px;
+  background-color: #D4AF37;
+  border-radius: 4px;
+  animation: speaking-wave-bar 1s ease-in-out infinite;
+}
+
+.speaking-wave-bar:nth-child(1) { animation-delay: 0.1s; }
+.speaking-wave-bar:nth-child(2) { animation-delay: 0.2s; background-color: #E8C84A; }
+.speaking-wave-bar:nth-child(3) { animation-delay: 0.3s; background-color: #2C6E63; }
+.speaking-wave-bar:nth-child(4) { animation-delay: 0.4s; background-color: #8B5CF6; }
+.speaking-wave-bar:nth-child(5) { animation-delay: 0.5s; background-color: #EC4899; }
+
+

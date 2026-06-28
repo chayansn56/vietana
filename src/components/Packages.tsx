@@ -150,9 +150,9 @@ Please load this itinerary and let me customize it!`;
                   <div className="flex flex-wrap gap-4 pt-2">
                     <button 
                       onClick={() => handleOpenPlanner(hotPkg)}
-                      className="px-8 py-3.5 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-xs font-extrabold tracking-widest uppercase rounded shadow-[0_4px_15px_rgba(232,200,74,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+                      className="px-8 py-3.5 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-xs font-extrabold tracking-widest uppercase rounded shadow-[0_4px_15px_rgba(232,200,74,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-2"
                     >
-                      Customize Tour
+                      <Icon name="Mic" size={14} /> Customize with Voice
                     </button>
                     <button 
                       onClick={() => setSelectedPackage(hotPkg)}
@@ -354,10 +354,10 @@ Please load this itinerary and let me customize it!`;
                       PDF Info
                     </button>
                     <button
-                      className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn"
+                      className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn flex items-center justify-center gap-1"
                       onClick={() => handleOpenPlanner(pkg)}
                     >
-                      Customize
+                      <Icon name="Mic" size={10} /> Voice Customize
                     </button>
                     <button
                       className="py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-[#555555] hover:text-[#111111] bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
@@ -571,14 +571,14 @@ Please load this itinerary and let me customize it!`;
                 <Icon name="MessageCircle" size={16} className="mr-2" /> Book via WhatsApp
               </Button>
               <Button
-                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-white bg-[#1E4D45] hover:bg-[#12302B]"
+                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-white bg-[#1E4D45] hover:bg-[#12302B] flex items-center justify-center gap-1.5"
                 onClick={() => {
                   const pkg = selectedPackage;
                   setSelectedPackage(null);
                   handleOpenPlanner(pkg);
                 }}
               >
-                <Icon name="Sparkles" size={16} className="mr-2" /> Customize with AI
+                <Icon name="Mic" size={16} /> Customize with Voice
               </Button>
             </div>
           </Modal>
