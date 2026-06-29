@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Heading, Text } from './ui/Typography';
+import Button from './ui/Button';
 import Icon from './ui/Icon';
 
 interface Testimonial {
@@ -71,12 +72,12 @@ const Testimonials: React.FC = () => {
     return () => clearInterval(timer);
   }, [isPlaying]);
 
-  const handlePrev = () => {
+  const prevTestimonial = () => {
     setIsPlaying(false);
     setActiveIndex((prev) => (prev - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length);
   };
 
-  const handleNext = () => {
+  const nextTestimonial = () => {
     setIsPlaying(false);
     setActiveIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
   };
@@ -95,7 +96,7 @@ const Testimonials: React.FC = () => {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="w-8 h-px bg-brand-gold/30"></span>
-            <Text variant="none" className="uppercase tracking-[0.25em] text-xs font-semibold text-brand-gold-light">
+            <Text variant="none" className="uppercase tracking-wide-em text-xs font-semibold text-brand-gold-light">
               Trusted by Indian Travelers
             </Text>
             <span className="w-8 h-px bg-brand-gold/30"></span>
@@ -144,7 +145,7 @@ const Testimonials: React.FC = () => {
                   <Heading as="h4" size="md" font="sans" weight="bold" className="text-white mb-0.5">
                     {item.name}
                   </Heading>
-                  <Text size="sm" variant="none" className="text-white/50 uppercase tracking-widest text-[0.7rem] font-medium">
+                  <Text size="sm" variant="none" className="text-white/50 uppercase tracking-widest text-tiny font-medium">
                     {item.location} • {item.type}
                   </Text>
                 </div>
@@ -155,12 +156,14 @@ const Testimonials: React.FC = () => {
 
         {/* Slider Controls */}
         <div className="flex justify-center items-center gap-6 mt-12">
-          <button
-            onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/55 hover:text-brand-gold hover:border-brand-gold/30 hover:bg-white/5 transition-all duration-300 cursor-pointer"
+          <Button
+            variant="ghost"
+            className="rounded-full !w-12 !h-12 !p-0 flex items-center justify-center bg-white shadow-md group border border-text-dark/5"
+            onClick={prevTestimonial}
+            aria-label="Previous testimonial"
           >
-            <Icon name="ChevronLeft" size={16} />
-          </button>
+            <Icon name="ArrowLeft" size={20} className="text-brand-green/60 group-hover:text-brand-green transition-colors" />
+          </Button>
           
           <div className="flex gap-2">
             {TESTIMONIALS_DATA.map((_, idx) => (
@@ -172,12 +175,14 @@ const Testimonials: React.FC = () => {
             ))}
           </div>
 
-          <button
-            onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/55 hover:text-brand-gold hover:border-brand-gold/30 hover:bg-white/5 transition-all duration-300 cursor-pointer"
+          <Button
+            variant="ghost"
+            className="rounded-full !w-12 !h-12 !p-0 flex items-center justify-center bg-white shadow-md group border border-text-dark/5"
+            onClick={nextTestimonial}
+            aria-label="Next testimonial"
           >
-            <Icon name="ChevronRight" size={16} />
-          </button>
+            <Icon name="ArrowRight" size={20} className="text-brand-green/60 group-hover:text-brand-green transition-colors" />
+          </Button>
         </div>
       </div>
     </section>

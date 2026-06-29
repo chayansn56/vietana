@@ -3,34 +3,9 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { MAP_DESTINATIONS } from '../data/destinations';
 import { CAFES, INDIAN_VEG_ITEMS, INDIAN_NON_VEG_ITEMS, VIETNAMESE_VEG_ITEMS, VIETNAMESE_NON_VEG_ITEMS } from '../data/food';
 import { SERVICES, PACKAGES } from '../data/siteContent';
+import { usePlannerStore, Message, Preferences, Itinerary, ItineraryDay } from '../store/plannerStore';
 
-export interface Message {
-  text: string;
-  type: 'bot' | 'user' | 'blueprint';
-}
-
-export interface Preferences {
-  focus?: string;
-  vibe?: string;
-  style?: string;
-  food?: string;
-  group?: string;
-  nightlife?: string;
-  extras?: string;
-}
-
-export interface ItineraryDay {
-  day: number;
-  title: string;
-  description: string;
-  activities: string[];
-  food: string[];
-}
-
-export interface Itinerary {
-  title: string;
-  days: ItineraryDay[];
-}
+export type { Message, Preferences, ItineraryDay, Itinerary };
 
 const getSystemKnowledge = () => {
   return JSON.stringify({
@@ -50,64 +25,23 @@ const getSystemKnowledge = () => {
 export const useAIPlanner = (initialDestination?: string, initialPrompt?: string) => {
   const { t } = useTranslation();
   
-  const [messages, setMessages] = useState<Message[]>(() => {
-    const cached = localStorage.getItem('vietana_ai_messages');
-    return cached ? JSON.parse(cached) : [];
-  });
-  
-  const [history, setHistory] = useState<{role: string, parts: {text: string}[]}[]>(() => {
-    const cached = localStorage.getItem('vietana_ai_history');
-    return cached ? JSON.parse(cached) : [];
-  });
+  const store = usePlannerStore();
+  const { messages, history, preferences, itinerary, setMessages, setHistory, setPreferences, setItinerary, resetPlanner } = store;
 
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [options, setOptions] = useState<string[]>([]);
   
-  const [itinerary, setItinerary] = useState<Itinerary | null>(() => {
-    const cached = localStorage.getItem('vietana_ai_itinerary');
-    return cached ? JSON.parse(cached) : null;
-  });
-
-  const [preferences, setPreferences] = useState<Preferences>(() => {
-    const cached = localStorage.getItem('vietana_ai_preferences');
-    const parsed = cached ? JSON.parse(cached) : {};
-    if (initialDestination) {
-      parsed.focus = initialDestination;
-    }
-    return parsed;
-  });
-
   const initialized = useRef(false);
-
-  useEffect(() => {
-    localStorage.setItem('vietana_ai_messages', JSON.stringify(messages));
-  }, [messages]);
-
-  useEffect(() => {
-    localStorage.setItem('vietana_ai_history', JSON.stringify(history));
-  }, [history]);
-
-  useEffect(() => {
-    localStorage.setItem('vietana_ai_preferences', JSON.stringify(preferences));
-  }, [preferences]);
-
-  useEffect(() => {
-    if (itinerary) {
-      localStorage.setItem('vietana_ai_itinerary', JSON.stringify(itinerary));
-    } else {
-      localStorage.removeItem('vietana_ai_itinerary');
-    }
-  }, [itinerary]);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;
     
-    if (messages.length === 0) {
-      const greeting = "Namaste! I'm your local Vietana expert. Ask me anything about Vietnam, from the best Indian restaurants in Hanoi to hidden gems in Da Nang! How can I help you plan your dream trip today?";
-      setMessages([{ text: greeting, type: 'bot' }]);
-      setHistory([]);
+    // If opened with an initial destination from the package page
+    if (initialDestination && preferences.focus !== initialDestination) {
+      setPreferences({ ...preferences, focus: initialDestination });
     }
 
     if (initialPrompt) {
@@ -117,30 +51,24 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
     }
   }, [initialDestination, initialPrompt]);
 
-  const resetPlanner = () => {
-    const greeting = "Namaste! I'm your local Vietana expert. Ask me anything about Vietnam, from the best Indian restaurants in Hanoi to hidden gems in Da Nang! How can I help you plan your dream trip today?";
-    setMessages([{ text: greeting, type: 'bot' }]);
-    setHistory([]);
-    setPreferences({});
-    setItinerary(null);
-    localStorage.removeItem('vietana_ai_messages');
-    localStorage.removeItem('vietana_ai_history');
-    localStorage.removeItem('vietana_ai_preferences');
-    localStorage.removeItem('vietana_ai_itinerary');
-  };
-
   const handleSend = async (text: string = inputValue) => {
     if (!text.trim()) return;
     
-    setMessages(prev => [...prev, { text, type: 'user' }]);
+    setMessages((prev: Message[]) => [...prev, { text, type: 'user' }]);
     setInputValue('');
     setIsTyping(true);
     setOptions([]);
 
     try {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      abortControllerRef.current = new AbortController();
+
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: abortControllerRef.current.signal,
         body: JSON.stringify({
           message: text,
           history: history,
@@ -158,21 +86,19 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
       const newBotMsg = data.text;
       const extractedPrefs = data.extractedPreferences || {};
 
-      setMessages(prev => [...prev, { text: newBotMsg, type: 'bot' }]);
+      setMessages((prev: Message[]) => [...prev, { text: newBotMsg, type: 'bot' }]);
       
-      setHistory(prev => [
+      setHistory((prev: any[]) => [
         ...prev, 
         { role: 'user', parts: [{ text }] },
         { role: 'model', parts: [{ text: newBotMsg }] }
       ]);
 
-      // If an itinerary is returned, save it
       if (data.itinerary) {
         setItinerary(data.itinerary);
       }
 
-      // Update preferences safely
-      setPreferences(prev => {
+      setPreferences((prev: Preferences) => {
         const next = { ...prev };
         if (extractedPrefs.focus && extractedPrefs.focus.toLowerCase() !== 'null') next.focus = extractedPrefs.focus;
         if (extractedPrefs.vibe && extractedPrefs.vibe.toLowerCase() !== 'null') next.vibe = extractedPrefs.vibe;
@@ -181,14 +107,17 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
         return next;
       });
 
-      // Show blueprint button if they seem ready
       if (newBotMsg.toLowerCase().includes('generate itinerary') || newBotMsg.toLowerCase().includes('ready to plan') || data.itinerary) {
-        setMessages(prev => [...prev, { text: '', type: 'blueprint' }]);
+        setMessages((prev: Message[]) => [...prev, { text: '', type: 'blueprint' }]);
       }
 
-    } catch (error) {
+    } catch (error: any) {
+      if (error.name === 'AbortError') {
+        console.log('Request aborted');
+        return;
+      }
       console.error(error);
-      setMessages(prev => [...prev, { text: "I'm sorry, I'm having trouble connecting to my brain right now. Please try again in a moment!", type: 'bot' }]);
+      setMessages((prev: Message[]) => [...prev, { text: "I'm sorry, I'm having trouble connecting to my brain right now. Please try again in a moment!", type: 'bot' }]);
     } finally {
       setIsTyping(false);
     }

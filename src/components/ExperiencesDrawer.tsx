@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
 import { EXPERIENCES } from '../data/experiences';
 import { Heading, Text } from './ui/Typography';
+import Button from './ui/Button';
 import Icon from './ui/Icon';
 
 interface ExperiencesDrawerProps {
@@ -35,7 +36,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -49,7 +50,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="fixed top-0 right-0 bottom-0 w-full md:w-[600px] bg-surface-cream shadow-2xl z-[2001] flex flex-col overflow-hidden"
           >
             {/* Header */}
@@ -62,7 +63,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                   Hidden Secrets
                 </Heading>
               </div>
-              <button 
+              <button
                 onClick={onClose}
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-black/5 hover:bg-black/10 transition-colors"
               >
@@ -73,7 +74,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
             {/* List of Experiences */}
             <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-brand-gold/30 scrollbar-track-transparent p-8 pb-32">
               <div className="flex flex-col gap-12">
-                
+
                 {/* Budget Experiences Coming Soon Banner */}
                 <div className="group flex flex-col gap-4 relative bg-brand-gold/10 p-6 rounded-2xl border border-brand-gold/20 -mt-2">
                   <div className="flex gap-4 items-start">
@@ -85,7 +86,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                         <Heading as="h3" className="text-xl font-serif text-brand-green-extra-dark">
                           Budget & Ultra-Budget Itineraries
                         </Heading>
-                        <span className="bg-brand-gold text-brand-green-extra-dark text-[0.55rem] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full whitespace-nowrap">Coming Soon</span>
+                        <span className="bg-brand-gold text-brand-green-extra-dark text-micro font-bold tracking-widest uppercase px-2 py-0.5 rounded-full whitespace-nowrap">Coming Soon</span>
                       </div>
                       <Text className="text-sm font-light text-brand-green-extra-dark/80 leading-relaxed">
                         We are currently crafting exclusive, highly curated guides for budget and ultra-budget backpacking experiences across Vietnam. From cheap cross-country rail passes to the best local homestays. Stay tuned!
@@ -97,8 +98,8 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                 <div className="w-full h-px bg-black/5 -my-4 hidden md:block" />
 
                 {EXPERIENCES.map((exp, idx) => (
-                  <div 
-                    key={exp.id} 
+                  <div
+                    key={exp.id}
                     className="group cursor-pointer flex flex-col gap-4 relative"
                     onClick={() => setSelectedExp(selectedExp?.id === exp.id ? null : exp)}
                   >
@@ -116,8 +117,9 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                           {exp.d}
                         </Text>
                         <div className="flex items-center gap-4">
-                          <button 
-                            className="editorial-border px-6 py-2 text-[0.6rem] tracking-[0.2em] uppercase text-brand-green-extra-dark hover:bg-brand-green-extra-dark hover:text-white transition-colors duration-300"
+                          <Button
+                            variant="outline" size="sm"
+                            className="!px-6 !py-2 text-mini tracking-[0.2em] uppercase"
                             onClick={(e) => {
                               e.stopPropagation();
                               onClose();
@@ -125,26 +127,26 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                             }}
                           >
                             Add to Itinerary
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>
                     {/* Expandable Image */}
-                    <div 
+                    <div
                       className={`w-full overflow-hidden transition-all duration-700 ease-in-out origin-top ${selectedExp?.id === exp.id ? 'h-[300px] mt-2 opacity-100' : 'h-0 opacity-0'}`}
                     >
                       <img src={exp.img} alt={exp.t} className="w-full h-full object-cover rounded-xl" />
                     </div>
-                    
+
                     {/* Separator line */}
                     {idx < EXPERIENCES.length - 1 && (
-                       <div className="w-full h-px bg-black/5 mt-4" />
+                      <div className="w-full h-px bg-black/5 mt-4" />
                     )}
                   </div>
                 ))}
               </div>
             </div>
-            
+
             {/* Scroll indicator for drawer */}
             <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-surface-cream to-transparent pointer-events-none z-10" />
           </motion.div>

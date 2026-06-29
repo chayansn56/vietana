@@ -203,7 +203,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
               justify-content: space-between;
               font-size: 7.5pt;
               color: #888;
-              border-top: 1px solid #E8E4D9;
+              border-top: 1px solid var(--color-border-divider);
               padding-top: 10px;
             }
             
@@ -277,8 +277,8 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-[2000] h-full w-[100%] md:w-[80%] max-w-4xl bg-[#FAF8F3] shadow-2xl overflow-y-auto overscroll-contain md:rounded-l-[32px]"
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-0 right-0 z-[2000] h-full w-[100%] md:w-[80%] max-w-4xl bg-surface-cream shadow-2xl overflow-y-auto overscroll-contain md:rounded-l-[32px]"
           >
             {/* Close Button */}
             <button
@@ -299,25 +299,25 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
               
               <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white w-full">
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="bg-brand-gold/90 text-brand-green-extra-dark font-bold text-[0.65rem] tracking-widest uppercase px-2.5 py-1 rounded-full">
+                  <span className="bg-brand-gold/90 text-brand-green-extra-dark font-bold text-caption tracking-widest uppercase px-2.5 py-1 rounded-full">
                     {getReadingTime(article)}
                   </span>
                   {article.author && (
-                    <span className="bg-white/20 backdrop-blur-md border border-white/10 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
+                    <span className="bg-white/20 backdrop-blur-md border border-white/10 text-white font-bold text-caption tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5">
                       <Icon name="User" size={10} />
                       By {article.author}
                     </span>
                   )}
                   <button 
                     onClick={handleSaveToPlan}
-                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
+                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-caption tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
                   >
                     <Icon name={saved ? 'Check' : 'Bookmark'} size={10} />
                     {saved ? 'Saved!' : 'Save to Plan'}
                   </button>
                   <button 
                     onClick={handleDownloadPDF}
-                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-[0.65rem] tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
+                    className="bg-white/20 backdrop-blur-md border border-white/10 hover:bg-white/30 text-white font-bold text-caption tracking-widest uppercase px-3 py-1 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
                   >
                     <Icon name="Download" size={10} />
                     Download PDF
@@ -335,7 +335,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
             {/* Content Area */}
             <div className="p-8 md:p-12 max-w-3xl">
               {article.isComingSoon ? (
-                <div className="bg-white dark:bg-[#1A2120] rounded-[24px] p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-text-charcoal/5">
+                <div className="bg-white dark:bg-surface-dark rounded-[24px] p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-text-charcoal/5">
                   <span className="text-4xl block mb-4">✍️</span>
                   <Heading as="h3" size="2xl" font="serif" className="mb-4 text-text-charcoal">
                     Currently Crafting
@@ -386,7 +386,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
               ) : (
                 <div className="space-y-8">
                   {/* External Source Card */}
-                  <div className="bg-white dark:bg-[#1A2120] rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-text-charcoal/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                  <div className="bg-white dark:bg-surface-dark rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-text-charcoal/5 flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div>
                       <Text size="sm" weight="semibold" className="uppercase tracking-widest text-text-charcoal/50 mb-2">
                         Curated Guide

@@ -83,17 +83,29 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             {/* Ambient vignette per panel */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/85 pointer-events-none" />
             
-            {/* Panel Label */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 md:bottom-20 md:left-10 md:translate-x-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-              <Text variant="none" className="text-white/70 tracking-[0.3em] text-[0.65rem] uppercase font-bold drop-shadow-md">
+            {/* Panel Label — visible on hover, always visible on mobile */}
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 md:bottom-20 md:left-10 md:translate-x-0 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+              <Text variant="none" className="text-white/70 tracking-loose-em text-caption uppercase font-bold drop-shadow-md">
                 {panel.label}
               </Text>
             </div>
 
             {/* Vertical Divider */}
             {idx < TRIPTYCH_PANELS.length - 1 && (
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-white/20 z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-px bg-white/20 z-10 hidden md:block" />
             )}
+          </div>
+        ))}
+      </div>
+      
+      {/* MOBILE FILMSTRIP — shows all 3 panels as a bottom strip on small screens */}
+      <div className="absolute bottom-0 left-0 right-0 z-[5] flex md:hidden h-14 bg-black/60 backdrop-blur-sm border-t border-white/10">
+        {TRIPTYCH_PANELS.map((panel, idx) => (
+          <div key={idx} className="flex-1 flex items-center justify-center relative overflow-hidden border-r border-white/10 last:border-r-0">
+            <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: `url(${panel.img})` }} />
+            <Text variant="none" className="relative text-mini text-white/80 tracking-[0.2em] uppercase font-semibold drop-shadow-md">
+              {panel.label}
+            </Text>
           </div>
         ))}
       </div>
@@ -105,7 +117,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
           <div className="mb-6 overflow-hidden">
             <div className="animate-reveal-up [animation-duration:0.8s] flex items-center justify-center gap-3">
               <span className="w-8 h-px bg-brand-gold/50"></span>
-              <Text variant="none" className="uppercase tracking-[0.3em] text-[0.65rem] sm:text-xs font-semibold text-brand-gold-light drop-shadow-md">
+              <Text variant="none" className="uppercase tracking-loose-em text-caption sm:text-xs font-semibold text-brand-gold-light drop-shadow-md">
                 {t.hero.support}
               </Text>
               <span className="w-8 h-px bg-brand-gold/50"></span>
@@ -117,15 +129,25 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             size="none"
             variant="none" 
             font="serif"
-            className="mb-4 text-4xl sm:text-5xl lg:text-7xl animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] tracking-tight leading-[1.1] text-white"
+            className="mb-2 mt-4 text-4xl sm:text-5xl lg:text-7xl animate-reveal-up [animation-duration:1.1s] [animation-delay:0.3s] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] tracking-tight text-white"
+            style={{ lineHeight: 1.1 }}
           >
             {t.hero.welcome}
-            <span className="block mt-3 text-brand-gold text-2xl sm:text-4xl lg:text-5xl tracking-tight font-light drop-shadow-[0_2px_20px_rgba(212,175,55,0.4)]">{t.hero.tagline}</span>
+          </Heading>
+          
+          <Heading 
+            as="h2"
+            size="none"
+            variant="none"
+            font="serif"
+            className="mb-6 text-brand-gold text-2xl sm:text-4xl lg:text-5xl tracking-tight font-light drop-shadow-[0_2px_20px_rgba(212,175,55,0.4)] animate-reveal-up [animation-duration:1.1s] [animation-delay:0.4s]"
+          >
+            {t.hero.tagline}
           </Heading>
 
           <Text 
             variant="none"
-            className="max-w-xl mx-auto mb-10 text-white/90 text-sm sm:text-lg font-light leading-relaxed animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] drop-shadow-md"
+            className="max-w-xl mx-auto mb-10 text-white/90 text-sm sm:text-lg leading-relaxed animate-reveal-up [animation-duration:1s] [animation-delay:0.5s] drop-shadow-md light-on-dark"
           >
             {t.hero.sub}
           </Text>

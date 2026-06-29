@@ -103,10 +103,10 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
       onMouseMove={handleMouseMove}
     >
       {/* Side Control Panel */}
-      <div className="w-full md:w-80 bg-white/80 dark:bg-[#1A2120]/90 backdrop-blur-md border-r border-[#1D1D1F]/5 dark:border-white/5 p-6 flex flex-col gap-6 relative z-20 shrink-0">
+      <div className="w-full md:w-80 bg-white/80 dark:bg-surface-dark/90 backdrop-blur-md border-r border-text-dark/5 dark:border-white/5 p-6 flex flex-col gap-6 relative z-20 shrink-0">
         <div>
-          <span className="text-[9px] font-bold tracking-[0.22em] text-[#1E4D45] dark:text-brand-gold uppercase block mb-1">Illustrative Cartography</span>
-          <Heading as="h3" size="lg" font="serif" className="text-[#1E4D45] dark:text-white tracking-wide">Regions of Vietnam</Heading>
+          <span className="text-micro font-bold tracking-[0.22em] text-brand-green dark:text-brand-gold uppercase block mb-1">Illustrative Cartography</span>
+          <Heading as="h3" size="lg" font="serif" className="text-brand-green dark:text-white tracking-wide">Regions of Vietnam</Heading>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -118,25 +118,25 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 key={key}
                 className={`text-left p-4 rounded-xl border transition-all duration-300 cursor-pointer ${
                   isHovered 
-                    ? 'bg-[#1E4D45]/5 dark:bg-white/5 border-[#1E4D45] dark:border-brand-gold shadow-sm' 
+                    ? 'bg-brand-green/5 dark:bg-white/5 border-brand-green dark:border-brand-gold shadow-sm' 
                     : 'bg-white/50 dark:bg-white/5 border-black/5 dark:border-white/5 hover:border-black/15 dark:hover:border-white/15'
                 }`}
                 onMouseEnter={() => setActiveRegion(key)}
                 onMouseLeave={() => setActiveRegion(null)}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-bold font-mono tracking-widest text-[#B8860B] dark:text-brand-gold uppercase">{key}</span>
-                  <span className="text-[9px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/10 text-[#1E4D45] dark:text-[#E9DFC8] font-semibold">{reg.cities.length} Hotspots</span>
+                  <span className="text-mini font-bold font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold uppercase">{key}</span>
+                  <span className="text-micro px-2 py-0.5 rounded bg-black/5 dark:bg-white/10 text-brand-green dark:text-surface-warm font-semibold">{reg.cities.length} Hotspots</span>
                 </div>
-                <h4 className="text-sm font-semibold font-serif text-[#1E4D45] dark:text-white">{reg.name}</h4>
-                <p className="text-[11px] text-[#555555] dark:text-white/60 font-light leading-relaxed mt-2 line-clamp-3">{reg.desc}</p>
+                <h4 className="text-sm font-semibold font-serif text-brand-green dark:text-white">{reg.name}</h4>
+                <p className="text-tiny text-text-subtle dark:text-white/60 font-light leading-relaxed mt-2 line-clamp-3">{reg.desc}</p>
               </button>
             );
           })}
         </div>
         
         <div className="mt-auto pt-4 border-t border-black/5 dark:border-white/5">
-          <p className="text-[10px] text-gray-400 dark:text-white/40 font-mono">Pulsing icons indicate major custom itinerary hotspots for Indian travelers. Hover over region tabs to highlight territory.</p>
+          <p className="text-mini text-gray-400 dark:text-white/40 font-mono">Pulsing icons indicate major custom itinerary hotspots for Indian travelers. Hover over region tabs to highlight territory.</p>
         </div>
       </div>
 
@@ -266,7 +266,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
-              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-[#1A2120] rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-[#1D1D1F]/5 dark:border-white/5"
+              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-surface-dark rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-text-dark/5 dark:border-white/5"
               style={cardStyle}
             >
               <div className="h-32 w-full relative">
@@ -286,11 +286,11 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 </div>
               </div>
               <div className="p-4 flex flex-col gap-2">
-                <Text size="sm" className="text-[#2B2B2B]/70 dark:text-white/70 leading-snug">
+                <Text size="sm" className="text-text-dark/70 dark:text-white/70 leading-snug">
                   {MAP_DESTINATIONS[hoveredDest].desc}
                 </Text>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#1D1D1F]/5 dark:border-white/5">
-                  <span className={`text-[0.6rem] font-bold tracking-widest uppercase ${selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? 'text-[#D4AF37]' : 'text-gray-400 dark:text-white/40'}`}>
+                <div className="flex items-center justify-between mt-2 pt-2 border-t border-text-dark/5 dark:border-white/5">
+                  <span className={`text-mini font-bold tracking-widest uppercase ${selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
                     {selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
                   </span>
                 </div>
@@ -307,7 +307,7 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
-              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-[#1A2120] rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-[#1D1D1F]/5 dark:border-white/5"
+              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-surface-dark rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-text-dark/5 dark:border-white/5"
               style={cardStyle}
             >
               <div className="h-32 w-full relative">
@@ -327,11 +327,11 @@ const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = []
                 </div>
               </div>
               <div className="p-4 flex flex-col gap-2">
-                <Text size="sm" className="text-[#2B2B2B]/70 dark:text-white/70 leading-snug">
+                <Text size="sm" className="text-text-dark/70 dark:text-white/70 leading-snug">
                   {hoveredSight.desc}
                 </Text>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#1D1D1F]/5 dark:border-white/5">
-                  <span className={`text-[0.6rem] font-bold tracking-widest uppercase ${selectedSights.includes(hoveredSight.name) ? 'text-[#D4AF37]' : 'text-gray-400 dark:text-white/40'}`}>
+                <div className="flex items-center justify-between mt-2 pt-2 border-t border-text-dark/5 dark:border-white/5">
+                  <span className={`text-mini font-bold tracking-widest uppercase ${selectedSights.includes(hoveredSight.name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
                     {selectedSights.includes(hoveredSight.name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
                   </span>
                 </div>

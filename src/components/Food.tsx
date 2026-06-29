@@ -3,14 +3,14 @@ import { motion } from 'motion/react';
 import Section from './ui/layout/Section';
 import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
-import { 
-  ALL_CATEGORIES, 
-  ConciergeCategory, 
+import {
+  ALL_CATEGORIES,
+  ConciergeCategory,
   CATEGORY_INDIAN_COMFORT,
   CATEGORY_VEG_JAIN,
   CATEGORY_VIETNAMESE,
   CATEGORY_CAFES,
-  CATEGORY_LOCAL_KNOWLEDGE 
+  CATEGORY_LOCAL_KNOWLEDGE
 } from '../data/foodConcierge';
 import FoodSideSheet from './food/FoodSideSheet';
 
@@ -30,25 +30,25 @@ const Food: React.FC = () => {
 
   return (
     <>
-      <Section id="food" className="relative py-32 bg-[#F5F5F7] text-[#1D1D1F] overflow-hidden">
+      <Section id="food" className="relative py-32 bg-surface-cream dark:bg-surface-dark text-text-dark dark:text-white overflow-hidden">
         <Container>
-          
+
           {/* Main Hero Header */}
           <div className="mb-20 text-center max-w-4xl mx-auto reveal">
-            <Text size="lg" weight="medium" className="uppercase tracking-[0.3em] text-brand-gold mb-6">
+            <Text size="lg" weight="medium" className="uppercase tracking-[0.3em] text-brand-sage mb-6">
               VIETANA Food Concierge™
             </Text>
-            <Heading as="h2" size="4xl" font="serif" className="mb-6 font-extrabold text-[#1D1D1F]">
+            <Heading as="h2" size="4xl" font="serif" className="mb-6 font-bold text-brand-green-dark tracking-tight">
               A Taste Of Home
             </Heading>
-            <Text size="xl" className="text-[#86868B] font-light leading-relaxed">
-              Because great journeys shouldn't come with food worries. 
+            <Text size="xl" className="text-text-subtle font-light leading-relaxed">
+              Because great journeys shouldn't come with food worries.
               Discover our carefully curated ecosystem of comfort, flavor, and local secrets.
             </Text>
           </div>
 
           {/* Hero Image (Family Dining - No closeups) */}
-          <motion.div 
+          <motion.div
             className="w-full h-[60vh] min-h-[400px] rounded-3xl overflow-hidden mb-24 shadow-2xl relative cursor-pointer group"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,9 +56,9 @@ const Food: React.FC = () => {
             transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
             onClick={() => openCategory(CATEGORY_INDIAN_COMFORT)}
           >
-            <img 
-              src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=2000&q=80" 
-              alt="Family dining" 
+            <img
+              src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=2000&q=80"
+              alt="Family dining"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -77,41 +77,41 @@ const Food: React.FC = () => {
 
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-            
+
             {/* Indian Comfort (Already featured above, but keeping for grid completeness or could omit) */}
-            
+
             {/* Vegetarian & Jain */}
-            <div 
-              className="lg:col-span-2 bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-black/5 flex flex-col md:flex-row justify-between group cursor-pointer hover:shadow-xl transition-all duration-500 overflow-hidden relative min-h-[320px]"
+            <div
+              className="lg:col-span-2 bg-white dark:bg-surface-dark rounded-3xl p-8 md:p-12 shadow-sm border border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between group cursor-pointer hover:shadow-xl transition-all duration-500 overflow-hidden relative min-h-[320px]"
               onClick={() => openCategory(CATEGORY_VEG_JAIN)}
             >
               <div className="relative z-20 w-full md:max-w-[55%] flex flex-col justify-between h-full min-h-[220px] md:min-h-0">
                 <div>
                   <Text size="sm" weight="bold" className="uppercase tracking-widest text-brand-green mb-4">Plant Based</Text>
-                  <Heading as="h3" size="2xl" font="serif" className="text-[#1D1D1F] mb-4">
+                  <Heading as="h3" size="2xl" font="serif" className="text-brand-green-dark mb-4">
                     {CATEGORY_VEG_JAIN.title}
                   </Heading>
-                  <Text className="text-[#86868B] mb-6">
+                  <Text className="text-text-subtle mb-6">
                     {CATEGORY_VEG_JAIN.subtitle}
                   </Text>
                 </div>
-                <div className="inline-flex items-center gap-2 text-[#1D1D1F] font-medium group-hover:text-brand-green transition-colors mt-auto">
+                <div className="inline-flex items-center gap-2 text-text-dark font-medium group-hover:text-brand-green transition-colors mt-auto">
                   Explore <span className="text-xl leading-none">&rarr;</span>
                 </div>
               </div>
 
               <div className="relative md:absolute md:top-0 md:right-0 w-full md:w-1/2 h-44 md:h-full mt-6 md:mt-0 rounded-2xl md:rounded-none overflow-hidden shrink-0">
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-                <img 
-                  src={CATEGORY_VEG_JAIN.heroImage} 
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white dark:from-surface-dark via-white/80 dark:via-surface-dark/80 to-transparent z-10" />
+                <img
+                  src={CATEGORY_VEG_JAIN.heroImage}
                   alt={CATEGORY_VEG_JAIN.title}
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </div>
 
             {/* Vietnamese Favorites */}
-            <div 
+            <div
               className="bg-brand-green rounded-3xl p-8 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden flex flex-col justify-between min-h-[320px]"
               onClick={() => openCategory(CATEGORY_VIETNAMESE)}
             >
@@ -125,33 +125,33 @@ const Food: React.FC = () => {
                 </Heading>
               </div>
               <div className="relative z-10 mt-auto">
-                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-brand-green transition-colors">
-                    <span className="text-xl">&rarr;</span>
-                 </div>
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-brand-green transition-colors">
+                  <span className="text-xl">&rarr;</span>
+                </div>
               </div>
             </div>
 
             {/* Cafes */}
-            <div 
-              className="bg-white rounded-3xl p-8 shadow-sm border border-black/5 group cursor-pointer hover:shadow-xl transition-all duration-500 min-h-[320px] flex flex-col"
+            <div
+              className="bg-white dark:bg-surface-dark rounded-3xl p-8 shadow-sm border border-black/5 dark:border-white/10 group cursor-pointer hover:shadow-xl transition-all duration-500 min-h-[320px] flex flex-col"
               onClick={() => openCategory(CATEGORY_CAFES)}
             >
               <div className="flex-1 mb-6 rounded-2xl overflow-hidden relative min-h-[160px]">
-                 <img src={CATEGORY_CAFES.heroImage} alt="Best Cafes and Coffee Shops in Vietnam" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src={CATEGORY_CAFES.heroImage} alt="Best Cafes and Coffee Shops in Vietnam" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div>
-                <Heading as="h3" size="lg" font="serif" className="text-[#1D1D1F] mb-1">
+                <Heading as="h3" size="lg" font="serif" className="text-brand-green-dark mb-1">
                   {CATEGORY_CAFES.title}
                 </Heading>
-                <Text size="sm" className="text-[#86868B]">
+                <Text size="sm" className="text-text-subtle">
                   {CATEGORY_CAFES.subtitle}
                 </Text>
               </div>
             </div>
 
             {/* Local Knowledge */}
-            <div 
-              className="lg:col-span-2 bg-[#1D1D1F] rounded-3xl p-8 md:p-12 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden min-h-[320px]"
+            <div
+              className="lg:col-span-2 bg-brand-green-extra-dark rounded-3xl p-8 md:p-12 shadow-sm group cursor-pointer hover:shadow-xl transition-all duration-500 relative overflow-hidden min-h-[320px]"
               onClick={() => openCategory(CATEGORY_LOCAL_KNOWLEDGE)}
             >
               <div className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-700">
@@ -176,7 +176,7 @@ const Food: React.FC = () => {
       </Section>
 
       {/* The Ecosystem Side Sheet */}
-      <FoodSideSheet 
+      <FoodSideSheet
         isOpen={selectedCategory !== null}
         onClose={closeSideSheet}
         category={selectedCategory}

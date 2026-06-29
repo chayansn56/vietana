@@ -3,6 +3,7 @@ import { PackageProduct } from '../data/packagesData';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
+import Input from './ui/Input';
 import Icon from './ui/Icon';
 
 interface PDFCustomizerModalProps {
@@ -114,7 +115,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
               font-family: 'Playfair Display', serif;
               font-size: 16pt;
               color: ${primaryColor};
-              border-bottom: 1px solid #E8E4D9;
+              border-bottom: 1px solid var(--color-border-divider);
               padding-bottom: 8px;
               margin-top: 30px;
               margin-bottom: 15px;
@@ -181,7 +182,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
             
             .footer-branding {
               margin-top: 60px;
-              border-top: 1px solid #E8E4D9;
+              border-top: 1px solid var(--color-border-divider);
               padding-top: 15px;
               text-align: center;
               font-size: 8pt;
@@ -301,62 +302,61 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
-      <div className="p-6 sm:p-8 flex flex-col gap-5 text-left relative bg-white dark:bg-[#1A2120] text-charcoal">
-        <button 
+      <div className="p-6 sm:p-8 flex flex-col gap-5 text-left relative bg-white dark:bg-surface-dark text-charcoal">
+        <Button
+          variant="ghost"
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-charcoal transition-colors cursor-pointer"
+          className="absolute top-4 right-4 !p-2 text-gray-400 hover:text-charcoal"
         >
           <Icon name="X" size={20} />
-        </button>
+        </Button>
 
         <div>
-          <span className="text-[9px] font-bold tracking-[0.2em] text-[#B8860B] dark:text-brand-gold uppercase block mb-1">Custom PDF Exporter</span>
-          <Heading as="h3" size="xl" font="serif" className="text-[#1E4D45] dark:text-white leading-tight">Personalize Itinerary</Heading>
+          <span className="text-micro font-bold tracking-[0.2em] text-brand-gold-muted dark:text-brand-gold uppercase block mb-1">Custom PDF Exporter</span>
+          <Heading as="h3" size="xl" font="serif" className="text-brand-green dark:text-white leading-tight">Personalize Itinerary</Heading>
         </div>
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-[#1E4D45] dark:text-white/80">Traveler Names</label>
-            <input 
-              type="text" 
-              placeholder="e.g. Chayan & Family" 
+            <label className="text-xs font-semibold text-brand-green dark:text-white/80">Traveler Names</label>
+            <Input
+              type="text"
+              placeholder="e.g. Chayan & Family"
               value={travelerName}
               onChange={(e) => setTravelerName(e.target.value)}
-              className="px-4 py-2.5 rounded-lg border border-black/10 text-sm outline-none"
+              className="px-4 py-2.5 rounded-lg border border-black/10 text-sm"
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-[#1E4D45] dark:text-white/80">Travel Dates</label>
-            <input 
-              type="text" 
-              placeholder="e.g. July 15 - July 22, 2026" 
+            <label className="text-xs font-semibold text-brand-green dark:text-white/80">Travel Dates</label>
+            <Input
+              type="text"
+              placeholder="e.g. July 15 - July 22, 2026"
               value={travelDates}
               onChange={(e) => setTravelDates(e.target.value)}
-              className="px-4 py-2.5 rounded-lg border border-black/10 text-sm outline-none"
+              className="px-4 py-2.5 rounded-lg border border-black/10 text-sm"
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-[#1E4D45] dark:text-white/80">Select Design Style</label>
+            <label className="text-xs font-semibold text-brand-green dark:text-white/80">Select Design Style</label>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={() => setPdfTheme('classic')}
-                className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider rounded-lg border transition ${
-                  pdfTheme === 'classic'
-                    ? 'bg-[#1E4D45]/5 border-[#1E4D45] text-[#1E4D45] dark:text-brand-gold'
+                className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider rounded-lg border transition ${pdfTheme === 'classic'
+                    ? 'bg-brand-green/5 border-brand-green text-brand-green dark:text-brand-gold'
                     : 'border-black/5 hover:border-black/10 dark:border-white/5 dark:text-white'
-                }`}
+                  }`}
               >
                 Classic Gold
               </button>
               <button
                 onClick={() => setPdfTheme('modern')}
-                className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider rounded-lg border transition ${
-                  pdfTheme === 'modern'
-                    ? 'bg-[#1E4D45]/5 border-[#1E4D45] text-[#1E4D45] dark:text-brand-gold'
+                className={`py-2 px-3 text-xs font-semibold uppercase tracking-wider rounded-lg border transition ${pdfTheme === 'modern'
+                    ? 'bg-brand-green/5 border-brand-green text-brand-green dark:text-brand-gold'
                     : 'border-black/5 hover:border-black/10 dark:border-white/5 dark:text-white'
-                }`}
+                  }`}
               >
                 Modern Emerald
               </button>
@@ -365,11 +365,11 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
 
           {pkg.isJainVegFriendly && (
             <label className="flex items-center gap-2.5 py-1.5 cursor-pointer select-none">
-              <input 
+              <input
                 type="checkbox"
                 checked={includeVegNotes}
                 onChange={() => setIncludeVegNotes(!includeVegNotes)}
-                className="w-4 h-4 accent-[#1E4D45] cursor-pointer"
+                className="w-4 h-4 accent-brand-green cursor-pointer"
               />
               <span className="text-xs font-medium text-green-700 dark:text-green-400">Include vegetarian & Jain gourmet culinary note</span>
             </label>
@@ -377,18 +377,21 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
         </div>
 
         <div className="flex gap-3 mt-4">
-          <button 
+          <Button
+            variant="outline"
             onClick={onClose}
-            className="flex-1 py-3 px-4 border border-black/10 hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5 text-xs tracking-wider uppercase font-bold rounded-lg cursor-pointer transition text-charcoal dark:text-white"
+            className="flex-1 text-xs tracking-wider uppercase font-bold"
           >
             Cancel
-          </button>
-          <button 
+          </Button>
+          <Button
+            variant="secondary"
             onClick={handleGeneratePDF}
-            className="flex-1 py-3 px-4 bg-[#1E4D45] hover:bg-[#12302B] text-white text-xs tracking-wider uppercase font-bold rounded-lg cursor-pointer transition flex items-center justify-center gap-2 shadow"
+            className="flex-1 text-xs tracking-wider uppercase font-bold shadow"
+            icon={<Icon name="Download" size={14} />}
           >
-            <Icon name="Download" size={14} /> Download PDF
-          </button>
+            Download PDF
+          </Button>
         </div>
       </div>
     </Modal>

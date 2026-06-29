@@ -21,6 +21,8 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isNavbar = false, 
   }, []);
 
   const toggleTheme = () => {
+    // Enable smooth transition only during toggle
+    document.documentElement.classList.add('theme-transitioning');
     setIsDark((prev) => {
       const next = !prev;
       if (next) {
@@ -32,13 +34,15 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isNavbar = false, 
       }
       return next;
     });
+    // Remove after transition completes
+    setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 500);
   };
 
   return (
     <button
       onClick={toggleTheme}
       aria-label="Toggle Dark Mode"
-      className={className || `cursor-pointer flex items-center justify-center w-10 h-10 rounded-full border-none bg-gradient-to-br from-[#D4AF37] via-[#E8C84A] to-[#1E4D45] text-white shadow-[0_4px_12px_rgba(212,175,55,0.35)] hover:shadow-[0_4px_18px_rgba(212,175,55,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 pointer-events-auto`}
+      className={`focus-ring ${className || 'cursor-pointer flex items-center justify-center w-10 h-10 rounded-full border-none bg-gradient-to-br from-brand-gold via-brand-gold-light to-brand-green text-white shadow-[0_4px_12px_rgba(212,175,55,0.35)] hover:shadow-[0_4px_18px_rgba(212,175,55,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 pointer-events-auto'}`}
     >
       {isDark ? <Icon name="Sun" size={16} className="text-white" /> : <Icon name="Moon" size={16} className="text-white" />}
     </button>

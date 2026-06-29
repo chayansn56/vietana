@@ -100,19 +100,19 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-4 text-white/90">
-                    <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
+                    <span className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
                       <Icon name="Phone" size={16} className={loc.accentColor} />
                     </span>
                     <Text size="md" variant="none" className="font-light tracking-wide text-white">{loc.phone}</Text>
                   </div>
                   <div className="flex items-center gap-4 text-white/90">
-                    <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
+                    <span className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
                       <Icon name="Mail" size={16} className={loc.accentColor} />
                     </span>
                     <Text size="md" variant="none" className="font-light tracking-wide text-white">{loc.email}</Text>
                   </div>
                   <div className="flex items-center gap-4 text-white/90">
-                    <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
+                    <span className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-sm">
                       <Icon name="MapPin" size={16} className={loc.accentColor} />
                     </span>
                     <Text size="sm" variant="none" className="font-light tracking-wide whitespace-pre-line leading-relaxed text-white">{loc.address}</Text>

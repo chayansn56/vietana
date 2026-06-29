@@ -1,10 +1,9 @@
 import React, { useState, useRef, useMemo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { 
-  BY_THEME_CATEGORIES, 
-  BY_REGION_CATEGORIES, 
-  PackageProduct, 
-  CategoryData 
+import {
+  BY_THEME_CATEGORIES,
+  BY_REGION_CATEGORIES,
+  PackageProduct,
+  CategoryData
 } from '../data/packagesData';
 import Button from './ui/Button';
 import Section from './ui/layout/Section';
@@ -14,6 +13,10 @@ import Badge from './ui/Badge';
 import Icon from './ui/Icon';
 import Modal from './ui/Modal';
 import PDFCustomizerModal from './PDFCustomizerModal';
+
+import PackageFilters from './packages/PackageFilters';
+import PackageCard from './packages/PackageCard';
+import PackageDetailsModal from './packages/PackageDetailsModal';
 
 interface PackagesProps {
   onOpenBuilder: (dest?: string[]) => void;
@@ -35,7 +38,7 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
 
   const categories = activeTab === 'theme' ? BY_THEME_CATEGORIES : BY_REGION_CATEGORIES;
   const activeCategory = categories.find(c => c.name === activeCategoryName) || categories[0];
-  
+
   const displayedPackages = useMemo(() => {
     if (jainVegOnly) {
       return activeCategory.packages.filter(p => p.isJainVegFriendly);
@@ -65,14 +68,6 @@ const Packages: React.FC<PackagesProps> = ({ onOpenBuilder, onOpenPlanner }) => 
     }
   };
 
-  const getDownloadPaths = (pkg: PackageProduct) => {
-    const category = pkg.category;
-    const filename = pkg.title.toLowerCase().replace(/[^a-z0-9]+/g, '_') + '.pdf';
-    return {
-      pdf: `/itineraries/PDFs/${category}/${filename}`
-    };
-  };
-
 
   const handleOpenPlanner = (pkg: PackageProduct) => {
     if (onOpenPlanner) {
@@ -88,560 +83,197 @@ Please load this itinerary and let me customize it!`;
   };
 
   return (
-    <Section id="experiences" spacing="lg" className="bg-[#FAF7F0] text-[#111111] relative overflow-hidden">
+    <Section id="experiences" spacing="lg" className="bg-surface-linen dark:bg-surface-dark text-text-dark dark:text-white relative overflow-hidden">
       {/* Editorial layout elements */}
-      <div className="absolute top-[10%] left-[-5%] w-[350px] h-[350px] bg-[#E9DFC8]/15 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[10%] left-[-5%] w-[350px] h-[350px] bg-surface-warm/15 rounded-full blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-brand-sage/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-10 w-full max-w-[1400px]">
-        {/* Most Selling Hot Highlight Block at the very top */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-          {/* HCMC & Phu Quoc Featured Card */}
-          {(() => {
-            const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-phu-quoc-explorer-5d4n");
-            if (!hotPkg) return null;
-            return (
-              <div className="p-8 bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] text-white rounded-xl shadow-[0_20px_50px_rgba(212,175,55,0.15)] border-2 border-[#D4AF37] relative overflow-hidden group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] flex flex-col justify-between min-h-[550px]">
-                {/* Flashy gold corner ribbon */}
-                <div className="absolute top-0 right-0 w-28 h-28 overflow-hidden pointer-events-none z-20">
-                  <div className="absolute top-4 -right-10 w-36 bg-[#E8C84A] text-[#12302B] text-[8px] font-bold tracking-widest text-center py-1 uppercase transform rotate-45 shadow-md border-y border-white/20">
-                    Bestseller
-                  </div>
-                </div>
-                
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-[#E8C84A] text-[#12302B] text-[9px] font-extrabold tracking-[0.2em] uppercase px-2.5 py-1 rounded shadow-sm border border-white/10">
-                        🔥 Popular Coast
-                      </span>
-                      <span className="border-2 border-[#D4AF37] text-[#E8C84A] text-[9px] font-extrabold tracking-widest uppercase px-2.5 py-0.5 rounded-full font-mono bg-[#1E4D45]/40">
-                        {hotPkg.duration}
-                      </span>
-                    </div>
-                    <Heading as="h3" variant="none" className="text-2xl md:text-3xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-4 font-bold">
-                      {hotPkg.title}
-                    </Heading>
-                    <p className="text-white/80 text-xs font-light leading-relaxed mb-6">
-                      An incredible 5-day journey from the historic streets of Ho Chi Minh City to the tropical sands of Phu Quoc Island. Includes Cu Chi Tunnels tour, Mekong Delta cruise, 3 Island speedboating with snorkeling, and admission to VinWonders theme park.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
-                      <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">HOTELS INCLUDED</span>
-                        <span className="text-xs text-white/90 font-semibold">🏨 HCMC & Phu Quoc (3★ Premium)</span>
-                      </div>
-                      <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">SPECIAL INDIAN RATE</span>
-                        <span className="text-3xl md:text-4xl font-mono font-black text-[#E8C84A] drop-shadow-md">{hotPkg.price} <span className="text-xs font-normal text-white/60">PP</span></span>
-                      </div>
+        {/* Featured Packages — redesigned editorial cards */}
+        {(() => {
+          const hotPkg1 = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-phu-quoc-explorer-5d4n");
+          const hotPkg2 = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-dalat-explorer-5d4n");
+          if (!hotPkg1 || !hotPkg2) return null;
+          return (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-14">
+              {[hotPkg1, hotPkg2].map((pkg, idx) => (
+                <div key={pkg.id} className="relative">
+                  <div className="absolute top-3 right-0 z-20">
+                    <div className="bg-brand-gold-light text-brand-green-dark text-tiny font-bold tracking-widest text-center py-1 px-5 uppercase shadow-sm border-y border-white/20 rounded-l-sm">
+                      Bestseller
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    <button 
-                      onClick={() => handleOpenPlanner(hotPkg)}
-                      className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
-                    >
-                      <Icon name="Sparkles" size={12} /> AI Customization
-                    </button>
-                    <button 
-                      onClick={() => setSelectedPackage(hotPkg)}
-                      className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-[10px] font-extrabold tracking-widest uppercase rounded transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
-                    >
-                      Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-
-          {/* HCMC & Da Lat Featured Card */}
-          {(() => {
-            const hotPkg = BY_THEME_CATEGORIES.find(c => c.name === "Beach Escapes")?.packages.find(p => p.id === "hcmc-dalat-explorer-5d4n");
-            if (!hotPkg) return null;
-            return (
-              <div className="p-8 bg-gradient-to-br from-[#1E4D45] via-[#12302B] to-[#0A1C18] text-white rounded-xl shadow-[0_20px_50px_rgba(212,175,55,0.15)] border-2 border-[#D4AF37] relative overflow-hidden group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] flex flex-col justify-between min-h-[550px]">
-                {/* Flashy gold corner ribbon */}
-                <div className="absolute top-0 right-0 w-28 h-28 overflow-hidden pointer-events-none z-20">
-                  <div className="absolute top-4 -right-10 w-36 bg-[#E8C84A] text-[#12302B] text-[8px] font-bold tracking-widest text-center py-1 uppercase transform rotate-45 shadow-md border-y border-white/20">
-                    Bestseller
-                  </div>
-                </div>
-                
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-[#E8C84A] text-[#12302B] text-[9px] font-extrabold tracking-[0.2em] uppercase px-2.5 py-1 rounded shadow-sm border border-white/10">
-                        🏔 Cool Highlands
-                      </span>
-                      <span className="border-2 border-[#D4AF37] text-[#E8C84A] text-[9px] font-extrabold tracking-widest uppercase px-2.5 py-0.5 rounded-full font-mono bg-[#1E4D45]/40">
-                        {hotPkg.duration}
-                      </span>
-                    </div>
-                    <Heading as="h3" variant="none" className="text-2xl md:text-3xl font-serif text-[#FAF7F0] tracking-tight leading-tight mb-4 font-bold">
-                      {hotPkg.title}
-                    </Heading>
-                    <p className="text-white/80 text-xs font-light leading-relaxed mb-6">
-                      A breathtaking 5-day journey from the vibrant streets of Ho Chi Minh City to the cool pine mountain forests of Da Lat. Features Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 mb-6 border-y border-white/10 py-4">
-                      <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">HOTELS INCLUDED</span>
-                        <span className="text-xs text-white/90 font-semibold">🏨 HCMC & Da Lat (3★ Premium)</span>
+                  <div className="group rounded-xl bg-gradient-to-br from-brand-green via-brand-green-dark to-brand-green-extra-dark border border-white/10 transition-all duration-500 hover:border-white/20 overflow-hidden">
+                    {/* Gold top accent line */}
+                    <div className="h-[2px] bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
+                    <div className="p-6 md:p-8">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="bg-brand-sage/20 text-brand-sage text-tiny font-semibold tracking-widest uppercase px-2.5 py-1 rounded">
+                          {idx === 0 ? 'Coastal' : 'Highlands'}
+                        </span>
+                        <span className="text-white/50 text-tiny font-mono tracking-wider">{pkg.duration}</span>
                       </div>
-                      <div>
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-[#E8C84A] font-extrabold block mb-1">SPECIAL INDIAN RATE</span>
-                        <span className="text-3xl md:text-4xl font-mono font-black text-[#E8C84A] drop-shadow-md">{hotPkg.price} <span className="text-xs font-normal text-white/60">PP</span></span>
+                      <Heading as="h3" size="h4" font="serif" variant="white" className="mb-3">
+                        {pkg.title}
+                      </Heading>
+                      <p className="text-white/70 text-sm font-light leading-relaxed mb-5 max-w-prose">
+                        {idx === 0
+                          ? 'From Ho Chi Minh to Phu Quoc — Cu Chi Tunnels, Mekong Delta cruise, and 3 Island speedboating with snorkeling.'
+                          : 'From Ho Chi Minh to Da Lat — Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.'}
+                      </p>
+                      <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+                        <div>
+                          <span className="text-white/40 text-tiny uppercase tracking-widest font-semibold block mb-1">From</span>
+                          <span className="text-2xl font-mono font-bold text-brand-gold-light tabular-nums">{pkg.price} <span className="text-xs font-normal text-white/50">PP</span></span>
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="primary" size="sm" className="tracking-widest uppercase"
+                            onClick={() => handleOpenPlanner(pkg)}
+                          >
+                            Customize
+                          </Button>
+                          <Button
+                            variant="glass" size="sm" className="tracking-widest uppercase"
+                            onClick={() => setSelectedPackage(pkg)}
+                          >
+                            Details
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    <button 
-                      onClick={() => handleOpenPlanner(hotPkg)}
-                      className="px-6 py-3 bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] text-[10px] font-extrabold tracking-widest uppercase rounded shadow transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
-                    >
-                      <Icon name="Sparkles" size={12} /> AI Customization
-                    </button>
-                    <button 
-                      onClick={() => setSelectedPackage(hotPkg)}
-                      className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 text-[10px] font-extrabold tracking-widest uppercase rounded transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
-                    >
-                      Details
-                    </button>
-                  </div>
                 </div>
-              </div>
-            );
-          })()}
-        </div>
-
-        {/* Main Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
-              MORE EXPERIENCES
-            </span>
-            <Heading as="h2" size="4xl" font="serif" className="mb-4 tracking-tight text-[#1E4D45]">
-              Explore Packages
-            </Heading>
-            <div className="w-16 h-px bg-[#D4AF37] mb-6"></div>
-            <Text variant="none" className="text-[#555555] font-light max-w-2xl text-base md:text-lg">
-              Locally handpicked and customized itineraries matching the preferences of premium Indian travelers.
-            </Text>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto items-start sm:items-center self-start">
-            {/* Interest vs Region Selector */}
-            <div className="flex bg-[#FAF7F0] border border-[#E8E4D9] p-1.5 rounded-lg gap-2 w-full md:w-auto">
-              <button
-                className={`flex-1 md:flex-none px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase transition duration-300 ${
-                  activeTab === 'theme' 
-                    ? 'bg-[#1E4D45] text-white shadow-sm' 
-                    : 'text-[#1E4D45]/60 hover:text-[#1E4D45]'
-                }`}
-                onClick={() => {
-                  setActiveTab('theme');
-                  setActiveCategoryName(BY_THEME_CATEGORIES[0].name);
-                  if (BY_THEME_CATEGORIES[0].packages.length > 0) {
-                    setActivePackageId(BY_THEME_CATEGORIES[0].packages[0].id);
-                  }
-                }}
-              >
-                By Theme
-              </button>
-              <button
-                className={`flex-1 md:flex-none px-5 py-2.5 rounded text-xs font-semibold tracking-widest uppercase transition duration-300 ${
-                  activeTab === 'region' 
-                    ? 'bg-[#1E4D45] text-white shadow-sm' 
-                    : 'text-[#1E4D45]/60 hover:text-[#1E4D45]'
-                }`}
-                onClick={() => {
-                  setActiveTab('region');
-                  setActiveCategoryName(BY_REGION_CATEGORIES[0].name);
-                  if (BY_REGION_CATEGORIES[0].packages.length > 0) {
-                    setActivePackageId(BY_REGION_CATEGORIES[0].packages[0].id);
-                  }
-                }}
-              >
-                By Region
-              </button>
+              ))}
             </div>
+          );
+        })()}
 
-            {/* Jain Veg Option filter */}
-            <label className="flex items-center gap-3 cursor-pointer self-start sm:self-auto py-2">
-              <input 
-                type="checkbox" 
-                checked={jainVegOnly}
-                onChange={() => setJainVegOnly(!jainVegOnly)}
-                className="w-4.5 h-4.5 accent-[#1E4D45] cursor-pointer"
-              />
-              <span className="text-xs font-mono uppercase tracking-wider text-[#1E4D45]">
-                🟢 Jain & Veg Only
-              </span>
-            </label>
-          </div>
+        {/* Section Header */}
+        <div className="mb-8">
+          <span className="text-xs font-bold tracking-[0.2em] text-brand-sage uppercase mb-3 block">
+            VIETANA CURATED
+          </span>
+          <Heading as="h2" size="h3" font="serif" className="mb-3 tracking-tight text-brand-green dark:text-brand-gold-light">
+            Explore Packages
+          </Heading>
+          <div className="w-12 h-px bg-brand-gold mb-5"></div>
+          <Text variant="none" className="text-text-subtle dark:text-white/70 font-light max-w-2xl text-sm md:text-base">
+            Handpicked itineraries crafted for premium Indian travelers, with local support from Ho Chi Minh City.
+          </Text>
         </div>
 
-        {/* Category Tabs list horizontal */}
-        <div className="flex gap-2 overflow-x-auto pb-4 mb-10 border-b border-[#E8E4D9] scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat.name}
-              className={`px-4 py-2 border rounded-full text-xs font-medium tracking-wide uppercase transition shrink-0 duration-300 ${
-                activeCategoryName === cat.name
-                  ? 'border-[#1E4D45] bg-[#1E4D45]/5 text-[#1E4D45]'
-                  : 'border-[#E8E4D9] text-[#555555] hover:border-[#1E4D45]/50'
-              }`}
-              onClick={() => handleCategoryChange(cat.name)}
-            >
-              {cat.name} ({cat.packages.length})
-            </button>
-          ))}
-        </div>
+        <PackageFilters
+          activeTab={activeTab}
+          onTabChange={(tab) => {
+            setActiveTab(tab);
+            const cats = tab === 'theme' ? BY_THEME_CATEGORIES : BY_REGION_CATEGORIES;
+            setActiveCategoryName(cats[0].name);
+            if (cats[0].packages.length > 0) {
+              setActivePackageId(cats[0].packages[0].id);
+            }
+          }}
+          jainVegOnly={jainVegOnly}
+          onToggleJainVeg={setJainVegOnly}
+          categories={categories}
+          activeCategoryName={activeCategoryName}
+          onCategoryChange={handleCategoryChange}
+        />
 
         {/* Snapping Horizontal Slider Deck */}
-        <div 
+        <div
           ref={sliderRef}
           className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-8 pt-2 relative z-10 w-full"
         >
           {displayedPackages.length === 0 ? (
-            <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white border border-[#E8E4D9] rounded-xl gap-4 shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-[#1E4D45]/10 text-[#1E4D45] flex items-center justify-center mb-2">
+            <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white border border-border-divider rounded-xl gap-4 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center mb-2">
                 <Icon name="Leaf" size={24} />
               </div>
-              <Heading as="h4" variant="none" className="text-xl font-serif text-[#1E4D45] tracking-wide">Custom Jain & Veg Tours Available</Heading>
-              <Text variant="none" className="text-[#555555] text-xs font-light leading-relaxed max-w-md">
+              <Heading as="h4" variant="none" className="text-xl font-serif text-brand-green tracking-wide">Custom Jain & Veg Tours Available</Heading>
+              <Text variant="none" className="text-text-subtle text-xs font-light leading-relaxed max-w-md">
                 We craft bespoke itineraries with certified Jain kitchens, Indian chefs, and 100% vegetarian catering for this region. Let's build your perfect tour!
               </Text>
               <div className="flex gap-3 mt-4 w-full justify-center">
-                <button 
-                  className="px-6 py-3 bg-[#1E4D45] hover:bg-[#12302B] text-white text-xs tracking-wider uppercase rounded shadow"
+                <Button
+                  variant="primary" size="md" className="font-bold tracking-widest uppercase shadow-sm"
                   onClick={() => onOpenBuilder([])}
                 >
                   Custom Planner
-                </button>
+                </Button>
               </div>
             </div>
           ) : (
-            displayedPackages.map((pkg) => {
-              const downloadPaths = getDownloadPaths(pkg);
-              return (
-                <div
-                  key={pkg.id}
-                  className="w-[85vw] sm:w-[420px] h-[540px] editorial-card rounded-xl flex flex-col justify-between shrink-0 snap-start relative group overflow-hidden border border-[#E8E4D9]"
-                >
-                  {/* Photo area */}
-                  <div className="h-[220px] relative w-full overflow-hidden shrink-0 border-b border-[#E8E4D9]">
-                    <img 
-                      src={pkg.img} 
-                      alt={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1200ms]"
-                    />
-                    
-                    {/* Top tags */}
-                    <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
-                      <span className="bg-[#1E4D45] text-white font-semibold text-[8px] tracking-widest uppercase px-2.5 py-1 rounded shadow-sm">
-                        {pkg.badge}
-                      </span>
-                      {pkg.price ? (
-                        <span className="bg-[#E8C84A] text-[#12302B] px-2.5 py-1 rounded text-[9px] tracking-wider uppercase font-mono font-bold shadow-sm border border-white/20">
-                          {pkg.price} PP
-                        </span>
-                      ) : (
-                        <span className="bg-white text-[#1E4D45] border border-[#E8E4D9] px-2.5 py-1 rounded text-[8px] tracking-widest uppercase font-mono font-bold">
-                          {pkg.duration}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Editorial Body / Content */}
-                  <div className="flex-1 px-6 py-5 flex flex-col justify-between relative bg-white">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-start gap-2">
-                        <h4 className="text-lg font-bold font-serif text-[#1E4D45] tracking-tight leading-tight flex-1">
-                          {pkg.title}
-                        </h4>
-                        {pkg.price && (
-                          <span className="text-[10px] text-[#B8860B] font-bold border border-[#B8860B]/20 bg-[#FAF7F0] px-2 py-0.5 rounded font-mono shrink-0">
-                            {pkg.duration}
-                          </span>
-                        )}
-                      </div>
-                      
-                      <div className="editorial-meta-tag pb-1 border-b border-[#E8E4D9]">
-                        ROUTE // {pkg.destinations.join(' ➔ ')}
-                      </div>
-
-                      <p className="text-[#555555] text-xs font-light leading-relaxed line-clamp-3">
-                        {pkg.desc}
-                      </p>
-                    </div>
-
-                    <div className="py-2.5 border-t border-[#E8E4D9] flex items-center justify-between gap-4 mt-2">
-                      <div>
-                        <span className="text-[8px] uppercase tracking-widest text-[#B8860B] font-bold block mb-0.5">Stay Curation</span>
-                        <span className="text-[11px] text-[#1E4D45] truncate block font-medium">🏨 {pkg.hotels[0]}</span>
-                      </div>
-                      
-                      {pkg.isJainVegFriendly && (
-                        <span className="text-[9px] bg-green-50 text-green-700 px-2 py-0.5 rounded border border-green-200 uppercase font-mono">
-                          Veg Friendly
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Vogue Editorial Action Footer */}
-                  <div className="bg-[#FAF7F0] border-t border-[#E8E4D9] p-4 flex gap-3 shrink-0">
-                    <button
-                      onClick={() => setCustomizerPkg(pkg)}
-                      className="flex-1 py-2 px-3 bg-white hover:bg-[#FAF7F0] border border-[#E8E4D9] rounded text-[#1E4D45] text-[9px] font-bold uppercase tracking-widest text-center flex items-center justify-center gap-1.5 transition duration-300 cursor-pointer"
-                    >
-                      <Icon name="FileText" size={11} className="text-[#B8860B]" />
-                      PDF Info
-                    </button>
-                    <button
-                      className="flex-1 py-2 px-3 text-[9px] tracking-widest uppercase font-bold rounded cursor-pointer editorial-btn flex items-center justify-center gap-1"
-                      onClick={() => handleOpenPlanner(pkg)}
-                    >
-                      <Icon name="Sparkles" size={10} /> AI Customization
-                    </button>
-                    <button
-                      className="py-2 px-3 text-[9px] tracking-widest uppercase font-bold text-[#555555] hover:text-[#111111] bg-white border border-[#E8E4D9] rounded transition duration-300 cursor-pointer"
-                      onClick={() => setSelectedPackage(pkg)}
-                    >
-                      Details
-                    </button>
-                  </div>
-                </div>
-              );
-            }))}
+            displayedPackages.map((pkg) => (
+              <PackageCard
+                key={pkg.id}
+                pkg={pkg}
+                onSetCustomizerPkg={setCustomizerPkg}
+                onOpenPlanner={handleOpenPlanner}
+                onSetSelectedPackage={setSelectedPackage}
+              />
+            ))
+          )}
         </div>
 
         {/* FULLY CUSTOM BUILDER BANNER */}
-        <div 
-          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-xl bg-white border border-[#E8E4D9] shadow-sm relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-1" 
+        <div
+          className="mt-20 flex flex-col md:flex-row items-center gap-8 p-8 md:p-16 rounded-xl bg-white dark:bg-surface-dark border border-border-divider dark:border-white/10 shadow-sm relative overflow-hidden group cursor-pointer transition-transform duration-700 hover:-translate-y-1"
           onClick={() => onOpenBuilder([])}
         >
-          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101" style={{ backgroundImage: `linear-gradient(135deg, rgba(250, 247, 240, 0.9), rgba(250, 247, 240, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+          {/* Light Mode Background */}
+          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101 dark:hidden" style={{ backgroundImage: `linear-gradient(135deg, rgba(250, 247, 240, 0.9), rgba(250, 247, 240, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+          {/* Dark Mode Background */}
+          <div className="absolute inset-[-10%] z-0 bg-cover bg-center transition-transform duration-[1500ms] group-hover:scale-101 hidden dark:block" style={{ backgroundImage: `linear-gradient(135deg, rgba(17, 22, 21, 0.85), rgba(17, 22, 21, 0.95)), url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1600&q=80")` }} />
+
           <div className="flex-1 text-center md:text-left relative z-10">
-            <span className="text-[10px] font-bold tracking-[0.2em] text-[#B8860B] uppercase">Bespoke Curation</span>
-            <Heading as="h3" size="2xl" className="mt-2 mb-4 text-[#1E4D45] font-serif font-bold tracking-tight">
+            <span className="text-xs font-bold tracking-[0.2em] text-brand-sage uppercase">Bespoke Curation</span>
+            <Heading as="h3" size="2xl" className="mt-2 mb-4 text-brand-green dark:text-brand-gold-light font-serif font-bold tracking-tight">
               Build Your Own Story
             </Heading>
-            <Text variant="none" className="text-[#555555] text-base font-light max-w-xl">
+            <Text variant="none" className="text-text-subtle dark:text-white/70 text-base font-light max-w-xl">
               Select your destinations, travel style, and let our on-ground expert team plan the rest.
             </Text>
           </div>
 
-          <button 
-            className="w-full md:w-auto px-8 py-4 bg-[#1E4D45] hover:bg-[#12302B] text-white border-none shadow transition-all duration-300 rounded text-xs tracking-widest uppercase font-bold z-10"
+          <Button
+            variant="secondary" size="md"
+            className="w-full md:w-auto shadow-sm rounded text-xs tracking-widest uppercase font-bold z-10"
           >
             Open Trip Builder <span className="ml-2">→</span>
-          </button>
+          </Button>
         </div>
 
         {/* MORE BUDGET TOURS COMING SOON BANNER */}
-        <div className="mt-8 p-6 text-center bg-[#1E4D45]/5 border border-[#1E4D45]/15 rounded-xl">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F0] border border-[#E8E4D9] text-[9px] font-mono tracking-widest text-[#B8860B] uppercase font-bold mb-3 shadow-xs">
+        <div className="mt-8 p-6 text-center bg-brand-green/5 dark:bg-brand-green/10 border border-brand-green/15 dark:border-brand-green/20 rounded-xl">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-linen dark:bg-surface-dark border border-border-divider dark:border-white/10 text-tiny font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold-light uppercase font-bold mb-3 shadow-xs">
             📢 UPCOMING OFFERINGS
           </span>
-          <Heading as="h4" variant="none" className="text-xl font-serif text-[#1E4D45] mb-2 font-semibold">
+          <Heading as="h4" variant="none" className="text-xl font-serif text-brand-green dark:text-brand-gold-light mb-2 font-semibold">
             More Budget Tours Coming Soon!
           </Heading>
-          <Text variant="none" className="text-[#555555] text-xs font-light max-w-md mx-auto">
+          <Text variant="none" className="text-text-subtle dark:text-white/70 text-xs font-light max-w-md mx-auto">
             Our team is packaging more pocket-friendly packages featuring certified budget stays, shared group excursions, and seasonal deals. Stay tuned!
           </Text>
         </div>
       </Container>
 
-      {/* Package Detail Modal (Accordion Itinerary overview) */}
-      <AnimatePresence>
-        {selectedPackage && (
-          <Modal
-            isOpen={!!selectedPackage}
-            onClose={() => { setSelectedPackage(null); setExpandedDay(1); }}
-            maxWidth="max-w-4xl"
-            className="h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-xl shadow-heavy"
-          >
-            {/* Header image details */}
-            <div className="h-48 w-full overflow-hidden relative shrink-0">
-              <img 
-                src={selectedPackage.img} 
-                alt={selectedPackage.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              
-              {/* Vietana Brand Logo Label */}
-              <div className="absolute top-5 left-6 text-white/85 text-[10px] tracking-widest font-mono font-bold uppercase flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
-                <Icon name="Leaf" size={12} className="text-[#E8C84A]" /> VIETANA CURATED
-              </div>
+      <PackageDetailsModal
+        selectedPackage={selectedPackage}
+        expandedDay={expandedDay}
+        onSetExpandedDay={setExpandedDay}
+        onClose={() => {
+          setSelectedPackage(null);
+          setExpandedDay(1);
+        }}
+        onSetCustomizerPkg={setCustomizerPkg}
+        onOpenPlanner={handleOpenPlanner}
+      />
 
-              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end gap-4">
-                <div>
-                  <Text variant="none" className="text-[0.65rem] uppercase tracking-widest text-[#D4AF37] font-mono font-bold mb-1.5 block">
-                    {selectedPackage.duration} · {selectedPackage.badge}
-                  </Text>
-                  <Heading as="h3" variant="none" className="text-2xl font-serif text-white tracking-wide">
-                    {selectedPackage.title}
-                  </Heading>
-                </div>
-                {selectedPackage.price && (
-                  <div className="bg-[#E8C84A] text-[#12302B] px-4 py-2 rounded shadow-md border border-white/20 text-center shrink-0">
-                    <span className="text-[9px] uppercase tracking-widest font-bold block opacity-85 leading-none mb-1">Indian Price</span>
-                    <span className="text-lg font-mono font-extrabold leading-none">{selectedPackage.price} PP</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Scrollable details tab */}
-            <div className="flex-1 overflow-y-auto p-8 md:p-10 scrollbar-thin">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-[#E8E4D9]">
-                <div>
-                  <Heading as="h4" variant="none" className="text-xs text-[#B8860B] uppercase tracking-widest font-mono font-semibold mb-3">
-                    RECOMMENDED HOTELS
-                  </Heading>
-                  <div className="flex flex-col gap-2">
-                    {selectedPackage.hotels.map((h, idx) => (
-                      <Text key={idx} variant="none" className="text-[#555555] text-xs font-light">
-                        🏨 {h}
-                      </Text>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <Heading as="h4" variant="none" className="text-xs text-[#B8860B] uppercase tracking-widest font-mono font-semibold mb-3">
-                    KEY INCLUSIONS
-                  </Heading>
-                  <div className="flex flex-col gap-1.5">
-                    {selectedPackage.inclusions.slice(0, 4).map((inc, idx) => (
-                      <Text key={idx} variant="none" className="text-[#555555] text-xs font-light flex items-start gap-2">
-                        <span className="text-green-600 mt-0.5">✓</span> <span>{inc}</span>
-                      </Text>
-                    ))}
-                    {selectedPackage.inclusions.length > 4 && (
-                      <Text variant="none" className="text-[#555555]/60 text-[0.65rem] italic pl-5">
-                        + {selectedPackage.inclusions.length - 4} more inclusions
-                      </Text>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Day-by-Day Accordion preview */}
-              <div className="mb-6">
-                <Heading as="h4" variant="none" className="text-xs text-[#B8860B] uppercase tracking-widest font-mono font-semibold mb-6">
-                  DAY-BY-DAY ITINERARY PREVIEW
-                </Heading>
-
-                <div className="flex flex-col gap-3 pl-4 border-l border-dashed border-[#E8E4D9]">
-                  {selectedPackage.days.map((day) => {
-                    const isExpanded = expandedDay === day.day;
-                    return (
-                      <div key={day.day} className="relative">
-                        <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${
-                          isExpanded ? 'bg-[#1E4D45]' : 'bg-[#E8E4D9]'
-                        }`} />
-
-                        <div 
-                          className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${
-                            isExpanded ? 'bg-[#FAF7F0] border-[#1E4D45]/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
-                          }`}
-                          onClick={() => setExpandedDay(isExpanded ? null : day.day)}
-                        >
-                          <div className="flex justify-between items-center">
-                            <Text variant="none" className="text-xs font-serif text-[#1E4D45] font-bold">
-                              Day {day.day}: {day.title}
-                            </Text>
-                            <span className="text-[#555555]/65 text-xs">
-                              <Icon name={isExpanded ? 'ChevronUp' : 'ChevronDown'} size={14} />
-                            </span>
-                          </div>
-
-                          {isExpanded && (
-                            <div className="mt-3 text-xs flex flex-col gap-3 animate-msg-fade-in font-light leading-relaxed text-[#555555]">
-                              <Text variant="none" className="italic text-[#555555]/85 mb-1">{day.description}</Text>
-                              <div>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Activities:</span>
-                                {day.activities.map((act, i) => (
-                                  <div key={i} className="pl-2 flex gap-2"><span>-</span> <span>{act}</span></div>
-                                ))}
-                              </div>
-                              <div>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-[#B8860B] font-bold block mb-1">Gastronomy:</span>
-                                {day.food.map((f, i) => (
-                                  <div key={i} className="pl-2 flex gap-2 italic text-[#555555]/80"><span>✦</span> <span>{f}</span></div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-
-            {/* Premium Download Buttons */}
-            {(() => {
-              const paths = getDownloadPaths(selectedPackage);
-              return (
-                <div className="px-6 py-4 bg-[#FAF7F0] border-t border-[#E8E4D9] shrink-0 flex flex-col gap-2">
-                  <span className="text-[0.65rem] uppercase tracking-widest text-[#B8860B] font-semibold text-center mb-1">
-                    Download Luxury Handbook
-                  </span>
-                  <div className="flex border border-[#E8E4D9] rounded overflow-hidden shadow-sm">
-                    <button
-                      onClick={() => {
-                        setSelectedPackage(null);
-                        setCustomizerPkg(selectedPackage);
-                      }}
-                      className="w-full py-3 px-4 bg-[#1E4D45] hover:bg-[#12302B] text-white text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors duration-300 cursor-pointer"
-                    >
-                      <Icon name="FileText" size={14} className="text-[#D4AF37]" />
-                      Customize & Download PDF
-                    </button>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* Modal Actions */}
-            <div className="p-6 bg-white border-t border-[#E8E4D9] shrink-0 flex flex-col sm:flex-row gap-3">
-              <Button
-                variant="glass"
-                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-[#1E4D45] bg-[#FAF7F0] border border-[#E8E4D9] hover:bg-[#1E4D45]/5"
-                onClick={() => {
-                  const itemsList = selectedPackage.days.map(d => `Day ${d.day}: ${d.title}`).join('\n');
-                  const msg = `Hi Vietana! I'm interested in the "${selectedPackage.title}" package:\n\n${itemsList}`;
-                  window.open(`https://wa.me/919953294543?text=${encodeURIComponent(msg)}`, '_blank');
-                }}
-              >
-                <Icon name="MessageCircle" size={16} className="mr-2" /> Book via WhatsApp
-              </Button>
-              <Button
-                className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-white bg-[#1E4D45] hover:bg-[#12302B] flex items-center justify-center gap-1.5"
-                onClick={() => {
-                  const pkg = selectedPackage;
-                  setSelectedPackage(null);
-                  handleOpenPlanner(pkg);
-                }}
-              >
-                <Icon name="Mic" size={16} /> Customize with Voice
-              </Button>
-            </div>
-          </Modal>
-        )}
-      </AnimatePresence>
-      <PDFCustomizerModal 
-        isOpen={customizerPkg !== null} 
-        onClose={() => setCustomizerPkg(null)} 
-        pkg={customizerPkg} 
+      <PDFCustomizerModal
+        isOpen={customizerPkg !== null}
+        onClose={() => setCustomizerPkg(null)}
+        pkg={customizerPkg}
       />
     </Section>
   );

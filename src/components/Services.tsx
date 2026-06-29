@@ -4,6 +4,8 @@ import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import ServicePopup, { ServiceDetail } from './ServicePopup';
+import SectionHeader from './ui/SectionHeader';
+import Card from './ui/Card';
 
 const PREMIUM_SERVICES: ServiceDetail[] = [
   {
@@ -15,14 +17,14 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80',
     content: (
       <>
-        <p>Getting your Vietnam e-visa is simple. Just send us the following via WhatsApp, Zalo, or email, and we’ll guide you through the process:</p>
+        <p>Getting your Vietnam e-visa is simple. Just send us the following via WhatsApp, Zalo, or email, and we'll guide you through the process:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Passport copy (valid for at least 6 months)</li>
           <li>Passport-style photograph</li>
         </ul>
-        <p>We also help with declarations and other travel requirements, so you don’t have to figure everything out yourself.</p>
+        <p>We also help with declarations and other travel requirements, so you don't have to figure everything out yourself.</p>
         <div className="mt-8 p-5 bg-white border border-black/5 rounded-xl shadow-sm">
-          <p className="text-sm font-semibold text-[#1E4D45] uppercase tracking-wider mb-2">Urgent Visa</p>
+          <p className="text-sm font-semibold text-brand-green uppercase tracking-wider mb-2">Urgent Visa</p>
           <p className="text-sm">Need it urgently? Flight already booked? Traveling within the next 24 hours? Get in touch with us. Expedited options are available for urgent situations.</p>
         </div>
       </>
@@ -38,8 +40,8 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     content: (
       <>
         <p>After a long flight, the last thing you need is confusion.</p>
-        <p>Whether you’re traveling alone, with family, or in a larger group, we can arrange comfortable transportation based on your requirements.</p>
-        <p className="font-medium text-[#1E4D45]">Simple, reliable and convenient.</p>
+        <p>Whether you're traveling alone, with family, or in a larger group, we can arrange comfortable transportation based on your requirements.</p>
+        <p className="font-medium text-brand-green">Simple, reliable and convenient.</p>
       </>
     )
   },
@@ -52,7 +54,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80',
     content: (
       <>
-        <p>From hostels and budget hotels to premium resorts and luxury stays, we’ll help you find accommodation that suits your travel style and budget.</p>
+        <p>From hostels and budget hotels to premium resorts and luxury stays, we'll help you find accommodation that suits your travel style and budget.</p>
         <p>Our recommendations are based on experience and what works best for different types of travelers.</p>
       </>
     )
@@ -68,8 +70,8 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
       <>
         <p>Need an eSIM or a local SIM card?</p>
         <p>Need help setting up Grab, maps or other travel apps?</p>
-        <p className="font-medium text-[#1E4D45]">No problem.</p>
-        <p>We’ll help you stay connected from the moment you arrive.</p>
+        <p className="font-medium text-brand-green">No problem.</p>
+        <p>We'll help you stay connected from the moment you arrive.</p>
       </>
     )
   },
@@ -96,8 +98,8 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80',
     content: (
       <>
-        <p>Whether you’re looking for Indian food, vegetarian options, Jain meals, halal restaurants or authentic Vietnamese dishes, we’ll be happy to point you in the right direction.</p>
-        <p>Over the years, we’ve built strong relationships with restaurants across Vietnam and understand the preferences of Indian travelers.</p>
+        <p>Whether you're looking for Indian food, vegetarian options, Jain meals, halal restaurants or authentic Vietnamese dishes, we'll be happy to point you in the right direction.</p>
+        <p>Over the years, we've built strong relationships with restaurants across Vietnam and understand the preferences of Indian travelers.</p>
       </>
     )
   },
@@ -114,7 +116,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
         <p>Language barriers.</p>
         <p>Last-minute changes.</p>
         <p>Unexpected situations.</p>
-        <p className="mt-6 font-medium text-[#1E4D45]">With our presence in both India and Vietnam, help is always within reach.</p>
+        <p className="mt-6 font-medium text-brand-green">With our presence in both India and Vietnam, help is always within reach.</p>
       </>
     )
   },
@@ -128,7 +130,7 @@ const PREMIUM_SERVICES: ServiceDetail[] = [
     content: (
       <>
         <p>Honeymoons, family trips, celebrations, hidden gems, nightlife or something completely unique.</p>
-        <p className="font-medium text-[#1E4D45]">If it’s possible, we’ll do our best to make it happen.</p>
+        <p className="font-medium text-brand-green">If it's possible, we'll do our best to make it happen.</p>
       </>
     )
   }
@@ -138,91 +140,93 @@ const Services: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   return (
-    <Section id="services" spacing="xl" className="bg-[#FAF7F0] relative overflow-hidden">
+    <Section id="services" spacing="xl" className="bg-surface-linen dark:bg-surface-dark relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-[#E9DFC8]/15 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-[#AAB7A1]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] bg-surface-warm/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[25%] right-[-5%] w-[400px] h-[400px] bg-brand-sage/15 rounded-full blur-[100px] pointer-events-none" />
 
       <Container className="relative z-20 max-w-[1200px]">
-        {/* Section Header */}
-        <div className="mb-20 text-center max-w-2xl mx-auto">
-          <span className="text-[10px] font-bold tracking-[0.25em] text-[#B8860B] uppercase mb-3 block">
-            CONCIERGE SERVICES
-          </span>
-          <Heading as="h2" size="4xl" font="serif" className="text-[#1E4D45] tracking-tight mb-4">
-            The Travel Ledger
-          </Heading>
-          <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-6"></div>
-          <Text variant="none" className="text-[#555555] font-light leading-relaxed">
-            From seamless e-visa approvals to dedicated Indian & Jain culinary guidance, our local team logs every detail to safeguard your itinerary.
-          </Text>
-        </div>
+        <SectionHeader
+          label="CONCIERGE SERVICES"
+          title="The Travel Ledger"
+          description="From seamless e-visa approvals to dedicated Indian and Jain culinary guidance, our local team logs every detail to safeguard your itinerary."
+        />
 
-        {/* Vintage Guest Book Ledger */}
-        <div className="vintage-ledger rounded-2xl border border-[#E8E4D9] overflow-hidden shadow-lg p-6 sm:p-10 mb-20">
-          {/* Header row of Ledger */}
-          <div className="hidden sm:flex border-b-2 border-[#1E4D45]/20 pb-4 text-[#B8860B] font-mono text-[10px] tracking-widest uppercase">
-            <div className="w-[10%]">ENTRY</div>
-            <div className="w-[30%]">DEPARTMENT</div>
-            <div className="w-[50%]">LOGGED DESCRIPTION</div>
-            <div className="w-[10%] text-right">ACTION</div>
-          </div>
-
-          {/* Ledger rows */}
-          <div className="flex flex-col">
-            {PREMIUM_SERVICES.map((service, index) => (
-              <div
-                key={service.id}
-                onClick={() => setSelectedService(service)}
-                className="ledger-row py-6 sm:py-7 flex flex-col sm:flex-row items-start sm:items-center text-left cursor-pointer border-b border-[#E8E4D9]/60 hover:bg-[#FAF7F0]/40 transition duration-300"
-              >
-                {/* Entry ID */}
-                <div className="w-[10%] font-mono text-xs text-[#B8860B] mb-2 sm:mb-0">
-                  #00{index + 1}
-                </div>
-
-                {/* Service Department / Icon */}
-                <div className="w-full sm:w-[30%] flex items-center gap-3 mb-2 sm:mb-0">
-                  <div className="text-[#1E4D45] shrink-0">
-                    <Icon name={service.icon} size={18} strokeWidth={1.5} />
-                  </div>
-                  <Heading as="h4" variant="none" className="text-base font-bold text-[#1E4D45]">
+        {/* Editorial card grid row 1 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+          {PREMIUM_SERVICES.slice(0, 4).map((service, index) => (
+            <Card
+              key={service.id}
+              variant="editorial"
+              padding="none"
+              hover
+              onClick={() => setSelectedService(service)}
+              className="cursor-pointer"
+            >
+              <div className="h-36 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.shortTitle}
+                  className="w-full h-full object-cover img-zoom"
+                />
+              </div>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-7 h-7 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green dark:text-brand-sage flex items-center justify-center shrink-0">
+                    <Icon name={service.icon} size={14} strokeWidth={1.5} />
+                  </span>
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green dark:text-brand-gold-light">
                     {service.shortTitle}
                   </Heading>
                 </div>
-
-                {/* Logged Description */}
-                <div className="w-full sm:w-[50%] text-xs sm:text-sm text-[#555555] font-light pr-4 mb-4 sm:mb-0">
+                <Text size="xs" variant="none" className="font-light text-text-muted dark:text-white/70">
                   {service.shortDesc}
-                </div>
-
-                {/* View Stamp */}
-                <div className="w-full sm:w-[10%] sm:text-right">
-                  <span className="inline-block text-[9px] font-mono font-bold tracking-widest uppercase text-[#B8860B] border border-[#D4AF37]/50 rounded px-2.5 py-1 hover:bg-[#D4AF37]/10 transition duration-300">
-                    OPEN
-                  </span>
-                </div>
+                </Text>
               </div>
-            ))}
-          </div>
+            </Card>
+          ))}
         </div>
 
-        {/* Ledger Bottom Note */}
-        <div className="bg-[#FAF7F0] border border-[#E8E4D9] rounded-xl p-8 text-center max-w-2xl mx-auto shadow-sm relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FAF7F0] px-4 text-[#B8860B] font-mono text-[9px] tracking-widest uppercase">
-            OFFICIAL STAMP
-          </div>
-          <p className="text-xl font-serif italic text-[#1E4D45] mb-2">"Feel Vietnam, Your Way."</p>
-          <Text size="sm" variant="none" className="text-[#555555]/80 font-light">
-            With certified ground handlers in HCMC and local assistance centers in Hanoi and Da Nang, our ledger stays fully interactive for you.
-          </Text>
+        {/* Editorial card grid row 2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {PREMIUM_SERVICES.slice(4).map((service) => (
+            <Card
+              key={service.id}
+              variant="editorial"
+              padding="none"
+              hover
+              onClick={() => setSelectedService(service)}
+              className="cursor-pointer"
+            >
+              <div className="h-36 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.shortTitle}
+                  className="w-full h-full object-cover img-zoom"
+                />
+              </div>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-7 h-7 rounded-full bg-brand-green/10 dark:bg-brand-green/20 text-brand-green dark:text-brand-sage flex items-center justify-center shrink-0">
+                    <Icon name={service.icon} size={14} strokeWidth={1.5} />
+                  </span>
+                  <Heading as="h4" variant="none" className="text-sm font-bold text-brand-green dark:text-brand-gold-light">
+                    {service.shortTitle}
+                  </Heading>
+                </div>
+                <Text size="xs" variant="none" className="font-light text-text-muted dark:text-white/70">
+                  {service.shortDesc}
+                </Text>
+              </div>
+            </Card>
+          ))}
         </div>
       </Container>
 
-      <ServicePopup 
-        isOpen={!!selectedService} 
-        onClose={() => setSelectedService(null)} 
-        service={selectedService} 
+      <ServicePopup
+        isOpen={!!selectedService}
+        onClose={() => setSelectedService(null)}
+        service={selectedService}
       />
     </Section>
   );

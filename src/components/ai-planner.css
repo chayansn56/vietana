@@ -1,0 +1,130 @@
+/* AI Planner Component-Specific Animations & Styles
+   Only imported by AIPlanner.tsx */
+
+/* Siri-like Glowing Voice Orb Animation — subtle ambient motion */
+@keyframes siri-pulse {
+  0% {
+    transform: scale(0.95) rotate(0deg);
+    opacity: 0.4;
+    filter: blur(6px);
+  }
+
+  50% {
+    transform: scale(1.05) rotate(180deg);
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+
+  100% {
+    transform: scale(0.95) rotate(360deg);
+    opacity: 0.4;
+    filter: blur(6px);
+  }
+}
+
+@keyframes siri-pulse-slow {
+  0% {
+    transform: scale(1.02) rotate(360deg);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: scale(0.95) rotate(180deg);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.02) rotate(0deg);
+    opacity: 0.25;
+  }
+}
+
+.siri-orb-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.siri-orb-layer-1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, rgba(30, 77, 69, 0.3) 60%, transparent 80%);
+  border-radius: 50%;
+  animation: siri-pulse 12s infinite linear;
+}
+
+.siri-orb-layer-2 {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  background: radial-gradient(circle, rgba(170, 183, 161, 0.5) 0%, rgba(46, 110, 99, 0.2) 60%, transparent 80%);
+  border-radius: 50%;
+  animation: siri-pulse-slow 15s infinite linear;
+}
+
+.siri-orb-layer-3 {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.7) 0%, rgba(170, 183, 161, 0.3) 50%, transparent 70%);
+  border-radius: 50%;
+  animation: siri-pulse 10s infinite ease-in-out alternate;
+}
+
+/* Speaking Wave bars animation */
+@keyframes speaking-wave-bar {
+
+  0%,
+  100% {
+    height: 4px;
+  }
+
+  50% {
+    height: 28px;
+  }
+}
+
+.speaking-wave-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  justify-content: center;
+}
+
+.speaking-wave-bar {
+  width: 4px;
+  height: 8px;
+  background-color: #D4AF37;
+  border-radius: 4px;
+  animation: speaking-wave-bar 1s ease-in-out infinite;
+}
+
+.speaking-wave-bar:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.speaking-wave-bar:nth-child(2) {
+  animation-delay: 0.2s;
+  background-color: #E8C84A;
+}
+
+.speaking-wave-bar:nth-child(3) {
+  animation-delay: 0.3s;
+  background-color: #AAB7A1;
+}
+
+.speaking-wave-bar:nth-child(4) {
+  animation-delay: 0.4s;
+  background-color: #2C6E63;
+}
+
+.speaking-wave-bar:nth-child(5) {
+  animation-delay: 0.5s;
+  background-color: #D4AF37;
+}

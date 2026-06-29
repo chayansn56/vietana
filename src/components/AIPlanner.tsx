@@ -1,13 +1,17 @@
+import './ai-planner.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { MessagingService } from '../services/messagingService';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
+import Input from './ui/Input';
 import { Heading, Text } from './ui/Typography';
 import { useAIPlanner } from '../hooks/useAIPlanner';
+import { useSpeechSynthesis } from '../hooks/useSpeechSynthesis';
 import Icon, { IconName } from './ui/Icon';
 import { featureFlags } from '../config/featureFlags';
 import { generateAffiliateUrl } from '../utils/affiliate';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 
 /** Lightweight HTML sanitizer — strips script/iframe/on* attributes */
 const sanitize = (html: string): string => {
@@ -31,15 +35,17 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
   const [expandedDay, setExpandedDay] = useState<number | null>(1);
   const [activeTab, setActiveTab] = useState<'itinerary' | 'deals' | 'pricing'>('itinerary');
   const [isListening, setIsListening] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const [ttsEnabled, setTtsEnabled] = useState(false);
   const [showActionPopup, setShowActionPopup] = useState(false);
+  const [speechError, setSpeechError] = useState<string | null>(null);
 
   const getLanguageTag = (lang: string) => {
     if (lang === 'HI') return 'hi-IN';
     if (lang === 'VI') return 'vi-VN';
     return 'en-US';
   };
+
+  const { speak, cancel, isSpeaking } = useSpeechSynthesis(getLanguageTag(language));
 
   const {
     messages,
@@ -96,12 +102,21 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       };
 
       recognitionRef.current = recognition;
+
+      return () => {
+        try {
+          recognition.stop();
+        } catch(e) {}
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+      };
     }
   }, [handleSend, language]);
 
   const toggleListening = () => {
     if (!recognitionRef.current) {
-      alert("Speech recognition is not supported in this browser. Please try Chrome or Safari.");
+      setSpeechError("Speech recognition is not supported in this browser. Please try Chrome or Safari.");
       return;
     }
     if (isListening) {
@@ -113,18 +128,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
   };
 
   const speakText = (text: string) => {
-    if (!ttsEnabled || !('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-    const cleanText = text.replace(/<[^>]*>/g, '');
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    
-    // Choose voice depending on lang or general fallback
-    utterance.lang = getLanguageTag(language);
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-    
-    window.speechSynthesis.speak(utterance);
+    if (!ttsEnabled) return;
+    speak('bot-speech', text);
   };
 
   // Speak when new message from bot arrives
@@ -144,15 +149,6 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       speakText("I have created your custom itinerary. Would you like me to send it over WhatsApp or Email?");
     }
   }, [itinerary]);
-
-  // Cancel voice speech when modal is closed or unmounted
-  useEffect(() => {
-    return () => {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, [isOpen]);
 
   const pcMsgsRef = useRef<HTMLDivElement>(null);
 
@@ -184,7 +180,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
       {/* Dynamic Voice Ambient Glow Ring */}
       <div className={`absolute inset-0 border-2 rounded-[32px] pointer-events-none z-50 transition-all duration-700 ${
         isListening 
-          ? 'border-purple-500/40 opacity-100 shadow-[inset_0_0_30px_rgba(168,85,247,0.25)]' 
+          ? 'border-brand-gold/40 opacity-100 shadow-[inset_0_0_30px_rgba(212,175,55,0.25)]' 
           : isSpeaking 
             ? 'border-brand-gold/40 opacity-100 shadow-[inset_0_0_30px_rgba(232,200,74,0.25)]' 
             : 'border-transparent opacity-0 shadow-none'
@@ -206,8 +202,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               onClick={() => {
                 const newVal = !ttsEnabled;
                 setTtsEnabled(newVal);
-                if (!newVal && 'speechSynthesis' in window) {
-                  window.speechSynthesis.cancel();
+                if (!newVal) {
+                  cancel();
                 }
               }}
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl border transition-all duration-300 text-xs cursor-pointer font-medium uppercase tracking-wider ${
@@ -246,10 +242,10 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                     </Text>
 
                     <div className="flex flex-col gap-3">
-                      <a href={whatsappIndiaLink} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 hover:bg-white/10 hover:border-brand-gold/50 text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2">
+                      <a href={whatsappIndiaLink} target="_blank" rel="noopener noreferrer" className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 hover:border-brand-gold/50 text-text-dark dark:text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2 cursor-pointer">
                         <Icon name="MessageCircle" size={16} /> WhatsApp India
                       </a>
-                      <a href={whatsappVietnamLink} target="_blank" rel="noopener noreferrer" className="bg-white/5 border border-white/10 hover:bg-white/10 hover:border-brand-gold/50 text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2">
+                      <a href={whatsappVietnamLink} target="_blank" rel="noopener noreferrer" className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 hover:border-brand-gold/50 text-text-dark dark:text-white py-3 px-6 rounded-2xl transition-all duration-300 text-sm tracking-wide flex justify-center items-center gap-2 cursor-pointer">
                         <Icon name="MessageCircle" size={16} /> WhatsApp Vietnam
                       </a>
                       <a href={emailLink} className="text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors mt-2 flex justify-center items-center gap-2">
@@ -270,7 +266,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 )}
                 <div className={`max-w-[80%] relative group/msg ${msg.type === 'user'
                     ? 'bg-gradient-to-r from-brand-gold/10 to-brand-gold/20 border border-brand-gold/30 rounded-2xl rounded-br-sm p-5 shadow-soft text-right'
-                    : 'bg-gradient-to-br from-[#1E4D45]/30 via-white/5 to-[#D4AF37]/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 pr-12 shadow-soft text-left'
+                    : 'bg-gradient-to-br from-brand-green/30 via-white/5 to-brand-gold/5 border border-white/10 rounded-2xl rounded-bl-sm p-5 pr-12 shadow-soft text-left'
                   }`}>
                   <Text
                     variant="none"
@@ -335,9 +331,9 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
           )}
 
           {showActionPopup && itinerary && (
-            <div className="mb-4 bg-gradient-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/30 rounded-2xl p-5 shadow-lg animate-msg-fade-in flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="mb-4 bg-gradient-to-r from-brand-green-dark to-brand-green border border-brand-gold/30 rounded-2xl p-5 shadow-lg animate-msg-fade-in flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center shrink-0">
                   <Icon name="Sparkles" size={20} />
                 </div>
                 <div className="text-left">
@@ -350,7 +346,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   onClick={() => {
                     const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
                     const message = `Hello! I've designed your custom Vietnam itinerary:\n\n*${itinerary.title}*\n\n${itemsList}`;
-                    window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
+                    window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT, message), '_blank');
                   }}
                   className="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
@@ -390,27 +386,42 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             </div>
           )}
 
-          <div className="text-[10px] text-white/40 font-mono tracking-wider mb-2 text-left pl-2">
+          <div className="text-mini text-white/40 font-mono tracking-wider mb-2 text-left pl-2">
             💡 Try: "make it veg-only", "add a day in Da Lat", or "upgrade to 5★ hotels"
           </div>
 
+          {speechError && (
+            <div className="mb-3 text-xs bg-rose-500/10 border border-rose-500/30 text-rose-300 px-4 py-2.5 rounded-xl flex items-center justify-between gap-3 animate-msg-fade-in text-left">
+              <div className="flex items-center gap-2">
+                <Icon name="AlertCircle" size={14} className="shrink-0" />
+                <span>{speechError}</span>
+              </div>
+              <button 
+                onClick={() => setSpeechError(null)}
+                className="text-white/40 hover:text-white/80 p-0.5 rounded-md hover:bg-white/5 transition-colors border-none bg-transparent cursor-pointer flex items-center justify-center"
+              >
+                <Icon name="X" size={12} />
+              </button>
+            </div>
+          )}
+
           <div className={`relative bg-white/5 border rounded-2xl p-2 transition-all duration-300 shadow-inner ${
-            isListening ? 'border-purple-500/50 bg-purple-500/5' : 'border-white/10 focus-within:border-brand-gold/40 focus-within:bg-white/10'
+            isListening ? 'border-brand-gold/50 bg-brand-gold/5' : 'border-black/10 dark:border-white/10 focus-within:border-brand-gold/40 focus-within:bg-black/5 dark:focus-within:bg-white/10'
           }`}>
             <div className="flex items-center gap-3">
               <button
                 type="button"
                 onClick={toggleListening}
                 className={`p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer ${
-                  isListening ? 'bg-purple-600 text-white animate-pulse' : 'text-white/40 hover:text-white/80 hover:bg-white/5'
+                  isListening ? 'bg-brand-gold text-brand-green-extra-dark animate-pulse' : 'text-white/40 hover:text-white/80 hover:bg-white/5'
                 }`}
                 title={isListening ? "Listening..." : "Click to Speak"}
               >
                 <Icon name="Mic" size={20} />
               </button>
-              <input
+              <Input
                 type="text"
-                className="flex-1 bg-transparent border-none py-3 text-white text-lg font-light outline-none placeholder:text-white/30"
+                variant="ghost"
                 placeholder={isListening ? "Listening..." : (t.planner.where || "Ask anything about Vietnam...")}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
@@ -444,14 +455,14 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
               <div className="flex gap-2">
                 <button 
                   onClick={() => setActiveTab('itinerary')}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors ${activeTab === 'itinerary' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer ${activeTab === 'itinerary' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/20'}`}
                 >
                   Itinerary
                 </button>
                 {featureFlags.enableAffiliateLinks && (
                   <button 
                     onClick={() => setActiveTab('deals')}
-                    className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors ${activeTab === 'deals' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-white/10 text-white/60 hover:bg-white/20'}`}
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer ${activeTab === 'deals' ? 'bg-brand-gold text-brand-green-extra-dark' : 'bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/20'}`}
                   >
                     Smart Deals
                   </button>
@@ -474,7 +485,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                       {/* Day Card */}
                       <div 
                         className={`border rounded-2xl p-5 cursor-pointer transition-all duration-300 ${
-                          isExpanded ? 'bg-brand-green-dark/20 border-brand-gold/30 shadow-soft' : 'bg-white/5 border-white/10 hover:bg-white/10'
+                          isExpanded ? 'bg-brand-green-light/10 dark:bg-brand-green-dark/20 border-brand-gold/30 shadow-soft' : 'bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10'
                         }`}
                         onClick={() => setExpandedDay(isExpanded ? null : day.day)}
                       >
@@ -496,7 +507,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                             {/* Sights checklist */}
                             {day.activities?.length > 0 && (
                               <div>
-                                <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                <Text variant="none" className="text-mini uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
                                   <Icon name="MapPin" size={10} className="text-brand-gold" /> Exploration Points
                                 </Text>
                                 <div className="flex flex-col gap-1 pl-1">
@@ -513,7 +524,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                             {/* Food Suggestions */}
                             {day.food?.length > 0 && (
                               <div>
-                                <Text variant="none" className="text-[0.6rem] uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
+                                <Text variant="none" className="text-mini uppercase tracking-widest text-white/40 mb-1.5 font-semibold flex items-center gap-1">
                                   <Icon name="Soup" size={10} className="text-brand-gold" /> Gastronomy Picks
                                 </Text>
                                 <div className="flex flex-col gap-1 pl-1">
@@ -540,7 +551,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                     onClick={() => {
                       const itemsList = itinerary.days.map(d => `Day ${d.day}: ${d.title}\n- Activities: ${d.activities.join(', ')}`).join('\n\n');
                       const message = `Hello Vietana! I've designed an itinerary blueprint:\n\n*${itinerary.title}*\n\n${itemsList}`;
-                      window.open(`https://wa.me/919953294543?text=${encodeURIComponent(message)}`, '_blank');
+                      window.open(buildWhatsAppLink(WHATSAPP_NUMBERS.DEFAULT, message), '_blank');
                     }}
                   >
                     <Icon name="MessageCircle" size={18} /> Book this Itinerary

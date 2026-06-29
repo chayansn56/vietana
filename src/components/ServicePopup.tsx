@@ -28,12 +28,15 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
     if (isOpen) {
       setTimeout(() => setIsVisible(true), 10);
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
       setIsVisible(false);
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -80,14 +83,14 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
 
       {/* Modal Content - Elegant Box */}
       <div 
-        className={`relative w-[95vw] max-w-5xl h-[85dvh] md:h-[70vh] max-h-[800px] md:max-h-[600px] overflow-y-auto md:overflow-hidden rounded-2xl bg-surface-ivory shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
+        className={`relative w-[95vw] max-w-5xl h-[85dvh] md:h-[70vh] max-h-[800px] md:max-h-[600px] overflow-y-auto md:overflow-hidden rounded-2xl bg-surface-ivory dark:bg-surface-dark shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}
       >
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 rounded-full bg-white/80 hover:bg-white text-text-charcoal shadow-sm transition-colors backdrop-blur-md border border-black/5"
+          className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 rounded-full bg-white/80 dark:bg-surface-dark/80 hover:bg-white dark:hover:bg-surface-dark text-text-charcoal dark:text-white shadow-sm transition-colors backdrop-blur-md border border-black/5 dark:border-white/10"
         >
           <Icon name="X" size={20} />
         </button>
@@ -104,24 +107,24 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
         </div>
 
         {/* Right Side: Content Container */}
-        <div className="relative w-full h-2/3 md:h-full md:w-7/12 flex flex-col bg-surface-ivory overflow-y-auto md:overflow-y-visible">
+        <div className="relative w-full h-2/3 md:h-full md:w-7/12 flex flex-col bg-surface-ivory dark:bg-surface-dark overflow-hidden">
           
           {/* Tightly Packed Content Area */}
-          <div className="flex-1 flex flex-col justify-center p-5 md:p-8 lg:p-10">
+          <div className="flex-1 flex flex-col justify-start p-5 md:p-8 lg:p-10 overflow-y-auto">
             <div className="mb-4">
               <div className="w-10 h-[2px] bg-brand-green mb-4"></div>
-              <div className="flex items-center gap-2 mb-2 text-brand-green">
+              <div className="flex items-center gap-2 mb-2 text-brand-green dark:text-brand-sage">
                 <Icon name={service.icon} size={16} />
-                <span className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-brand-sage uppercase">
+                <span className="text-mini md:text-xs font-semibold tracking-[0.2em] uppercase">
                   {service.shortTitle}
                 </span>
               </div>
-              <Heading as="h2" size="2xl" font="serif" className="text-text-charcoal mb-3 leading-tight">
+              <Heading as="h2" size="2xl" font="serif" className="text-text-charcoal dark:text-white mb-3 leading-tight">
                 {service.popupTitle}
               </Heading>
             </div>
 
-            <div className="text-text-charcoal space-y-3 text-sm md:text-base font-light leading-snug">
+            <div className="text-text-charcoal dark:text-white/80 space-y-3 text-sm md:text-base font-light leading-snug">
               {service.content}
             </div>
 
@@ -129,7 +132,7 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
             <div className="mt-4">
               <button 
                 onClick={handleCopyChecklist}
-                className="inline-flex items-center gap-2 text-xs font-semibold text-[#1E4D45] hover:text-brand-green-light underline decoration-dotted transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-brand-green dark:text-brand-gold-light hover:text-brand-green-light dark:hover:text-brand-gold underline decoration-dotted transition-colors"
               >
                 <Icon name={copied ? 'Check' : 'Copy'} size={12} />
                 {copied ? 'Checklist Copied!' : 'Copy Checklist to Clipboard'}
@@ -138,8 +141,8 @@ const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service })
           </div>
 
           {/* Tight Footer for Contact Actions */}
-          <div className="shrink-0 p-5 md:p-6 lg:px-10 border-t border-black/5 bg-surface-ivory/80 backdrop-blur-md">
-            <p className="text-xs text-text-subtle mb-4 uppercase tracking-widest font-semibold">Contact Concierge</p>
+          <div className="shrink-0 p-5 md:p-6 lg:px-10 border-t border-black/5 dark:border-white/10 bg-surface-ivory/80 dark:bg-surface-dark/80 backdrop-blur-md">
+            <p className="text-xs text-text-subtle dark:text-white/50 mb-4 uppercase tracking-widest font-semibold">Contact Concierge</p>
             <div className="flex flex-wrap gap-3">
               <button 
                 onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
