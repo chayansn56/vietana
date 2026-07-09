@@ -139,7 +139,7 @@ const rawPackages = [
   },
   {
     id: "hcmc-phu-quoc-explorer-5d4n",
-    category: "Beach Escapes",
+    category: "First Time in Vietnam",
     title: "Ho Chi Minh City & Phu Quoc Explorer (5D4N)",
     duration: "5 Days / 4 Nights",
     badge: "Bestseller",
@@ -147,6 +147,17 @@ const rawPackages = [
     img: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
     hotels: ["Ho Chi Minh City: Duc Vuong Hotel (★★★ - 2 Nights)", "Phu Quoc: Bay Resort (★★★ - 2 Nights)"],
     price: "₹28,000"
+  },
+  {
+    id: "saigon-phu-quoc-comfort-accessible-7d6n",
+    category: "First Time in Vietnam",
+    title: "Saigon & Phu Quoc Comfort & Accessible Tour (7D6N)",
+    duration: "7 Days / 6 Nights",
+    badge: "Most Sold • Wheelchair Accessible",
+    destinations: ["Ho Chi Minh City", "Phu Quoc"],
+    img: "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=800&q=80",
+    hotels: ["Ho Chi Minh City: Duc Vuong Hotel (★★★ - 3 Nights)", "Phu Quoc: Marina TL Hotel (★★★ - 3 Nights)"],
+    price: "₹39,000"
   },
   {
     id: "phu-quoc-saigon-coast-city",
@@ -1056,6 +1067,80 @@ function expandPackage(pkg, idx) {
           title: "VinWonders & Departure",
           description: "Spend your morning exploring VinWonders Phu Quoc, Vietnam's largest theme park. Free time for shopping before your departure transfer to Phu Quoc airport.",
           activities: ["VinWonders Admission & theme park sights", "Private departure transfer to Phu Quoc airport"],
+          food: ["Breakfast"]
+        }
+      ]
+    };
+  }
+
+  if (pkg.id === "saigon-phu-quoc-accessible-7d6n") {
+    return {
+      ...pkg,
+      desc: "A specially curated comfort-focused itinerary designed for travelers looking for a relaxed pace or wheelchair-friendly options. Enjoy HCMC & Phu Quoc with accessible private cars, step-free access hotels, and slow-paced excursions.",
+      inclusions: [
+        "Airport transfers in private, spacious vehicle",
+        "Accommodation at Duc Vuong Hotel Saigon & Marina TL Hotel Phu Quoc (elevator guaranteed)",
+        "Daily Breakfast at hotels",
+        "Private comfortable sightseeing tours in Saigon & Phu Quoc",
+        "Mekong Delta excursion (SIC basis) with lunch",
+        "Vietnam E-Visa government fees",
+        "Domestic return flights within Vietnam (HCMC - Phu Quoc - HCMC)",
+        "Dedicated local helpline and wheelchair-assist requests"
+      ],
+      exclusions: [
+        "International Flights (Kolkata ↔ Ho Chi Minh City)",
+        "Attraction entrance tickets (available separately)",
+        "Meals not specifically mentioned under inclusions",
+        "Personal expenses, tips & travel insurance"
+      ],
+      days: [
+        {
+          day: 1,
+          title: "Arrival in Ho Chi Minh City & Rest",
+          description: "Arrive at Tan Son Nhat Airport. Meet your private driver and transfer to Duc Vuong Hotel with immediate early check-in arranged. Enjoy the day at leisure.",
+          activities: ["Private Airport transfer", "Immediate early check-in", "Orientation walk / Rest"],
+          food: ["None"]
+        },
+        {
+          day: 2,
+          title: "Ho Chi Minh City Heritage Sights",
+          description: "Explore Saigon's French Quarter on a slow-paced tour. Visit Independence Palace, Notre Dame Cathedral area, Central Post Office, and Ben Thanh Market.",
+          activities: ["Private HCMC city tour with comfort breaks", "Ben Thanh Market shopping"],
+          food: ["Breakfast"]
+        },
+        {
+          day: 3,
+          title: "Mekong Delta Excursion & River Cruise",
+          description: "Travel to the tranquil Mekong Delta. Take a scenic boat cruise along local canals, sample honey tea, hear folk music, and enjoy local lunch.",
+          activities: ["Mekong Delta tour (SIC basis)", "Riverside lunch"],
+          food: ["Breakfast", "Lunch"]
+        },
+        {
+          day: 4,
+          title: "Flight to Phu Quoc Island",
+          description: "Private transfer to airport for domestic flight to Phu Quoc. Check-in to Marina TL Hotel. Enjoy Sunset at Dinh Cau Temple and visit Duong Dong Night Market.",
+          activities: ["Airport private transfers", "Domestic flight", "Phu Quoc Night Market tour"],
+          food: ["Breakfast"]
+        },
+        {
+          day: 5,
+          title: "South Phu Quoc Beach & Sunset Town",
+          description: "Visit Ho Quoc Pagoda on the coast, the historical prison site, and relax by the clear waters of Sao Beach. Conclude with Sunset Town & Kiss Bridge views.",
+          activities: ["South Phu Quoc private tour", "Sunset Town and Sao Beach leisure"],
+          food: ["Breakfast"]
+        },
+        {
+          day: 6,
+          title: "North Phu Quoc Safari & Grand World",
+          description: "Embark on an excursion to Vinpearl Safari to see wildlife in an open-air park. Spend the afternoon/evening at Grand World to see Venetian canals.",
+          activities: ["Vinpearl Safari tour (private car)", "Grand World walking exploration"],
+          food: ["Breakfast"]
+        },
+        {
+          day: 7,
+          title: "Phu Quoc to HCMC & Departure",
+          description: "Fly back to HCMC. Rest and pack in a day-use room, then transfer to the airport during the night for your early morning flight home.",
+          activities: ["Return flight to HCMC", "Day-use room rest", "Night departure airport transfer"],
           food: ["Breakfast"]
         }
       ]
