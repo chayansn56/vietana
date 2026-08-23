@@ -1,38 +1,40 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { geoMercator, geoPath, GeoProjection } from 'd3-geo';
-import { json } from 'd3-fetch';
+import topologyData from '../../../public/vietnam.topo.json';
 import { feature } from 'topojson-client';
 import { MAP_DESTINATIONS, MAP_SIGHTS, MapSight } from '../../data/destinations';
+import { Destination } from '../../types';
 import { Text, Heading } from '../ui/Typography';
 import { motion, AnimatePresence } from 'motion/react';
+import { normalizeCityName, getMarkerTier, getDestinationStartingPrice, getDestinationImage } from '../../utils/destinationContent';
+import MapControls from './MapControls';
+import DestinationPreviewCard from './DestinationPreviewCard';
 
-const BACKGROUND_COLOR = '#FAF8F3'; // Warm Ivory
-const LAND_FILL = '#F2EFE8';
-const LAND_STROKE = '#1E4D45'; // Dark Emerald
-const MARKER_COLOR = '#1E4D45';
-const MARKER_HOVER_COLOR = '#D4AF37'; // Gold accent
+// Centralized premium colorful cartographic palette
+const COLOR_OCEAN = '#E0F2FE'; // Vibrant soft sky/ocean blue
+const COLOR_LAND = '#D4EFDF'; // Lush, colorful light emerald green landmass
+const COLOR_LAND_HOVER = '#A9DFBF'; // Deeper tropical green on hover
+const COLOR_COASTLINE = '#1E4D45'; // Deep Forest green coastline boundary
+const COLOR_PROVINCE_BORDER = 'rgba(30, 77, 69, 0.1)'; // Faint internal province borders
+const COLOR_GOLD = '#F5B041'; // Vibrant Gold Accent
+const COLOR_MUTED_GOLD = '#EB984E'; // Muted orange/amber
+const COLOR_TEXT = '#12302B';
 
 const REGIONS = {
   North: {
     name: "Northern Heritage",
-    cities: ['Hanoi', 'Sapa', 'Ha Long Bay', 'Ninh Binh', 'Phong Nha'],
-    desc: "Mist-covered rice terraces, towering limestone karsts, and centuries of preserved tribal traditions and royal history.",
-    color: "rgba(30, 77, 69, 0.12)",
-    border: "#1E4D45",
+    cities: ['Hanoi', 'Sapa', 'Ha Long Bay', 'Ninh Binh', 'Phong Nha', 'Cao Bang', 'Mai Chau', 'Moc Chau', 'Cat Ba'],
+    color: "rgba(18, 48, 43, 0.08)",
   },
   Central: {
     name: "Central Coastline",
-    cities: ['Hue', 'Da Nang', 'Hoi An'],
-    desc: "Imperial citadels, poetic rivers, romantic lantern-lit ancient ports, and pristine sandy beaches.",
-    color: "rgba(212, 175, 55, 0.1)",
-    border: "#D4AF37",
+    cities: ['Hue', 'Da Nang', 'Hoi An', 'Quang Binh', 'Quy Nhon', 'Phu Yen'],
+    color: "rgba(184, 134, 11, 0.07)",
   },
   South: {
     name: "Southern Pulse",
-    cities: ['Mui Ne', 'Ho Chi Minh City', 'Mekong Delta', 'Phu Quoc', 'Da Lat', 'Nha Trang', 'Vung Tau'],
-    desc: "The energetic southern metropolis, fertile riverways of the Mekong delta, cool pine highlands, and tropical island beaches.",
-    color: "rgba(16, 185, 129, 0.08)",
-    border: "#10B981",
+    cities: ['Mui Ne', 'Ho Chi Minh City', 'Mekong Delta', 'Phu Quoc', 'Da Lat', 'Nha Trang', 'Vung Tau', 'Ben Tre', 'Chau Doc', 'Con Dao'],
+    color: "rgba(18, 48, 43, 0.05)",
   }
 };
 
@@ -41,302 +43,393 @@ interface VietnamVectorMapProps {
   onAddCity?: (city: string) => void;
   selectedSights?: string[];
   onAddSight?: (city: string, sight: string) => void;
+  searchQuery: string;
+  activeRegion: string;
+  activeFilter: string;
+  selectedDestination: string | null;
+  setSelectedDestination: (dest: string | null) => void;
+  zoomLevel: number;
+  setZoomLevel: (zoom: number) => void;
+  mapCenter: [number, number];
+  setMapCenter: (center: [number, number]) => void;
+  filteredDestinations: Destination[];
 }
 
-const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({ selectedCities = [], onAddCity, selectedSights = [], onAddSight }) => {
-  const [activeRegion, setActiveRegion] = useState<keyof typeof REGIONS | null>(null);
-  const [hoveredDest, setHoveredDest] = useState<number | null>(null);
+const VietnamVectorMap: React.FC<VietnamVectorMapProps> = ({
+  selectedCities = [],
+  onAddCity,
+  selectedSights = [],
+  onAddSight,
+  searchQuery,
+  activeRegion,
+  activeFilter,
+  selectedDestination,
+  setSelectedDestination,
+  zoomLevel,
+  setZoomLevel,
+  mapCenter,
+  setMapCenter,
+  filteredDestinations
+}) => {
+  const [hoveredDest, setHoveredDest] = useState<Destination | null>(null);
   const [hoveredSight, setHoveredSight] = useState<MapSight | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [geoData, setGeoData] = useState<any>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Adjusted center coordinate to offset for the sidebar panel
-  const projection = geoMercator()
-    .scale(2700)
-    .center([107.5, 16.2]);
-
-  const pathGenerator = geoPath().projection(projection as GeoProjection);
-
+  // Mobile check to completely bypass mouse move logic and disable repaints
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    json('/vietnam.topo.json')
-      .then((topology) => {
-        const geojson = feature(topology as any, topology.objects.default);
-        setGeoData(geojson);
-      })
-      .catch((err) => console.error('Failed to load map data', err));
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const [mapLoaded, setMapLoaded] = useState(false);
-  useEffect(() => {
-    if (geoData) setMapLoaded(true);
-  }, [geoData]);
+  // Large editorial map projection scale and offsets
+  const projection = useMemo(() => {
+    return geoMercator()
+      .scale(3500)
+      .center([108.3, 16.2]);
+  }, []);
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const pathGenerator = useMemo(() => {
+    return geoPath().projection(projection as GeoProjection);
+  }, [projection]);
+
+  useEffect(() => {
+    try {
+      const geojson = feature(topologyData as any, (topologyData as any).objects.default);
+      setGeoData(geojson);
+    } catch (err) {
+      console.error('Failed to parse map data', err);
+    }
+  }, []);
+
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (isMobile || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  }, []);
+  }, [isMobile]);
 
-  const CARD_W = 256;
-  const CARD_H = 200;
-  const cardStyle = containerRef.current
-    ? {
-        left: Math.min(mousePos.x + 16, containerRef.current.clientWidth - CARD_W - 8),
-        top: Math.min(mousePos.y + 16, containerRef.current.clientHeight - CARD_H - 8),
-      }
-    : { left: mousePos.x + 16, top: mousePos.y + 16 };
-
-  const getCityRegion = (cityName: string): keyof typeof REGIONS | null => {
+  const getCityRegion = (cityName: string): string | null => {
     if (REGIONS.North.cities.includes(cityName)) return 'North';
     if (REGIONS.Central.cities.includes(cityName)) return 'Central';
     if (REGIONS.South.cities.includes(cityName)) return 'South';
     return null;
   };
 
+  const getLabelOffset = (name: string): { dx: number; dy: number; textAnchor: 'start' | 'end' | 'middle' } => {
+    const norm = normalizeCityName(name);
+    if (norm === 'da nang') return { dx: 12, dy: -4, textAnchor: 'start' };
+    if (norm === 'hoi an') return { dx: 12, dy: 10, textAnchor: 'start' };
+    if (norm === 'hue') return { dx: -12, dy: -4, textAnchor: 'end' };
+    return { dx: 10, dy: 4, textAnchor: 'start' };
+  };
+
+  const handleZoomIn = () => setZoomLevel(Math.min(zoomLevel + 0.5, 4));
+  const handleZoomOut = () => setZoomLevel(Math.max(zoomLevel - 0.5, 1));
+  const handleReset = () => {
+    setSelectedDestination(null);
+    setMapCenter([108.3, 16.2]);
+    setZoomLevel(1);
+  };
+
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full flex flex-col md:flex-row items-stretch select-none"
-      style={{ backgroundColor: BACKGROUND_COLOR }}
+      className="relative w-full h-full flex items-stretch select-none overflow-hidden"
+      style={{ backgroundColor: COLOR_OCEAN }}
       onMouseMove={handleMouseMove}
     >
-      {/* Side Control Panel */}
-      <div className="w-full md:w-80 bg-white/80 dark:bg-surface-dark/90 backdrop-blur-md border-r border-text-dark/5 dark:border-white/5 p-6 flex flex-col gap-6 relative z-20 shrink-0">
-        <div>
-          <span className="text-micro font-bold tracking-[0.22em] text-brand-green dark:text-brand-gold uppercase block mb-1">Illustrative Cartography</span>
-          <Heading as="h3" size="lg" font="serif" className="text-brand-green dark:text-white tracking-wide">Regions of Vietnam</Heading>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          {(Object.keys(REGIONS) as Array<keyof typeof REGIONS>).map((key) => {
-            const reg = REGIONS[key];
-            const isHovered = activeRegion === key;
-            return (
-              <button
-                key={key}
-                className={`text-left p-4 rounded-xl border transition-all duration-300 cursor-pointer ${
-                  isHovered 
-                    ? 'bg-brand-green/5 dark:bg-white/5 border-brand-green dark:border-brand-gold shadow-sm' 
-                    : 'bg-white/50 dark:bg-white/5 border-black/5 dark:border-white/5 hover:border-black/15 dark:hover:border-white/15'
-                }`}
-                onMouseEnter={() => setActiveRegion(key)}
-                onMouseLeave={() => setActiveRegion(null)}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-mini font-bold font-mono tracking-widest text-brand-gold-muted dark:text-brand-gold uppercase">{key}</span>
-                  <span className="text-micro px-2 py-0.5 rounded bg-black/5 dark:bg-white/10 text-brand-green dark:text-surface-warm font-semibold">{reg.cities.length} Hotspots</span>
-                </div>
-                <h4 className="text-sm font-semibold font-serif text-brand-green dark:text-white">{reg.name}</h4>
-                <p className="text-tiny text-text-subtle dark:text-white/60 font-light leading-relaxed mt-2 line-clamp-3">{reg.desc}</p>
-              </button>
-            );
-          })}
-        </div>
-        
-        <div className="mt-auto pt-4 border-t border-black/5 dark:border-white/5">
-          <p className="text-mini text-gray-400 dark:text-white/40 font-mono">Pulsing icons indicate major custom itinerary hotspots for Indian travelers. Hover over region tabs to highlight territory.</p>
-        </div>
-      </div>
+      {/* Background paper texture overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-10 mix-blend-multiply opacity-[0.03]" 
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+        }}
+      />
 
       {/* Vector Canvas Area */}
-      <div className="flex-1 relative flex items-center justify-center overflow-hidden">
-        <svg
-          ref={svgRef}
-          className="w-full h-full max-w-4xl mx-auto outline-none transition-opacity duration-500"
-          viewBox="0 0 800 800"
-          preserveAspectRatio="xMidYMid meet"
+      <div className="flex-1 relative flex items-center justify-center overflow-hidden w-full h-full">
+        <motion.div
+          className="w-full h-full flex items-center justify-center"
+          style={{ willChange: 'transform' }} // GPU Hardware acceleration
+          animate={{
+            scale: zoomLevel,
+            x: (108.3 - mapCenter[0]) * 120 * zoomLevel,
+            y: (mapCenter[1] - 16.2) * 120 * zoomLevel
+          }}
+          transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
         >
-          {geoData && (
-            <g>
-              {(geoData as any).features.map((feature: any, i: number) => {
-                const provName = feature.properties?.name || '';
-                
-                let fill = LAND_FILL;
-                if (activeRegion) {
-                  const reg = REGIONS[activeRegion];
-                  const matchesActive = reg.cities.some(c => provName.toLowerCase().includes(c.toLowerCase()));
-                  if (matchesActive) {
-                    fill = reg.color;
-                  }
-                }
-                
-                return (
-                  <path
-                    key={i}
-                    d={pathGenerator(feature) ?? undefined}
-                    fill={fill}
-                    stroke={LAND_STROKE}
-                    strokeWidth={0.5}
-                    className="transition-all duration-500"
-                    style={{ opacity: mapLoaded ? 1 : 0 }}
-                  />
-                );
-              })}
+          <svg
+            ref={svgRef}
+            className="w-full h-full max-h-[85vh] outline-none"
+            viewBox="0 0 800 800"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            {/* Grid Line Coordinates (Latitude / Longitude markers) */}
+            <g className="opacity-40">
+              <line x1="50" y1="220" x2="750" y2="220" stroke={COLOR_COASTLINE} strokeOpacity={0.06} strokeDasharray="4,6" />
+              <text x="60" y="214" fill={COLOR_COASTLINE} fillOpacity={0.25} className="font-mono text-[8px]">20° N</text>
+
+              <line x1="50" y1="460" x2="750" y2="460" stroke={COLOR_COASTLINE} strokeOpacity={0.06} strokeDasharray="4,6" />
+              <text x="60" y="454" fill={COLOR_COASTLINE} fillOpacity={0.25} className="font-mono text-[8px]">16° N</text>
+
+              <line x1="50" y1="700" x2="750" y2="700" stroke={COLOR_COASTLINE} strokeOpacity={0.06} strokeDasharray="4,6" />
+              <text x="60" y="694" fill={COLOR_COASTLINE} fillOpacity={0.25} className="font-mono text-[8px]">12° N</text>
             </g>
-          )}
-          
-          {/* Destination markers */}
-          {MAP_DESTINATIONS.map((dest, idx) => {
-            const [x, y] = projection([dest.lng, dest.lat]) as [number, number];
-            const isSelected = selectedCities.includes(dest.name);
-            const currentMarkerColor = isSelected ? '#D4AF37' : MARKER_COLOR;
-            const destReg = getCityRegion(dest.name);
-            const isRegionHighlighted = activeRegion === null || activeRegion === destReg;
-            
-            return (
-              <g
-                key={dest.name}
-                className="cursor-pointer"
-                onMouseEnter={() => setHoveredDest(idx)}
-                onMouseLeave={() => setHoveredDest(null)}
-                onClick={() => {
-                  if (onAddCity) {
-                    onAddCity(dest.name);
+
+            {/* Sea Names / Gulf Naming Bodies */}
+            <g className="select-none pointer-events-none font-serif tracking-[0.25em] text-[9px] uppercase font-bold text-[#12302B]/20 italic">
+              <text x="560" y="160" textAnchor="middle">Gulf of Tonkin</text>
+              <text x="620" y="480" textAnchor="middle">East Sea</text>
+              <text x="320" y="740" textAnchor="middle">Gulf of Thailand</text>
+            </g>
+
+            {/* Base land borders & coastlines */}
+            {geoData && (
+              <g>
+                {(geoData as any).features.map((feature: any, i: number) => {
+                  const provName = feature.properties?.name || '';
+                  let fill = COLOR_LAND;
+
+                  // Highlight hovered or selected region
+                  if (activeRegion && activeRegion !== 'All') {
+                    const reg = REGIONS[activeRegion as keyof typeof REGIONS];
+                    if (reg && reg.cities.some(c => provName.toLowerCase().includes(c.toLowerCase()))) {
+                      fill = COLOR_LAND_HOVER;
+                    }
                   }
-                }}
-                style={{ opacity: isRegionHighlighted ? 1 : 0.2, transition: 'opacity 0.4s ease' }}
-              >
-                <motion.circle
-                  cx={x}
-                  cy={y}
-                  r={isSelected ? 12 : 8}
-                  fill={currentMarkerColor}
-                  opacity={0.2}
-                  animate={{ scale: isSelected ? [1, 1.3, 1] : [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <circle
-                  cx={x}
-                  cy={y}
-                  r={isSelected ? 4 : 3}
-                  fill={hoveredDest === idx ? MARKER_HOVER_COLOR : currentMarkerColor}
-                  className="transition-colors duration-300"
-                />
+
+                  return (
+                    <path
+                      key={i}
+                      d={pathGenerator(feature) ?? undefined}
+                      fill={fill}
+                      stroke={COLOR_PROVINCE_BORDER}
+                      strokeWidth={0.4}
+                      vectorEffect="non-scaling-stroke" // Extremely fast scaling repaint
+                      className="transition-all duration-500"
+                    />
+                  );
+                })}
+
+                {/* Coastline visual separator */}
+                {(geoData as any).features.map((feature: any, i: number) => {
+                  return (
+                    <path
+                      key={`coast-${i}`}
+                      d={pathGenerator(feature) ?? undefined}
+                      fill="none"
+                      stroke={COLOR_COASTLINE}
+                      strokeWidth={0.65}
+                      strokeOpacity={0.65}
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  );
+                })}
               </g>
-            );
-          })}
+            )}
 
-          {/* Sight markers (Gold Diamonds) */}
-          {MAP_SIGHTS.map((sight, idx) => {
-            const [x, y] = projection([sight.lng, sight.lat]) as [number, number];
-            const isSelected = selectedSights.includes(sight.name);
-            const currentMarkerColor = '#D4AF37';
-            const sightReg = getCityRegion(sight.cityName);
-            const isRegionHighlighted = activeRegion === null || activeRegion === sightReg;
-            
-            return (
-              <g
-                key={sight.name}
-                className="cursor-pointer font-sans"
-                onMouseEnter={() => setHoveredSight(sight)}
-                onMouseLeave={() => setHoveredSight(null)}
-                onClick={() => {
-                  if (onAddSight) {
-                    onAddSight(sight.cityName, sight.name);
-                  }
-                }}
-                style={{ opacity: isRegionHighlighted ? 1 : 0.15, transition: 'opacity 0.4s ease' }}
-              >
-                <motion.polygon
-                  points={`${x},${y-8} ${x+8},${y} ${x},${y+8} ${x-8},${y}`}
-                  fill={currentMarkerColor}
-                  opacity={0.15}
-                  animate={{ scale: isSelected ? [1, 1.4, 1] : [1, 1.6, 1], opacity: [0.15, 0.4, 0.15] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.1 }}
-                />
-                <polygon
-                  points={`${x},${y-4} ${x+4},${y} ${x},${y+4} ${x-4},${y}`}
-                  fill={isSelected ? '#D4AF37' : '#FAF8F3'}
-                  stroke="#1E4D45"
-                  strokeWidth={1}
-                  className="transition-colors duration-300"
-                />
-              </g>
-            );
-          })}
-        </svg>
+            {/* Decorative Compass Rose Ornament */}
+            <g transform="translate(140, 240) scale(0.7)" className="opacity-30 select-none pointer-events-none">
+              <circle cx="0" cy="0" r="32" fill="none" stroke={COLOR_COASTLINE} strokeWidth="0.5" strokeDasharray="2,3" />
+              <circle cx="0" cy="0" r="26" fill="none" stroke={COLOR_COASTLINE} strokeWidth="0.8" />
+              {/* North Arrow */}
+              <polygon points="0,-36 4,-6 0,0" fill={COLOR_COASTLINE} />
+              <polygon points="0,-36 -4,-6 0,0" fill={COLOR_GOLD} />
+              {/* South Arrow */}
+              <polygon points="0,36 4,6 0,0" fill={COLOR_COASTLINE} />
+              <polygon points="0,36 -4,6 0,0" fill={COLOR_GOLD} />
+              {/* East Arrow */}
+              <polygon points="36,0 6,4 0,0" fill={COLOR_COASTLINE} />
+              <polygon points="36,0 6,-4 0,0" fill={COLOR_GOLD} />
+              {/* West Arrow */}
+              <polygon points="-36,0 -6,4 0,0" fill={COLOR_COASTLINE} />
+              <polygon points="-36,0 -6,-4 0,0" fill={COLOR_GOLD} />
+              
+              <text x="0" y="-42" textAnchor="middle" className="font-serif font-bold text-[11px] fill-[#12302B]">N</text>
+            </g>
 
-        {/* Hover Cards (Apple Style) */}
+            {/* Render dynamically filtered destination markers */}
+            {filteredDestinations.map((dest) => {
+              const projCoord = projection([dest.lng, dest.lat]);
+              if (!projCoord) return null;
+              const [x, y] = projCoord;
+
+              const isSelected = selectedDestination === dest.name;
+              const isHovered = hoveredDest?.name === dest.name;
+              const tier = getMarkerTier(dest.name);
+              const labelConfig = getLabelOffset(dest.name);
+
+              // Compact marker styles matching the cartographic hierarchy
+              const markerStyle = {
+                primary: { innerR: 3.5, outerR: 7.5, pulse: true, labelAlways: true, color: '#E74C3C' },
+                secondary: { innerR: 2.5, outerR: 5.5, pulse: false, labelAlways: false, color: '#1E4D45' },
+                discovery: { innerR: 1.8, outerR: 4, pulse: false, labelAlways: false, color: '#EB984E' }
+              }[tier];
+
+              const isRegionHighlighted = activeRegion === 'All' || activeRegion === getCityRegion(dest.name);
+              
+              return (
+                <g
+                  key={dest.name}
+                  className="cursor-pointer"
+                  onMouseEnter={() => setHoveredDest(dest)}
+                  onMouseLeave={() => setHoveredDest(null)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedDestination(dest.name);
+                    setMapCenter([dest.lng, dest.lat]);
+                    setZoomLevel(2.5);
+                    if (onAddCity) onAddCity(dest.name);
+                  }}
+                  style={{ opacity: isRegionHighlighted ? 1 : 0.28, transition: 'opacity 0.4s ease' }}
+                >
+                  {/* Selected / Trending outer halo ring - disabled pulse on mobile to prevent paint lags */}
+                  {(isSelected || isHovered) && (
+                    <circle
+                      cx={x}
+                      cy={y}
+                      r={markerStyle.outerR + 2.5}
+                      fill="none"
+                      stroke={COLOR_GOLD}
+                      strokeWidth={1}
+                      className={isMobile ? "" : "animate-pulse"}
+                    />
+                  )}
+
+                  {/* Base marker outer boundary */}
+                  <circle
+                    cx={x}
+                    cy={y}
+                    r={markerStyle.outerR}
+                    fill={COLOR_OCEAN}
+                    stroke={isSelected ? COLOR_GOLD : markerStyle.color}
+                    strokeWidth={1.2}
+                  />
+
+                  {/* Solid inner core */}
+                  <circle
+                    cx={x}
+                    cy={y}
+                    r={markerStyle.innerR}
+                    fill={isSelected ? COLOR_GOLD : markerStyle.color}
+                  />
+
+                  {/* Elegant text label with Ivory halo backdrop card */}
+                  {(markerStyle.labelAlways || isHovered || isSelected || zoomLevel > 1.8) && (
+                    <g transform={`translate(${x + labelConfig.dx}, ${y + labelConfig.dy})`}>
+                      {/* Text halo backing card */}
+                      <text
+                        x="0"
+                        y="0"
+                        textAnchor={labelConfig.textAnchor}
+                        stroke={COLOR_OCEAN}
+                        strokeWidth={3}
+                        strokeLinejoin="round"
+                        className="font-serif text-[9px] font-bold fill-none select-none pointer-events-none"
+                      >
+                        {dest.name}
+                      </text>
+                      <text
+                        x="0"
+                        y="0"
+                        textAnchor={labelConfig.textAnchor}
+                        fill={COLOR_TEXT}
+                        className="font-serif text-[9px] font-bold select-none pointer-events-none"
+                      >
+                        {dest.name}
+                      </text>
+                    </g>
+                  )}
+                </g>
+              );
+            })}
+
+            {/* Sights coordinates markers */}
+            {MAP_SIGHTS.map((sight) => {
+              const projCoord = projection([sight.lng, sight.lat]);
+              if (!projCoord) return null;
+              const [x, y] = projCoord;
+
+              // Hide sights if zoomed out to avoid clutter
+              if (zoomLevel < 1.8) return null;
+
+              const isSelected = selectedSights.includes(sight.name);
+              const isHovered = hoveredSight?.name === sight.name;
+
+              return (
+                <g
+                  key={sight.name}
+                  className="cursor-pointer"
+                  onMouseEnter={() => setHoveredSight(sight)}
+                  onMouseLeave={() => setHoveredSight(null)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onAddSight) onAddSight(sight.cityName, sight.name);
+                  }}
+                >
+                  {/* Outer circle halo for sights */}
+                  <circle
+                    cx={x}
+                    cy={y}
+                    r={5.5}
+                    fill={COLOR_OCEAN}
+                    stroke={COLOR_GOLD}
+                    strokeWidth={0.8}
+                  />
+                  <polygon
+                    points={`${x},${y-2.5} ${x+2.5},${y} ${x},${y+2.5} ${x-2.5},${y}`}
+                    fill={isSelected || isHovered ? COLOR_GOLD : COLOR_COASTLINE}
+                  />
+                </g>
+              );
+            })}
+          </svg>
+        </motion.div>
+
+        {/* Small Cartographic Legend (Desktop Only) */}
+        {!searchQuery && (
+          <div className="absolute bottom-6 left-6 z-30 hidden md:flex flex-col gap-2.5 bg-white/90 dark:bg-[#1A2120]/90 backdrop-blur-md p-4 rounded-2xl border border-black/5 dark:border-white/10 shadow-md w-48">
+            <span className="text-[8px] font-bold font-mono tracking-widest text-[#B8860B] uppercase">Atlas Legend</span>
+            <div className="flex flex-col gap-2 text-[10px] text-gray-700 dark:text-white/80 font-serif">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#12302B] border border-gold" />
+                <span>Primary Hubs</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#12302B]" />
+                <span>Secondary Cities</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6A15B]" />
+                <span>Hidden Gems</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rotate-45 border border-[#B8860B] bg-[#12302B]" />
+                <span>Attraction Sights</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Floating Zoom & Reset Map Controls */}
+        <MapControls
+          onZoomIn={handleZoomIn}
+          onZoomOut={handleZoomOut}
+          onReset={handleReset}
+        />
+
+        {/* Floating Preview Tooltip Card overlay on hover */}
         <AnimatePresence>
-          {hoveredDest !== null && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.15, ease: 'easeOut' }}
-              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-surface-dark rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-text-dark/5 dark:border-white/5"
-              style={cardStyle}
-            >
-              <div className="h-32 w-full relative">
-                <img
-                  src={MAP_DESTINATIONS[hoveredDest].img}
-                  alt={MAP_DESTINATIONS[hoveredDest].name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <Text size="xs" weight="bold" className="tracking-widest uppercase text-brand-gold mb-1">
-                    {MAP_DESTINATIONS[hoveredDest].time}
-                  </Text>
-                  <Heading as="h4" size="xl" font="serif" className="leading-none drop-shadow-md">
-                    {MAP_DESTINATIONS[hoveredDest].name}
-                  </Heading>
-                </div>
-              </div>
-              <div className="p-4 flex flex-col gap-2">
-                <Text size="sm" className="text-text-dark/70 dark:text-white/70 leading-snug">
-                  {MAP_DESTINATIONS[hoveredDest].desc}
-                </Text>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-text-dark/5 dark:border-white/5">
-                  <span className={`text-mini font-bold tracking-widest uppercase ${selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
-                    {selectedCities.includes(MAP_DESTINATIONS[hoveredDest].name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Sight Hover Cards */}
-        <AnimatePresence>
-          {hoveredSight !== null && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.15, ease: 'easeOut' }}
-              className="absolute pointer-events-none z-50 w-64 bg-white dark:bg-surface-dark rounded-[24px] overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-text-dark/5 dark:border-white/5"
-              style={cardStyle}
-            >
-              <div className="h-32 w-full relative">
-                <img
-                  src={hoveredSight.img}
-                  alt={hoveredSight.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <Text size="xs" weight="bold" className="tracking-widest uppercase text-brand-gold mb-1">
-                    📍 {hoveredSight.cityName} Attraction
-                  </Text>
-                  <Heading as="h4" size="lg" font="serif" className="leading-none drop-shadow-md">
-                    {hoveredSight.name}
-                  </Heading>
-                </div>
-              </div>
-              <div className="p-4 flex flex-col gap-2">
-                <Text size="sm" className="text-text-dark/70 dark:text-white/70 leading-snug">
-                  {hoveredSight.desc}
-                </Text>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-text-dark/5 dark:border-white/5">
-                  <span className={`text-mini font-bold tracking-widest uppercase ${selectedSights.includes(hoveredSight.name) ? 'text-brand-gold' : 'text-gray-400 dark:text-white/40'}`}>
-                    {selectedSights.includes(hoveredSight.name) ? '✓ IN ITINERARY' : 'CLICK TO ADD'}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+          {hoveredDest && (
+            <DestinationPreviewCard
+              destination={hoveredDest}
+              position={mousePos}
+            />
           )}
         </AnimatePresence>
       </div>

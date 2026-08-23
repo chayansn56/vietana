@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface ModalProps {
@@ -53,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({
     light: 'bg-brand-green/5 text-brand-green/60 hover:bg-brand-green/10 hover:text-brand-green',
   };
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-6">
@@ -70,8 +71,9 @@ const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className={`relative w-full ${maxWidth} ${wrappers[variant]} rounded-[28px] overflow-hidden shadow-deep ${className}`}
+            className={`relative z-10 w-full ${maxWidth} ${wrappers[variant]} rounded-[28px] overflow-hidden shadow-deep ${className}`}
           >
+            {children}
             <button
               onClick={onClose}
               className={`absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 z-[100] text-2xl cursor-pointer ${closeBtns[variant]}`}
@@ -79,11 +81,11 @@ const Modal: React.FC<ModalProps> = ({
             >
               ×
             </button>
-            {children}
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

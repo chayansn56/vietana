@@ -100,8 +100,8 @@ const MagicMode: React.FC<MagicModeProps> = ({
         </Text>
       </div>
 
-      {/* THREE PATHS GRID */}
-      <div className="relative z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 my-10">
+      {/* TWO PATHS GRID */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
         
         {/* OPTION 1: CURATED PACKAGES */}
         <Card
@@ -115,48 +115,18 @@ const MagicMode: React.FC<MagicModeProps> = ({
               <Icon name="BookOpen" size={24} />
             </div>
             <Heading as="h3" size="lg" className="text-white font-bold leading-tight">
-              Curated Packages
+              Curated Experiences
             </Heading>
             <Text variant="white" className="opacity-75 text-xs sm:text-sm leading-relaxed font-light">
-              Explore our handpicked flagship packages designed specifically for Indian travelers, and customize any of them to align with your personal rhythm.
+              Browse our expertly crafted itineraries. Perfect for first-time visitors seeking a balance of culture, nature, and relaxation.
             </Text>
           </div>
           <Button 
-            variant="glass" 
-            className="w-full mt-6 py-3 text-xs tracking-wider uppercase font-semibold border-white/20 hover:border-white text-white group-hover:bg-white group-hover:text-brand-green-extra-dark transition-all duration-300"
+            variant="outline"
+            className="w-full mt-6 py-3 text-xs tracking-wider uppercase font-semibold text-white border-white/30 hover:border-brand-gold hover:text-brand-gold"
             onClick={() => handleSelectOption(onOpenPackages)}
           >
-            See Packages
-          </Button>
-        </Card>
-
-        {/* OPTION 2: CUSTOM TRIP BUILDER (LIVE METRICS) */}
-        <Card
-          variant="glass"
-          padding="lg"
-          className="bg-brand-green-dark/45 border-white/10 hover:border-brand-gold/40 flex flex-col justify-between h-[360px] text-left transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(212,175,55,0.15)] group relative overflow-hidden"
-          hover={false}
-        >
-          <div className="absolute top-4 right-4 bg-brand-gold text-brand-green-extra-dark text-tiny font-mono font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">
-            LIVE SYNC
-          </div>
-          <div className="space-y-4">
-            <div className="w-12 h-12 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Icon name="Activity" size={24} />
-            </div>
-            <Heading as="h3" size="lg" className="text-white font-bold leading-tight">
-              Custom Trip Builder
-            </Heading>
-            <Text variant="white" className="opacity-75 text-xs sm:text-sm leading-relaxed font-light">
-              Compute your budget in real time. Customize destinations, hotels, and services with flight, visa, and local expense rates updated every hour.
-            </Text>
-          </div>
-          <Button 
-            variant="solid" 
-            className="w-full mt-6 py-3 text-xs tracking-wider uppercase font-semibold bg-brand-gold hover:bg-brand-gold-muted text-white shadow-gold hover:scale-[1.02] transition-all duration-300"
-            onClick={() => handleSelectOption(onOpenBuilder)}
-          >
-            Build Custom Trip
+            Explore Packages
           </Button>
         </Card>
 

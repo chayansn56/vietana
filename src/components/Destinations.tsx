@@ -33,7 +33,22 @@ const Destinations: React.FC = () => {
   const { t } = useTranslation();
   const [selectedCity, setSelectedCity] = useState<CityDestination | null>(null);
   const [expandedSight, setExpandedSight] = useState<string | null>(null);
-  const [isAllCitiesOpen, setIsAllCitiesOpen] = useState(false);
+
+
+  React.useEffect(() => {
+    const handleSelectDestination = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      const cityName = customEvent.detail;
+      const foundCity = CITIES.find(c => c.name.toLowerCase().includes(cityName.toLowerCase()));
+      if (foundCity) {
+        setSelectedCity(foundCity);
+        const el = document.getElementById('destinations');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    window.addEventListener('select_destination', handleSelectDestination);
+    return () => window.removeEventListener('select_destination', handleSelectDestination);
+  }, []);
 
   const handleCardHover = () => {
     soundService.playTick();
@@ -46,7 +61,7 @@ const Destinations: React.FC = () => {
   };
 
   return (
-    <Section id="destinations" spacing="lg" className="bg-surface-linen text-text-dark relative overflow-hidden">
+    <Section id="destinations" spacing="lg" className="bg-white text-[#111111] relative overflow-hidden">
       {/* Subtle organic decorations */}
       <div className="absolute top-[5%] left-[-2%] w-[300px] h-[300px] bg-surface-warm/25 rounded-full blur-[80px] pointer-events-none" />
       <div className="absolute bottom-[5%] right-[-2%] w-[350px] h-[350px] bg-brand-sage/20 rounded-full blur-[90px] pointer-events-none" />
@@ -61,13 +76,13 @@ const Destinations: React.FC = () => {
 
         {/* Polaroid Scrapbook Masonry Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 xl:gap-12 px-2">
-          {CITIES.slice(0, 8).map((city, idx) => {
+          {CITIES.map((city, idx) => {
             const rotAngle = getAngle(idx);
             const weather = getWeatherForCity(city.name);
             return (
               <div
                 key={city.id}
-                style={{ transform: `rotate(${rotAngle}deg)` }}
+                style={{ '--rotate-angle': `${rotAngle}deg` } as React.CSSProperties}
                 className="polaroid-frame group cursor-pointer bg-white"
                 onClick={() => setSelectedCity(city)}
                 onMouseEnter={handleCardHover}
@@ -103,17 +118,6 @@ const Destinations: React.FC = () => {
           })}
         </div>
 
-        {/* View all cities button */}
-        <div className="mt-16 text-center">
-          <Button
-            variant="secondary" size="lg"
-            className="mx-auto shadow-md tracking-widest uppercase font-bold"
-            onClick={() => setIsAllCitiesOpen(true)}
-            icon={<Icon name="ArrowRight" size={14} />}
-          >
-            Click to view more cities
-          </Button>
-        </div>
       </Container>
 
       {/* City Detail Modal */}
@@ -212,55 +216,6 @@ const Destinations: React.FC = () => {
         )}
       </Modal>
 
-      {/* All Cities Modal */}
-      <Modal isOpen={isAllCitiesOpen} onClose={() => setIsAllCitiesOpen(false)} maxWidth="max-w-6xl">
-        <div className="p-6 md:p-10 flex flex-col max-h-[85vh] md:max-h-[90vh] bg-surface-linen rounded-2xl">
-          <div className="mb-8 border-b border-border-divider pb-6 shrink-0">
-            <Heading as="h2" size="3xl" font="serif" className="text-brand-green-dark tracking-tight mb-2">
-              All Destinations
-            </Heading>
-            <Text variant="none" size="md" className="text-text-subtle font-light">
-              Explore our complete collection of Vietnam's most beautiful tourist cities.
-            </Text>
-          </div>
-
-          <div className="overflow-y-auto flex-1 -mx-6 px-6 -mb-6 pb-6 md:-mx-10 md:px-10 md:-mb-10 md:pb-10">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {CITIES.map((city) => (
-                <div
-                  key={`all-${city.id}`}
-                  className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer border border-brand-green/30 hover:border-brand-green hover:shadow-[0_4px_20px_rgba(30,77,69,0.15)] transition-all duration-500"
-                  onClick={() => {
-                    setIsAllCitiesOpen(false);
-                    setTimeout(() => setSelectedCity(city), 300);
-                  }}
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out md:group-hover:scale-110"
-                    style={{ backgroundImage: `url(${city.coverImage})` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 md:group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 flex flex-col justify-end">
-                    <Heading as="h3" size="xl" variant="none" className="text-white mb-1 transform transition-transform duration-500 md:group-hover:-translate-y-1 text-lg md:text-2xl leading-tight">
-                      {city.name}
-                    </Heading>
-                    <div className="overflow-hidden">
-                      <Text
-                        variant="none"
-                        size="xs"
-                        className="text-white/80 md:text-white/70 transform md:translate-y-full md:opacity-0 transition-all duration-500 md:group-hover:translate-y-0 md:group-hover:opacity-100 line-clamp-2 text-mini md:text-xs leading-snug"
-                      >
-                        {city.shortDesc}
-                      </Text>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Modal>
     </Section>
   );
 };

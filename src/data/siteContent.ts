@@ -6,10 +6,7 @@ export interface PackageData extends Package {
 
 export const NAV_LINKS = [
   { key: 'destinations', href: '#destinations' },
-  { key: 'essentials', href: '#services' },
-  { key: 'food', href: '#food' },
-  { key: 'experiences', href: '#experiences', isExperiences: true },
-  { key: 'flights', href: '#flights' },
+  { key: 'experiences', href: '#experiences' },
   { key: 'journal', href: '#journal' },
   { key: 'team', href: '#team' },
 ];

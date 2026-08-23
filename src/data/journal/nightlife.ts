@@ -102,7 +102,7 @@ export const nightlifeArticles: Article[] = [
     ]
   },
   {
-    id: "nl5", title: "A Night on the Saigon River", author: "Vikram & Ananya",
+    id: "nl5", title: "A Night on the Saigon River", author: "Rahul & Ananya",
     intro: "Reviewing the luxury dinner cruises that offer a different perspective of the city at night.",
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80",
     sections: [

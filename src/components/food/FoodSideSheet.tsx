@@ -51,14 +51,14 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-y-0 right-0 z-50 w-full md:w-[75%] bg-surface-cream rounded-l-3xl shadow-2xl overflow-y-auto overscroll-contain flex flex-col"
+            transition={{ type: 'spring', damping: 25, stiffness: 200, duration: 0.4 }}
+            className="fixed inset-y-4 right-4 z-50 w-[92vw] max-w-2xl bg-[#F5F5F7] rounded-3xl shadow-2xl overflow-y-auto overscroll-contain flex flex-col border border-black/5"
           >
             {/* Header / Hero Image */}
-            <div className="relative h-64 md:h-80 w-full shrink-0">
-              <img
-                src={category.heroImage}
-                alt={category.title}
+            <div className="relative h-60 md:h-80 w-full shrink-0">
+              <img 
+                src={category.heroImage} 
+                alt={category.title} 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -66,10 +66,11 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
               <Button
                 variant="ghost"
                 onClick={onClose}
-                className="absolute top-6 left-6 !p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40"
+                className="absolute top-4 right-4 z-50 w-9 h-9 bg-black/60 hover:bg-black text-white rounded-full flex items-center justify-center shadow-md transition-colors border-none cursor-pointer"
+                aria-label="Close food concierge"
               >
-                <Icon name="ArrowLeft" size={20} />
-              </Button>
+                <Icon name="X" size={18} />
+              </button>
 
               <div className="absolute bottom-8 left-8 pr-8">
                 <Heading as="h2" size="4xl" font="serif" className="text-white m-0 leading-tight">

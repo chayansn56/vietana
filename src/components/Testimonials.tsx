@@ -35,7 +35,7 @@ const TESTIMONIALS_DATA: Testimonial[] = [
   },
   {
     id: 3,
-    name: "Vikram & Friends",
+    name: "Rahul & Friends",
     location: "New Delhi",
     type: "Adventure Group (Sapa & Halong Bay)",
     rating: 5,

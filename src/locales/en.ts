@@ -3,21 +3,21 @@ import { TranslationSchema } from '../translations';
 export const en: TranslationSchema = {
   nav: {
     destinations: 'Destinations',
-    essentials: 'Essentials',
-    food: 'Food',
-    experiences: 'Experiences',
-    journal: 'Journal',
-    team: 'The Team',
-    cta: 'Design My Escape',
+    essentials: 'Visa & Services',
+    food: 'Food Guide',
+    experiences: 'Packages',
+    journal: 'Travel Guide',
+    team: 'About',
+    cta: 'Get My Free Trip Plan',
     flights: 'Flights'
   },
   hero: {
     welcome: 'VIETANA',
     tagline: 'Feel Vietnam, Your Way',
-    sub: 'Personalized travel experiences for Indian travelers.',
-    support: 'Local support in Hindi & English available 24/7.',
+    sub: 'Visa, hotels, food, transport and local support — handled from Ho Chi Minh City.',
+    support: 'FEEL VIETNAM, YOUR WAY',
     discover: 'Explore Vietnam',
-    plan: 'Plan with AI'
+    plan: 'Get My Free Trip Plan'
   },
   services: {
     title: 'The Essentials',

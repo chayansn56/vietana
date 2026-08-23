@@ -6,58 +6,7 @@ import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import BrandName from './ui/BrandName';
 
-// Count-up hook
-const useCountUp = (end: number, duration: number = 2000) => {
-  const [count, setCount] = React.useState(0);
-  const nodeRef = useRef(null);
-  const inView = useInView(nodeRef, { once: true, margin: "-100px" });
 
-  React.useEffect(() => {
-    if (!inView) return;
-    
-    let startTime: number | null = null;
-    let animationFrame: number;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const percentage = Math.min(progress / duration, 1);
-      
-      // Easing out
-      const easeOut = 1 - Math.pow(1 - percentage, 3);
-      setCount(Math.floor(end * easeOut));
-
-      if (percentage < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration, inView]);
-
-  return { count, nodeRef };
-};
-
-const AnimatedCounter = ({ value, label }: { value: string | number, label: string }) => {
-  const isNumber = typeof value === 'number';
-  const { count, nodeRef } = useCountUp(isNumber ? (value as number) : 0, 2500);
-
-  return (
-    <div ref={nodeRef} className="flex flex-col items-center justify-center group/counter">
-      <div className="w-28 h-28 rounded-full border-2 border-brand-gold/50 hover:border-brand-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.45)] hover:scale-105 flex flex-col items-center justify-center mb-4 text-brand-gold transition-all duration-500 ease-smooth transform-gpu">
-        <Heading as="div" size="4xl" font="serif" variant="none" className="m-0 font-normal">
-          {isNumber ? count : value}
-        </Heading>
-      </div>
-      <Text size="sm" variant="none" className="text-white/80 uppercase tracking-widest text-center max-w-[120px]">
-        {label}
-      </Text>
-    </div>
-  );
-};
 
 const LiveClock = ({ timeZone, label }: { timeZone: string, label: string }) => {
   const [time, setTime] = React.useState('');
@@ -95,9 +44,9 @@ const AnimatedMapLine = () => {
   return (
     <div className="relative w-full max-w-lg mx-auto h-32 flex items-center justify-between mt-12 mb-20 px-4">
       {/* Delhi */}
-      <div className="flex flex-col items-center z-10 bg-surface-cream px-3">
-        <div className="w-3 h-3 rounded-full bg-text-dark mb-3" />
-        <Text size="sm" weight="medium" className="uppercase tracking-widest text-text-dark whitespace-nowrap">
+      <div className="flex flex-col items-center z-10 bg-white px-1.5 sm:px-3">
+        <div className="w-3 h-3 rounded-full bg-[#1D1D1F] mb-3" />
+        <Text size="none" weight="medium" className="uppercase tracking-widest text-[#1D1D1F] whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
           🇮🇳 Delhi
         </Text>
       </div>
@@ -118,9 +67,9 @@ const AnimatedMapLine = () => {
       </div>
 
       {/* HCMC */}
-      <div className="flex flex-col items-center z-10 bg-surface-cream px-3">
-        <div className="w-3 h-3 rounded-full bg-text-dark mb-3" />
-        <Text size="sm" weight="medium" className="uppercase tracking-widest text-text-dark whitespace-nowrap">
+      <div className="flex flex-col items-center z-10 bg-white px-1.5 sm:px-3">
+        <div className="w-3 h-3 rounded-full bg-[#1D1D1F] mb-3" />
+        <Text size="none" weight="medium" className="uppercase tracking-widest text-[#1D1D1F] whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
           Ho Chi Minh City 🇻🇳
         </Text>
       </div>
@@ -138,7 +87,7 @@ const Connection: React.FC = () => {
   };
 
   return (
-    <div id="team" className="font-sans text-text-dark bg-surface-cream">
+    <div id="team" className="font-sans text-[#1D1D1F] bg-white">
       <AnimatePresence>
         {copiedText && (
           <motion.div 
@@ -152,8 +101,8 @@ const Connection: React.FC = () => {
         )}
       </AnimatePresence>
       
-      {/* TOP AREA: Warm Ivory */}
-      <div className="bg-surface-cream pt-16 pb-8">
+      {/* BOTTOM AREA: Slightly darker Ivory */}
+      <div className="bg-white py-16">
         <Container>
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto">
@@ -259,40 +208,35 @@ const Connection: React.FC = () => {
         </Container>
       </div>
 
-      {/* MIDDLE AREA: Deep Charcoal (Numbers) */}
-      <div className="bg-brand-green-extra-dark py-16">
-        <Container>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-            <AnimatedCounter value={5} label="People" />
-            <AnimatedCounter value={2} label="Countries" />
-            <AnimatedCounter value={3} label="Languages" />
-            <AnimatedCounter value="∞" label="Stories Waiting To Be Told" />
-          </div>
-        </Container>
-      </div>
+
 
       {/* BOTTOM AREA: Soft Sand (Offices, Contact & Quote) */}
-      <div className="bg-surface-cream py-16">
+      <div className="bg-white py-16">
         <Container>
           
           {/* Offices Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
             {/* India Office */}
-            <div className="bg-surface-cream rounded-[24px] p-8 border border-text-dark/5">
+            <div className="bg-white rounded-[24px] p-8 border border-[#1D1D1F]/5">
               <LiveClock timeZone="Asia/Kolkata" label="🇮🇳 Delhi" />
               <Heading as="h3" size="2xl" font="serif" className="mb-6">
                 Delhi
               </Heading>
-              <Text className="text-text-dark/70 mb-8 font-light leading-relaxed max-w-xs">
-                RZ 35/36, Indra Park Extension, <br/>
-                Near Hanuman Mandir, <br/>
+              <Text className="text-[#1D1D1F]/70 mb-4 font-light leading-relaxed max-w-xs">
+                B-37, Indra Park Extension, <br/>
                 Uttam Nagar East, <br/>
                 Delhi – 110059, India
               </Text>
+              <div className="flex items-center gap-2 mb-8">
+                <Icon name="Phone" size={16} className="text-[#1D1D1F]/50" />
+                <a href="tel:+919990977002" className="text-[#1D1D1F]/80 hover:text-[#1D1D1F] transition-colors font-medium text-sm no-underline">
+                  +91 9990977002
+                </a>
+              </div>
               <div className="flex gap-4">
                 <button 
-                  onClick={() => copyToClipboard("RZ 35/36, Indra Park Extension, Near Hanuman Mandir, Uttam Nagar East, Delhi – 110059, India", "Delhi")}
-                  className="px-6 py-3 border border-text-dark/10 rounded-full text-sm font-medium hover:bg-text-dark/5 transition-colors"
+                  onClick={() => copyToClipboard("B-37, Indra Park Extension, Uttam Nagar East, Delhi – 110059, India", "Delhi")}
+                  className="px-6 py-3 border border-[#1D1D1F]/10 rounded-full text-sm font-medium hover:bg-[#1D1D1F]/5 transition-colors"
                 >
                   Copy Address
                 </button>
@@ -306,7 +250,7 @@ const Connection: React.FC = () => {
             </div>
 
             {/* Vietnam Office */}
-            <div className="bg-surface-cream rounded-[24px] p-8 border border-text-dark/5">
+            <div className="bg-white rounded-[24px] p-8 border border-[#1D1D1F]/5">
               <LiveClock timeZone="Asia/Ho_Chi_Minh" label="🇻🇳 Ho Chi Minh City" />
               <Heading as="h3" size="2xl" font="serif" className="mb-6">
                 Ho Chi Minh City

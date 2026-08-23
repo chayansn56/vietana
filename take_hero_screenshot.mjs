@@ -1,15 +1,12 @@
 import puppeteer from 'puppeteer';
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: 'new' });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 900 });
-  await page.goto('http://localhost:4174', { waitUntil: 'networkidle2' });
-  
-  // Wait a bit for the hero image and animations to render
-  await new Promise(resolve => setTimeout(resolve, 3000));
-
-  await page.screenshot({ path: 'hero_light_screenshot.png' });
+  await page.goto('http://localhost:3000/', { waitUntil: 'networkidle2' });
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  await page.screenshot({ path: '/Users/chayansoni/.gemini/antigravity/brain/ec3526dc-f17a-43b5-bee7-7479309d37b5/local_hero_removed.png' });
   await browser.close();
-  console.log('Screenshot saved as hero_light_screenshot.png');
+  console.log('Hero screenshot saved!');
 })();

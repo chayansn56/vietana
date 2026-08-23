@@ -1,32 +1,13 @@
 import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
-import { WHATSAPP_INDIA, WHATSAPP_VIETNAM } from '../utils/whatsapp';
+import { WHATSAPP_VIETNAM } from '../utils/whatsapp';
+import { trackEvent } from '../utils/analytics';
 
-interface ContactModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+
 
 const CONTACT_LOCATIONS = [
-  {
-    id: 'india',
-    name: 'New Delhi, India',
-    title: 'INDIA',
-    subtitle: 'NEW DELHI OFFICE',
-    person: 'Vikram Sonker',
-    role: 'Guest Relations Director',
-    phone: '+91 9953294543',
-    waUrl: WHATSAPP_INDIA,
-    email: 'vikram@vietana.com',
-    address: 'RZ 35/36, Indra Park Ext.\nUttam Nagar, East Delhi',
-    image: '/concierge_delhi.png',
-    accentColor: 'text-brand-gold-light',
-    btnBg: 'bg-brand-gold/90 hover:bg-brand-gold',
-    btnText: 'text-brand-green-extra-dark',
-  },
   {
     id: 'vietnam',
     name: 'Ho Chi Minh City, Vietnam',
@@ -45,17 +26,11 @@ const CONTACT_LOCATIONS = [
   }
 ];
 
-const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
+const Contact: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onClose={onClose} 
-      maxWidth="max-w-6xl" 
-      variant="dark"
-      className="overflow-hidden p-0 bg-brand-green-dark border border-white/10 rounded-[24px] shadow-2xl"
-    >
+    <div className="w-full max-w-6xl mx-auto my-12 bg-brand-green-dark border border-white/10 rounded-[24px] shadow-2xl overflow-hidden">
       <div className="flex flex-col md:flex-row h-auto md:h-[85vh] max-h-[90vh] md:max-h-[800px] overflow-y-auto md:overflow-hidden">
         
         {CONTACT_LOCATIONS.map((loc, index) => (
@@ -124,6 +99,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     href={loc.waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('whatsapp_click', { location: loc.id })}
                     className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl transition-all duration-300 font-semibold tracking-wide text-sm shadow-xl ${loc.btnBg} ${loc.btnText}`}
                   >
                     <Icon name="MessageCircle" size={18} />
@@ -144,8 +120,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         ))}
 
       </div>
-    </Modal>
+    </div>
   );
 };
 
-export default ContactModal;
+export default Contact;

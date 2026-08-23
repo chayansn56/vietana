@@ -215,7 +215,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
             <div class="contact-info">
               <strong>VIETANA Travel Co., Ltd</strong><br />
               Email: booking@vietana.com | VIETANA@vietana.com<br />
-              Tel: +91 99532 94543 (India) | +84 90 243 4006 (Vietnam)
+              Tel: +84 90 243 4006
             </div>
           </div>
           
@@ -252,7 +252,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
           
           <div class="section-title">The Journey Blueprint</div>
           
-          ${pkg.itinerary.map(day => `
+          ${pkg.days.map(day => `
             <div class="day-card">
               <div class="day-header">
                 <h3 class="day-title">${day.title}</h3>
@@ -286,9 +286,12 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
             © 2026 VIETANA Co., Ltd. All Rights Reserved.
           </div>
 
+          <!-- Trigger build with updated Vercel Git connection -->
           <script>
             window.onload = function() {
-              window.print();
+              setTimeout(function() {
+                window.print();
+              }, 500);
             };
           </script>
         </body>
@@ -316,7 +319,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
           <Heading as="h3" size="xl" font="serif" className="text-brand-green dark:text-white leading-tight">Personalize Itinerary</Heading>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 text-[#1E4D45] dark:text-white">
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-semibold text-brand-green dark:text-white/80">Traveler Names</label>
             <Input
@@ -324,7 +327,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
               placeholder="e.g. Chayan & Family"
               value={travelerName}
               onChange={(e) => setTravelerName(e.target.value)}
-              className="px-4 py-2.5 rounded-lg border border-black/10 text-sm"
+              className="px-4 py-2.5 rounded-lg border border-black/10 dark:border-white/10 text-sm outline-none text-gray-800 bg-white dark:text-white dark:bg-[#252E2D]"
             />
           </div>
 
@@ -335,7 +338,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
               placeholder="e.g. July 15 - July 22, 2026"
               value={travelDates}
               onChange={(e) => setTravelDates(e.target.value)}
-              className="px-4 py-2.5 rounded-lg border border-black/10 text-sm"
+              className="px-4 py-2.5 rounded-lg border border-black/10 dark:border-white/10 text-sm outline-none text-gray-800 bg-white dark:text-white dark:bg-[#252E2D]"
             />
           </div>
 

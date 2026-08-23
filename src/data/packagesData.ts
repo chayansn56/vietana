@@ -139,7 +139,9 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "isJainVegFriendly": true,
+    "price": "₹29,999"
   },
   {
     "id": "classic-trio-discovery",
@@ -264,7 +266,9 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "isJainVegFriendly": true,
+    "price": "₹35,999"
   },
   {
     "id": "hanoi-da-nang-gateway",
@@ -361,7 +365,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "saigon-beach-combo",
@@ -457,7 +462,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹27,999"
   },
   {
     "id": "northern-jewels",
@@ -568,7 +574,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "vietnam-grand-heritage",
@@ -735,7 +742,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹49,999"
   },
   {
     "id": "budget-friendly-essentials",
@@ -832,7 +840,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹22,999"
   },
   {
     "id": "saigon-mekong-delta-explorer",
@@ -928,7 +937,9 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "isJainVegFriendly": true,
+    "price": "₹26,999"
   },
   {
     "id": "central-vietnam-essentials",
@@ -1024,7 +1035,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹27,999"
   },
   {
     "id": "the-absolute-vietnam",
@@ -1176,7 +1188,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹45,999"
   },
   {
     "id": "phu-quoc-island-sanctuary",
@@ -1269,7 +1282,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹30,999"
   },
   {
     "id": "da-nang-shoreline-escape",
@@ -1365,7 +1379,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "nha-trang-sun-sand",
@@ -1460,7 +1475,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "hcmc-phu-quoc-explorer-5d4n",
@@ -1477,7 +1493,7 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Ho Chi Minh City: Duc Vuong Hotel (★★★ - 2 Nights)",
       "Phu Quoc: Bay Resort (★★★ - 2 Nights)"
     ],
-    "price": "₹28,000",
+    "price": "₹25,999",
     "desc": "An incredible 5-day journey from the historic streets of Ho Chi Minh City to the tropical sands of Phu Quoc Island. Features Cu Chi Tunnels, Mekong Delta, 3 Island speedboat tour, and VinWonders.",
     "inclusions": [
       "Airport transfers as per itinerary",
@@ -1585,8 +1601,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
       "Ho Chi Minh City: Duc Vuong Hotel (★★★ - 3 Nights)",
       "Phu Quoc: Marina TL Hotel (★★★ - 3 Nights)"
     ],
-    "price": "₹39,000",
-    "desc": "A premium tour tailored for Indian travelers visiting Ho Chi Minh City & Phu Quoc, offering comfortable private transportation, choice hotels, and vegetarian/Jain food accessibility.",
+    "price": "₹31,999",
+    "desc": "A breathtaking 5-day journey from the vibrant streets of Ho Chi Minh City to the cool pine mountain forests of Da Lat. Features Saigon River Sunset Cruise, Cu Chi Tunnels, Datanla Coaster, and Clay Tunnel.",
     "inclusions": [
       "Airport transfers in private A/C luxury vehicles",
       "Daily gourmet breakfast at all hotels/resorts",
@@ -1800,7 +1816,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "da-nang-hue-heritage-coast",
@@ -1909,7 +1926,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹32,999"
   },
   {
     "id": "nha-trang-mui-ne-dunes",
@@ -2017,7 +2035,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "tropical-twin-islands",
@@ -2139,7 +2158,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹39,999"
   },
   {
     "id": "luxury-beach-cruise-combo",
@@ -2261,7 +2281,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹41,999"
   },
   {
     "id": "mui-ne-desert-coastline",
@@ -2343,7 +2364,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹20,999"
   },
   {
     "id": "hidden-beach-explorer",
@@ -2452,7 +2474,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹35,999"
   },
   {
     "id": "dalat-highlands-romance",
@@ -2548,7 +2571,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "romantic-halong-hanoi",
@@ -2659,7 +2683,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹32,999"
   },
   {
     "id": "phu-quoc-couples-getaway",
@@ -2768,7 +2793,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹34,999"
   },
   {
     "id": "hoi-an-lantern-lit-romance",
@@ -2864,7 +2890,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "highlands-coast-honeymoon",
@@ -2986,7 +3013,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹40,999"
   },
   {
     "id": "ultra-luxe-private-hideaway",
@@ -3108,7 +3136,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹72,999"
   },
   {
     "id": "northern-mountain-romance",
@@ -3217,7 +3246,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹36,999"
   },
   {
     "id": "vietnam-romantic-grand-tour",
@@ -3384,7 +3414,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹54,999"
   },
   {
     "id": "secluded-island-honeymoon",
@@ -3477,7 +3508,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "sapa-sapa-valley-escape",
@@ -3573,7 +3605,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹30,999"
   },
   {
     "id": "vietnam-theme-park-extravaganza",
@@ -3695,7 +3728,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹44,999"
   },
   {
     "id": "family-fun-in-phu-quoc",
@@ -3788,7 +3822,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "saigon-mekong-fun",
@@ -3884,7 +3919,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹25,999"
   },
   {
     "id": "central-vietnam-family-classic",
@@ -3993,7 +4029,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹33,999"
   },
   {
     "id": "hanoi-ninh-binh-family-adventure",
@@ -4102,7 +4139,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹32,999"
   },
   {
     "id": "vietnam-grand-family-tour",
@@ -4254,7 +4292,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹48,999"
   },
   {
     "id": "theme-parks-beaches-combo",
@@ -4363,7 +4402,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹36,999"
   },
   {
     "id": "mekong-delta-saigon-kids-special",
@@ -4472,7 +4512,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "sapa-family-mountain-eco-tour",
@@ -4581,7 +4622,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹35,999"
   },
   {
     "id": "dalat-saigon-family-cooler",
@@ -4690,7 +4732,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹32,999"
   },
   {
     "id": "vegetarian-vietnam-foodie-trail",
@@ -4801,7 +4844,9 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "isJainVegFriendly": true,
+    "price": "₹33,999"
   },
   {
     "id": "vietnamese-coffee-cafe-culture",
@@ -4897,7 +4942,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹27,999"
   },
   {
     "id": "jain-vegetarian-heritage-tour",
@@ -5021,7 +5067,9 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "isJainVegFriendly": true,
+    "price": "₹42,999"
   },
   {
     "id": "saigon-mekong-cooking-academy",
@@ -5117,7 +5165,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "hanoi-michelin-street-culinary",
@@ -5210,7 +5259,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "hoi-an-organic-farm-herb-village",
@@ -5303,7 +5353,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "hue-imperial-royal-dining",
@@ -5399,7 +5450,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹30,999"
   },
   {
     "id": "north-to-south-culinary-grand-tour",
@@ -5551,7 +5603,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹49,999"
   },
   {
     "id": "mekong-river-floating-market-feast",
@@ -5647,7 +5700,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "veg-friendly-sapa-sapa-valley",
@@ -5756,7 +5810,9 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "isJainVegFriendly": true,
+    "price": "₹34,999"
   },
   {
     "id": "saigon-shopping-fashion-spree",
@@ -5849,7 +5905,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹27,999"
   },
   {
     "id": "hanoi-heritage-french-quarter",
@@ -5942,7 +5999,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹26,999"
   },
   {
     "id": "dual-city-explorer",
@@ -6051,7 +6109,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹33,999"
   },
   {
     "id": "da-nang-hoi-an-night-discovery",
@@ -6145,7 +6204,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹27,999"
   },
   {
     "id": "saigon-vung-tau-coastal-city",
@@ -6253,7 +6313,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹32,999"
   },
   {
     "id": "hanoi-ninh-binh-ancient-capital",
@@ -6349,7 +6410,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "saigon-craft-beer-nightlife",
@@ -6442,7 +6504,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹26,999"
   },
   {
     "id": "hanoi-art-museums-railway-street",
@@ -6535,7 +6598,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹27,999"
   },
   {
     "id": "vietnam-urban-grand-tour",
@@ -6672,7 +6736,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹45,999"
   },
   {
     "id": "saigon-shopping-mekong-weekend",
@@ -6752,7 +6817,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹22,999"
   },
   {
     "id": "sapa-roof-indochina-trek",
@@ -6845,7 +6911,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "ha-giang-loop-scenic-ride",
@@ -6954,7 +7021,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹35,999"
   },
   {
     "id": "ninh-binh-karst-valley-explorer",
@@ -7047,7 +7115,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "phong-nha-cave-expedition",
@@ -7140,7 +7209,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹33,999"
   },
   {
     "id": "ba-be-lake-kayak-jungle",
@@ -7236,7 +7306,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹31,999"
   },
   {
     "id": "ban-gioc-waterfall-cao-bang",
@@ -7345,7 +7416,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹35,999"
   },
   {
     "id": "central-highlands-forest-trek",
@@ -7454,7 +7526,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹36,999"
   },
   {
     "id": "vietnam-active-grand-adventure",
@@ -7619,7 +7692,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹54,999"
   },
   {
     "id": "cat-ba-island-rock-climbing",
@@ -7715,7 +7789,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹30,999"
   },
   {
     "id": "mekong-delta-eco-biking",
@@ -7811,7 +7886,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹29,999"
   },
   {
     "id": "halong-bay-ultra-luxury-cruise",
@@ -7907,7 +7983,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹63,999"
   },
   {
     "id": "ninh-van-bay-luxury-wellness",
@@ -8016,7 +8093,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹81,999"
   },
   {
     "id": "da-nang-hoi-an-ultra-luxe",
@@ -8112,7 +8190,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹54,999"
   },
   {
     "id": "saigon-phu-quoc-presidential-escape",
@@ -8221,7 +8300,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹72,999"
   },
   {
     "id": "lan-ha-bay-cat-ba-island-cruise",
@@ -8314,7 +8394,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹45,999"
   },
   {
     "id": "saigon-con-dao-six-senses-luxury",
@@ -8423,7 +8504,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹109,999"
   },
   {
     "id": "sapa-luxury-mountain-retreat",
@@ -8519,7 +8601,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹45,999"
   },
   {
     "id": "vietnam-luxury-grand-tour",
@@ -8671,7 +8754,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹81,999"
   },
   {
     "id": "quy-nhon-anantara-private-pool-villas",
@@ -8764,7 +8848,8 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹99,999"
   },
   {
     "id": "mekong-delta-luxury-river-charter",
@@ -8873,9 +8958,10 @@ export const ITINERARIES_DATABASE: PackageProduct[] = [
           "Breakfast"
         ]
       }
-    ]
+    ],
+    "price": "₹81,999"
   }
-];
+];;
 
 export const BY_THEME_CATEGORIES: CategoryData[] = [
   {

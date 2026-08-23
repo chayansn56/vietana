@@ -5,9 +5,7 @@ import Card from './ui/Card';
 import Button from './ui/Button';
 import { motion } from 'motion/react';
 
-interface AboutModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface AboutProps {
   onOpenBuilder: () => void;
 }
 
@@ -63,16 +61,9 @@ const PILLARS = [
   { icon: '✨', text: 'Personalized Travel' },
 ];
 
-const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder }) => {
+const About: React.FC<AboutProps> = ({ onOpenBuilder }) => {
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      variant="light"
-      maxWidth="max-w-[950px]"
-      className="!bg-[rgba(255,255,255,0.70)] !backdrop-blur-[35px] !border !border-[rgba(255,255,255,0.5)] !rounded-[36px] overflow-y-auto max-h-[85vh] relative custom-scrollbar"
-      style={{ boxShadow: '0 25px 80px rgba(0,0,0,0.08)' }}
-    >
+    <div className="relative w-full max-w-5xl mx-auto py-16 px-6 sm:px-12 bg-white rounded-3xl overflow-hidden my-12 shadow-[0_25px_80px_rgba(0,0,0,0.04)] border border-black/5">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[36px] z-[-1]">
         <motion.div
@@ -168,7 +159,6 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
           <Button
             variant="glass" size="lg"
             onClick={() => {
-              onClose();
               onOpenBuilder();
             }}
             className="rounded-full shadow-[0_8px_20px_rgba(61,139,125,0.15)] group"
@@ -180,8 +170,8 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, onOpenBuilder 
         </div>
 
       </div>
-    </Modal>
+    </div>
   );
 };
 
-export default AboutModal;
+export default About;

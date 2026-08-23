@@ -26,9 +26,9 @@ const Section: React.FC<SectionProps> = ({
   };
 
   const spacings = {
-    sm: 'py-16 md:py-20',
-    md: 'py-24 md:py-32',
-    lg: 'py-32 md:py-48',
+    sm: 'py-8 md:py-20',
+    md: 'py-12 md:py-32',
+    lg: 'py-16 md:py-48',
     none: '',
   };
 

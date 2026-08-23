@@ -61,7 +61,15 @@ import {
   Volume2,
   VolumeX,
   RotateCcw,
-  Handshake
+  Briefcase,
+  Truck,
+  Lightbulb,
+  RefreshCw,
+  Eye,
+  Layers,
+  CheckCircle,
+  XCircle,
+  Calendar
 } from 'lucide-react';
 
 export type IconName =
@@ -76,7 +84,8 @@ export type IconName =
   | 'Ban' | 'Fish' | 'Drumstick' | 'LeafyGreen' | 'UtensilsCrossed'
   | 'MessageSquare' | 'ArrowRight'
   | 'AlertTriangle' | 'AlertCircle' | 'HeartPulse' | 'Flag' | 'ShieldAlert' | 'Download'
-  | 'FileText' | 'Utensils' | 'Heart' | 'Search' | 'ArrowLeftRight' | 'ExternalLink' | 'User' | 'Bookmark' | 'Volume2' | 'VolumeX' | 'RotateCcw' | 'Handshake';
+  | 'FileText' | 'Utensils' | 'Heart' | 'Search' | 'ArrowLeftRight' | 'ExternalLink' | 'User' | 'Bookmark' | 'Volume2' | 'VolumeX' | 'RotateCcw'
+  | 'Briefcase' | 'Truck' | 'Lightbulb' | 'RefreshCw' | 'Eye' | 'Layers' | 'CheckCircle' | 'XCircle' | 'Calendar';
 
 const iconMap: Record<IconName, React.ElementType> = {
   Leaf, Plane, Soup, Sparkles, Star, MapPin, Phone, MessageCircle, Mail,
@@ -86,7 +95,8 @@ const iconMap: Record<IconName, React.ElementType> = {
   Settings, Train, Edit3, Castle, Users, Moon, Sun, Target, Mic,
   Ban, Fish, Drumstick, LeafyGreen, UtensilsCrossed, MessageSquare, ArrowRight,
   AlertTriangle, AlertCircle, HeartPulse, Flag, ShieldAlert, Download,
-  FileText, Utensils, Heart, Search, ArrowLeftRight, ExternalLink, User, Bookmark, Volume2, VolumeX, RotateCcw, Handshake
+  FileText, Utensils, Heart, Search, ArrowLeftRight, ExternalLink, User, Bookmark, Volume2, VolumeX, RotateCcw,
+  Briefcase, Truck, Lightbulb, RefreshCw, Eye, Layers, CheckCircle, XCircle, Calendar
 };
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {

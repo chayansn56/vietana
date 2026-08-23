@@ -1,0 +1,14 @@
+{
+  "round": {
+    "budget": 22000,
+    "comfort": 28000,
+    "premium": 38000,
+    "luxury": 55000
+  },
+  "oneway": {
+    "budget": 12000,
+    "comfort": 15000,
+    "premium": 22000,
+    "luxury": 30000
+  }
+}

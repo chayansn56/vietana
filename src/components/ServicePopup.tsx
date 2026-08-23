@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Heading } from './ui/Typography';
-import Icon, { IconName } from './ui/Icon';
-import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
+import { Heading, Text } from './ui/Typography';
+import Icon from './ui/Icon';
+import { useCurrency } from '../contexts/CurrencyContext';
 
 export interface ServiceDetail {
   id: string;
-  icon: IconName;
+  icon: any;
   shortTitle: string;
   shortDesc: string;
   popupTitle: string;
-  content: React.ReactNode;
   image: string;
+  content: React.ReactNode;
+  priceInr: number;
+  priceTagline?: string;
+  highlight?: boolean;
 }
 
 interface ServicePopupProps {
@@ -19,158 +22,119 @@ interface ServicePopupProps {
   service: ServiceDetail | null;
 }
 
-const ServicePopup: React.FC<ServicePopupProps> = ({ isOpen, onClose, service }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [copied, setCopied] = useState(false);
+export default function ServicePopup({ isOpen, onClose, service }: ServicePopupProps) {
+  const [isRendered, setIsRendered] = useState(false);
+  const [isUnfolded, setIsUnfolded] = useState(false);
+  const { formatPrice } = useCurrency();
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => setIsVisible(true), 10);
+      setIsRendered(true);
       document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
+      // Trigger the unfold animation slightly after rendering
+      setTimeout(() => setIsUnfolded(true), 50);
     } else {
-      setIsVisible(false);
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
+      setIsUnfolded(false);
+      document.body.style.overflow = 'unset';
+      const timer = setTimeout(() => setIsRendered(false), 500); // Wait for fold animation
+      return () => clearTimeout(timer);
     }
-    return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    };
   }, [isOpen]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isVisible) return;
-    const x = (e.clientX / window.innerWidth) * 2 - 1;
-    const y = (e.clientY / window.innerHeight) * 2 - 1;
-    setMousePos({ x, y });
-  };
-
-  const handleCopyChecklist = () => {
-    if (!service) return;
-    // Extract plain text helper
-    let text = `${service.popupTitle}\n\n`;
-    if (service.id === 'visa') {
-      text += `Vietnam E-Visa Checklist:\n- Passport copy (valid for at least 6 months)\n- Passport-style photograph\n\nUrgent Visa Support:\nNeed it urgently? Flight already booked? Traveling within 24 hours? Get in touch with Vietana!`;
-    } else if (service.id === 'airport') {
-      text += `Airport pickup & transfers arranged by Vietana based on group size, luggage, and luxury comfort requirements.`;
-    } else {
-      text += service.shortDesc;
-    }
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
-
-  if (!service) return null;
+  if (!isRendered || !service) return null;
 
   return (
-    <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 lg:p-12 transition-all duration-300 ${
-        isOpen ? 'pointer-events-auto' : 'pointer-events-none'
-      }`}
-      onMouseMove={handleMouseMove}
-    >
-      {/* Blurred Backdrop */}
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6 md:p-12 pointer-events-none" style={{ perspective: '1200px' }}>
+      {/* Dark Backdrop */}
       <div 
-        className={`absolute inset-0 bg-charcoal/40 backdrop-blur-sm transition-opacity duration-300 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`absolute inset-0 bg-black/60 backdrop-blur-sm pointer-events-auto transition-opacity duration-500 ease-out
+          ${isUnfolded ? 'opacity-100' : 'opacity-0'}`}
         onClick={onClose}
       />
 
-      {/* Modal Content - Elegant Box */}
+      {/* The Paper Container */}
       <div 
-        className={`relative w-[95vw] max-w-5xl h-[85dvh] md:h-[70vh] max-h-[800px] md:max-h-[600px] overflow-y-auto md:overflow-hidden rounded-2xl bg-surface-ivory dark:bg-surface-dark shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-        }`}
+        className={`relative w-full max-w-[600px] max-h-[90vh] flex flex-col pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+          ${isUnfolded ? 'opacity-100 scale-100 rotate-x-0 rotate-y-0 translate-y-0' : 'opacity-0 scale-50 rotate-x-[40deg] -rotate-y-[20deg] translate-y-20'}`}
+        style={{ transformOrigin: 'center center', transformStyle: 'preserve-3d' }}
       >
+        {/* Paper Background - White Notebook Style */}
+        <div className="absolute inset-0 bg-white dark:bg-[#1A1A1A] rounded-[2px] shadow-2xl overflow-hidden">
+          {/* Notebook horizontal blue lines */}
+          <div 
+            className="absolute inset-0 opacity-20 pointer-events-none dark:opacity-10" 
+            style={{ 
+              backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #3b82f6 27px, #3b82f6 28px)', 
+              backgroundPositionY: '40px' 
+            }} 
+          />
+          {/* Notebook vertical red line */}
+          <div className="absolute top-0 bottom-0 left-8 sm:left-12 w-[1px] bg-red-500/30 dark:bg-red-500/20 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 left-[34px] sm:left-[50px] w-[1px] bg-red-500/10 dark:bg-red-500/5 pointer-events-none" />
+        </div>
+
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 rounded-full bg-white/80 dark:bg-surface-dark/80 hover:bg-white dark:hover:bg-surface-dark text-text-charcoal dark:text-white shadow-sm transition-colors backdrop-blur-md border border-black/5 dark:border-white/10"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-10 h-10 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#1E4D45] dark:text-white hover:bg-black/10 dark:hover:bg-white/20 transition-colors border-none cursor-pointer"
         >
           <Icon name="X" size={20} />
         </button>
 
-        {/* Left Side: Cinematic Imagery */}
-        <div className="relative w-full h-1/3 md:h-full md:w-5/12 overflow-hidden shrink-0 bg-black">
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out opacity-90"
-            style={{ 
-              backgroundImage: `url(${service.image})`,
-              transform: `scale(1.15) translate(${mousePos.x * -15}px, ${mousePos.y * -15}px)`
-            }}
-          />
-        </div>
-
-        {/* Right Side: Content Container */}
-        <div className="relative w-full h-2/3 md:h-full md:w-7/12 flex flex-col bg-surface-ivory dark:bg-surface-dark overflow-hidden">
+        {/* Scrollable Content Area */}
+        <div className="relative z-10 flex-1 overflow-y-auto overflow-x-hidden p-6 sm:p-8 scrollbar-hide flex flex-col items-center text-center">
           
-          {/* Tightly Packed Content Area */}
-          <div className="flex-1 flex flex-col justify-start p-5 md:p-8 lg:p-10 overflow-y-auto">
-            <div className="mb-4">
-              <div className="w-10 h-[2px] bg-brand-green mb-4"></div>
-              <div className="flex items-center gap-2 mb-2 text-brand-green dark:text-brand-sage">
-                <Icon name={service.icon} size={16} />
-                <span className="text-mini md:text-xs font-semibold tracking-[0.2em] uppercase">
-                  {service.shortTitle}
-                </span>
-              </div>
-              <Heading as="h2" size="2xl" font="serif" className="text-text-charcoal dark:text-white mb-3 leading-tight">
-                {service.popupTitle}
-              </Heading>
+          <div className={`transition-all duration-700 delay-200 ${isUnfolded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-brand-gold mx-auto mb-3 relative">
+              <Icon name={service.icon} size={20} />
+              {service.highlight && (
+                <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full animate-ping" />
+              )}
             </div>
 
-            <div className="text-text-charcoal dark:text-white/80 space-y-3 text-sm md:text-base font-light leading-snug">
+            {service.highlight && (
+              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/20 rounded-full text-[9px] font-bold tracking-widest uppercase mb-3">
+                <Icon name="Zap" size={10} />
+                Urgent 24H
+              </div>
+            )}
+
+            <Heading as="h2" size="xl" font="serif" className="text-[#12302B] dark:text-white mb-3 leading-tight">
+              {service.popupTitle}
+            </Heading>
+            
+            <div className="w-8 h-px bg-brand-gold mx-auto mb-4"></div>
+
+            <div className="prose prose-[#12302B] dark:prose-invert prose-p:leading-snug prose-p:text-xs prose-p:m-1 prose-li:text-xs text-left mx-auto max-w-sm">
               {service.content}
             </div>
-
-            {/* Copy Checklist Action */}
-            <div className="mt-4">
-              <button 
-                onClick={handleCopyChecklist}
-                className="inline-flex items-center gap-2 text-xs font-semibold text-brand-green dark:text-brand-gold-light hover:text-brand-green-light dark:hover:text-brand-gold underline decoration-dotted transition-colors"
-              >
-                <Icon name={copied ? 'Check' : 'Copy'} size={12} />
-                {copied ? 'Checklist Copied!' : 'Copy Checklist to Clipboard'}
-              </button>
-            </div>
           </div>
 
-          {/* Tight Footer for Contact Actions */}
-          <div className="shrink-0 p-5 md:p-6 lg:px-10 border-t border-black/5 dark:border-white/10 bg-surface-ivory/80 dark:bg-surface-dark/80 backdrop-blur-md">
-            <p className="text-xs text-text-subtle dark:text-white/50 mb-4 uppercase tracking-widest font-semibold">Contact Concierge</p>
-            <div className="flex flex-wrap gap-3">
-              <button 
-                onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 hover:border-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-sm font-medium text-text-charcoal bg-white shadow-sm"
-              >
-                <Icon name="MessageCircle" size={16} />
-                <span>WhatsApp</span>
-              </button>
-              <button 
-                onClick={() => window.open('https://zalo.me/84902434006', '_blank')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 hover:border-[#0068FF] hover:bg-[#0068FF] hover:text-white transition-all text-sm font-medium text-text-charcoal bg-white shadow-sm"
-              >
-                <span className="font-bold tracking-tighter">Zalo</span>
-              </button>
-              <button 
-                onClick={() => window.location.href = 'mailto:booking@vietana.com'}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 hover:border-brand-green hover:bg-brand-green hover:text-white transition-all text-sm font-medium text-text-charcoal bg-white shadow-sm"
-              >
-                <Icon name="Mail" size={16} />
-                <span>Email</span>
-              </button>
+          <div className={`mt-6 w-full max-w-sm mx-auto pt-4 border-t border-black/10 dark:border-white/10 transition-all duration-700 delay-400 ${isUnfolded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <Text size="xs" variant="none" className="text-black/50 dark:text-white/50 uppercase tracking-widest font-bold mb-1 text-[9px]">
+              Estimated Pricing
+            </Text>
+            
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-2xl font-serif text-[#1E4D45] dark:text-brand-gold">
+                {formatPrice(service.priceInr)}
+              </div>
+              {service.priceTagline && (
+                <span className="text-[10px] font-bold text-[#1E4D45]/70 dark:text-white/70 uppercase tracking-widest">
+                  for {service.priceTagline}
+                </span>
+              )}
             </div>
+            
+            {service.priceInr !== -1 && service.priceInr !== 0 && (
+              <Text size="xs" variant="none" className="text-[#12302B]/40 dark:text-white/40 mt-2 block italic leading-tight px-2 text-[9px]">
+                *T&C apply. Price is indicative.
+              </Text>
+            )}
           </div>
-
+          
         </div>
       </div>
     </div>
   );
-};
-
-export default ServicePopup;
+}

@@ -1,0 +1,30 @@
+{
+  "budget": {
+    "hotels": 1200,
+    "food": 700,
+    "transport": 400,
+    "experiences": 500,
+    "total": 2800
+  },
+  "comfort": {
+    "hotels": 3000,
+    "food": 1200,
+    "transport": 600,
+    "experiences": 1200,
+    "total": 6000
+  },
+  "premium": {
+    "hotels": 5000,
+    "food": 1800,
+    "transport": 1000,
+    "experiences": 2000,
+    "total": 9800
+  },
+  "luxury": {
+    "hotels": 9000,
+    "food": 3000,
+    "transport": 2000,
+    "experiences": 4000,
+    "total": 18000
+  }
+}

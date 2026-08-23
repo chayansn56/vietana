@@ -3,13 +3,13 @@ import { TranslationSchema } from '../translations';
 export const vi: TranslationSchema = {
   nav: {
     destinations: 'Điểm Đến',
-    essentials: 'Thiết Yếu',
-    food: 'Ẩm Thực',
-    experiences: 'Trải Nghiệm',
-    journal: 'Nhật Ký',
-    team: 'Đội Ngũ',
+    essentials: 'Visa & Dịch Vụ',
+    food: 'Cẩm Nang Ẩm Thực',
+    experiences: 'Gói Tour',
+    journal: 'Cẩm Nang Du Lịch',
+    team: 'Giới Thiệu',
     cta: 'Lên Kế Hoạch',
-    flights: 'Chuyến bay'
+    flights: 'Chuyến Bay'
   },
   hero: {
     welcome: 'VIETANA',

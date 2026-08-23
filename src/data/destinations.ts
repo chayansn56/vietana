@@ -258,16 +258,16 @@ export const CITIES: CityDestination[] = [
     shortDesc: "The vibrant heart of the south.",
     fullDesc: "A high-octane city of commerce and culture that drives the country forward. Sleek skyscrapers stand shoulder-to-shoulder with ornate temples and colonial relics.",
     sights: [
-      { id: "hcmc1", name: "Ben Thanh Market", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "The bustling central market perfect for souvenirs and street food." },
-      { id: "hcmc2", name: "War Remnants Museum", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80", description: "A powerful, sobering look at the Vietnam War from the local perspective." },
-      { id: "hcmc3", name: "Independence Palace", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "The historic former home of the president of South Vietnam." },
-      { id: "hcmc4", name: "Notre-Dame Cathedral Basilica of Saigon", image: "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80", description: "A striking 19th-century basilica built entirely with materials from France." },
-      { id: "hcmc5", name: "Saigon Central Post Office", image: "https://images.unsplash.com/photo-1531737212413-667205e1cda7?w=800&q=80", description: "A stunning colonial post office designed by Gustave Eiffel." },
-      { id: "hcmc6", name: "Cu Chi Tunnels", image: "/images/sights/hcmc6.jpg", description: "Crawl through the immense network of connecting underground tunnels." },
-      { id: "hcmc7", name: "Bui Vien", image: "/images/sights/hcmc7.jpg", description: "The energetic, neon-lit epicenter of Saigon's nightlife." },
-      { id: "hcmc8", name: "Bitexco Financial Tower", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80", description: "A modern skyscraper offering panoramic views from its skydeck." },
-      { id: "hcmc9", name: "Jade Emperor Pagoda", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "An atmospheric, incense-filled Taoist and Buddhist temple." },
-      { id: "hcmc10", name: "Binh Tay Market", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "The massive, bustling wholesale market in the heart of Cholon (Chinatown)." },
+      { id: "hcmc1", name: "Ben Thanh Market", image: "/images/experiences/ben-thanh-market/cover.webp", description: "The bustling central market perfect for souvenirs and street food." },
+      { id: "hcmc2", name: "War Remnants Museum", image: "/images/experiences/war-remnants-museum/cover.webp", description: "A powerful, sobering look at the Vietnam War from the local perspective." },
+      { id: "hcmc3", name: "Independence Palace", image: "/images/experiences/independence-palace/cover.webp", description: "The historic former home of the president of South Vietnam." },
+      { id: "hcmc4", name: "Notre-Dame Cathedral Basilica of Saigon", image: "/images/experiences/notre-dame-cathedral-basilica-of-saigon/cover.webp", description: "A striking 19th-century basilica built entirely with materials from France." },
+      { id: "hcmc5", name: "Saigon Central Post Office", image: "/images/experiences/saigon-central-post-office/cover.webp", description: "A stunning colonial post office designed by Gustave Eiffel." },
+      { id: "hcmc6", name: "Cu Chi Tunnels", image: "/images/experiences/cu-chi-tunnels/cover.webp", description: "Crawl through the immense network of connecting underground tunnels." },
+      { id: "hcmc7", name: "Bui Vien", image: "/images/experiences/bui-vien-walking-street/cover.webp", description: "The energetic, neon-lit epicenter of Saigon's nightlife." },
+      { id: "hcmc8", name: "Bitexco Financial Tower", image: "/images/experiences/bitexco-financial-tower-skydeck/cover.webp", description: "A modern skyscraper offering panoramic views from its skydeck." },
+      { id: "hcmc9", name: "Jade Emperor Pagoda", image: "/images/experiences/jade-emperor-pagoda/cover.webp", description: "An atmospheric, incense-filled Taoist and Buddhist temple." },
+      { id: "hcmc10", name: "Binh Tay Market", image: "/images/experiences/binh-tay-market/cover.webp", description: "The massive, bustling wholesale market in the heart of Cholon (Chinatown)." },
     ]
   },
   {
@@ -277,16 +277,16 @@ export const CITIES: CityDestination[] = [
     shortDesc: "The 1000-year-old capital of culture.",
     fullDesc: "Hanoi blends Parisian grace with Asian pace. A city where ancient temples sit beside bustling street food stalls, and serene lakes offer refuge from the vibrant motorbike-filled streets.",
     sights: [
-      { id: "hanoi1", name: "Hoan Kiem Lake", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "The historical heart of Hanoi, featuring the iconic red Huc Bridge and Ngoc Son Temple." },
-      { id: "hanoi2", name: "Old Quarter, Hanoi", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80", description: "36 historic streets, each traditionally dedicated to a specific trade." },
-      { id: "hanoi3", name: "Temple of Literature, Hanoi", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "Vietnam's first national university, a tranquil temple dedicated to Confucius." },
-      { id: "hanoi4", name: "Ho Chi Minh Mausoleum", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "The monumental marble resting place of the revolutionary leader." },
-      { id: "hanoi5", name: "Imperial Citadel of Thang Long", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "A UNESCO World Heritage site showcasing centuries of Vietnamese history." },
-      { id: "hanoi6", name: "Hoa Lo Prison", image: "/images/sights/hanoi6.jpg", description: "A thought-provoking museum revealing the history of the 'Hanoi Hilton'." },
-      { id: "hanoi7", name: "Hanoi Street Train", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "A narrow residential street where a massive train passes inches from homes." },
-      { id: "hanoi8", name: "Tran Quoc Pagoda", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "The oldest Buddhist temple in Hanoi, beautifully situated on West Lake." },
-      { id: "hanoi9", name: "Dong Xuan Market", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "The largest indoor market in Hanoi offering endless local goods." },
-      { id: "hanoi10", name: "Thang Long Water Puppet Theatre", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "Experience the traditional art of Vietnamese water puppetry." },
+      { id: "hanoi1", name: "Hoan Kiem Lake", image: "/images/experiences/hoan-kiem-lake/cover.webp", description: "The historical heart of Hanoi, featuring the iconic red Huc Bridge and Ngoc Son Temple." },
+      { id: "hanoi2", name: "Old Quarter, Hanoi", image: "/images/experiences/hanoi-old-quarter/cover.webp", description: "36 historic streets, each traditionally dedicated to a specific trade." },
+      { id: "hanoi3", name: "Temple of Literature, Hanoi", image: "/images/experiences/temple-of-literature/cover.webp", description: "Vietnam's first national university, a tranquil temple dedicated to Confucius." },
+      { id: "hanoi4", name: "Ho Chi Minh Mausoleum", image: "/images/experiences/ho-chi-minh-mausoleum/cover.webp", description: "The monumental marble resting place of the revolutionary leader." },
+      { id: "hanoi5", name: "Imperial Citadel of Thang Long", image: "/images/experiences/thang-long-citadel/cover.webp", description: "A UNESCO World Heritage site showcasing centuries of Vietnamese history." },
+      { id: "hanoi6", name: "Hoa Lo Prison", image: "/images/experiences/hoa-lo-prison/cover.webp", description: "A thought-provoking museum revealing the history of the 'Hanoi Hilton'." },
+      { id: "hanoi7", name: "Hanoi Street Train", image: "/images/experiences/hanoi-train-street/cover.webp", description: "A narrow residential street where a massive train passes inches from homes." },
+      { id: "hanoi8", name: "Tran Quoc Pagoda", image: "/images/experiences/tran-quoc-pagoda/cover.webp", description: "The oldest Buddhist temple in Hanoi, beautifully situated on West Lake." },
+      { id: "hanoi9", name: "Dong Xuan Market", image: "/images/experiences/dong-xuan-market/cover.webp", description: "The largest indoor market in Hanoi offering endless local goods." },
+      { id: "hanoi10", name: "Thang Long Water Puppet Theatre", image: "/images/experiences/water-puppet-theatre/cover.webp", description: "Experience the traditional art of Vietnamese water puppetry." },
     ]
   },
   {
@@ -296,14 +296,14 @@ export const CITIES: CityDestination[] = [
     shortDesc: "Misty mountains and terraced rice fields.",
     fullDesc: "Perched high in the Hoang Lien Son Mountains, Sapa is famous for its dramatic terraced rice fields, misty peaks, and the rich cultural tapestry of local hill tribes.",
     sights: [
-      { id: "sapa1", name: "Fansipan", image: "/images/sights/sapa.jpg", description: "The 'Roof of Indochina', accessible via a breathtaking cable car ride or strenuous trek." },
-      { id: "sapa2", name: "Cat Cat Village", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A traditional H'mong village featuring waterfalls and traditional crafts." },
-      { id: "sapa3", name: "Muong Hoa Valley", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "Home to the most spectacular sweeping rice terraces in all of Vietnam." },
-      { id: "sapa4", name: "Silver Waterfall", image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80", description: "A stunning 200m cascading waterfall surrounded by lush pine forests." },
-      { id: "sapa5", name: "Love Waterfall", image: "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?w=800&q=80", description: "A romantic, secluded waterfall located deep within the forest." },
-      { id: "sapa6", name: "Ta Phin Village", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A peaceful village famous for the traditional red Dao herbal baths." },
-      { id: "sapa7", name: "Sapa Stone Church", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80", description: "A beautiful French Gothic church located in the center of town." },
-      { id: "sapa8", name: "Ham Rong Mountain", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "Climb through orchid gardens for a panoramic view over Sapa town." },
+      { id: "sapa1", name: "Fansipan", image: "/images/experiences/fansipan-peak-sapa/cover.webp", description: "The 'Roof of Indochina', accessible via a breathtaking cable car ride or strenuous trek." },
+      { id: "sapa2", name: "Cat Cat Village", image: "/images/experiences/cat-cat-village/cover.webp", description: "A traditional H'mong village featuring waterfalls and traditional crafts." },
+      { id: "sapa3", name: "Muong Hoa Valley", image: "/images/experiences/muong-hoa-valley-hike/cover.webp", description: "Home to the most spectacular sweeping rice terraces in all of Vietnam." },
+      { id: "sapa4", name: "Silver Waterfall", image: "/images/experiences/silver-waterfall-sapa/cover.webp", description: "A stunning 200m cascading waterfall surrounded by lush pine forests." },
+      { id: "sapa5", name: "Love Waterfall", image: "/images/experiences/love-waterfall-sapa/cover.webp", description: "A romantic, secluded waterfall located deep within the forest." },
+      { id: "sapa6", name: "Ta Phin Village", image: "/images/experiences/ta-phin-village/cover.webp", description: "A peaceful village famous for the traditional red Dao herbal baths." },
+      { id: "sapa7", name: "Sapa Stone Church", image: "/images/experiences/sapa-stone-church/cover.webp", description: "A beautiful French Gothic church located in the center of town." },
+      { id: "sapa8", name: "Ham Rong Mountain", image: "/images/experiences/ham-rong-mountain/cover.webp", description: "Climb through orchid gardens for a panoramic view over Sapa town." },
     ]
   },
   {
@@ -313,14 +313,14 @@ export const CITIES: CityDestination[] = [
     shortDesc: "Emerald waters and limestone islands.",
     fullDesc: "A UNESCO World Heritage site featuring thousands of towering limestone karsts emerging gracefully from emerald-green waters. Best experienced on an overnight luxury junk boat.",
     sights: [
-      { id: "halong1", name: "Sung Sot Cave", image: "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80", description: "The 'Surprise Cave', the largest and most magnificent grotto in the bay." },
-      { id: "halong2", name: "Ti Top Island", image: "https://images.unsplash.com/photo-1531737212413-667205e1cda7?w=800&q=80", description: "Climb to the top for a spectacular 360-degree panoramic view of the bay." },
-      { id: "halong3", name: "Bai Tu Long Bay", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80", description: "A quieter, more pristine alternative located just east of Ha Long Bay." },
-      { id: "halong4", name: "Lan Ha Bay", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "Stunning karst formations south of Ha Long, offering kayaking and swimming." },
-      { id: "halong5", name: "Cat Ba Island", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "The largest island in the bay, featuring a massive national park and beaches." },
-      { id: "halong6", name: "Thien Cung Cave", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "The 'Heavenly Palace Cave', renowned for its intricate stalactites." },
-      { id: "halong7", name: "Luon Cave", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80", description: "A tranquil flooded cave accessible only by small bamboo boats or kayaks." },
-      { id: "halong8", name: "Cua Van Floating Village", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "One of the largest traditional floating fishing villages in the area." },
+      { id: "halong1", name: "Sung Sot Cave", image: "/images/experiences/sung-sot-cave/cover.webp", description: "The 'Surprise Cave', the largest and most magnificent grotto in the bay." },
+      { id: "halong2", name: "Ti Top Island", image: "/images/experiences/ti-top-island-peak/cover.webp", description: "Climb to the top for a spectacular 360-degree panoramic view of the bay." },
+      { id: "halong3", name: "Bai Tu Long Bay", image: "/images/experiences/bai-tu-long-bay/cover.webp", description: "A quieter, more pristine alternative located just east of Ha Long Bay." },
+      { id: "halong4", name: "Lan Ha Bay", image: "/images/experiences/lan-ha-bay/cover.webp", description: "Stunning karst formations south of Ha Long, offering kayaking and swimming." },
+      { id: "halong5", name: "Cat Ba Island", image: "/images/experiences/cat-ba-island/cover.webp", description: "The largest island in the bay, featuring a massive national park and beaches." },
+      { id: "halong6", name: "Thien Cung Cave", image: "/images/experiences/thien-cung-cave/cover.webp", description: "The 'Heavenly Palace Cave', renowned for its intricate stalactites." },
+      { id: "halong7", name: "Luon Cave", image: "/images/experiences/luon-cave-kayaking/cover.webp", description: "A tranquil flooded cave accessible only by small bamboo boats or kayaks." },
+      { id: "halong8", name: "Cua Van Floating Village", image: "/images/experiences/cua-van-floating-village/cover.webp", description: "One of the largest traditional floating fishing villages in the area." },
     ]
   },
   {
@@ -330,14 +330,14 @@ export const CITIES: CityDestination[] = [
     shortDesc: "Ha Long Bay on land.",
     fullDesc: "A surreal landscape of river-carved limestone mountains rising from vibrant green rice paddies. A peaceful retreat into Vietnam's most cinematic natural scenery.",
     sights: [
-      { id: "ninhbinh1", name: "Trang An Scenic Landscape Complex", image: "/images/sights/ninhbinh.jpg", description: "A spectacular waterway network through caves and sheer cliffs." },
-      { id: "ninhbinh2", name: "Tam Coc-Bich Dong", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "Drift down the Ngo Dong river through three magnificent caves." },
-      { id: "ninhbinh3", name: "Hang Mua", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "Climb 500 stone steps to the famous dragon statue and a breathtaking valley view." },
-      { id: "ninhbinh4", name: "Bai Dinh Pagoda", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "The largest and most impressive complex of Buddhist temples in Vietnam." },
-      { id: "ninhbinh5", name: "Hoa Lu", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "The ancient 10th-century capital of Vietnam, nestled between limestone mountains." },
-      { id: "ninhbinh6", name: "Bich Dong Pagoda", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "An ancient, multi-tiered pagoda built directly into a limestone cave." },
-      { id: "ninhbinh7", name: "Thung Nham Bird Park", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "A serene ecological park home to thousands of wild birds and storks." },
-      { id: "ninhbinh8", name: "Van Long Nature Reserve", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A tranquil, mirror-like wetland reserve perfect for peaceful boat rides." },
+      { id: "ninhbinh1", name: "Trang An Scenic Landscape Complex", image: "/images/experiences/trang-an-boat-tour/cover.webp", description: "A spectacular waterway network through caves and sheer cliffs." },
+      { id: "ninhbinh2", name: "Tam Coc-Bich Dong", image: "/images/experiences/tam-coc-river-cruise/cover.webp", description: "Drift down the Ngo Dong river through three magnificent caves." },
+      { id: "ninhbinh3", name: "Hang Mua", image: "/images/experiences/hang-mua-peak/cover.webp", description: "Climb 500 stone steps to the famous dragon statue and a breathtaking valley view." },
+      { id: "ninhbinh4", name: "Bai Dinh Pagoda", image: "/images/experiences/bai-dinh-pagoda/cover.webp", description: "The largest and most impressive complex of Buddhist temples in Vietnam." },
+      { id: "ninhbinh5", name: "Hoa Lu", image: "/images/experiences/hoa-lu-capital/cover.webp", description: "The ancient 10th-century capital of Vietnam, nestled between limestone mountains." },
+      { id: "ninhbinh6", name: "Bich Dong Pagoda", image: "/images/experiences/bich-dong-pagoda/cover.webp", description: "An ancient, multi-tiered pagoda built directly into a limestone cave." },
+      { id: "ninhbinh7", name: "Thung Nham Bird Park", image: "/images/experiences/thung-nham-bird-park/cover.webp", description: "A serene ecological park home to thousands of wild birds and storks." },
+      { id: "ninhbinh8", name: "Van Long Nature Reserve", image: "/images/experiences/van-long-nature-reserve/cover.webp", description: "A tranquil, mirror-like wetland reserve perfect for peaceful boat rides." },
     ]
   },
   {
@@ -347,14 +347,14 @@ export const CITIES: CityDestination[] = [
     shortDesc: "The ancient imperial capital.",
     fullDesc: "Step back in time in Hue, the former seat of the Nguyen Dynasty. Famous for its sprawling Imperial Citadel, majestic royal tombs, and the poetic Perfume River.",
     sights: [
-      { id: "hue1", name: "Imperial City, Hue", image: "/images/sights/hue.jpg", description: "The vast, moat-surrounded fortress and palace complex of the former emperors." },
-      { id: "hue2", name: "Tomb of Khai Dinh", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A dramatic and intricate fusion of traditional Vietnamese and European architecture." },
-      { id: "hue3", name: "Tomb of Tu Duc", image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80", description: "A sprawling, poetic royal tomb set amidst a beautiful pine forest and lake." },
-      { id: "hue4", name: "Tomb of Minh Mang", image: "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?w=800&q=80", description: "A majestic and highly symmetrical royal tomb complex." },
-      { id: "hue5", name: "Thien Mu Pagoda", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "An iconic seven-story pagoda sitting gracefully on the bank of the river." },
-      { id: "hue6", name: "Perfume River", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80", description: "Take a dragon boat ride at sunset for a truly romantic experience." },
-      { id: "hue7", name: "Dong Ba Market", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "The oldest and largest commercial hub in Hue, perfect for local food." },
-      { id: "hue8", name: "Thanh Toan Bridge", image: "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80", description: "A beautiful, ancient tile-roofed wooden bridge located in a quiet village." },
+      { id: "hue1", name: "Imperial City, Hue", image: "/images/experiences/imperial-city-hue/cover.webp", description: "The vast, moat-surrounded fortress and palace complex of the former emperors." },
+      { id: "hue2", name: "Tomb of Khai Dinh", image: "/images/experiences/tomb-of-khai-dinh/cover.webp", description: "A dramatic and intricate fusion of traditional Vietnamese and European architecture." },
+      { id: "hue3", name: "Tomb of Tu Duc", image: "/images/experiences/tomb-of-tu-duc/cover.webp", description: "A sprawling, poetic royal tomb set amidst a beautiful pine forest and lake." },
+      { id: "hue4", name: "Tomb of Minh Mang", image: "/images/experiences/tomb-of-minh-mang/cover.webp", description: "A majestic and highly symmetrical royal tomb complex." },
+      { id: "hue5", name: "Thien Mu Pagoda", image: "/images/experiences/thien-mu-pagoda/cover.webp", description: "An iconic seven-story pagoda sitting gracefully on the bank of the river." },
+      { id: "hue6", name: "Perfume River", image: "/images/experiences/perfume-river/cover.webp", description: "Take a dragon boat ride at sunset for a truly romantic experience." },
+      { id: "hue7", name: "Dong Ba Market", image: "/images/experiences/dong-ba-market/cover.webp", description: "The oldest and largest commercial hub in Hue, perfect for local food." },
+      { id: "hue8", name: "Thanh Toan Bridge", image: "/images/experiences/thanh-toan-bridge/cover.webp", description: "A beautiful, ancient tile-roofed wooden bridge located in a quiet village." },
     ]
   },
   {
@@ -364,14 +364,14 @@ export const CITIES: CityDestination[] = [
     shortDesc: "Where the city meets the sea.",
     fullDesc: "A modern, vibrant coastal city known for its sandy beaches, iconic bridges, and the majestic Marble Mountains. The perfect blend of urban energy and coastal relaxation.",
     sights: [
-      { id: "danang1", name: "Ba Na Hills", image: "https://images.unsplash.com/photo-1531737212413-667205e1cda7?w=800&q=80", description: "A massive mountaintop resort featuring the iconic Golden Bridge held by stone hands." },
-      { id: "danang2", name: "Marble Mountains (Vietnam)", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80", description: "Five marble and limestone hills filled with caves and Buddhist sanctuaries." },
-      { id: "danang3", name: "Dragon Bridge (Da Nang)", image: "/images/sights/danang3.jpg", description: "A spectacular bridge that literally breathes fire and water on weekends." },
-      { id: "danang4", name: "My Khe Beach", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "Miles of pristine white sand, perfect for surfing and sunbathing." },
-      { id: "danang5", name: "Son Tra Mountain", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "Lush jungles offering sweeping ocean views and the towering Lady Buddha statue." },
-      { id: "danang6", name: "Museum of Cham Sculpture", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "Houses the world's largest collection of ancient Cham artifacts." },
-      { id: "danang7", name: "Han Market", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80", description: "A bustling multi-level market offering local food, spices, and clothing." },
-      { id: "danang8", name: "Hai Van Pass", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "One of the most scenic coastal mountain passes in the world." },
+      { id: "danang1", name: "Ba Na Hills", image: "/images/experiences/ba-na-hills-theme-park/cover.webp", description: "A massive mountaintop resort featuring the iconic Golden Bridge held by stone hands." },
+      { id: "danang2", name: "Marble Mountains (Vietnam)", image: "/images/experiences/marble-mountains/cover.webp", description: "Five marble and limestone hills filled with caves and Buddhist sanctuaries." },
+      { id: "danang3", name: "Dragon Bridge (Da Nang)", image: "/images/experiences/dragon-bridge-fire-show/cover.webp", description: "A spectacular bridge that literally breathes fire and water on weekends." },
+      { id: "danang4", name: "My Khe Beach", image: "/images/experiences/my-khe-beach/cover.webp", description: "Miles of pristine white sand, perfect for surfing and sunbathing." },
+      { id: "danang5", name: "Son Tra Mountain", image: "/images/experiences/son-tra-lady-shadow/cover.webp", description: "Lush jungles offering sweeping ocean views and the towering Lady Buddha statue." },
+      { id: "danang6", name: "Museum of Cham Sculpture", image: "/images/experiences/cham-sculpture-museum/cover.webp", description: "Houses the world's largest collection of ancient Cham artifacts." },
+      { id: "danang7", name: "Han Market", image: "/images/experiences/han-market/cover.webp", description: "A bustling multi-level market offering local food, spices, and clothing." },
+      { id: "danang8", name: "Hai Van Pass", image: "/images/experiences/hai-van-pass/cover.webp", description: "One of the most scenic coastal mountain passes in the world." },
     ]
   },
   {
@@ -381,14 +381,14 @@ export const CITIES: CityDestination[] = [
     shortDesc: "Lantern-lit ancient streets.",
     fullDesc: "The most charming town in Vietnam. A remarkably preserved trading port where yellow heritage buildings, silk lanterns, and world-class tailors create a magical atmosphere.",
     sights: [
-      { id: "hoian1", name: "Japanese Covered Bridge", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "A beautifully ornate 18th-century bridge and temple, the symbol of the town." },
-      { id: "hoian2", name: "Hoi An Ancient Town", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "Wander through exceptionally preserved streets illuminated by silk lanterns." },
-      { id: "hoian3", name: "An Bang Beach", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "A laid-back, beautiful beach just a quick bicycle ride from the ancient town." },
-      { id: "hoian4", name: "Tra Que Vegetable Village", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "A peaceful farming village where you can learn traditional Vietnamese agriculture." },
-      { id: "hoian5", name: "Thu Bon River", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "Take a wooden rowboat at sunset and release a paper lantern for good luck." },
-      { id: "hoian6", name: "Phuc Kien Assembly Hall", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "A stunning, highly decorated temple built by Chinese merchants." },
-      { id: "hoian7", name: "Hoi An Night Market", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A bustling market selling endless lanterns, souvenirs, and street food." },
-      { id: "hoian8", name: "Bay Mau Coconut Forest", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "Spin through the water coconut groves in a traditional circular basket boat." },
+      { id: "hoian1", name: "Japanese Covered Bridge", image: "/images/experiences/japanese-covered-bridge/cover.webp", description: "A beautifully ornate 18th-century bridge and temple, the symbol of the town." },
+      { id: "hoian2", name: "Hoi An Ancient Town", image: "/images/experiences/hoi-an-ancient-town/cover.webp", description: "Wander through exceptionally preserved streets illuminated by silk lanterns." },
+      { id: "hoian3", name: "An Bang Beach", image: "/images/experiences/an-bang-beach/cover.webp", description: "A laid-back, beautiful beach just a quick bicycle ride from the ancient town." },
+      { id: "hoian4", name: "Tra Que Vegetable Village", image: "/images/experiences/tra-que-herb-village/cover.webp", description: "A peaceful farming village where you can learn traditional Vietnamese agriculture." },
+      { id: "hoian5", name: "Thu Bon River", image: "/images/experiences/thu-bon-river/cover.webp", description: "Take a wooden rowboat at sunset and release a paper lantern for good luck." },
+      { id: "hoian6", name: "Phuc Kien Assembly Hall", image: "/images/experiences/phuc-kien-assembly-hall/cover.webp", description: "A stunning, highly decorated temple built by Chinese merchants." },
+      { id: "hoian7", name: "Hoi An Night Market", image: "/images/experiences/hoi-an-night-market/cover.webp", description: "A bustling market selling endless lanterns, souvenirs, and street food." },
+      { id: "hoian8", name: "Bay Mau Coconut Forest", image: "/images/experiences/cam-thanh-coconut-forest/cover.webp", description: "Spin through the water coconut groves in a traditional circular basket boat." },
     ]
   },
   {
@@ -398,15 +398,15 @@ export const CITIES: CityDestination[] = [
     shortDesc: "The city of eternal spring.",
     fullDesc: "Nestled in the Central Highlands, Da Lat offers a cool climate, French colonial architecture, pine forests, and sprawling flower gardens. A romantic mountain escape.",
     sights: [
-      { id: "dalat1", name: "Hang Nga guesthouse", image: "/images/sights/dalat.jpg", description: "The 'Crazy House', a wildly surreal architectural masterpiece resembling a giant tree." },
-      { id: "dalat2", name: "Xuan Huong Lake", image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80", description: "The picturesque crescent-moon shaped lake at the very center of the city." },
-      { id: "dalat3", name: "Datanla Waterfall", image: "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?w=800&q=80", description: "Ride a thrilling alpine coaster through the pine forest down to the falls." },
-      { id: "dalat4", name: "Truc Lam Zen Monastery", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A peaceful monastery accessible via a scenic cable car ride over the pines." },
-      { id: "dalat5", name: "Pongour Waterfall", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80", description: "A massive, magnificent terraced waterfall located just outside the city." },
-      { id: "dalat6", name: "Langbiang Mountain", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "Hike or take a jeep to the peak for spectacular views of the highlands." },
-      { id: "dalat7", name: "Valley of Love", image: "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80", description: "A highly manicured, romantic park featuring flower gardens and pedal boats." },
-      { id: "dalat8", name: "Da Lat Railway Station", image: "https://images.unsplash.com/photo-1531737212413-667205e1cda7?w=800&q=80", description: "A beautifully preserved Art Deco railway station from the French colonial era." },
-      { id: "dalat9", name: "Linh Phuoc Pagoda", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80", description: "An incredible temple intricately decorated with millions of broken glass pieces." },
+      { id: "dalat1", name: "Hang Nga guesthouse", image: "/images/experiences/crazy-house-dalat/cover.webp", description: "The 'Crazy House', a wildly surreal architectural masterpiece resembling a giant tree." },
+      { id: "dalat2", name: "Xuan Huong Lake", image: "/images/experiences/xuan-huong-lake/cover.webp", description: "The picturesque crescent-moon shaped lake at the very center of the city." },
+      { id: "dalat3", name: "Datanla Waterfall", image: "/images/experiences/datanla-falls/cover.webp", description: "Ride a thrilling alpine coaster through the pine forest down to the falls." },
+      { id: "dalat4", name: "Truc Lam Zen Monastery", image: "/images/experiences/truc-lam-zen-monastery/cover.webp", description: "A peaceful monastery accessible via a scenic cable car ride over the pines." },
+      { id: "dalat5", name: "Pongour Waterfall", image: "/images/experiences/pongour-waterfall/cover.webp", description: "A massive, magnificent terraced waterfall located just outside the city." },
+      { id: "dalat6", name: "Langbiang Mountain", image: "/images/experiences/langbiang-mountain/cover.webp", description: "Hike or take a jeep to the peak for spectacular views of the highlands." },
+      { id: "dalat7", name: "Valley of Love", image: "/images/experiences/valley-of-love/cover.webp", description: "A highly manicured, romantic park featuring flower gardens and pedal boats." },
+      { id: "dalat8", name: "Da Lat Railway Station", image: "/images/experiences/da-lat-railway-station/cover.webp", description: "A beautifully preserved Art Deco railway station from the French colonial era." },
+      { id: "dalat9", name: "Linh Phuoc Pagoda", image: "/images/experiences/linh-phuoc-pagoda/cover.webp", description: "An incredible temple intricately decorated with millions of broken glass pieces." },
     ]
   },
   {
@@ -416,14 +416,14 @@ export const CITIES: CityDestination[] = [
     shortDesc: "White sands and pristine sunsets.",
     fullDesc: "Vietnam's premier island getaway. Framed by white-sand beaches and dense tropical jungle, it is the ultimate destination for luxury resorts and spectacular seafood.",
     sights: [
-      { id: "phuquoc1", name: "Bai Sao", image: "/images/sights/phuquoc.jpg", description: "Famous for its stunning powder-white sand and crystalline turquoise waters." },
-      { id: "phuquoc2", name: "Phu Quoc Night Market", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "A paradise for seafood lovers with endless fresh catches grilled to order." },
-      { id: "phuquoc3", name: "Hon Thom Cable Car", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "The world's longest over-sea cable car offering breathtaking aerial island views." },
-      { id: "phuquoc4", name: "VinWonders Phu Quoc", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "Vietnam's largest theme park featuring thrilling rides and a massive aquarium." },
-      { id: "phuquoc5", name: "Grand World Phu Quoc", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80", description: "An entertainment complex dubbed 'The sleepless city' with Venetian canals." },
-      { id: "phuquoc6", name: "Phu Quoc Prison", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "A sobering historical site detailing the island's dark history during the war." },
-      { id: "phuquoc7", name: "Vinpearl Safari Phu Quoc", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "Vietnam's largest semi-wildlife conservation park." },
-      { id: "phuquoc8", name: "Suoi Tranh Waterfall", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "A gentle, picturesque waterfall surrounded by lush jungle and walking trails." },
+      { id: "phuquoc1", name: "Bai Sao", image: "/images/experiences/bai-sao-beach/cover.webp", description: "Famous for its stunning powder-white sand and crystalline turquoise waters." },
+      { id: "phuquoc2", name: "Phu Quoc Night Market", image: "/images/experiences/phu-quoc-night-market/cover.webp", description: "A paradise for seafood lovers with endless fresh catches grilled to order." },
+      { id: "phuquoc3", name: "Hon Thom Cable Car", image: "/images/experiences/hon-thom-cable-car/cover.webp", description: "The world's longest over-sea cable car offering breathtaking aerial island views." },
+      { id: "phuquoc4", name: "VinWonders Phu Quoc", image: "/images/experiences/vinwonders-phu-quoc/cover.webp", description: "Vietnam's largest theme park featuring thrilling rides and a massive aquarium." },
+      { id: "phuquoc5", name: "Grand World Phu Quoc", image: "/images/experiences/grand-world-phu-quoc/cover.webp", description: "An entertainment complex dubbed 'The sleepless city' with Venetian canals." },
+      { id: "phuquoc6", name: "Phu Quoc Prison", image: "/images/experiences/phu-quoc-prison/cover.webp", description: "A sobering historical site detailing the island's dark history during the war." },
+      { id: "phuquoc7", name: "Vinpearl Safari Phu Quoc", image: "/images/experiences/vinpearl-safari/cover.webp", description: "Vietnam's largest semi-wildlife conservation park." },
+      { id: "phuquoc8", name: "Suoi Tranh Waterfall", image: "/images/experiences/suoi-tranh-waterfall/cover.webp", description: "A gentle, picturesque waterfall surrounded by lush jungle and walking trails." },
     ]
   },
 
@@ -434,12 +434,12 @@ export const CITIES: CityDestination[] = [
     shortDesc: "World-class caves and jungle adventures.",
     fullDesc: "Home to the oldest karst mountains in Asia, Phong Nha is an adventurer's paradise offering massive, otherworldly cave systems surrounded by pristine jungles.",
     sights: [
-      { id: "phongnha1", name: "Son Doong Cave", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "The largest natural cave in the world, requiring an expedition to explore." },
-      { id: "phongnha2", name: "Paradise Cave", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "A brilliantly illuminated, accessible cave featuring spectacular stalactites." },
-      { id: "phongnha3", name: "Dark Cave", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "Zipline into the entrance and navigate through the mud baths." },
-      { id: "phongnha4", name: "Phong Nha Cave", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A beautiful river cave explored by traditional wooden dragon boats." },
-      { id: "phongnha5", name: "Botanic Garden", image: "/images/sights/phongnha5.jpg", description: "A lovely jungle trek featuring the Thac Gio waterfall and local wildlife." },
-      { id: "phongnha6", name: "Mooc Spring", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A vibrant emerald eco-trail perfect for kayaking and swimming." },
+      { id: "phongnha1", name: "Son Doong Cave", image: "/images/experiences/son-doong-cave/cover.webp", description: "The largest natural cave in the world, requiring an expedition to explore." },
+      { id: "phongnha2", name: "Paradise Cave", image: "/images/experiences/paradise-cave/cover.webp", description: "A brilliantly illuminated, accessible cave featuring spectacular stalactites." },
+      { id: "phongnha3", name: "Dark Cave", image: "/images/experiences/dark-cave/cover.webp", description: "Zipline into the entrance and navigate through the mud baths." },
+      { id: "phongnha4", name: "Phong Nha Cave", image: "/images/experiences/phong-nha-cave/cover.webp", description: "A beautiful river cave explored by traditional wooden dragon boats." },
+      { id: "phongnha5", name: "Botanic Garden", image: "/images/experiences/botanic-garden/cover.webp", description: "A lovely jungle trek featuring the Thac Gio waterfall and local wildlife." },
+      { id: "phongnha6", name: "Mooc Spring", image: "/images/experiences/mooc-spring/cover.webp", description: "A vibrant emerald eco-trail perfect for kayaking and swimming." },
     ]
   },
   {
@@ -449,12 +449,12 @@ export const CITIES: CityDestination[] = [
     shortDesc: "Desert sands and kitesurfing breezes.",
     fullDesc: "Famous for its sweeping red and white sand dunes, Mui Ne is Vietnam's premier destination for windsurfing, kitesurfing, and desert-like landscapes.",
     sights: [
-      { id: "muine1", name: "White Sand Dunes", image: "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?w=800&q=80", description: "Vast, Sahara-like dunes best explored by ATV at sunrise." },
-      { id: "muine2", name: "Red Sand Dunes", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "Striking rust-colored dunes right by the coast, perfect for sand-sledding." },
-      { id: "muine3", name: "Fairy Stream", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80", description: "Wade barefoot through a shallow stream bordered by dramatic limestone formations." },
-      { id: "muine4", name: "Mui Ne Fishing Village", image: "/images/sights/muine4.jpg", description: "A harbor packed with hundreds of colorful traditional round basket boats." },
-      { id: "muine5", name: "Po Shanu Cham Towers", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "Ancient Hindu temples dating back to the 8th-century Champa Kingdom." },
-      { id: "muine6", name: "Ke Ga Lighthouse", image: "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80", description: "The oldest and tallest lighthouse in Vietnam, situated on a rocky islet." },
+      { id: "muine1", name: "White Sand Dunes", image: "/images/experiences/white-sand-dunes/cover.webp", description: "Vast, Sahara-like dunes best explored by ATV at sunrise." },
+      { id: "muine2", name: "Red Sand Dunes", image: "/images/experiences/red-sand-dunes/cover.webp", description: "Striking rust-colored dunes right by the coast, perfect for sand-sledding." },
+      { id: "muine3", name: "Fairy Stream", image: "/images/experiences/fairy-stream/cover.webp", description: "Wade barefoot through a shallow stream bordered by dramatic limestone formations." },
+      { id: "muine4", name: "Mui Ne Fishing Village", image: "/images/experiences/mui-ne-fishing-village/cover.webp", description: "A harbor packed with hundreds of colorful traditional round basket boats." },
+      { id: "muine5", name: "Po Shanu Cham Towers", image: "/images/experiences/po-shanu-cham-towers/cover.webp", description: "Ancient Hindu temples dating back to the 8th-century Champa Kingdom." },
+      { id: "muine6", name: "Ke Ga Lighthouse", image: "/images/experiences/ke-ga-lighthouse/cover.webp", description: "The oldest and tallest lighthouse in Vietnam, situated on a rocky islet." },
     ]
   },
   {
@@ -464,12 +464,12 @@ export const CITIES: CityDestination[] = [
     shortDesc: "The beating heart of the Mekong Delta.",
     fullDesc: "The largest city in the Mekong Delta, famous for its floating markets, crisscrossing canals, and rich agricultural landscapes.",
     sights: [
-      { id: "cantho1", name: "Cai Rang Floating Market", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80", description: "The largest floating market in the delta, best visited at the crack of dawn." },
-      { id: "cantho2", name: "Binh Thuy Ancient House", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "A beautiful fusion of French and Vietnamese architecture from 1870." },
-      { id: "cantho3", name: "Ninh Kieu Wharf", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "A vibrant riverside promenade filled with night markets and restaurants." },
-      { id: "cantho4", name: "Con Son Islet", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "A tranquil island community offering community-based tourism and fruit orchards." },
-      { id: "cantho5", name: "Ong Temple", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80", description: "A highly ornate Chinese temple located right in the center of the city." },
-      { id: "cantho6", name: "Ba Bo Flower Village", image: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=800&q=80", description: "Acres of vivid flowers grown traditionally for the Lunar New Year." },
+      { id: "cantho1", name: "Cai Rang Floating Market", image: "/images/experiences/cai-rang-floating-market/cover.webp", description: "The largest floating market in the delta, best visited at the crack of dawn." },
+      { id: "cantho2", name: "Binh Thuy Ancient House", image: "/images/experiences/binh-thuy-ancient-house/cover.webp", description: "A beautiful fusion of French and Vietnamese architecture from 1870." },
+      { id: "cantho3", name: "Ninh Kieu Wharf", image: "/images/experiences/ninh-kieu-wharf/cover.webp", description: "A vibrant riverside promenade filled with night markets and restaurants." },
+      { id: "cantho4", name: "Con Son Islet", image: "/images/experiences/con-son-islet/cover.webp", description: "A tranquil island community offering community-based tourism and fruit orchards." },
+      { id: "cantho5", name: "Ong Temple", image: "/images/experiences/ong-tempel/cover.webp", description: "A highly ornate Chinese temple located right in the center of the city." },
+      { id: "cantho6", name: "Ba Bo Flower Village", image: "/images/experiences/ba-bo-flower-village/cover.webp", description: "Acres of vivid flowers grown traditionally for the Lunar New Year." },
     ]
   },
   {
@@ -479,12 +479,12 @@ export const CITIES: CityDestination[] = [
     shortDesc: "Spectacular loops and mountain passes.",
     fullDesc: "Vietnam's final frontier. A dramatic, jagged landscape of towering limestone peaks and deep valleys, home to the famous Ha Giang Loop.",
     sights: [
-      { id: "hagiang1", name: "Ma Pi Leng Pass", image: "/images/sights/hagiang.jpg", description: "One of the most awe-inspiring mountain passes in Southeast Asia." },
-      { id: "hagiang2", name: "Dong Van Karst Plateau", image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80", description: "A UNESCO Global Geopark featuring profound geological heritage." },
-      { id: "hagiang3", name: "Lung Cu Flag Tower", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "The northernmost point of Vietnam, marking the border with China." },
-      { id: "hagiang4", name: "Nho Que River", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", description: "A stunning turquoise river weaving through the deep Tu San Canyon." },
-      { id: "hagiang5", name: "Hmong King's Palace", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "A unique, century-old timber palace belonging to the former Hmong royalty." },
-      { id: "hagiang6", name: "Quan Ba Heaven Gate", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80", description: "A sweeping viewpoint overlooking the famous 'Fairy Bosom' twin mountains." },
+      { id: "hagiang1", name: "Ma Pi Leng Pass", image: "/images/experiences/ma-pi-leng-pass/cover.webp", description: "One of the most awe-inspiring mountain passes in Southeast Asia." },
+      { id: "hagiang2", name: "Dong Van Karst Plateau", image: "/images/experiences/dong-van-karst-plateau/cover.webp", description: "A UNESCO Global Geopark featuring profound geological heritage." },
+      { id: "hagiang3", name: "Lung Cu Flag Tower", image: "/images/experiences/lung-cu-flag-tower/cover.webp", description: "The northernmost point of Vietnam, marking the border with China." },
+      { id: "hagiang4", name: "Nho Que River", image: "/images/experiences/nho-que-river/cover.webp", description: "A stunning turquoise river weaving through the deep Tu San Canyon." },
+      { id: "hagiang5", name: "Hmong King's Palace", image: "/images/experiences/hmong-king-s-palace/cover.webp", description: "A unique, century-old timber palace belonging to the former Hmong royalty." },
+      { id: "hagiang6", name: "Quan Ba Heaven Gate", image: "/images/experiences/quan-ba-heaven-gate/cover.webp", description: "A sweeping viewpoint overlooking the famous 'Fairy Bosom' twin mountains." },
     ]
   },
   {
@@ -494,12 +494,12 @@ export const CITIES: CityDestination[] = [
     shortDesc: "A breezy coastal retreat.",
     fullDesc: "A popular weekend getaway from Ho Chi Minh City, offering expansive beaches, fresh seafood, and scenic oceanfront promenades.",
     sights: [
-      { id: "vungtau1", name: "Christ of Vung Tau", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "A massive statue of Jesus atop Mount Nho, rivaling Rio's Christ the Redeemer." },
-      { id: "vungtau2", name: "Vung Tau Lighthouse", image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80", description: "A French-built lighthouse offering panoramic 360-degree views of the city." },
-      { id: "vungtau3", name: "Back Beach (Bai Sau)", image: "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?w=800&q=80", description: "The longest and most popular beach in the city for swimming and surfing." },
-      { id: "vungtau4", name: "Ho May Park", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", description: "An ecological amusement park accessible by cable car on the Large Mountain." },
-      { id: "vungtau5", name: "White Palace (Bach Dinh)", image: "/images/sights/vungtau5.jpg", description: "The elegant former summer residence of French Governor General Paul Doumer." },
-      { id: "vungtau6", name: "Niet Ban Tinh Xa", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80", description: "One of the most beautiful Buddhist temples featuring a massive reclining Buddha." },
+      { id: "vungtau1", name: "Christ of Vung Tau", image: "/images/experiences/christ-of-vung-tau/cover.webp", description: "A massive statue of Jesus atop Mount Nho, rivaling Rio's Christ the Redeemer." },
+      { id: "vungtau2", name: "Vung Tau Lighthouse", image: "/images/experiences/vung-tau-lighthouse/cover.webp", description: "A French-built lighthouse offering panoramic 360-degree views of the city." },
+      { id: "vungtau3", name: "Back Beach (Bai Sau)", image: "/images/experiences/back-beach-bai-sau-/cover.webp", description: "The longest and most popular beach in the city for swimming and surfing." },
+      { id: "vungtau4", name: "Ho May Park", image: "/images/experiences/ho-may-park/cover.webp", description: "An ecological amusement park accessible by cable car on the Large Mountain." },
+      { id: "vungtau5", name: "White Palace (Bach Dinh)", image: "/images/experiences/white-palace-bach-dinh-/cover.webp", description: "The elegant former summer residence of French Governor General Paul Doumer." },
+      { id: "vungtau6", name: "Niet Ban Tinh Xa", image: "/images/experiences/niet-ban-tinh-xa/cover.webp", description: "One of the most beautiful Buddhist temples featuring a massive reclining Buddha." },
     ]
   }
 ];
@@ -520,7 +520,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 22.3033,
     lng: 103.7758,
     desc: "The Roof of Indochina, 3,143m high, accessible via scenic cable car.",
-    img: "/images/sights/sapa.jpg"
+    img: "/images/experiences/fansipan-peak-sapa/cover.webp"
   },
   {
     name: "Hoan Kiem Lake",
@@ -528,7 +528,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 21.0264,
     lng: 105.8523,
     desc: "The peaceful lake in the center of old Hanoi with the red Huc Bridge.",
-    img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80"
+    img: "/images/experiences/hoan-kiem-lake/cover.webp"
   },
   {
     name: "Cu Chi Tunnels",
@@ -536,7 +536,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 11.1419,
     lng: 106.4633,
     desc: "Vast historic underground combat tunnels used during the Vietnam War.",
-    img: "/images/sights/hcmc6.jpg"
+    img: "/images/experiences/cu-chi-tunnels/cover.webp"
   },
   {
     name: "Ben Thanh Market",
@@ -544,7 +544,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 10.7725,
     lng: 106.6980,
     desc: "Famous central market offering souvenirs, local foods, and fresh produce.",
-    img: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80"
+    img: "/images/experiences/ben-thanh-market/cover.webp"
   },
   {
     name: "Ba Na Hills & Golden Bridge",
@@ -552,7 +552,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 15.9989,
     lng: 107.9968,
     desc: "The iconic pedestrian bridge held by giant stone hands in the mountains.",
-    img: "https://images.unsplash.com/photo-1531737212413-667205e1cda7?w=800&q=80"
+    img: "/images/experiences/ba-na-hills-theme-park/cover.webp"
   },
   {
     name: "Japanese Covered Bridge",
@@ -560,7 +560,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 15.8771,
     lng: 108.3259,
     desc: "Historic 18th-century pagoda bridge, a symbol of Hoi An's ancient town.",
-    img: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80"
+    img: "/images/experiences/japanese-covered-bridge/cover.webp"
   },
   {
     name: "Trang An Caves",
@@ -568,7 +568,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 20.2506,
     lng: 105.8972,
     desc: "Stunning UNESCO landscape explored on serene hand-paddled boat tours.",
-    img: "/images/sights/ninhbinh.jpg"
+    img: "/images/experiences/trang-an-boat-tour/cover.webp"
   },
   {
     name: "Sung Sot Cave",
@@ -576,7 +576,7 @@ export const MAP_SIGHTS: MapSight[] = [
     lat: 20.8450,
     lng: 107.1350,
     desc: "The grandest and most spectacular stalactite cave in Halong Bay.",
-    img: "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80"
+    img: "/images/experiences/sung-sot-cave/cover.webp"
   }
 ];
 

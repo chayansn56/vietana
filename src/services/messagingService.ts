@@ -25,7 +25,7 @@ export const MessagingService = {
     
     msg += `\nCould you send me a detailed itinerary?`;
     
-    return buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, msg);
+    return buildWhatsAppLink(WHATSAPP_NUMBERS.VIETNAM, msg);
   },
 
   generateBlueprintWhatsApp: (
@@ -41,12 +41,12 @@ export const MessagingService = {
 
   generateFoodInterestWhatsApp: (foodName: string): string => {
     const msg = `Hi VIETANA, I'm interested in trying ${foodName} during my trip!`;
-    return buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, msg);
+    return buildWhatsAppLink(WHATSAPP_NUMBERS.VIETNAM, msg);
   },
 
   generateFoodPreferencesWhatsApp: (preferences: string): string => {
     const msg = `Hi VIETANA, my food preferences: ${preferences}`;
-    return buildWhatsAppLink(WHATSAPP_NUMBERS.INDIA, msg);
+    return buildWhatsAppLink(WHATSAPP_NUMBERS.VIETNAM, msg);
   },
 
   // Email Generation

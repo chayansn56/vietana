@@ -2,7 +2,7 @@ import { Article } from '../notesMagazine';
 
 export const destinationsArticles: Article[] = [
   {
-    id: "d1", title: "48 Hours in Hanoi's Old Quarter", author: "Vikram Singh",
+    id: "d1", title: "48 Hours in Hanoi's Old Quarter", author: "Rahul Singh",
     intro: "A whirlwind two-day itinerary covering the best egg coffee, historical sites, and hidden alleyways in the capital.",
     image: "https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80",
     sections: [

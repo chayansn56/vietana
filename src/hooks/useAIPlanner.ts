@@ -26,35 +26,103 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
   const { t } = useTranslation();
   
   const store = usePlannerStore();
-  const { messages, history, preferences, itinerary, setMessages, setHistory, setPreferences, setItinerary, resetPlanner } = store;
+  const { messages, history, preferences, itinerary, setMessages, setHistory, setPreferences, setItinerary } = store;
 
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [options, setOptions] = useState<string[]>([]);
+  const [showWhatsAppExportOptions, setShowWhatsAppExportOptions] = useState(false);
   
   const initialized = useRef(false);
-  const abortControllerRef = useRef<AbortController | null>(null);
+  const lastProcessedPrompt = useRef<string | null>(null);
 
   useEffect(() => {
-    if (initialized.current) return;
-    initialized.current = true;
-    
-    // If opened with an initial destination from the package page
-    if (initialDestination && preferences.focus !== initialDestination) {
-      setPreferences({ ...preferences, focus: initialDestination });
-    }
+    localStorage.setItem('vietana_ai_messages', JSON.stringify(messages));
+  }, [messages]);
 
+  useEffect(() => {
+    localStorage.setItem('vietana_ai_history', JSON.stringify(history));
+  }, [history]);
+
+  useEffect(() => {
+    localStorage.setItem('vietana_ai_preferences', JSON.stringify(preferences));
+  }, [preferences]);
+
+  useEffect(() => {
+    if (itinerary) {
+      localStorage.setItem('vietana_ai_itinerary', JSON.stringify(itinerary));
+    } else {
+      localStorage.removeItem('vietana_ai_itinerary');
+    }
+  }, [itinerary]);
+
+  useEffect(() => {
     if (initialPrompt) {
+      if (lastProcessedPrompt.current === initialPrompt) return;
+      lastProcessedPrompt.current = initialPrompt;
+
+      // Clear cache to start clean with this query
+      setMessages([]);
+      setHistory([]);
+      setPreferences({});
+      setItinerary(null);
+      setShowWhatsAppExportOptions(false);
+      localStorage.removeItem('vietana_ai_messages');
+      localStorage.removeItem('vietana_ai_history');
+      localStorage.removeItem('vietana_ai_preferences');
+      localStorage.removeItem('vietana_ai_itinerary');
+      
       setTimeout(() => {
         handleSend(initialPrompt);
-      }, 1500);
+      }, 500);
+    } else {
+      if (initialized.current) return;
+      initialized.current = true;
+      
+      if (messages.length === 0) {
+        const greeting = "Namaste! I'm your local Vietana expert. Ask me anything about Vietnam, from the best Indian restaurants in Hanoi to hidden gems in Da Nang! How can I help you plan your dream trip today?";
+        setMessages([{ text: greeting, type: 'bot' }]);
+        setHistory([]);
+      }
     }
   }, [initialDestination, initialPrompt]);
+
+  const resetPlanner = () => {
+    store.resetPlanner();
+    setShowWhatsAppExportOptions(false);
+    localStorage.removeItem('vietana_ai_messages');
+    localStorage.removeItem('vietana_ai_history');
+    localStorage.removeItem('vietana_ai_preferences');
+    localStorage.removeItem('vietana_ai_itinerary');
+  };
 
   const handleSend = async (text: string = inputValue) => {
     if (!text.trim()) return;
     
-    setMessages((prev: Message[]) => [...prev, { text, type: 'user' }]);
+    const lowerText = text.toLowerCase();
+    const isWhatsAppRequest = lowerText.includes('whatsapp') && (
+      lowerText.includes('send') || 
+      lowerText.includes('share') || 
+      lowerText.includes('itinerary') || 
+      lowerText.includes('plan') || 
+      lowerText.includes('export')
+    );
+
+    if (isWhatsAppRequest) {
+      setMessages(prev => [...prev, { text, type: 'user' }]);
+      setInputValue('');
+      setIsTyping(true);
+      setOptions([]);
+      
+      setTimeout(() => {
+        setMessages(prev => [...prev, { text: "Yeah absolutely! I can help you send this itinerary to WhatsApp right away.", type: 'bot' }]);
+        setIsTyping(false);
+        setShowWhatsAppExportOptions(true);
+      }, 800);
+      return;
+    }
+
+    setMessages(prev => [...prev, { text, type: 'user' }]);
     setInputValue('');
     setIsTyping(true);
     setOptions([]);
@@ -123,6 +191,11 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
     }
   };
 
+  const handleResumeChat = () => {
+    setShowWhatsAppExportOptions(false);
+    setMessages(prev => [...prev, { text: "Sure, let's continue refining your itinerary! What would you like to change?", type: 'bot' }]);
+  };
+
   return {
     messages,
     inputValue,
@@ -132,7 +205,10 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
     isFinished: false,
     preferences,
     itinerary,
+    showWhatsAppExportOptions,
+    setShowWhatsAppExportOptions,
     handleSend,
-    resetPlanner
+    resetPlanner,
+    handleResumeChat
   };
 };

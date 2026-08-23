@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/(destinations|services|food|experiences|flights|journal|team)", "destination": "/index.html" },
+    { "source": "/(about|contact|planner|agent|admin|traveler|partner)", "destination": "/index.html" }
+  ]
+}

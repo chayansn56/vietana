@@ -1,0 +1,1404 @@
+diff --git a/api/inquiry.js b/api/inquiry.js
+index f90ccdd..0d9a5ef 100644
+--- a/api/inquiry.js
++++ b/api/inquiry.js
+@@ -25,7 +25,7 @@ export default async function handler(req, res) {
+     });
+   }
+ 
+-  const { name, email, phoneCode, phone, travelDate, travelers, service, message, source } = req.body;
++  const { name, email, phoneCode, phone, travelDate, travelers, service, message, source, attribution } = req.body;
+ 
+   // 2. Input Validation
+   if (!name || !name.trim()) {
+@@ -48,6 +48,20 @@ export default async function handler(req, res) {
+   const finalPhone = `${phoneCode || ''} ${phone}`.trim();
+   const finalSource = source || 'Google Ads';
+ 
++  let finalMessage = message ? message.trim() : '';
++  if (attribution) {
++    const attrSummary = `\n\n--- Attribution Data ---\n` +
++      `Landing Page: ${attribution.landing_page || 'N/A'}\n` +
++      `Referrer: ${attribution.document_referrer || 'N/A'}\n` +
++      `UTM Source: ${attribution.utm_source || 'N/A'}\n` +
++      `UTM Medium: ${attribution.utm_medium || 'N/A'}\n` +
++      `UTM Campaign: ${attribution.utm_campaign || 'N/A'}\n` +
++      `GCLID: ${attribution.gclid || 'N/A'}\n` +
++      `First Touch: ${attribution.first_touch ? JSON.stringify(attribution.first_touch) : 'N/A'}\n` +
++      `Current Session: ${attribution.current_session ? JSON.stringify(attribution.current_session) : 'N/A'}`;
++    finalMessage = finalMessage ? `${finalMessage}${attrSummary}` : attrSummary.trim();
++  }
++
+   try {
+     // 3. Initialize Supabase and Save Lead
+     const supabase = createClient(supabaseUrl, supabaseKey);
+@@ -63,7 +77,7 @@ export default async function handler(req, res) {
+           service: service || null,
+           'travel dates': travelDate,
+           travelers: travelers || null,
+-          message: message ? message.trim() : null,
++          message: finalMessage || null,
+           source: finalSource,
+           status: 'New'
+         }
+@@ -177,6 +191,18 @@ export default async function handler(req, res) {
+             <td style="padding: 10px; font-weight: bold; color: #64748b;">Source</td>
+             <td style="padding: 10px; color: #1e293b;">${finalSource}</td>
+           </tr>
++          ${attribution ? `
++          <tr style="border-bottom: 1px solid #f1f5f9;">
++            <td style="padding: 10px; font-weight: bold; color: #64748b; vertical-align: top;">Attribution</td>
++            <td style="padding: 10px; color: #1e293b; font-size: 12px; font-family: monospace;">
++              <strong>Landing:</strong> ${attribution.landing_page || 'N/A'}<br/>
++              <strong>Referrer:</strong> ${attribution.document_referrer || 'N/A'}<br/>
++              <strong>UTM Source:</strong> ${attribution.utm_source || 'N/A'}<br/>
++              <strong>UTM Medium:</strong> ${attribution.utm_medium || 'N/A'}<br/>
++              <strong>UTM Campaign:</strong> ${attribution.utm_campaign || 'N/A'}<br/>
++              <strong>GCLID:</strong> ${attribution.gclid || 'N/A'}
++            </td>
++          </tr>` : ''}
+           <tr>
+             <td style="padding: 10px; font-weight: bold; color: #64748b;">Database ID</td>
+             <td style="padding: 10px; font-weight: bold; color: #0d4f2e;">${savedLead.id}</td>
+diff --git a/index.html b/index.html
+index 8a7f215..12d70db 100644
+--- a/index.html
++++ b/index.html
+@@ -18,14 +18,7 @@
+       gtag('config', 'AW-18279926757');
+       gtag('config', 'G-RPQVWE6VHG');
+     </script>
+-    <!-- Event snippet for Page view conversion page -->
+-    <script>
+-      gtag('event', 'conversion', {
+-          'send_to': 'AW-18279926757/KHuxCPyngMccEOWXxoxE',
+-          'value': 1.0,
+-          'currency': 'INR'
+-      });
+-    </script>
++
+ 
+     <!-- Canonical & Sitemap -->
+     <link rel="canonical" href="https://vietana.com/" />
+diff --git a/src/App.tsx b/src/App.tsx
+index cfe14d3..eb3f8e4 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -13,6 +13,7 @@ import StickyMobileFooterCTA from './components/StickyMobileFooterCTA';
+ import QuickQuoteSection from './components/QuickQuoteSection';
+ import Icon from './components/ui/Icon';
+ import { trackEvent } from './utils/analytics';
++import { initAttribution } from './utils/attribution';
+ 
+ // Layout Components
+ import ProgressBar from './components/layout/ProgressBar';
+@@ -60,6 +61,10 @@ export default function App() {
+   useIntersectionObserver();
+   useMetadata('Feel Vietnam, Your Way', 'Premium bespoke travel for Indian travelers. Locally managed from Ho Chi Minh City.');
+ 
++  useEffect(() => {
++    initAttribution();
++  }, []);
++
+   const [activePortal, setActivePortal] = useState<'agent' | 'admin' | 'traveler' | 'partner' | null>(null);
+   const [isLoginOpen, setIsLoginOpen] = useState(false);
+   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+@@ -188,11 +193,9 @@ export default function App() {
+     }
+   };
+ 
+-  // Mobile Inquiry Drawer States (Homepage Scroll Trigger)
++  // Mobile Inquiry Drawer States (Homepage Time Trigger)
+   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+   const [isMobile, setIsMobile] = useState(false);
+-  const [triggerEl, setTriggerEl] = useState<HTMLDivElement | null>(null);
+-  const autoOpenTimer = useRef<NodeJS.Timeout | null>(null);
+   const previousFocusEl = useRef<HTMLElement | null>(null);
+   const drawerHeadingRef = useRef<HTMLHeadingElement>(null);
+   const bodyPreviousOverflow = useRef<string>('');
+@@ -202,66 +205,19 @@ export default function App() {
+     const handleResize = () => {
+       const mobile = window.innerWidth < 768;
+       setIsMobile(mobile);
+-      if (!mobile && autoOpenTimer.current) {
+-        clearTimeout(autoOpenTimer.current);
+-      }
+     };
+     window.addEventListener('resize', handleResize);
+     handleResize();
+     return () => window.removeEventListener('resize', handleResize);
+   }, []);
+ 
+-  // IntersectionObserver for mobile auto-open on homepage
+-  useEffect(() => {
+-    if (!isMobile || !triggerEl || activePortal || hash === '#/experiences') return;
+-
+-    const observer = new IntersectionObserver((entries) => {
+-      entries.forEach((entry) => {
+-        if (entry.isIntersecting) {
+-          const triggered = sessionStorage.getItem('vietana_quote_popup_triggered') === 'true';
+-          const dismissed = sessionStorage.getItem('vietana_quote_popup_dismissed') === 'true';
+-          const submitted = sessionStorage.getItem('vietana_quote_submitted') === 'true';
+-
+-          if (!triggered && !dismissed && !submitted && !isDrawerOpen) {
+-            if (autoOpenTimer.current) clearTimeout(autoOpenTimer.current);
+-
+-            autoOpenTimer.current = setTimeout(() => {
+-              const currentTriggered = sessionStorage.getItem('vietana_quote_popup_triggered') === 'true';
+-              const currentDismissed = sessionStorage.getItem('vietana_quote_popup_dismissed') === 'true';
+-              const currentSubmitted = sessionStorage.getItem('vietana_quote_submitted') === 'true';
+-
+-              if (!currentTriggered && !currentDismissed && !currentSubmitted) {
+-                if (document.activeElement) {
+-                  previousFocusEl.current = document.activeElement as HTMLElement;
+-                }
+-                
+-                setIsDrawerOpen(true);
+-                sessionStorage.setItem('vietana_quote_popup_triggered', 'true');
+-                trackEvent('experience_quote_auto_open');
+-              }
+-            }, 800);
+-          }
+-        } else {
+-          if (autoOpenTimer.current) {
+-            clearTimeout(autoOpenTimer.current);
+-            autoOpenTimer.current = null;
+-          }
+-        }
+-      });
+-    }, { threshold: 0.1 });
+-
+-    observer.observe(triggerEl);
+-    return () => {
+-      observer.disconnect();
+-      if (autoOpenTimer.current) clearTimeout(autoOpenTimer.current);
+-    };
+-  }, [isMobile, isDrawerOpen, activePortal, hash, triggerEl]);
+-
+   // Handle focus movement & background scroll lock
+   useEffect(() => {
+     if (isDrawerOpen) {
+-      bodyPreviousOverflow.current = document.body.style.overflow;
+-      document.body.style.overflow = 'hidden';
++      if (isMobile) {
++        bodyPreviousOverflow.current = document.body.style.overflow;
++        document.body.style.overflow = 'hidden';
++      }
+ 
+       setTimeout(() => {
+         if (drawerHeadingRef.current) {
+@@ -269,7 +225,7 @@ export default function App() {
+         }
+       }, 100);
+     } else {
+-      if (bodyPreviousOverflow.current !== undefined) {
++      if (isMobile && bodyPreviousOverflow.current !== undefined) {
+         document.body.style.overflow = bodyPreviousOverflow.current;
+       }
+ 
+@@ -279,11 +235,11 @@ export default function App() {
+     }
+ 
+     return () => {
+-      if (isDrawerOpen && bodyPreviousOverflow.current !== undefined) {
++      if (isDrawerOpen && isMobile && bodyPreviousOverflow.current !== undefined) {
+         document.body.style.overflow = bodyPreviousOverflow.current;
+       }
+     };
+-  }, [isDrawerOpen]);
++  }, [isDrawerOpen, isMobile]);
+ 
+   // Handle Escape key closing
+   useEffect(() => {
+@@ -297,23 +253,22 @@ export default function App() {
+   }, [isDrawerOpen]);
+ 
+   const handleManualOpen = () => {
+-    if (autoOpenTimer.current) clearTimeout(autoOpenTimer.current);
+     if (document.activeElement) {
+       previousFocusEl.current = document.activeElement as HTMLElement;
+     }
+     setIsDrawerOpen(true);
+-    trackEvent('experience_quote_manual_open');
++    trackEvent('inquiry_drawer_impression', { trigger_type: 'manual' });
+   };
+ 
+   const handleDismiss = () => {
+     setIsDrawerOpen(false);
+     sessionStorage.setItem('vietana_quote_popup_dismissed', 'true');
+-    trackEvent('experience_quote_dismiss');
++    trackEvent('inquiry_drawer_dismiss');
+   };
+ 
+   const handleFormSubmitSuccess = () => {
+     sessionStorage.setItem('vietana_quote_submitted', 'true');
+-    trackEvent('experience_quote_submit');
++    // Note: inquiry_drawer_submit event is dispatched inside InquiryForm.tsx
+     setTimeout(() => {
+       setIsDrawerOpen(false);
+     }, 2000);
+@@ -447,11 +402,11 @@ export default function App() {
+   }
+ 
+   return (
+-    <div className="min-h-screen bg-[#FAF8F3] dark:bg-black text-[#12302B] dark:text-white transition-colors duration-300 overflow-hidden selection:bg-brand-gold selection:text-black">
++    <div className="min-h-screen bg-[#FAF8F3] dark:bg-black text-[#12302B] dark:text-white transition-colors duration-300 overflow-x-hidden selection:bg-brand-gold selection:text-black">
+       <SEO />
+       <ProgressBar progress={scrollProgress} />
+       <BackToTop visible={scrollY > 700} />
+-      {(!isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen && !isFlightSearchOpen) && (
++      {(!isDrawerOpen && !isLoginOpen && !isPaletteOpen && !isPlannerOpen && !isBuilderOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isContactOpen && !isAboutOpen && !isFlightSearchOpen) && (
+         <FloatingHelpAndChat 
+           onPlannerClick={() => openPlanner()} 
+           onWhatsAppClick={() => setIsWhatsAppOpen(true)}
+@@ -481,7 +436,6 @@ export default function App() {
+             onOpenBuilder={(dest) => { setBuilderDestinations(dest || []); setIsBuilderOpen(true); }} 
+             onOpenPlanner={(dest, prompt) => openPlanner(dest, prompt)}
+           />
+-          <div ref={setTriggerEl} className="w-full h-2 pointer-events-none opacity-0" aria-hidden="true" />
+           <Separator variant="gold" />
+           <Services />
+           <Separator variant="green" />
+@@ -594,7 +548,7 @@ export default function App() {
+       />
+ 
+       <PlanMyTripWidget />
+-      <StickyMobileFooterCTA />
++      {!isDrawerOpen && <StickyMobileFooterCTA />}
+       <Footer />
+ 
+       {/* Floating CTA Trigger Button (Mobile Only) */}
+@@ -610,11 +564,11 @@ export default function App() {
+         </div>
+       )}
+ 
+-      {/* Premium Mobile Bottom Drawer Modal */}
++      {/* Premium Mobile Bottom Drawer Modal / Desktop Centered Modal */}
+       <AnimatePresence>
+-        {isDrawerOpen && isMobile && (
++        {isDrawerOpen && (
+           <div 
+-            className="fixed inset-0 z-[190000] flex items-end justify-center select-none"
++            className="fixed inset-0 z-[190000] flex items-end md:items-center justify-center select-none"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="drawer-title-home"
+@@ -634,10 +588,10 @@ export default function App() {
+               animate={shouldReduceMotion ? { opacity: 1 } : { y: 0 }}
+               exit={shouldReduceMotion ? { opacity: 0 } : { y: '100%' }}
+               transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+-              className="relative w-full max-h-[88dvh] bg-white dark:bg-[#121214] border-t border-[#E6D9BF]/40 dark:border-white/10 rounded-t-[28px] shadow-2xl flex flex-col overflow-hidden pb-[env(safe-area-inset-bottom)] z-10"
++              className="relative w-full md:max-w-2xl md:rounded-2xl max-h-[88dvh] bg-white dark:bg-[#121214] border-t md:border border-[#E6D9BF]/40 dark:border-white/10 rounded-t-[28px] shadow-2xl flex flex-col overflow-hidden pb-[env(safe-area-inset-bottom)] z-10"
+             >
+               {/* Drag Handle Indicator */}
+-              <div className="w-12 h-1 bg-gray-200 dark:bg-white/10 rounded-full mx-auto my-3 shrink-0" />
++              <div className="w-12 h-1 bg-gray-200 dark:bg-white/10 rounded-full mx-auto my-3 shrink-0 md:hidden" />
+ 
+               {/* Header */}
+               <div className="px-6 pb-4 border-b border-[#E6D9BF]/15 dark:border-white/5 flex justify-between items-start shrink-0">
+@@ -656,16 +610,16 @@ export default function App() {
+                 </div>
+                 <button
+                   onClick={handleDismiss}
+-                  className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 flex items-center justify-center transition border-none cursor-pointer text-gray-500 dark:text-gray-400"
++                  className="w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 flex items-center justify-center transition border-none cursor-pointer text-gray-500 dark:text-gray-400 shrink-0"
+                   aria-label="Close quote drawer"
+                 >
+-                  <Icon name="X" size={14} />
++                  <Icon name="X" size={18} />
+                 </button>
+               </div>
+ 
+               {/* Scrollable Form Body */}
+               <div className="flex-1 overflow-y-auto px-6 py-4">
+-                <InquiryForm onSuccess={handleFormSubmitSuccess} />
++                <InquiryForm onSuccess={handleFormSubmitSuccess} isDrawer={true} minimal={true} />
+               </div>
+             </motion.div>
+           </div>
+diff --git a/src/apps/agent/AgentDashboard.tsx b/src/apps/agent/AgentDashboard.tsx
+index 4201844..4f395a7 100644
+--- a/src/apps/agent/AgentDashboard.tsx
++++ b/src/apps/agent/AgentDashboard.tsx
+@@ -259,7 +259,7 @@ const AgentDashboard: React.FC = () => {
+                         {lead.status}
+                       </span>
+                       <button 
+-                        onClick={() => handleSelectLead(lead)}
++                        onClick={() => setActiveLeadId(lead.id)}
+                         className="bg-[#12302B] hover:bg-[#1E4D45] text-white px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider cursor-pointer"
+                       >
+                         Open Journey
+diff --git a/src/components/AIPlanner.tsx b/src/components/AIPlanner.tsx
+index 10cebc6..748b7c6 100644
+--- a/src/components/AIPlanner.tsx
++++ b/src/components/AIPlanner.tsx
+@@ -8,7 +8,6 @@ import { useAIPlanner } from '../hooks/useAIPlanner';
+ import Icon, { IconName } from './ui/Icon';
+ import { featureFlags } from '../config/featureFlags';
+ import { generateAffiliateUrl } from '../utils/affiliate';
+-import { trackConversion } from '../utils/analytics';
+ 
+ /** Lightweight HTML sanitizer — strips script/iframe/on* attributes */
+ const sanitize = (html: string): string => {
+@@ -142,7 +141,6 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
+   useEffect(() => {
+     if (itinerary) {
+       setShowActionPopup(true);
+-      trackConversion(import.meta.env.VITE_GOOGLE_ADS_PLANNER_LABEL);
+       speakText("I have created your custom itinerary. Would you like me to send it over WhatsApp or Email?");
+     }
+   }, [itinerary]);
+diff --git a/src/components/Contact.tsx b/src/components/Contact.tsx
+index 799c79d..4295d04 100644
+--- a/src/components/Contact.tsx
++++ b/src/components/Contact.tsx
+@@ -4,7 +4,7 @@ import Modal from './ui/Modal';
+ import { Heading, Text } from './ui/Typography';
+ import Icon from './ui/Icon';
+ import { WHATSAPP_INDIA, WHATSAPP_VIETNAM } from '../utils/whatsapp';
+-import { trackConversion } from '../utils/analytics';
++import { trackEvent } from '../utils/analytics';
+ 
+ interface ContactModalProps {
+   isOpen: boolean;
+@@ -125,7 +125,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
+                     href={loc.waUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+-                    onClick={() => trackConversion(import.meta.env.VITE_GOOGLE_ADS_WHATSAPP_LABEL)}
++                    onClick={() => trackEvent('whatsapp_click', { location: loc.id })}
+                     className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl transition-all duration-300 font-semibold tracking-wide text-sm shadow-xl ${loc.btnBg} ${loc.btnText}`}
+                   >
+                     <Icon name="MessageCircle" size={18} />
+diff --git a/src/components/CustomTripBuilder.tsx b/src/components/CustomTripBuilder.tsx
+index a8fc144..5087189 100644
+--- a/src/components/CustomTripBuilder.tsx
++++ b/src/components/CustomTripBuilder.tsx
+@@ -10,7 +10,8 @@ import { Heading, Text } from './ui/Typography';
+ import Icon from './ui/Icon';
+ import BrandName from './ui/BrandName';
+ import { Compass, Heart, Sparkles, Gem, ArrowRight, ArrowLeft } from 'lucide-react';
+-import { trackConversion } from '../utils/analytics';
++import { handleLeadSuccess } from '../utils/analytics';
++import { getAttributionPayload } from '../utils/attribution';
+ 
+ interface CustomTripBuilderProps {
+   isOpen: boolean;
+@@ -141,7 +142,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
+     triggerTimelineGeneration();
+   };
+ 
+-  const handleLeadSubmit = (e: React.FormEvent) => {
++  const handleLeadSubmit = async (e: React.FormEvent) => {
+     e.preventDefault();
+     if (!leadName.trim() || !leadEmail.trim() || !leadWhatsapp.trim()) return;
+     
+@@ -149,11 +150,35 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
+     setLeadInfo(info);
+     localStorage.setItem('vietana_lead_info', JSON.stringify(info));
+     setShowLeadGate(false);
++    
++    try {
++      const response = await fetch('/api/inquiry', {
++        method: 'POST',
++        headers: { 'Content-Type': 'application/json' },
++        body: JSON.stringify({
++          name: leadName,
++          email: leadEmail,
++          phone: leadWhatsapp,
++          travelDate: 'Flexible / Not specified yet',
++          travelers: `${paxAdults} Adults, ${paxChildren} Kids`,
++          service: 'Tour Package',
++          message: `Custom Trip Builder Lead. Style: ${style}. Days: ${days}. Route: ${suggestedRoute}.`,
++          source: 'Custom Trip Builder',
++          ...getAttributionPayload()
++        })
++      });
++      const result = await response.json();
++      if (response.ok && result.success) {
++        handleLeadSuccess(result, 'Custom Trip Builder');
++      }
++    } catch (e) {
++      console.error('Failed to save trip builder lead:', e);
++    }
++
+     triggerTimelineGeneration();
+   };
+ 
+   const sendToWhatsApp = () => {
+-    trackConversion('whatsapp_inquiry');
+     const text = `Hi VIETANA! I just planned my custom Vietnam trip:\n- Route: ${suggestedRoute}\n- Duration: ${days} Days\n- Style: ${style}\n- Travelers: ${paxAdults} Adults, ${paxChildren} Kids\n- Estimate: ₹${estimate.minTotal.toLocaleString('en-IN')} - ₹${estimate.maxTotal.toLocaleString('en-IN')}\n\nPlease help me book this journey!`;
+     window.open(`https://wa.me/919953294543?text=${encodeURIComponent(text)}`, '_blank');
+   };
+@@ -209,7 +234,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
+                     placeholder="Enter your name" 
+                     value={leadName}
+                     onChange={e => setLeadName(e.target.value)}
+-                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm outline-none"
++                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base md:text-sm outline-none"
+                   />
+                 </div>
+ 
+@@ -222,7 +247,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
+                     placeholder="Enter your email" 
+                     value={leadEmail}
+                     onChange={e => setLeadEmail(e.target.value)}
+-                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm outline-none"
++                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base md:text-sm outline-none"
+                   />
+                 </div>
+ 
+@@ -235,7 +260,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
+                     placeholder="Enter mobile number" 
+                     value={leadWhatsapp}
+                     onChange={e => setLeadWhatsapp(e.target.value)}
+-                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm outline-none"
++                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base md:text-sm outline-none"
+                   />
+                 </div>
+               </div>
+@@ -336,7 +361,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
+                       <select 
+                         value={departureCity} 
+                         onChange={(e) => setDepartureCity(e.target.value)}
+-                        className="w-full bg-[#F0EAD6] border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] outline-none shadow-xs font-semibold cursor-pointer"
++                        className="w-full bg-[#F0EAD6] border border-[#E6D9BF] rounded-xl px-4 py-3 text-base md:text-sm text-[#12302B] outline-none shadow-xs font-semibold cursor-pointer"
+                       >
+                         {['Delhi', 'Mumbai', 'Bengaluru', 'Chennai', 'Kolkata'].map(c => (
+                           <option key={c} value={c}>{c}</option>
+diff --git a/src/components/Destinations.tsx b/src/components/Destinations.tsx
+index 59cae30..a64c53d 100644
+--- a/src/components/Destinations.tsx
++++ b/src/components/Destinations.tsx
+@@ -8,6 +8,7 @@ import Modal from './ui/Modal';
+ import Icon from './ui/Icon';
+ import { motion, AnimatePresence } from 'motion/react';
+ import { soundService } from '../services/CardSoundService';
++import { trackEvent } from '../utils/analytics';
+ 
+ const getWeatherForCity = (cityName: string) => {
+   switch (cityName) {
+@@ -31,6 +32,15 @@ const Destinations: React.FC = () => {
+   const [expandedSight, setExpandedSight] = useState<string | null>(null);
+   const [isAllCitiesOpen, setIsAllCitiesOpen] = useState(false);
+ 
++  React.useEffect(() => {
++    if (selectedCity) {
++      trackEvent('destination_view', {
++        destination_name: selectedCity.name,
++        destination_id: selectedCity.id || selectedCity.name,
++      });
++    }
++  }, [selectedCity]);
++
+   React.useEffect(() => {
+     const handleSelectDestination = (e: Event) => {
+       const customEvent = e as CustomEvent;
+diff --git a/src/components/ExperienceDetailsPopup.tsx b/src/components/ExperienceDetailsPopup.tsx
+index eccfe1d..1b70ee6 100644
+--- a/src/components/ExperienceDetailsPopup.tsx
++++ b/src/components/ExperienceDetailsPopup.tsx
+@@ -74,14 +74,14 @@ const ExperienceDetailsPopup: React.FC<ExperienceDetailsPopupProps> = ({
+               <div className="flex gap-3">
+                 <button 
+                   onClick={handleShare}
+-                  className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 text-[#12302B] border border-[#E6D9BF]/40 shadow-xs flex items-center justify-center transition-all cursor-pointer"
++                  className="w-11 h-11 rounded-full bg-white hover:bg-gray-100 text-[#12302B] border border-[#E6D9BF]/40 shadow-xs flex items-center justify-center transition-all cursor-pointer"
+                   title="Share Entry"
+                 >
+                   <Icon name="Share2" size={15} />
+                 </button>
+                 <button 
+                   onClick={onClose}
+-                  className="w-10 h-10 rounded-full bg-[#12302B] hover:bg-[#0E7C66] text-white shadow-md flex items-center justify-center transition-all cursor-pointer border-none"
++                  className="w-11 h-11 rounded-full bg-[#12302B] hover:bg-[#0E7C66] text-white shadow-md flex items-center justify-center transition-all cursor-pointer border-none"
+                   title="Close Journal"
+                 >
+                   <Icon name="X" size={16} />
+diff --git a/src/components/Hero.tsx b/src/components/Hero.tsx
+index 9ea9b80..4d4ab9b 100644
+--- a/src/components/Hero.tsx
++++ b/src/components/Hero.tsx
+@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
+ import { HERO_SLIDES } from '../data/siteContent';
+ import { WHATSAPP_NUMBERS, buildWhatsAppLink, WHATSAPP_DEFAULT } from '../utils/whatsapp';
+ import { useTranslation } from '../contexts/LanguageContext';
+-import { trackConversion } from '../utils/analytics';
++import { handleLeadSuccess } from '../utils/analytics';
++import { getAttributionPayload } from '../utils/attribution';
+ import Button from './ui/Button';
+ import Section from './ui/layout/Section';
+ import Container from './ui/layout/Container';
+@@ -127,11 +128,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
+     if (!whatsappNumber.trim()) return;
+     setIsSubmitting(true);
+ 
+-    trackConversion(import.meta.env.VITE_GOOGLE_ADS_WHATSAPP_LABEL || 'hero_quick_quote');
+-
+     // 1. Submit lead details to Vercel API
+     try {
+-      await fetch('/api/inquiry', {
++      const response = await fetch('/api/inquiry', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+@@ -145,9 +144,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
+           travelers: travelers,
+           service: 'Tour Package',
+           message: `Inquiry from Hero Search bar (Vibe: ${activeVibe}): From ${fromCity} going to ${goingTo}. Month of Travel: ${travelMonth}. Travelers: ${travelers}.`,
+-          source: 'Mockup Style Horizontal Search Bar in Hero'
++          source: 'Mockup Style Horizontal Search Bar in Hero',
++          ...getAttributionPayload()
+         }),
+       });
++      const result = await response.json();
++      if (response.ok && result.success) {
++        handleLeadSuccess(result, 'Hero Search Bar');
++      }
+     } catch (err) {
+       console.error('Failed to submit search lead:', err);
+     }
+@@ -392,7 +396,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
+                 <select
+                   value={countryCode}
+                   onChange={(e) => setCountryCode(e.target.value)}
+-                  className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold cursor-pointer font-bold shrink-0 w-20"
++                  className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-base md:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold cursor-pointer font-bold shrink-0 w-20"
+                 >
+                   <option value="+91">🇮🇳 +91</option>
+                   <option value="+84">🇻🇳 +84</option>
+@@ -407,7 +411,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
+                   placeholder="Enter phone number"
+                   value={whatsappNumber}
+                   onChange={(e) => setWhatsappNumber(e.target.value.replace(/\D/g, ''))}
+-                  className="flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold font-bold placeholder-[#12302B]/40"
++                  className="flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base md:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold font-bold placeholder-[#12302B]/40"
+                 />
+               </div>
+             </div>
+diff --git a/src/components/InquiryForm.tsx b/src/components/InquiryForm.tsx
+index e4caedd..7a26a03 100644
+--- a/src/components/InquiryForm.tsx
++++ b/src/components/InquiryForm.tsx
+@@ -3,8 +3,11 @@ import Section from './ui/layout/Section';
+ import Container from './ui/layout/Container';
+ import { Heading, Text } from './ui/Typography';
+ import Button from './ui/Button';
++import { trackEvent, handleLeadSuccess } from '../utils/analytics';
++import { getAttributionPayload } from '../utils/attribution';
+ 
+-export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } = {}) {
++export default function InquiryForm({ onSuccess, isDrawer = false, onStart, minimal = false }: { onSuccess?: () => void, isDrawer?: boolean, onStart?: () => void, minimal?: boolean } = {}) {
++  const [hasStartedTyping, setHasStartedTyping] = useState(false);
+   const [formData, setFormData] = useState(() => {
+     const defaultData = {
+       name: '',
+@@ -71,7 +74,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+       newErrors.phone = 'Please enter a valid phone number (7-12 digits)';
+     }
+     
+-    if (!formData.travelDate) newErrors.travelDate = 'Travel date is required';
++    if (!minimal && !formData.travelDate) newErrors.travelDate = 'Travel date is required';
+     
+     if (formData.travelers) {
+       const travelersNum = parseInt(formData.travelers, 10);
+@@ -86,6 +89,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+ 
+   const handleSubmit = async (e: React.FormEvent) => {
+     e.preventDefault();
++    trackEvent('form_submit_attempt', { form_name: isDrawer ? 'inquiry_drawer' : 'main_inquiry' });
+     if (!validate()) return;
+ 
+     setIsSubmitting(true);
+@@ -99,7 +103,8 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+         },
+         body: JSON.stringify({
+           ...formData,
+-          source: 'Google Ads'
++          source: isDrawer ? 'Inquiry Drawer' : 'Main Inquiry Form',
++          ...getAttributionPayload()
+         }),
+       });
+ 
+@@ -112,6 +117,12 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+       // Store submission details for personalized Thank You page
+       sessionStorage.setItem('vietana_lead_name', formData.name);
+       
++      handleLeadSuccess(result, isDrawer ? 'inquiry_drawer' : 'main_inquiry');
++      
++      if (isDrawer) {
++        trackEvent('inquiry_drawer_submit');
++      }
++
+       // Trigger callback if defined
+       if (onSuccess) {
+         onSuccess();
+@@ -130,6 +141,16 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+     const { name, value } = e.target;
+     setFormData(prev => ({ ...prev, [name]: value }));
++    
++    if (!hasStartedTyping) {
++      setHasStartedTyping(true);
++      if (onStart) onStart();
++      trackEvent('form_start', { form_name: isDrawer ? 'inquiry_drawer' : 'main_inquiry' });
++      if (isDrawer) {
++        trackEvent('inquiry_drawer_start');
++      }
++    }
++
+     if (errors[name]) {
+       setErrors(prev => {
+         const next = { ...prev };
+@@ -139,6 +160,81 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+     }
+   };
+ 
++  if (minimal) {
++    return (
++      <form onSubmit={handleSubmit} className="space-y-4">
++        {apiError && (
++          <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-600 rounded-lg text-xs font-light">
++            {apiError}
++          </div>
++        )}
++
++        {/* Full Name */}
++        <div className="flex flex-col gap-1.5">
++          <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
++            Passenger Name *
++          </label>
++          <div className="relative rounded-xl bg-gray-50 dark:bg-white/5 border border-[#E6D9BF]/40 dark:border-white/10">
++            <input
++              type="text"
++              id="name"
++              name="name"
++              value={formData.name}
++              onChange={handleInputChange}
++              placeholder="Enter full name"
++              className="w-full bg-transparent px-4 py-2.5 text-[#12302B] dark:text-white placeholder-gray-400 focus:outline-none text-base md:text-sm font-medium"
++            />
++          </div>
++          {errors.name && <span className="text-xs text-red-600 font-light">{errors.name}</span>}
++        </div>
++
++        {/* Phone Number (with Country Code) */}
++        <div className="flex flex-col gap-1.5">
++          <label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
++            WhatsApp / Contact *
++          </label>
++          <div className="flex gap-2">
++            <div className="rounded-xl bg-gray-50 dark:bg-white/5 border border-[#E6D9BF]/40 dark:border-white/10 overflow-hidden">
++              <select
++                name="phoneCode"
++                value={formData.phoneCode}
++                onChange={handleInputChange}
++                className="bg-transparent px-3 py-2.5 text-[#12302B] dark:text-white text-base md:text-sm focus:outline-none cursor-pointer font-medium"
++              >
++                {phoneCodes.map(pc => (
++                  <option key={pc.code} value={pc.code} className="bg-[#FAF8F3] dark:bg-[#121214] text-[#12302B] dark:text-white">
++                    {pc.code}
++                  </option>
++                ))}
++              </select>
++            </div>
++            <div className="flex-1 relative rounded-xl bg-gray-50 dark:bg-white/5 border border-[#E6D9BF]/40 dark:border-white/10">
++              <input
++                type="tel"
++                id="phone"
++                name="phone"
++                value={formData.phone}
++                onChange={handleInputChange}
++                placeholder="9999999999"
++                className="w-full bg-transparent px-4 py-2.5 text-[#12302B] dark:text-white placeholder-gray-400 focus:outline-none text-base md:text-sm font-medium"
++              />
++            </div>
++          </div>
++          {errors.phone && <span className="text-xs text-red-600 font-light">{errors.phone}</span>}
++        </div>
++
++        <Button
++          type="submit"
++          variant="gold"
++          className="w-full py-3 mt-4 text-sm font-mono tracking-wider font-bold"
++          disabled={isSubmitting}
++        >
++          {isSubmitting ? 'GENERATING PASS...' : 'CLAIM FREE QUOTE ➔'}
++        </Button>
++      </form>
++    );
++  }
++
+   return (
+     <Section id="inquiry" variant="dark" className="border-t border-white/5 relative py-24 overflow-hidden">
+       {/* Background decorations */}
+@@ -203,7 +299,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                         value={formData.name}
+                         onChange={handleInputChange}
+                         placeholder="Enter full name"
+-                        className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-sm font-medium"
++                        className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-base md:text-sm font-medium"
+                       />
+                     </div>
+                     {errors.name && <span className="text-xs text-red-600 font-light mt-0.5">{errors.name}</span>}
+@@ -220,7 +316,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                           name="phoneCode"
+                           value={formData.phoneCode}
+                           onChange={handleInputChange}
+-                          className="bg-transparent px-3 py-3 text-[#12302B] text-sm focus:outline-none cursor-pointer font-medium"
++                          className="bg-transparent px-3 py-3 text-[#12302B] text-base md:text-sm focus:outline-none cursor-pointer font-medium"
+                         >
+                           {phoneCodes.map(pc => (
+                             <option key={pc.code} value={pc.code} className="bg-[#FAF8F3] text-[#12302B]">
+@@ -237,7 +333,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                           value={formData.phone}
+                           onChange={handleInputChange}
+                           placeholder="9999999999"
+-                          className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-sm font-medium"
++                          className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-base md:text-sm font-medium"
+                         />
+                       </div>
+                     </div>
+@@ -256,7 +352,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                         name="travelDate"
+                         value={formData.travelDate}
+                         onChange={handleInputChange}
+-                        className="w-full bg-transparent px-4 py-3 text-[#12302B] focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-sm font-medium cursor-pointer"
++                        className="w-full bg-transparent px-4 py-3 text-[#12302B] focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-base md:text-sm font-medium cursor-pointer"
+                       />
+                     </div>
+                     {errors.travelDate && <span className="text-xs text-red-600 font-light mt-0.5">{errors.travelDate}</span>}
+@@ -276,7 +372,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                         value={formData.email}
+                         onChange={handleInputChange}
+                         placeholder="e.g. name@domain.com"
+-                        className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-sm font-medium"
++                        className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-base md:text-sm font-medium"
+                       />
+                     </div>
+                     {errors.email && <span className="text-xs text-red-600 font-light mt-0.5">{errors.email}</span>}
+@@ -294,7 +390,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                         name="service"
+                         value={formData.service}
+                         onChange={handleInputChange}
+-                        className="w-full bg-transparent px-4 py-3 text-[#12302B] focus:outline-none cursor-pointer text-sm font-medium"
++                        className="w-full bg-transparent px-4 py-3 text-[#12302B] focus:outline-none cursor-pointer text-base md:text-sm font-medium"
+                       >
+                         {services.map(s => (
+                           <option key={s} value={s} className="bg-[#FAF8F3] text-[#12302B]">
+@@ -320,7 +416,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                         value={formData.travelers}
+                         onChange={handleInputChange}
+                         placeholder="2"
+-                        className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-sm font-medium"
++                        className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-base md:text-sm font-medium"
+                       />
+                     </div>
+                     {errors.travelers && <span className="text-xs text-red-600 font-light mt-0.5">{errors.travelers}</span>}
+@@ -342,7 +438,7 @@ export default function InquiryForm({ onSuccess }: { onSuccess?: () => void } =
+                       value={formData.message}
+                       onChange={handleInputChange}
+                       placeholder="e.g. Vegetarian food preferences, hotel styling, multi-city plans..."
+-                      className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-sm resize-none font-medium"
++                      className="w-full bg-transparent px-4 py-3 text-[#12302B] placeholder-[#12302B]/35 focus:outline-none focus:ring-1 focus:ring-brand-gold/30 text-base md:text-sm resize-none font-medium"
+                     />
+                   </div>
+                 </div>
+diff --git a/src/components/Packages.tsx b/src/components/Packages.tsx
+index d917118..f08b0f2 100644
+--- a/src/components/Packages.tsx
++++ b/src/components/Packages.tsx
+@@ -8,7 +8,6 @@ import {
+ } from '../data/packagesData';
+ import Button from './ui/Button';
+ import Section from './ui/layout/Section';
+-import { trackConversion } from '../utils/analytics';
+ import Container from './ui/layout/Container';
+ import { Heading, Text } from './ui/Typography';
+ import Badge from './ui/Badge';
+@@ -665,7 +664,6 @@ Please load this itinerary and let me customize it!`;
+                 onClick={() => {
+                   const itemsList = selectedPackage.days.map(d => `Day ${d.day}: ${d.title}`).join('\n');
+                   const msg = `Hi Vietana! I'm interested in the "${selectedPackage.title}" package:\n\n${itemsList}`;
+-                  trackConversion(import.meta.env.VITE_GOOGLE_ADS_WHATSAPP_LABEL);
+                   window.open(`https://wa.me/919953294543?text=${encodeURIComponent(msg)}`, '_blank');
+                 }}
+               >
+diff --git a/src/components/QuickQuoteSection.tsx b/src/components/QuickQuoteSection.tsx
+index 58fabc4..aa0a149 100644
+--- a/src/components/QuickQuoteSection.tsx
++++ b/src/components/QuickQuoteSection.tsx
+@@ -1,7 +1,8 @@
+ import React, { useState } from 'react';
+ import { useTranslation } from '../contexts/LanguageContext';
+ import { WHATSAPP_NUMBERS, buildWhatsAppLink } from '../utils/whatsapp';
+-import { trackConversion } from '../utils/analytics';
++import { handleLeadSuccess } from '../utils/analytics';
++import { getAttributionPayload } from '../utils/attribution';
+ import Icon from './ui/Icon';
+ import { Heading, Text } from './ui/Typography';
+ import Container from './ui/layout/Container';
+@@ -49,11 +50,9 @@ export default function QuickQuoteSection() {
+     if (!whatsappNumber.trim()) return;
+     setIsSubmitting(true);
+ 
+-    trackConversion(import.meta.env.VITE_GOOGLE_ADS_WHATSAPP_LABEL || 'hero_quick_quote');
+-
+     // 1. Submit lead details to the Vercel API
+     try {
+-      await fetch('/api/inquiry', {
++      const response = await fetch('/api/inquiry', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+@@ -67,9 +66,14 @@ export default function QuickQuoteSection() {
+           travelers: travelers,
+           service: 'Tour Package',
+           message: `Inquiry from Search bar: From ${fromCity} going to ${goingTo}. Month of Travel: ${travelMonth}. Travelers: ${travelers}.`,
+-          source: 'Mockup Style Horizontal Search Bar'
++          source: 'Mockup Style Horizontal Search Bar',
++          ...getAttributionPayload()
+         }),
+       });
++      const result = await response.json();
++      if (response.ok && result.success) {
++        handleLeadSuccess(result, 'Quick Quote Bar');
++      }
+     } catch (err) {
+       console.error('Failed to submit search lead:', err);
+     }
+@@ -237,7 +241,7 @@ export default function QuickQuoteSection() {
+                 <select
+                   value={countryCode}
+                   onChange={(e) => setCountryCode(e.target.value)}
+-                  className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold cursor-pointer font-bold shrink-0 w-20"
++                  className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-base md:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold cursor-pointer font-bold shrink-0 w-20"
+                 >
+                   <option value="+91">🇮🇳 +91</option>
+                   <option value="+84">🇻🇳 +84</option>
+@@ -252,7 +256,7 @@ export default function QuickQuoteSection() {
+                   placeholder="Enter phone number"
+                   value={whatsappNumber}
+                   onChange={(e) => setWhatsappNumber(e.target.value.replace(/\D/g, ''))}
+-                  className="flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold font-bold placeholder-[#12302B]/40"
++                  className="flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base md:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold font-bold placeholder-[#12302B]/40"
+                 />
+               </div>
+             </div>
+diff --git a/src/components/ThankYouPage.tsx b/src/components/ThankYouPage.tsx
+index 67d31bc..2614327 100644
+--- a/src/components/ThankYouPage.tsx
++++ b/src/components/ThankYouPage.tsx
+@@ -34,16 +34,6 @@ export default function ThankYouPage() {
+       }, 1000);
+     }
+ 
+-    // Statically trigger the Google Ads conversion event on page load/mount
+-    if (typeof window !== 'undefined' && (window as any).gtag) {
+-      console.log('Firing Google Ads conversion event...');
+-      (window as any).gtag('event', 'conversion', {
+-        'send_to': 'AW-18279926757/KHuxCPyngMccEOWXxoxE',
+-        'value': 1.0,
+-        'currency': 'INR'
+-      });
+-    }
+-
+     return () => {
+       if (interval) clearInterval(interval);
+     };
+diff --git a/src/components/ThingsToDo.tsx b/src/components/ThingsToDo.tsx
+index e54bc58..e00ad0e 100644
+--- a/src/components/ThingsToDo.tsx
++++ b/src/components/ThingsToDo.tsx
+@@ -19,13 +19,21 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+   const [selectedExperience, setSelectedExperience] = useState<ExperienceProduct | null>(null);
+   const [savedExperiences, setSavedExperiences] = useState<string[]>([]);
+   const [lastViewedExperience, setLastViewedExperience] = useState<ExperienceProduct | null>(null);
++
++  useEffect(() => {
++    if (selectedExperience) {
++      trackEvent('experience_view', {
++        experience_id: selectedExperience.id || selectedExperience.title,
++        experience_title: selectedExperience.title,
++        destination: selectedExperience.destination || 'Vietnam'
++      });
++    }
++  }, [selectedExperience]);
+   
+   // Mobile Inquiry Drawer States
+   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+   const [isMobile, setIsMobile] = useState(false);
+   
+-  const triggerRef = useRef<HTMLDivElement>(null);
+-  const autoOpenTimer = useRef<NodeJS.Timeout | null>(null);
+   const previousFocusEl = useRef<HTMLElement | null>(null);
+   const drawerHeadingRef = useRef<HTMLHeadingElement>(null);
+   const bodyPreviousOverflow = useRef<string>('');
+@@ -62,98 +70,41 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+     const handleResize = () => {
+       const mobile = window.innerWidth < 768;
+       setIsMobile(mobile);
+-      if (!mobile && autoOpenTimer.current) {
+-        clearTimeout(autoOpenTimer.current);
+-      }
+     };
+     window.addEventListener('resize', handleResize);
+     handleResize();
+     return () => window.removeEventListener('resize', handleResize);
+   }, []);
+ 
+-  // IntersectionObserver for mobile auto-open
+-  useEffect(() => {
+-    if (!isMobile || !triggerRef.current) return;
+-
+-    const observer = new IntersectionObserver((entries) => {
+-      entries.forEach((entry) => {
+-        if (entry.isIntersecting) {
+-          // Check session flags
+-          const triggered = sessionStorage.getItem('vietana_quote_popup_triggered') === 'true';
+-          const dismissed = sessionStorage.getItem('vietana_quote_popup_dismissed') === 'true';
+-          const submitted = sessionStorage.getItem('vietana_quote_submitted') === 'true';
+-
+-          if (!triggered && !dismissed && !submitted && !isDrawerOpen) {
+-            // Cancel any existing timer
+-            if (autoOpenTimer.current) clearTimeout(autoOpenTimer.current);
+-
+-            // Start 800ms delay timer
+-            autoOpenTimer.current = setTimeout(() => {
+-              // Final check before opening
+-              const currentTriggered = sessionStorage.getItem('vietana_quote_popup_triggered') === 'true';
+-              const currentDismissed = sessionStorage.getItem('vietana_quote_popup_dismissed') === 'true';
+-              const currentSubmitted = sessionStorage.getItem('vietana_quote_submitted') === 'true';
+-
+-              if (!currentTriggered && !currentDismissed && !currentSubmitted) {
+-                // Store active element for focus restoration
+-                if (document.activeElement) {
+-                  previousFocusEl.current = document.activeElement as HTMLElement;
+-                }
+-                
+-                setIsDrawerOpen(true);
+-                sessionStorage.setItem('vietana_quote_popup_triggered', 'true');
+-                trackEvent('experience_quote_auto_open');
+-              }
+-            }, 800);
+-          }
+-        } else {
+-          // Cancel timer if marker leaves viewport
+-          if (autoOpenTimer.current) {
+-            clearTimeout(autoOpenTimer.current);
+-            autoOpenTimer.current = null;
+-          }
+-        }
+-      });
+-    }, { threshold: 0.1 });
+-
+-    observer.observe(triggerRef.current);
+-    return () => {
+-      observer.disconnect();
+-      if (autoOpenTimer.current) clearTimeout(autoOpenTimer.current);
+-    };
+-  }, [isMobile, isDrawerOpen]);
+-
+   // Handle focus movement & background scroll lock
+   useEffect(() => {
+     if (isDrawerOpen) {
+-      // Save background overflow and lock
+-      bodyPreviousOverflow.current = document.body.style.overflow;
+-      document.body.style.overflow = 'hidden';
++      if (isMobile) {
++        bodyPreviousOverflow.current = document.body.style.overflow;
++        document.body.style.overflow = 'hidden';
++      }
+ 
+-      // Move focus into the drawer heading or first field
+       setTimeout(() => {
+         if (drawerHeadingRef.current) {
+           drawerHeadingRef.current.focus();
+         }
+       }, 100);
+     } else {
+-      // Restore background overflow
+-      if (bodyPreviousOverflow.current !== undefined) {
++      if (isMobile && bodyPreviousOverflow.current !== undefined) {
+         document.body.style.overflow = bodyPreviousOverflow.current;
+       }
+ 
+-      // Restore focus
+       if (previousFocusEl.current && document.body.contains(previousFocusEl.current)) {
+         previousFocusEl.current.focus();
+       }
+     }
+ 
+     return () => {
+-      if (isDrawerOpen && bodyPreviousOverflow.current !== undefined) {
++      if (isDrawerOpen && isMobile && bodyPreviousOverflow.current !== undefined) {
+         document.body.style.overflow = bodyPreviousOverflow.current;
+       }
+     };
+-  }, [isDrawerOpen]);
++  }, [isDrawerOpen, isMobile]);
+ 
+   // Handle Escape key closing
+   useEffect(() => {
+@@ -196,24 +147,22 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+   };
+ 
+   const handleManualOpen = () => {
+-    if (autoOpenTimer.current) clearTimeout(autoOpenTimer.current);
+     if (document.activeElement) {
+       previousFocusEl.current = document.activeElement as HTMLElement;
+     }
+     setIsDrawerOpen(true);
+-    trackEvent('experience_quote_manual_open');
++    trackEvent('inquiry_drawer_impression', { trigger_type: 'manual' });
+   };
+ 
+   const handleDismiss = () => {
+     setIsDrawerOpen(false);
+     sessionStorage.setItem('vietana_quote_popup_dismissed', 'true');
+-    trackEvent('experience_quote_dismiss');
++    trackEvent('inquiry_drawer_dismiss');
+   };
+ 
+   const handleFormSubmitSuccess = () => {
+     sessionStorage.setItem('vietana_quote_submitted', 'true');
+-    trackEvent('experience_quote_submit');
+-    // Keep visible state long enough to display success screen, then close
++    // Note: inquiry_drawer_submit event is dispatched inside InquiryForm.tsx
+     setTimeout(() => {
+       setIsDrawerOpen(false);
+     }, 2000);
+@@ -288,7 +237,7 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+                       }`}
+                     >
+                       {/* Image Box */}
+-                      <div className="relative h-80 overflow-hidden bg-gray-50">
++                      <div className="relative h-64 md:h-80 overflow-hidden bg-gray-50">
+                         <img 
+                           src={exp.images.hero} 
+                           alt={exp.title} 
+@@ -327,7 +276,7 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+                       </div>
+ 
+                       {/* Postcard Body */}
+-                      <div className="p-8 md:p-10">
++                      <div className="p-6 md:p-10">
+                         {/* Suitability Badges */}
+                         <div className="flex flex-wrap gap-2 mb-4">
+                           {exp.bestFor.map((best, idx) => (
+@@ -337,9 +286,9 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+                           ))}
+                         </div>
+ 
+-                        <div className="flex justify-between items-center mb-4">
++                        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-1 sm:gap-0 mb-4">
+                           <span className="text-[9px] text-gray-400 font-extrabold uppercase tracking-widest font-mono">
+-                            ⏱️ {exp.duration} // {exp.difficulty}
++                            ⏱️ {exp.visitorInfo?.recommendedDuration || 'Half-Day'} // {exp.difficulty}
+                           </span>
+                           <div className="flex items-center gap-1.5">
+                             <span className="text-xs text-[#F4B400] font-bold">
+@@ -357,18 +306,18 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+                           {exp.shortDesc}
+                         </Text>
+ 
+-                        <div className="border-t border-[#E6D9BF]/25 pt-6 flex flex-wrap gap-4 items-center justify-between">
++                        <div className="border-t border-[#E6D9BF]/25 pt-6 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
+                           <span className="text-[10px] font-bold uppercase tracking-widest text-[#12302B]">
+                             Estimated Cost: <span className="text-[#0E7C66] font-mono font-black">{exp.pricing.displayPrice}</span>
+                           </span>
+-                          <div className="flex gap-2">
++                          <div className="flex gap-2 w-full sm:w-auto">
+                             <button 
+                               onClick={(e) => handleAddToTrip(exp, e)}
+-                              className="py-2.5 px-4 bg-[#FAF8F3] hover:bg-[#E6D9BF]/20 text-[#12302B] border border-[#E6D9BF] text-[9px] font-bold uppercase tracking-widest rounded-lg transition cursor-pointer"
++                              className="flex-1 sm:flex-none py-2.5 px-4 bg-[#FAF8F3] hover:bg-[#E6D9BF]/20 text-[#12302B] border border-[#E6D9BF] text-[9px] font-bold uppercase tracking-widest rounded-lg transition cursor-pointer text-center"
+                             >
+                               + Add to Trip
+                             </button>
+-                            <button className="py-2.5 px-4 bg-[#0E7C66] text-white hover:bg-[#12302B] text-[9px] font-bold uppercase tracking-widest rounded-lg transition border-none cursor-pointer shadow-xs">
++                            <button className="flex-1 sm:flex-none py-2.5 px-4 bg-[#0E7C66] text-white hover:bg-[#12302B] text-[9px] font-bold uppercase tracking-widest rounded-lg transition border-none cursor-pointer shadow-xs text-center">
+                               Open Journal
+                             </button>
+                           </div>
+@@ -379,15 +328,6 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+                 })}
+               </div>
+             </div>
+-
+-            {/* Target Marker Trigger right after Chapter 02 (Index 1) */}
+-            {cIdx === 1 && (
+-              <div 
+-                ref={triggerRef} 
+-                className="w-full h-2 pointer-events-none opacity-0" 
+-                aria-hidden="true" 
+-              />
+-            )}
+           </React.Fragment>
+         ))}
+       </Container>
+@@ -469,11 +409,11 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+         </div>
+       )}
+ 
+-      {/* Premium Mobile Bottom Drawer Modal */}
++      {/* Premium Mobile Bottom Drawer Modal / Desktop Centered Modal */}
+       <AnimatePresence>
+-        {isDrawerOpen && isMobile && (
++        {isDrawerOpen && (
+           <div 
+-            className="fixed inset-0 z-[190000] flex items-end justify-center select-none"
++            className="fixed inset-0 z-[190000] flex items-end md:items-center justify-center select-none"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="drawer-title"
+@@ -493,10 +433,10 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+               animate={shouldReduceMotion ? { opacity: 1 } : { y: 0 }}
+               exit={shouldReduceMotion ? { opacity: 0 } : { y: '100%' }}
+               transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+-              className="relative w-full max-h-[88dvh] bg-white dark:bg-[#121214] border-t border-[#E6D9BF]/40 dark:border-white/10 rounded-t-[28px] shadow-2xl flex flex-col overflow-hidden pb-[env(safe-area-inset-bottom)] z-10"
++              className="relative w-full md:max-w-2xl md:rounded-2xl max-h-[88dvh] bg-white dark:bg-[#121214] border-t md:border border-[#E6D9BF]/40 dark:border-white/10 rounded-t-[28px] shadow-2xl flex flex-col overflow-hidden pb-[env(safe-area-inset-bottom)] z-10"
+             >
+               {/* Drag Handle Indicator */}
+-              <div className="w-12 h-1 bg-gray-200 dark:bg-white/10 rounded-full mx-auto my-3 shrink-0" />
++              <div className="w-12 h-1 bg-gray-200 dark:bg-white/10 rounded-full mx-auto my-3 shrink-0 md:hidden" />
+ 
+               {/* Header */}
+               <div className="px-6 pb-4 border-b border-[#E6D9BF]/15 dark:border-white/5 flex justify-between items-start shrink-0">
+@@ -515,16 +455,16 @@ export default function ThingsToDo({ onOpenPlanner, onOpenContact }: ThingsToDoP
+                 </div>
+                 <button
+                   onClick={handleDismiss}
+-                  className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 flex items-center justify-center transition border-none cursor-pointer text-gray-500 dark:text-gray-400"
++                  className="w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 flex items-center justify-center transition border-none cursor-pointer text-gray-500 dark:text-gray-400 shrink-0"
+                   aria-label="Close quote drawer"
+                 >
+-                  <Icon name="X" size={14} />
++                  <Icon name="X" size={18} />
+                 </button>
+               </div>
+ 
+               {/* Scrollable Form Body */}
+               <div className="flex-1 overflow-y-auto px-6 py-4">
+-                <InquiryForm onSuccess={handleFormSubmitSuccess} />
++                <InquiryForm onSuccess={handleFormSubmitSuccess} isDrawer={true} minimal={true} />
+               </div>
+             </motion.div>
+           </div>
+diff --git a/src/components/ui/WhatsAppPopup.tsx b/src/components/ui/WhatsAppPopup.tsx
+index 35032ff..bc5153a 100644
+--- a/src/components/ui/WhatsAppPopup.tsx
++++ b/src/components/ui/WhatsAppPopup.tsx
+@@ -48,17 +48,7 @@ const WhatsAppPopup: React.FC<WhatsAppPopupProps> = ({ isOpen, onClose }) => {
+       whatsapp_team: team
+     });
+ 
+-    // Fire Google Ads conversion immediately before opening WhatsApp for India team
+-    if (team === 'india') {
+-      if (typeof window !== 'undefined' && (window as any).gtag) {
+-        console.log('Firing Google Ads Contact conversion...');
+-        (window as any).gtag('event', 'conversion', {
+-          send_to: 'AW-18279926757/E5RVCOO168ocEOWXxoxE',
+-          value: 1.0,
+-          currency: 'INR'
+-        });
+-      }
+-    }
++
+ 
+     const link = buildWhatsAppLink(number, message);
+     window.open(link, '_blank', 'noopener,noreferrer');
+diff --git a/src/core/journey/journeyEngine.ts b/src/core/journey/journeyEngine.ts
+index 6ddf5e7..adca59e 100644
+--- a/src/core/journey/journeyEngine.ts
++++ b/src/core/journey/journeyEngine.ts
+@@ -61,7 +61,8 @@ export class JourneyEngine {
+ 
+   // Record a lifecycle or editing action in the event ledger
+   public dispatch(event: JourneyEvent) {
+-    this.state = journeyReducer(this.state, event);
++    this.state = journeyReducer(this.state, event as any);
++    if (!this.state.eventLedger) this.state.eventLedger = [];
+     this.state.eventLedger.push(event);
+ 
+     // Dynamic intelligence checks
+diff --git a/src/core/journey/state.ts b/src/core/journey/state.ts
+index b7b033d..04bc583 100644
+--- a/src/core/journey/state.ts
++++ b/src/core/journey/state.ts
+@@ -5,6 +5,8 @@ export interface JourneyEvent {
+ }
+ 
+ export interface TravelerProfile {
++  name?: string;
++  passportUploaded?: boolean;
+   nationality: string;
+   pax: {
+     adults: number;
+@@ -46,6 +48,7 @@ export interface JourneyState {
+   version: "1.0.0";
+   journeyId: string;
+   events: JourneyEvent[];
++  eventLedger?: any[];
+   travelerProfile: TravelerProfile;
+   itinerary: ItineraryDay[];
+   pricing: TripEstimate;
+@@ -63,6 +66,7 @@ export interface JourneyState {
+   bookingStatus: {
+     readinessScore: number;
+     missingItems: string[];
++    status?: string;
+   };
+   featureFlags: {
+     aiPlanner: boolean;
+diff --git a/src/features/travel-guide/TravelGuidePage.tsx b/src/features/travel-guide/TravelGuidePage.tsx
+index 600347d..80297c1 100644
+--- a/src/features/travel-guide/TravelGuidePage.tsx
++++ b/src/features/travel-guide/TravelGuidePage.tsx
+@@ -5,7 +5,7 @@ import GuideSidebar from './GuideSidebar';
+ import GuideSearch from './GuideSearch';
+ import GuideContent from './GuideContent';
+ import { ARTICLES, Article } from './data';
+-import Heading from '../../components/ui/Typography';
++import { Heading } from '../../components/ui/Typography';
+ 
+ const TravelGuidePage: React.FC = () => {
+   const [searchQuery, setSearchQuery] = useState('');
+diff --git a/src/utils/analytics.ts b/src/utils/analytics.ts
+index 8ef3817..1c1a087 100644
+--- a/src/utils/analytics.ts
++++ b/src/utils/analytics.ts
+@@ -17,12 +17,18 @@ export const trackConversion = (label: string) => {
+ 
+ export const trackEvent = (eventName: string, params?: Record<string, any>) => {
+   if (typeof window !== 'undefined') {
+-    const defaultParams = {
++    const defaultParams: Record<string, any> = {
+       page_location: window.location.href,
+       page_path: window.location.pathname + window.location.hash,
+       page_title: document.title,
+     };
+ 
++    if (eventName.startsWith('inquiry_drawer_')) {
++      defaultParams.page_type = window.location.pathname === '/experiences' || window.location.hash.startsWith('#/experiences')
++        ? 'experiences'
++        : 'homepage';
++    }
++
+     const combinedParams = {
+       ...defaultParams,
+       ...params
+@@ -37,3 +43,34 @@ export const trackEvent = (eventName: string, params?: Record<string, any>) => {
+   }
+ };
+ 
++export const handleLeadSuccess = (result: { success?: boolean; leadId?: string | number }, source: string) => {
++  if (!result || !result.success || !result.leadId) {
++    console.warn('Lead submission did not return a valid success status or leadId:', result);
++    return false;
++  }
++
++  const leadIdStr = String(result.leadId);
++  const storageKey = `vietana_lead_tracked_${leadIdStr}`;
++
++  if (typeof window !== 'undefined' && sessionStorage.getItem(storageKey) === 'true') {
++    console.log(`Lead ${leadIdStr} already tracked in this session. Skipping duplicate conversion events.`);
++    return false;
++  }
++
++  if (typeof window !== 'undefined') {
++    sessionStorage.setItem(storageKey, 'true');
++  }
++
++  trackEvent('generate_lead', {
++    lead_id: leadIdStr,
++    source: source,
++    currency: 'USD',
++    value: 50.0
++  });
++
++  const adsLabel = import.meta.env.VITE_GOOGLE_ADS_LEAD_LABEL || 'lI_8CL_m_osZELaTvs0q';
++  trackConversion(adsLabel);
++
++  return true;
++};
++
+diff --git a/verify_drawer.js b/verify_drawer.js
+deleted file mode 100644
+index 100e2ea..0000000
+--- a/verify_drawer.js
++++ /dev/null
+@@ -1,72 +0,0 @@
+-import puppeteer from 'puppeteer';
+-
+-async function verify() {
+-  const browser = await puppeteer.launch({
+-    headless: true,
+-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+-  });
+-
+-  const page = await browser.newPage();
+-  
+-  // Capture all console messages
+-  page.on('console', msg => {
+-    console.log(`[Browser Console]: ${msg.text()}`);
+-  });
+-
+-  // Set viewport to mobile size (iPhone X width)
+-  await page.setViewport({ width: 375, height: 812, isMobile: true, hasTouch: true });
+-
+-  console.log('Navigating to https://vietana.com/');
+-  await page.goto('https://vietana.com/', { waitUntil: 'networkidle2' });
+-
+-  // Print innerWidth
+-  const innerWidth = await page.evaluate(() => window.innerWidth);
+-  console.log(`Browser innerWidth: ${innerWidth}px`);
+-
+-  // Wait a bit for lazy-loaded bundles to render
+-  console.log('Waiting 3s for lazy loaded elements...');
+-  await new Promise(resolve => setTimeout(resolve, 3000));
+-
+-  // Let's scroll past the Packages section to ensure marker is visible
+-  const markerRect = await page.evaluate(() => {
+-    const divs = Array.from(document.querySelectorAll('main div'));
+-    const marker = divs.find(d => d.className && d.className.includes('pointer-events-none') && d.className.includes('opacity-0') && d.className.includes('h-2'));
+-    if (marker) {
+-      const rect = marker.getBoundingClientRect();
+-      return {
+-        top: rect.top + window.scrollY,
+-        height: rect.height,
+-        visible: rect.top >= 0
+-      };
+-    }
+-    return null;
+-  });
+-
+-  console.log('Marker info:', markerRect);
+-
+-  if (markerRect) {
+-    console.log(`Scrolling directly to marker top: ${markerRect.top + 200}px (so it is fully scrolled past)`);
+-    await page.evaluate((targetTop) => {
+-      window.scrollTo(0, targetTop);
+-    }, markerRect.top + 200);
+-  }
+-
+-  // Wait 3000ms
+-  console.log('Waiting 3s for drawer to auto-open...');
+-  await new Promise(resolve => setTimeout(resolve, 3000));
+-
+-  // Check if the drawer elements are in the DOM
+-  const drawerHeader = await page.$('#drawer-title-home');
+-  if (drawerHeader) {
+-    const text = await page.evaluate(el => el.textContent, drawerHeader);
+-    console.log(`Success! Drawer found with heading: "${text}"`);
+-  } else {
+-    console.log('Error: Drawer not found in the DOM.');
+-  }
+-
+-  await browser.close();
+-}
+-
+-verify().catch(err => {
+-  console.error('Verification failed:', err);
+-});
