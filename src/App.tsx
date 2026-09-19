@@ -660,7 +660,7 @@ export default function App() {
       <SEO />
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />
-      {(!isDrawerOpen && !isLoginOpen && !isPaletteOpen && !isPlannerOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isFlightSearchOpen) && (
+      {(!isDrawerOpen && !isLoginOpen && !isPaletteOpen && !isPlannerOpen && !isMagicModeOpen && !isExperiencesOpen && !isMapOpen && !isFlightSearchOpen && !mobileMenuOpen) && (
         <FloatingHelpAndChat 
           onPlannerClick={() => openPlanner()} 
           onWhatsAppClick={() => setIsWhatsAppOpen(true)}
@@ -772,11 +772,11 @@ export default function App() {
       />
 
       <PlanMyTripWidget />
-      {!isDrawerOpen && <StickyMobileFooterCTA />}
+      {!isDrawerOpen && !mobileMenuOpen && <StickyMobileFooterCTA />}
       <Footer />
 
       {/* Floating CTA Trigger Button (Mobile Only) */}
-      {isMobile && !isDrawerOpen && (
+      {isMobile && !isDrawerOpen && !mobileMenuOpen && (
         <div className="fixed bottom-24 right-4 z-[999] pointer-events-auto pb-[env(safe-area-inset-bottom)]">
           <button
             onClick={handleManualOpen}

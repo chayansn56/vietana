@@ -56,21 +56,23 @@ const Footer: React.FC = () => {
               href="https://www.instagram.com/vietanaofficial" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-white/60 hover:text-[#3A9BD9] transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-[#3A9BD9] hover:bg-white/10 transition-colors touch-manipulation"
               title="Instagram"
+              aria-label="Follow Vietana on Instagram"
             >
-              <Instagram size={12} />
+              <Instagram size={15} />
             </a>
             <a 
               href="https://www.facebook.com/vietanaofficial" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-white/60 hover:text-[#3A9BD9] transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-[#3A9BD9] hover:bg-white/10 transition-colors touch-manipulation"
               title="Facebook"
+              aria-label="Follow Vietana on Facebook"
             >
-              <Facebook size={12} />
+              <Facebook size={15} />
             </a>
-            <span className="text-[9px] font-mono font-bold text-white/60 select-text">@vietanaofficial</span>
+            <span className="text-[10px] font-mono font-bold text-white/60 select-text">@vietanaofficial</span>
           </div>
         </div>
 
@@ -78,7 +80,7 @@ const Footer: React.FC = () => {
         <div className="flex justify-center md:justify-end shrink-0">
           <Button 
             onClick={() => window.open(WHATSAPP_DEFAULT, '_blank')}
-            className="px-8 py-3.5 text-sm font-bold bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5"
+            className="px-8 py-3.5 text-sm font-bold bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-1.5 touch-manipulation"
           >
             Start Planning Now <span className="ml-1">✨</span>
           </Button>
@@ -95,7 +97,7 @@ const Footer: React.FC = () => {
           </Text>
         </div>
 
-        <ul className="flex flex-wrap justify-center gap-x-8 gap-y-2 list-none p-0 m-0">
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-1 list-none p-0 m-0">
           {[
             { label: 'Destinations', path: '/#destinations' },
             { label: 'Attractions', path: '/attractions' },
@@ -107,7 +109,7 @@ const Footer: React.FC = () => {
             <li key={link.label}>
               <a 
                 href={link.path} 
-                className="no-underline group"
+                className="no-underline group py-1.5 px-2 inline-block touch-manipulation"
               >
                 <Text 
                   size="xs" 

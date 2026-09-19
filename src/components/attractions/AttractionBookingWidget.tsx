@@ -168,7 +168,7 @@ export default function AttractionBookingWidget({
             min={todayStr}
             value={visitDate}
             onChange={handleDateChange}
-            className="w-full bg-white border border-[#E8E4D9] rounded-xl px-3.5 py-2.5 text-xs text-[#12302B] font-medium focus:outline-none focus:border-[#12302B] transition-colors cursor-pointer"
+            className="w-full bg-white border border-[#E8E4D9] rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-[#12302B] font-medium focus:outline-none focus:border-[#12302B] transition-colors cursor-pointer touch-manipulation"
           />
         </div>
         {product.visitDateRequirement && (
@@ -204,19 +204,19 @@ export default function AttractionBookingWidget({
               type="button"
               onClick={() => handleAdultChange(-1)}
               disabled={adultQty <= 1}
-              className="w-8 h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm"
+              className="w-9 h-9 sm:w-8 sm:h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm touch-manipulation"
               aria-label="Decrease adult count"
             >
               -
             </button>
-            <span className="w-6 text-center text-xs font-black font-mono text-[#12302B]">
+            <span className="w-7 sm:w-6 text-center text-sm sm:text-xs font-black font-mono text-[#12302B]">
               {adultQty}
             </span>
             <button
               type="button"
               onClick={() => handleAdultChange(1)}
               disabled={adultQty >= 20}
-              className="w-8 h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm"
+              className="w-9 h-9 sm:w-8 sm:h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm touch-manipulation"
               aria-label="Increase adult count"
             >
               +
@@ -243,19 +243,19 @@ export default function AttractionBookingWidget({
                 type="button"
                 onClick={() => handleChildChange(-1)}
                 disabled={childQty <= 0}
-                className="w-8 h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm"
+                className="w-9 h-9 sm:w-8 sm:h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm touch-manipulation"
                 aria-label="Decrease child count"
               >
                 -
               </button>
-              <span className="w-6 text-center text-xs font-black font-mono text-[#12302B]">
+              <span className="w-7 sm:w-6 text-center text-sm sm:text-xs font-black font-mono text-[#12302B]">
                 {childQty}
               </span>
               <button
                 type="button"
                 onClick={() => handleChildChange(1)}
                 disabled={childQty >= 20}
-                className="w-8 h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm"
+                className="w-9 h-9 sm:w-8 sm:h-8 rounded-lg border border-[#E8E4D9] bg-[#FAF7F0] text-[#12302B] font-bold hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center justify-center text-sm touch-manipulation"
                 aria-label="Increase child count"
               >
                 +

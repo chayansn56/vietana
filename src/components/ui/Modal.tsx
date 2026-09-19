@@ -9,6 +9,7 @@ interface ModalProps {
   className?: string;
   maxWidth?: string;
   variant?: 'dark' | 'light';
+  hideDefaultClose?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -17,7 +18,8 @@ const Modal: React.FC<ModalProps> = ({
   children,
   className = '',
   maxWidth = 'max-w-md',
-  variant = 'dark'
+  variant = 'dark',
+  hideDefaultClose = false
 }) => {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -57,7 +59,7 @@ const Modal: React.FC<ModalProps> = ({
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-6">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-5 md:p-6">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -71,16 +73,18 @@ const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className={`relative z-10 w-full ${maxWidth} ${wrappers[variant]} rounded-[28px] overflow-hidden shadow-deep ${className}`}
+            className={`relative z-10 w-full ${maxWidth} ${wrappers[variant]} rounded-2xl sm:rounded-[28px] overflow-hidden shadow-deep ${className}`}
           >
             {children}
-            <button
-              onClick={onClose}
-              className={`absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 z-[100] text-2xl cursor-pointer ${closeBtns[variant]}`}
-              aria-label="Close modal"
-            >
-              ×
-            </button>
+            {!hideDefaultClose && (
+              <button
+                onClick={onClose}
+                className={`absolute top-4 right-4 sm:top-5 sm:right-5 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 z-[100] text-2xl cursor-pointer touch-manipulation ${closeBtns[variant]}`}
+                aria-label="Close modal"
+              >
+                ×
+              </button>
+            )}
           </motion.div>
         </div>
       )}

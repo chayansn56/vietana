@@ -180,7 +180,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
           value={formData.name}
           onChange={handleInputChange}
           placeholder="Enter your name"
-          className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold"
+          className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold touch-manipulation"
         />
         {errors.name && <span className="text-xs text-red-600 mt-1">{errors.name}</span>}
       </div>
@@ -196,7 +196,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
             name="travelMonth"
             value={formData.travelMonth}
             onChange={handleInputChange}
-            className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer"
+            className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
           >
             {MONTH_OPTIONS.map(m => <option key={m} value={m}>{m}</option>)}
           </select>
@@ -212,7 +212,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
             name="travelers"
             value={formData.travelers}
             onChange={handleInputChange}
-            className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer"
+            className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
           >
             <option value="1 Traveler">1 Traveler</option>
             <option value="2 Travelers">2 Travelers</option>
@@ -232,7 +232,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
             name="phoneCode"
             value={formData.phoneCode}
             onChange={handleInputChange}
-            className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer"
+            className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
           >
             {phoneCodes.map(pc => (
               <option key={pc.code} value={pc.code}>{pc.code}</option>
@@ -249,7 +249,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                 handleInputChange({ target: { name: 'phone', value: val } } as any);
               }}
               placeholder="Enter WhatsApp number"
-              className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold"
+              className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold touch-manipulation"
             />
           </div>
         </div>
@@ -268,7 +268,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
           onChange={handleInputChange}
           placeholder="e.g. Places you want to visit, hotel preferences, dietary requirements (Jain/Veg), or flight details..."
           rows={3}
-          className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold resize-none"
+          className="w-full flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold resize-none touch-manipulation"
         />
       </div>
 

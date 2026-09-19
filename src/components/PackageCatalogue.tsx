@@ -148,14 +148,14 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
           </div>
 
           {/* Category Tabs list horizontal */}
-          <div className="flex gap-2 overflow-x-auto pb-4 mb-8 border-b border-[#E8E4D9] scrollbar-none">
+          <div className="flex gap-2 overflow-x-auto pb-4 mb-8 border-b border-white/20 scrollbar-none">
             {categories.map((cat) => (
               <button
                 key={cat.name}
-                className={`px-4 py-2 border rounded-full text-xs font-medium tracking-wide uppercase transition shrink-0 duration-300 ${
+                className={`px-4 py-2.5 border rounded-full text-xs font-bold tracking-wide uppercase transition shrink-0 duration-300 touch-manipulation cursor-pointer ${
                   activeCategoryName === cat.name
-                    ? 'border-[#1E4D45] bg-[#1E4D45]/5 text-[#1E4D45]'
-                    : 'border-[#E8E4D9] text-[#555555] hover:border-[#1E4D45]/50'
+                    ? 'border-[#1E4D45] bg-[#1E4D45] text-white shadow-md'
+                    : 'border-white/40 bg-white/90 backdrop-blur-sm text-[#1E4D45] hover:bg-white shadow-xs'
                 }`}
                 onClick={() => handleCategoryChange(cat.name)}
               >

@@ -41,14 +41,16 @@ export default function StickyMobileFooterCTA() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-          className="lg:hidden fixed bottom-0 left-0 right-0 z-[800] px-4 pb-4 pt-3 bg-black/75 supports-[backdrop-filter]:bg-black/40 backdrop-blur-md border-t border-white/10 flex items-center justify-between shadow-[0_-10px_30px_rgba(0,0,0,0.3)]"
+          style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+          className="lg:hidden fixed bottom-0 left-0 right-0 z-[800] px-4 pt-3 bg-black/85 supports-[backdrop-filter]:bg-black/60 backdrop-blur-md border-t border-white/10 flex items-center justify-between shadow-[0_-10px_30px_rgba(0,0,0,0.3)]"
         >
           {/* Close button */}
           <button 
             onClick={() => setIsDismissed(true)} 
-            className="absolute top-2 right-2 text-white/30 hover:text-white/60 p-1"
+            className="absolute top-2 right-2 text-white/40 hover:text-white/80 p-2 touch-manipulation cursor-pointer border-none bg-transparent"
+            aria-label="Dismiss footer notice"
           >
-            <Icon name="X" size={10} />
+            <Icon name="X" size={12} />
           </button>
 
           <div className="flex flex-col text-left py-1">

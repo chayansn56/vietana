@@ -183,7 +183,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                   placeholder="Search ticket, venue, city, or ID..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white text-gray-800 pl-10 pr-4 py-3 rounded-full text-xs border border-[#E8E4D9] shadow-sm outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 transition-all font-sans font-medium"
+                  className="w-full bg-white text-gray-800 pl-10 pr-4 py-3 rounded-full text-base sm:text-xs border border-[#E8E4D9] shadow-sm outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 transition-all font-sans font-medium"
                 />
                 {searchQuery && (
                   <button 
@@ -560,39 +560,40 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
               isOpen={!!selectedTicket}
               onClose={() => setSelectedTicket(null)}
               maxWidth="max-w-5xl"
-              className="max-h-[92vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-3xl shadow-2xl"
+              hideDefaultClose={true}
+              className="max-h-[92vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-2xl sm:rounded-3xl shadow-2xl"
             >
               {/* Modal Breadcrumbs & Header Bar */}
-              <div className="px-5 py-3.5 bg-[#FAF8F3] border-b border-[#E8E4D9] flex items-center justify-between gap-4 text-xs font-medium text-gray-500 overflow-x-auto scrollbar-none shrink-0">
-                <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 shrink-0">
+              <div className="px-4 sm:px-5 py-3 bg-[#FAF8F3] border-b border-[#E8E4D9] flex items-center justify-between gap-3 text-xs font-medium text-gray-500 overflow-x-auto scrollbar-none shrink-0">
+                <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 shrink-0 overflow-x-auto scrollbar-none max-w-[calc(100%-48px)]">
                   <button 
                     onClick={() => setSelectedTicket(null)}
-                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium"
+                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium shrink-0"
                   >
                     Attractions
                   </button>
-                  <span className="text-gray-400">/</span>
+                  <span className="text-gray-400 shrink-0">/</span>
                   <button 
                     onClick={() => {
                       setSelectedRegion(selectedTicket.region);
                       setSelectedTicket(null);
                     }}
-                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium"
+                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium shrink-0"
                   >
                     {selectedTicket.region}
                   </button>
-                  <span className="text-gray-400">/</span>
+                  <span className="text-gray-400 shrink-0">/</span>
                   <button 
                     onClick={() => {
                       setSelectedRegion(selectedTicket.region);
                       setSelectedDestination(selectedTicket.destination);
                       setSelectedTicket(null);
                     }}
-                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium"
+                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium shrink-0"
                   >
                     {selectedTicket.destination}
                   </button>
-                  <span className="text-gray-400">/</span>
+                  <span className="text-gray-400 shrink-0">/</span>
                   <button 
                     onClick={() => {
                       setSelectedRegion(selectedTicket.region);
@@ -600,19 +601,19 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                       setSearchQuery(selectedTicket.venue);
                       setSelectedTicket(null);
                     }}
-                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium truncate max-w-[130px]"
+                    className="hover:text-[#12302B] hover:underline cursor-pointer bg-transparent border-none p-0 text-gray-500 font-medium truncate max-w-[100px] sm:max-w-[130px] shrink-0"
                   >
                     {selectedTicket.venue}
                   </button>
-                  <span className="text-gray-400">/</span>
-                  <span className="text-[#12302B] font-bold truncate max-w-[180px]">
+                  <span className="text-gray-400 shrink-0">/</span>
+                  <span className="text-[#12302B] font-bold truncate max-w-[120px] sm:max-w-[180px] shrink-0">
                     {selectedTicket.name}
                   </span>
                 </nav>
 
                 <button
                   onClick={() => setSelectedTicket(null)}
-                  className="p-1.5 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200/60 transition border-none bg-transparent cursor-pointer shrink-0"
+                  className="w-10 h-10 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-200/60 transition border-none bg-transparent cursor-pointer shrink-0 touch-manipulation"
                   aria-label="Close modal"
                 >
                   <Icon name="X" size={18} />
@@ -802,7 +803,10 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
               </div>
 
               {/* Mobile Sticky Bottom Action Bar */}
-              <div className="lg:hidden sticky bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#E8E4D9] p-3.5 flex items-center justify-between gap-3 shadow-lg z-20">
+              <div 
+                className="lg:hidden sticky bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#E8E4D9] p-3.5 flex items-center justify-between gap-3 shadow-lg z-20"
+                style={{ paddingBottom: 'max(0.875rem, env(safe-area-inset-bottom))' }}
+              >
                 <div>
                   <span className="text-[9px] uppercase tracking-wider text-gray-400 font-bold block">
                     {(selectedTicket.commercialStatus === 'READY' || selectedTicket.commercialStatus === 'STRATEGIC_LOW_MARGIN') && selectedTicket.vietanaPrices.adult ? 'Estimated From' : 'Status'}
@@ -820,7 +824,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                       el.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="bg-[#12302B] hover:bg-[#1E4D45] text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider border-none cursor-pointer flex items-center gap-1.5 shadow-md"
+                  className="bg-[#12302B] hover:bg-[#1E4D45] text-white px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider border-none cursor-pointer flex items-center gap-1.5 shadow-md active:scale-95 transition-transform touch-manipulation"
                 >
                   <Icon name="MessageCircle" size={14} /> {(selectedTicket.commercialStatus === 'READY' || selectedTicket.commercialStatus === 'STRATEGIC_LOW_MARGIN') && selectedTicket.vietanaPrices.adult ? 'Book on WhatsApp' : 'Enquire'}
                 </button>
