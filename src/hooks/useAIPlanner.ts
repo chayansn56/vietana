@@ -35,6 +35,7 @@ export const useAIPlanner = (initialDestination?: string, initialPrompt?: string
   
   const initialized = useRef(false);
   const lastProcessedPrompt = useRef<string | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     localStorage.setItem('vietana_ai_messages', JSON.stringify(messages));

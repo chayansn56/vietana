@@ -4,6 +4,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import Modal from './ui/Modal';
 import { Heading, Text } from './ui/Typography';
 import { useAIPlanner } from '../hooks/useAIPlanner';
+import { useSpeechSynthesis } from '../hooks/useSpeechSynthesis';
 import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 import Icon from './ui/Icon';
 
@@ -120,19 +121,8 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
   };
 
   const speakText = (text: string) => {
-    if (!ttsEnabled || !('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-
-    // Remove HTML tags for clean text-to-speech
-    const cleanText = text.replace(/<[^>]*>/g, '');
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = getLanguageTag(language);
-
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-
-    window.speechSynthesis.speak(utterance);
+    if (!ttsEnabled) return;
+    speak('planner-message', text);
   };
 
   const handleSendToWhatsApp = () => {

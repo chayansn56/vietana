@@ -259,7 +259,7 @@ export default function Services({ limit }: { limit?: number }) {
                   <button 
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.dispatchEvent(new CustomEvent('open_whatsapp', { detail: { message: `Hi VIETANA, I'm interested in the ${service.title} concierge service.` } }));
+                      window.dispatchEvent(new CustomEvent('open_whatsapp', { detail: { message: `Hi VIETANA, I'm interested in the ${service.shortTitle} concierge service.` } }));
                     }}
                     className="hover:text-[#25D366] transition-colors flex items-center gap-1.5 group/icon cursor-pointer bg-transparent border-none p-0"
                     aria-label="Contact via WhatsApp"

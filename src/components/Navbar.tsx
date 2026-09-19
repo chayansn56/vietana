@@ -32,6 +32,17 @@ const NAVIGATION_ITEMS = [
     ]
   },
   {
+    key: 'attraction_tickets',
+    label: 'Attraction Tickets',
+    items: [
+      { label: 'All Attraction Tickets (🔥 228 PRODUCTS)', href: '/attractions', action: 'portal_attractions' },
+      { label: 'South Vietnam (Phu Quoc, HCMC, Tay Ninh)', href: '/attractions', action: 'portal_attractions', filter: 'SOUTH VIETNAM' },
+      { label: 'Central Vietnam (Da Nang, Ba Na Hills, Hoi An)', href: '/attractions', action: 'portal_attractions', filter: 'CENTRAL VIETNAM' },
+      { label: 'North Vietnam (Ha Long, Hanoi, Sapa)', href: '/attractions', action: 'portal_attractions', filter: 'NORTH VIETNAM' },
+      { label: 'Theme Parks & Cable Cars', href: '/attractions', action: 'portal_attractions', filter: 'Theme Park' }
+    ]
+  },
+  {
     key: 'packages',
     label: 'Packages',
     items: [
@@ -260,7 +271,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                           e.preventDefault();
                           const target = sub.action.replace('portal_', '');
                           if ((sub as any).filter) {
-                            localStorage.setItem('pending_package_category', (sub as any).filter);
+                            if (target === 'attractions') {
+                              if (['SOUTH VIETNAM', 'CENTRAL VIETNAM', 'NORTH VIETNAM'].includes((sub as any).filter)) {
+                                localStorage.setItem('pending_attraction_region', (sub as any).filter);
+                              } else {
+                                localStorage.setItem('pending_attraction_type', (sub as any).filter);
+                              }
+                            } else {
+                              localStorage.setItem('pending_package_category', (sub as any).filter);
+                            }
                           }
                           window.history.pushState({}, '', `/${target}`);
                           window.dispatchEvent(new PopStateEvent('popstate'));
@@ -394,6 +413,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
               {[
                 { code: 'INR', symbol: '₹', name: 'Rupee' },
                 { code: 'USD', symbol: '$', name: 'Dollar' },
+                { code: 'EUR', symbol: '€', name: 'Euro' },
                 { code: 'VND', symbol: '₫', name: 'Dong' }
               ].map((curr) => (
                 <button 
@@ -482,7 +502,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                         if (sub.action && sub.action.startsWith('portal_')) {
                           const target = sub.action.replace('portal_', '');
                           if ((sub as any).filter) {
-                            localStorage.setItem('pending_package_category', (sub as any).filter);
+                            if (target === 'attractions') {
+                              if (['SOUTH VIETNAM', 'CENTRAL VIETNAM', 'NORTH VIETNAM'].includes((sub as any).filter)) {
+                                localStorage.setItem('pending_attraction_region', (sub as any).filter);
+                              } else {
+                                localStorage.setItem('pending_attraction_type', (sub as any).filter);
+                              }
+                            } else {
+                              localStorage.setItem('pending_package_category', (sub as any).filter);
+                            }
                           }
                           window.history.pushState({}, '', `/${target}`);
                           window.dispatchEvent(new PopStateEvent('popstate'));

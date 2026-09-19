@@ -80,3 +80,5 @@ export const useUIStore = () => {
   }
   return context;
 };
+
+export const useUI = useUIStore;

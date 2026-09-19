@@ -70,7 +70,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                 aria-label="Close food concierge"
               >
                 <Icon name="X" size={18} />
-              </button>
+              </Button>
 
               <div className="absolute bottom-8 left-8 pr-8">
                 <Heading as="h2" size="4xl" font="serif" className="text-white m-0 leading-tight">

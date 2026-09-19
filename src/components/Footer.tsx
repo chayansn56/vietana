@@ -97,11 +97,12 @@ const Footer: React.FC = () => {
 
         <ul className="flex flex-wrap justify-center gap-x-8 gap-y-2 list-none p-0 m-0">
           {[
-            { label: 'Destinations', path: '#destinations' },
-            { label: 'Services', path: '#services' },
-            { label: 'Packages', path: '#packages' },
-            { label: 'Food', path: '#food' },
-            { label: 'Journal', path: '#journal' }
+            { label: 'Destinations', path: '/#destinations' },
+            { label: 'Attractions', path: '/attractions' },
+            { label: 'Packages', path: '/packages' },
+            { label: 'Services', path: '/#services' },
+            { label: 'Food Guide', path: '/food' },
+            { label: 'Journal', path: '/journal' }
           ].map((link) => (
             <li key={link.label}>
               <a 

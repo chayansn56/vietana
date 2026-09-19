@@ -49,6 +49,7 @@ const ThingsToDo = lazy(() => import('./components/ThingsToDo'));
 const MapCurtain = lazy(() => import('./components/MapCurtain'));
 const FlightSearchModal = lazy(() => import('./components/FlightSearchModal'));
 const PackageCatalogue = lazy(() => import('./components/PackageCatalogue'));
+const AttractionCatalogue = lazy(() => import('./components/AttractionCatalogue'));
 
 import SEO from './components/seo/SEO';
 import AgentDashboard from './apps/agent/AgentDashboard';
@@ -157,9 +158,14 @@ export default function App() {
     };
   }, []);
 
+  const [initialAttractionProductId, setInitialAttractionProductId] = useState<string | null>(null);
+
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/^\/+/, '');
+      const searchParams = new URLSearchParams(window.location.search);
+      const ticketParam = searchParams.get('ticket') || searchParams.get('id');
+
       if (path === 'agent') {
         setActivePortal('agent');
       } else if (path === 'admin') {
@@ -174,6 +180,16 @@ export default function App() {
         setActivePortal('travel-guide' as any);
       } else if (path === 'experiences' || path === 'things-to-do') {
         setActivePortal('experiences' as any);
+      } else if (path === 'packages' || path === 'itineraries') {
+        setActivePortal('packages' as any);
+      } else if (path.startsWith('attractions/') || path.startsWith('attraction-tickets/')) {
+        const parts = path.split('/');
+        const prodId = parts[1] || null;
+        setInitialAttractionProductId(prodId);
+        setActivePortal('attractions' as any);
+      } else if (path === 'attractions' || path === 'attraction-tickets') {
+        setInitialAttractionProductId(ticketParam);
+        setActivePortal('attractions' as any);
       } else if (path === 'planner') {
         openPlanner();
       } else if (path === 'contact') {
@@ -218,8 +234,9 @@ export default function App() {
   }, []);
 
   const openPlanner = (destination?: string, prompt?: string) => {
-    setPlannerInitialData({ destination, prompt });
-    setModalOpen('planner', true);
+    setInitialDestination(destination);
+    setInitialPrompt(prompt);
+    setIsPlannerOpen(true);
   };
 
   const handlePortalNavigate = (portal: string | null) => {
@@ -227,6 +244,7 @@ export default function App() {
     if (portal) {
       window.history.pushState({}, '', `/${portal}`);
     } else {
+      setInitialAttractionProductId(null);
       window.history.pushState({}, '', '/');
     }
   };
@@ -504,6 +522,40 @@ export default function App() {
     );
   }
 
+  if ((activePortal as any) === 'attractions') {
+    return (
+      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+        <SEO />
+        <Navbar 
+          scrolled={true}
+          mobileMenuOpen={mobileMenuOpen} 
+          setMobileMenuOpen={setMobileMenuOpen} 
+          onOpenPlanner={() => openPlanner()} 
+          onOpenExperiences={() => handlePortalNavigate('experiences' as any)}
+          onOpenMapCurtain={() => setIsMapOpen(true)}
+          onOpenFlightSearch={() => setIsFlightSearchOpen(true)}
+          onOpenLogin={() => setIsLoginOpen(true)}
+        />
+        <main className="pt-24 flex-1">
+          <Suspense fallback={<div className="text-center py-20 text-gray-500 font-light">Loading attraction tickets catalogue...</div>}>
+            <AttractionCatalogue 
+              initialProductId={initialAttractionProductId}
+              onClose={() => handlePortalNavigate(null)}
+              onQuoteClick={() => {
+                handlePortalNavigate(null);
+                setTimeout(() => {
+                  const el = document.getElementById('inquiry');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
+            />
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   if (activePortal === 'destinations') {
     return (
       <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
@@ -614,8 +666,6 @@ export default function App() {
           onWhatsAppClick={() => setIsWhatsAppOpen(true)}
         />
       )}
-
-      <OverlayLayout />
 
       <Navbar
         scrolled={isScrolled}
