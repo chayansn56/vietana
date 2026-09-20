@@ -770,28 +770,98 @@ export default function ToursExperiencesCatalogue({
                     </div>
 
                     {/* Passenger Counts */}
-                    <div className="grid grid-cols-2 gap-2">
-                      <div>
-                        <label className="block text-xs font-medium text-stone-300 mb-1.5">Adults</label>
-                        <input
-                          type="number"
-                          min="1"
-                          max="50"
-                          value={adultsCount}
-                          onChange={(e) => setAdultsCount(Math.max(1, parseInt(e.target.value) || 1))}
-                          className="w-full bg-stone-800 border border-stone-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500"
-                        />
+                    <div>
+                      <div className="grid grid-cols-2 gap-3 mb-2">
+                        {/* Adults Stepper */}
+                        <div>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <label className="text-xs font-medium text-stone-300">Adults (12+ yrs)</label>
+                            <span className="text-[10px] text-amber-400 font-mono">Min 1</span>
+                          </div>
+                          <div className="flex items-center justify-between bg-stone-800 border border-stone-700 rounded-xl p-1">
+                            <button
+                              type="button"
+                              onClick={() => setAdultsCount(prev => Math.max(1, prev - 1))}
+                              disabled={adultsCount <= 1}
+                              className="w-9 h-9 rounded-lg bg-stone-700 hover:bg-stone-600 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-white font-bold flex items-center justify-center text-base transition-all cursor-pointer border-none touch-manipulation"
+                              aria-label="Decrease adults count"
+                            >
+                              -
+                            </button>
+                            <span className="w-10 text-center text-sm font-bold text-white font-mono select-none">
+                              {adultsCount}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setAdultsCount(prev => Math.min(99, prev + 1))}
+                              disabled={adultsCount >= 99}
+                              className="w-9 h-9 rounded-lg bg-stone-700 hover:bg-stone-600 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-white font-bold flex items-center justify-center text-base transition-all cursor-pointer border-none touch-manipulation"
+                              aria-label="Increase adults count"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Children Stepper */}
+                        <div>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <label className="text-xs font-medium text-stone-300">Children (Under 12)</label>
+                            <span className="text-[10px] text-stone-500 font-mono">Optional</span>
+                          </div>
+                          <div className="flex items-center justify-between bg-stone-800 border border-stone-700 rounded-xl p-1">
+                            <button
+                              type="button"
+                              onClick={() => setChildrenCount(prev => Math.max(0, prev - 1))}
+                              disabled={childrenCount <= 0}
+                              className="w-9 h-9 rounded-lg bg-stone-700 hover:bg-stone-600 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-white font-bold flex items-center justify-center text-base transition-all cursor-pointer border-none touch-manipulation"
+                              aria-label="Decrease children count"
+                            >
+                              -
+                            </button>
+                            <span className="w-10 text-center text-sm font-bold text-white font-mono select-none">
+                              {childrenCount}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setChildrenCount(prev => Math.min(50, prev + 1))}
+                              disabled={childrenCount >= 50}
+                              className="w-9 h-9 rounded-lg bg-stone-700 hover:bg-stone-600 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-white font-bold flex items-center justify-center text-base transition-all cursor-pointer border-none touch-manipulation"
+                              aria-label="Increase children count"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <label className="block text-xs font-medium text-stone-300 mb-1.5">Children</label>
-                        <input
-                          type="number"
-                          min="0"
-                          max="30"
-                          value={childrenCount}
-                          onChange={(e) => setChildrenCount(Math.max(0, parseInt(e.target.value) || 0))}
-                          className="w-full bg-stone-800 border border-stone-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500"
-                        />
+
+                      {/* Quick Group Size Selector */}
+                      <div className="bg-stone-850 border border-stone-800 rounded-xl p-2.5">
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 font-mono flex items-center gap-1">
+                            <Icon name="Users" size={11} className="text-amber-400" />
+                            Group Size Quick Select
+                          </span>
+                          <span className="text-[10px] text-amber-400/90 font-mono font-medium">
+                            {adultsCount} Adult{adultsCount > 1 ? 's' : ''}{childrenCount > 0 ? ` + ${childrenCount} Child${childrenCount > 1 ? 'ren' : ''}` : ''}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {[1, 2, 4, 6, 8, 10, 15, 20, 25, 30].map((num) => (
+                            <button
+                              key={num}
+                              type="button"
+                              onClick={() => setAdultsCount(num)}
+                              className={`px-2.5 py-1 rounded-lg text-xs font-bold font-mono transition-all cursor-pointer border active:scale-95 touch-manipulation ${
+                                adultsCount === num
+                                  ? 'bg-amber-500 text-stone-950 border-amber-400 shadow-xs'
+                                  : 'bg-stone-800 text-stone-300 border-stone-700 hover:bg-stone-700 hover:text-white'
+                              }`}
+                            >
+                              {num}
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
