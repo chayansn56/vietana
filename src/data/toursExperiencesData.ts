@@ -129,10 +129,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:45 - 08:30)",
     "destinationDetails": "Key cultural and historical landmarks across Hanoi",
     "description": "Discover the thousand-year-old heritage of Vietnam's capital. Explore the sacred Tran Quoc Pagoda on West Lake, the historic Ho Chi Minh Complex, the historic Temple of Literature (Vietnam's first university), and the notorious Hoa Lo Prison (\"Hanoi Hilton\").",
-    "heroImage": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/north/hanoi_city_1.jpg",
+    "galleryImages": [      "/images/tours/north/hanoi_city_5.jpg",
+      "/images/tours/north/hanoi_city_4.jpg",
+      "/images/tours/north/hanoi_city_17.jpg"
     ],
     "tourFormats": [
       "Join Group Half-Day",
@@ -305,9 +305,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:45 - 08:30)",
     "destinationDetails": "Hanoi highlights & Bat Trang pottery village (Gia Lam)",
     "description": "Combine the cultural landmarks of central Hanoi with a visit to Bat Trang, a historic 700-year-old ceramic and pottery craft village on the banks of the Red River. Observe artisans shaping clay and try your hand at the pottery wheel.",
-    "heroImage": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/hanoi_city_11.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80"
+      "/images/tours/north/hanoi_city_15.jpg",
+      "/images/cities/hanoi.jpg"
     ],
     "tourFormats": [
       "Join Group Full-Day"
@@ -429,9 +430,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (08:00 - 08:30)",
     "destinationDetails": "Quang Phu Cau Village, Ung Hoa District, Hanoi (~35 km)",
     "description": "Immerse yourself in a sea of vibrant red and multi-colored incense bouquets drying under the sun at Quang Phu Cau, a village with over a century of traditional incense-making heritage. Capture world-famous photographic moments and discover how incense sticks are cut, dipped, and perfumed.",
-    "heroImage": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/hanoi_city_8.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
+      "/images/tours/north/hanoi_city_3.jpg",
+      "/images/cities/hanoi.jpg"
     ],
     "tourFormats": [
       "Join Group Half-Day",
@@ -563,9 +565,11 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:15)",
     "destinationDetails": "My Duc District, Hanoi (~60 km southwest)",
     "description": "Journey into one of Vietnam's most sacred pilgrimage sites. Glide along the poetic Yen Stream in a traditional metal rowboat surrounded by karst peaks and rice paddies, then ascend to the magnificent Huong Tich Cave, a vast natural cavern revered as the 'First Cave under the Southern Sky'.",
-    "heroImage": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/huong_pagoda_1.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/tours/north/huong_pagoda_2.jpg",
+      "/images/tours/north/huong_pagoda_5.jpg",
+      "/images/tours/north/huong_pagoda_11.jpg"
     ],
     "tourFormats": [
       "Join Group Full-Day"
@@ -693,9 +697,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:00 - 07:45)",
     "destinationDetails": "Mai Chau Valley, Hoa Binh Province (~140 km west of Hanoi)",
     "description": "Escape the bustle of Hanoi to the tranquil emerald-green valley of Mai Chau. Stop at panoramic Thung Khe Pass, cycle through idyllic stilt-house villages (Lac and Pom Coong), interact with the ethnic White Thai community, and savor a home-cooked lunch in a traditional wooden stilt house.",
-    "heroImage": "https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/sights/sapa.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=800&q=80"
+      "/images/tours/north/sapa_3d2n_1.jpg",
+      "/images/tours/north/sapa_2d1n_4.jpg"
     ],
     "tourFormats": [
       "Join Group Full-Day",
@@ -832,9 +837,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (~95 km south of Hanoi)",
     "description": "Experience the grandeur of Bai Dinh, Southeast Asia's largest Buddhist temple complex, and cruise through the UNESCO World Heritage landscape of Trang An. Glide through water caves carved beneath karst mountains on a tranquil sampan boat.",
-    "heroImage": "https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/nb_baidinh_trangan_1.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/experiences/bai-dinh-pagoda/cover.webp",
+      "/images/experiences/trang-an-boat-tour/cover.webp"
     ],
     "tourFormats": [
       "Big Group",
@@ -966,9 +972,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (~95 km south of Hanoi)",
     "description": "Step back into the 10th-century history of Vietnam at Hoa Lu, the ancient imperial capital of the Dinh and Le dynasties. Afterwards, cruise along the Ngo Dong River in Tam Coc, celebrated as 'Ha Long Bay on land', drifting past emerald rice paddies and through three natural karst caves.",
-    "heroImage": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/nb_tamcoc_mua_1.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/experiences/tam-coc-river-cruise/cover.webp",
+      "/images/experiences/hoa-lu-capital/cover.webp"
     ],
     "tourFormats": [
       "Big Group",
@@ -1103,9 +1110,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (~95 km south of Hanoi)",
     "description": "Combine the imperial antiquity of Hoa Lu with the pristine waters of Trang An. Visit temples of ancient kings and embark on a UNESCO-protected river cruise through cavernous limestone formations.",
-    "heroImage": "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/nb_hoalu_trangan_1.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/experiences/trang-an-boat-tour/cover.webp",
+      "/images/experiences/hoa-lu-capital/cover.webp"
     ],
     "tourFormats": [
       "Big Group",
@@ -1238,9 +1246,11 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (~95 km south of Hanoi)",
     "description": "The ultimate Ninh Binh triple-highlight experience. Marvel at the monumental Bai Dinh Pagoda, cruise through the crystalline waters and caves of Trang An, and climb 500 stone steps up Ngoa Long Mountain at Mua Cave for a breathtaking 360-degree panorama over Tam Coc and the karst valley.",
-    "heroImage": "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/nb_baidinh_trangan_1.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/tours/north/nb_baidinh_trangan_4.jpg",
+      "/images/experiences/hang-mua-peak/cover.webp",
+      "/images/experiences/bai-dinh-pagoda/cover.webp"
     ],
     "tourFormats": [
       "Big Group",
@@ -1393,9 +1403,11 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (~95 km south of Hanoi)",
     "description": "Discover Vietnam's ancient royal heritage at Hoa Lu, cruise through the limestone caverns of UNESCO Trang An, and climb to the top of Mua Cave's dragon peak for the best view in northern Vietnam.",
-    "heroImage": "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/nb_hoalu_trangan_1.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/tours/north/nb_hoalu_trangan_4.jpg",
+      "/images/experiences/hang-mua-peak/cover.webp",
+      "/images/experiences/trang-an-boat-tour/cover.webp"
     ],
     "tourFormats": [
       "Big Group",
@@ -1540,9 +1552,11 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (~95 km south of Hanoi)",
     "description": "Experience the classic Tam Coc river rowboat journey past yellow rice paddies and limestone arches, explore the historic royal shrines of Hoa Lu, and ascend Mua Cave's dragon spine for panoramic valley vistas.",
-    "heroImage": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/tours/north/nb_tamcoc_mua_1.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/tours/north/nb_tamcoc_mua_4.jpg",
+      "/images/experiences/hang-mua-peak/cover.webp",
+      "/images/experiences/tam-coc-river-cruise/cover.webp"
     ],
     "tourFormats": [
       "Big Group",
@@ -1687,9 +1701,11 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (Overnight in Tam Coc / Trang An)",
     "description": "An immersive two-day escape to Ninh Binh. Experience all iconic highlights without rushing: Hoa Lu ancient capital, Tam Coc river cruise, Mua Cave dragon summit, Bai Dinh pagoda, and Trang An UNESCO waterways, with an overnight stay in your choice of 3-Star hotel, 4-Star resort bungalow, or 5-Star luxury resort.",
-    "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/experiences/hang-mua-peak/cover.webp",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+      "/images/experiences/trang-an-boat-tour/cover.webp",
+      "/images/experiences/bai-dinh-pagoda/cover.webp",
+      "/images/experiences/tam-coc-river-cruise/cover.webp"
     ],
     "tourFormats": [
       "3-Star Hotel Package",
@@ -1845,10 +1861,11 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Pickup in Hanoi Old Quarter (08:00 - 08:45) OR Meet directly at Tuan Chau Harbor / Ha Long International Port",
     "destinationDetails": "Ha Long Bay, Quang Ninh Province",
     "description": "Sail across the legendary emerald waters of Ha Long Bay, a UNESCO World Heritage wonder dotted with thousands of towering limestone karsts. Explore the colossal chambers of Sung Sot (Surprise) Cave, kayak through the tidal lagoon of Luon Cave, climb to the summit of Ti Top Island for panoramic views, and relax during a scenic sunset party on the sundeck.",
-    "heroImage": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "/images/experiences/halong-bay-cruise/cover.webp",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+      "/images/cities/halong.jpg",
+      "/images/experiences/ti-top-island-peak/cover.webp",
+      "/images/experiences/luon-cave-kayaking/cover.webp"
     ],
     "tourFormats": [
       "Depart from Ha Long Harbor (4-Star, 5-Star, 6-Star)",
@@ -2058,9 +2075,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Pickup in Hanoi Old Quarter (06:30 - 07:00)",
     "destinationDetails": "Sapa Town & Muong Hoa Valley, Lao Cai Province (~320 km)",
     "description": "Ascend into the misty mountains of northern Vietnam via the modern Hanoi - Lao Cai expressway. Trek through the terraced rice fields of Cat Cat Village, learn about Black H'mong traditions, explore Sapa town, and take the option to conquer Fansipan Peak ('The Roof of Indochina').",
-    "heroImage": "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/north/sapa_2d1n_1.jpg",
+    "galleryImages": [      "/images/tours/north/sapa_2d1n_4.jpg",
+      "/images/tours/north/sapa_2d1n_7.jpg",
+      "/images/cities/sapa.jpg"
     ],
     "tourFormats": [
       "3-Star Hotel Package",
@@ -2215,9 +2233,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Pickup in Hanoi Old Quarter (06:30 - 07:00)",
     "destinationDetails": "Sapa, Cat Cat, Lao Chai & Ta Van, Lao Cai Province",
     "description": "A comprehensive 3-day exploration of Sapa's breathtaking landscapes and ethnic diversity. Trek through Cat Cat village and deep into the Muong Hoa Valley visiting Lao Chai and Ta Van (home to Black H'mong and Giay communities), with ample time to conquer Fansipan Peak.",
-    "heroImage": "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/north/sapa_3d2n_1.jpg",
+    "galleryImages": [      "/images/tours/north/sapa_3d2n_4.jpg",
+      "/images/tours/north/sapa_3d2n_7.jpg",
+      "/images/experiences/fansipan-peak-sapa/cover.webp"
     ],
     "tourFormats": [
       "3-Star Hotel Package",
@@ -2369,9 +2388,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Pickup in Hanoi Old Quarter (06:30 - 07:00)",
     "destinationDetails": "Sapa, Fansipan, Ham Rong, Muong Hoa, Moana View, Lao Cai",
     "description": "The most complete mountain journey through northwestern Vietnam. Cover every facet of Sapa: ethnic village treks in Cat Cat and Muong Hoa valley, panoramic vistas from Ham Rong Mountain, modern photography at Moana View, and conquering the 3,143-meter Fansipan summit.",
-    "heroImage": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/north/sapa_4d3n_1.jpg",
+    "galleryImages": [      "/images/tours/north/sapa_4d3n_4.jpg",
+      "/images/experiences/ham-rong-mountain/cover.webp",
+      "/images/experiences/silver-waterfall-sapa/cover.webp"
     ],
     "tourFormats": [
       "3-Star Hotel Package",
@@ -2492,9 +2512,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Meet at Hanoi Railway Station (Tran Quy Cap / Le Duan) at ~20:30",
     "destinationDetails": "Lao Cai Railway Station & Sapa Town",
     "description": "Experience the nostalgic romance of traveling to northern Vietnam aboard a classic overnight sleeper train. Sleep as the train rolls through the Red River valley, wake up in border-town Lao Cai, transfer up the mountain to Sapa, and enjoy 2 days of ethnic trekking and mountain vistas before taking the overnight train back.",
-    "heroImage": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/north/sapa_train_2d2n_1.jpg",
+    "galleryImages": [      "/images/tours/north/sapa_train_2d2n_4.jpg",
+      "/images/experiences/love-waterfall-sapa/cover.webp",
+      "/images/experiences/tram-ton-pass/cover.webp"
     ],
     "tourFormats": [
       "Sleeper Train 4-Berth Cabin Package"
@@ -2630,9 +2651,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Pickup in Hanoi Old Quarter (06:00 - 06:30)",
     "destinationDetails": "Cao Bang Province & Ban Gioc Waterfall (~360 km north)",
     "description": "Witness the thunderous majesty of Ban Gioc Waterfall, the largest multi-tiered waterfall in Southeast Asia straddling the border between Vietnam and China. Explore Nguom Ngao Cave (Tiger Cave) with its subterranean limestone wonders and discover the peaceful rural beauty of Cao Bang province.",
-    "heroImage": "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/north/bangioc_waterfall_1.jpg",
+    "galleryImages": [      "/images/tours/north/bangioc_waterfall_7.jpg",
+      "/images/tours/north/bangioc_waterfall_11.jpg",
+      "/images/tours/north/bangioc_waterfall_18.jpg"
     ],
     "tourFormats": [
       "Dorm Accommodation Package",
@@ -2770,9 +2792,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (Morning 07:30 - 08:00 or Afternoon 12:30 - 13:00)",
     "destinationDetails": "Ben Dinh / Ben Duoc, Cu Chi District (~70 km northwest of Saigon)",
     "description": "Descend into the legendary underground world of the Cu Chi Tunnels, an astonishing 250-kilometer subterranean network used by the Viet Cong during the Vietnam War. Discover concealed trapdoors, secret living chambers, smoke-dispersing kitchens, and weapon traps, with an optional opportunity to fire historic firearms at the firing range.",
-    "heroImage": "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cuchi_halfday_5.jpg",
+    "galleryImages": [      "/images/tours/south/cuchi_halfday_10.jpg",
+      "/images/tours/south/cuchi_halfday_6.jpg",
+      "/images/tours/south/cuchi_halfday_13.jpg"
     ],
     "tourFormats": [
       "Big Group (Max 35)",
@@ -2936,9 +2959,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30 - 08:00)",
     "destinationDetails": "Cu Chi Tunnels & Central Ho Chi Minh City landmarks",
     "description": "The perfect one-day introduction to southern Vietnam. Spend your morning crawling through the wartime tunnels of Cu Chi, enjoy a traditional Vietnamese lunch, and spend your afternoon exploring the iconic architectural and historic landmarks of Saigon: War Remnants Museum, Reunification Palace, Notre Dame Cathedral, and the Central Post Office.",
-    "heroImage": "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cuchi_hcm_5.jpg",
+    "galleryImages": [      "/images/experiences/cu-chi-tunnels/cover.webp",
+      "/images/experiences/independence-palace/cover.webp",
+      "/images/experiences/war-remnants-museum/cover.webp"
     ],
     "tourFormats": [
       "Join Group Full-Day",
@@ -3074,9 +3098,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:15 - 07:45)",
     "destinationDetails": "Cu Chi Tunnels & My Tho / Ben Tre, Mekong Delta",
     "description": "Combine the two most famous day trips in southern Vietnam into one unforgettable day. Experience the underground guerrilla history at Cu Chi Tunnels in the morning, followed by a relaxing river cruise, hand-rowed sampan through coconut canals, tropical fruit tasting, and folk music in the Mekong Delta.",
-    "heroImage": "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cuchi_mekong_1.jpg",
+    "galleryImages": [      "/images/tours/south/cuchi_mekong_4.jpg",
+      "/images/experiences/cu-chi-tunnels/cover.webp",
+      "/images/tours/south/mekong_mytho_1.jpg"
     ],
     "tourFormats": [
       "Big Group (Max 22)",
@@ -3251,9 +3276,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:00 - 07:30)",
     "destinationDetails": "Cu Chi District & Tay Ninh Province (~95 km northwest)",
     "description": "An epic full-day expedition combining underground wartime heroism, mystical religion, and sacred mountain peaks. Explore the Cu Chi Tunnels, witness the colorful noon prayer ceremony at the Cao Dai Great Holy See, and ascend Black Virgin Mountain (Nui Ba Den) by cable car to admire the tallest bronze Buddha statue in Asia.",
-    "heroImage": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cuchi_tayninh_1.jpg",
+    "galleryImages": [      "/images/attractions/sun-world-ba-den-mountain.jpg",
+      "/images/tours/south/cuchi_tayninh_6.jpg",
+      "/images/experiences/cu-chi-tunnels/cover.webp"
     ],
     "tourFormats": [
       "Small Group (Max 15)",
@@ -3401,9 +3427,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30 - 08:00)",
     "destinationDetails": "Tay Ninh Province (~95 km northwest of Saigon)",
     "description": "Delve deep into the spiritual heart of southern Vietnam. Experience the extraordinary syncretic faith of Caodaism during the noon mass at the Great Temple, then ride the cable car to the peak of Black Virgin Mountain to admire flower gardens, cloud seas, and the monumental bronze Bodhisattva.",
-    "heroImage": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/attractions/sun-world-ba-den-mountain.jpg",
+    "galleryImages": [      "/images/tours/south/caodai_blackvirgin_1.jpg",
+      "/images/tours/south/caodai_blackvirgin_4.jpg",
+      "/images/tours/south/caodai_blackvirgin_6.jpg"
     ],
     "tourFormats": [
       "Big Group Full-Day",
@@ -3535,9 +3562,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30 - 08:00)",
     "destinationDetails": "Tay Ninh Province",
     "description": "Discover the unique spiritual and natural wonders of Tay Ninh province. Visit the iconic Cao Dai Holy See, explore the foothills and peaks of Ba Den Mountain, and learn about the sacred folklore and vibrant culture of this southwestern border region.",
-    "heroImage": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/tayninh_day_1.jpg",
+    "galleryImages": [      "/images/attractions/sun-world-ba-den-mountain.jpg",
+      "/images/tours/south/tayninh_day_4.jpg",
+      "/images/tours/south/tayninh_day_6.jpg"
     ],
     "tourFormats": [
       "Join Group Full-Day",
@@ -3652,9 +3680,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30 - 08:00)",
     "destinationDetails": "My Tho (Tien Giang) & Ben Tre (~75 km south of Saigon)",
     "description": "Experience the timeless rhythm of the Mekong Delta on a classic day trip. Cruise the wide Tien River, cycle around lush Unicorn Island, drift through shady coconut palm canals on a hand-rowed sampan, visit a bee farm for honey tea, taste tropical fruits accompanied by live folk music, and tour a traditional coconut candy workshop.",
-    "heroImage": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/mekong_mytho_1.jpg",
+    "galleryImages": [      "/images/tours/south/mekong_mytho_4.jpg",
+      "/images/tours/south/mekong_mytho_6.jpg",
+      "/images/tours/south/mekong_mytho_12.jpg"
     ],
     "tourFormats": [
       "Big Group (Max 35)",
@@ -3833,9 +3862,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30)",
     "destinationDetails": "Cai Be District, Tien Giang Province (~110 km southwest)",
     "description": "Experience the peaceful rural lifestyle of Cai Be. Glide through secluded canals in a hand-rowed boat, visit traditional family workshops producing popped rice cakes, rice wine, and coconut candy, cycle along peaceful village pathways, and savor a homemade lunch made with organic, locally sourced ingredients.",
-    "heroImage": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/mekong_caibe_1.jpg",
+    "galleryImages": [      "/images/tours/south/mekong_caibe_4.jpg",
+      "/images/tours/south/mekong_caibe_6.jpg",
+      "/images/tours/south/mekong_caibe_10.jpg"
     ],
     "tourFormats": [
       "Small Group (Max 15)",
@@ -3973,9 +4003,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (08:00)",
     "destinationDetails": "Tan Lap Floating Village, Moc Hoa District, Long An (~100 km)",
     "description": "Immerse yourself in one of Vietnam's top eco-tourism destinations. Wander along a 5-kilometer raised concrete path weaving through dense, aromatic Melaleuca (cajuput) forests, climb the 38-meter observation watchtower for panoramic wetland views, and paddle a small boat through serene moss-covered canals.",
-    "heroImage": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/tanlap_village_1.jpg",
+    "galleryImages": [      "/images/tours/south/tanlap_village_4.jpg",
+      "/images/tours/south/tanlap_village_6.jpg",
+      "/images/tours/south/tanlap_village_10.jpg"
     ],
     "tourFormats": [
       "Join Group Full-Day",
@@ -4109,9 +4140,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:00 - 07:30)",
     "destinationDetails": "My Tho, Ben Tre & Can Tho City (~170 km south)",
     "description": "Embark on an unforgettable two-day voyage into the heart of the Mekong Delta. Experience My Tho and Ben Tre on Day 1, stay overnight in Can Tho city, and wake up early on Day 2 for an atmospheric boat cruise through Cai Rang Floating Market, catching the bustling trade of pineapple, watermelon, and noodle soup boats at its liveliest dawn hour.",
-    "heroImage": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cairang_cantho_1.jpg",
+    "galleryImages": [      "/images/tours/south/cairang_cantho_3.jpg",
+      "/images/tours/south/cairang_cantho_9.jpg",
+      "/images/tours/south/cairang_cantho_13.jpg"
     ],
     "tourFormats": [
       "3-Star Hotel Package",
@@ -4285,9 +4317,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30)",
     "destinationDetails": "Cu Chi Tunnels, My Tho, Ben Tre & Can Tho",
     "description": "The ultimate Southern Vietnam two-day immersion. Spend Day 1 unearthing the wartime secrets of the Cu Chi Tunnels before traveling south to the Mekong Delta, followed by an overnight stay and a dawn visit to the Cai Rang Floating Market on Day 2.",
-    "heroImage": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cuchi_mekong_2d1n_1.jpg",
+    "galleryImages": [      "/images/experiences/cu-chi-tunnels/cover.webp",
+      "/images/tours/south/mekong_mytho_1.jpg",
+      "/images/tours/south/cuchi_mekong_2d1n_4.jpg"
     ],
     "tourFormats": [
       "2D1N Combo Package"
@@ -4389,9 +4422,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (06:30 - 07:00)",
     "destinationDetails": "Mui Ne & Phan Thiet, Binh Thuan Province (~210 km via expressway)",
     "description": "Experience the surreal coastal desert landscapes of Mui Ne. Walk barefoot through the cool red waters of Fairy Stream (Suoi Tien), visit the bustling Mui Ne fishing village harbor with hundreds of round basket boats, and marvel at the colossal White and Red Sand Dunes with thrilling optional ATV or open-top Jeep rides.",
-    "heroImage": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/muine_day_6.jpg",
+    "galleryImages": [      "/images/tours/south/muine_day_12.jpg",
+      "/images/tours/south/muine_day_16.jpg",
+      "/images/attractions/circus-land-phan-thiet.jpg"
     ],
     "tourFormats": [
       "Big Group (Max 35)",
@@ -4564,9 +4598,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (06:30 - 07:00)",
     "destinationDetails": "Mui Ne Coastal Resort Area, Binh Thuan Province",
     "description": "Escape to the coast for two days of sand dunes, sea breezes, and relaxation. Visit Bai Da Ong Dia, stroll through Fairy Stream, explore the fishing harbor, catch the sunrise over the White Sand Dunes, and enjoy an overnight stay in a beach resort.",
-    "heroImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/muine_2d1n_1.jpg",
+    "galleryImages": [      "/images/tours/south/muine_2d1n_6.jpg",
+      "/images/sights/muine4.jpg",
+      "/images/attractions/novaworld-phan-thiet.jpg"
     ],
     "tourFormats": [
       "3-Star Hotel Package"
@@ -4679,9 +4714,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30 - 08:00)",
     "destinationDetails": "Vung Tau City, Ba Ria - Vung Tau Province (~100 km southeast)",
     "description": "Escape the urban hustle of Saigon to the refreshing coastal peninsula of Vung Tau. Climb the 32-meter Christ the King giant statue for panoramic ocean views from its shoulders, visit the French colonial White Palace (Bach Dinh), explore Thang Tam Whale Temple, and take in the sea breeze at Cape Nghinh Phong.",
-    "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/vungtau_day_1.jpg",
+    "galleryImages": [      "/images/tours/south/vungtau_day_8.jpg",
+      "/images/tours/south/vungtau_day_15.jpg",
+      "/images/attractions/sun-world-vung-tau.jpg"
     ],
     "tourFormats": [
       "Big Group Full-Day",
@@ -4845,9 +4881,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (07:30 - 08:00)",
     "destinationDetails": "Can Gio Biosphere Reserve (~50 km southeast of Saigon)",
     "description": "Venture into the 'green lungs of Saigon' at the UNESCO-listed Can Gio Mangrove Forest. Encounter over a thousand semi-wild long-tailed macaques on Monkey Island, visit the crocodile breeding sanctuary, take an exhilarating speedboat through winding mangrove canals, and visit the historic Rung Sac Guerrilla Military Base.",
-    "heroImage": "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cangio_day_1.jpg",
+    "galleryImages": [      "/images/tours/south/cangio_day_4.jpg",
+      "/images/tours/south/cangio_day_6.jpg",
+      "/images/tours/south/cangio_day_8.jpg"
     ],
     "tourFormats": [
       "Big Group (Max 35)",
@@ -5009,9 +5046,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (06:30 - 07:00)",
     "destinationDetails": "Cat Tien National Park, Dong Nai Province (~150 km northeast)",
     "description": "Immerse yourself in one of Vietnam's most pristine tropical rainforest reserves. Cross the Dong Nai River into Cat Tien National Park, trek beneath monumental 500-year-old Tung trees, spot rare wildlife and bird species, and experience untouched primary jungle.",
-    "heroImage": "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/cattien_park_1.jpg",
+    "galleryImages": [      "/images/tours/south/cattien_park_4.jpg",
+      "/images/tours/south/cattien_park_6.jpg",
+      "/images/tours/south/cattien_park_8.jpg"
     ],
     "tourFormats": [
       "Join Group (Min 2 pax)",
@@ -5148,9 +5186,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (13:00 - 13:30)",
     "destinationDetails": "Central Ho Chi Minh City Landmarks",
     "description": "An afternoon discovery of Saigon's must-see historical and architectural treasures. Explore the War Remnants Museum, Reunification Palace, Notre Dame Cathedral, Central Post Office, and finish with shopping at Ben Thanh Market.",
-    "heroImage": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/experiences/saigon-post-office/cover.webp",
+    "galleryImages": [      "/images/tours/south/hcm_halfday_1.jpg",
+      "/images/experiences/independence-palace/cover.webp",
+      "/images/tours/south/hcm_halfday_5.jpg"
     ],
     "tourFormats": [
       "Big Group Half-Day"
@@ -5260,9 +5299,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (08:00 - 08:30)",
     "destinationDetails": "District 1, District 3, and Chinatown (District 5)",
     "description": "The ultimate cultural exploration of Saigon. Visit the War Remnants Museum, Reunification Palace, Notre Dame Cathedral, Central Post Office, Chinatown (Cholon), Thien Hau Pagoda, and Binh Tay Market, complete with a traditional Vietnamese lunch.",
-    "heroImage": "https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/cities/hcmc.jpg",
+    "galleryImages": [      "/images/tours/south/hcm_fullday_1.jpg",
+      "/images/experiences/war-remnants-museum/cover.webp",
+      "/images/experiences/saigon-opera-house/cover.webp"
     ],
     "tourFormats": [
       "Big Group (Max 35)",
@@ -5421,9 +5461,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (Morning 08:00 or Afternoon 13:00)",
     "destinationDetails": "Historic Saigon Landmarks via Open-Top Vintage Jeep",
     "description": "Experience Saigon from the open-air vantage point of an authentic restored American military vintage Jeep. Feel the city's pulse and tropical breeze as you rumble past French boulevards, the War Remnants Museum, Reunification Palace, and colonial avenues with your private guide.",
-    "heroImage": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/saigon_jeep_history_1.jpg",
+    "galleryImages": [      "/images/tours/south/saigon_jeep_history_4.jpg",
+      "/images/tours/south/saigon_jeep_history_6.jpg",
+      "/images/sights/hcmc6.jpg"
     ],
     "tourFormats": [
       "Private Vintage Jeep Half-Day"
@@ -5535,9 +5576,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (17:30 - 18:00)",
     "destinationDetails": "Illuminated Saigon Landmarks & Riverfront",
     "description": "Experience the electrifying nocturnal energy of Saigon in an open-top vintage Jeep. Feel the warm evening breeze as you cruise past illuminated French landmarks, bustling street night markets, and modern skyscraper skylines, followed by a delicious dinner.",
-    "heroImage": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/saigon_jeep_dinner_1.jpg",
+    "galleryImages": [      "/images/experiences/bui-vien-street/cover.webp",
+      "/images/experiences/landmark-81-observatory/cover.webp",
+      "/images/sights/hcmc7.jpg"
     ],
     "tourFormats": [
       "Private Vintage Jeep Night Tour"
@@ -5646,9 +5688,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (17:30 - 18:00)",
     "destinationDetails": "District 1, District 3, District 4 & District 10 Street Food Hubs",
     "description": "Taste your way through the culinary heart of Saigon after dark. Ride on the back of a motorbike with a local licensed driver or in an open-top vintage Jeep, exploring off-the-beaten-path alleyways and tasting 6-8 authentic street food specialties: crispy Banh Xeo, grilled seafood, fresh spring rolls, Banh Mi, and sweet desserts.",
-    "heroImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/saigon_foodie_night_1.jpg",
+    "galleryImages": [      "/images/experiences/ben-thanh-market/cover.webp",
+      "/images/tours/south/saigon_foodie_night_4.jpg",
+      "/images/experiences/bui-vien-street/cover.webp"
     ],
     "tourFormats": [
       "By Motorbike with Driver",
@@ -5777,9 +5820,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1 (18:30) or meet at Bach Dang Pier",
     "destinationDetails": "Saigon River, Ho Chi Minh City",
     "description": "Sail past the glittering skyline of Ho Chi Minh City on an elegant evening river cruise. Indulge in a multi-course Vietnamese dinner while enjoying live traditional and acoustic music as iconic landmarks like Bitexco Tower and Landmark 81 light up the night sky.",
-    "heroImage": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/experiences/saigon-river-cruise/cover.webp",
+    "galleryImages": [      "/images/tours/south/saigon_dinner_cruise_1.jpg",
+      "/images/tours/south/saigon_dinner_cruise_4.jpg",
+      "/images/experiences/bitexco-skydeck/cover.webp"
     ],
     "tourFormats": [
       "Private Dinner Cruise"
@@ -5889,9 +5933,10 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (18:00)",
     "destinationDetails": "Craft Breweries & Taprooms across Saigon",
     "description": "Discover why Saigon is Southeast Asia's buzzing capital of craft beer. Travel by motorbike or private car with your local guide to 3-4 premier microbreweries and taprooms, sampling innovative brews crafted with local ingredients like dragon fruit, passion fruit, and Vietnamese peppercorn, paired with gourmet pub bites.",
-    "heroImage": "https://images.unsplash.com/photo-1518057111178-44a106bad636?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1518057111178-44a106bad636?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/tours/south/saigon_beer_rooftop_1.jpg",
+    "galleryImages": [      "/images/tours/south/saigon_beer_rooftop_4.jpg",
+      "/images/experiences/bui-vien-street/cover.webp",
+      "/images/experiences/bitexco-skydeck/cover.webp"
     ],
     "tourFormats": [
       "By Motorbike with Driver",
@@ -6013,9 +6058,9 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Noi Bai Airport Arrival Hall (HAN) or Hanoi Old Quarter Hotel",
     "destinationDetails": "Hanoi City Center or Noi Bai International Airport",
     "description": "Seamless, stress-free private airport arrival or departure transfer between Hanoi Noi Bai International Airport (HAN) and your hotel in central Hanoi. Professional driver meets you at the arrival gate holding a personalized name sign, assists with luggage, and transports you in a clean, modern air-conditioned vehicle.",
-    "heroImage": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/cities/hanoi.jpg",
+    "galleryImages": [      "/images/central-vietnam/verified/cuong-innova-7s.jpg",
+      "/images/experiences/hanoi-old-quarter/cover.webp"
     ],
     "tourFormats": [
       "7-Seater Private Car (7S)",
@@ -6141,9 +6186,9 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Tan Son Nhat Airport Arrival Column 10-12 (SGN) or District 1 Hotel",
     "destinationDetails": "Central Ho Chi Minh City or Tan Son Nhat Airport",
     "description": "Comfortable, safe private airport transfer between Tan Son Nhat International Airport (SGN) and your accommodation in central Ho Chi Minh City. Avoid taxi queues and scams with a pre-booked vehicle, personalized driver greeting, and air-conditioned transit.",
-    "heroImage": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
+    "heroImage": "/images/cities/hcmc.jpg",
+    "galleryImages": [      "/images/central-vietnam/verified/cuong-innova-7s.jpg",
+      "/images/cities/hcmc.jpg"
     ],
     "tourFormats": [
       "7-Seater Private Car (7S)",
@@ -6251,6 +6296,1295 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "advisory": "Airport Meeting Point: Chauffeur waits at arrival column 10 (International) or column 4 (Domestic) with a VIETANA nameboard.",
     "priceVND": 500000,
     "priceINR": 1850
+  },
+  {
+    "id": "bana-hills-golden-bridge",
+    "slug": "bana-hills-golden-bridge",
+    "title": "Sun World Ba Na Hills & Golden Bridge Full-Day Tour (Indian Buffet Available)",
+    "shortTitle": "Ba Na Hills & Golden Bridge",
+    "destination": "Ba Na Hills",
+    "destinations": [
+      "Da Nang",
+      "Ba Na Hills"
+    ],
+    "region": "Central Vietnam",
+    "category": "Day Trip",
+    "duration": "Full-Day (~8 Hours)",
+    "durationType": "full_day",
+    "durationTypes": [
+      "full_day"
+    ],
+    "departureCity": "Da Nang",
+    "departureDetails": "Hotel pickup in Da Nang center / Hoi An center (07:30 - 08:30)",
+    "destinationDetails": "Chua Mountain summit at 1,487m elevation with French Village & Golden Bridge",
+    "description": "Ascend into the mist-shrouded peaks of Chua Mountain via the world-record cable car system. Walk along the iconic Golden Bridge held aloft by colossal stone hands 1,400 meters above sea level. Explore Le Jardin D'Amour flower gardens, the French Village gothic architecture, Linh Ung Pagoda, and world-class indoor thrills at Fantasy Park. Features a dedicated Indian Buffet Lunch option catered to Indian dietary preferences.",
+    "heroImage": "/images/attractions/sun-world-ba-na-hills.jpg",
+    "galleryImages": [
+      "/images/experiences/son-tra-lady-buddha/cover.webp",
+      "/images/cities/danang.jpg"
+    ],
+    "tourFormats": [
+      "Join Group (Max 25)",
+      "Small Group (Max 12)",
+      "With Indian Buffet",
+      "Without Meal"
+    ],
+    "groupOptions": [
+      "Join Group (Max 25 pax)",
+      "Small Group (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Tourist Bus",
+      "Modern Tourist Van"
+    ],
+    "minimumPax": 1,
+    "maximumPax": 25,
+    "guide": "Licensed English-Speaking Local Tour Guide",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Ride the 4-time world-record cable car over pristine jungle and waterfalls",
+      "Walk the iconic Golden Bridge held by giant stone hands at 1,400m altitude",
+      "Wander through Le Jardin D'Amour flower gardens and Linh Ung Pagoda",
+      "Explore the French Village, Lunar Castle, and European gothic architecture",
+      "Enjoy complimentary access to 105+ attractions and rides inside Fantasy Park",
+      "Dedicated Indian Buffet Lunch option with vegetarian, Jain, and non-veg dishes"
+    ],
+    "itinerary": [
+      {
+        "time": "07:30 - 08:30",
+        "title": "Hotel Pickup",
+        "description": "Pickup from hotels in Da Nang city center or Hoi An center. Depart along coastal highway toward Ba Na Hills."
+      },
+      {
+        "time": "09:30",
+        "title": "World-Record Cable Car Ascent",
+        "description": "Board the world's longest single-wire cable car system, soaring above cascading waterfalls and virgin tropical forest."
+      },
+      {
+        "time": "10:00",
+        "title": "Golden Bridge & Le Jardin D'Amour",
+        "description": "Stroll across the legendary Golden Bridge with panoramic cloud views. Visit the 9 themed gardens of Le Jardin D'Amour and the 27m Shakyamuni Buddha statue at Linh Ung Pagoda."
+      },
+      {
+        "time": "11:30",
+        "title": "French Village & Lunar Castle",
+        "description": "Take the second cable car or funicular train to the French Village. Marvel at gothic cathedrals, European plazas, and the grand Lunar Castle."
+      },
+      {
+        "time": "12:00 - 13:30",
+        "title": "Buffet Lunch Break",
+        "description": "Enjoy an extensive Indian Buffet Lunch (with authentic curries, naan, dal, and veg options) or international buffet at the resort restaurant."
+      },
+      {
+        "time": "13:30 - 15:00",
+        "title": "Fantasy Park Entertainment",
+        "description": "Free time for indoor adventure rides: Alpine Coaster, 4D/5D cinema, Dinosaur Park, drop tower, and arcade games."
+      },
+      {
+        "time": "15:00 - 15:30",
+        "title": "Cable Car Descent",
+        "description": "Regroup at the upper station and take the scenic cable car descent back to the base."
+      },
+      {
+        "time": "16:00 - 17:30",
+        "title": "Return to Hotel",
+        "description": "Board the transfer vehicle and return to your hotel in Da Nang or Hoi An. Tour concludes."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Da Nang center or Hoi An center",
+      "Return 2-way cable car tickets to Sun World Ba Na Hills",
+      "Golden Bridge, Le Jardin D'Amour gardens & Linh Ung Pagoda entrance",
+      "Fantasy Park admission (105+ free games and rides)",
+      "Buffet lunch (if option with lunch is selected - Indian Buffet available)",
+      "Professional English-speaking tour guide",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Wax Museum entrance fee (~100,000 VND)",
+      "Debay Wine Cellar premium tasting",
+      "Personal expenses, drinks during meals, tips for guide and driver",
+      "Remote resort transfer surcharge (if staying outside 5km radius)"
+    ],
+    "pickupInformation": "Complimentary pickup from hotels within 5km radius of Dragon Bridge (Da Nang) and Hoi An center. Remote beachfront resorts incur a small transfer surcharge.",
+    "dropoffInformation": "Return drop-off to your original hotel pickup location.",
+    "childPolicy": "Under 1.0m: Free of charge (sits with parents). From 1.0m to 1.39m: 80% of adult price. 1.4m and above: Adult price. Seniors 70+ years: 80% of price.",
+    "cancellationPolicy": "Free cancellation up to 21:00 on the day prior to departure. 50% cancellation fee after 21:00 until departure day. 100% fee for same-day cancellation or no-show.",
+    "importantNotes": [
+      "From October to December, the mountain summit can be chilly and misty. Bring a light jacket or raincoat.",
+      "Wear comfortable walking shoes suitable for paved pathways and stairs."
+    ],
+    "dietaryInformation": {
+      "standard": "Indian Buffet Lunch with vegetarian, Jain, and non-veg dishes, or International Buffet",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Indian food is prepared by specialized chefs with dedicated vegetarian/Jain counters."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "Bana Hills _ Golden Bridge",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 1550000,
+    "priceINR": 5735,
+    "variants": [
+      {
+        "id": "bana-hills-no-meal-big-group",
+        "name": "Join Group (Max 25 pax) — No Meal",
+        "format": "join_group",
+        "groupSize": "Max 25 pax",
+        "vehicleType": "Air-Conditioned Bus",
+        "priceVND": 1550000,
+        "priceINR": 5735,
+        "notes": "Cable car and park admission included. Food purchased independently."
+      },
+      {
+        "id": "bana-hills-no-meal-small-group",
+        "name": "Small Group (Max 12 pax) — No Meal",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Modern Van",
+        "priceVND": 1700000,
+        "priceINR": 6290,
+        "notes": "Intimate small group experience with faster boarding and personalized attention."
+      },
+      {
+        "id": "bana-hills-indian-buffet-big-group",
+        "name": "Join Group (Max 25 pax) + Indian Buffet Lunch",
+        "format": "join_group",
+        "groupSize": "Max 25 pax",
+        "vehicleType": "Air-Conditioned Bus",
+        "priceVND": 1850000,
+        "priceINR": 6845,
+        "notes": "Includes full Indian Buffet lunch with vegetarian & non-veg specialties."
+      },
+      {
+        "id": "bana-hills-indian-buffet-small-group",
+        "name": "Small Group (Max 12 pax) + Indian Buffet Lunch",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Modern Van",
+        "priceVND": 2050000,
+        "priceINR": 7585,
+        "notes": "Premium small group tour with dedicated Indian Buffet Lunch."
+      }
+    ]
+  },
+  {
+    "id": "hue-imperial-city-hai-van-pass",
+    "slug": "hue-imperial-city-hai-van-pass",
+    "title": "Hue Imperial City, Royal Tombs & Hai Van Pass Full-Day Tour",
+    "shortTitle": "Hue Imperial City & Hai Van Pass",
+    "destination": "Hue",
+    "destinations": [
+      "Da Nang",
+      "Hue"
+    ],
+    "region": "Central Vietnam",
+    "category": "Culture",
+    "duration": "Full-Day (~10 Hours)",
+    "durationType": "full_day",
+    "durationTypes": [
+      "full_day"
+    ],
+    "departureCity": "Da Nang",
+    "departureDetails": "Hotel pickup in Da Nang center (07:30 - 08:15)",
+    "destinationDetails": "UNESCO World Heritage Imperial City of the 13 Nguyen Dynasty Kings",
+    "description": "Travel the legendary 21-km Hai Van Pass ('Ocean Cloud Pass') offering breathtaking coastal mountain vistas. Arrive in the ancient royal capital of Hue to tour the grand Citadel and Imperial City, the European-Vietnamese mosaic tomb of King Khai Dinh, and the iconic seven-tiered Thien Mu Pagoda overlooking the serene Perfume River. Includes authentic Hue specialty lunch (or Indian set menu).",
+    "heroImage": "/images/cities/hue.jpg",
+    "galleryImages": [
+      "/images/central-vietnam/verified/thien-mu-pagoda.jpg",
+      "/images/central-vietnam/verified/khai-dinh-tomb.jpg",
+      "/images/cities/danang.jpg"
+    ],
+    "tourFormats": [
+      "Join Group (Max 25)",
+      "Small Group (Max 12)"
+    ],
+    "groupOptions": [
+      "Join Group (Max 25 pax)",
+      "Small Group (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Tourist Bus",
+      "Modern Van"
+    ],
+    "minimumPax": 2,
+    "maximumPax": 25,
+    "guide": "Licensed English-Speaking Local Historian Guide",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Drive over the famous Hai Van Pass mountain highway with panoramic sea vistas",
+      "Scenic photo stop overlooking the white sands of Lang Co Bay",
+      "Explore the UNESCO World Heritage Hue Citadel and Thai Hoa Palace",
+      "Marvel at the intricate glass and porcelain mosaics inside Khai Dinh Tomb",
+      "Visit historic Thien Mu Pagoda standing on the banks of the Perfume River",
+      "Hue royal cuisine lunch with vegetarian and Indian set menu available"
+    ],
+    "itinerary": [
+      {
+        "time": "07:30 - 08:15",
+        "title": "Hotel Pickup & Coastal Drive",
+        "description": "Pickup from hotels in Da Nang center. Depart north along National Route 1A toward Hue."
+      },
+      {
+        "time": "08:45",
+        "title": "Hai Van Pass & Lang Co Viewpoint",
+        "description": "Cross the dramatic 21-km Hai Van Pass with sweeping views of the East Sea. Rest stop at Lang Co bay viewpoint for photos."
+      },
+      {
+        "time": "10:30",
+        "title": "Khai Dinh Royal Tomb",
+        "description": "Explore the majestic Khai Dinh Tomb, celebrated for its unique blend of Gothic, Roman, and Vietnamese dragon porcelain artwork."
+      },
+      {
+        "time": "12:00 - 13:00",
+        "title": "Hue Specialty Lunch",
+        "description": "Savor authentic Hue royal cuisine at a local garden restaurant. Indian set menu or vegetarian options provided upon request."
+      },
+      {
+        "time": "13:00 - 14:45",
+        "title": "Hue Imperial Citadel (The Citadel)",
+        "description": "Walk through the historic Ngo Mon Gate, Thai Hoa Palace, the Forbidden Purple City, the Royal Library, and the Nine Dynastic Urns."
+      },
+      {
+        "time": "15:00 - 15:45",
+        "title": "Thien Mu Pagoda & Perfume River",
+        "description": "Visit the 7-storey Phuoc Duyen tower at Thien Mu Pagoda, Hue's oldest religious monument founded in 1601."
+      },
+      {
+        "time": "16:00",
+        "title": "Depart Hue for Da Nang",
+        "description": "Board the coach for the return trip to Da Nang (via Hai Van Tunnel for comfortable transit)."
+      },
+      {
+        "time": "18:00 - 18:30",
+        "title": "Return to Da Nang Hotel",
+        "description": "Drop off at your hotel in Da Nang. Tour concludes."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Da Nang city center",
+      "Comfortable air-conditioned transport with experienced driver",
+      "English-speaking professional tour guide",
+      "All entrance fees: Hue Citadel, Khai Dinh Tomb, Thien Mu Pagoda",
+      "Set menu lunch in Hue (Vietnamese royal cuisine or Indian food)",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Electric shuttle car inside the Citadel (optional, ~50,000 VND)",
+      "Personal expenses, drinks during meals, tips for guide and driver",
+      "Pickup outside Da Nang center (surcharge applies)"
+    ],
+    "pickupInformation": "Complimentary pickup from hotels within 5km of Dragon Bridge in Da Nang.",
+    "dropoffInformation": "Return drop-off to your hotel in Da Nang.",
+    "childPolicy": "Under 5 years: Free (sits with parents). 5 to 9 years: 50% of adult price. 10+ years: 100% adult price.",
+    "cancellationPolicy": "Free cancellation before 21:00 on the day prior to departure. 50% fee after 21:00. 100% fee on tour day.",
+    "importantNotes": [
+      "Modest attire required: shoulders and knees must be covered to enter temples and the Imperial Citadel.",
+      "In case of extreme stormy weather, the bus may bypass the pass and take the tunnel directly to Hue for safety."
+    ],
+    "dietaryInformation": {
+      "standard": "Hue traditional dishes (Bun Bo Hue, Banh Beo, royal rice)",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Dedicated Indian set lunch available upon advance request."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "Hue Imperial City Via Hai Van Pass",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 1300000,
+    "priceINR": 4810,
+    "variants": [
+      {
+        "id": "hue-imperial-city-big-group",
+        "name": "Join Group (Max 25 pax) — Full Day with Lunch",
+        "format": "join_group",
+        "groupSize": "Max 25 pax",
+        "vehicleType": "Air-Conditioned Bus",
+        "priceVND": 1300000,
+        "priceINR": 4810,
+        "notes": "Includes full Citadel entrance, Khai Dinh Tomb, and set lunch."
+      },
+      {
+        "id": "hue-imperial-city-small-group",
+        "name": "Small Group (Max 12 pax) — Full Day with Lunch",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Modern Van",
+        "priceVND": 1450000,
+        "priceINR": 5365,
+        "notes": "Small group format with enhanced storytelling and personalized attention."
+      }
+    ]
+  },
+  {
+    "id": "marble-mountains-coconut-boat-hoi-an",
+    "slug": "marble-mountains-coconut-boat-hoi-an",
+    "title": "Marble Mountains, Bay Mau Coconut Basket Boat & Hoi An Lantern Town Tour",
+    "shortTitle": "Marble Mt, Coconut Boat & Hoi An",
+    "destination": "Hoi An",
+    "destinations": [
+      "Da Nang",
+      "Hoi An"
+    ],
+    "region": "Central Vietnam",
+    "category": "Day Trip",
+    "duration": "Afternoon-Evening (~7.5 Hours)",
+    "durationType": "evening",
+    "durationTypes": [
+      "evening",
+      "half_day"
+    ],
+    "departureCity": "Da Nang",
+    "departureDetails": "Hotel pickup in Da Nang center (13:30 - 14:00)",
+    "destinationDetails": "Limestone karst caves, coconut palm waterways, and lantern-lit ancient trading port",
+    "description": "The ultimate Central Vietnam afternoon excursion combining three iconic highlights: explore the Buddhist grottoes and stone-carving villages of the Marble Mountains, paddle a traditional round bamboo basket boat through the Bay Mau coconut forest with local fishermen, and stroll through UNESCO-listed Hoi An Ancient Town as dusk falls and thousands of silk lanterns illuminate the cobblestone streets.",
+    "heroImage": "/images/cities/hoian.jpg",
+    "galleryImages": [
+      "/images/central-vietnam/verified/cam-thanh-basket-boat.jpg",
+      "/images/central-vietnam/verified/marble-mountains-cave.jpg",
+      "/images/central-vietnam/verified/hoian-twilight-lanterns.jpg"
+    ],
+    "tourFormats": [
+      "Join Group (Max 25)",
+      "Small Group (Max 12)"
+    ],
+    "groupOptions": [
+      "Join Group (Max 25 pax)",
+      "Small Group (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Tourist Bus",
+      "Modern Van"
+    ],
+    "minimumPax": 2,
+    "maximumPax": 25,
+    "guide": "Licensed English-Speaking Local Tour Guide",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Climb the Marble Mountains (Thuy Son) and discover hidden Buddhist shrines inside Tang Chon Cave",
+      "Visit the centuries-old Non Nuoc stone carving handicraft village",
+      "Ride a bamboo basket boat in the Cam Thanh water coconut forest with spinning performances",
+      "Try traditional crab fishing with bamboo rods in the coconut waterways",
+      "Guided walking tour of Hoi An Ancient Town: Japanese Covered Bridge, Phuc Kien Hall, ancient merchant houses",
+      "Enjoy an authentic local dinner featuring Hoi An delicacies (Cao Lau, White Rose dumplings)",
+      "Free time to browse the lantern night market and release flower lanterns on the Hoai River"
+    ],
+    "itinerary": [
+      {
+        "time": "13:30 - 14:00",
+        "title": "Hotel Pickup",
+        "description": "Pickup from hotels in Da Nang center. Depart along the coast toward the Marble Mountains."
+      },
+      {
+        "time": "14:15 - 15:30",
+        "title": "Marble Mountains & Non Nuoc Village",
+        "description": "Visit Non Nuoc stone carving village. Ascend Water Mountain (Thuy Son) via elevator/stairs to explore Linh Ung Pagoda, Tang Chon Cave, and panoramic sea viewpoints."
+      },
+      {
+        "time": "16:00 - 17:15",
+        "title": "Bay Mau Coconut Forest Basket Boat",
+        "description": "Arrive at Cam Thanh water coconut village. Board 2-person bamboo basket boats paddled by local boatmen through lush palm canals. Enjoy basket boat spinning tricks and crab catching."
+      },
+      {
+        "time": "17:30 - 18:30",
+        "title": "Hoi An Specialty Dinner",
+        "description": "Enjoy a delicious Vietnamese dinner at a riverside restaurant in Hoi An. Vegetarian, Indian, and vegan options available upon request."
+      },
+      {
+        "time": "18:30 - 20:00",
+        "title": "Hoi An Ancient Town Night Tour",
+        "description": "Guided walking tour through the lantern-lit historic quarter: visit the Japanese Covered Bridge, Cantonese Assembly Hall, and historic merchant houses. Enjoy free time for shopping at the Night Market."
+      },
+      {
+        "time": "20:00 - 21:00",
+        "title": "Return to Da Nang",
+        "description": "Reboard the bus and return to Da Nang. Drop off at hotels around 21:00."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Da Nang city center",
+      "Air-conditioned transfer throughout the tour",
+      "English-speaking professional tour guide",
+      "Marble Mountains entrance ticket",
+      "Bay Mau Coconut Forest basket boat ride (2 persons per boat)",
+      "Hoi An Ancient Town entrance preservation ticket",
+      "Local set dinner in Hoi An (vegetarian/Indian available)",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Elevator ticket at Marble Mountain (~15,000 VND/way, optional)",
+      "Lantern boat ride on the Hoai River (~250,000 VND/boat, optional)",
+      "Drinks during dinner, personal expenses, guide/driver tips"
+    ],
+    "pickupInformation": "Complimentary pickup from hotels within 5km of Dragon Bridge in Da Nang.",
+    "dropoffInformation": "Drop-off at your hotel in Da Nang (or guests may choose to stay in Hoi An and return independently).",
+    "childPolicy": "Under 5 years: Free (sits with parents). 5 to 9 years: 50% of adult price. 10+ years: 100% adult price.",
+    "cancellationPolicy": "Free cancellation before 21:00 prior day. 50% fee after 21:00. 100% fee on tour day.",
+    "importantNotes": [
+      "Wear comfortable walking shoes for cobblestones and stairs at Marble Mountain.",
+      "Modest clothing required when entering temples inside Marble Mountain."
+    ],
+    "dietaryInformation": {
+      "standard": "Hoi An local specialties (Cao Lau, Banh Vac, Spring rolls)",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Indian or vegetarian dinner set can be pre-arranged with no extra charge."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "Marble Mountain - Coconut Basket boat - Hoi An Ancient Town",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 1250000,
+    "priceINR": 4625,
+    "variants": [
+      {
+        "id": "marble-coconut-hoian-big-group",
+        "name": "Join Group (Max 25 pax) — 3-in-1 Highlights Tour",
+        "format": "join_group",
+        "groupSize": "Max 25 pax",
+        "vehicleType": "Air-Conditioned Bus",
+        "priceVND": 1250000,
+        "priceINR": 4625,
+        "notes": "Includes Marble Mt, Basket Boat ride, Hoi An walking tour, and dinner."
+      },
+      {
+        "id": "marble-coconut-hoian-small-group",
+        "name": "Small Group (Max 12 pax) — 3-in-1 Highlights Tour",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Modern Van",
+        "priceVND": 1300000,
+        "priceINR": 4810,
+        "notes": "Small group format for maximum comfort, photography time, and easy boarding."
+      }
+    ]
+  },
+  {
+    "id": "coconut-basket-boat-hoi-an",
+    "slug": "coconut-basket-boat-hoi-an",
+    "title": "Bay Mau Coconut Basket Boat & Hoi An Ancient Town Evening Tour",
+    "shortTitle": "Coconut Boat & Hoi An",
+    "destination": "Hoi An",
+    "destinations": [
+      "Da Nang",
+      "Hoi An"
+    ],
+    "region": "Central Vietnam",
+    "category": "Day Trip",
+    "duration": "Afternoon-Evening (~6 Hours)",
+    "durationType": "evening",
+    "durationTypes": [
+      "evening",
+      "half_day"
+    ],
+    "departureCity": "Da Nang",
+    "departureDetails": "Hotel pickup in Da Nang center (14:30 - 15:00)",
+    "destinationDetails": "Water coconut palm canals and lantern-lit ancient trading streets of Hoi An",
+    "description": "Experience the charm of Hoi An's countryside and historic quarter in one relaxing afternoon. Glide through tranquil coconut-palm waterways in circular bamboo basket boats with local fishermen, learn crab-catching techniques, and watch spinning boat acrobatics. Afterward, wander the pedestrianized ancient town bathed in lantern light and enjoy an authentic local dinner.",
+    "heroImage": "/images/central-vietnam/verified/cam-thanh-basket-boat.jpg",
+    "galleryImages": [
+      "/images/cities/hoian.jpg",
+      "/images/central-vietnam/verified/cam-thanh-coconut-aerial.jpg",
+      "/images/central-vietnam/verified/hoian-twilight-lanterns.jpg"
+    ],
+    "tourFormats": [
+      "Join Group (Max 25)",
+      "Small Group (Max 12)"
+    ],
+    "groupOptions": [
+      "Join Group (Max 25 pax)",
+      "Small Group (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Tourist Bus",
+      "Modern Van"
+    ],
+    "minimumPax": 2,
+    "maximumPax": 25,
+    "guide": "Licensed English-Speaking Local Guide",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Scenic drive through the Central Vietnam countryside to Cam Thanh eco-village",
+      "Round bamboo basket boat excursion through the water coconut groves",
+      "Watch local boatmen perform spinning basket boat dances on the water",
+      "Guided tour of Hoi An's historical landmarks: Japanese Bridge, ancient clan houses",
+      "Delicious multi-course Vietnamese dinner at a heritage restaurant",
+      "Free time to explore the vibrant Hoi An night market and riverside lantern boats"
+    ],
+    "itinerary": [
+      {
+        "time": "14:30 - 15:00",
+        "title": "Hotel Pickup",
+        "description": "Pickup from hotels in Da Nang center. Depart for Cam Thanh, Hoi An."
+      },
+      {
+        "time": "15:45 - 17:15",
+        "title": "Coconut Forest Basket Boat Ride",
+        "description": "Board round bamboo boats (2 pax/boat). Explore the historic palm canals, try crab fishing, and witness exhilarating basket boat spinning demonstrations."
+      },
+      {
+        "time": "17:30 - 18:30",
+        "title": "Dinner in Hoi An",
+        "description": "Enjoy a traditional Vietnamese set dinner at a local restaurant. Indian and vegetarian options available."
+      },
+      {
+        "time": "18:30 - 20:00",
+        "title": "Hoi An Ancient Town Walking Tour",
+        "description": "Guided walking tour through the Japanese Covered Bridge, Phuc Kien Assembly Hall, and Tan Ky old house. Free time for lantern photos and shopping."
+      },
+      {
+        "time": "20:00 - 21:00",
+        "title": "Return to Da Nang",
+        "description": "Board the bus and return to Da Nang. Hotel drop-off concludes the tour."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Da Nang center",
+      "Air-conditioned tourist vehicle with driver",
+      "English-speaking tour guide",
+      "Bay Mau Coconut Forest boat ticket and basket boat ride",
+      "Hoi An Ancient Town entrance ticket",
+      "Dinner in Hoi An with local specialty dishes",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Lantern boat ticket on Hoai River (optional, ~250,000 VND/boat)",
+      "Drinks during dinner, personal expenses, tips"
+    ],
+    "pickupInformation": "Complimentary pickup from hotels within 5km of Dragon Bridge in Da Nang.",
+    "dropoffInformation": "Hotel drop-off in Da Nang.",
+    "childPolicy": "Under 5 years: Free. 5 to 9 years: 50% adult price. 10+ years: 100% adult price.",
+    "cancellationPolicy": "Free cancellation before 21:00 prior day. 50% fee after 21:00. 100% fee on tour day.",
+    "importantNotes": [
+      "Wear comfortable clothing suitable for stepping into bamboo boats and walking on paved streets."
+    ],
+    "dietaryInformation": {
+      "standard": "Vietnamese dinner set menu",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Indian set dinner available upon request."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "Coconut Basket boat – Hoi An Ancient Town",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 950000,
+    "priceINR": 3515,
+    "variants": [
+      {
+        "id": "coconut-hoian-big-group",
+        "name": "Join Group (Max 25 pax)",
+        "format": "join_group",
+        "groupSize": "Max 25 pax",
+        "vehicleType": "Air-Conditioned Bus",
+        "priceVND": 950000,
+        "priceINR": 3515,
+        "notes": "Includes Coconut boat ride, Hoi An walking tour, and dinner."
+      },
+      {
+        "id": "coconut-hoian-small-group",
+        "name": "Small Group (Max 12 pax)",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Modern Van",
+        "priceVND": 1050000,
+        "priceINR": 3885,
+        "notes": "Small group format for intimate experience."
+      }
+    ]
+  },
+  {
+    "id": "danang-city-marble-mountains-morning",
+    "slug": "danang-city-marble-mountains-morning",
+    "title": "Da Nang City Highlights, Marble Mountains & Lady Buddha Morning Tour",
+    "shortTitle": "Da Nang City & Marble Mt (Morning)",
+    "destination": "Da Nang",
+    "destinations": [
+      "Da Nang"
+    ],
+    "region": "Central Vietnam",
+    "category": "City Tour",
+    "duration": "Half-Day (~5 Hours)",
+    "durationType": "half_day",
+    "durationTypes": [
+      "half_day"
+    ],
+    "departureCity": "Da Nang",
+    "departureDetails": "Hotel pickup in Da Nang center (07:30 - 08:15)",
+    "destinationDetails": "Son Tra Peninsula, 67m Lady Buddha, Marble Mountains, and Am Phu Cave",
+    "description": "Discover the essential spiritual and cultural icons of Da Nang in a half-day tour. Drive up the lush Son Tra Peninsula to Linh Ung Pagoda and gaze up at the towering 67-meter white marble Lady Buddha statue overlooking the bay. Explore the centuries-old Non Nuoc stone carving village and climb into the limestone caves and pagodas of the Marble Mountains and the mysterious Am Phu Cave. Concludes with authentic Quang Noodles and crispy Banh Xeo.",
+    "heroImage": "/images/central-vietnam/verified/lady-buddha-sontra.jpg",
+    "galleryImages": [
+      "/images/central-vietnam/verified/marble-mountains-cave.jpg",
+      "/images/central-vietnam/verified/marble-mountains-view.jpg",
+      "/images/cities/danang.jpg"
+    ],
+    "tourFormats": [
+      "Join Group (Max 25)",
+      "Small Group (Max 12)"
+    ],
+    "groupOptions": [
+      "Join Group (Max 25 pax)",
+      "Small Group (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Tourist Bus",
+      "Modern Van"
+    ],
+    "minimumPax": 2,
+    "maximumPax": 25,
+    "guide": "Licensed English-Speaking Local Guide",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Panoramic coastal views of Da Nang City and My Khe Beach from Son Tra Peninsula",
+      "Stand before the magnificent 67-meter Lady Buddha statue at Linh Ung Pagoda",
+      "Explore the labyrinthine limestone chambers and Buddhist shrines of Marble Mountain",
+      "Enter Am Phu Cave ('Hell Cave') showcasing Buddhist folklore and wartime history",
+      "Visit the artisanal marble sculpture workshops of Non Nuoc Village",
+      "Enjoy a traditional lunch of signature Mi Quang noodles and crispy Banh Xeo pancakes"
+    ],
+    "itinerary": [
+      {
+        "time": "07:30 - 08:15",
+        "title": "Hotel Pickup",
+        "description": "Pickup from hotels in Da Nang center. Depart for Son Tra Peninsula."
+      },
+      {
+        "time": "08:30 - 09:15",
+        "title": "Son Tra Peninsula & Lady Buddha",
+        "description": "Visit Linh Ung Pagoda, admire the 67m Lady Buddha statue, and take in panoramic views of the ocean and Da Nang skyline."
+      },
+      {
+        "time": "09:30 - 11:15",
+        "title": "Marble Mountains & Am Phu Cave",
+        "description": "Explore Non Nuoc carving village. Climb into Huyen Khong Cave, Tang Chon Cave, and explore the extensive chambers of Am Phu Cave."
+      },
+      {
+        "time": "11:30 - 12:30",
+        "title": "Local Lunch",
+        "description": "Enjoy a delicious lunch featuring Da Nang's iconic Mi Quang noodles and crispy Banh Xeo. Vegetarian options available."
+      },
+      {
+        "time": "12:30 - 13:00",
+        "title": "Return to Hotel",
+        "description": "Transfer back to hotels in Da Nang. Tour concludes."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Da Nang center",
+      "Air-conditioned vehicle with driver",
+      "English-speaking tour guide",
+      "Marble Mountains & Am Phu Cave entrance tickets",
+      "Local lunch (Quang Noodles & Banh Xeo, or vegetarian)",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Elevator ticket at Marble Mountain (optional, ~15,000 VND/way)",
+      "Personal expenses, drinks during lunch, tips"
+    ],
+    "pickupInformation": "Complimentary pickup within 5km of Dragon Bridge in Da Nang.",
+    "dropoffInformation": "Return to your hotel in Da Nang.",
+    "childPolicy": "Under 5 years: Free. 5 to 9 years: 50% adult price. 10+ years: 100% adult price.",
+    "cancellationPolicy": "Free cancellation before 21:00 prior day. 50% fee after 21:00. 100% fee on tour day.",
+    "importantNotes": [
+      "Comfortable footwear recommended for climbing stairs at Marble Mountain."
+    ],
+    "dietaryInformation": {
+      "standard": "Mi Quang (turmeric rice noodles) and Banh Xeo (crispy savory pancakes)",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Vegetarian Mi Quang with tofu and mushrooms readily prepared."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "Monkey Mountain - Marble Mountain - Am Phu Cave (Morning tour)",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 900000,
+    "priceINR": 3330,
+    "variants": [
+      {
+        "id": "danang-city-morning-big-group",
+        "name": "Join Group (Max 25 pax) — Morning with Lunch",
+        "format": "join_group",
+        "groupSize": "Max 25 pax",
+        "vehicleType": "Air-Conditioned Bus",
+        "priceVND": 900000,
+        "priceINR": 3330,
+        "notes": "Includes Lady Buddha, Marble Mt, Am Phu Cave, and Mi Quang lunch."
+      },
+      {
+        "id": "danang-city-morning-small-group",
+        "name": "Small Group (Max 12 pax) — Morning with Lunch",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Modern Van",
+        "priceVND": 1000000,
+        "priceINR": 3700,
+        "notes": "Small group format for enhanced comfort."
+      }
+    ]
+  },
+  {
+    "id": "cham-island-snorkeling-speedboat",
+    "slug": "cham-island-snorkeling-speedboat",
+    "title": "Cham Island UNESCO Biosphere Reserve & Snorkeling Speedboat Tour",
+    "shortTitle": "Cham Island Snorkeling",
+    "destination": "Cham Island",
+    "destinations": [
+      "Hoi An",
+      "Cham Island"
+    ],
+    "region": "Central Vietnam",
+    "category": "Island / Beach",
+    "duration": "Full-Day (~7.5 Hours)",
+    "durationType": "full_day",
+    "durationTypes": [
+      "full_day"
+    ],
+    "departureCity": "Da Nang",
+    "departureDetails": "Hotel pickup in Da Nang center / Hoi An (07:30 - 08:30)",
+    "destinationDetails": "UNESCO World Biosphere Reserve archipelago with pristine coral reefs",
+    "description": "Board a high-speed boat from Cua Dai Port and zip across the open ocean to the pristine Cham Islands (Cu Lao Cham), a UNESCO World Biosphere Reserve. Tour the historic Bai Lang fishing village, ancient Hai Tang Pagoda, and traditional seafood market. Suit up for snorkeling among vibrant coral reefs and marine life at Bai Xep or Bai Chong beach, followed by a fresh seafood feast by the sea.",
+    "heroImage": "/images/central-vietnam/verified/cham-island-beach.jpg",
+    "galleryImages": [
+      "/images/central-vietnam/verified/cham-island-snorkeling.jpg",
+      "/images/cities/hoian.jpg"
+    ],
+    "tourFormats": [
+      "Small Group (Max 12)"
+    ],
+    "groupOptions": [
+      "Small Group Speedboat (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Van + High-Speed Boat"
+    ],
+    "minimumPax": 1,
+    "maximumPax": 12,
+    "guide": "Licensed English-Speaking Guide & Certified Boat Crew",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Thrilling 20-minute high-speed boat crossing from Cua Dai Port to Cham Island",
+      "Visit Bai Lang village, the marine conservation center, and 200-year-old Hai Tang Pagoda",
+      "Snorkel along colorful coral reefs teeming with tropical fish at Bai Xep",
+      "Relax, swim, and sunbathe on the powdery white sands of Bai Chong beach",
+      "Feast on a multi-course fresh seafood island lunch served right on the beach",
+      "Small group format (max 12 pax) ensuring safety, space, and personalized care"
+    ],
+    "itinerary": [
+      {
+        "time": "07:30 - 08:30",
+        "title": "Hotel Pickup",
+        "description": "Pickup from hotels in Da Nang or Hoi An. Transfer to Cua Dai Port."
+      },
+      {
+        "time": "08:45 - 09:15",
+        "title": "Speedboat Crossing",
+        "description": "Board the high-speed boat and cruise across the turquoise waters of the East Sea to Cu Lao Cham."
+      },
+      {
+        "time": "09:30 - 10:30",
+        "title": "Bai Lang Cultural Discovery",
+        "description": "Visit the Marine Protected Area exhibition, the ancient Champa stone well, and the sacred Hai Tang Pagoda."
+      },
+      {
+        "time": "10:45 - 12:00",
+        "title": "Coral Reef Snorkeling",
+        "description": "Transfer to Bai Xep or Hon Tai for snorkeling. Equipped with life vests, masks, and snorkels to explore vibrant living coral gardens."
+      },
+      {
+        "time": "12:15 - 13:45",
+        "title": "Seafood Lunch on the Beach",
+        "description": "Relax at Bai Chong eco-resort and enjoy a fresh seafood lunch with grilled fish, squid, and seasonal vegetables."
+      },
+      {
+        "time": "13:45 - 14:15",
+        "title": "Beach Leisure Time",
+        "description": "Free time for swimming in crystal-clear waters or relaxing in hammocks under coconut palms."
+      },
+      {
+        "time": "14:30 - 15:30",
+        "title": "Return Speedboat & Hotel Drop-off",
+        "description": "Board the speedboat back to Cua Dai Port. Transfer back to your hotel in Da Nang or Hoi An."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Da Nang center or Hoi An",
+      "Round-trip modern speedboat transfer to Cham Island",
+      "Cham Island environmental preservation & port fees",
+      "Snorkeling equipment: life vest, mask, snorkel",
+      "Fresh seafood lunch at Bai Chong restaurant (vegetarian available)",
+      "English-speaking guide and experienced boat captain",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Scuba diving or seawalker helmet diving (optional add-on on site)",
+      "Personal expenses, drinks during lunch, tips"
+    ],
+    "pickupInformation": "Complimentary pickup from Da Nang center (within 5km of Dragon Bridge) and Hoi An.",
+    "dropoffInformation": "Return to your hotel in Da Nang or Hoi An.",
+    "childPolicy": "Under 1 year: 100,000 VND insurance fee. 1 to 4 years: 50% adult price. 5 to 9 years: 80% adult price. 10+ years: 100% adult price.",
+    "cancellationPolicy": "Free cancellation before 21:00 prior day. 50% fee after 21:00. 100% fee on tour day.",
+    "importantNotes": [
+      "Bring swimwear, towel, sunscreen, sunglasses, and dry clothes.",
+      "Cham Island strictly bans single-use plastic bags to protect the marine ecosystem. Please do not bring plastic bags to the island."
+    ],
+    "dietaryInformation": {
+      "standard": "Fresh seafood (grilled squid, steamed fish, shrimp, morning glory)",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Vegetarian menu includes tofu, stir-fried vegetables, and vegetable egg rolls."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "Cham Island _ Snorkeling",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 950000,
+    "priceINR": 3515,
+    "variants": [
+      {
+        "id": "cham-island-speedboat-small-group",
+        "name": "Small Group Speedboat (Max 12 pax) — Full Day",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Van + Speedboat",
+        "priceVND": 950000,
+        "priceINR": 3515,
+        "notes": "Includes speedboat, snorkeling gear, island fees, and seafood lunch."
+      }
+    ]
+  },
+  {
+    "id": "my-son-sanctuary-morning",
+    "slug": "my-son-sanctuary-morning",
+    "title": "My Son Sanctuary UNESCO Heritage Morning Tour (Rice Paper Workshop)",
+    "shortTitle": "My Son Sanctuary (Morning)",
+    "destination": "My Son",
+    "destinations": [
+      "Hoi An",
+      "My Son"
+    ],
+    "region": "Central Vietnam",
+    "category": "Culture",
+    "duration": "Half-Day (~6.5 Hours)",
+    "durationType": "half_day",
+    "durationTypes": [
+      "half_day"
+    ],
+    "departureCity": "Hoi An",
+    "departureDetails": "Hotel pickup in Hoi An center (07:30 - 08:00) / Da Nang (07:00)",
+    "destinationDetails": "Ancient religious capital of the Champa Kingdom nestled in a verdant valley",
+    "description": "Step back over a thousand years into the sacred valley of the Champa Kingdom at My Son Sanctuary, a UNESCO World Heritage Site. Marvel at red-brick Hindu temple towers dedicated to Shiva built between the 4th and 14th centuries. Witness a live Champa cultural dance performance with traditional drumming, learn the art of traditional rice paper making in a rural village, and enjoy a local lunch.",
+    "heroImage": "/images/central-vietnam/verified/my-son-sunburst.jpg",
+    "galleryImages": [
+      "/images/central-vietnam/verified/my-son-temple.jpg",
+      "/images/central-vietnam/verified/my-son-ruins.jpg",
+      "/images/cities/hoian.jpg"
+    ],
+    "tourFormats": [
+      "Small Group (Max 12)"
+    ],
+    "groupOptions": [
+      "Small Group (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Modern Van"
+    ],
+    "minimumPax": 2,
+    "maximumPax": 12,
+    "guide": "Licensed English-Speaking Champa Historian Guide",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Explore the red-brick temple clusters of My Son Sanctuary (UNESCO World Heritage)",
+      "Learn the ancient architectural secrets of how the Cham people fired brick mortar without cement",
+      "Watch an enchanting traditional Champa Apsara dance performance",
+      "Hands-on rice paper making workshop in an authentic countryside village",
+      "Small group format (max 12 pax) for deeper historical insight and quiet temple exploration",
+      "Local lunch featuring regional Quang Nam delicacies"
+    ],
+    "itinerary": [
+      {
+        "time": "07:30 - 08:00",
+        "title": "Hotel Pickup",
+        "description": "Pickup from hotels in Hoi An center (or Da Nang). Journey through rural villages toward My Son valley."
+      },
+      {
+        "time": "09:00 - 11:30",
+        "title": "My Son Sanctuary Exploration",
+        "description": "Take the electric shuttle cart into the valley. Tour Temple Groups B, C, D, and G with expert commentary. Watch the live Champa dance show at the theater."
+      },
+      {
+        "time": "11:45 - 12:45",
+        "title": "Traditional Rice Paper Making",
+        "description": "Visit a local village family. Learn how to grind rice flour, steam paper on a cloth drum, and dry it on bamboo racks. Try your own hands-on craft."
+      },
+      {
+        "time": "13:00 - 13:45",
+        "title": "Local Lunch",
+        "description": "Enjoy a fresh homemade lunch at a countryside restaurant. Vegetarian options available."
+      },
+      {
+        "time": "14:00 - 14:30",
+        "title": "Return to Hotel",
+        "description": "Transfer back to hotels in Hoi An or Da Nang. Tour concludes."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Hoi An center (or Da Nang)",
+      "Air-conditioned modern van with experienced driver",
+      "English-speaking licensed tour guide",
+      "My Son Sanctuary entrance ticket and electric shuttle cart",
+      "Champa cultural dance performance ticket",
+      "Hands-on rice paper making experience",
+      "Local set lunch (vegetarian available)",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Personal expenses, drinks during lunch, tips"
+    ],
+    "pickupInformation": "Complimentary pickup from Hoi An center and Da Nang center.",
+    "dropoffInformation": "Return to your hotel.",
+    "childPolicy": "Under 5 years: Free. 5 to 9 years: 50% adult price. 10+ years: 100% adult price.",
+    "cancellationPolicy": "Free cancellation before 21:00 prior day. 50% fee after 21:00. 100% fee on tour day.",
+    "importantNotes": [
+      "Dress respectfully for sacred religious ruins (shoulders and knees covered)."
+    ],
+    "dietaryInformation": {
+      "standard": "Quang Nam regional cuisine",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Vegetarian meals easily catered."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "My Son Sanctury – Rice paper making",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 1300000,
+    "priceINR": 4810,
+    "variants": [
+      {
+        "id": "my-son-morning-small-group",
+        "name": "Small Group (Max 12 pax) — Morning with Lunch",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Modern Van",
+        "priceVND": 1300000,
+        "priceINR": 4810,
+        "notes": "Includes My Son entrance, electric cart, rice paper workshop, and lunch."
+      }
+    ]
+  },
+  {
+    "id": "my-son-sanctuary-afternoon-sunset-boat",
+    "slug": "my-son-sanctuary-afternoon-sunset-boat",
+    "title": "My Son Sanctuary Afternoon Tour with Thu Bon River Sunset Boat",
+    "shortTitle": "My Son Sunset Boat Tour",
+    "destination": "My Son",
+    "destinations": [
+      "Hoi An",
+      "My Son"
+    ],
+    "region": "Central Vietnam",
+    "category": "Culture",
+    "duration": "Afternoon-Evening (~6.5 Hours)",
+    "durationType": "evening",
+    "durationTypes": [
+      "evening",
+      "half_day"
+    ],
+    "departureCity": "Hoi An",
+    "departureDetails": "Hotel pickup in Hoi An center (12:00 - 12:30)",
+    "destinationDetails": "Ancient Champa ruins followed by golden sunset river cruise back to Hoi An",
+    "description": "Visit My Son Sanctuary during the quieter afternoon hours when the morning tour crowds have dispersed. Explore the mystical Hindu temple ruins under soft afternoon light and witness the cultural Champa dance. On the return journey, board a traditional wooden boat on the Thu Bon River, savoring a crisp Vietnamese Banh Mi sandwich as the sun sets over the riverbanks.",
+    "heroImage": "/images/central-vietnam/verified/my-son-temple.jpg",
+    "galleryImages": [
+      "/images/central-vietnam/verified/my-son-sunburst.jpg",
+      "/images/central-vietnam/verified/my-son-ruins.jpg",
+      "/images/cities/hoian.jpg"
+    ],
+    "tourFormats": [
+      "Small Group (Max 12)"
+    ],
+    "groupOptions": [
+      "Small Group (Max 12 pax)"
+    ],
+    "transportOptions": [
+      "Air-Conditioned Van + River Boat"
+    ],
+    "minimumPax": 2,
+    "maximumPax": 12,
+    "guide": "Licensed English-Speaking Guide",
+    "languages": [
+      "English"
+    ],
+    "highlights": [
+      "Explore My Son Sanctuary with fewer crowds and cooler afternoon temperatures",
+      "Marvel at the sacred red-brick Shiva shrines built by the ancient Champa Kings",
+      "Watch a live Champa cultural dance and music performance",
+      "Relax on a scenic 1-hour sunset cruise down the Thu Bon River back to Hoi An",
+      "Enjoy a complimentary fresh Vietnamese Banh Mi snack while cruising",
+      "Small group format (max 12 pax) for maximum comfort"
+    ],
+    "itinerary": [
+      {
+        "time": "12:00 - 12:30",
+        "title": "Hotel Pickup",
+        "description": "Pickup from hotels in Hoi An center. Depart for My Son Sanctuary."
+      },
+      {
+        "time": "13:30 - 16:00",
+        "title": "My Son Sanctuary Tour",
+        "description": "Take the electric cart into the sacred valley. Explore the archaeological ruins and watch the traditional Apsara dance performance."
+      },
+      {
+        "time": "16:15 - 16:45",
+        "title": "Transfer to River Pier",
+        "description": "Board the bus and transfer to the Thu Bon River boat pier."
+      },
+      {
+        "time": "17:00 - 18:15",
+        "title": "Thu Bon River Sunset Boat Cruise",
+        "description": "Cruise downstream along the peaceful Thu Bon River as the sun sets. Enjoy a fresh Banh Mi snack while watching rural riverside life."
+      },
+      {
+        "time": "18:30 - 19:00",
+        "title": "Arrive in Hoi An & Hotel Return",
+        "description": "Arrive at Hoi An Old Town pier. Transfer back to your hotel or explore Hoi An night market on foot."
+      }
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off in Hoi An center",
+      "Air-conditioned van with driver",
+      "English-speaking tour guide",
+      "My Son Sanctuary entrance ticket and electric shuttle cart",
+      "Champa dance show performance",
+      "Thu Bon River wooden boat cruise ticket",
+      "Fresh Vietnamese Banh Mi snack on the boat (vegetarian available)",
+      "Bottled drinking water (1 bottle/person)"
+    ],
+    "exclusions": [
+      "Dinner, drinks, personal expenses, tips"
+    ],
+    "pickupInformation": "Complimentary pickup from Hoi An center.",
+    "dropoffInformation": "Drop-off at your hotel in Hoi An or Hoi An Old Town pier.",
+    "childPolicy": "Under 5 years: Free. 5 to 9 years: 50% adult price. 10+ years: 100% adult price.",
+    "cancellationPolicy": "Free cancellation before 21:00 prior day. 50% fee after 21:00. 100% fee on tour day.",
+    "importantNotes": [
+      "Bring a light layer as breezes on the river after sunset can feel cool."
+    ],
+    "dietaryInformation": {
+      "standard": "Vietnamese Banh Mi (crusty baguette with fillings)",
+      "vegetarianAvailable": true,
+      "jainAvailable": true,
+      "pureVegAvailable": true,
+      "notes": "Vegetarian Banh Mi with tofu and egg/cheese available."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "My Son Sanctury – Sunset on boat (NO MEAL)",
+    "source": "2026 Dacotours B2B Quotation Oversea & Itineraries",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 1200000,
+    "priceINR": 4440,
+    "variants": [
+      {
+        "id": "my-son-sunset-boat-small-group",
+        "name": "Small Group (Max 12 pax) — Afternoon with Sunset Boat",
+        "format": "small_group",
+        "groupSize": "Max 12 pax",
+        "vehicleType": "Van + River Boat",
+        "priceVND": 1200000,
+        "priceINR": 4440,
+        "notes": "Includes My Son ruins, sunset Thu Bon River cruise, and Banh Mi."
+      }
+    ]
+  },
+  {
+    "id": "danang-hoian-private-transfers",
+    "slug": "danang-hoian-private-transfers",
+    "title": "Da Nang Airport (DAD) & Hoi An Private Chauffeur Transfers",
+    "shortTitle": "Da Nang & Hoi An Airport Transfers",
+    "destination": "Da Nang",
+    "destinations": [
+      "Da Nang",
+      "Hoi An"
+    ],
+    "region": "Transfers",
+    "category": "Transfer",
+    "duration": "30 - 60 Minutes",
+    "durationType": "transfer",
+    "durationTypes": [
+      "transfer"
+    ],
+    "departureCity": "Da Nang",
+    "departureDetails": "Da Nang International Airport (DAD) arrival hall or hotel lobby",
+    "destinationDetails": "Da Nang beachfront resorts or Hoi An Old Town hotels",
+    "description": "Premium private door-to-door airport and intercity transfers connecting Da Nang International Airport (DAD), Da Nang beachfront resorts, and Hoi An Ancient Town. Travel in modern air-conditioned private vehicles (4-seat sedan, 7-seat SUV, or 16-seat van) with professional courteous drivers, flight tracking, and toll fees included.",
+    "heroImage": "/images/cities/danang.jpg",
+    "galleryImages": [
+      "/images/central-vietnam/verified/cuong-innova-7s.jpg",
+      "/images/cities/hoian.jpg"
+    ],
+    "tourFormats": [
+      "Private Transfer"
+    ],
+    "groupOptions": [
+      "Private 4-Seat (1-2 pax)",
+      "Private 7-Seat (3-4 pax)",
+      "Private 16-Seat (5-10 pax)"
+    ],
+    "transportOptions": [
+      "4-Seat Sedan (Vios/City)",
+      "7-Seat SUV (Innova/Fortuner)",
+      "16-Seat Van (Transit/Solati)"
+    ],
+    "minimumPax": 1,
+    "maximumPax": 10,
+    "guide": "Professional Chauffeur (English-responsive with WhatsApp hotline)",
+    "languages": [
+      "English",
+      "Vietnamese"
+    ],
+    "highlights": [
+      "Private door-to-door transfer with zero shared waiting or hotel detours",
+      "Personalized greeting with VIETANA nameboard at Da Nang Airport (DAD) arrival hall",
+      "Real-time flight arrival tracking — free waiting time for delayed flights",
+      "Clean, modern, air-conditioned fleet with dedicated luggage storage",
+      "Includes all airport parking fees, road tolls, and highway fuel",
+      "24/7 dedicated VIETANA Operations Desk support via WhatsApp"
+    ],
+    "itinerary": [
+      {
+        "time": "Flight Landing",
+        "title": "Airport Welcome",
+        "description": "Driver monitors flight status in real time and waits at the DAD international or domestic arrival gate with your nameboard."
+      },
+      {
+        "time": "+15 Mins",
+        "title": "Luggage Assistance & Boarding",
+        "description": "Assistance with luggage loading into private air-conditioned vehicle."
+      },
+      {
+        "time": "+30-60 Mins",
+        "title": "Direct Hotel Drop-Off",
+        "description": "Smooth highway drive directly to your hotel in Da Nang (20-30 mins) or Hoi An (45-60 mins)."
+      }
+    ],
+    "inclusions": [
+      "Private air-conditioned vehicle (4s, 7s, or 16s)",
+      "Professional licensed driver",
+      "Airport parking fees and highway tolls",
+      "60 minutes complimentary waiting time for airport arrivals",
+      "Bottled water for all passengers"
+    ],
+    "exclusions": [
+      "Driver gratuities / tips (optional)",
+      "Midnight arrival surcharge (21:30 - 06:00, ~100,000 VND)"
+    ],
+    "pickupInformation": "Driver waits outside Arrival Gate column with a printed nameboard showing lead traveler name.",
+    "dropoffInformation": "Direct lobby drop-off at your booked hotel in Da Nang or Hoi An.",
+    "childPolicy": "Infants and children are counted as passengers according to Vietnam road safety seatbelt laws.",
+    "cancellationPolicy": "Free cancellation up to 12 hours before scheduled pickup time.",
+    "importantNotes": [
+      "Please provide exact flight number (e.g. VJ830, VN123) and estimated arrival time."
+    ],
+    "dietaryInformation": {
+      "standard": "Transfer service (no meals)",
+      "vegetarianAvailable": false,
+      "jainAvailable": false,
+      "pureVegAvailable": false,
+      "notes": "Complimentary chilled bottled water provided in vehicle."
+    },
+    "supplier": "DACOTOURS CO., LTD",
+    "supplierProductName": "Dacotours B2B Transportation 2026",
+    "source": "2026 Dacotours B2B Transportation Price List",
+    "sourceUpdatedAt": "2026-09-20",
+    "priceVND": 400000,
+    "priceINR": 1480,
+    "variants": [
+      {
+        "id": "dad-airport-danang-hotel-4s",
+        "name": "Da Nang Airport ↔ Da Nang Hotel (4-Seat Sedan)",
+        "format": "private",
+        "vehicleType": "4-Seat Sedan",
+        "groupSize": "Max 2 pax + 2 luggage",
+        "priceVND": 400000,
+        "priceINR": 1480,
+        "notes": "Direct transfer between DAD airport and Da Nang city/beach hotel."
+      },
+      {
+        "id": "dad-airport-danang-hotel-7s",
+        "name": "Da Nang Airport ↔ Da Nang Hotel (7-Seat SUV)",
+        "format": "private",
+        "vehicleType": "7-Seat SUV",
+        "groupSize": "Max 4 pax + 4 luggage",
+        "priceVND": 450000,
+        "priceINR": 1665,
+        "notes": "Spacious SUV ideal for families."
+      },
+      {
+        "id": "dad-airport-danang-hotel-16s",
+        "name": "Da Nang Airport ↔ Da Nang Hotel (16-Seat Van)",
+        "format": "private",
+        "vehicleType": "16-Seat Van",
+        "groupSize": "Max 8-10 pax + 8 luggage",
+        "priceVND": 600000,
+        "priceINR": 2220,
+        "notes": "Large group van with ample luggage capacity."
+      },
+      {
+        "id": "dad-airport-hoian-hotel-4s",
+        "name": "Da Nang Airport / City ↔ Hoi An Hotel (4-Seat Sedan)",
+        "format": "private",
+        "vehicleType": "4-Seat Sedan",
+        "groupSize": "Max 2 pax + 2 luggage",
+        "priceVND": 550000,
+        "priceINR": 2035,
+        "notes": "Direct 45-minute highway transfer between Da Nang and Hoi An."
+      },
+      {
+        "id": "dad-airport-hoian-hotel-7s",
+        "name": "Da Nang Airport / City ↔ Hoi An Hotel (7-Seat SUV)",
+        "format": "private",
+        "vehicleType": "7-Seat SUV",
+        "groupSize": "Max 4 pax + 4 luggage",
+        "priceVND": 600000,
+        "priceINR": 2220,
+        "notes": "Comfortable 7-seater for Hoi An transit."
+      },
+      {
+        "id": "dad-airport-hoian-hotel-16s",
+        "name": "Da Nang Airport / City ↔ Hoi An Hotel (16-Seat Van)",
+        "format": "private",
+        "vehicleType": "16-Seat Van",
+        "groupSize": "Max 8-10 pax + 8 luggage",
+        "priceVND": 750000,
+        "priceINR": 2775,
+        "notes": "16-seater transit van to Hoi An hotels."
+      }
+    ]
   }
 ];
 export const getTourExperienceById = (id: string): TourExperience | undefined => {

@@ -27,7 +27,7 @@ interface ToursExperiencesCatalogueProps {
   initialTourId?: string | null;
 }
 
-const REGIONS = ['ALL', 'North Vietnam', 'South Vietnam', 'Transfers'];
+const REGIONS = ['ALL', 'North Vietnam', 'Central Vietnam', 'South Vietnam', 'Transfers'];
 const DURATION_OPTIONS = ['ALL', 'Half Day', 'Full Day', 'Evening', 'Multi Day', 'Transfer'];
 
 export default function ToursExperiencesCatalogue({ 
@@ -197,11 +197,7 @@ export default function ToursExperiencesCatalogue({
             </Text>
 
             {/* Quick Metrics Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 max-w-3xl mx-auto">
-              <div className="bg-stone-800/80 border border-stone-700/60 rounded-xl p-3 text-center">
-                <div className="text-xl sm:text-2xl font-serif text-amber-400 font-medium">{TOURS_EXPERIENCES_DATA.length}</div>
-                <div className="text-[11px] text-stone-400 uppercase tracking-wider">Curated Tours</div>
-              </div>
+            <div className="grid grid-cols-2 gap-3 mt-8 max-w-md mx-auto">
               <div className="bg-stone-800/80 border border-stone-700/60 rounded-xl p-3 text-center">
                 <div className="text-xl sm:text-2xl font-serif text-amber-400 font-medium">100%</div>
                 <div className="text-[11px] text-stone-400 uppercase tracking-wider">English Guides</div>
@@ -209,10 +205,6 @@ export default function ToursExperiencesCatalogue({
               <div className="bg-stone-800/80 border border-stone-700/60 rounded-xl p-3 text-center">
                 <div className="text-xl sm:text-2xl font-serif text-amber-400 font-medium">Door-to-Door</div>
                 <div className="text-[11px] text-stone-400 uppercase tracking-wider">Hotel Pickup</div>
-              </div>
-              <div className="bg-stone-800/80 border border-stone-700/60 rounded-xl p-3 text-center">
-                <div className="text-xl sm:text-2xl font-serif text-amber-400 font-medium">Verified</div>
-                <div className="text-[11px] text-stone-400 uppercase tracking-wider">Operator Rates</div>
               </div>
             </div>
           </div>
