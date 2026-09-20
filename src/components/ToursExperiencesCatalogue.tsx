@@ -491,7 +491,7 @@ export default function ToursExperiencesCatalogue({
           <Modal isOpen={!!selectedTour} onClose={handleCloseModal} maxWidth="max-w-4xl">
             <div className="bg-white rounded-2xl overflow-hidden max-h-[88vh] flex flex-col">
               {/* Modal Hero Header */}
-              <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-stone-900 flex-shrink-0">
+              <div className="relative h-48 sm:h-72 md:h-80 w-full overflow-hidden bg-stone-900 flex-shrink-0">
                 <img
                   src={selectedTour.heroImage}
                   alt={selectedTour.title}
@@ -502,39 +502,39 @@ export default function ToursExperiencesCatalogue({
                 {/* Close Button */}
                 <button
                   onClick={handleCloseModal}
-                  className="absolute top-4 right-4 z-20 p-2 rounded-full bg-stone-900/80 text-white hover:bg-stone-800 backdrop-blur-sm transition-colors"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2 rounded-full bg-stone-900/80 text-white hover:bg-stone-800 backdrop-blur-sm transition-colors"
                   aria-label="Close modal"
                 >
                   <Icon name="x" className="w-5 h-5" />
                 </button>
 
                 {/* Header Content */}
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <div className="flex flex-wrap gap-2 items-center mb-3">
-                    <span className="px-2.5 py-1 rounded-md bg-amber-500 text-white text-[11px] font-semibold uppercase tracking-wider">
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 items-center mb-2 sm:mb-3">
+                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-amber-500 text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider">
                       {selectedTour.category}
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-stone-800/80 backdrop-blur-sm text-stone-200 text-xs">
+                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-stone-800/80 backdrop-blur-sm text-stone-200 text-[11px] sm:text-xs">
                       {selectedTour.destinations && selectedTour.destinations.length > 1 ? selectedTour.destinations.join(' • ') : selectedTour.destination} • {selectedTour.region}
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-stone-800/80 backdrop-blur-sm text-stone-200 text-xs flex items-center gap-1">
+                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-stone-800/80 backdrop-blur-sm text-stone-200 text-[11px] sm:text-xs flex items-center gap-1">
                       <Icon name="clock" className="w-3.5 h-3.5 text-amber-300" />
                       {selectedTour.duration}
                     </span>
                     {modalPriceVND && (
-                      <span className="px-2.5 py-1 rounded-md bg-stone-800/90 backdrop-blur-sm text-amber-300 text-xs font-semibold">
+                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-stone-800/90 backdrop-blur-sm text-amber-300 text-[11px] sm:text-xs font-semibold">
                         From {modalPriceVND.toLocaleString('vi-VN')} VND {modalPriceINR ? `(≈ ₹${modalPriceINR.toLocaleString('en-IN')})` : ''}
                       </span>
                     )}
                   </div>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-white leading-tight">
+                  <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-white leading-tight">
                     {selectedTour.title}
                   </h2>
                 </div>
               </div>
 
               {/* Modal Body (Scrollable) */}
-              <div className="flex-1 overflow-y-auto p-6 sm:p-8 pb-24 sm:pb-8 space-y-8 text-stone-800">
+              <div className="flex-1 overflow-y-auto p-4 sm:p-8 pb-28 sm:pb-8 space-y-6 sm:space-y-8 text-stone-800">
                 {/* Description */}
                 <div>
                   <h3 className="text-xs uppercase font-bold tracking-wider text-stone-400 mb-2">Overview</h3>
@@ -907,13 +907,13 @@ export default function ToursExperiencesCatalogue({
               {/* Mobile Sticky Booking Action Bar */}
               <div className="sm:hidden flex-shrink-0 p-3 bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-lg pb-[max(0.75rem,env(safe-area-inset-bottom))] flex items-center justify-between gap-3">
                 {modalPriceVND && (
-                  <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-bold text-stone-400">Rate / person</span>
+                  <div className="flex flex-col shrink-0">
+                    <span className="text-[9px] uppercase font-bold text-stone-400">Rate / pax</span>
                     <span className="text-xs font-bold text-stone-900 leading-tight">
                       {modalPriceVND.toLocaleString('vi-VN')} VND
                     </span>
                     {modalPriceINR && (
-                      <span className="text-[10px] text-amber-700 font-medium">
+                      <span className="text-[10px] text-amber-700 font-semibold">
                         ≈ ₹{modalPriceINR.toLocaleString('en-IN')}
                       </span>
                     )}
@@ -927,10 +927,10 @@ export default function ToursExperiencesCatalogue({
                       bookingEl.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-md shadow-emerald-900/20 active:scale-[0.98] transition-all"
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-md shadow-emerald-900/20 active:scale-[0.98] transition-all"
                 >
-                  <Icon name="message-circle" className="w-4 h-4" />
-                  <span>Book on WhatsApp ({contactCountry === 'INDIA' ? '🇮🇳 +91' : '🇻🇳 +84'})</span>
+                  <Icon name="message-circle" className="w-4 h-4 shrink-0" />
+                  <span className="truncate font-semibold">Book on WhatsApp ({contactCountry === 'INDIA' ? '🇮🇳 +91' : '🇻🇳 +84'})</span>
                 </button>
               </div>
             </div>

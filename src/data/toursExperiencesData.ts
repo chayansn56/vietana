@@ -429,7 +429,7 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (08:00 - 08:30)",
     "destinationDetails": "Quang Phu Cau Village, Ung Hoa District, Hanoi (~35 km)",
     "description": "Immerse yourself in a sea of vibrant red and multi-colored incense bouquets drying under the sun at Quang Phu Cau, a village with over a century of traditional incense-making heritage. Capture world-famous photographic moments and discover how incense sticks are cut, dipped, and perfumed.",
-    "heroImage": "https://images.unsplash.com/photo-1606297204481-8071e6bc7c6a?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
     "galleryImages": [
       "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
     ],
@@ -1540,7 +1540,7 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in Hanoi Old Quarter (07:30 - 08:30)",
     "destinationDetails": "Ninh Binh Province (~95 km south of Hanoi)",
     "description": "Experience the classic Tam Coc river rowboat journey past yellow rice paddies and limestone arches, explore the historic royal shrines of Hoa Lu, and ascend Mua Cave's dragon spine for panoramic valley vistas.",
-    "heroImage": "https://images.unsplash.com/photo-1574768379204-63307612f00a?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
     "galleryImages": [
       "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
     ],
@@ -2215,7 +2215,7 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Pickup in Hanoi Old Quarter (06:30 - 07:00)",
     "destinationDetails": "Sapa, Cat Cat, Lao Chai & Ta Van, Lao Cai Province",
     "description": "A comprehensive 3-day exploration of Sapa's breathtaking landscapes and ethnic diversity. Trek through Cat Cat village and deep into the Muong Hoa Valley visiting Lao Chai and Ta Van (home to Black H'mong and Giay communities), with ample time to conquer Fansipan Peak.",
-    "heroImage": "https://images.unsplash.com/photo-1583207884976-58673a5a73e4?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80",
     "galleryImages": [
       "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80"
     ],
@@ -5535,7 +5535,7 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1, HCMC (17:30 - 18:00)",
     "destinationDetails": "Illuminated Saigon Landmarks & Riverfront",
     "description": "Experience the electrifying nocturnal energy of Saigon in an open-top vintage Jeep. Feel the warm evening breeze as you cruise past illuminated French landmarks, bustling street night markets, and modern skyscraper skylines, followed by a delicious dinner.",
-    "heroImage": "https://images.unsplash.com/photo-1545229765-7ff6feee280f?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=80",
     "galleryImages": [
       "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=800&q=80"
     ],
@@ -5777,7 +5777,7 @@ export const TOURS_EXPERIENCES_DATA: TourExperience[] = [
     "departureDetails": "Hotel pickup in District 1 (18:30) or meet at Bach Dang Pier",
     "destinationDetails": "Saigon River, Ho Chi Minh City",
     "description": "Sail past the glittering skyline of Ho Chi Minh City on an elegant evening river cruise. Indulge in a multi-course Vietnamese dinner while enjoying live traditional and acoustic music as iconic landmarks like Bitexco Tower and Landmark 81 light up the night sky.",
-    "heroImage": "https://images.unsplash.com/photo-1545229765-7ff6feee280f?auto=format&fit=crop&w=1200&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=80",
     "galleryImages": [
       "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80"
     ],
