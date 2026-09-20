@@ -103,7 +103,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
 
   React.useEffect(() => {
     const timer = setTimeout(() => setIsEmergencyPulsing(false), 3000);
-    const handleClickOutside = () => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target && target.closest('#nav')) {
+        return;
+      }
       setLangOpen(false);
       setCurrOpen(false);
       setActiveDropdown(null);
@@ -129,12 +133,14 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
     e.stopPropagation();
     setLangOpen(!langOpen);
     setCurrOpen(false);
+    setActiveDropdown(null);
   };
   
   const toggleCurr = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrOpen(!currOpen);
     setLangOpen(false);
+    setActiveDropdown(null);
   };
 
   const handleLangChange = (lang: 'EN' | 'HI' | 'VI') => {
@@ -198,6 +204,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
               <button
                 onClick={(e) => {
                   e.preventDefault();
+                  e.stopPropagation();
+                  setLangOpen(false);
+                  setCurrOpen(false);
                   if ((menu as any).action) {
                     if ((menu as any).action === 'portal_services') {
                       window.history.pushState({}, '', `/services`);
@@ -235,6 +244,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
               {/* Dropdown Menu (Liquid Glass / Apple style) */}
               {menu.items && (
                 <div 
+                  onClick={(e) => e.stopPropagation()}
                   className={`absolute top-full pt-3 left-0 transition-all duration-300 ease-smooth z-[600]
                     ${activeDropdown === menu.key ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
                 >
