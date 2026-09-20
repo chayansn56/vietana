@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
-import { WHATSAPP_VIETNAM } from '../utils/whatsapp';
+import { WHATSAPP_VIETNAM, WHATSAPP_INDIA } from '../utils/whatsapp';
 import { trackEvent } from '../utils/analytics';
 
 
@@ -23,6 +23,22 @@ const CONTACT_LOCATIONS = [
     accentColor: 'text-brand-blue-light',
     btnBg: 'bg-brand-blue/90 hover:bg-brand-blue',
     btnText: 'text-white',
+  },
+  {
+    id: 'india',
+    name: 'New Delhi, India',
+    title: 'INDIA',
+    subtitle: 'DELHI CONCIERGE DESK',
+    person: 'Vikram Sonker',
+    role: 'Guest Relations Director',
+    phone: '+91 9990977002',
+    waUrl: WHATSAPP_INDIA,
+    email: 'vikram@vietana.com',
+    address: 'RZ 35/36, Indra Park Ext.\nUttam Nagar, East Delhi',
+    image: '/concierge_delhi.png',
+    accentColor: 'text-brand-gold',
+    btnBg: 'bg-brand-gold/90 hover:bg-brand-gold',
+    btnText: 'text-black',
   }
 ];
 

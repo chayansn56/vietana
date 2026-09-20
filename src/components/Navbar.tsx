@@ -32,13 +32,20 @@ const NAVIGATION_ITEMS = [
     ]
   },
   {
-    key: 'attraction_tickets',
-    label: 'Attraction Tickets',
+    key: 'tours_and_tickets',
+    label: 'Tours & Tickets',
     items: [
-      { label: 'All Attraction Tickets (🔥 228 PRODUCTS)', href: '/attractions', action: 'portal_attractions' },
-      { label: 'South Vietnam (Phu Quoc, HCMC, Tay Ninh)', href: '/attractions', action: 'portal_attractions', filter: 'SOUTH VIETNAM' },
-      { label: 'Central Vietnam (Da Nang, Ba Na Hills, Hoi An)', href: '/attractions', action: 'portal_attractions', filter: 'CENTRAL VIETNAM' },
+      { isHeader: true, label: '🧭 Tours & Experiences (40+ Tours)' },
+      { label: 'All Tours & Experiences', href: '/tours-experiences', action: 'portal_tours-experiences' },
+      { label: 'North Vietnam (Ha Long, Ninh Binh, Sapa)', href: '/tours-experiences', action: 'portal_tours-experiences', filter: 'North Vietnam' },
+      { label: 'South Vietnam (Cu Chi, Mekong, Mui Ne)', href: '/tours-experiences', action: 'portal_tours-experiences', filter: 'South Vietnam' },
+      { label: 'Airport & Intercity Transfers', href: '/tours-experiences', action: 'portal_tours-experiences', filter: 'Transfers' },
+      { isDivider: true, label: '' },
+      { isHeader: true, label: '🎟️ Attraction Tickets (228 Products)' },
+      { label: 'All Attraction Tickets', href: '/attractions', action: 'portal_attractions' },
       { label: 'North Vietnam (Ha Long, Hanoi, Sapa)', href: '/attractions', action: 'portal_attractions', filter: 'NORTH VIETNAM' },
+      { label: 'Central Vietnam (Da Nang, Ba Na Hills, Hoi An)', href: '/attractions', action: 'portal_attractions', filter: 'CENTRAL VIETNAM' },
+      { label: 'South Vietnam (Phu Quoc, HCMC, Tay Ninh)', href: '/attractions', action: 'portal_attractions', filter: 'SOUTH VIETNAM' },
       { label: 'Theme Parks & Cable Cars', href: '/attractions', action: 'portal_attractions', filter: 'Theme Park' }
     ]
   },
@@ -231,8 +238,19 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                   className={`absolute top-full pt-3 left-0 transition-all duration-300 ease-smooth z-[600]
                     ${activeDropdown === menu.key ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
                 >
-                <div className="bg-[#FAF8F3]/95 dark:bg-[#111111]/90 supports-[backdrop-filter]:bg-[#FAF8F3]/85 supports-[backdrop-filter]:dark:bg-[#111111]/80 backdrop-blur-xl rounded-2xl overflow-hidden min-w-[260px] shadow-deep border border-black/5 dark:border-white/10 py-2">
-                  {menu.items.map((sub, idx) => (
+                <div className="bg-[#FAF8F3]/95 dark:bg-[#111111]/90 supports-[backdrop-filter]:bg-[#FAF8F3]/85 supports-[backdrop-filter]:dark:bg-[#111111]/80 backdrop-blur-xl rounded-2xl overflow-hidden min-w-[280px] shadow-deep border border-black/5 dark:border-white/10 py-2">
+                  {menu.items.map((sub, idx) => {
+                    if ((sub as any).isDivider) {
+                      return <div key={idx} className="my-1.5 border-t border-black/10 dark:border-white/10" />;
+                    }
+                    if ((sub as any).isHeader) {
+                      return (
+                        <div key={idx} className="px-4 pt-2.5 pb-1 text-[10.5px] font-bold uppercase tracking-wider text-brand-gold flex items-center gap-1.5 select-none">
+                          {sub.label}
+                        </div>
+                      );
+                    }
+                    return (
                     <a
                       key={idx}
                       href={sub.href}
@@ -277,6 +295,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                               } else {
                                 localStorage.setItem('pending_attraction_type', (sub as any).filter);
                               }
+                            } else if (target === 'tours-experiences') {
+                              localStorage.setItem('pending_tour_region', (sub as any).filter);
                             } else {
                               localStorage.setItem('pending_package_category', (sub as any).filter);
                             }
@@ -342,7 +362,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                         )}
                       </Text>
                     </a>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
               )}
@@ -480,8 +501,19 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
               
               {/* Accordion children */}
               {menu.items && mobileOpenSection === menu.key && (
-                <div className="flex flex-col gap-2 items-center mt-2 bg-white/[0.03] w-full max-w-[280px] p-3 rounded-2xl border border-white/5">
-                  {menu.items.map((sub, idx) => (
+                <div className="flex flex-col gap-1.5 items-center mt-2 bg-white/[0.03] w-full max-w-[300px] p-3 rounded-2xl border border-white/5">
+                  {menu.items.map((sub, idx) => {
+                    if ((sub as any).isDivider) {
+                      return <div key={idx} className="my-1.5 w-full border-t border-white/10" />;
+                    }
+                    if ((sub as any).isHeader) {
+                      return (
+                        <div key={idx} className="w-full text-center pt-2 pb-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-gold select-none">
+                          {sub.label}
+                        </div>
+                      );
+                    }
+                    return (
                     <a
                       key={idx}
                       href={sub.href}
@@ -508,6 +540,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                               } else {
                                 localStorage.setItem('pending_attraction_type', (sub as any).filter);
                               }
+                            } else if (target === 'tours-experiences') {
+                              localStorage.setItem('pending_tour_region', (sub as any).filter);
                             } else {
                               localStorage.setItem('pending_package_category', (sub as any).filter);
                             }
@@ -577,7 +611,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                     >
                       {sub.label}
                     </a>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

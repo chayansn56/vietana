@@ -3,7 +3,7 @@ import Container from './ui/layout/Container';
 import { Heading, Text } from './ui/Typography';
 import Button from './ui/Button';
 import Icon from './ui/Icon';
-import { buildWhatsAppLink } from '../utils/whatsapp';
+import { buildWhatsAppLink, VIETANA_WHATSAPP_INDIA, VIETANA_WHATSAPP_VIETNAM } from '../utils/whatsapp';
 
 export default function ThankYouPage() {
   const [leadName, setLeadName] = useState('Traveler');
@@ -68,7 +68,7 @@ export default function ThankYouPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-lg mx-auto">
                 <button
                   onClick={() => {
-                    const link = buildWhatsAppLink("919990977002", whatsappMessage);
+                    const link = buildWhatsAppLink(VIETANA_WHATSAPP_INDIA, whatsappMessage);
                     window.open(link, '_blank');
                     sessionStorage.removeItem('vietana_redirect_whatsapp');
                   }}
@@ -78,7 +78,7 @@ export default function ThankYouPage() {
                 </button>
                 <button
                   onClick={() => {
-                    const link = buildWhatsAppLink("84902434006", whatsappMessage);
+                    const link = buildWhatsAppLink(VIETANA_WHATSAPP_VIETNAM, whatsappMessage);
                     window.open(link, '_blank');
                     sessionStorage.removeItem('vietana_redirect_whatsapp');
                   }}

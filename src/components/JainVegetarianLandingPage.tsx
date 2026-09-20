@@ -3,7 +3,7 @@ import { Heading, Text } from './ui/Typography';
 import Button from './ui/Button';
 import Icon from './ui/Icon';
 import Modal from './ui/Modal';
-import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
+import { WHATSAPP_DEFAULT, VIETANA_WHATSAPP_INDIA, VIETANA_WHATSAPP_VIETNAM, buildWhatsAppLink } from '../utils/whatsapp';
 import { getAttributionPayload } from '../utils/attribution';
 import { handleLeadSuccess } from '../utils/analytics';
 
@@ -119,9 +119,10 @@ const JainVegetarianLandingPage: React.FC = () => {
     }
   };
 
-  const handleWhatsAppRedirect = () => {
+  const handleWhatsAppRedirect = (country: 'INDIA' | 'VIETNAM' = 'INDIA') => {
     const text = `Hi VIETANA, I’m planning a Vietnam trip and need Jain/vegetarian meal arrangements. \n\nTravel Month: ${travelMonth}\nTravelers: ${travelers}\nDeparture: ${fromCity}\nDiet: ${dietary}`;
-    const url = `https://wa.me/84902434006?text=${encodeURIComponent(text)}`;
+    const phone = country === 'INDIA' ? VIETANA_WHATSAPP_INDIA : VIETANA_WHATSAPP_VIETNAM;
+    const url = buildWhatsAppLink(phone, text);
     window.open(url, '_blank');
   };
 
@@ -382,14 +383,22 @@ const JainVegetarianLandingPage: React.FC = () => {
           </div>
           <Heading as="h4" size="md" className="font-serif">Thank You!</Heading>
           <Text size="sm" className="opacity-75 max-w-sm">
-            We have saved your travel inquiry details. Our Ho Chi Minh City team is already planning your customized plan.
+            We have saved your travel inquiry details. Connect directly with our team on WhatsApp for instant confirmation:
           </Text>
-          <Button 
-            onClick={handleWhatsAppRedirect}
-            className="mt-2 w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2"
-          >
-            <Icon name="MessageCircle" size={14} /> Connect Instantly on WhatsApp
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 w-full mt-2">
+            <Button 
+              onClick={() => handleWhatsAppRedirect('INDIA')}
+              className="flex-1 px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-xl font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2"
+            >
+              <Icon name="MessageCircle" size={14} /> 🇮🇳 India Desk (+91)
+            </Button>
+            <Button 
+              onClick={() => handleWhatsAppRedirect('VIETNAM')}
+              className="flex-1 px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-xl font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2"
+            >
+              <Icon name="MessageCircle" size={14} /> 🇻🇳 Vietnam Desk (+84)
+            </Button>
+          </div>
         </div>
       </Modal>
     </div>

@@ -50,6 +50,7 @@ const MapCurtain = lazy(() => import('./components/MapCurtain'));
 const FlightSearchModal = lazy(() => import('./components/FlightSearchModal'));
 const PackageCatalogue = lazy(() => import('./components/PackageCatalogue'));
 const AttractionCatalogue = lazy(() => import('./components/AttractionCatalogue'));
+const ToursExperiencesCatalogue = lazy(() => import('./components/ToursExperiencesCatalogue'));
 
 import SEO from './components/seo/SEO';
 import AgentDashboard from './apps/agent/AgentDashboard';
@@ -159,12 +160,14 @@ export default function App() {
   }, []);
 
   const [initialAttractionProductId, setInitialAttractionProductId] = useState<string | null>(null);
+  const [initialTourId, setInitialTourId] = useState<string | null>(null);
 
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/^\/+/, '');
       const searchParams = new URLSearchParams(window.location.search);
       const ticketParam = searchParams.get('ticket') || searchParams.get('id');
+      const tourParam = searchParams.get('tour') || searchParams.get('id');
 
       if (path === 'agent') {
         setActivePortal('agent');
@@ -178,6 +181,14 @@ export default function App() {
         setActivePortal('food');
       } else if (path.startsWith('travel-guide')) {
         setActivePortal('travel-guide' as any);
+      } else if (path.startsWith('tours-experiences/') || path.startsWith('tours/')) {
+        const parts = path.split('/');
+        const tourId = parts[1] || null;
+        setInitialTourId(tourId);
+        setActivePortal('tours-experiences' as any);
+      } else if (path === 'tours-experiences' || path === 'tours') {
+        setInitialTourId(tourParam);
+        setActivePortal('tours-experiences' as any);
       } else if (path === 'experiences' || path === 'things-to-do') {
         setActivePortal('experiences' as any);
       } else if (path === 'packages' || path === 'itineraries') {
@@ -245,6 +256,7 @@ export default function App() {
       window.history.pushState({}, '', `/${portal}`);
     } else {
       setInitialAttractionProductId(null);
+      setInitialTourId(null);
       window.history.pushState({}, '', '/');
     }
   };
@@ -540,6 +552,43 @@ export default function App() {
           <Suspense fallback={<div className="text-center py-20 text-gray-500 font-light">Loading attraction tickets catalogue...</div>}>
             <AttractionCatalogue 
               initialProductId={initialAttractionProductId}
+              onClose={() => handlePortalNavigate(null)}
+              onQuoteClick={() => {
+                handlePortalNavigate(null);
+                setTimeout(() => {
+                  const el = document.getElementById('inquiry');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
+            />
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (activePortal === 'tours-experiences') {
+    return (
+      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+        <SEO 
+          title="Vietnam Tours & Experiences | VIETANA Concierge"
+          description="Authentic day tours, UNESCO cruises, and transfers across Vietnam with verified English-speaking guides and local operator pricing."
+        />
+        <Navbar 
+          scrolled={true}
+          mobileMenuOpen={mobileMenuOpen} 
+          setMobileMenuOpen={setMobileMenuOpen} 
+          onOpenPlanner={() => openPlanner()} 
+          onOpenExperiences={() => handlePortalNavigate('experiences' as any)}
+          onOpenMapCurtain={() => setIsMapOpen(true)}
+          onOpenFlightSearch={() => setIsFlightSearchOpen(true)}
+          onOpenLogin={() => setIsLoginOpen(true)}
+        />
+        <main className="pt-20 flex-1">
+          <Suspense fallback={<div className="text-center py-20 text-gray-500 font-light">Loading tours & experiences...</div>}>
+            <ToursExperiencesCatalogue 
+              initialTourId={initialTourId}
               onClose={() => handlePortalNavigate(null)}
               onQuoteClick={() => {
                 handlePortalNavigate(null);

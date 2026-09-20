@@ -94,3 +94,54 @@ export const buildAttractionEnquiryMessage = ({
   msg += `\n\nPlease confirm availability, eligibility and price.\n\nThank you.`;
   return msg;
 };
+
+/**
+ * Builds pre-filled WhatsApp message for Tours & Experiences booking
+ */
+export interface TourExperienceBookingParams {
+  tourTitle: string;
+  destination: string;
+  preferredDate?: string;
+  adults?: number;
+  children?: number;
+  tourFormat?: string;
+  rateVND?: number;
+  rateINR?: number;
+  dietaryPreference?: string;
+  pickupLocation?: string;
+  specialRequests?: string;
+}
+
+export const buildTourExperienceBookingMessage = ({
+  tourTitle,
+  destination,
+  preferredDate,
+  adults = 2,
+  children = 0,
+  tourFormat,
+  rateVND,
+  rateINR,
+  dietaryPreference,
+  pickupLocation,
+  specialRequests,
+}: TourExperienceBookingParams): string => {
+  let msg = `Hello VIETANA, I would like to book/check availability for:\n\n`;
+  msg += `Tour: ${tourTitle}\n`;
+  msg += `Destination: ${destination}\n`;
+  if (preferredDate) msg += `Preferred date: ${preferredDate}\n`;
+  msg += `Number of adults: ${adults}\n`;
+  if (children > 0) msg += `Number of children: ${children}\n`;
+  if (tourFormat) msg += `Tour format: ${tourFormat}\n`;
+  if (rateVND) {
+    msg += `Rate: ${rateVND.toLocaleString('vi-VN')} VND / person`;
+    if (rateINR) {
+      msg += ` (approx. ₹${rateINR.toLocaleString('en-IN')})`;
+    }
+    msg += `\n`;
+  }
+  if (dietaryPreference) msg += `Dietary preference: ${dietaryPreference}\n`;
+  if (pickupLocation) msg += `Pickup location: ${pickupLocation}\n`;
+  if (specialRequests) msg += `Special requests: ${specialRequests}\n`;
+  msg += `\nPlease confirm availability and final booking details.\n\nThank you.`;
+  return msg;
+};

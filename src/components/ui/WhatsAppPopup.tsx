@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Icon from './Icon';
-import { buildWhatsAppLink, WHATSAPP_NUMBERS } from '../../utils/whatsapp';
+import { buildWhatsAppLink, WHATSAPP_NUMBERS, VIETANA_WHATSAPP_INDIA, VIETANA_WHATSAPP_VIETNAM } from '../../utils/whatsapp';
 import { trackEvent } from '../../utils/analytics';
 
 interface WhatsAppPopupProps {
@@ -102,7 +102,7 @@ const WhatsAppPopup: React.FC<WhatsAppPopupProps> = ({ isOpen, onClose, customMe
                       onClick={() => {
                         const message = customMessage || 'Hi VIETANA India, I found you through the VIETANA website and would like help planning my Vietnam trip.';
                         trackEvent('whatsapp_click', { whatsapp_team: 'india' });
-                        const link = buildWhatsAppLink("919990977002", message);
+                        const link = buildWhatsAppLink(VIETANA_WHATSAPP_INDIA, message);
                         window.open(link, '_blank', 'noopener,noreferrer');
                         onClose();
                       }}
@@ -115,7 +115,7 @@ const WhatsAppPopup: React.FC<WhatsAppPopupProps> = ({ isOpen, onClose, customMe
                       onClick={() => {
                         const message = customMessage || 'Hi VIETANA Vietnam, I found you through the VIETANA website and would like help planning my Vietnam trip.';
                         trackEvent('whatsapp_click', { whatsapp_team: 'vietnam' });
-                        const link = buildWhatsAppLink("84902434006", message);
+                        const link = buildWhatsAppLink(VIETANA_WHATSAPP_VIETNAM, message);
                         window.open(link, '_blank', 'noopener,noreferrer');
                         onClose();
                       }}

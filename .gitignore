@@ -7,3 +7,12 @@ coverage/
 .env*
 !.env.example
 .vercel
+
+# Internal pricing, supplier data & scratch scripts
+VIETANA_*.md
+VIETANA_*.csv
+SST_*.md
+TOURS_EXPERIENCES_AUDIT_FIX_REPORT.md
+generate_*.py
+scratch*
+scratch/

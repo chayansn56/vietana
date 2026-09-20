@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, Text } from './ui/Typography';
 import Button from './ui/Button';
-import { WHATSAPP_DEFAULT } from '../utils/whatsapp';
+import { WHATSAPP_DEFAULT, VIETANA_WHATSAPP_INDIA, VIETANA_WHATSAPP_VIETNAM } from '../utils/whatsapp';
 import { Instagram, Facebook } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -26,25 +26,31 @@ const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6 w-full">
             {/* Vietnam Office (Left) */}
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-1 flex-1">
-              <img 
-                src="/vietana_logo.png" 
-                alt="VIETANA" 
-                className="h-6 w-auto object-contain opacity-95"
-              />
-              <span className="text-[10px] font-serif font-bold text-white/80 leading-tight">Vietnam Office Ho Chi Minh City</span>
+              <span className="text-sm">🇻🇳</span>
+              <span className="text-[10px] font-serif font-bold text-white/80 leading-tight">Vietnam Operations Ho Chi Minh City</span>
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=Ho+Chi+Minh+City,+Vietnam" 
+                href={`https://wa.me/${VIETANA_WHATSAPP_VIETNAM}`}
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-[9px] font-mono font-bold tracking-widest text-[#3A9BD9] hover:text-white transition-colors"
               >
-                Google Maps ↗
+                WhatsApp +84 902 434 006 ↗
               </a>
             </div>
 
-
-
-
+            {/* India Office (Right) */}
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-1 flex-1">
+              <span className="text-sm">🇮🇳</span>
+              <span className="text-[10px] font-serif font-bold text-white/80 leading-tight">India Concierge Desk New Delhi</span>
+              <a 
+                href={`https://wa.me/${VIETANA_WHATSAPP_INDIA}`}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[9px] font-mono font-bold tracking-widest text-[#E8C84A] hover:text-white transition-colors"
+              >
+                WhatsApp +91 99909 77002 ↗
+              </a>
+            </div>
           </div>
 
           {/* Horizontal separator */}
@@ -93,13 +99,14 @@ const Footer: React.FC = () => {
             © {currentYear} VIETANA Travel. All Rights Reserved.
           </Text>
           <Text variant="white" size="xxs" className="opacity-40 tracking-wider mt-1.5 uppercase font-sans">
-            Emergency: +84 902 434 006 | Tourism Police: 113 | Med: 115
+            Vietnam Desk: +84 902 434 006 | India Desk: +91 99909 77002 | Emergency: 113 / 115
           </Text>
         </div>
 
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-1 list-none p-0 m-0">
           {[
             { label: 'Destinations', path: '/#destinations' },
+            { label: 'Tours & Experiences', path: '/tours-experiences' },
             { label: 'Attractions', path: '/attractions' },
             { label: 'Packages', path: '/packages' },
             { label: 'Services', path: '/#services' },
