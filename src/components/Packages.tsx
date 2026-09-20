@@ -194,16 +194,19 @@ const Packages: React.FC<PackagesProps> = () => {
           {displayedPackages.map((pkg: PackageProduct) => {
             const colors = getPackageColors(pkg.id);
             return (
-              <div key={pkg.id} className="[perspective:1000px] relative group h-[420px]">
-                <div className={`w-full h-full relative transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-sm group-hover:shadow-[0_0_30px_rgba(230,217,191,0.8)] rounded-2xl`}>
-                  
-                  {/* Front Face */}
-                  <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] ${colors.bg} rounded-2xl overflow-hidden border ${colors.border} flex flex-col bg-white`}>
-                <div className="h-36 overflow-hidden relative shrink-0">
+              <div 
+                key={pkg.id} 
+                className={`w-full rounded-2xl overflow-hidden border ${colors.border} ${colors.bg} flex flex-col bg-white shadow-sm hover:shadow-md transition-all duration-300`}
+              >
+                <div 
+                  className="h-36 overflow-hidden relative shrink-0 cursor-pointer group"
+                  onClick={() => setSelectedPackage(pkg)}
+                  title={`View details for ${pkg.title}`}
+                >
                   <img 
                     src={pkg.img} 
                     alt={pkg.title} 
-                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   
                   {/* Brand badges overlay */}
@@ -221,13 +224,16 @@ const Packages: React.FC<PackagesProps> = () => {
                       )}
                     </div>
                   )}
-
                 </div>
+
                 <div className="p-4 flex-1 flex flex-col">
                   <span className={`text-[8px] uppercase font-bold tracking-widest ${colors.accentColor} mb-1.5`}>
                     Land Package
                   </span>
-                  <h3 className={`font-serif font-bold text-base ${colors.titleColor} mb-2 leading-tight min-h-[44px] line-clamp-2`}>
+                  <h3 
+                    onClick={() => setSelectedPackage(pkg)}
+                    className={`font-serif font-bold text-base ${colors.titleColor} mb-2 leading-tight min-h-[44px] line-clamp-2 cursor-pointer hover:underline`}
+                  >
                     {pkg.title}
                   </h3>
                   
@@ -248,54 +254,31 @@ const Packages: React.FC<PackagesProps> = () => {
                     <span className="bg-[#FAF7F0] text-[#CD7F32] border border-[#CD7F32]/25 text-[8px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider flex items-center gap-0.5"><Icon name="Utensils" size={8} /> Jain / Veg Food Available</span>
                   </div>
 
-                  <div className={`mt-auto pt-3 border-t ${colors.border} flex items-center justify-between`}>
-                    <div className="flex flex-col">
-                      <span className="text-[9px] uppercase tracking-widest font-bold block text-gray-500 mb-0.5">Starting from</span>
+                  <div className={`mt-auto pt-3 border-t ${colors.border} flex flex-col gap-2`}>
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-[9px] uppercase tracking-widest font-bold text-gray-500">Starting from</span>
                       <span className={`text-xs font-black ${colors.accentColor}`}>
                         {pkg.price}
                       </span>
                     </div>
-                    <button 
-                      onClick={handleQuoteClick}
-                      className={`${colors.btnBg} text-white px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors shadow-sm cursor-pointer border-none shrink-0 ml-1`}
-                    >
-                      Get Quote
-                    </button>
-                  </div>
-                  </div>
-                  </div>
-                  
-                  {/* Back Face */}
-                  <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] ${colors.bg} rounded-2xl overflow-hidden border ${colors.border} flex flex-col items-center justify-center p-6 text-center shadow-inner`}>
-                    <div className="w-16 h-16 rounded-full bg-[#E6D9BF]/30 flex items-center justify-center mb-6 text-[#12302B]">
-                      <Icon name="Compass" size={32} />
-                    </div>
-                    <h3 className={`font-serif font-bold text-xl ${colors.titleColor} mb-2 leading-tight line-clamp-2`}>
-                      {pkg.title}
-                    </h3>
-                    <div className="flex flex-col mb-8 items-center">
-                      <span className="text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-1">Starting from</span>
-                      <span className={`text-lg font-black ${colors.accentColor}`}>
-                        {pkg.price}
-                      </span>
-                    </div>
                     
-                    <div className="flex flex-col gap-3 w-full">
+                    <div className="grid grid-cols-2 gap-1.5">
                       <button 
                         onClick={() => setSelectedPackage(pkg)}
-                        className={`w-full bg-white text-[#12302B] px-4 py-3 rounded-xl text-xs font-bold tracking-wider uppercase transition-colors shadow-sm cursor-pointer border border-[#E6D9BF]/60 hover:bg-[#FAF8F3] flex items-center justify-center gap-2`}
+                        className="w-full bg-white hover:bg-gray-50 text-[#12302B] border border-[#E6D9BF] px-2 py-2 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors shadow-xs cursor-pointer flex items-center justify-center gap-1"
+                        aria-label={`View itinerary for ${pkg.title}`}
                       >
-                        <Icon name="Eye" size={14} /> View Details
+                        <Icon name="Eye" size={12} /> Itinerary
                       </button>
                       <button 
                         onClick={handleQuoteClick}
-                        className={`w-full ${colors.btnBg} text-white px-4 py-3 rounded-xl text-xs font-bold tracking-wider uppercase transition-colors shadow-sm cursor-pointer border-none flex items-center justify-center gap-2`}
+                        className={`w-full ${colors.btnBg} text-white px-2 py-2 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors shadow-xs cursor-pointer border-none flex items-center justify-center gap-1`}
+                        aria-label={`Get quote for ${pkg.title}`}
                       >
-                        <Icon name="Sparkles" size={14} /> Get Quote
+                        <Icon name="Sparkles" size={11} /> Quote
                       </button>
                     </div>
                   </div>
-
                 </div>
               </div>
             );

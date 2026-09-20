@@ -824,19 +824,6 @@ export default function App() {
       {!isDrawerOpen && !mobileMenuOpen && <StickyMobileFooterCTA />}
       <Footer />
 
-      {/* Floating CTA Trigger Button (Mobile Only) */}
-      {isMobile && !isDrawerOpen && !mobileMenuOpen && (
-        <div className="fixed bottom-24 right-4 z-[999] pointer-events-auto pb-[env(safe-area-inset-bottom)]">
-          <button
-            onClick={handleManualOpen}
-            className="w-14 h-14 rounded-full bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] shadow-lg flex items-center justify-center border-none cursor-pointer active:scale-95 transition-transform duration-200"
-            aria-label="Get Free Quote"
-          >
-            <Icon name="Sparkles" size={24} className="text-[#12302B]" />
-          </button>
-        </div>
-      )}
-
       {/* Premium Mobile Bottom Drawer Modal / Desktop Centered Modal */}
       <AnimatePresence>
         {isDrawerOpen && (
