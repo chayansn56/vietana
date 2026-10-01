@@ -9,7 +9,7 @@ const BrandName: React.FC<BrandNameProps> = ({ className = '', withLogo = true }
   return (
     <span className={`inline-flex items-center font-bold tracking-wide ${className}`}>
       {withLogo && (
-        <img 
+        <img loading="lazy" 
           src="/vietana_logo.png" 
           className="h-[1.2em] inline-block align-middle mx-[0.2em] brightness-110" 
           alt="VIETANA" 

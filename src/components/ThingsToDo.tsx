@@ -118,7 +118,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
         <div className="absolute inset-0 bg-black/40" /> {/* Dark overlay for header readability */}
         <Container size="lg" className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <span className="text-[7px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase font-mono bg-white/5 border border-white/10 px-2 py-0.5 rounded drop-shadow-md">
+            <span className="text-[7px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase font-mono bg-white dark:bg-[#1A2421]/5 border border-white/10 px-2 py-0.5 rounded drop-shadow-md">
               DIRECTORY
             </span>
             <Heading as="h1" size="lg" font="serif" className="leading-none font-bold tracking-tight uppercase flex items-center select-none text-white drop-shadow-lg">
@@ -136,7 +136,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
               placeholder="Search experiences or cities..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white text-gray-800 pl-9 pr-3 py-1.5 rounded-full text-[11px] border-none shadow-sm outline-none transition-all font-sans font-medium"
+              className="w-full bg-white dark:bg-[#1A2421] text-gray-800 pl-9 pr-3 py-1.5 rounded-full text-[11px] border-none shadow-sm outline-none transition-all font-sans font-medium"
             />
           </div>
         </Container>
@@ -155,7 +155,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
                 className={`px-4 py-1.5 rounded-full text-[10px] font-bold tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer border ${
                   selectedDest === dest
                     ? 'bg-[#12302B] text-white border-[#12302B]'
-                    : 'bg-white text-gray-600 border-[#E8E4D9] hover:bg-gray-50'
+                    : 'bg-white dark:bg-[#1A2421] text-gray-600 border-[#E8E4D9] hover:bg-gray-50'
                 }`}
               >
                 {dest}
@@ -173,7 +173,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
                 className={`px-3.5 py-1.5 rounded-full text-[9px] font-bold tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer border ${
                   selectedCategory === cat
                     ? 'bg-[#B8860B] text-white border-[#B8860B]'
-                    : 'bg-white text-gray-500 border-[#E8E4D9] hover:bg-gray-50'
+                    : 'bg-white dark:bg-[#1A2421] text-gray-500 border-[#E8E4D9] hover:bg-gray-50'
                 }`}
               >
                 {cat}
@@ -227,7 +227,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
               name="aiQuery"
               required
               placeholder="e.g. Is Halong Bay cruise safe for seniors?"
-              className="flex-1 bg-white text-[#0B192C] px-4 py-3 rounded-xl text-xs border border-[#1E3E62]/40 outline-none focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] transition-all placeholder:text-[#0B192C]/45 font-medium shadow-xs"
+              className="flex-1 bg-white dark:bg-[#1A2421] text-[#0B192C] px-4 py-3 rounded-xl text-xs border border-[#1E3E62]/40 outline-none focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] transition-all placeholder:text-[#0B192C]/45 font-medium shadow-xs"
             />
             <button 
               type="submit"
@@ -239,7 +239,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
         </div>
 
         {filteredExperiences.length === 0 ? (
-          <div className="text-center py-20 bg-white border border-[#E6D9BF]/20 rounded-3xl p-8 max-w-md mx-auto">
+          <div className="text-center py-20 bg-white dark:bg-[#1A2421] border border-[#E6D9BF]/20 rounded-3xl p-8 max-w-md mx-auto">
             <Icon name="Search" size={32} className="text-gray-300 mb-4 mx-auto" />
             <h3 className="font-bold text-gray-700 mb-1">No attractions found</h3>
             <p className="text-xs text-gray-400 font-light">Try adjusting your search filters or destination chips.</p>
@@ -254,11 +254,11 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
                 <div 
                   key={exp.id}
                   onClick={() => setSelectedExperience(exp)}
-                  className="bg-white rounded-2xl overflow-hidden border border-[#E8E4D9] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col group"
+                  className="bg-white dark:bg-[#1A2421] rounded-2xl overflow-hidden border border-[#E8E4D9] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col group"
                 >
                   {/* Card Image */}
                   <div className="relative h-56 overflow-hidden bg-gray-50 shrink-0">
-                    <img 
+                    <img loading="lazy" 
                       src={exp.images.hero} 
                       alt={exp.title} 
                       className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
@@ -266,14 +266,14 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     
                     {/* Floating Destination Badge */}
-                    <span className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-gray-800 text-[8px] font-bold tracking-widest uppercase shadow-sm">
+                    <span className="absolute bottom-4 left-4 bg-white dark:bg-[#1A2421]/95 backdrop-blur-md px-3 py-1 rounded-full text-gray-800 text-[8px] font-bold tracking-widest uppercase shadow-sm">
                       📍 {exp.destination}
                     </span>
 
                     {/* Heart Save Button */}
                     <button 
                       onClick={(e) => toggleSave(exp.id, e)}
-                      className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/95 backdrop-blur-md hover:bg-white text-gray-700 shadow-sm flex items-center justify-center transition border-none cursor-pointer z-10"
+                      className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white dark:bg-[#1A2421]/95 backdrop-blur-md hover:bg-white dark:bg-[#1A2421] text-gray-700 shadow-sm flex items-center justify-center transition border-none cursor-pointer z-10"
                       title={isSaved ? 'Remove from My Trip' : 'Add to My Trip'}
                     >
                       <Icon 
@@ -334,7 +334,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
       {savedExperiences.length > 0 && (
         <div className="fixed bottom-0 left-0 right-0 bg-[#12302B] text-white py-4 px-6 border-t border-[#D4AF37]/30 shadow-2xl z-[150] flex flex-col sm:flex-row items-center justify-between gap-4 animate-slide-up">
           <div className="flex items-center gap-3 text-center sm:text-left">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white relative shrink-0">
+            <div className="w-10 h-10 rounded-full bg-white dark:bg-[#1A2421]/10 flex items-center justify-center text-white relative shrink-0">
               <Icon name="CheckCircle" size={18} className="text-[#D4AF37]" />
               <span className="absolute -top-1.5 -right-1.5 bg-[#B8860B] text-white text-[8px] font-black w-5 h-5 rounded-full flex items-center justify-center border border-[#12302B]">
                 {savedExperiences.length}
@@ -356,7 +356,7 @@ export default function ThingsToDo({ onOpenPlanner }: ThingsToDoProps) {
                 setSavedExperiences([]);
                 localStorage.removeItem('vietana_saved_experiences');
               }}
-              className="flex-1 sm:flex-none py-2 px-4 bg-white/10 hover:bg-white/20 border-none rounded-lg text-[10px] font-bold text-white uppercase tracking-wider transition-colors cursor-pointer"
+              className="flex-1 sm:flex-none py-2 px-4 bg-white dark:bg-[#1A2421]/10 hover:bg-white dark:bg-[#1A2421]/20 border-none rounded-lg text-[10px] font-bold text-white uppercase tracking-wider transition-colors cursor-pointer"
             >
               Clear List
             </button>

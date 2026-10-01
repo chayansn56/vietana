@@ -39,11 +39,11 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
           isOpen={!!selectedPackage}
           onClose={onClose}
           maxWidth="max-w-4xl"
-          className="h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-border-divider rounded-xl shadow-heavy"
+          className="h-[80vh] flex flex-col p-0 overflow-hidden bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl shadow-heavy"
         >
           {/* Header image details */}
           <div className="h-48 w-full overflow-hidden relative shrink-0">
-            <img
+            <img loading="lazy"
               src={selectedPackage.img}
               alt={selectedPackage.title}
               className="w-full h-full object-cover"
@@ -122,7 +122,7 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
                       <div className={`absolute -left-[21px] top-3.5 w-2 h-2 rounded-full ${isExpanded ? 'bg-brand-green' : 'bg-border-divider'}`} />
 
                       <div
-                        className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-surface-linen border-brand-green/30' : 'bg-white border-border-divider/80 hover:bg-surface-linen'}`}
+                        className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-surface-linen border-brand-green/30' : 'bg-white dark:bg-[#1A2421] border-border-divider/80 hover:bg-surface-linen'}`}
                         onClick={() => onSetExpandedDay(isExpanded ? null : day.day)}
                       >
                         <div className="flex justify-between items-center">
@@ -180,7 +180,7 @@ const PackageDetailsModal: React.FC<PackageDetailsModalProps> = ({
           </div>
 
           {/* Modal Actions */}
-          <div className="p-6 bg-white border-t border-border-divider shrink-0 flex flex-col sm:flex-row gap-3">
+          <div className="p-6 bg-white dark:bg-[#1A2421] border-t border-border-divider shrink-0 flex flex-col sm:flex-row gap-3">
             <Button
               variant="glass"
               className="flex-1 py-4 text-xs font-bold uppercase tracking-wider text-brand-green bg-surface-linen border border-border-divider hover:bg-brand-green/5"

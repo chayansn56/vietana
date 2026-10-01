@@ -928,138 +928,405 @@ html {
 }
 
 /* ==========================================================================
-   Dark Mode Theme System
+   Dark Mode Theme System (Lighter Twilight Slate with Blue Fire & Crimson Flame)
    ========================================================================== */
 
-/* Dark mode variable overrides */
+/* Dark mode variable overrides — luminous smoky twilight slate, electric blue fire & fiery red */
 .dark {
-  --color-surface-ivory: #111615;
-  /* Charcoal Green */
-  --color-surface-white: #1A2120;
-  /* Dark Panel */
-  --color-surface-cream: #111615;
-  /* Charcoal Green for cream */
-  --color-surface-warm: #1A2120;
-  /* Dark Panel for warm */
-  --color-surface-linen: #111615;
-  /* Dark mode linen */
+  --color-surface-ivory: #131A29;
+  --color-surface-white: #1E293B;
+  --color-surface-cream: #131A29;
+  --color-surface-warm: #222F46;
+  --color-surface-linen: #182236;
+  --color-surface-dark: #1E293B;
+  --color-brand-sage: #38BDF8;
+  --color-brand-champagne: #FCA5A5;
 
-  /* Border Colors — Dark Mode */
-  --color-border-divider: rgba(255, 255, 255, 0.08);
-  --color-border-divider-subtle: rgba(255, 255, 255, 0.04);
+  /* Border Colors — Dark Mode (Blue Fire tint) */
+  --color-border-divider: rgba(56, 189, 248, 0.18);
+  --color-border-divider-subtle: rgba(56, 189, 248, 0.08);
 
-  --color-text-charcoal: #FAF8F3;
-  /* Warm White */
-  --color-text-muted: #E9DFC8;
-  /* Champagne */
-  --color-text-subtle: #AAB7A1;
-  /* Muted Sage */
-  --color-text-dark: #FAF8F3;
-  /* Warm White for dark text */
+  --color-text-charcoal: #FFFFFF;
+  --color-text-muted: #CBD5E1;
+  --color-text-subtle: #94A3B8;
+  --color-text-dark: #FFFFFF;
+
+  /* Brand Accents — Electric Blue Fire (#38BDF8 / #00F0FF) and Fiery Red Flame (#EF4444 / #F43F5E) */
+  --color-brand-green: #38BDF8;
+  --color-brand-green-light: #00F0FF;
+  --color-brand-green-dark: #FFFFFF;
+  --color-brand-green-extra-dark: #131A29;
+  --color-brand-gold: #EF4444;
+  --color-brand-gold-light: #F43F5E;
+  --color-brand-gold-muted: #FB7185;
 }
 
 /* Base structural overrides when in dark mode */
 .dark body {
-  background-color: #111615 !important;
-  color: #FAF8F3 !important;
+  background-color: #131A29 !important;
+  color: #F8FAFC !important;
 }
 
-.dark section {
-  background-color: #111615 !important;
-  color: #FAF8F3 !important;
+.dark #root {
+  background-color: transparent !important;
 }
 
-/* Base utility overrides for dark mode */
-.dark .bg-white,
+.dark .min-h-screen {
+  background-color: transparent !important;
+}
+
+/* Base dark container classes -> transparent in dark mode so the watermark is visible everywhere */
+.dark .bg-black,
+.dark .bg-\[\#121214\],
+.dark .bg-\[\#111\],
+.dark .bg-\[\#111111\],
+.dark .bg-brand-green-extra-dark,
+.dark .bg-brand-green-dark,
+.dark .bg-\[\#0A1C18\],
+.dark .bg-\[\#12302B\],
+.dark .bg-\[\#0E1614\],
+.dark .bg-\[\#111615\],
+.dark .bg-\[\#1A2120\],
+.dark .bg-\[\#1E2625\],
+.dark .bg-\[\#252E2D\] {
+  background-color: transparent !important;
+}
+
+/* Light ivory and off-white backgrounds converted to transparent in dark mode */
+.dark .bg-\[\#FAF8F3\],
+.dark .bg-\[\#FAF7F0\],
+.dark .bg-\[\#F4F1EA\],
+.dark .bg-\[\#F9F6F0\],
+.dark .bg-stone-50,
+.dark .bg-gray-50,
+.dark .bg-surface-cream,
+.dark .bg-surface-ivory,
+.dark .bg-surface-linen {
+  background-color: transparent !important;
+}
+
+.dark .bg-\[\#FAF8F3\]\/98,
+.dark .bg-\[\#FAF8F3\]\/95,
+.dark .bg-\[\#FAF8F3\]\/92,
+.dark .bg-\[\#FAF8F3\]\/90,
+.dark .bg-\[\#FAF8F3\]\/85 {
+  background-color: rgba(19, 26, 41, 0.85) !important;
+}
+
+/* Surface white cards, modals, and dropdowns -> refined twilight slate card */
+.dark .bg-white {
+  background-color: #1E293B !important;
+  border-color: rgba(56, 189, 248, 0.16) !important;
+}
+
+.dark .bg-white\/95,
+.dark .bg-white\/90,
+.dark .bg-white\/85,
 .dark .bg-white\/80 {
-  background-color: #1A2120 !important;
-  color: #FAF8F3 !important;
+  background-color: rgba(30, 41, 59, 0.94) !important;
 }
 
+.dark [class*="dark:bg-\[\#0A1C18\]"],
+.dark [class*="dark:bg-\[\#1A2120\]"],
+.dark [class*="dark:bg-\[\#111615\]"] {
+  background-color: rgba(30, 41, 59, 0.94) !important;
+}
+
+.dark .bg-stone-100,
+.dark .bg-stone-200,
+.dark .bg-gray-100,
+.dark .bg-gray-200 {
+  background-color: #243046 !important;
+}
+
+/* Comprehensive Text Contrast Overrides */
+/* All dark primary text classes -> bright crisp white */
+.dark .text-\[\#12302B\],
+.dark .text-\[\#0E3830\],
+.dark .text-stone-900,
+.dark .text-stone-800,
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-neutral-900,
+.dark .text-neutral-800,
+.dark .text-text-dark,
+.dark .text-text-charcoal,
 .dark .text-charcoal,
-.dark .text-text-charcoal {
-  color: #FAF8F3 !important;
+.dark .text-emerald-950,
+.dark .text-rose-950,
+.dark .text-sky-950,
+.dark .text-amber-950,
+.dark .text-purple-950,
+.dark .text-teal-950,
+.dark .text-indigo-950,
+.dark .text-pink-950,
+.dark .text-fuchsia-950,
+.dark .text-orange-950 {
+  color: #FFFFFF !important;
 }
 
+/* Secondary & descriptive text -> crisp readable soft light slate */
+.dark .text-stone-700,
+.dark .text-stone-600,
+.dark .text-gray-700,
+.dark .text-gray-600,
+.dark .text-neutral-700,
+.dark .text-neutral-600,
+.dark .text-\[\#555555\],
+.dark .text-text-subtle {
+  color: #CBD5E1 !important;
+}
+
+/* Muted / subtle metadata text */
+.dark .text-stone-500,
+.dark .text-stone-400,
+.dark .text-gray-500,
+.dark .text-gray-400,
+.dark .text-neutral-500,
+.dark .text-neutral-400 {
+  color: #94A3B8 !important;
+}
+
+/* Blue Fire: brand accents & key headers */
+.dark .text-\[\#1E4D45\],
+.dark .text-brand-green,
+.dark .text-brand-green-dark {
+  color: #38BDF8 !important;
+}
+
+/* Red Fire: amber/gold highlights and badge texts */
+.dark .text-brand-gold,
+.dark .text-brand-gold-muted,
+.dark .text-amber-900,
+.dark .text-amber-800,
+.dark .text-amber-700,
+.dark .text-amber-600,
+.dark .text-\[\#B8860B\] {
+  color: #F87171 !important;
+}
+
+/* Green & Mint highlights -> electric cyan flame */
+.dark .text-green-700,
+.dark .text-green-800,
+.dark .text-emerald-700,
+.dark .text-emerald-800,
+.dark .text-emerald-900 {
+  color: #00F0FF !important;
+}
+
+/* Blue & Sky highlights -> glowing ice blue */
+.dark .text-blue-700,
+.dark .text-blue-800,
+.dark .text-\[\#1D4ED8\],
+.dark .text-\[\#1E3A8A\] {
+  color: #7DD3FC !important;
+}
+
+/* Red / Rose highlights */
+.dark .text-rose-600,
+.dark .text-rose-700,
+.dark .text-red-600,
+.dark .text-red-700 {
+  color: #F43F5E !important;
+}
+
+/* Borders and Dividers — glowing blue-fire subtle lines */
+.dark .border-\[\#E6D9BF\],
+.dark .border-\[\#E8E4D9\],
+.dark .border-\[\#E6D9BF\]\/30,
+.dark .border-\[\#E6D9BF\]\/20,
+.dark .border-\[\#E6D9BF\]\/60,
+.dark .border-stone-100,
+.dark .border-stone-200,
+.dark .border-stone-200\/80,
+.dark .border-stone-200\/60,
+.dark .border-stone-300,
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300,
 .dark .border-black\/5,
 .dark .border-black\/10 {
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(56, 189, 248, 0.16) !important;
 }
 
-/* Dark mode escape hatches for arbitrary hex removed — tokens handle dark mode via variable overrides */
-
-.dark .editorial-card {
-  background-color: #1A2120 !important;
-  border-color: rgba(255, 255, 255, 0.06) !important;
-}
-
-.dark .editorial-card:hover {
-  border-color: rgba(212, 175, 55, 0.4) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
-}
-
-.dark .editorial-btn {
-  border-color: #D4AF37 !important;
-  color: #D4AF37 !important;
-}
-
-.dark .editorial-btn:hover {
-  background: #D4AF37 !important;
-  color: #111615 !important;
-}
-
-.dark input,
-.dark select,
-.dark textarea {
-  background-color: #12302B !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: #FAF8F3 !important;
-}
-
-/* Dark mode state color overrides */
-.dark .text-state-success {
-  color: #6EE7B7 !important;
-}
-
-.dark .bg-state-success-light {
-  background-color: rgba(46, 125, 110, 0.2) !important;
-}
-
-.dark .text-state-error {
+/* Badges & Tinted Highlights — Fiery Red & Blue Fire */
+.dark .bg-amber-50,
+.dark .bg-amber-100,
+.dark .bg-amber-500\/10,
+.dark .bg-amber-50\/60 {
+  background-color: rgba(239, 68, 68, 0.16) !important;
+  border-color: rgba(239, 68, 68, 0.35) !important;
   color: #FCA5A5 !important;
 }
 
-.dark .bg-state-error-light {
-  background-color: rgba(184, 92, 58, 0.2) !important;
+.dark .bg-emerald-50,
+.dark .bg-green-50,
+.dark .bg-emerald-100 {
+  background-color: rgba(0, 240, 255, 0.12) !important;
+  border-color: rgba(0, 240, 255, 0.3) !important;
+  color: #38BDF8 !important;
 }
 
-.dark .text-state-warning {
-  color: #FCD34D !important;
+.dark .bg-blue-50,
+.dark .bg-\[\#EFF6FF\] {
+  background-color: rgba(56, 189, 248, 0.16) !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  color: #7DD3FC !important;
 }
 
-.dark .bg-state-warning-light {
-  background-color: rgba(184, 134, 11, 0.2) !important;
+.dark .bg-rose-50,
+.dark .bg-rose-100,
+.dark .bg-rose-50\/30,
+.dark .bg-rose-50\/60,
+.dark .bg-red-50,
+.dark .bg-red-100 {
+  background-color: rgba(244, 63, 94, 0.18) !important;
+  border-color: rgba(244, 63, 94, 0.35) !important;
+  color: #FDA4AF !important;
 }
 
-.dark .text-state-info {
-  color: #93C5FD !important;
+/* Editorial Vogue elements in dark mode */
+.dark .editorial-card {
+  background-color: #1E293B !important;
+  border-color: rgba(56, 189, 248, 0.18) !important;
 }
 
-.dark .bg-state-info-light {
-  background-color: rgba(30, 58, 138, 0.2) !important;
+.dark .editorial-card:hover {
+  border-color: rgba(56, 189, 248, 0.55) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.18) !important;
 }
 
-.dark .text-state-disabled {
-  color: #6B7280 !important;
+.dark .editorial-btn {
+  border: 1px solid rgba(56, 189, 248, 0.5) !important;
+  color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.08) !important;
 }
 
-.dark input::placeholder {
-  color: rgba(255, 255, 255, 0.4) !important;
+.dark .editorial-btn:hover {
+  background: linear-gradient(135deg, #00F0FF 0%, #3B82F6 45%, #EF4444 100%) !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 0 20px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Inputs, Selects, and Dropdowns in dark mode */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #162033 !important;
+  border-color: rgba(56, 189, 248, 0.22) !important;
+  color: #F8FAFC !important;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: #38BDF8 !important;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgba(203, 213, 225, 0.45) !important;
+}
+
+.dark option {
+  background-color: #1E293B !important;
+  color: #F8FAFC !important;
 }
 
 .dark .glass-dark {
-  background: rgba(18, 48, 43, 0.8) !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(21, 29, 46, 0.92) !important;
+  border-color: rgba(56, 189, 248, 0.18) !important;
+}
+
+/* State colors */
+.dark .text-state-success {
+  color: #38BDF8 !important;
+}
+.dark .bg-state-success-light {
+  background-color: rgba(56, 189, 248, 0.16) !important;
+}
+.dark .text-state-error {
+  color: #F87171 !important;
+}
+.dark .bg-state-error-light {
+  background-color: rgba(239, 68, 68, 0.18) !important;
+}
+.dark .text-state-warning {
+  color: #FB923C !important;
+}
+.dark .bg-state-warning-light {
+  background-color: rgba(249, 115, 22, 0.18) !important;
+}
+.dark .text-state-info {
+  color: #38BDF8 !important;
+}
+.dark .bg-state-info-light {
+  background-color: rgba(56, 189, 248, 0.18) !important;
+}
+.dark .text-state-disabled {
+  color: #64748B !important;
+}
+
+/* ==========================================================================
+   Dark Mode Ambient Brand Watermark — 100% Lag-Free Hardware-Accelerated Glow
+   ========================================================================== */
+
+@keyframes slowWatermarkPulse {
+  0%, 100% {
+    opacity: 0.055;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.11;
+    transform: translate3d(0, 0, 0) scale(1.012);
+  }
+}
+
+@keyframes slowAmbientAura {
+  0%, 100% {
+    opacity: 0.55;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+.vietana-dark-watermark-title {
+  background: linear-gradient(135deg, #00F0FF 0%, #38BDF8 30%, #818CF8 50%, #F43F5E 75%, #EF4444 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
+  animation: slowWatermarkPulse 8s ease-in-out infinite;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.vietana-dark-watermark-subtitle {
+  background: linear-gradient(135deg, #38BDF8 0%, #CBD5E1 50%, #F87171 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+  animation: slowWatermarkPulse 8s ease-in-out infinite;
+  animation-delay: -2s;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.vietana-dark-glow-ambient {
+  animation: slowAmbientAura 12s ease-in-out infinite;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 /* Theme toggle transition — only active during toggle via JS class */
@@ -1070,4 +1337,65 @@ html.theme-transitioning *::after {
   transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease !important;
 }
 
-/* AI Planner animations (siri-orb, speaking-wave) moved to ai-planner.css */
+/* ==========================================================================
+   Google Website Translator Invisible Integration
+   ========================================================================== */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+.skiptranslate iframe {
+  display: none !important;
+}
+
+/* ==========================================================================
+   GPU Hardware Acceleration & Lag Elimination Optimizations
+   ========================================================================== */
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Force hardware acceleration for smooth GPU-accelerated scrolling & motion */
+.backdrop-blur-md,
+.backdrop-blur-lg,
+.backdrop-blur-xl,
+.backdrop-blur-2xl,
+.backdrop-blur-sm,
+.backdrop-blur {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transform: translateZ(0);
+  will-change: transform, backdrop-filter;
+}
+
+/* Reduce continuous layout recalculation lag during scroll */
+img, svg, canvas {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}

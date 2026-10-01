@@ -183,7 +183,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                   placeholder="Search ticket, venue, city, or ID..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white text-gray-800 pl-10 pr-4 py-3 rounded-full text-base sm:text-xs border border-[#E8E4D9] shadow-sm outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 transition-all font-sans font-medium"
+                  className="w-full bg-white dark:bg-[#1A2421] text-gray-800 pl-10 pr-4 py-3 rounded-full text-base sm:text-xs border border-[#E8E4D9] shadow-sm outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 transition-all font-sans font-medium"
                 />
                 {searchQuery && (
                   <button 
@@ -196,7 +196,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
               </div>
 
               {/* Hierarchy vs Grid View Toggle */}
-              <div className="flex bg-white border border-[#E8E4D9] p-1 rounded-full shadow-xs">
+              <div className="flex bg-white dark:bg-[#1A2421] border border-[#E8E4D9] p-1 rounded-full shadow-xs">
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all border-none cursor-pointer flex items-center gap-1.5 ${
@@ -227,7 +227,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
               className={`px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer border-none ${
                 selectedRegion === 'ALL' 
                   ? 'bg-[#12302B] text-white shadow-sm' 
-                  : 'bg-transparent text-gray-600 hover:text-[#12302B] hover:bg-white/60'
+                  : 'bg-transparent text-gray-600 hover:text-[#12302B] hover:bg-white dark:bg-[#1A2421]/60'
               }`}
               onClick={() => {
                 setSelectedRegion('ALL');
@@ -244,7 +244,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                   className={`px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer border-none ${
                     selectedRegion === region 
                       ? 'bg-[#12302B] text-white shadow-sm' 
-                      : 'bg-transparent text-gray-600 hover:text-[#12302B] hover:bg-white/60'
+                      : 'bg-transparent text-gray-600 hover:text-[#12302B] hover:bg-white dark:bg-[#1A2421]/60'
                   }`}
                   onClick={() => {
                     setSelectedRegion(region);
@@ -270,7 +270,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                   className={`px-3 py-1 rounded-full text-[11px] font-medium tracking-wide transition shrink-0 cursor-pointer border ${
                     selectedDestination === dest
                       ? 'bg-amber-100 text-amber-900 border-amber-300 font-bold'
-                      : 'bg-white text-gray-600 border-[#E8E4D9] hover:bg-gray-50'
+                      : 'bg-white dark:bg-[#1A2421] text-gray-600 border-[#E8E4D9] hover:bg-gray-50'
                   }`}
                 >
                   {dest}
@@ -290,7 +290,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                 className={`px-3.5 py-1.5 border rounded-full text-xs font-semibold tracking-wide uppercase transition shrink-0 duration-200 cursor-pointer ${
                   selectedType === type
                     ? 'border-[#12302B] bg-[#12302B] text-white shadow-xs'
-                    : 'border-[#E8E4D9] bg-white text-gray-600 hover:border-[#12302B]/40 hover:bg-gray-50'
+                    : 'border-[#E8E4D9] bg-white dark:bg-[#1A2421] text-gray-600 hover:border-[#12302B]/40 hover:bg-gray-50'
                 }`}
                 onClick={() => setSelectedType(type)}
               >
@@ -308,7 +308,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
               {hierarchy.regions
                 .filter((r) => selectedRegion === 'ALL' || r.name.toUpperCase() === selectedRegion.toUpperCase())
                 .map((reg) => (
-                  <div key={reg.name} className="bg-white rounded-3xl border border-[#E8E4D9] p-6 md:p-8 shadow-xs">
+                  <div key={reg.name} className="bg-white dark:bg-[#1A2421] rounded-3xl border border-[#E8E4D9] p-6 md:p-8 shadow-xs">
                     <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#E8E4D9]">
                       <div className="flex items-center gap-3">
                         <span className="w-3 h-3 rounded-full bg-[#D4AF37]"></span>
@@ -340,7 +340,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                                     <h4 className="font-serif font-bold text-sm text-[#12302B] truncate">
                                       {venue.name}
                                     </h4>
-                                    <span className="text-[10px] font-mono bg-white px-2 py-0.5 rounded border border-[#E8E4D9] font-bold text-gray-600">
+                                    <span className="text-[10px] font-mono bg-white dark:bg-[#1A2421] px-2 py-0.5 rounded border border-[#E8E4D9] font-bold text-gray-600">
                                       {venue.productCount}
                                     </span>
                                   </div>
@@ -349,7 +349,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                                       <div 
                                         key={p.id}
                                         onClick={() => setSelectedTicket(p)}
-                                        className="text-xs flex items-center justify-between gap-2 p-1.5 hover:bg-white rounded cursor-pointer transition-colors"
+                                        className="text-xs flex items-center justify-between gap-2 p-1.5 hover:bg-white dark:bg-[#1A2421] rounded cursor-pointer transition-colors"
                                       >
                                         <span className="truncate text-gray-700 font-medium">{p.name}</span>
                                         <span className="text-[11px] font-bold text-[#12302B] shrink-0">
@@ -386,7 +386,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
           {viewMode === 'grid' && (
             <>
               {filteredTickets.length === 0 ? (
-                <div className="text-center py-20 bg-white border border-[#E6D9BF]/30 rounded-3xl p-8 max-w-md mx-auto shadow-sm">
+                <div className="text-center py-20 bg-white dark:bg-[#1A2421] border border-[#E6D9BF]/30 rounded-3xl p-8 max-w-md mx-auto shadow-sm">
                   <Icon name="Search" size={36} className="text-gray-300 mb-4 mx-auto" />
                   <h3 className="font-bold text-gray-800 text-lg mb-1">No attraction tickets match your criteria</h3>
                   <p className="text-xs text-gray-500 font-light mb-4">Try clearing the search query or switching to 'All Regions'.</p>
@@ -411,7 +411,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                     return (
                       <div 
                         key={ticket.id}
-                        className="bg-white rounded-2xl overflow-hidden border border-[#E8E4D9] shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group"
+                        className="bg-white dark:bg-[#1A2421] rounded-2xl overflow-hidden border border-[#E8E4D9] shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group"
                       >
                         {/* Card Image Banner */}
                         <div className="relative h-44 overflow-hidden bg-gray-100 shrink-0">
@@ -428,7 +428,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                             <span className="bg-[#12302B]/90 backdrop-blur-md text-[#D4AF37] text-[8px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md shadow-xs">
                               {ticket.region.replace(' VIETNAM', '')}
                             </span>
-                            <span className="bg-white/95 text-gray-800 text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md shadow-xs">
+                            <span className="bg-white dark:bg-[#1A2421]/95 text-gray-800 text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md shadow-xs">
                               {ticket.type}
                             </span>
                           </div>
@@ -561,7 +561,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
               onClose={() => setSelectedTicket(null)}
               maxWidth="max-w-5xl"
               hideDefaultClose={true}
-              className="max-h-[92vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-2xl sm:rounded-3xl shadow-2xl"
+              className="max-h-[92vh] flex flex-col p-0 overflow-hidden bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-2xl sm:rounded-3xl shadow-2xl"
             >
               {/* Modal Breadcrumbs & Header Bar */}
               <div className="px-4 sm:px-5 py-3 bg-[#FAF8F3] border-b border-[#E8E4D9] flex items-center justify-between gap-3 text-xs font-medium text-gray-500 overflow-x-auto scrollbar-none shrink-0">
@@ -627,7 +627,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                   <div className="lg:col-span-7 space-y-6">
                     {/* Image Banner */}
                     <div className="h-56 sm:h-64 w-full overflow-hidden relative rounded-2xl border border-[#E8E4D9]">
-                      <img 
+                      <img loading="lazy" 
                         src={selectedTicket.image} 
                         alt={selectedTicket.name}
                         className="w-full h-full object-cover"
@@ -641,7 +641,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                           <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] font-mono font-bold block">
                             {selectedTicket.venue} · {selectedTicket.type}
                           </span>
-                          <span className="text-[8px] font-mono bg-white/20 px-2 py-0.5 rounded text-white/90">
+                          <span className="text-[8px] font-mono bg-white dark:bg-[#1A2421]/20 px-2 py-0.5 rounded text-white/90">
                             ID: {selectedTicket.id}
                           </span>
                         </div>
@@ -660,31 +660,31 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                         <span className="text-[9px] text-gray-500 font-mono">Official Negotiated Price</span>
                       </div>
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-center">
-                        <div className="bg-white p-2.5 rounded-xl border border-[#E8E4D9]">
+                        <div className="bg-white dark:bg-[#1A2421] p-2.5 rounded-xl border border-[#E8E4D9]">
                           <span className="text-[9px] uppercase tracking-wider text-gray-500 font-bold block mb-0.5">Adult</span>
                           <span className="text-sm font-black text-[#12302B]">
                             {formatPriceVND(selectedTicket.vietanaPrices.adult, currency)}
                           </span>
                         </div>
-                        <div className="bg-white p-2.5 rounded-xl border border-[#E8E4D9]">
+                        <div className="bg-white dark:bg-[#1A2421] p-2.5 rounded-xl border border-[#E8E4D9]">
                           <span className="text-[9px] uppercase tracking-wider text-gray-500 font-bold block mb-0.5">Child</span>
                           <span className="text-sm font-black text-emerald-700">
                             {formatPriceVND(selectedTicket.vietanaPrices.child, currency)}
                           </span>
                         </div>
-                        <div className="bg-white p-2.5 rounded-xl border border-[#E8E4D9]">
+                        <div className="bg-white dark:bg-[#1A2421] p-2.5 rounded-xl border border-[#E8E4D9]">
                           <span className="text-[9px] uppercase tracking-wider text-gray-500 font-bold block mb-0.5">Senior</span>
                           <span className="text-sm font-black text-gray-700">
                             {formatPriceVND(selectedTicket.vietanaPrices.senior, currency)}
                           </span>
                         </div>
-                        <div className="bg-white p-2.5 rounded-xl border border-[#E8E4D9]">
+                        <div className="bg-white dark:bg-[#1A2421] p-2.5 rounded-xl border border-[#E8E4D9]">
                           <span className="text-[9px] uppercase tracking-wider text-gray-500 font-bold block mb-0.5">Student</span>
                           <span className="text-sm font-black text-blue-700">
                             {formatPriceVND(selectedTicket.vietanaPrices.student, currency)}
                           </span>
                         </div>
-                        <div className="bg-white p-2.5 rounded-xl border border-[#E8E4D9]">
+                        <div className="bg-white dark:bg-[#1A2421] p-2.5 rounded-xl border border-[#E8E4D9]">
                           <span className="text-[9px] uppercase tracking-wider text-gray-500 font-bold block mb-0.5">Local</span>
                           <span className="text-sm font-black text-purple-700">
                             {formatPriceVND(selectedTicket.vietanaPrices.local, currency)}
@@ -702,25 +702,25 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
                             <span className="text-[8px] text-gray-400 font-mono">Adult Ticket</span>
                           </div>
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-mono">
-                            <div className="bg-white p-2 rounded-lg border border-emerald-200 bg-emerald-50/40">
+                            <div className="bg-white dark:bg-[#1A2421] p-2 rounded-lg border border-emerald-200 bg-emerald-50/40">
                               <span className="text-[8px] text-emerald-800 uppercase font-bold block">₫ VND (Base)</span>
                               <span className="text-xs font-bold text-emerald-900">
                                 {formatPriceVND(selectedTicket.vietanaPrices.adult, 'VND')}
                               </span>
                             </div>
-                            <div className="bg-white p-2 rounded-lg border border-blue-200 bg-blue-50/40">
+                            <div className="bg-white dark:bg-[#1A2421] p-2 rounded-lg border border-blue-200 bg-blue-50/40">
                               <span className="text-[8px] text-blue-800 uppercase font-bold block">€ EURO</span>
                               <span className="text-xs font-bold text-blue-900">
                                 {formatPriceVND(selectedTicket.vietanaPrices.adult, 'EUR')}
                               </span>
                             </div>
-                            <div className="bg-white p-2 rounded-lg border border-amber-200 bg-amber-50/40">
+                            <div className="bg-white dark:bg-[#1A2421] p-2 rounded-lg border border-amber-200 bg-amber-50/40">
                               <span className="text-[8px] text-amber-800 uppercase font-bold block">$ US DOLLAR</span>
                               <span className="text-xs font-bold text-amber-900">
                                 {formatPriceVND(selectedTicket.vietanaPrices.adult, 'USD')}
                               </span>
                             </div>
-                            <div className="bg-white p-2 rounded-lg border border-purple-200 bg-purple-50/40">
+                            <div className="bg-white dark:bg-[#1A2421] p-2 rounded-lg border border-purple-200 bg-purple-50/40">
                               <span className="text-[8px] text-purple-800 uppercase font-bold block">₹ INR</span>
                               <span className="text-xs font-bold text-purple-900">
                                 {formatPriceVND(selectedTicket.vietanaPrices.adult, 'INR')}
@@ -804,7 +804,7 @@ Please confirm availability, booking cutoff, and instant e-voucher issuance.`;
 
               {/* Mobile Sticky Bottom Action Bar */}
               <div 
-                className="lg:hidden sticky bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#E8E4D9] p-3.5 flex items-center justify-between gap-3 shadow-lg z-20"
+                className="lg:hidden sticky bottom-0 left-0 right-0 bg-white dark:bg-[#1A2421]/95 backdrop-blur-md border-t border-[#E8E4D9] p-3.5 flex items-center justify-between gap-3 shadow-lg z-20"
                 style={{ paddingBottom: 'max(0.875rem, env(safe-area-inset-bottom))' }}
               >
                 <div>

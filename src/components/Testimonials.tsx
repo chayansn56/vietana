@@ -158,7 +158,7 @@ const Testimonials: React.FC = () => {
         <div className="flex justify-center items-center gap-6 mt-12">
           <Button
             variant="ghost"
-            className="rounded-full !w-12 !h-12 !p-0 flex items-center justify-center bg-white shadow-md group border border-text-dark/5"
+            className="rounded-full !w-12 !h-12 !p-0 flex items-center justify-center bg-white dark:bg-[#1A2421] shadow-md group border border-text-dark/5"
             onClick={prevTestimonial}
             aria-label="Previous testimonial"
           >
@@ -170,14 +170,14 @@ const Testimonials: React.FC = () => {
               <button
                 key={idx}
                 onClick={() => handleDotClick(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex ? 'w-6 bg-brand-gold' : 'w-1.5 bg-white/20'}`}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex ? 'w-6 bg-brand-gold' : 'w-1.5 bg-white dark:bg-[#1A2421]/20'}`}
               />
             ))}
           </div>
 
           <Button
             variant="ghost"
-            className="rounded-full !w-12 !h-12 !p-0 flex items-center justify-center bg-white shadow-md group border border-text-dark/5"
+            className="rounded-full !w-12 !h-12 !p-0 flex items-center justify-center bg-white dark:bg-[#1A2421] shadow-md group border border-text-dark/5"
             onClick={nextTestimonial}
             aria-label="Next testimonial"
           >

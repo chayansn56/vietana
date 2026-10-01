@@ -22,7 +22,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
     <Card className="w-[85vw] sm:w-[420px] h-[540px] editorial-card !p-0 flex flex-col justify-between shrink-0 snap-start relative group overflow-hidden">
       {/* Photo area */}
       <div className="h-[220px] relative w-full overflow-hidden shrink-0 border-b border-border-divider">
-        <img
+        <img loading="lazy"
           src={pkg.img}
           alt={pkg.title}
           className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-[1200ms]"
@@ -38,7 +38,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
               {pkg.price} PP
             </Badge>
           ) : (
-            <Badge variant="outline" className="!px-2.5 !py-1 !text-tiny font-mono text-brand-green border-border-divider bg-white">
+            <Badge variant="outline" className="!px-2.5 !py-1 !text-tiny font-mono text-brand-green border-border-divider bg-white dark:bg-[#1A2421]">
               {pkg.duration}
             </Badge>
           )}
@@ -46,7 +46,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
       </div>
 
       {/* Editorial Body / Content */}
-      <div className="flex-1 px-6 py-5 flex flex-col justify-between relative bg-white">
+      <div className="flex-1 px-6 py-5 flex flex-col justify-between relative bg-white dark:bg-[#1A2421]">
         <div className="space-y-2">
           <div className="flex justify-between items-start gap-2">
             <h4 className="text-lg font-bold font-serif text-brand-green tracking-tight leading-tight flex-1">

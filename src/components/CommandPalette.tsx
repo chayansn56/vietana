@@ -66,15 +66,15 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose, onNavi
           <div className="flex flex-col gap-2.5">
             <span className="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Quick Command List</span>
             <div className="flex flex-col gap-1.5 text-xs">
-              <button onClick={() => handleCommandRun('/agent')} className="flex justify-between items-center bg-white border border-[#E6D9BF] p-2.5 rounded-xl hover:bg-gray-50 cursor-pointer w-full text-left">
+              <button onClick={() => handleCommandRun('/agent')} className="flex justify-between items-center bg-white dark:bg-[#1A2421] border border-[#E6D9BF] p-2.5 rounded-xl hover:bg-gray-50 cursor-pointer w-full text-left">
                 <span>💼 Open Agent Portal</span>
                 <span className="text-[9px] text-gray-400 font-mono">/agent</span>
               </button>
-              <button onClick={() => handleCommandRun('/admin')} className="flex justify-between items-center bg-white border border-[#E6D9BF] p-2.5 rounded-xl hover:bg-gray-50 cursor-pointer w-full text-left">
+              <button onClick={() => handleCommandRun('/admin')} className="flex justify-between items-center bg-white dark:bg-[#1A2421] border border-[#E6D9BF] p-2.5 rounded-xl hover:bg-gray-50 cursor-pointer w-full text-left">
                 <span>⚙️ Open Control Center</span>
                 <span className="text-[9px] text-gray-400 font-mono">/admin</span>
               </button>
-              <button onClick={() => handleCommandRun('/health')} className="flex justify-between items-center bg-white border border-[#E6D9BF] p-2.5 rounded-xl hover:bg-gray-50 cursor-pointer w-full text-left">
+              <button onClick={() => handleCommandRun('/health')} className="flex justify-between items-center bg-white dark:bg-[#1A2421] border border-[#E6D9BF] p-2.5 rounded-xl hover:bg-gray-50 cursor-pointer w-full text-left">
                 <span>💚 View System Health Center</span>
                 <span className="text-[9px] text-gray-400 font-mono">/health</span>
               </button>
@@ -87,19 +87,19 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose, onNavi
             </Heading>
             
             <div className="grid grid-cols-2 gap-3 text-[10px] text-gray-600 font-bold">
-              <div className="bg-white border rounded-xl p-3 flex justify-between items-center">
+              <div className="bg-white dark:bg-[#1A2421] border rounded-xl p-3 flex justify-between items-center">
                 <span>🧠 AI Reasoning Model</span>
                 <span className="text-emerald-700">● ONLINE</span>
               </div>
-              <div className="bg-white border rounded-xl p-3 flex justify-between items-center">
+              <div className="bg-white dark:bg-[#1A2421] border rounded-xl p-3 flex justify-between items-center">
                 <span>✈ Flights API Gateway</span>
                 <span className="text-emerald-700">● ONLINE</span>
               </div>
-              <div className="bg-white border rounded-xl p-3 flex justify-between items-center">
+              <div className="bg-white dark:bg-[#1A2421] border rounded-xl p-3 flex justify-between items-center">
                 <span>🏨 Hotels API Gateway</span>
                 <span className="text-emerald-700">● ONLINE</span>
               </div>
-              <div className="bg-white border rounded-xl p-3 flex justify-between items-center">
+              <div className="bg-white dark:bg-[#1A2421] border rounded-xl p-3 flex justify-between items-center">
                 <span>💬 WhatsApp API Broker</span>
                 <span className="text-emerald-700">● ONLINE</span>
               </div>

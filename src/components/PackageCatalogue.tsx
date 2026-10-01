@@ -78,7 +78,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#111111] flex flex-col pt-16 relative">
+    <div className="min-h-screen bg-white dark:bg-[#1A2421] text-[#111111] flex flex-col pt-16 relative">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat" 
@@ -133,7 +133,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
               </div>
 
               {/* Jain Veg Option filter */}
-              <label className="flex items-center gap-3 cursor-pointer self-start sm:self-auto py-2 bg-white px-4 rounded-lg shadow-sm border border-[#E8E4D9]">
+              <label className="flex items-center gap-3 cursor-pointer self-start sm:self-auto py-2 bg-white dark:bg-[#1A2421] px-4 rounded-lg shadow-sm border border-[#E8E4D9]">
                 <input 
                   type="checkbox" 
                   checked={jainVegOnly}
@@ -155,7 +155,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
                 className={`px-4 py-2.5 border rounded-full text-xs font-bold tracking-wide uppercase transition shrink-0 duration-300 touch-manipulation cursor-pointer ${
                   activeCategoryName === cat.name
                     ? 'border-[#1E4D45] bg-[#1E4D45] text-white shadow-md'
-                    : 'border-white/40 bg-white/90 backdrop-blur-sm text-[#1E4D45] hover:bg-white shadow-xs'
+                    : 'border-white/40 bg-white dark:bg-[#1A2421]/90 backdrop-blur-sm text-[#1E4D45] hover:bg-white dark:bg-[#1A2421] shadow-xs'
                 }`}
                 onClick={() => handleCategoryChange(cat.name)}
               >
@@ -167,7 +167,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
           {/* Grid of Packages */}
           {displayedPackages.length === 0 ? (
             activeCategoryName === 'Budget Itineraries' ? (
-              <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white border border-[#E8E4D9] rounded-xl gap-4 shadow-sm">
+              <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl gap-4 shadow-sm">
                 <div className="w-12 h-12 rounded-full bg-[#1E4D45]/10 text-[#1E4D45] flex items-center justify-center mb-2">
                   <Icon name="Wallet" size={24} />
                 </div>
@@ -185,7 +185,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
                 </div>
               </div>
             ) : (
-              <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white border border-[#E8E4D9] rounded-xl gap-4 shadow-sm">
+              <div className="w-full max-w-xl mx-auto min-h-[300px] flex flex-col items-center justify-center text-center p-10 bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl gap-4 shadow-sm">
                 <div className="w-12 h-12 rounded-full bg-[#1E4D45]/10 text-[#1E4D45] flex items-center justify-center mb-2">
                   <Icon name="Leaf" size={24} />
                 </div>
@@ -206,9 +206,9 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {displayedPackages.map((pkg) => (
-                <div key={pkg.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#E8E4D9] flex flex-col group">
+                <div key={pkg.id} className="bg-white dark:bg-[#1A2421] rounded-xl overflow-hidden shadow-sm border border-[#E8E4D9] flex flex-col group">
                   <div className="h-48 relative overflow-hidden shrink-0 border-b border-[#E8E4D9]">
-                    <img 
+                    <img loading="lazy" 
                       src={pkg.img} 
                       alt={pkg.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms]"
@@ -241,7 +241,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
                     </div>
                   </div>
 
-                  <div className="p-5 flex-1 flex flex-col bg-white">
+                  <div className="p-5 flex-1 flex flex-col bg-white dark:bg-[#1A2421]">
                     <h4 className="text-lg font-bold font-serif text-[#1E4D45] tracking-tight leading-tight mb-3">
                       {pkg.title}
                     </h4>
@@ -306,10 +306,10 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
               isOpen={!!selectedPackage}
               onClose={() => { setSelectedPackage(null); setExpandedDay(1); }}
               maxWidth="max-w-4xl"
-              className="h-[85vh] md:h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-xl shadow-2xl"
+              className="h-[85vh] md:h-[80vh] flex flex-col p-0 overflow-hidden bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl shadow-2xl"
             >
               <div className="h-48 md:h-56 w-full overflow-hidden relative shrink-0">
-                <img 
+                <img loading="lazy" 
                   src={selectedPackage.img} 
                   alt={selectedPackage.title}
                   className="w-full h-full object-cover"
@@ -370,7 +370,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
                           }`} />
                           <div 
                             className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${
-                              isExpanded ? 'bg-[#FAF7F0] border-[#1E4D45]/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
+                              isExpanded ? 'bg-[#FAF7F0] border-[#1E4D45]/30' : 'bg-white dark:bg-[#1A2421] border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
                             }`}
                             onClick={() => setExpandedDay(isExpanded ? null : day.day)}
                           >
@@ -401,7 +401,7 @@ const PackageCatalogue: React.FC<PackageCatalogueProps> = ({ onClose, onQuoteCli
                 </div>
               </div>
 
-              <div className="p-6 bg-white border-t border-[#E8E4D9] shrink-0 flex flex-col gap-3">
+              <div className="p-6 bg-white dark:bg-[#1A2421] border-t border-[#E8E4D9] shrink-0 flex flex-col gap-3">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex flex-col">
                     <span className="text-[10px] uppercase tracking-widest font-bold block opacity-70 mb-0.5">Starting from</span>

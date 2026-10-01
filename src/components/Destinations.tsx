@@ -61,7 +61,7 @@ const Destinations: React.FC = () => {
   };
 
   return (
-    <Section id="destinations" spacing="lg" className="bg-white text-[#111111] relative overflow-hidden">
+    <Section id="destinations" spacing="lg" className="bg-white dark:bg-[#1A2421] text-[#111111] relative overflow-hidden">
       {/* Subtle organic decorations */}
       <div className="absolute top-[5%] left-[-2%] w-[300px] h-[300px] bg-surface-warm/25 rounded-full blur-[80px] pointer-events-none" />
       <div className="absolute bottom-[5%] right-[-2%] w-[350px] h-[350px] bg-brand-sage/20 rounded-full blur-[90px] pointer-events-none" />
@@ -83,7 +83,7 @@ const Destinations: React.FC = () => {
               <div
                 key={city.id}
                 style={{ '--rotate-angle': `${rotAngle}deg` } as React.CSSProperties}
-                className="polaroid-frame group cursor-pointer bg-white"
+                className="polaroid-frame group cursor-pointer bg-white dark:bg-[#1A2421]"
                 onClick={() => setSelectedCity(city)}
                 onMouseEnter={handleCardHover}
               >

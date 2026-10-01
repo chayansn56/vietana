@@ -52,7 +52,7 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   const closeBtns = {
-    dark: 'bg-white/5 text-white/60 hover:bg-white/15 hover:text-white',
+    dark: 'bg-white dark:bg-[#1A2421]/5 text-white/60 hover:bg-white dark:bg-[#1A2421]/15 hover:text-white',
     light: 'bg-brand-green/5 text-brand-green/60 hover:bg-brand-green/10 hover:text-brand-green',
   };
 

@@ -18,13 +18,16 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
   const [pdfTheme, setPdfTheme] = useState<'classic' | 'modern'>('classic');
   const [includeVegNotes, setIncludeVegNotes] = useState(true);
 
+  const [popupError, setPopupError] = useState(false);
+
   if (!pkg) return null;
 
   const handleGeneratePDF = () => {
+    setPopupError(false);
     // Generate beautiful, print-ready document in a new window
     const printWindow = window.open('', '_blank');
     if (!printWindow) {
-      alert("Please allow popups to download your customized PDF!");
+      setPopupError(true);
       return;
     }
 
@@ -210,7 +213,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
         <body>
           <div class="header">
             <div class="logo-area">
-              <img src="https://vietana.com/vietana_logo.png" alt="VIETANA Logo" onerror="this.src='/vietana_logo.png'" />
+              <img loading="lazy" src="https://vietana.com/vietana_logo.png" alt="VIETANA Logo" onerror="this.src='/vietana_logo.png'" />
             </div>
             <div class="contact-info">
               <strong>VIETANA Travel Co., Ltd</strong><br />
@@ -327,7 +330,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
               placeholder="e.g. Chayan & Family"
               value={travelerName}
               onChange={(e) => setTravelerName(e.target.value)}
-              className="px-4 py-2.5 rounded-lg border border-black/10 dark:border-white/10 text-sm outline-none text-gray-800 bg-white dark:text-white dark:bg-[#252E2D]"
+              className="px-4 py-2.5 rounded-lg border border-black/10 dark:border-sky-500/20 text-sm outline-none text-gray-800 bg-white dark:text-white dark:bg-[#162033]"
             />
           </div>
 
@@ -338,7 +341,7 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
               placeholder="e.g. July 15 - July 22, 2026"
               value={travelDates}
               onChange={(e) => setTravelDates(e.target.value)}
-              className="px-4 py-2.5 rounded-lg border border-black/10 dark:border-white/10 text-sm outline-none text-gray-800 bg-white dark:text-white dark:bg-[#252E2D]"
+              className="px-4 py-2.5 rounded-lg border border-black/10 dark:border-sky-500/20 text-sm outline-none text-gray-800 bg-white dark:text-white dark:bg-[#162033]"
             />
           </div>
 
@@ -376,6 +379,12 @@ const PDFCustomizerModal: React.FC<PDFCustomizerModalProps> = ({ isOpen, onClose
               />
               <span className="text-xs font-medium text-green-700 dark:text-green-400">Include vegetarian & Jain gourmet culinary note</span>
             </label>
+          )}
+
+          {popupError && (
+            <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-700 dark:text-amber-300 text-xs font-medium">
+              ⚠️ Pop-up window was blocked. Please allow popups for this site in your browser settings to open/save the itinerary PDF.
+            </div>
           )}
         </div>
 

@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               href="https://www.instagram.com/vietanaofficial" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-[#3A9BD9] hover:bg-white/10 transition-colors touch-manipulation"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-[#3A9BD9] hover:bg-white dark:bg-[#1A2421]/10 transition-colors touch-manipulation"
               title="Instagram"
               aria-label="Follow Vietana on Instagram"
             >
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
               href="https://www.facebook.com/vietanaofficial" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-[#3A9BD9] hover:bg-white/10 transition-colors touch-manipulation"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-[#3A9BD9] hover:bg-white dark:bg-[#1A2421]/10 transition-colors touch-manipulation"
               title="Facebook"
               aria-label="Follow Vietana on Facebook"
             >

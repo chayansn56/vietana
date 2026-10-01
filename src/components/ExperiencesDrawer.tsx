@@ -135,7 +135,7 @@ const ExperiencesDrawer: React.FC<ExperiencesDrawerProps> = ({ isOpen, onClose, 
                     <div
                       className={`w-full overflow-hidden transition-all duration-700 ease-in-out origin-top ${selectedExp?.id === exp.id ? 'h-[300px] mt-2 opacity-100' : 'h-0 opacity-0'}`}
                     >
-                      <img src={exp.img} alt={exp.t} className="w-full h-full object-cover rounded-xl" />
+                      <img loading="lazy" src={exp.img} alt={exp.t} className="w-full h-full object-cover rounded-xl" />
                     </div>
 
                     {/* Separator line */}

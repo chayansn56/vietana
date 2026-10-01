@@ -157,8 +157,7 @@ export default async function handler(req, res) {
           </ol>
 
           <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; font-size: 13px; color: #64748b;">
-            <p style="margin: 0 0 5px 0;"><strong>Ground Support Contact Numbers:</strong></p>
-            <p style="margin: 0 0 5px 0;">🇮🇳 India Support: Vikram Sonker (+91 9953294543)</p>
+            <p style="margin: 0 0 5px 0;"><strong>Ground Support Contact:</strong></p>
             <p style="margin: 0;">🇻🇳 Vietnam Support: Chayan Soni (+84 902434006)</p>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function ExperiencesPreview({ onOpenExperiences }: ExperiencesPre
   const previewItems = EXPERIENCES_DATA.slice(0, 12);
 
   return (
-    <Section id="experiences-preview" className="py-16 md:py-24 bg-white border-y border-gray-100 relative">
+    <Section id="experiences-preview" className="py-16 md:py-24 bg-white dark:bg-[#1A2421] border-y border-gray-100 relative">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat" 
@@ -45,13 +45,13 @@ export default function ExperiencesPreview({ onOpenExperiences }: ExperiencesPre
                 {/* Front */}
                 <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-[#FAF8F3] border border-[#E6D9BF]/30 rounded-xl overflow-hidden flex flex-col">
                   <div className="h-36 overflow-hidden relative shrink-0">
-                    <img 
+                    <img loading="lazy" 
                       src={item.images.thumbnail || item.images.hero} 
                       alt={item.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-5 flex-1 flex flex-col justify-center bg-white">
+                  <div className="p-5 flex-1 flex flex-col justify-center bg-white dark:bg-[#1A2421]">
                     <h3 className="font-serif font-bold text-lg text-[#12302B] mb-1 line-clamp-1">
                       {item.title}
                     </h3>

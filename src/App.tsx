@@ -349,7 +349,7 @@ export default function App() {
   if (activePortal === 'agent') {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <div className="bg-white px-6 py-2 border-b flex justify-between items-center text-xs select-none">
+        <div className="bg-white dark:bg-[#1A2421] px-6 py-2 border-b dark:border-white/10 flex justify-between items-center text-xs text-gray-800 dark:text-white/90 select-none">
           <span className="font-semibold text-gray-500">VIETANA Agent Portal Sandbox Mode</span>
           <button 
             onClick={() => handlePortalNavigate(null)}
@@ -366,7 +366,7 @@ export default function App() {
   if (activePortal === 'admin') {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <div className="bg-white px-6 py-2 border-b flex justify-between items-center text-xs select-none">
+        <div className="bg-white dark:bg-[#1A2421] px-6 py-2 border-b dark:border-white/10 flex justify-between items-center text-xs text-gray-800 dark:text-white/90 select-none">
           <span className="font-semibold text-gray-500">VIETANA Control Center Sandbox Mode</span>
           <button 
             onClick={() => handlePortalNavigate(null)}
@@ -383,7 +383,7 @@ export default function App() {
   if (activePortal === 'traveler') {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <div className="bg-white px-6 py-2 border-b flex justify-between items-center text-xs select-none">
+        <div className="bg-white dark:bg-[#1A2421] px-6 py-2 border-b dark:border-white/10 flex justify-between items-center text-xs text-gray-800 dark:text-white/90 select-none">
           <span className="font-semibold text-gray-500">VIETANA Traveler Portal Sandbox Mode</span>
           <button 
             onClick={() => handlePortalNavigate(null)}
@@ -400,7 +400,7 @@ export default function App() {
   if (activePortal === 'partner') {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <div className="bg-white px-6 py-2 border-b flex justify-between items-center text-xs select-none">
+        <div className="bg-white dark:bg-[#1A2421] px-6 py-2 border-b dark:border-white/10 flex justify-between items-center text-xs text-gray-800 dark:text-white/90 select-none">
           <span className="font-semibold text-gray-500">VIETANA Partner Portal Sandbox Mode</span>
           <button 
             onClick={() => handlePortalNavigate(null)}
@@ -416,8 +416,8 @@ export default function App() {
 
   if ((activePortal as any) === 'travel-guide') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col">
-        <div className="bg-white px-6 py-2 border-b flex justify-between items-center text-xs select-none">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col">
+        <div className="bg-white dark:bg-[#1A2421] px-6 py-2 border-b dark:border-white/10 flex justify-between items-center text-xs text-gray-800 dark:text-white/90 select-none">
           <span className="font-semibold text-gray-500">VIETANA Knowledge Center</span>
           <button 
             onClick={() => handlePortalNavigate(null)}
@@ -433,7 +433,7 @@ export default function App() {
 
   if (activePortal === 'food') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar 
           scrolled={true}
@@ -457,7 +457,7 @@ export default function App() {
 
   if ((activePortal as any) === 'experiences') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar 
           scrolled={true}
@@ -493,7 +493,7 @@ export default function App() {
 
   if ((activePortal as any) === 'packages') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar 
           scrolled={true}
@@ -536,7 +536,7 @@ export default function App() {
 
   if ((activePortal as any) === 'attractions') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar 
           scrolled={true}
@@ -570,7 +570,7 @@ export default function App() {
 
   if (activePortal === 'tours-experiences') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO 
           title="Vietnam Tours & Experiences | VIETANA Concierge"
           description="Authentic day tours, UNESCO cruises, and transfers across Vietnam with verified English-speaking guides and local operator pricing."
@@ -607,7 +607,7 @@ export default function App() {
 
   if (activePortal === 'destinations') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar scrolled={true} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} onOpenPlanner={() => openPlanner()} onOpenExperiences={() => handlePortalNavigate('experiences')} onOpenMapCurtain={() => setIsMapOpen(true)} onOpenFlightSearch={() => setIsFlightSearchOpen(true)} onOpenLogin={() => setIsLoginOpen(true)} />
         <main className="pt-24 flex-1">
@@ -622,7 +622,7 @@ export default function App() {
 
   if (activePortal === 'services') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar scrolled={true} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} onOpenPlanner={() => openPlanner()} onOpenExperiences={() => handlePortalNavigate('experiences')} onOpenMapCurtain={() => setIsMapOpen(true)} onOpenFlightSearch={() => setIsFlightSearchOpen(true)} onOpenLogin={() => setIsLoginOpen(true)} />
         <main className="pt-24 flex-1 bg-white">
@@ -637,7 +637,7 @@ export default function App() {
 
   if (activePortal === 'why-choose-us') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar scrolled={true} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} onOpenPlanner={() => openPlanner()} onOpenExperiences={() => handlePortalNavigate('experiences')} onOpenMapCurtain={() => setIsMapOpen(true)} onOpenFlightSearch={() => setIsFlightSearchOpen(true)} onOpenLogin={() => setIsLoginOpen(true)} />
         <main className="pt-24 flex-1">
@@ -667,7 +667,7 @@ export default function App() {
 
   if (activePortal === 'contact') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar scrolled={true} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} onOpenPlanner={() => openPlanner()} onOpenExperiences={() => handlePortalNavigate('experiences')} onOpenMapCurtain={() => setIsMapOpen(true)} onOpenFlightSearch={() => setIsFlightSearchOpen(true)} onOpenLogin={() => setIsLoginOpen(true)} />
         <main className="pt-24 flex-1">
@@ -682,7 +682,7 @@ export default function App() {
 
   if (activePortal === 'journal') {
     return (
-      <div className="min-h-screen bg-[#FAF8F3] flex flex-col selection:bg-brand-gold selection:text-black">
+      <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white flex flex-col selection:bg-brand-gold selection:text-black">
         <SEO />
         <Navbar scrolled={true} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} onOpenPlanner={() => openPlanner()} onOpenExperiences={() => handlePortalNavigate('experiences')} onOpenMapCurtain={() => setIsMapOpen(true)} onOpenFlightSearch={() => setIsFlightSearchOpen(true)} onOpenLogin={() => setIsLoginOpen(true)} />
         <main className="pt-24 flex-1">
@@ -705,7 +705,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF8F3] dark:bg-black text-[#12302B] dark:text-white transition-colors duration-300 overflow-x-hidden selection:bg-brand-gold selection:text-black">
+    <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white dark:bg-[#131A29] text-[#12302B] dark:text-white transition-colors duration-300 overflow-x-hidden selection:bg-rose-500 selection:text-white relative">
       <SEO />
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />

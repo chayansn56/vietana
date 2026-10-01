@@ -56,7 +56,7 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
           >
             {/* Header / Hero Image */}
             <div className="relative h-60 md:h-80 w-full shrink-0">
-              <img 
+              <img loading="lazy" 
                 src={category.heroImage} 
                 alt={category.title} 
                 className="w-full h-full object-cover"
@@ -96,15 +96,15 @@ export const FoodSideSheet: React.FC<FoodSideSheetProps> = ({ isOpen, onClose, c
                       const isRestaurant = 'priceRange' in item;
 
                       return (
-                        <div key={item.id} className="bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden group hover:shadow-md transition-all">
+                        <div key={item.id} className="bg-white dark:bg-[#1A2421] rounded-2xl shadow-sm border border-black/5 overflow-hidden group hover:shadow-md transition-all">
                           <div className="relative h-48 overflow-hidden">
-                            <img
+                            <img loading="lazy"
                               src={item.heroImage}
                               alt={item.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
                             {isRestaurant && (item as RestaurantDetails).isOwnedAndLoved && (
-                              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
+                              <div className="absolute top-4 right-4 bg-white dark:bg-[#1A2421]/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
                                 <Icon name="Heart" size={14} className="text-rose-500 fill-rose-500" />
                                 <Text size="xs" weight="bold" className="text-text-dark uppercase tracking-wider text-mini">
                                   Owned & Loved by <BrandName />

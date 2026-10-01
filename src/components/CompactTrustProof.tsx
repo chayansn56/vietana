@@ -34,7 +34,7 @@ export default function CompactTrustProof() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {REVIEWS.map((review, idx) => (
-            <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col">
+            <div key={idx} className="bg-white dark:bg-[#1A2421]/5 border border-white/10 rounded-2xl p-6 flex flex-col">
               <div className="flex gap-1 mb-4 text-brand-gold">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Icon key={i} name="Star" size={14} className="fill-brand-gold" />

@@ -253,7 +253,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 )}
                 <div className={`max-w-[85%] relative group/msg ${msg.type === 'user'
                     ? 'bg-[#F0EAD6] border border-[#E6D9BF] rounded-2xl rounded-br-sm p-4 shadow-xs text-right text-[#12302B] font-serif italic text-sm'
-                    : 'bg-white border border-[#E6D9BF] rounded-2xl rounded-bl-sm p-4 pr-10 shadow-xs text-left text-[#12302B] text-sm'
+                    : 'bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-2xl rounded-bl-sm p-4 pr-10 shadow-xs text-left text-[#12302B] text-sm'
                   }`}>
                   <Text
                     variant="none"
@@ -270,7 +270,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#B8860B] to-[#12302B] flex shrink-0 items-center justify-center shadow-sm border border-[#E6D9BF] mb-1">
                   <span className="text-white flex items-center justify-center"><Icon name="Bot" size={14} /></span>
                 </div>
-                <div className="bg-white border border-[#E6D9BF] rounded-2xl rounded-bl-sm p-4 shadow-xs">
+                <div className="bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-2xl rounded-bl-sm p-4 shadow-xs">
                    <div className="flex items-center gap-1.5 h-4">
                     {[0, 1, 2].map(n => (
                       <span key={n} className="w-1.5 h-1.5 rounded-full bg-[#12302B]/40 animate-pulse-dot" style={{ animationDelay: `${n * 0.2}s` }} />
@@ -299,7 +299,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
             </button>
             <button
               onClick={handleResumeChat}
-              className="w-full sm:w-auto px-6 py-3.5 bg-white border border-[#E6D9BF] text-[#12302B] hover:bg-black/5 text-xs font-bold uppercase tracking-wider rounded-xl transition duration-200 cursor-pointer flex items-center justify-center gap-2 shadow-xs active:scale-95"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white dark:bg-[#1A2421] border border-[#E6D9BF] text-[#12302B] hover:bg-black/5 text-xs font-bold uppercase tracking-wider rounded-xl transition duration-200 cursor-pointer flex items-center justify-center gap-2 shadow-xs active:scale-95"
             >
               <Icon name="RefreshCw" size={14} /> Resume Chat
             </button>
@@ -313,7 +313,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
                   {options.map((opt, i) => (
                     <button
                       key={i}
-                      className="bg-white border border-[#E6D9BF] text-[#12302B] px-4 py-2 rounded-full text-xs font-semibold transition-all hover:bg-[#12302B] hover:text-white shadow-xs cursor-pointer"
+                      className="bg-white dark:bg-[#1A2421] border border-[#E6D9BF] text-[#12302B] px-4 py-2 rounded-full text-xs font-semibold transition-all hover:bg-[#12302B] hover:text-white shadow-xs cursor-pointer"
                       onClick={() => handleSend(opt)}
                     >
                       {opt}
@@ -325,7 +325,7 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ isOpen, onClose, initialDestinati
 
             {/* Message Input Form */}
             <div className="p-4 pt-2 pb-4 border-t border-[#E6D9BF]/30 bg-[#FAF8F3] relative z-10 shrink-0">
-              <div className={`relative bg-white border rounded-2xl p-1.5 transition-all shadow-inner ${
+              <div className={`relative bg-white dark:bg-[#1A2421] border rounded-2xl p-1.5 transition-all shadow-inner ${
                 isListening ? 'border-purple-500/50 bg-purple-500/5' : 'border-[#E6D9BF] focus-within:border-[#12302B]'
               }`}>
                 <div className="flex items-center gap-2">

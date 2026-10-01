@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NAV_LINKS } from '../data/siteContent';
 import { WHATSAPP_DEFAULT, buildWhatsAppLink, WHATSAPP_NUMBERS } from '../utils/whatsapp';
 import { useTranslation } from '../contexts/LanguageContext';
-import { useCurrency, Currency } from '../contexts/CurrencyContext';
 import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
@@ -88,9 +87,7 @@ const NAVIGATION_ITEMS = [
 const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenExperiences, onOpenMapCurtain, onOpenFlightSearch, onOpenLogin }) => {
   const scrolled = scrolledParam;
   const { language, setLanguage, t } = useTranslation();
-  const { currency, setCurrency } = useCurrency();
   const [langOpen, setLangOpen] = useState(false);
-  const [currOpen, setCurrOpen] = useState(false);
   const [emergencyOpen, setEmergencyOpen] = useState(false);
   const [expDropOpen, setExpDropOpen] = useState(false);
   const [isEmergencyPulsing, setIsEmergencyPulsing] = useState(true);
@@ -110,7 +107,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
         return;
       }
       setLangOpen(false);
-      setCurrOpen(false);
       setActiveDropdown(null);
     };
     window.addEventListener('click', handleClickOutside);
@@ -133,14 +129,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
   const toggleLang = (e: React.MouseEvent) => {
     e.stopPropagation();
     setLangOpen(!langOpen);
-    setCurrOpen(false);
-    setActiveDropdown(null);
-  };
-  
-  const toggleCurr = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrOpen(!currOpen);
-    setLangOpen(false);
     setActiveDropdown(null);
   };
 
@@ -177,7 +165,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
           }}
           className="flex shrink-0 items-center gap-2 no-underline group/logo"
         >
-          <img 
+          <img loading="lazy" 
             src="/vietana_logo.png" 
             className="h-[35px] md:h-[45px] transition-all duration-300" 
             alt="Vietana Logo" 
@@ -207,7 +195,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                   e.preventDefault();
                   e.stopPropagation();
                   setLangOpen(false);
-                  setCurrOpen(false);
                   if ((menu as any).action) {
                     if ((menu as any).action === 'portal_services') {
                       window.history.pushState({}, '', `/services`);
@@ -426,46 +413,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
               ))}
             </div>
           </div>
-          
-          <div className="hidden md:flex relative items-center">
-            <div 
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer transition-all duration-350 ease-soft whitespace-nowrap select-none border
-                ${shouldShowLight ? 'glass border-black/10 hover:bg-black/5' : 'glass-dark border-white/22 hover:bg-white/10 hover:border-white/45'}`} 
-              onClick={toggleCurr}
-            >
-              <Text size="xs" variant="none" weight="medium" className={`tracking-wide flex items-center gap-1.5 ${shouldShowLight ? 'text-text-muted' : 'text-white/88'}`}>
-                <span>{currency}</span>
-              </Text>
-              <Icon name="ChevronDown" size={14} className={`opacity-60 transition-transform duration-300 ${shouldShowLight ? 'text-text-muted' : 'text-white/88'} ${currOpen ? 'rotate-180' : ''}`} />
-            </div>
-            
-            <div className={`absolute top-[calc(100%+0.6rem)] right-0 glass-dark rounded-xl overflow-hidden min-w-[120px] shadow-deep transition-all duration-300 ease-smooth z-[600]
-              ${currOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
-            >
-              {[
-                { code: 'INR', symbol: '₹', name: 'Rupee' },
-                { code: 'USD', symbol: '$', name: 'Dollar' },
-                { code: 'EUR', symbol: '€', name: 'Euro' },
-                { code: 'VND', symbol: '₫', name: 'Dong' }
-              ].map((curr) => (
-                <button 
-                  key={curr.code}
-                  className={`flex items-center gap-3 w-full px-4 py-3 text-left transition-colors duration-250 no-underline border-none bg-transparent cursor-pointer
-                    ${currency === curr.code ? 'bg-brand-gold/8' : 'hover:bg-brand-gold/12'}`} 
-                  onClick={() => {
-                    setCurrency(curr.code as Currency);
-                    setCurrOpen(false);
-                  }}
-                >
-                  <span className="text-base font-bold text-white/50">{curr.symbol}</span>
-                  <Text size="sm" variant="none" className={`flex-1 ${currency === curr.code ? 'text-brand-gold font-medium' : 'text-white/78'}`}>
-                    {curr.code}
-                  </Text>
-                  {currency === curr.code && <Icon name="Check" size={16} className="ml-auto text-brand-gold" />}
-                </button>
-              ))}
-            </div>
-          </div>
+
 
           {/* Header buttons removed to declutter navigation and prevent overflow */}
 

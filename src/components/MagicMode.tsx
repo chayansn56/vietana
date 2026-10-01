@@ -150,7 +150,7 @@ const MagicMode: React.FC<MagicModeProps> = ({
           </div>
           <Button 
             variant="glass" 
-            className="w-full mt-6 py-3 text-xs tracking-wider uppercase font-semibold border-white/20 hover:border-white text-white group-hover:bg-white group-hover:text-brand-green-extra-dark transition-all duration-300"
+            className="w-full mt-6 py-3 text-xs tracking-wider uppercase font-semibold border-white/20 hover:border-white text-white group-hover:bg-white dark:bg-[#1A2421] group-hover:text-brand-green-extra-dark transition-all duration-300"
             onClick={() => handleSelectOption(() => onOpenPlanner())}
           >
             Plan with AI

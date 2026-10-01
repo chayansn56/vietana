@@ -112,7 +112,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
         </div>
 
         {/* Global Search Config Panel */}
-        <form onSubmit={handleSearch} className="flex flex-col gap-4 bg-white p-6 rounded-3xl border border-border-divider">
+        <form onSubmit={handleSearch} className="flex flex-col gap-4 bg-white dark:bg-[#1A2421] p-6 rounded-3xl border border-border-divider">
 
           {/* Trip Type & Cabin Class Header */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-divider pb-4">
@@ -172,11 +172,11 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   placeholder="Origin city/airport"
                   value={originInput}
                   onChange={(e) => handleOriginChange(e.target.value)}
-                  className="w-full bg-white border border-border-divider rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
+                  className="w-full bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
                   required
                 />
                 {originSuggestions.length > 0 && (
-                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white border border-border-divider rounded-xl overflow-hidden shadow-2xl z-[300]">
+                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl overflow-hidden shadow-2xl z-[300]">
                     {originSuggestions.map((sug) => (
                       <button
                         key={sug.code}
@@ -205,11 +205,11 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   placeholder="Destination city/airport"
                   value={destInput}
                   onChange={(e) => handleDestChange(e.target.value)}
-                  className="w-full bg-white border border-border-divider rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
+                  className="w-full bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl px-4 py-3 text-text-dark focus:outline-none focus:border-brand-green placeholder-black/20"
                   required
                 />
                 {destSuggestions.length > 0 && (
-                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white border border-border-divider rounded-xl overflow-hidden shadow-2xl z-[300]">
+                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-full bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl overflow-hidden shadow-2xl z-[300]">
                     {destSuggestions.map((sug) => (
                       <button
                         key={sug.code}
@@ -240,7 +240,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                   value={departureDate}
                   min={new Date().toISOString().split('T')[0]}
                   onChange={(e) => setDepartureDate(e.target.value)}
-                  className="w-full bg-white border border-border-divider rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
+                  className="w-full bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
                   required
                 />
                 {tripType === 'round' ? (
@@ -249,7 +249,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
                     value={returnDate}
                     min={departureDate}
                     onChange={(e) => setReturnDate(e.target.value)}
-                    className="w-full bg-white border border-border-divider rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
+                    className="w-full bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl px-3 py-3 text-text-dark focus:outline-none focus:border-brand-green cursor-pointer text-xs"
                     required
                   />
                 ) : (
@@ -266,7 +266,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               <button
                 type="button"
                 onClick={() => setShowPassengerDropdown(!showPassengerDropdown)}
-                className="w-full bg-white border border-border-divider rounded-xl px-4 py-3 text-left text-text-dark focus:outline-none focus:border-brand-green flex items-center justify-between text-sm cursor-pointer"
+                className="w-full bg-white dark:bg-[#1A2421] border border-border-divider rounded-xl px-4 py-3 text-left text-text-dark focus:outline-none focus:border-brand-green flex items-center justify-between text-sm cursor-pointer"
               >
                 <span>
                   {adults + children + infants} Traveler{adults + children + infants > 1 ? 's' : ''}
@@ -275,7 +275,7 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
               </button>
 
               {showPassengerDropdown && (
-                <div className="absolute top-[calc(100%+0.5rem)] right-0 w-64 bg-white border border-border-divider rounded-2xl p-4 shadow-2xl z-[300] flex flex-col gap-4 text-xs">
+                <div className="absolute top-[calc(100%+0.5rem)] right-0 w-64 bg-white dark:bg-[#1A2421] border border-border-divider rounded-2xl p-4 shadow-2xl z-[300] flex flex-col gap-4 text-xs">
                   {/* Adults */}
                   <div className="flex items-center justify-between">
                     <div>
@@ -389,14 +389,14 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
 
         {/* Filters and Sorting Controls */}
         {searched && !isLoading && flights.length > 0 && (
-          <div className="flex flex-wrap items-center justify-between gap-4 bg-white border border-border-divider px-5 py-3.5 rounded-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-[#1A2421] border border-border-divider px-5 py-3.5 rounded-2xl">
             {/* Filter */}
             <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-brand-green select-none">
               <input
                 type="checkbox"
                 checked={filterDirectOnly}
                 onChange={(e) => setFilterDirectOnly(e.target.checked)}
-                className="w-4 h-4 rounded border-border-divider bg-white text-brand-green focus:ring-0 cursor-pointer"
+                className="w-4 h-4 rounded border-border-divider bg-white dark:bg-[#1A2421] text-brand-green focus:ring-0 cursor-pointer"
               />
               Direct Flights Only
             </label>
@@ -442,11 +442,11 @@ const FlightSearchModal: React.FC<FlightSearchModalProps> = ({ isOpen, onClose }
           {!isLoading && displayedFlights.map((flight, idx) => (
             <div
               key={idx}
-              className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white border border-border-divider hover:border-brand-green rounded-2xl p-5 transition-all duration-300 hover:shadow-xl"
+              className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white dark:bg-[#1A2421] border border-border-divider hover:border-brand-green rounded-2xl p-5 transition-all duration-300 hover:shadow-xl"
             >
               {/* Airline Detail */}
               <div className="flex items-center gap-4 w-full md:w-auto">
-                <img
+                <img loading="lazy"
                   src={flight.airlineLogo}
                   alt={flight.airlineName}
                   className="w-12 h-12 rounded-xl object-cover border border-border-divider bg-surface-cream"

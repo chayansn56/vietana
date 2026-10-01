@@ -135,7 +135,7 @@ const JainVegetarianLandingPage: React.FC = () => {
         
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10">
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[9px] font-mono tracking-widest text-[#E8C84A] uppercase w-fit">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1A2421]/10 backdrop-blur-md border border-white/10 text-[9px] font-mono tracking-widest text-[#E8C84A] uppercase w-fit">
               🟢 Jain & Vegetarian Meal Arrangements
             </span>
             <Heading as="h1" size="2xl" variant="none" className="font-serif leading-tight text-white uppercase max-w-2xl">
@@ -154,7 +154,7 @@ const JainVegetarianLandingPage: React.FC = () => {
               <Button 
                 onClick={handleWhatsAppRedirect}
                 variant="outline"
-                className="w-full sm:w-auto px-8 py-4 border-white/20 hover:bg-white/10 text-white rounded-full font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 border-white/20 hover:bg-white dark:bg-[#1A2421]/10 text-white rounded-full font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2"
               >
                 <Icon name="MessageCircle" size={14} /> Chat on WhatsApp
               </Button>
@@ -162,7 +162,7 @@ const JainVegetarianLandingPage: React.FC = () => {
           </div>
 
           {/* Side Lead Capture Form */}
-          <div id="lead-form" className="lg:col-span-5 bg-white text-[#12302B] rounded-3xl p-6 md:p-8 shadow-deep flex flex-col gap-5 border border-black/5">
+          <div id="lead-form" className="lg:col-span-5 bg-white dark:bg-[#1A2421] text-[#12302B] rounded-3xl p-6 md:p-8 shadow-deep flex flex-col gap-5 border border-black/5">
             <div className="flex flex-col gap-1.5">
               <span className="text-[9px] font-mono font-bold tracking-widest text-[#3A9BD9] uppercase">Get Free Itinerary Quote</span>
               <Heading as="h3" size="none" className="text-xl font-serif font-extrabold m-0">Tell Us About Your Plan</Heading>
@@ -264,7 +264,7 @@ const JainVegetarianLandingPage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-xs flex flex-col gap-4">
+          <div className="bg-white dark:bg-[#1A2421] p-6 rounded-2xl border border-black/5 shadow-xs flex flex-col gap-4">
             <div className="w-10 h-10 rounded-full bg-[#3A9BD9]/10 text-[#3A9BD9] flex items-center justify-center">
               <Icon name="Soup" size={20} />
             </div>
@@ -272,7 +272,7 @@ const JainVegetarianLandingPage: React.FC = () => {
             <Text size="sm" className="opacity-75">We plan and coordinate your meal preferences with local hotel kitchens, cruise dining rooms, and select Indian restaurants.</Text>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-xs flex flex-col gap-4">
+          <div className="bg-white dark:bg-[#1A2421] p-6 rounded-2xl border border-black/5 shadow-xs flex flex-col gap-4">
             <div className="w-10 h-10 rounded-full bg-[#3A9BD9]/10 text-[#3A9BD9] flex items-center justify-center">
               <Icon name="Building" size={20} />
             </div>
@@ -280,7 +280,7 @@ const JainVegetarianLandingPage: React.FC = () => {
             <Text size="sm" className="opacity-75">Hand-picked 4-star and 5-star hotels and boutique heritage stays tested and loved by families and couples.</Text>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-xs flex flex-col gap-4">
+          <div className="bg-white dark:bg-[#1A2421] p-6 rounded-2xl border border-black/5 shadow-xs flex flex-col gap-4">
             <div className="w-10 h-10 rounded-full bg-[#3A9BD9]/10 text-[#3A9BD9] flex items-center justify-center">
               <Icon name="Phone" size={20} />
             </div>
@@ -291,7 +291,7 @@ const JainVegetarianLandingPage: React.FC = () => {
       </section>
 
       {/* Dietary Process */}
-      <section className="bg-white py-16 px-6 border-y border-black/5">
+      <section className="bg-white dark:bg-[#1A2421] py-16 px-6 border-y border-black/5">
         <div className="max-w-3xl mx-auto flex flex-col gap-8">
           <div className="text-center flex flex-col gap-2">
             <Heading as="h2" size="lg" className="font-serif uppercase">Dietary Arrangement Process</Heading>
@@ -331,17 +331,17 @@ const JainVegetarianLandingPage: React.FC = () => {
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="bg-white p-5 rounded-2xl border border-black/5">
+          <div className="bg-white dark:bg-[#1A2421] p-5 rounded-2xl border border-black/5">
             <span className="font-bold block text-sm">Can you arrange strictly Jain meals in Vietnam?</span>
             <Text size="sm" className="opacity-75 mt-2">Yes, we regularly arrange Jain meals (no onion, garlic, potatoes, or root vegetables) for our guests. We coordinate directly with select Indian restaurants and international hotel kitchens in major hubs like Hanoi, Da Nang, Hoi An, and Ho Chi Minh City.</Text>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-black/5">
+          <div className="bg-white dark:bg-[#1A2421] p-5 rounded-2xl border border-black/5">
             <span className="font-bold block text-sm">Are flights included in your quotes?</span>
             <Text size="sm" className="opacity-75 mt-2">Inclusions depend on the final custom quote. Normally we handle internal Vietnam flights, transfers, hotel accommodation, and meals, but international flights can also be custom-curated on request.</Text>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-black/5">
+          <div className="bg-white dark:bg-[#1A2421] p-5 rounded-2xl border border-black/5">
             <span className="font-bold block text-sm">Do you help with Vietnam visa applications?</span>
             <Text size="sm" className="opacity-75 mt-2">Absolutely. We provide visa guidance and handle processing of the required pre-approval letters and tourist e-visas as part of our custom holiday packages.</Text>
           </div>
@@ -349,7 +349,7 @@ const JainVegetarianLandingPage: React.FC = () => {
       </section>
 
       {/* Mobile Sticky CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-black/10 py-3.5 px-6 flex items-center justify-between md:hidden shadow-lg">
+      <div className="fixed bottom-0 left-0 right-0 z-30 bg-white dark:bg-[#1A2421] border-t border-black/10 py-3.5 px-6 flex items-center justify-between md:hidden shadow-lg">
         <div className="flex flex-col">
           <span className="text-[8px] font-mono text-gray-500 uppercase tracking-widest">Custom Vietnam Tour</span>
           <span className="text-xs font-serif font-bold text-[#12302B]">Jain & Veg Curations</span>

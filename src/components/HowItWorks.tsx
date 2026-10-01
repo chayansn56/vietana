@@ -27,7 +27,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <Section id="how-it-works" className="py-16 md:py-24 bg-white">
+    <Section id="how-it-works" className="py-16 md:py-24 bg-white dark:bg-[#1A2421]">
       <Container>
         <div className="text-center mb-12">
           <Heading as="h2" size="3xl" font="serif" className="text-[#12302B]">

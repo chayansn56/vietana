@@ -81,7 +81,7 @@ const MobileExplorerSheet: React.FC<MobileExplorerSheetProps> = ({
         {!isExpanded && (
           <div className="w-full px-6 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <img
+              <img loading="lazy"
                 src={imageUrl}
                 alt={destinationName}
                 className="w-14 h-14 rounded-2xl object-cover"
@@ -136,7 +136,7 @@ const MobileExplorerSheet: React.FC<MobileExplorerSheetProps> = ({
             </div>
 
             {/* Banner image inside scroll */}
-            <img
+            <img loading="lazy"
               src={imageUrl}
               alt={destinationName}
               className="w-full h-44 rounded-2xl object-cover shadow-sm"

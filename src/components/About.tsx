@@ -63,7 +63,7 @@ const PILLARS = [
 
 const About: React.FC<AboutProps> = ({ onOpenBuilder }) => {
   return (
-    <div className="relative w-full max-w-5xl mx-auto py-16 px-6 sm:px-12 bg-white rounded-3xl overflow-hidden my-12 shadow-[0_25px_80px_rgba(0,0,0,0.04)] border border-black/5">
+    <div className="relative w-full max-w-5xl mx-auto py-16 px-6 sm:px-12 bg-white dark:bg-[#1A2421] rounded-3xl overflow-hidden my-12 shadow-[0_25px_80px_rgba(0,0,0,0.04)] border border-black/5">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[36px] z-[-1]">
         <motion.div
@@ -109,7 +109,7 @@ const About: React.FC<AboutProps> = ({ onOpenBuilder }) => {
                 className="!rounded-[28px] overflow-hidden flex flex-col sm:flex-row shadow-[0_10px_30px_rgba(0,0,0,0.04)] border-white/60 text-left h-full !p-0"
               >
                 <div className="w-full sm:w-[140px] h-[180px] sm:h-auto shrink-0 relative">
-                  <img
+                  <img loading="lazy"
                     src={card.image}
                     alt={card.title}
                     className="w-full h-full object-cover"

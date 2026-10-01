@@ -117,18 +117,18 @@ export default function QuickQuoteSection() {
   };
 
   return (
-    <section id="quick-quote" className="py-10 bg-[#FAF8F3] dark:bg-black border-b border-black/5 dark:border-white/5">
+    <section id="quick-quote" className="py-10 bg-[#FAF8F3] dark:bg-transparent border-b border-black/5 dark:border-sky-500/15">
       <Container className="max-w-6xl px-6 flex flex-col items-center text-center">
         
         {/* Mockup styled Horizontal Search Bar */}
         <form 
           onSubmit={handleSearchClick}
-          className="w-full max-w-[1150px] bg-white dark:bg-[#111] border border-[#E6D9BF] dark:border-white/10 rounded-[28px] p-4.5 flex flex-col lg:flex-row items-stretch lg:items-center justify-between shadow-2xl gap-4 text-left pointer-events-auto"
+          className="w-full max-w-[1150px] bg-white dark:bg-[#1E293B] border border-[#E6D9BF] dark:border-sky-400/25 rounded-[28px] p-4.5 flex flex-col lg:flex-row items-stretch lg:items-center justify-between shadow-2xl dark:shadow-[0_12px_36px_-10px_rgba(56,189,248,0.2)] gap-4 text-left pointer-events-auto"
         >
           {/* From City */}
-          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-white/10 lg:last:border-none">
-            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-brand-gold font-extrabold flex items-center gap-1.5">
-              <Icon name="MapPin" size={12} className="text-[#1E4D45] dark:text-brand-gold" /> From
+          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-sky-500/20 lg:last:border-none">
+            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-[#38BDF8] font-extrabold flex items-center gap-1.5">
+              <Icon name="MapPin" size={12} className="text-[#1E4D45] dark:text-[#38BDF8]" /> From
             </label>
             <select 
               value={fromCity}
@@ -142,9 +142,9 @@ export default function QuickQuoteSection() {
           </div>
 
           {/* Going To */}
-          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-white/10 lg:last:border-none">
-            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-brand-gold font-extrabold flex items-center gap-1.5">
-              <Icon name="MapPin" size={12} className="text-[#1E4D45] dark:text-brand-gold" /> Going to
+          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-sky-500/20 lg:last:border-none">
+            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-[#38BDF8] font-extrabold flex items-center gap-1.5">
+              <Icon name="MapPin" size={12} className="text-[#1E4D45] dark:text-[#38BDF8]" /> Going to
             </label>
             <select 
               value={goingTo}
@@ -158,9 +158,9 @@ export default function QuickQuoteSection() {
           </div>
 
           {/* Travel Dates */}
-          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-white/10 lg:last:border-none">
-            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-brand-gold font-extrabold flex items-center gap-1.5">
-              <Icon name="Calendar" size={12} className="text-[#1E4D45] dark:text-brand-gold" /> Travel Dates
+          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-sky-500/20 lg:last:border-none">
+            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-[#38BDF8] font-extrabold flex items-center gap-1.5">
+              <Icon name="Calendar" size={12} className="text-[#1E4D45] dark:text-[#38BDF8]" /> Travel Dates
             </label>
             <select 
               value={travelMonth}
@@ -174,9 +174,9 @@ export default function QuickQuoteSection() {
           </div>
 
           {/* Travelers */}
-          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-white/10 lg:last:border-none">
-            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-brand-gold font-extrabold flex items-center gap-1.5">
-              <Icon name="Users" size={12} className="text-[#1E4D45] dark:text-brand-gold" /> Travelers
+          <div className="flex-1 flex flex-col gap-1 px-3 border-r border-[#E6D9BF]/30 dark:border-sky-500/20 lg:last:border-none">
+            <label className="text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] dark:text-[#38BDF8] font-extrabold flex items-center gap-1.5">
+              <Icon name="Users" size={12} className="text-[#1E4D45] dark:text-[#38BDF8]" /> Travelers
             </label>
             <select 
               value={travelers}
@@ -192,9 +192,9 @@ export default function QuickQuoteSection() {
           {/* Submit Button */}
           <button 
             type="submit"
-            className="bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] px-8 py-4 rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-colors border-none shrink-0"
+            className="bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] dark:bg-gradient-to-r dark:from-[#00F0FF] dark:via-[#2563EB] dark:to-[#EF4444] dark:text-white dark:hover:opacity-95 dark:shadow-[0_0_20px_rgba(56,189,248,0.4)] px-8 py-4 rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-all border-none shrink-0"
           >
-            🔥 Plan My Trip <Icon name="Search" size={13} className="text-[#12302B]" />
+            🔥 Plan My Trip <Icon name="Search" size={13} className="text-[#12302B] dark:text-white" />
           </button>
         </form>
 
@@ -202,9 +202,9 @@ export default function QuickQuoteSection() {
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-6 text-[#12302B] dark:text-white/80 text-xxs sm:text-xs font-semibold">
           <div className="flex items-center gap-2">
             <div className="flex -space-x-2">
-              <img className="w-6 h-6 rounded-full border border-white dark:border-black object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80" alt="Traveler" />
-              <img className="w-6 h-6 rounded-full border border-white dark:border-black object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="Traveler" />
-              <img className="w-6 h-6 rounded-full border border-white dark:border-black object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt="Traveler" />
+              <img loading="lazy" className="w-6 h-6 rounded-full border border-white dark:border-black object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80" alt="Traveler" />
+              <img loading="lazy" className="w-6 h-6 rounded-full border border-white dark:border-black object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="Traveler" />
+              <img loading="lazy" className="w-6 h-6 rounded-full border border-white dark:border-black object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt="Traveler" />
             </div>
             <span className="flex items-center gap-1">
               ⭐⭐⭐⭐⭐ <span className="opacity-80">4.9/5 from 1,200+ Indian travelers</span>

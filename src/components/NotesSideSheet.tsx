@@ -48,10 +48,13 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
     setTimeout(() => setSaved(false), 2000);
   };
 
+  const [pdfError, setPdfError] = useState(false);
+
   const handleDownloadPDF = () => {
+    setPdfError(false);
     const printWindow = window.open('', '_blank');
     if (!printWindow) {
-      alert("Please allow popups to download your customized PDF!");
+      setPdfError(true);
       return;
     }
 
@@ -290,7 +293,7 @@ const NotesSideSheet: React.FC<NotesSideSheetProps> = ({ isOpen, onClose, articl
 
             {/* Hero Image */}
             <div className="relative h-[40vh] md:h-[50vh] w-full">
-              <img
+              <img loading="lazy"
                 src={article.image}
                 alt={`Featured image for story: ${article.title}`}
                 className="w-full h-full object-cover"

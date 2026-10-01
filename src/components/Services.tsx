@@ -8,8 +8,8 @@ import SectionHeader from './ui/SectionHeader';
 import Card from './ui/Card';
 
 // Artistic Botanical Luxury Card Styling
-const MINIMAL_CARD_CLASS = 'bg-white/85 dark:bg-[#0A1C18]/85 backdrop-blur-xl border border-[#1E4D45]/10 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgb(30,77,69,0.08)] hover:-translate-y-1 hover:bg-white/95 dark:hover:bg-[#0A1C18]/95 transition-all duration-500 overflow-hidden relative group';
-const MINIMAL_HIGHLIGHT_CARD_CLASS = 'bg-white/85 dark:bg-[#0A1C18]/85 backdrop-blur-xl border-2 border-brand-gold/30 shadow-[0_4px_20px_rgb(212,175,55,0.05)] hover:shadow-[0_12px_32px_rgb(212,175,55,0.12)] hover:-translate-y-1 hover:bg-white/95 dark:hover:bg-[#0A1C18]/95 transition-all duration-500 overflow-hidden relative group';
+const MINIMAL_CARD_CLASS = 'bg-white/85 dark:bg-[#161616]/90 backdrop-blur-xl border border-[#1E4D45]/10 dark:border-white/10 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:bg-white/95 dark:hover:bg-[#202020]/95 transition-all duration-500 overflow-hidden relative group';
+const MINIMAL_HIGHLIGHT_CARD_CLASS = 'bg-white/85 dark:bg-[#161616]/90 backdrop-blur-xl border-2 border-brand-gold/30 shadow-[0_4px_20px_rgb(212,175,55,0.05)] hover:shadow-[0_12px_32px_rgb(212,175,55,0.18)] hover:-translate-y-1 hover:bg-white/95 dark:hover:bg-[#202020]/95 transition-all duration-500 overflow-hidden relative group';
 
 const PREMIUM_SERVICES: (ServiceDetail & { bentoClass: string; iconColor: string })[] = [
   {
@@ -200,7 +200,7 @@ export default function Services({ limit }: { limit?: number }) {
   }, []);
 
   return (
-    <Section id="services" spacing="xl" className="relative overflow-hidden bg-[#0A1C18]">
+    <Section id="services" spacing="xl" className="relative overflow-hidden bg-[#0A1C18] dark:bg-[#0A0A0A]">
       {/* Custom Background Image - Fully Visible & Sharp */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-100"

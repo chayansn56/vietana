@@ -69,7 +69,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLoginSuccess
               placeholder="e.g. customer@email.com" 
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full bg-white border border-[#E6D9BF] rounded-xl px-3 py-2 text-xs outline-none text-gray-800"
+              className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-3 py-2 text-xs outline-none text-gray-800"
               required
             />
           </div>
@@ -82,7 +82,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLoginSuccess
               placeholder="Enter password" 
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full bg-white border border-[#E6D9BF] rounded-xl px-3 py-2 text-xs outline-none text-gray-800"
+              className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-3 py-2 text-xs outline-none text-gray-800"
               required
             />
           </div>

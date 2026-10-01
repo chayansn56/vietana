@@ -37,14 +37,14 @@ const Food: React.FC = () => {
 
           <div className="order-1 md:order-2 grid grid-cols-2 gap-4">
             <div className="rounded-2xl overflow-hidden shadow-lg h-48 md:h-64 translate-y-6">
-              <img 
+              <img loading="lazy" 
                 src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&q=80" 
                 alt="Indian dining" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg h-48 md:h-64">
-              <img 
+              <img loading="lazy" 
                 src="https://images.unsplash.com/photo-1626804475297-4160bbbeb376?w=800&q=80" 
                 alt="Vegetarian meal" 
                 className="w-full h-full object-cover"

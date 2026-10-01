@@ -136,7 +136,7 @@ const Packages: React.FC<PackagesProps> = () => {
       }
     };
     return themes[id] || {
-      bg: 'bg-white',
+      bg: 'bg-white dark:bg-[#1A2421]',
       border: 'border-[#E8E4D9]',
       badgeBg: 'bg-[#1E4D45]/10 text-[#1E4D45] border-transparent',
       titleColor: 'text-[#12302B]',
@@ -164,7 +164,7 @@ const Packages: React.FC<PackagesProps> = () => {
   };
 
   return (
-    <Section id="packages" spacing="lg" className="bg-white text-[#111111] relative overflow-hidden border-t border-[#E8E4D9]">
+    <Section id="packages" spacing="lg" className="bg-white dark:bg-[#1A2421] text-[#111111] relative overflow-hidden border-t border-[#E8E4D9]">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat" 
@@ -196,14 +196,14 @@ const Packages: React.FC<PackagesProps> = () => {
             return (
               <div 
                 key={pkg.id} 
-                className={`w-full rounded-2xl overflow-hidden border ${colors.border} ${colors.bg} flex flex-col bg-white shadow-sm hover:shadow-md transition-all duration-300`}
+                className={`w-full rounded-2xl overflow-hidden border ${colors.border} ${colors.bg} flex flex-col bg-white dark:bg-[#1A2421] shadow-sm hover:shadow-md transition-all duration-300`}
               >
                 <div 
                   className="h-36 overflow-hidden relative shrink-0 cursor-pointer group"
                   onClick={() => setSelectedPackage(pkg)}
                   title={`View details for ${pkg.title}`}
                 >
-                  <img 
+                  <img loading="lazy" 
                     src={pkg.img} 
                     alt={pkg.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -265,7 +265,7 @@ const Packages: React.FC<PackagesProps> = () => {
                     <div className="grid grid-cols-2 gap-1.5">
                       <button 
                         onClick={() => setSelectedPackage(pkg)}
-                        className="w-full bg-white hover:bg-gray-50 text-[#12302B] border border-[#E6D9BF] px-2 py-2 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors shadow-xs cursor-pointer flex items-center justify-center gap-1"
+                        className="w-full bg-white dark:bg-[#1A2421] hover:bg-gray-50 text-[#12302B] border border-[#E6D9BF] px-2 py-2 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors shadow-xs cursor-pointer flex items-center justify-center gap-1"
                         aria-label={`View itinerary for ${pkg.title}`}
                       >
                         <Icon name="Eye" size={12} /> Itinerary
@@ -299,7 +299,7 @@ const Packages: React.FC<PackagesProps> = () => {
             href={buildWhatsAppLink(WHATSAPP_NUMBERS.VIETNAM, "Hello VIETANA! I'd like to chat about planning a trip to Vietnam.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#25D366] hover:text-[#128C7E] transition-colors bg-white border border-[#E8E4D9] px-6 py-3 rounded-full shadow-sm hover:shadow-md"
+            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#25D366] hover:text-[#128C7E] transition-colors bg-white dark:bg-[#1A2421] border border-[#E8E4D9] px-6 py-3 rounded-full shadow-sm hover:shadow-md"
           >
             <Icon name="MessageCircle" size={16} /> Connect With Us
           </a>
@@ -323,11 +323,11 @@ const Packages: React.FC<PackagesProps> = () => {
                 onClose={() => { setSelectedPackage(null); setExpandedDay(1); }}
                 maxWidth="max-w-4xl"
                 variant="light"
-                className="h-[85vh] md:h-[80vh] flex flex-col p-0 overflow-hidden bg-white border border-[#E8E4D9] rounded-xl shadow-2xl"
+                className="h-[85vh] md:h-[80vh] flex flex-col p-0 overflow-hidden bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl shadow-2xl"
               >
                 {/* Header Banner */}
                 <div className="h-48 md:h-56 w-full overflow-hidden relative shrink-0">
-                  <img 
+                  <img loading="lazy" 
                     src={selectedPackage.img} 
                     alt={selectedPackage.title}
                     className="w-full h-full object-cover"
@@ -435,7 +435,7 @@ const Packages: React.FC<PackagesProps> = () => {
                             }`} />
                             <div 
                               className={`border rounded-xl p-4.5 cursor-pointer transition-all duration-300 ${
-                                isExpanded ? 'bg-[#FAF7F0] border-[#1E4D45]/30' : 'bg-white border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
+                                isExpanded ? 'bg-[#FAF7F0] border-[#1E4D45]/30' : 'bg-white dark:bg-[#1A2421] border-[#E8E4D9]/80 hover:bg-[#FAF7F0]'
                               }`}
                               onClick={() => setExpandedDay(isExpanded ? null : day.day)}
                             >
@@ -466,7 +466,7 @@ const Packages: React.FC<PackagesProps> = () => {
                   </div>
                 </div>
 
-                <div className="p-6 bg-white border-t border-[#E8E4D9] shrink-0 flex flex-col gap-3">
+                <div className="p-6 bg-white dark:bg-[#1A2421] border-t border-[#E8E4D9] shrink-0 flex flex-col gap-3">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex flex-col">
                       <span className="text-[10px] uppercase tracking-widest font-bold block opacity-70 mb-0.5">Starting from</span>

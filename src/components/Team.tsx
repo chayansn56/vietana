@@ -44,7 +44,7 @@ const AnimatedMapLine = () => {
   return (
     <div className="relative w-full max-w-lg mx-auto h-32 flex items-center justify-between mt-12 mb-20 px-4">
       {/* Delhi */}
-      <div className="flex flex-col items-center z-10 bg-white px-1.5 sm:px-3">
+      <div className="flex flex-col items-center z-10 bg-white dark:bg-[#1A2421] px-1.5 sm:px-3">
         <div className="w-3 h-3 rounded-full bg-[#1D1D1F] mb-3" />
         <Text size="none" weight="medium" className="uppercase tracking-widest text-[#1D1D1F] whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
           🇮🇳 Delhi
@@ -67,7 +67,7 @@ const AnimatedMapLine = () => {
       </div>
 
       {/* HCMC */}
-      <div className="flex flex-col items-center z-10 bg-white px-1.5 sm:px-3">
+      <div className="flex flex-col items-center z-10 bg-white dark:bg-[#1A2421] px-1.5 sm:px-3">
         <div className="w-3 h-3 rounded-full bg-[#1D1D1F] mb-3" />
         <Text size="none" weight="medium" className="uppercase tracking-widest text-[#1D1D1F] whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
           Ho Chi Minh City 🇻🇳
@@ -87,7 +87,7 @@ const Connection: React.FC = () => {
   };
 
   return (
-    <div id="team" className="font-sans text-[#1D1D1F] bg-white">
+    <div id="team" className="font-sans text-[#1D1D1F] bg-white dark:bg-[#1A2421]">
       <AnimatePresence>
         {copiedText && (
           <motion.div 
@@ -102,7 +102,7 @@ const Connection: React.FC = () => {
       </AnimatePresence>
       
       {/* BOTTOM AREA: Slightly darker Ivory */}
-      <div className="bg-white py-16">
+      <div className="bg-white dark:bg-[#1A2421] py-16">
         <Container>
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto">
@@ -124,9 +124,9 @@ const Connection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             
             {/* India Card */}
-            <div className="bg-white rounded-[24px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+            <div className="bg-white dark:bg-[#1A2421] rounded-[24px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
               <div className="h-48 overflow-hidden relative">
-                <img 
+                <img loading="lazy" 
                   src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=80" 
                   alt="Aesthetic coffee setup" 
                   className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
@@ -151,9 +151,9 @@ const Connection: React.FC = () => {
             </div>
 
             {/* Bridging Card */}
-            <div className="bg-white rounded-[24px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+            <div className="bg-white dark:bg-[#1A2421] rounded-[24px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
               <div className="h-48 overflow-hidden relative">
-                <img 
+                <img loading="lazy" 
                   src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80" 
                   alt="Airplane window clouds" 
                   className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
@@ -178,9 +178,9 @@ const Connection: React.FC = () => {
             </div>
 
             {/* Vietnam Card */}
-            <div className="bg-white rounded-[24px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+            <div className="bg-white dark:bg-[#1A2421] rounded-[24px] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
               <div className="h-48 overflow-hidden relative">
-                <img 
+                <img loading="lazy" 
                   src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80" 
                   alt="Vietnam aesthetic" 
                   className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
@@ -211,65 +211,41 @@ const Connection: React.FC = () => {
 
 
       {/* BOTTOM AREA: Soft Sand (Offices, Contact & Quote) */}
-      <div className="bg-white py-16">
+      <div className="bg-white dark:bg-[#1A2421] py-16">
         <Container>
           
           {/* Offices Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-            {/* India Office */}
-            <div className="bg-white rounded-[24px] p-8 border border-[#1D1D1F]/5">
-              <LiveClock timeZone="Asia/Kolkata" label="🇮🇳 Delhi" />
-              <Heading as="h3" size="2xl" font="serif" className="mb-6">
-                Delhi
-              </Heading>
-              <Text className="text-[#1D1D1F]/70 mb-4 font-light leading-relaxed max-w-xs">
-                B-37, Indra Park Extension, <br/>
-                Uttam Nagar East, <br/>
-                Delhi – 110059, India
-              </Text>
-              <div className="flex items-center gap-2 mb-8">
-                <Icon name="Phone" size={16} className="text-[#1D1D1F]/50" />
-                <a href="tel:+919990977002" className="text-[#1D1D1F]/80 hover:text-[#1D1D1F] transition-colors font-medium text-sm no-underline">
-                  +91 9990977002
-                </a>
-              </div>
-              <div className="flex gap-4">
-                <button 
-                  onClick={() => copyToClipboard("B-37, Indra Park Extension, Uttam Nagar East, Delhi – 110059, India", "Delhi")}
-                  className="px-6 py-3 border border-[#1D1D1F]/10 rounded-full text-sm font-medium hover:bg-[#1D1D1F]/5 transition-colors"
-                >
-                  Copy Address
-                </button>
-                <button 
-                  onClick={() => window.open('https://maps.google.com', '_blank')}
-                  className="w-12 h-12 flex items-center justify-center border border-text-dark/10 rounded-full hover:bg-text-dark/5 transition-colors"
-                >
-                  <Icon name="Map" size={16} />
-                </button>
-              </div>
-            </div>
-
+          <div className="max-w-xl mx-auto mb-12">
             {/* Vietnam Office */}
-            <div className="bg-white rounded-[24px] p-8 border border-[#1D1D1F]/5">
-              <LiveClock timeZone="Asia/Ho_Chi_Minh" label="🇻🇳 Ho Chi Minh City" />
-              <Heading as="h3" size="2xl" font="serif" className="mb-6">
-                Ho Chi Minh City
+            <div className="bg-white dark:bg-[#1A2421] rounded-[24px] p-8 md:p-10 border border-[#1D1D1F]/5 shadow-sm text-center">
+              <div className="flex justify-center mb-4">
+                <LiveClock timeZone="Asia/Ho_Chi_Minh" label="🇻🇳 Ho Chi Minh City" />
+              </div>
+              <Heading as="h3" size="2xl" font="serif" className="mb-4">
+                Ho Chi Minh City Headquarters
               </Heading>
-              <Text className="text-text-dark/70 mb-8 font-light leading-relaxed max-w-xs">
+              <Text className="text-text-dark/70 mb-6 font-light leading-relaxed max-w-sm mx-auto">
                 45 Nguyễn Quý Đức, <br/>
                 An Phú, Bình Trưng, <br/>
                 Ho Chi Minh City 756000, Vietnam
               </Text>
-              <div className="flex gap-4">
+              <div className="flex items-center justify-center gap-2 mb-8">
+                <Icon name="Phone" size={16} className="text-[#1D1D1F]/50" />
+                <a href="tel:+84902434006" className="text-[#1D1D1F]/80 hover:text-[#1D1D1F] transition-colors font-medium text-sm no-underline">
+                  +84 902434006
+                </a>
+              </div>
+              <div className="flex justify-center gap-4">
                 <button 
                   onClick={() => copyToClipboard("45 Nguyễn Quý Đức, An Phú, Bình Trưng, Ho Chi Minh City 756000, Vietnam", "HCMC")}
-                  className="px-6 py-3 border border-text-dark/10 rounded-full text-sm font-medium hover:bg-text-dark/5 transition-colors"
+                  className="px-6 py-3 border border-text-dark/10 rounded-full text-sm font-medium hover:bg-text-dark/5 transition-colors cursor-pointer"
                 >
                   Copy Address
                 </button>
                 <button 
-                  onClick={() => window.open('https://maps.google.com', '_blank')}
-                  className="w-12 h-12 flex items-center justify-center border border-text-dark/10 rounded-full hover:bg-text-dark/5 transition-colors"
+                  onClick={() => window.open('https://maps.google.com/?q=45+Nguyen+Quy+Duc+An+Phu+Ho+Chi+Minh', '_blank')}
+                  className="w-12 h-12 flex items-center justify-center border border-text-dark/10 rounded-full hover:bg-text-dark/5 transition-colors cursor-pointer"
+                  title="View on Google Maps"
                 >
                   <Icon name="Map" size={16} />
                 </button>
@@ -281,7 +257,7 @@ const Connection: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
             <a 
               href="mailto:vietana@vietana.com"
-              className="group bg-white px-8 py-5 rounded-full flex items-center gap-4 shadow-sm border border-text-dark/5 hover:shadow-md hover:px-10 transition-all duration-300"
+              className="group bg-white dark:bg-[#1A2421] px-8 py-5 rounded-full flex items-center gap-4 shadow-sm border border-text-dark/5 hover:shadow-md hover:px-10 transition-all duration-300"
             >
               <Icon name="Mail" size={20} className="text-text-dark/60" />
               <div>
@@ -296,7 +272,7 @@ const Connection: React.FC = () => {
             
             <a 
               href="mailto:booking@vietana.com"
-              className="group bg-white px-8 py-5 rounded-full flex items-center gap-4 shadow-sm border border-text-dark/5 hover:shadow-md hover:px-10 transition-all duration-300"
+              className="group bg-white dark:bg-[#1A2421] px-8 py-5 rounded-full flex items-center gap-4 shadow-sm border border-text-dark/5 hover:shadow-md hover:px-10 transition-all duration-300"
             >
               <Icon name="BookOpen" size={20} className="text-text-dark/60" />
               <div>

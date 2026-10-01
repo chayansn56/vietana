@@ -120,7 +120,7 @@ export default function ThankYouPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant={whatsappMessage ? 'outline' : 'primary'} size="lg" onClick={handleBackHome} className={whatsappMessage ? 'border-white/20 text-white hover:bg-white/5' : 'shadow-gold'}>
+            <Button variant={whatsappMessage ? 'outline' : 'primary'} size="lg" onClick={handleBackHome} className={whatsappMessage ? 'border-white/20 text-white hover:bg-white dark:bg-[#1A2421]/5' : 'shadow-gold'}>
               Return to Homepage
             </Button>
           </div>

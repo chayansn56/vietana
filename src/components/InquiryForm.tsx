@@ -180,7 +180,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
           value={formData.name}
           onChange={handleInputChange}
           placeholder="Enter your name"
-          className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold touch-manipulation"
+          className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold touch-manipulation"
         />
         {errors.name && <span className="text-xs text-red-600 mt-1">{errors.name}</span>}
       </div>
@@ -196,7 +196,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
             name="travelMonth"
             value={formData.travelMonth}
             onChange={handleInputChange}
-            className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
+            className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
           >
             {MONTH_OPTIONS.map(m => <option key={m} value={m}>{m}</option>)}
           </select>
@@ -212,7 +212,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
             name="travelers"
             value={formData.travelers}
             onChange={handleInputChange}
-            className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
+            className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
           >
             <option value="1 Traveler">1 Traveler</option>
             <option value="2 Travelers">2 Travelers</option>
@@ -232,7 +232,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
             name="phoneCode"
             value={formData.phoneCode}
             onChange={handleInputChange}
-            className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
+            className="bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-3 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold cursor-pointer touch-manipulation"
           >
             {phoneCodes.map(pc => (
               <option key={pc.code} value={pc.code}>{pc.code}</option>
@@ -249,7 +249,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                 handleInputChange({ target: { name: 'phone', value: val } } as any);
               }}
               placeholder="Enter WhatsApp number"
-              className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold touch-manipulation"
+              className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold touch-manipulation"
             />
           </div>
         </div>
@@ -268,7 +268,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
           onChange={handleInputChange}
           placeholder="e.g. Places you want to visit, hotel preferences, dietary requirements (Jain/Veg), or flight details..."
           rows={3}
-          className="w-full flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold resize-none touch-manipulation"
+          className="w-full flex-1 bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-3 text-base sm:text-sm text-[#12302B] focus:outline-none focus:border-brand-gold resize-none touch-manipulation"
         />
       </div>
 
@@ -302,7 +302,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
       <div className="absolute inset-0 z-0 bg-black/40" /> {/* Dark overlay for readability without blur */}
 
       <Container size="lg" className="relative z-10">
-        <div className="bg-white/10 border border-white/20 rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+        <div className="bg-white dark:bg-[#1A2421]/10 border border-white/20 rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
           <div className="text-center mb-8">
             <Heading as="h2" size="3xl" font="serif" className="mb-2 text-white drop-shadow-lg">
               PLAN YOUR TRIP
@@ -334,7 +334,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your name"
-                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] placeholder-gray-400"
+                    className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] placeholder-gray-400"
                   />
                   {errors.name && <span className="text-xs text-red-600 mt-1">{errors.name}</span>}
                 </div>
@@ -349,7 +349,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                       name="phoneCode"
                       value={formData.phoneCode}
                       onChange={handleInputChange}
-                      className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] cursor-pointer"
+                      className="bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-3 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] cursor-pointer"
                     >
                       {phoneCodes.map(pc => (
                         <option key={pc.code} value={pc.code}>{pc.code}</option>
@@ -366,7 +366,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                           handleInputChange({ target: { name: 'phone', value: val } } as any);
                         }}
                         placeholder="WhatsApp number"
-                        className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] placeholder-gray-400"
+                        className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] placeholder-gray-400"
                       />
                     </div>
                   </div>
@@ -386,7 +386,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                     name="travelMonth"
                     value={formData.travelMonth}
                     onChange={handleInputChange}
-                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] cursor-pointer"
+                    className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] cursor-pointer"
                   >
                     {MONTH_OPTIONS.map(m => <option key={m} value={m}>{m}</option>)}
                   </select>
@@ -402,7 +402,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                     name="travelers"
                     value={formData.travelers}
                     onChange={handleInputChange}
-                    className="w-full bg-white border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] cursor-pointer"
+                    className="w-full bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] cursor-pointer"
                   >
                     <option value="1 Traveler">1 Traveler</option>
                     <option value="2 Travelers">2 Travelers</option>
@@ -423,7 +423,7 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
                   value={formData.notes}
                   onChange={handleInputChange}
                   placeholder="e.g. Places you want to visit, hotel preferences, dietary requirements (Jain/Veg), or flight details..."
-                  className="w-full flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] resize-none h-[116px] md:h-full min-h-[116px] placeholder-gray-400"
+                  className="w-full flex-1 bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-2.5 text-sm text-[#12302B] focus:outline-none focus:border-[#3B82F6] resize-none h-[116px] md:h-full min-h-[116px] placeholder-gray-400"
                 />
               </div>
             </div>

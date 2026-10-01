@@ -70,7 +70,7 @@ const Journal: React.FC<{ limit?: number }> = ({ limit }) => {
       {/* PANORAMIC HEADER */}
       {/* PANORAMIC HEADER */}
       <div className="relative min-h-[350px] md:h-[360px] w-full overflow-hidden border-b border-[#E8E4D9] flex items-center py-12 md:py-0">
-        <img 
+        <img loading="lazy" 
           src="/journal_bg.png" 
           alt="VIETANA Journal" 
           className="absolute inset-0 w-full h-full object-cover"
@@ -181,7 +181,7 @@ const Journal: React.FC<{ limit?: number }> = ({ limit }) => {
               >
                 <div className="bg-white dark:bg-surface-dark border border-border-divider dark:border-white/10 rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                   <div className="h-[140px] overflow-hidden relative">
-                    <img
+                    <img loading="lazy"
                       src={collection.image}
                       alt={`Curated collection of travel stories for ${collection.title}`}
                       className="w-full h-full object-cover img-zoom"
@@ -228,7 +228,7 @@ const Journal: React.FC<{ limit?: number }> = ({ limit }) => {
                   className="bg-white border border-border-divider rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col h-full group"
                 >
                   <div className="h-32 overflow-hidden relative border-b border-border-divider/40">
-                    <img
+                    <img loading="lazy"
                       src={article.image}
                       alt={article.title}
                       className="w-full h-full object-cover img-zoom"
@@ -293,7 +293,7 @@ const Journal: React.FC<{ limit?: number }> = ({ limit }) => {
                 >
                   <div className="tape"></div>
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF7F0] border border-black/5">
-                    <img 
+                    <img loading="lazy" 
                       src={story.image} 
                       alt={`Featured travel story: ${story.title}`} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter sepia-[0.1] contrast-105"

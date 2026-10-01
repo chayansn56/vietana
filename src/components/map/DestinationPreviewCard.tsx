@@ -38,7 +38,7 @@ const DestinationPreviewCard: React.FC<DestinationPreviewCardProps> = ({ destina
       className="z-50 w-64 bg-white/95 dark:bg-[#1A2120]/95 backdrop-blur-md rounded-2xl border border-black/5 dark:border-white/10 shadow-lg overflow-hidden animate-fade-in"
     >
       <div className="h-32 w-full relative">
-        <img
+        <img loading="lazy"
           src={imageUrl}
           alt={destination.name}
           className="w-full h-full object-cover"

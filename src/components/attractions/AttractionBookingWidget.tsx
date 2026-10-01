@@ -168,7 +168,7 @@ export default function AttractionBookingWidget({
             min={todayStr}
             value={visitDate}
             onChange={handleDateChange}
-            className="w-full bg-white border border-[#E8E4D9] rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-[#12302B] font-medium focus:outline-none focus:border-[#12302B] transition-colors cursor-pointer touch-manipulation"
+            className="w-full bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-[#12302B] font-medium focus:outline-none focus:border-[#12302B] transition-colors cursor-pointer touch-manipulation"
           />
         </div>
         {product.visitDateRequirement && (
@@ -185,7 +185,7 @@ export default function AttractionBookingWidget({
         </label>
 
         {/* Adult Quantity */}
-        <div className="bg-white border border-[#E8E4D9] rounded-xl p-3 flex items-center justify-between">
+        <div className="bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl p-3 flex items-center justify-between">
           <div>
             <span className="text-xs font-bold text-[#12302B] block">Adult</span>
             <span className="text-[10px] text-gray-500">
@@ -226,7 +226,7 @@ export default function AttractionBookingWidget({
 
         {/* Child Quantity (ONLY if child price exists in dataset) */}
         {hasChildPrice ? (
-          <div className="bg-white border border-[#E8E4D9] rounded-xl p-3 flex items-center justify-between">
+          <div className="bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl p-3 flex items-center justify-between">
             <div>
               <span className="text-xs font-bold text-emerald-800 block">Child</span>
               <span className="text-[10px] text-emerald-700">
@@ -263,7 +263,7 @@ export default function AttractionBookingWidget({
             </div>
           </div>
         ) : (
-          <div className="bg-white/60 border border-dashed border-[#E8E4D9] rounded-xl p-2.5 text-center">
+          <div className="bg-white dark:bg-[#1A2421]/60 border border-dashed border-[#E8E4D9] rounded-xl p-2.5 text-center">
             <span className="text-[9.5px] text-gray-500 font-mono">
               Child pricing: Contact us on WhatsApp for age & height eligibility
             </span>
@@ -283,7 +283,7 @@ export default function AttractionBookingWidget({
             className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
               contactCountry === 'VIETNAM'
                 ? 'bg-[#12302B] text-white border-[#12302B] shadow-xs'
-                : 'bg-white text-gray-700 border-[#E8E4D9] hover:bg-gray-50'
+                : 'bg-white dark:bg-[#1A2421] text-gray-700 border-[#E8E4D9] hover:bg-gray-50'
             }`}
           >
             <div className="flex items-center gap-1.5 mb-0.5">
@@ -301,7 +301,7 @@ export default function AttractionBookingWidget({
             className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
               contactCountry === 'INDIA'
                 ? 'bg-[#12302B] text-white border-[#12302B] shadow-xs'
-                : 'bg-white text-gray-700 border-[#E8E4D9] hover:bg-gray-50'
+                : 'bg-white dark:bg-[#1A2421] text-gray-700 border-[#E8E4D9] hover:bg-gray-50'
             }`}
           >
             <div className="flex items-center gap-1.5 mb-0.5">
@@ -319,7 +319,7 @@ export default function AttractionBookingWidget({
       </div>
 
       {/* Booking Summary Box */}
-      <div className="bg-white border border-[#E8E4D9] rounded-xl p-3.5 space-y-2">
+      <div className="bg-white dark:bg-[#1A2421] border border-[#E8E4D9] rounded-xl p-3.5 space-y-2">
         <div className="flex items-center justify-between border-b border-[#E8E4D9] pb-2">
           <span className="text-[9px] font-mono uppercase tracking-widest font-bold text-gray-500">
             Booking Summary

@@ -71,7 +71,7 @@ const ExperienceDetailsPopup: React.FC<ExperienceDetailsPopupProps> = ({
             <div className="w-full max-w-4xl px-6 pb-32 flex flex-col gap-10 mt-4 text-left">
               {/* Wide Header Photo Cover */}
               <div className="relative h-[250px] md:h-[400px] rounded-3xl overflow-hidden shadow-sm">
-                <img 
+                <img loading="lazy" 
                   src={experience.images.hero} 
                   alt={experience.title} 
                   className="w-full h-full object-cover"
@@ -106,7 +106,7 @@ const ExperienceDetailsPopup: React.FC<ExperienceDetailsPopupProps> = ({
                       <h3 className="font-serif font-bold text-sm text-[#12302B] mb-3">Photo Gallery</h3>
                       <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-none">
                         {experience.images.gallery.map((img, i) => (
-                          <img 
+                          <img loading="lazy" 
                             key={i} 
                             src={img} 
                             alt={`${experience.title} ${i + 1}`} 
@@ -131,7 +131,7 @@ const ExperienceDetailsPopup: React.FC<ExperienceDetailsPopupProps> = ({
                   </div>
 
                   {/* Highlights / Inclusions & Exclusions */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white border border-[#E6D9BF]/40 p-6 md:p-8 rounded-2xl shadow-xs">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white dark:bg-[#1A2421] border border-[#E6D9BF]/40 p-6 md:p-8 rounded-2xl shadow-xs">
                     <div>
                       <h4 className="font-bold text-xs tracking-wider uppercase text-[#12302B] mb-3 flex items-center gap-1.5 font-mono">
                         <Icon name="CheckCircle" size={13} className="text-green-700" /> Highlights Included
@@ -166,7 +166,7 @@ const ExperienceDetailsPopup: React.FC<ExperienceDetailsPopupProps> = ({
                         { label: 'Wheelchair Acc.', val: experience.wheelchairAccessible, icon: 'MapPin' },
                         { label: 'Stroller Friendly', val: experience.strollerFriendly, icon: 'CheckCircle' }
                       ].map((item, idx) => (
-                        <div key={idx} className="bg-white border border-gray-100 p-3 rounded-xl flex flex-col items-center text-center shadow-xs">
+                        <div key={idx} className="bg-white dark:bg-[#1A2421] border border-gray-100 p-3 rounded-xl flex flex-col items-center text-center shadow-xs">
                           <Icon name={item.icon as any} className={`w-5 h-5 mb-1.5 ${item.val ? 'text-green-700' : 'text-gray-300'}`} />
                           <span className="text-[9px] font-bold tracking-wider text-gray-700 uppercase">{item.label}</span>
                           <span className="text-[8px] text-gray-400 mt-0.5">{item.val ? 'Verified Suitable' : 'Not Recommend'}</span>
@@ -218,7 +218,7 @@ const ExperienceDetailsPopup: React.FC<ExperienceDetailsPopupProps> = ({
                 </div>
 
                 {/* Right Side: Quick Fact Index Panel */}
-                <div className="bg-white border border-[#E8E4D9] p-6 rounded-2xl shadow-sm flex flex-col gap-6 sticky top-20">
+                <div className="bg-white dark:bg-[#1A2421] border border-[#E8E4D9] p-6 rounded-2xl shadow-sm flex flex-col gap-6 sticky top-20">
                   {/* Pricing Validity Block */}
                   <div className="bg-green-50/50 border border-green-100 p-4 rounded-xl">
                     <span className="text-[8px] font-bold tracking-widest text-green-700 uppercase font-mono block mb-1">Current Ticket Rate</span>
@@ -301,7 +301,7 @@ const ExperienceDetailsPopup: React.FC<ExperienceDetailsPopupProps> = ({
                 </button>
                 <button 
                   onClick={() => onBuildTrip(experience)}
-                  className="flex-1 py-3.5 px-6 bg-white hover:bg-gray-50 text-[#12302B] border border-[#12302B] text-xs font-bold uppercase tracking-widest rounded-xl transition duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+                  className="flex-1 py-3.5 px-6 bg-white dark:bg-[#1A2421] hover:bg-gray-50 text-[#12302B] border border-[#12302B] text-xs font-bold uppercase tracking-widest rounded-xl transition duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xs"
                 >
                   <Icon name="Heart" size={13} className="text-[#12302B]" /> Add to My Trip
                 </button>

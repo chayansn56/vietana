@@ -212,7 +212,7 @@ export default function ToursExperiencesCatalogue({
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm transition-all">
+      <div className="sticky top-16 z-30 bg-white dark:bg-[#1A2421]/95 backdrop-blur-md border-b border-stone-200 shadow-sm transition-all">
         <Container className="py-4">
           <div className="flex flex-col gap-3">
             {/* Top Search & Region Row */}
@@ -349,7 +349,7 @@ export default function ToursExperiencesCatalogue({
 
         {/* Empty State */}
         {filteredTours.length === 0 && (
-          <div className="text-center py-16 bg-white rounded-2xl border border-stone-200 p-8 max-w-lg mx-auto">
+          <div className="text-center py-16 bg-white dark:bg-[#1A2421] rounded-2xl border border-stone-200 p-8 max-w-lg mx-auto">
             <div className="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4">
               <Icon name="search" className="w-6 h-6" />
             </div>
@@ -378,7 +378,7 @@ export default function ToursExperiencesCatalogue({
             <div
               key={tour.id}
               onClick={() => handleCardClick(tour)}
-              className="bg-white rounded-2xl border border-stone-200/80 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col cursor-pointer group hover:border-amber-400/60"
+              className="bg-white dark:bg-[#1A2421] rounded-2xl border border-stone-200/80 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col cursor-pointer group hover:border-amber-400/60"
             >
               {/* Card Image Banner */}
               <div className="relative h-48 w-full overflow-hidden bg-stone-100">
@@ -481,10 +481,10 @@ export default function ToursExperiencesCatalogue({
       <AnimatePresence>
         {selectedTour && (
           <Modal isOpen={!!selectedTour} onClose={handleCloseModal} maxWidth="max-w-4xl">
-            <div className="bg-white rounded-2xl overflow-hidden max-h-[88vh] flex flex-col">
+            <div className="bg-white dark:bg-[#1A2421] rounded-2xl overflow-hidden max-h-[88vh] flex flex-col">
               {/* Modal Hero Header */}
               <div className="relative h-48 sm:h-72 md:h-80 w-full overflow-hidden bg-stone-900 flex-shrink-0">
-                <img
+                <img loading="lazy"
                   src={selectedTour.heroImage}
                   alt={selectedTour.title}
                   className="w-full h-full object-cover opacity-80"
@@ -967,7 +967,7 @@ export default function ToursExperiencesCatalogue({
               </div>
 
               {/* Mobile Sticky Booking Action Bar */}
-              <div className="sm:hidden flex-shrink-0 p-3 bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-lg pb-[max(0.75rem,env(safe-area-inset-bottom))] flex items-center justify-between gap-3">
+              <div className="sm:hidden flex-shrink-0 p-3 bg-white dark:bg-[#1A2421]/95 backdrop-blur-md border-t border-stone-200 shadow-lg pb-[max(0.75rem,env(safe-area-inset-bottom))] flex items-center justify-between gap-3">
                 {modalPriceVND && (
                   <div className="flex flex-col shrink-0">
                     <span className="text-[9px] uppercase font-bold text-stone-400">Rate / pax</span>

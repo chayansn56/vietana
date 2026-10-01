@@ -71,7 +71,7 @@ const ExplorerDrawer: React.FC<ExplorerDrawerProps> = ({
     <div className="w-[380px] md:w-[420px] bg-white dark:bg-[#1A2120] border-l border-black/5 dark:border-white/10 flex flex-col h-full z-40 relative shadow-2xl overflow-hidden animate-slide-left">
       {/* Top Banner Cover Image */}
       <div className="h-56 w-full relative shrink-0">
-        <img
+        <img loading="lazy"
           src={imageUrl}
           alt={destinationName}
           className="w-full h-full object-cover"

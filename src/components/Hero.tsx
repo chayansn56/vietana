@@ -313,7 +313,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             <button 
               onClick={() => window.dispatchEvent(new CustomEvent('open_whatsapp', { detail: { message: "Hello VIETANA! I'd like to chat about planning a trip to Vietnam." } }))}
               type="button"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 border border-white/30 bg-white/10 hover:bg-white/20 text-white px-8 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 border border-white/30 bg-white dark:bg-[#1A2421]/10 hover:bg-white dark:bg-[#1A2421]/20 text-white px-8 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
             >
               <Icon name="MessageCircle" size={15} /> Chat on WhatsApp
             </button>
@@ -328,7 +328,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               key={vibe}
               className={`px-3 py-1.5 rounded-t-xl text-[9px] font-extrabold tracking-wider uppercase border-t border-x transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0
                 ${activeVibe === vibe 
-                  ? 'bg-white border-[#E6D9BF] text-[#1E4D45] shadow-xs translate-y-[2px]' 
+                  ? 'bg-white dark:bg-[#1A2421] border-[#E6D9BF] text-[#1E4D45] shadow-xs translate-y-[2px]' 
                   : 'bg-[#12302B]/85 backdrop-blur-md border-[#E6D9BF]/20 text-white/80 hover:bg-[#12302B] hover:text-white'}`}
               onClick={() => setActiveVibe(vibe)}
             >
@@ -340,7 +340,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         {/* Horizontal Search/Inquiry Bar */}
         <form 
           onSubmit={handleSearchClick}
-          className="w-full max-w-[1100px] bg-white border border-[#E6D9BF] rounded-3xl p-4 sm:p-5 flex flex-col lg:flex-row items-stretch lg:items-center justify-between shadow-2xl gap-4 pointer-events-auto text-left relative z-20"
+          className="w-full max-w-[1100px] bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-3xl p-4 sm:p-5 flex flex-col lg:flex-row items-stretch lg:items-center justify-between shadow-2xl gap-4 pointer-events-auto text-left relative z-20"
         >
           {/* 2x2 Grid container for inputs on mobile, standard row on desktop */}
           <div className="grid grid-cols-2 lg:flex lg:flex-row gap-2.5 lg:gap-0 flex-1 w-full lg:w-auto">
@@ -432,7 +432,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)}
         title="Send Custom Plan"
-        className="max-w-md p-6 bg-white/95 supports-[backdrop-filter]:bg-white/80 backdrop-blur-2xl border border-white/50 rounded-3xl shadow-deep"
+        className="max-w-md p-6 bg-white dark:bg-[#1A2421]/95 supports-[backdrop-filter]:bg-white dark:bg-[#1A2421]/80 backdrop-blur-2xl border border-white/50 rounded-3xl shadow-deep"
       >
         <div className="text-left flex flex-col gap-4 mt-2">
           <Heading as="h3" size="none" font="serif" className="text-[#12302B] text-xl font-extrabold m-0">
@@ -451,7 +451,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
                 <select
                   value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)}
-                  className="bg-white border border-[#E6D9BF] rounded-xl px-3 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold cursor-pointer font-bold shrink-0 w-20"
+                  className="bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-3 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold cursor-pointer font-bold shrink-0 w-20"
                 >
                   <option value="+91">🇮🇳 +91</option>
                   <option value="+84">🇻🇳 +84</option>
@@ -466,7 +466,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
                   placeholder="Enter phone number"
                   value={whatsappNumber}
                   onChange={(e) => setWhatsappNumber(e.target.value.replace(/\D/g, ''))}
-                  className="flex-1 bg-white border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold font-bold placeholder-[#12302B]/40"
+                  className="flex-1 bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-xl px-4 py-3 text-sm text-[#12302B] focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold font-bold placeholder-[#12302B]/40"
                 />
               </div>
             </div>

@@ -146,7 +146,7 @@ const MapCurtain: React.FC<MapCurtainProps> = ({
                         }}
                         className="flex items-center gap-3 p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-xl cursor-pointer text-left w-full"
                       >
-                        <img
+                        <img loading="lazy"
                           src={result.img}
                           alt={result.name}
                           className="w-10 h-10 rounded-lg object-cover"

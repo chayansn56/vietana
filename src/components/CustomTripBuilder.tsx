@@ -249,7 +249,7 @@ const CustomTripBuilder: React.FC<CustomTripBuilderProps> = ({
                   <label htmlFor="b2b-agency-logo" className="text-white/50 text-caption uppercase tracking-widest block mb-2 font-semibold">Agency Logo</label>
                   <div className="flex items-center gap-4">
                     {agencyLogo && (
-                      <img src={agencyLogo} alt="Logo" className="w-12 h-12 object-contain bg-white/10 rounded border border-white/10 p-1" />
+                      <img loading="lazy" src={agencyLogo} alt="Logo" className="w-12 h-12 object-contain bg-white/10 rounded border border-white/10 p-1" />
                     )}
                     <input
                       id="b2b-agency-logo"
@@ -524,7 +524,7 @@ Please generate a structured day-by-day itinerary right away for this trip!`;
           {b2bEnabled ? (
             <div className="flex items-center gap-4">
               {agencyLogo ? (
-                <img src={agencyLogo} alt={agencyName} className="w-16 h-16 object-contain" />
+                <img loading="lazy" src={agencyLogo} alt={agencyName} className="w-16 h-16 object-contain" />
               ) : (
                 <h1 className="text-2xl font-serif font-bold text-brand-green">{agencyName || 'Travel Desk'}</h1>
               )}

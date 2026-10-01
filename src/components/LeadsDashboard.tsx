@@ -164,7 +164,7 @@ const LeadsDashboard: React.FC = () => {
 
   if (!adminSecret) {
     return (
-      <div className="max-w-md mx-auto my-20 p-6 md:p-8 bg-white border border-black/5 rounded-3xl shadow-deep text-[#12302B] flex flex-col gap-6">
+      <div className="max-w-md mx-auto my-20 p-6 md:p-8 bg-white dark:bg-[#1A2421] border border-black/5 rounded-3xl shadow-deep text-[#12302B] flex flex-col gap-6">
         <div className="flex flex-col gap-1.5 text-center">
           <span className="text-[9px] font-mono font-bold tracking-widest text-[#3A9BD9] uppercase">Restricted Access Portal</span>
           <Heading as="h3" size="none" className="text-xl font-serif font-extrabold m-0">Enter Admin Passcode</Heading>
@@ -217,7 +217,7 @@ const LeadsDashboard: React.FC = () => {
       ) : leads.length === 0 ? (
         <div className="text-center py-20 text-xs font-mono">No leads captured in the system yet.</div>
       ) : (
-        <div className="bg-white border border-black/5 rounded-2xl overflow-hidden shadow-xs">
+        <div className="bg-white dark:bg-[#1A2421] border border-black/5 rounded-2xl overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-[11px] font-sans">
               <thead>
@@ -275,7 +275,7 @@ const LeadsDashboard: React.FC = () => {
       {/* Edit Status Modal */}
       {selectedLead && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-6">
-          <div className="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-deep flex flex-col gap-5 border border-black/5">
+          <div className="bg-white dark:bg-[#1A2421] rounded-3xl p-6 md:p-8 max-w-md w-full shadow-deep flex flex-col gap-5 border border-black/5">
             <div className="flex justify-between items-center border-b border-black/5 pb-4">
               <Heading as="h3" size="none" className="text-lg font-serif font-bold">Update Lead: {selectedLead.name}</Heading>
               <button onClick={() => setSelectedLead(null)} className="text-gray-400 hover:text-gray-600">

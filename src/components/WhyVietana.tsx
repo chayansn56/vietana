@@ -50,21 +50,21 @@ export default function WhyVietana() {
           {benefits.map((b, i) => {
             const cardColors = [
               {
-                bg: 'bg-white/10 hover:bg-white/20',
+                bg: 'bg-white dark:bg-[#1A2421]/10 hover:bg-white dark:bg-[#1A2421]/20',
                 border: 'border-white/20 hover:border-white/40',
-                iconBg: 'bg-white/20 text-white',
+                iconBg: 'bg-white dark:bg-[#1A2421]/20 text-white',
                 accent: 'text-emerald-300'
               },
               {
-                bg: 'bg-white/10 hover:bg-white/20',
+                bg: 'bg-white dark:bg-[#1A2421]/10 hover:bg-white dark:bg-[#1A2421]/20',
                 border: 'border-white/20 hover:border-white/40',
-                iconBg: 'bg-white/20 text-white',
+                iconBg: 'bg-white dark:bg-[#1A2421]/20 text-white',
                 accent: 'text-rose-300'
               },
               {
-                bg: 'bg-white/10 hover:bg-white/20',
+                bg: 'bg-white dark:bg-[#1A2421]/10 hover:bg-white dark:bg-[#1A2421]/20',
                 border: 'border-white/20 hover:border-white/40',
-                iconBg: 'bg-white/20 text-white',
+                iconBg: 'bg-white dark:bg-[#1A2421]/20 text-white',
                 accent: 'text-sky-300'
               }
             ][i];
@@ -98,7 +98,7 @@ export default function WhyVietana() {
           onClick={() => {
             window.open('/journal', '_blank');
           }}
-          className="mt-16 bg-white/20 border border-white/50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-lg hover:border-white transition-all duration-300 cursor-pointer group"
+          className="mt-16 bg-white dark:bg-[#1A2421]/20 border border-white/50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-lg hover:border-white transition-all duration-300 cursor-pointer group"
         >
           <div className="flex-1 text-center md:text-left relative z-10">
             <h3 className="font-serif font-bold text-lg md:text-xl text-white mb-2 group-hover:text-[#FDE047] transition-colors drop-shadow-md">
@@ -113,7 +113,7 @@ export default function WhyVietana() {
               e.stopPropagation();
               window.open('/journal', '_blank');
             }}
-            className="bg-white/20 border border-white/50 text-white hover:bg-white hover:text-black px-5 py-3 rounded-xl text-xs font-bold tracking-wider uppercase transition-all shadow-sm group-hover:scale-[1.02] cursor-pointer shrink-0 flex items-center gap-2 relative z-10"
+            className="bg-white dark:bg-[#1A2421]/20 border border-white/50 text-white hover:bg-white dark:bg-[#1A2421] hover:text-black px-5 py-3 rounded-xl text-xs font-bold tracking-wider uppercase transition-all shadow-sm group-hover:scale-[1.02] cursor-pointer shrink-0 flex items-center gap-2 relative z-10"
           >
             Explore The VIETANA Journal <Icon name="ArrowRight" size={12} />
           </button>

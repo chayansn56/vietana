@@ -82,7 +82,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
             return (
               <div 
                 key={i} 
-                className={`rounded-xl p-5 cursor-pointer transition-all duration-300 ${isFeatured ? 'bg-white border-l-4 border-brand-green shadow-sm hover:shadow-md md:col-span-1' : 'bg-white/60 border border-black/5 hover:bg-white hover:border-brand-green/30'} ${isExpanded ? 'shadow-md' : ''}`}
+                className={`rounded-xl p-5 cursor-pointer transition-all duration-300 ${isFeatured ? 'bg-white dark:bg-[#1A2421] border-l-4 border-brand-green shadow-sm hover:shadow-md md:col-span-1' : 'bg-white dark:bg-[#1A2421]/60 border border-black/5 hover:bg-white dark:bg-[#1A2421] hover:border-brand-green/30'} ${isExpanded ? 'shadow-md' : ''}`}
                 onClick={() => setExpandedCard(isExpanded ? null : i)}
               >
                 <div className="flex items-center gap-3 w-full">
@@ -129,7 +129,7 @@ const Clarity: React.FC<FAQProps> = ({ onOpenPlanner }) => {
 
         {/* Bottom Pill */}
         <div className="flex justify-center">
-          <div className="bg-white rounded-full px-6 py-4 inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-black/5">
+          <div className="bg-white dark:bg-[#1A2421] rounded-full px-6 py-4 inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-black/5">
             <Text size="sm" weight="medium" className="text-text-subtle uppercase tracking-widest mr-2">
               Still Curious?
             </Text>

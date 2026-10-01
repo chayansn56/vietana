@@ -3,7 +3,7 @@
 // =============================================================================
 
 export const VIETANA_WHATSAPP_VIETNAM = "84902434006";
-export const VIETANA_WHATSAPP_INDIA = "919990977002";
+export const VIETANA_WHATSAPP_INDIA = "84902434006";
 
 export const WHATSAPP_NUMBERS = {
   VIETNAM: VIETANA_WHATSAPP_VIETNAM,
