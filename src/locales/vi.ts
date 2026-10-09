@@ -13,11 +13,27 @@ export const vi: TranslationSchema = {
   },
   hero: {
     welcome: 'VIETANA',
-    tagline: 'Feel Vietnam, Your Way',
-    sub: 'Personalized travel experiences for Indian travelers.',
-    support: 'Local support in Hindi & English available 24/7.',
-    discover: 'Explore Vietnam',
-    plan: 'Plan with AI'
+    tagline: 'Cảm nhận Việt Nam theo cách của bạn',
+    sub: 'Visa, khách sạn, ẩm thực, xe đưa đón và hỗ trợ 24/7 từ TP. Hồ Chí Minh.',
+    support: 'CẢM NHẬN VIỆT NAM THEO CÁCH CỦA BẠN',
+    discover: 'Khám phá Việt Nam',
+    plan: 'Lên kế hoạch',
+    search: {
+      from: 'Khởi hành',
+      to: 'Điểm đến',
+      dates: 'Thời gian',
+      travelers: 'Số khách',
+      cta: 'Lên kế hoạch',
+      t1: '1 Khách',
+      t2: '2 Khách',
+      t3: '3 Khách',
+      t4: '4+ Khách'
+    },
+    vibes: {
+      beach: '🌴 Biển & Du thuyền',
+      adventure: '🏔️ Phiêu lưu & Đồi núi',
+      heritage: '🏯 Di sản cổ kính'
+    }
   },
   services: {
     title: 'Dịch vụ của chúng tôi',

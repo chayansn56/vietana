@@ -86,6 +86,24 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
   }, [language, applyGoogleTranslation]);
 
+  // Ensure Google Translate never shifts document.body down
+  useEffect(() => {
+    const resetBodyOffset = () => {
+      if (document.body.style.top && document.body.style.top !== '0px') {
+        document.body.style.setProperty('top', '0px', 'important');
+      }
+      if (document.body.style.position && document.body.style.position !== 'static') {
+        document.body.style.setProperty('position', 'static', 'important');
+      }
+    };
+
+    resetBodyOffset();
+    const observer = new MutationObserver(resetBodyOffset);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}

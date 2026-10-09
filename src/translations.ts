@@ -22,6 +22,22 @@ export interface TranslationSchema {
     support: string;
     discover: string;
     plan: string;
+    search?: {
+      from: string;
+      to: string;
+      dates: string;
+      travelers: string;
+      cta: string;
+      t1?: string;
+      t2?: string;
+      t3?: string;
+      t4?: string;
+    };
+    vibes?: {
+      beach: string;
+      adventure: string;
+      heritage: string;
+    };
   };
   services: {
     title: string;

@@ -7,7 +7,7 @@ interface BrandNameProps {
 
 const BrandName: React.FC<BrandNameProps> = ({ className = '', withLogo = true }) => {
   return (
-    <span className={`inline-flex items-center font-bold tracking-wide ${className}`}>
+    <span translate="no" className={`inline-flex items-center font-bold tracking-wide notranslate ${className}`}>
       {withLogo && (
         <img loading="lazy" 
           src="/vietana_logo.png" 

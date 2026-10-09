@@ -91,7 +91,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
   const [countryCode, setCountryCode] = useState('+91');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [activeVibe, setActiveVibe] = useState('🌴 Beach & Cruise');
+  const [activeVibe, setActiveVibe] = useState('beach');
+
+  const vibeOptions = useMemo(() => [
+    { id: 'beach', label: t.hero.vibes?.beach || '🌴 Beach & Cruise' },
+    { id: 'adventure', label: t.hero.vibes?.adventure || '🏔️ Adventure & Hills' },
+    { id: 'heritage', label: t.hero.vibes?.heritage || '🏯 Ancient Heritage' },
+  ], [t.hero.vibes]);
 
   // Generate stable particles for cinematic light leaks
   const lightLeaks = useMemo(() => {
@@ -179,7 +185,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         travelDate: travelMonth,
         travelers: travelers,
         service: 'Tour Package',
-        message: `Inquiry from Hero Search bar (Vibe: ${activeVibe}): From ${fromCity} going to ${goingTo}. Month of Travel: ${travelMonth}. Travelers: ${travelers}.`,
+        message: `Inquiry from Hero Search bar (Vibe: ${vibeOptions.find(v => v.id === activeVibe)?.label || activeVibe}): From ${fromCity} going to ${goingTo}. Month of Travel: ${travelMonth}. Travelers: ${travelers}.`,
         source: 'hero_search',
         ...getAttributionPayload()
       };
@@ -239,7 +245,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       id="hero" 
       ref={heroRef}
       spacing="none" 
-      className="h-[88svh] min-h-[620px] lg:h-[100svh] lg:min-h-[750px] flex w-full items-center justify-start relative overflow-hidden"
+      className="min-h-[100svh] lg:h-[100svh] lg:min-h-[750px] flex w-full items-center justify-start relative overflow-hidden"
     >
       {/* Background Image Stack: Dual layers for cinematic 10-second crossfade */}
       <div className="absolute inset-0 z-0 select-none">
@@ -267,33 +273,31 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
       
       {/* Soft Vignette Overlay: Light and airy */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/45 pointer-events-none z-10" />
-      <Container className="relative z-20 w-full max-w-6xl px-6 sm:px-10 flex flex-col items-start text-left pt-[130px] md:pt-[160px] pb-6">
+      <Container className="relative z-20 w-full max-w-6xl px-4 sm:px-10 flex flex-col items-start text-left pt-[96px] sm:pt-[130px] md:pt-[160px] pb-16 sm:pb-6">
         
         {/* Welcome brand message block */}
-        <div className="max-w-3xl flex flex-col items-start text-white mb-6">
+        <div className="max-w-3xl flex flex-col items-start text-white mb-4 sm:mb-6">
 
-
-          {t.hero.welcome && (
-            <span className="text-xs font-bold tracking-[0.3em] text-[#3B71CA] uppercase mb-3 drop-shadow-sm font-mono block">
-              {t.hero.welcome}
-            </span>
-          )}
+          <span 
+            translate="no"
+            className="text-xs font-bold tracking-[0.25em] text-[#3B71CA] uppercase mb-2 sm:mb-3 drop-shadow-sm font-mono block notranslate"
+          >
+            VIETANA
+          </span>
 
           <Heading 
             as="h1" 
             size="none"
             variant="none" 
             font="serif"
-            className="mb-5 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold drop-shadow-[0_2px_15px_rgba(0,0,0,0.7)] tracking-tight leading-[1.1] text-white uppercase"
+            className="mb-3 sm:mb-5 text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold drop-shadow-[0_2px_15px_rgba(0,0,0,0.7)] tracking-tight leading-[1.15] sm:leading-[1.1] text-white uppercase"
           >
-            Feel Vietnam Your Way
+            {t.hero.tagline || 'Feel Vietnam Your Way'}
           </Heading>
-
-
 
           <Text 
             variant="none"
-            className="max-w-2xl mb-8 text-white/95 text-sm sm:text-base lg:text-lg font-medium leading-relaxed drop-shadow-md"
+            className="max-w-2xl mb-4 sm:mb-8 text-white/95 text-xs sm:text-base lg:text-lg font-medium leading-relaxed drop-shadow-md line-clamp-3 sm:line-clamp-none"
           >
             {t.hero.sub}
           </Text>
@@ -307,13 +311,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
               }}
               className="w-full sm:w-auto bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] px-8 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-colors shadow-lg active:scale-95 duration-200"
             >
-              🔥 Plan My Trip ➔
+              🔥 {t.hero.plan || 'Plan My Trip'} ➔
             </button>
             
             <button 
               onClick={() => window.dispatchEvent(new CustomEvent('open_whatsapp', { detail: { message: "Hello VIETANA! I'd like to chat about planning a trip to Vietnam." } }))}
               type="button"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 border border-white/30 bg-white dark:bg-[#1A2421]/10 hover:bg-white dark:bg-[#1A2421]/20 text-white px-8 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 border border-white/40 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-8 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
             >
               <Icon name="MessageCircle" size={15} /> Chat on WhatsApp
             </button>
@@ -321,18 +325,21 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         </div>
 
         {/* Horizontal Vibe Selector Tabs */}
-        <div className="flex gap-1.5 mb-[-12px] ml-4 relative z-25 pointer-events-auto w-[92vw] overflow-x-auto scrollbar-none flex-nowrap shrink-0 pr-6">
-          {['🌴 Beach & Cruise', '🏔️ Adventure & Hills', '🏯 Ancient Heritage'].map((vibe) => (
+        <div 
+          translate="no"
+          className="notranslate flex gap-1.5 mb-[-12px] ml-2 sm:ml-4 relative z-25 pointer-events-auto max-w-full overflow-x-auto scrollbar-none flex-nowrap shrink-0 pr-4 pb-1"
+        >
+          {vibeOptions.map((vibe) => (
             <button
               type="button"
-              key={vibe}
+              key={vibe.id}
               className={`px-3 py-1.5 rounded-t-xl text-[9px] font-extrabold tracking-wider uppercase border-t border-x transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0
-                ${activeVibe === vibe 
-                  ? 'bg-white dark:bg-[#1A2421] border-[#E6D9BF] text-[#1E4D45] shadow-xs translate-y-[2px]' 
+                ${activeVibe === vibe.id 
+                  ? 'bg-white border-[#E6D9BF] text-[#1E4D45] shadow-xs translate-y-[2px]' 
                   : 'bg-[#12302B]/85 backdrop-blur-md border-[#E6D9BF]/20 text-white/80 hover:bg-[#12302B] hover:text-white'}`}
-              onClick={() => setActiveVibe(vibe)}
+              onClick={() => setActiveVibe(vibe.id)}
             >
-              {vibe}
+              {vibe.label}
             </button>
           ))}
         </div>
@@ -340,19 +347,20 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
         {/* Horizontal Search/Inquiry Bar */}
         <form 
           onSubmit={handleSearchClick}
-          className="w-full max-w-[1100px] bg-white dark:bg-[#1A2421] border border-[#E6D9BF] rounded-3xl p-4 sm:p-5 flex flex-col lg:flex-row items-stretch lg:items-center justify-between shadow-2xl gap-4 pointer-events-auto text-left relative z-20"
+          translate="no"
+          className="notranslate w-full max-w-[1100px] bg-white border border-[#E6D9BF] rounded-3xl p-3.5 sm:p-5 flex flex-col lg:flex-row items-stretch lg:items-center justify-between shadow-2xl gap-3 sm:gap-4 pointer-events-auto text-left relative z-20"
         >
           {/* 2x2 Grid container for inputs on mobile, standard row on desktop */}
-          <div className="grid grid-cols-2 lg:flex lg:flex-row gap-2.5 lg:gap-0 flex-1 w-full lg:w-auto">
+          <div className="grid grid-cols-2 lg:flex lg:flex-row gap-2 sm:gap-2.5 lg:gap-0 flex-1 w-full lg:w-auto">
             {/* From City */}
-            <div className="flex flex-col gap-1 p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none lg:border-r lg:border-[#E6D9BF]/30">
+            <div className="flex flex-col gap-1 p-2 sm:p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none lg:border-r lg:border-[#E6D9BF]/30">
               <label className="text-[9px] lg:text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] font-extrabold flex items-center gap-1">
-                <Icon name="MapPin" size={11} className="text-[#1E4D45]" /> From
+                <Icon name="MapPin" size={11} className="text-[#1E4D45]" /> {t.hero.search?.from || 'From'}
               </label>
               <select 
                 value={fromCity}
                 onChange={(e) => setFromCity(e.target.value)}
-                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7"
+                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7 truncate"
               >
                 {DEPARTURE_CITIES.map((city) => (
                   <option key={city} value={city}>{city}</option>
@@ -361,28 +369,28 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             </div>
 
             {/* Going To */}
-            <div className="flex flex-col gap-1 p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none lg:border-r lg:border-[#E6D9BF]/30">
+            <div className="flex flex-col gap-1 p-2 sm:p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none lg:border-r lg:border-[#E6D9BF]/30">
               <label className="text-[9px] lg:text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] font-extrabold flex items-center gap-1">
-                <Icon name="MapPin" size={11} className="text-[#1E4D45]" /> Going to
+                <Icon name="MapPin" size={11} className="text-[#1E4D45]" /> {t.hero.search?.to || 'Going to'}
               </label>
               <select 
                 value={goingTo}
                 onChange={(e) => setGoingTo(e.target.value)}
-                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7"
+                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7 truncate"
               >
                 <option value="Vietnam">Vietnam</option>
               </select>
             </div>
 
             {/* Travel Dates */}
-            <div className="flex flex-col gap-1 p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none lg:border-r lg:border-[#E6D9BF]/30">
+            <div className="flex flex-col gap-1 p-2 sm:p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none lg:border-r lg:border-[#E6D9BF]/30">
               <label className="text-[9px] lg:text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] font-extrabold flex items-center gap-1">
-                <Icon name="Calendar" size={11} className="text-[#1E4D45]" /> Dates
+                <Icon name="Calendar" size={11} className="text-[#1E4D45]" /> {t.hero.search?.dates || 'Dates'}
               </label>
               <select 
                 value={travelMonth}
                 onChange={(e) => setTravelMonth(e.target.value)}
-                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7"
+                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7 truncate"
               >
                 {MONTH_OPTIONS.map((m) => (
                   <option key={m} value={m}>{m}</option>
@@ -391,19 +399,19 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
             </div>
 
             {/* Travelers */}
-            <div className="flex flex-col gap-1 p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none">
+            <div className="flex flex-col gap-1 p-2 sm:p-2.5 px-3 rounded-2xl bg-[#E6D9BF]/10 lg:bg-transparent border border-[#E6D9BF]/20 lg:border-none">
               <label className="text-[9px] lg:text-[10px] font-mono tracking-wider uppercase text-[#1E4D45] font-extrabold flex items-center gap-1">
-                <Icon name="Users" size={11} className="text-[#1E4D45]" /> Travelers
+                <Icon name="Users" size={11} className="text-[#1E4D45]" /> {t.hero.search?.travelers || 'Travelers'}
               </label>
               <select 
                 value={travelers}
                 onChange={(e) => setTravelers(e.target.value)}
-                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7"
+                className="w-full bg-transparent border-none p-0 text-xs text-[#12302B] focus:outline-none cursor-pointer font-bold h-7 truncate"
               >
-                <option value="1 Traveler">1 Traveler</option>
-                <option value="2 Travelers">2 Travelers</option>
-                <option value="3 Travelers">3 Travelers</option>
-                <option value="4+ Travelers">4+ Travelers</option>
+                <option value="1 Traveler">{t.hero.search?.t1 || '1 Traveler'}</option>
+                <option value="2 Travelers">{t.hero.search?.t2 || '2 Travelers'}</option>
+                <option value="3 Travelers">{t.hero.search?.t3 || '3 Travelers'}</option>
+                <option value="4+ Travelers">{t.hero.search?.t4 || '4+ Travelers'}</option>
               </select>
             </div>
           </div>
@@ -411,9 +419,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenMagic }) => {
           {/* Submit Button */}
           <button 
             type="submit"
-            className="bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] px-8 py-4 rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-colors border-none shrink-0 w-full lg:w-auto"
+            className="bg-[#E8C84A] hover:bg-[#d8b83a] text-[#12302B] px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-colors border-none shrink-0 w-full lg:w-auto whitespace-nowrap"
           >
-            🔥 Plan My Trip <Icon name="Search" size={13} className="text-[#12302B]" />
+            🔥 {t.hero.search?.cta || 'Plan My Trip'} <Icon name="Search" size={13} className="text-[#12302B]" />
           </button>
         </form>
 

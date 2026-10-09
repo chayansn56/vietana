@@ -83,6 +83,28 @@ const NAVIGATION_ITEMS = [
   }
 ];
 
+const getNavLabel = (item: typeof NAVIGATION_ITEMS[0], lang: string) => {
+  if (item.key === 'packages') {
+    return lang === 'HI' ? 'पैकेज' : (lang === 'VI' ? 'Gói Tour' : 'Packages');
+  }
+  if (item.key === 'plan_my_trip') {
+    return lang === 'HI' ? '🔥 ट्रिप प्लान करें' : (lang === 'VI' ? '🔥 Lên kế hoạch' : '🔥 Plan My Trip');
+  }
+  if (item.key === 'explore') {
+    return lang === 'HI' ? 'एक्सप्लोर' : (lang === 'VI' ? 'Khám phá' : 'Explore');
+  }
+  if (item.key === 'tours_and_tickets') {
+    return lang === 'HI' ? 'टूर और टिकट' : (lang === 'VI' ? 'Tour & Vé' : 'Tours & Tickets');
+  }
+  if (item.key === 'concierge_services') {
+    return lang === 'HI' ? 'कंसीयर्ज सेवाएं' : (lang === 'VI' ? 'Dịch vụ Concierge' : 'Concierge Services');
+  }
+  if (item.key === 'about') {
+    return lang === 'HI' ? 'हमारे बारे में' : (lang === 'VI' ? 'Giới thiệu' : 'About');
+  }
+  return item.label;
+};
+
 const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen, setMobileMenuOpen, onOpenPlanner, onOpenExperiences, onOpenMapCurtain, onOpenFlightSearch, onOpenLogin }) => {
   const scrolled = scrolledParam;
   const { language, setLanguage, t } = useTranslation();
@@ -154,7 +176,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
             font="serif"
             weight="semibold"
             variant="none" 
-            className="block tracking-wider transition-colors duration-400 text-[#4592d9]"
+            translate="no"
+            className="block tracking-wider transition-colors duration-400 text-[#4592d9] notranslate"
           >
             VIETANA
           </Heading>
@@ -189,10 +212,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                   size="sm" 
                   variant="none"
                   weight="bold"
-                  className={`tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm flex items-center gap-0.5 text-brand-green-dark
+                  translate="no"
+                  className={`notranslate tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm flex items-center gap-0.5 text-brand-green-dark
                     ${activeDropdown === menu.key ? 'text-brand-gold' : ''}`}
                 >
-                  {menu.label}
+                  {getNavLabel(menu, language)}
                   {menu.key === 'packages' && (
                     <span className="text-[10px] animate-pulse ml-0.5" title="Hot Packages">🔥</span>
                   )}
@@ -349,26 +373,30 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
         <div className="flex items-center gap-2 xl:gap-2.5 shrink-0">
           <div className="hidden md:flex relative items-center">
             <div 
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer transition-all duration-350 ease-soft whitespace-nowrap select-none border glass border-black/10 hover:bg-black/5" 
+              translate="no"
+              className="notranslate flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer transition-all duration-350 ease-soft whitespace-nowrap select-none border glass border-black/10 hover:bg-black/5" 
               onClick={toggleLang}
             >
-              <Text size="xs" variant="none" weight="medium" className="tracking-wide flex items-center gap-1.5 text-text-muted">
+              <Text size="xs" variant="none" weight="medium" className="tracking-wide flex items-center gap-1.5 text-text-muted notranslate" translate="no">
                 <Icon name="Globe" size={14} /><span id="langLabel">{language}</span>
               </Text>
               <Icon name="ChevronDown" size={14} className={`opacity-60 transition-transform duration-300 text-text-muted ${langOpen ? 'rotate-180' : ''}`} />
             </div>
 
-            <div className={`absolute top-[calc(100%+0.8rem)] right-0 bg-[#FAF8F3]/95 backdrop-blur-xl rounded-xl overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600] border border-black/10
+            <div 
+              translate="no"
+              className={`notranslate absolute top-[calc(100%+0.8rem)] right-0 bg-[#FAF8F3]/95 backdrop-blur-xl rounded-xl overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600] border border-black/10
               ${langOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
             >
               {[
                 { code: 'EN', name: 'English' },
                 { code: 'HI', name: 'Hindi' },
-                { code: 'VI', name: 'Vietnamese' }
+                { code: 'VI', name: 'Tiếng Việt' }
               ].map((lang) => (
                 <button
                   key={lang.code}
-                  className={`flex items-center gap-3 w-full px-4 py-3 text-left transition-colors duration-250 no-underline border-none bg-transparent cursor-pointer
+                  translate="no"
+                  className={`notranslate flex items-center gap-3 w-full px-4 py-3 text-left transition-colors duration-250 no-underline border-none bg-transparent cursor-pointer
                     ${language === lang.code ? 'bg-brand-gold/15' : 'hover:bg-black/5'}`}
                   onClick={() => handleLangChange(lang.code as any)}
                 >
@@ -417,9 +445,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                     setMobileOpenSection(mobileOpenSection === menu.key ? null : menu.key);
                   }
                 }}
-                className="no-underline bg-transparent border-none text-white/90 transition-all duration-300 hover:text-brand-gold text-2xl font-normal tracking-wider cursor-pointer font-serif flex items-center justify-center gap-2 mx-auto py-2"
+                className="no-underline bg-transparent border-none text-white/90 transition-all duration-300 hover:text-brand-gold text-2xl font-normal tracking-wider cursor-pointer font-serif flex items-center justify-center gap-2 mx-auto py-2 notranslate"
+                translate="no"
               >
-                {menu.label}
+                {getNavLabel(menu, language)}
                 {menu.items && (
                   <Icon name="ChevronDown" size={14} className={`transition-transform duration-300 ${mobileOpenSection === menu.key ? 'rotate-180 text-brand-gold' : ''}`} />
                 )}
@@ -582,14 +611,23 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
             <span className="text-sm font-semibold tracking-wider">Explore Map</span>
           </button>
 
-          <div className="flex items-center gap-4 mt-2">
-            {['EN', 'HI', 'VI'].map((l) => (
+          <div translate="no" className="notranslate flex items-center gap-3 mt-2">
+            {[
+              { code: 'EN', label: 'English' },
+              { code: 'HI', label: 'हिंदी' },
+              { code: 'VI', label: 'Tiếng Việt' }
+            ].map((l) => (
               <button
-                key={l}
-                className="bg-transparent border border-white text-white px-4 py-2 rounded-full cursor-pointer hover:bg-white/10 transition-colors"
-                onClick={() => { setLanguage(l as any); setMobileMenuOpen(false); }}
+                key={l.code}
+                translate="no"
+                className={`px-4 py-2 rounded-full cursor-pointer transition-all duration-200 text-xs font-bold tracking-wider uppercase border notranslate ${
+                  language === l.code 
+                    ? 'bg-brand-gold text-[#12302B] border-brand-gold shadow-md font-extrabold' 
+                    : 'bg-transparent border-white/40 text-white hover:bg-white/10 hover:border-white'
+                }`}
+                onClick={() => { setLanguage(l.code as any); setMobileMenuOpen(false); }}
               >
-                {l}
+                {l.label}
               </button>
             ))}
           </div>

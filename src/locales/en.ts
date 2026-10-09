@@ -17,7 +17,23 @@ export const en: TranslationSchema = {
     sub: 'Visa, hotels, food, transport and local support — handled from Ho Chi Minh City.',
     support: 'FEEL VIETNAM, YOUR WAY',
     discover: 'Explore Vietnam',
-    plan: 'Get My Free Trip Plan'
+    plan: 'Get My Free Trip Plan',
+    search: {
+      from: 'From',
+      to: 'Going to',
+      dates: 'Dates',
+      travelers: 'Travelers',
+      cta: 'Plan My Trip',
+      t1: '1 Traveler',
+      t2: '2 Travelers',
+      t3: '3 Travelers',
+      t4: '4+ Travelers'
+    },
+    vibes: {
+      beach: '🌴 Beach & Cruise',
+      adventure: '🏔️ Adventure & Hills',
+      heritage: '🏯 Ancient Heritage'
+    }
   },
   services: {
     title: 'The Essentials',
