@@ -302,12 +302,12 @@ export default function InquiryForm({ onSuccess, isDrawer = false, onStart, mini
       <div className="absolute inset-0 z-0 bg-black/40" /> {/* Dark overlay for readability without blur */}
 
       <Container size="lg" className="relative z-10">
-        <div className="bg-white dark:bg-[#1A2421]/10 border border-white/20 rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+        <div className="bg-[#FAF8F3] border border-[#E6D9BF] rounded-3xl p-6 md:p-10 shadow-2xl">
           <div className="text-center mb-8">
-            <Heading as="h2" size="3xl" font="serif" className="mb-2 text-white drop-shadow-lg">
+            <Heading as="h2" size="3xl" font="serif" className="mb-2 text-[#12302B]">
               PLAN YOUR TRIP
             </Heading>
-            <Text className="text-white/90 text-sm max-w-xl mx-auto drop-shadow-md">
+            <Text className="text-[#12302B]/80 text-sm max-w-xl mx-auto">
               Tell us what you're looking for and our local team will contact you on WhatsApp with a personalized itinerary.
             </Text>
           </div>
