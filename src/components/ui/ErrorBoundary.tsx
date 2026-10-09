@@ -45,7 +45,7 @@ class ErrorBoundary extends Component<Props, State> {
           </div>
           <h2 className="text-base font-semibold text-white mb-2">Service Unavailable</h2>
           <p className="text-xs text-white/60 mb-4 px-2">
-            This section is temporarily down. Need immediate help? Contact support at <strong>+91 9953294543</strong> / <strong>+84 902434006</strong> or <strong>support@vietana.com</strong>.
+            This section is temporarily down. Need immediate help? Contact support at <strong>+91 99909 77002</strong> / <strong>+84 902434006</strong> or <strong>support@vietana.com</strong>.
           </p>
           <button
             onClick={() => window.location.reload()}

@@ -614,7 +614,7 @@ Please generate a structured day-by-day itinerary right away for this trip!`;
 
         <div className="border-t pt-6 text-center text-xs text-gray-400">
           <p>{b2bEnabled ? `This proposal was compiled on behalf of ${agencyName || 'our agency'}.` : 'This is a custom digital quote prepared by Vietana.'}</p>
-          <p className="mt-1">{b2bEnabled ? 'Please contact your travel agent for bookings and adjustments.' : 'For changes or offline bookings, message us on WhatsApp: +91 9953294543'}</p>
+          <p className="mt-1">{b2bEnabled ? 'Please contact your travel agent for bookings and adjustments.' : 'For changes or offline bookings, message us on WhatsApp: +91 99909 77002 / +84 902434006'}</p>
         </div>
       </div>
     </Modal>
