@@ -705,7 +705,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF8F3] dark:bg-[#111615] text-[#12302B] dark:text-white dark:bg-[#131A29] text-[#12302B] dark:text-white transition-colors duration-300 overflow-x-hidden selection:bg-rose-500 selection:text-white relative">
+    <div className="min-h-screen bg-[#FAF8F3] text-[#12302B] overflow-x-hidden selection:bg-brand-gold selection:text-[#12302B] relative">
       <SEO />
       <ProgressBar progress={scrollProgress} />
       <BackToTop visible={scrollY > 700} />

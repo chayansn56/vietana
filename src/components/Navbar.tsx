@@ -6,7 +6,6 @@ import Button from './ui/Button';
 import { Heading, Text } from './ui/Typography';
 import Icon from './ui/Icon';
 import Modal from './ui/Modal';
-import ThemeToggle from './ui/ThemeToggle';
 
 interface NavbarProps {
   scrolled: boolean;
@@ -94,11 +93,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
   const [mobileOpenSection, setMobileOpenSection] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const [isLight, setIsLight] = useState(true);
-  const shouldShowLight = isLight;
-
-  console.log("Navbar State:", { scrolledParam, scrolled, isLight, shouldShowLight });
-
   React.useEffect(() => {
     const timer = setTimeout(() => setIsEmergencyPulsing(false), 3000);
     const handleClickOutside = (e: MouseEvent) => {
@@ -114,16 +108,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
       clearTimeout(timer);
       window.removeEventListener('click', handleClickOutside);
     };
-  }, []);
-
-  React.useEffect(() => {
-    const updateTheme = () => {
-      setIsLight(!document.documentElement.classList.contains('dark'));
-    };
-    updateTheme();
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
   }, []);
 
   const toggleLang = (e: React.MouseEvent) => {
@@ -145,14 +129,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
           ${mobileMenuOpen 
             ? 'top-6 py-4 border-transparent shadow-none bg-transparent' 
             : (scrolledParam 
-                ? (shouldShowLight 
-                    ? 'top-4 py-3 bg-[#FAF8F3]/98 supports-[backdrop-filter]:bg-[#FAF8F3]/92 backdrop-blur-[24px] border-[#E6D9BF] shadow-[0_8px_32px_rgba(0,0,0,0.05)]'
-                    : 'top-4 py-3 bg-[#111111]/98 supports-[backdrop-filter]:bg-[#111111]/92 backdrop-blur-[24px] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]'
-                  ) 
-                : (shouldShowLight
-                    ? 'top-6 py-4 bg-[#FAF8F3]/98 supports-[backdrop-filter]:bg-[#FAF8F3]/92 backdrop-blur-[24px] border-[#E6D9BF] shadow-[0_8px_32px_rgba(0,0,0,0.05)]'
-                    : 'top-6 py-4 bg-[#111111]/98 supports-[backdrop-filter]:bg-[#111111]/92 backdrop-blur-[24px] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]'
-                  )
+                ? 'top-4 py-3 bg-[#FAF8F3]/98 supports-[backdrop-filter]:bg-[#FAF8F3]/92 backdrop-blur-[24px] border-[#E6D9BF] shadow-[0_8px_32px_rgba(0,0,0,0.05)]'
+                : 'top-6 py-4 bg-[#FAF8F3]/98 supports-[backdrop-filter]:bg-[#FAF8F3]/92 backdrop-blur-[24px] border-[#E6D9BF] shadow-[0_8px_32px_rgba(0,0,0,0.05)]'
               )}`}
       >
         <a 
@@ -211,8 +189,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                   size="sm" 
                   variant="none"
                   weight="bold"
-                  className={`tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm flex items-center gap-0.5
-                    ${shouldShowLight ? 'text-brand-green-dark' : 'text-white/90'}
+                  className={`tracking-widest uppercase text-xs transition-colors duration-300 hover:text-brand-gold drop-shadow-sm flex items-center gap-0.5 text-brand-green-dark
                     ${activeDropdown === menu.key ? 'text-brand-gold' : ''}`}
                 >
                   {menu.label}
@@ -224,7 +201,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                   <Icon 
                     name="ChevronDown" 
                     size={12} 
-                    className={`transition-transform duration-300 ${shouldShowLight ? 'text-brand-green-dark/70' : 'text-white/70'} ${activeDropdown === menu.key ? 'rotate-180 text-brand-gold' : ''}`} 
+                    className={`transition-transform duration-300 text-brand-green-dark/70 ${activeDropdown === menu.key ? 'rotate-180 text-brand-gold' : ''}`} 
                   />
                 )}
               </button>
@@ -370,25 +347,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
         </ul>
 
         <div className="flex items-center gap-2 xl:gap-2.5 shrink-0">
-
-
-          <div className="hidden sm:block">
-            <ThemeToggle isNavbar={true} isLight={isLight} />
-          </div>
-          
           <div className="hidden md:flex relative items-center">
             <div 
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer  transition-all duration-350 ease-soft whitespace-nowrap select-none border
-                ${shouldShowLight ? 'glass border-black/10 hover:bg-black/5' : 'glass-dark border-white/22 hover:bg-white/10 hover:border-white/45'}`} 
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full cursor-pointer transition-all duration-350 ease-soft whitespace-nowrap select-none border glass border-black/10 hover:bg-black/5" 
               onClick={toggleLang}
             >
-              <Text size="xs" variant="none" weight="medium" className={`tracking-wide flex items-center gap-1.5 ${shouldShowLight ? 'text-text-muted' : 'text-white/88'}`}>
+              <Text size="xs" variant="none" weight="medium" className="tracking-wide flex items-center gap-1.5 text-text-muted">
                 <Icon name="Globe" size={14} /><span id="langLabel">{language}</span>
               </Text>
-              <Icon name="ChevronDown" size={14} className={`opacity-60 transition-transform duration-300 ${shouldShowLight ? 'text-text-muted' : 'text-white/88'} ${langOpen ? 'rotate-180' : ''}`} />
+              <Icon name="ChevronDown" size={14} className={`opacity-60 transition-transform duration-300 text-text-muted ${langOpen ? 'rotate-180' : ''}`} />
             </div>
 
-            <div className={`absolute top-[calc(100%+0.8rem)] right-0 glass-dark rounded-xl overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600] border border-white/10
+            <div className={`absolute top-[calc(100%+0.8rem)] right-0 bg-[#FAF8F3]/95 backdrop-blur-xl rounded-xl overflow-hidden min-w-[155px] shadow-deep transition-all duration-300 ease-smooth z-[600] border border-black/10
               ${langOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
             >
               {[
@@ -399,13 +369,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                 <button
                   key={lang.code}
                   className={`flex items-center gap-3 w-full px-4 py-3 text-left transition-colors duration-250 no-underline border-none bg-transparent cursor-pointer
-                    ${language === lang.code ? 'bg-brand-gold/8' : 'hover:bg-brand-gold/12'}`}
+                    ${language === lang.code ? 'bg-brand-gold/15' : 'hover:bg-black/5'}`}
                   onClick={() => handleLangChange(lang.code as any)}
                 >
-                  <Text size="sm" variant="none" className={`flex-1 ${language === lang.code ? 'text-brand-gold font-medium' : 'text-white/78'}`}>
+                  <Text size="sm" variant="none" className={`flex-1 ${language === lang.code ? 'text-brand-green font-bold' : 'text-text-dark font-medium'}`}>
                     {lang.name}
                   </Text>
-                  <Text size="xs" variant="none" className="opacity-50 text-white/78 font-bold">
+                  <Text size="xs" variant="none" className="opacity-60 text-text-muted font-bold">
                     {lang.code}
                   </Text>
                   {language === lang.code && <Icon name="Check" size={16} className="ml-auto text-brand-gold" />}
@@ -414,19 +384,16 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
             </div>
           </div>
 
-
-          {/* Header buttons removed to declutter navigation and prevent overflow */}
-
           <button
             type="button"
             aria-label="Open navigation menu"
             aria-expanded={mobileMenuOpen}
-            className={`flex lg:hidden flex-col items-center justify-center gap-[6px] cursor-pointer w-10 h-10 z-[500] group bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors duration-300`}
+            className={`flex lg:hidden flex-col items-center justify-center gap-[6px] cursor-pointer w-10 h-10 z-[500] group ${mobileMenuOpen ? 'bg-white/10 border-white/20' : 'bg-black/5 border-black/10 hover:bg-black/10'} border rounded-full transition-colors duration-300`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${mobileMenuOpen ? 'bg-white' : (isLight ? 'bg-brand-green' : 'bg-white')} ${mobileMenuOpen ? 'rotate-45 translate-x-[4.2px] translate-y-[4.2px]' : ''}`}></span>
-            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${mobileMenuOpen ? 'bg-white' : (isLight ? 'bg-brand-green' : 'bg-white')} ${mobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`}></span>
-            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${mobileMenuOpen ? 'bg-white' : (isLight ? 'bg-brand-green' : 'bg-white')} ${mobileMenuOpen ? '-rotate-45 translate-x-[4.2px] -translate-y-[4.2px]' : ''}`}></span>
+            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${mobileMenuOpen ? 'bg-white rotate-45 translate-x-[4.2px] translate-y-[4.2px]' : 'bg-brand-green'}`}></span>
+            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${mobileMenuOpen ? 'bg-white opacity-0 scale-x-0' : 'bg-brand-green'}`}></span>
+            <span className={`block w-5 h-[1.5px] rounded-sm transition-all duration-350 ease-soft ${mobileMenuOpen ? 'bg-white -rotate-45 translate-x-[4.2px] -translate-y-[4.2px]' : 'bg-brand-green'}`}></span>
           </button>
         </div>
       </nav>
@@ -434,7 +401,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
       {/* MOBILE MENU */}
       <div
         id="mob"
-        className={`fixed inset-0 z-[390] bg-brand-green-extra-dark overflow-y-auto transition-opacity duration-500 ease-soft
+        className={`fixed inset-0 z-[390] bg-[#0A1C18] overflow-y-auto transition-opacity duration-500 ease-soft
           ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         <div className="mt-28 pb-16 px-6 flex flex-col items-center gap-6 w-full">
@@ -625,9 +592,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled: scrolledParam, mobileMenuOpen
                 {l}
               </button>
             ))}
-            <div className="border-l border-white/20 pl-4">
-              <ThemeToggle isNavbar={true} isLight={false} />
-            </div>
           </div>
           <button 
             onClick={() => window.dispatchEvent(new CustomEvent('open_whatsapp'))} 
